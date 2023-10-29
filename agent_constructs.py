@@ -9,7 +9,8 @@ termination_msg = lambda x: isinstance(x, dict) and "TERMINATE" == str(x.get("co
 local_config_list = config_list_from_json(
     "OAI_CONFIG_LIST",
     filter_dict={
-        "model": ["codellama-7b-instruct"],
+        "model": ["TheBloke/WizardLM-13B-V1.2-GGML/wizardlm-13b-v1.2.ggmlv3.q2_K.bin",
+                  "mistral-7b-instruct-v0.1.Q8_0", "codellama-7b-instruct"],
     },
 )
 

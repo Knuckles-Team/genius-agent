@@ -17,7 +17,7 @@ import agent_constructs
 
 
 autogen.ChatCompletion.start_logging()
-PROBLEM = "Download this video https://www.youtube.com/watch?v=QCdQe8CdWV0 using python media-downloader library"
+PROBLEM = "Build snake game using pygame"
 
 
 def _reset_agents():
