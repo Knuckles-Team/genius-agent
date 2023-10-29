@@ -32,18 +32,18 @@ def _reset_agents():
     agent_constructs.executor.reset()
 
 
-def rag_chat(max_round: int = 12):
+def rag_chat(max_round: int = 18):
     _reset_agents()
     groupchat = autogen.GroupChat(
-        agents=[agent_constructs.boss_aid, agent_constructs.coder,
-                agent_constructs.pm, agent_constructs.reviewer],
+        agents=[agent_constructs.media_downloader_aid, agent_constructs.pm, agent_constructs.coder,
+                agent_constructs.reviewer],
         messages=[],
         max_round=max_round
     )
     manager = autogen.GroupChatManager(groupchat=groupchat, llm_config=agent_constructs.llm_config)
 
     # Start chatting with boss_aid as this is the user proxy agent.
-    agent_constructs.boss_aid.initiate_chat(
+    agent_constructs.media_downloader_aid.initiate_chat(
         manager,
         problem=PROBLEM,
         n_results=3,

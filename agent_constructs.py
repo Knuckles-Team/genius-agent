@@ -183,7 +183,60 @@ boss_aid = RetrieveUserProxyAgent(
     max_consecutive_auto_reply=3,
     retrieve_config={
         "task": "code",
-        "docs_path": ["https://raw.githubusercontent.com/Knuckles-Team/media-downloader/main/README.md", "https://raw.githubusercontent.com/Knuckles-Team/repository-manager/main/README.md"],
+        "docs_path": [
+            "https://raw.githubusercontent.com/Knuckles-Team/media-downloader/main/README.md",
+            #"https://raw.githubusercontent.com/Knuckles-Team/media-downloader/main/media_downloader/media_downloader.py",
+            "https://raw.githubusercontent.com/Knuckles-Team/repository-manager/main/README.md",
+            #"https://raw.githubusercontent.com/Knuckles-Team/repository-manager/main/repository_manager/repository_manager.py",
+            "https://raw.githubusercontent.com/Knuckles-Team/subshift/main/README.md",
+            #"https://raw.githubusercontent.com/Knuckles-Team/subshift/main/subshift/subshift.py",
+            "https://raw.githubusercontent.com/Knuckles-Team/webarchiver/main/README.md",
+            #"https://raw.githubusercontent.com/Knuckles-Team/webarchiver/main/webarchiver/webarchiver.py",
+            "https://raw.githubusercontent.com/Knuckles-Team/audio-transcriber/main/README.md",
+            #"https://raw.githubusercontent.com/Knuckles-Team/audio-transcriber/main/audio_transcriber/audio_transcriber.py",
+            "https://raw.githubusercontent.com/Knuckles-Team/media-manager/main/README.md",
+            #"https://raw.githubusercontent.com/Knuckles-Team/media-manager/main/media_manager/media_manager.py",
+            "https://raw.githubusercontent.com/Knuckles-Team/systems-manager/main/README.md",
+            #"https://raw.githubusercontent.com/Knuckles-Team/systems-manager/main/systems_manager/systems_manager.py",
+            "https://raw.githubusercontent.com/Knuckles-Team/servicenow-api/main/README.md",
+            #"https://raw.githubusercontent.com/Knuckles-Team/servicenow-api/main/servicenow_api/servicenow_api.py",
+            "https://raw.githubusercontent.com/Knuckles-Team/report-manager/main/README.md",
+            #"https://raw.githubusercontent.com/Knuckles-Team/report-manager/main/report_manager/report_manager.py",
+            "https://raw.githubusercontent.com/Knuckles-Team/barchart-api/main/README.md",
+            #"https://raw.githubusercontent.com/Knuckles-Team/barchart-api/main/barchart_api/barchart_api.py",
+            "https://raw.githubusercontent.com/Knuckles-Team/gitlab-api/main/README.md",
+            #"https://raw.githubusercontent.com/Knuckles-Team/gitlab-api/main/gitlab_api/gitlab_api.py",
+        ],
+        "chunk_token_size": 8000,
+        "model": local_config_list[0]["model"],
+        #"client": chromadb.PersistentClient(path="/tmp/chromadb"),
+        "collection_name": "groupchat",
+        "get_or_create": True,
+    },
+    code_execution_config=False,  # we don't want to execute code in this case.
+)
+
+media_downloader_assistant = RetrieveAssistantAgent(
+    name="media_downloader_assistant",
+    system_message="You are a helpful assistant.",
+    llm_config={
+        "request_timeout": 600,
+        "seed": 42,
+        "config_list": local_config_list,
+    },
+)
+
+media_downloader_aid = RetrieveUserProxyAgent(
+    name="media_downloader_aid",
+    is_termination_msg=termination_msg,
+    system_message="Assistant who has extra content retrieval power for solving difficult problems. Reply `TERMINATE` in the end when everything is done.",
+    human_input_mode="TERMINATE",
+    max_consecutive_auto_reply=3,
+    retrieve_config={
+        "task": "code",
+        "docs_path": [
+            "https://raw.githubusercontent.com/Knuckles-Team/media-downloader/main/README.md"
+        ],
         "chunk_token_size": 8000,
         "model": local_config_list[0]["model"],
         #"client": chromadb.PersistentClient(path="/tmp/chromadb"),
@@ -204,8 +257,7 @@ coder = AssistantAgent(
 pm = AssistantAgent(
     name="Product_Manager",
     is_termination_msg=termination_msg,
-    system_message="You are a product manager. Your job is to ensure the product adheres to the initial product "
-                   "requirements. You will measure the market and organizational value. "
+    system_message="You are a product manager. "
                    "Reply `TERMINATE` in the end when everything is done.",
     llm_config=llm_config,
 )
@@ -241,7 +293,7 @@ from media_downloader import MediaDownloader
 def exec_media_downloader(url):
     video_downloader_instance = MediaDownloader()
     video_downloader_instance.append_link(url)
-    return user_proxy.execute_function(video_downloader_instance.download_all())
+    return user_proxy.execute_function(func_call=video_downloader_instance.download_all())
 
 user_proxy.register_function(
     function_map={
