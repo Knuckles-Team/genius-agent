@@ -1,0 +1,256 @@
+import chromadb
+from autogen import AssistantAgent, UserProxyAgent, GroupChat, GroupChatManager, config_list_from_json
+from autogen.agentchat.contrib.retrieve_assistant_agent import RetrieveAssistantAgent
+from autogen.agentchat.contrib.retrieve_user_proxy_agent import RetrieveUserProxyAgent
+from autogen.agentchat.contrib.teachable_agent import TeachableAgent
+from subprocess import Popen, PIPE
+
+termination_msg = lambda x: isinstance(x, dict) and "TERMINATE" == str(x.get("content", ""))[-9:].upper()
+local_config_list = config_list_from_json(
+    "OAI_CONFIG_LIST",
+    filter_dict={
+        "model": ["codellama-7b-instruct"],
+    },
+)
+
+gpt4_config_list = config_list_from_json(
+    "OAI_CONFIG_LIST",
+    file_location=".",
+    filter_dict={
+        "model": ["gpt-4-32k", "gpt-4-32k-0314", "gpt-4-32k-0314"],
+    },
+)
+
+llm_config = {
+    "seed": 42,  # change the seed for different trials
+    "temperature": 0.9,
+    "config_list": local_config_list,
+    "request_timeout": 3600,
+    "repeat_penalty": 1.100000,
+    "functions": [
+        {
+            "name": "python",
+            "description": "run arbitrary python and return the result",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "cell": {
+                        "type": "string",
+                        "description": "Valid Python code to execute.",
+                    }
+                },
+                "required": ["cell"],
+            },
+        },
+        {
+            "name": "bash",
+            "description": "run a shell script and return the execution result.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "script": {
+                        "type": "string",
+                        "description": "Valid shell script to execute",
+                    }
+                },
+                "required": ["script"],
+            },
+        },
+        {
+            "name": "media_downloader",
+            "description": "run media-downloader to download a video or audio from the internet",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "script": {
+                        "type": "string",
+                        "description": "Valid url to download",
+                    }
+                },
+                "required": ["url"],
+            },
+        },
+    ]
+}
+
+admin_user_proxy = UserProxyAgent(
+    name="Admin",
+    system_message="A human admin. Interact with the planner to discuss the plan. "
+                   "Plan execution needs to be approved by this admin. "
+                   "Reply `TERMINATE` in the end when everything is done."
+)
+
+user_proxy = UserProxyAgent(
+    name="user_proxy",
+    code_execution_config={"work_dir": "coding"},
+    human_input_mode="NEVER",
+    is_termination_msg=termination_msg,
+    max_consecutive_auto_reply=10,
+)
+
+
+engineer = AssistantAgent(
+    name="Engineer",
+    llm_config=llm_config,
+    system_message='''Engineer. You follow an approved plan. You write python/shell code to solve tasks. 
+Wrap the code in a code block that specifies the script type. The user can't modify your code. 
+So do not suggest incomplete code which requires others to modify. 
+Don't use a code block if it's not intended to be executed by the executor.
+Don't include multiple code blocks in one response. Do not ask others to copy and paste the result. 
+Check the execution result returned by the executor.
+If the result indicates there is an error, fix the error and output the code again. 
+Suggest the full code instead of partial code or code changes. 
+If the error can't be fixed or if the task is not solved even after the code is executed successfully, analyze the problem, revisit your assumption, collect additional info you need, and think of a different approach to try.
+Reply `TERMINATE` in the end when everything is done.
+''',
+    is_termination_msg=termination_msg,
+)
+scientist = AssistantAgent(
+    name="Scientist",
+    llm_config=llm_config,
+    system_message="""Scientist. You follow an approved plan. You are able to categorize papers after seeing their abstracts printed. You don't write code.""",
+    is_termination_msg=termination_msg,
+)
+planner = AssistantAgent(
+    name="Planner",
+    system_message='''Planner. Suggest a plan. Revise the plan based on feedback from admin and critic, until admin approval.
+The plan may involve an engineer who can write code and a scientist who doesn't write code.
+Explain the plan first. Be clear which step is performed by an engineer, and which step is performed by a scientist.
+Reply `TERMINATE` in the end when everything is done.
+''',
+    llm_config=llm_config,
+    is_termination_msg=termination_msg,
+)
+executor = UserProxyAgent(
+    name="Executor",
+    system_message="Executor. Execute the code written by the engineer and report the result. "
+                   "Reply `TERMINATE` in the end when everything is done.",
+    human_input_mode="NEVER",
+    code_execution_config={"last_n_messages": 3, "work_dir": "paper"},
+    is_termination_msg=termination_msg,
+)
+critic = AssistantAgent(
+    name="Critic",
+    system_message="Critic. Double check plan, claims, code from other agents and provide feedback. "
+                   "Check whether the plan includes adding verifiable info such as source URL. "
+                   "Reply `TERMINATE` in the end when everything is done.",
+    llm_config=llm_config,
+    is_termination_msg=termination_msg,
+)
+geniusbot = RetrieveAssistantAgent(
+    name="Geniusbot",
+    system_message="Geniusbot. You can perform any tasks in media-downloader python library. "
+                   "This library allows you to download videos from the internet or download them as audio only."
+                   "Reply `TERMINATE` in the end when everything is done.",
+    llm_config=llm_config,
+    is_termination_msg=termination_msg,
+)
+geniusbot_qa = RetrieveUserProxyAgent(
+    name="Geniusbot Assistant",
+    human_input_mode="NEVER",
+    is_termination_msg=termination_msg,
+    max_consecutive_auto_reply=10,
+    retrieve_config={
+        "task": "qa",
+        "docs_path": "https://raw.githubusercontent.com/Knuckles-Team/media-downloader/main/README.md",
+    },
+)
+
+geniusbot_learn = TeachableAgent(
+    name="Geniusbot Assimilator",
+    llm_config=llm_config,
+    teach_config={
+        "verbosity": 0,
+        "reset_db": True,
+        #"path_to_db_dir": ".",
+        "recall_threshold": 1.5,
+    }
+)
+
+boss = UserProxyAgent(
+    name="Boss",
+    is_termination_msg=termination_msg,
+    human_input_mode="TERMINATE",
+    system_message="The boss who ask questions and give tasks. Reply `TERMINATE` in the end when everything is done.",
+    code_execution_config=False,  # we don't want to execute code in this case.
+)
+
+boss_aid = RetrieveUserProxyAgent(
+    name="Boss_Assistant",
+    is_termination_msg=termination_msg,
+    system_message="Assistant who has extra content retrieval power for solving difficult problems. Reply `TERMINATE` in the end when everything is done.",
+    human_input_mode="TERMINATE",
+    max_consecutive_auto_reply=3,
+    retrieve_config={
+        "task": "code",
+        "docs_path": ["https://raw.githubusercontent.com/Knuckles-Team/media-downloader/main/README.md", "https://raw.githubusercontent.com/Knuckles-Team/repository-manager/main/README.md"],
+        "chunk_token_size": 8000,
+        "model": local_config_list[0]["model"],
+        #"client": chromadb.PersistentClient(path="/tmp/chromadb"),
+        "collection_name": "groupchat",
+        "get_or_create": True,
+    },
+    code_execution_config=False,  # we don't want to execute code in this case.
+)
+
+coder = AssistantAgent(
+    name="Senior_Python_Engineer",
+    is_termination_msg=termination_msg,
+    system_message="You are a senior python engineer. "     
+                   "Reply `TERMINATE` in the end when everything is done.",
+    llm_config=llm_config,
+)
+
+pm = AssistantAgent(
+    name="Product_Manager",
+    is_termination_msg=termination_msg,
+    system_message="You are a product manager. Your job is to ensure the product adheres to the initial product "
+                   "requirements. You will measure the market and organizational value. "
+                   "Reply `TERMINATE` in the end when everything is done.",
+    llm_config=llm_config,
+)
+
+reviewer = AssistantAgent(
+    name="Code_Reviewer",
+    is_termination_msg=termination_msg,
+    system_message="You are a code reviewer. You will review the code for accuracy, precision, security "
+                   "vulnerabilities, syntax, and optimization. Reply `TERMINATE` in the end when everything is done.",
+    llm_config=llm_config,
+)
+
+from IPython import get_ipython
+
+def exec_python(cell):
+    # p = Popen(["python", "-c", f"{code}"], stdin=PIPE, stdout=PIPE, stderr=PIPE)
+    # output, err = p.communicate(b"input data that is passed to subprocess' stdin")
+    # log = str(p.returncode)
+    ipython = get_ipython()
+    result = ipython.run_cell(cell)
+    log = str(result.result)
+    if result.error_before_exec is not None:
+        log += f"\n{result.error_before_exec}"
+    if result.error_in_exec is not None:
+        log += f"\n{result.error_in_exec}"
+    return log
+
+def exec_bash(script):
+    return user_proxy.execute_code_blocks([("sh", script)])
+
+
+from media_downloader import MediaDownloader
+def exec_media_downloader(url):
+    video_downloader_instance = MediaDownloader()
+    video_downloader_instance.append_link(url)
+    return user_proxy.execute_function(video_downloader_instance.download_all())
+
+user_proxy.register_function(
+    function_map={
+        "python": exec_python,
+        "bash": exec_bash,
+        "media_download": exec_media_downloader,
+    }
+)
+
+
+groupchat = GroupChat(agents=[user_proxy, engineer, scientist, planner, executor, critic], messages=[], max_round=50)
+manager = GroupChatManager(groupchat=groupchat, llm_config=llm_config)
