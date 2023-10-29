@@ -35,7 +35,7 @@ def _reset_agents():
 def rag_chat(max_round: int = 18):
     _reset_agents()
     groupchat = autogen.GroupChat(
-        agents=[agent_constructs.media_downloader_aid, agent_constructs.pm, agent_constructs.coder,
+        agents=[agent_constructs.media_downloader_aid, agent_constructs.coder, agent_constructs.pm,
                 agent_constructs.reviewer],
         messages=[],
         max_round=max_round
