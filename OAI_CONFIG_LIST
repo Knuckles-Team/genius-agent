@@ -1,15 +1,30 @@
 [
+
+    {
+        "model": "llama-2-7b-chat.ggmlv3.q4_K_S",
+        "api_key": "NA",
+        "api_base": "http://localhost:8080/v1",
+        "api_type": "openai",
+        "api_version": "v1"
+    },
+    {
+        "model": "mistral-7b--instruct-v0.1.Q5_K_S",
+        "api_key": "NA",
+        "api_base": "http://localhost:8080/v1",
+        "api_type": "openai",
+        "api_version": "v1"
+    },
     {
         "model": "TheBloke/WizardLM-13B-V1.2-GGML/wizardlm-13b-v1.2.ggmlv3.q2_K.bin",
         "api_key": "NA",
-        "api_base": "http://192.168.1.196:8080/v1",
+        "api_base": "http://localhost:8080/v1",
         "api_type": "openai",
         "api_version": "v1"
     },
     {
         "model": "codellama-7b-instruct",
         "api_key": "NA",
-        "api_base": "http://192.168.1.196:8080/v1",
+        "api_base": "http://localhost:8080/v1",
         "api_type": "openai",
         "api_version": "v1"
     },
