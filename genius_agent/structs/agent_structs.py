@@ -1,5 +1,6 @@
 from typing import List, Dict, Optional
 from pydantic import BaseModel
+from itertools import chain
 from autogen import (AssistantAgent as AutoAssistantAgent,
                      UserProxyAgent as AutoUserProxyAgent,
                      GroupChat as AutoGroupChat,
@@ -7,18 +8,15 @@ from autogen import (AssistantAgent as AutoAssistantAgent,
 from autogen.agentchat.contrib.retrieve_assistant_agent import RetrieveAssistantAgent
 from autogen.agentchat.contrib.retrieve_user_proxy_agent import RetrieveUserProxyAgent
 from autogen.agentchat.contrib.teachable_agent import TeachableAgent
+from llm_config_structs import LLMConfig
 from ..agent_functions import *
 import os
 import importlib.util
 
-# Get the current directory of file2.py
+# Import all custom agent functions
 current_directory = os.path.dirname(os.path.realpath(__file__))
 agent_functions_path = os.path.join(current_directory, '..', 'agent_functions')
-
-# List all Python files in agent_functions
 python_files = [f for f in os.listdir(agent_functions_path) if f.endswith('.py')]
-
-# Import all Python files from agent_functions
 for file_name in python_files:
     module_name = os.path.splitext(file_name)[0]
     module_path = os.path.join(agent_functions_path, file_name)
@@ -120,9 +118,26 @@ class TeachableAgent(Agent):
     )
 
 
-class Config(BaseModel):
-    user_proxy_agents: List[UserProxyAgent]
-    assistant_agents: List[AssistantAgent]
-    retrieve_user_proxy_agents: List[RetrieveUserProxyAgent]
-    retrieve_assistant_agents: List[RetrieveAssistantAgent]
-    teachable_agents: List[TeachableAgent]
+class Agents(BaseModel):
+    user_proxy_agents: List[UserProxyAgent] or None
+    assistant_agents: List[AssistantAgent] or None
+    retrieve_user_proxy_agents: List[RetrieveUserProxyAgent] or None
+    retrieve_assistant_agents: List[RetrieveAssistantAgent] or None
+    teachable_agents: List[TeachableAgent] or None
+
+    def get_all_agents(self) -> List[BaseModel]:
+        return list(chain(
+            self.user_proxy_agents,
+            self.assistant_agents,
+            self.retrieve_user_proxy_agents,
+            self.retrieve_assistant_agents,
+            self.teachable_agents
+        ))
+
+
+class GroupChat(Agents):
+    AutoGroupChat(agents=Agents.get_all_agents(), messages=[], max_round=12)
+
+
+class Manager(GroupChat):
+    AutoGroupChatManager(groupchat=GroupChat, llm_config=LLMConfig)
