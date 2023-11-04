@@ -52,9 +52,9 @@ class TeachConfig(BaseModel):
 
 class Agent(BaseModel):
     name: str
-    llm_config: LLMConfig
-    system_message: Optional[str]
-    is_termination_msg: Optional[str]
+    llm_config: LLMConfig = None
+    system_message: Optional[str] = None
+    is_termination_msg: Optional[str] = None
     human_input_mode: Optional[str] = "NEVER"
     max_consecutive_auto_reply: Optional[int] = 10
     code_execution_config: Optional[CodeExecutionConfig] = None
@@ -68,7 +68,8 @@ class Agent(BaseModel):
 
 
 class UserProxyAgent(Agent):
-    def __init__(self, name, llm_config, is_termination_msg=None, human_input_mode=None, system_message=None, code_execution_config=None):
+    def __init__(self, name, llm_config: LLMConfig = None, is_termination_msg=None, human_input_mode=None,
+                 system_message=None, code_execution_config=None):
         super().__init__(
             name=name,
             llm_config=llm_config,
@@ -84,7 +85,6 @@ class UserProxyAgent(Agent):
             code_execution_config=self.code_execution_config
         ))
 
-
     def map_functions(self, functions_mapping):
         self.user_proxy_agent.register_function(
             function_map=functions_mapping
@@ -92,7 +92,8 @@ class UserProxyAgent(Agent):
 
 
 class AssistantAgent(Agent):
-    def __init__(self, name, llm_config, is_termination_msg=None, human_input_mode=None, system_message=None, code_execution_config=None):
+    def __init__(self, name, llm_config: LLMConfig = None, is_termination_msg=None, human_input_mode=None, system_message=None,
+                 code_execution_config=None):
         super().__init__(
             name=name,
             llm_config=llm_config,
@@ -110,7 +111,8 @@ class AssistantAgent(Agent):
 
 
 class RetrieveUserProxyAgent(Agent):
-    def __init__(self, name, llm_config, is_termination_msg=None, human_input_mode=None, system_message=None, code_execution_config=None):
+    def __init__(self, name, llm_config: LLMConfig = None, is_termination_msg=None, human_input_mode=None, system_message=None,
+                 code_execution_config=None):
         super().__init__(
             name=name,
             llm_config=llm_config,
@@ -130,7 +132,7 @@ class RetrieveUserProxyAgent(Agent):
 
 
 class RetrieveAssistantAgent(Agent):
-    def __init__(self, name, llm_config, is_termination_msg=None, system_message=None):
+    def __init__(self, name, llm_config: LLMConfig = None, is_termination_msg=None, system_message=None):
         super().__init__(
             name=name,
             llm_config=llm_config,
@@ -145,7 +147,7 @@ class RetrieveAssistantAgent(Agent):
 
 
 class TeachableAgent(Agent):
-    def __init__(self, name, llm_config, is_termination_msg=None, system_message=None, teach_config=None):
+    def __init__(self, name, llm_config: LLMConfig = None, is_termination_msg=None, system_message=None, teach_config=None):
         super().__init__(
             name=name,
             llm_config=llm_config,
@@ -161,7 +163,6 @@ class TeachableAgent(Agent):
         ))
 
 
-
 class Agents(BaseModel):
     user_proxy_agents: List[UserProxyAgent] or None
     assistant_agents: List[AssistantAgent] or None
@@ -169,7 +170,16 @@ class Agents(BaseModel):
     retrieve_assistant_agents: List[RetrieveAssistantAgent] or None
     teachable_agents: List[TeachableAgent] or None
 
-    def get_all_agents(self) -> List[BaseModel]:
+    def __init__(self, name, llm_config: LLMConfig = None, is_termination_msg=None, system_message=None):
+        super().__init__(
+            name=name,
+            llm_config=llm_config,
+            system_message=system_message,
+            is_termination_msg=is_termination_msg)
+        self.agents==
+
+
+    def load_agents_from_yaml(self, file: str = None):
         return list(chain(
             self.user_proxy_agents,
             self.assistant_agents,
@@ -177,6 +187,13 @@ class Agents(BaseModel):
             self.retrieve_assistant_agents,
             self.teachable_agents
         ))
+        agent_config_data = yaml.safe_load(Path(file).read_text())
+        self.agents = Agents.model_validate(agent_config_data)
+
+    def get_all_agents(self):
+        self.agent_config_data = yaml.safe_load(Path('../config_examples/agent_configs.yml').read_text())
+        self.agents = Agents.model_validate(self.agent_config_data)
+        return self.agents
 
     def map_functions(self):
         llm_config = LLMConfig

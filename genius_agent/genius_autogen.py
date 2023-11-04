@@ -11,9 +11,9 @@ import json
 # llm_config = LLMConfig.model_validate(llm_config_data)
 
 # Load Agent COnfiguration Data from YAML file
-agent_config_data = yaml.safe_load(Path('../config_examples/agent_configs.yml').read_text())
-print(f"AGENT DATA: {json.dumps(agent_config_data, indent=2)}")
-agents = Agents.model_validate(agent_config_data)
+# agent_config_data = yaml.safe_load(Path('../config_examples/agent_configs.yml').read_text())
+# print(f"AGENT DATA: {json.dumps(agent_config_data, indent=2)}")
+# agents = Agents.model_validate(agent_config_data)
 
 #agents.get
 
