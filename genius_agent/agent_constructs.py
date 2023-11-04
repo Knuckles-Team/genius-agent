@@ -1,9 +1,7 @@
-import chromadb
-from autogen import AssistantAgent, UserProxyAgent, GroupChat, GroupChatManager, config_list_from_json
+from autogen import AssistantAgent, UserProxyAgent, GroupChat, GroupChatManager
 from autogen.agentchat.contrib.retrieve_assistant_agent import RetrieveAssistantAgent
 from autogen.agentchat.contrib.retrieve_user_proxy_agent import RetrieveUserProxyAgent
 from autogen.agentchat.contrib.teachable_agent import TeachableAgent
-from subprocess import Popen, PIPE
 import yaml
 from pathlib import Path
 from llm_config_structs import LLMConfig
