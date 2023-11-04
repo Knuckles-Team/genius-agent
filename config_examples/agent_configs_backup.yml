@@ -64,6 +64,24 @@ retrieve_user_proxy_agents:
       docs_path:
         - https://raw.githubusercontent.com/Knuckles-Team/media-downloader/main/README.md
         - https://raw.githubusercontent.com/Knuckles-Team/repository-manager/main/README.md
+  - name: Boss Aid
+    llm_config: LLMConfigObject
+    system_message: Assistant who has extra content retrieval power for the related
+      function calls available to agents. Reply `TERMINATE` in the end when everything
+      is done.
+    human_input_mode: TERMINATE
+    is_termination_msg: TERMINATE
+    max_consecutive_auto_reply: 10
+    retrieve_config:
+      task: qa
+      docs_path:
+        - https://raw.githubusercontent.com/Knuckles-Team/media-downloader/main/README.md
+        - https://raw.githubusercontent.com/Knuckles-Team/repository-manager/main/README.md
+      chunk_token_size: 8000
+      model: config_list[0]["model"]
+      collection_name: groupchat
+      get_or_create: true
+    code_execution_config: false
 retrieve_assistant_agents:
   - name: Genius Assistant
     llm_config: LLMConfigObject
