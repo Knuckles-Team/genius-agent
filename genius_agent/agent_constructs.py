@@ -4,143 +4,14 @@ from autogen.agentchat.contrib.retrieve_assistant_agent import RetrieveAssistant
 from autogen.agentchat.contrib.retrieve_user_proxy_agent import RetrieveUserProxyAgent
 from autogen.agentchat.contrib.teachable_agent import TeachableAgent
 from subprocess import Popen, PIPE
+import yaml
+from pathlib import Path
+from llm_config_structs import LLMConfig
 
 termination_msg = lambda x: isinstance(x, dict) and "TERMINATE" == str(x.get("content", ""))[-9:].upper()
-local_config_list = config_list_from_json(
-    "OAI_CONFIG_LIST",
-    filter_dict={
-        "model": ["llama-2-7b-chat.ggmlv3.q4_K_S", "mistral-7b--instruct-v0.1.Q5_K_S", "TheBloke/WizardLM-13B-V1.2-GGML/wizardlm-13b-v1.2.ggmlv3.q2_K.bin",
-                  "mistral-7b-instruct-v0.1.Q8_0", "codellama-7b-instruct"],
-    },
-)
 
-gpt4_config_list = config_list_from_json(
-    "OAI_CONFIG_LIST",
-    file_location=".",
-    filter_dict={
-        "model": ["gpt-4-32k", "gpt-4-32k-0314", "gpt-4-32k-0314"],
-    },
-)
-
-llm_config = {
-    "seed": 42,  # change the seed for different trials
-    "temperature": 0.9,
-    "config_list": local_config_list,
-    "request_timeout": 3600,
-    "repeat_penalty": 1.100000,
-    "functions": [
-        {
-            "name": "python",
-            "description": "run arbitrary python and return the result",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "cell": {
-                        "type": "string",
-                        "description": "Valid Python code to execute.",
-                    }
-                },
-                "required": ["cell"],
-            },
-        },
-        {
-            "name": "bash",
-            "description": "run a shell script and return the execution result.",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "script": {
-                        "type": "string",
-                        "description": "Valid shell script to execute",
-                    }
-                },
-                "required": ["script"],
-            },
-        },
-        {
-            "name": "media_downloader",
-            "description": "run media-downloader to download a video or audio from the internet",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "url": {
-                        "type": "string",
-                        "description": "Valid url to download",
-                    },
-                    "audio": {
-                        "type": "bool",
-                        "description": "This optional argument is used if the link wants to be saved as an mp3 or audio only",
-                    },
-                    "directory": {
-                        "type": "string",
-                        "description": "Directory to save the video",
-                    }
-                },
-                "required": ["url"],
-            },
-        },
-        {
-            "name": "write_to_file",
-            "description": "Use this function to write content to a file",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "filename": {
-                        "type": "string",
-                        "description": "The filename to write to",
-                    },
-                    "content": {
-                        "type": "string",
-                        "description": "The content to write",
-                    }
-                },
-                "required": ["filename", "content"],
-            },
-        },
-        {
-            "name": "read_from_file",
-            "description": "Use this function to read the content of a file",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "filename": {
-                        "type": "string",
-                        "description": "The filename to read from",
-                    }
-                },
-                "required": ["filename"],
-            },
-        },
-        {
-            "name": "read_pdf",
-            "description": "Use this function to read the content of a pdf file",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "filename": {
-                        "type": "string",
-                        "description": "The filename to read from",
-                    }
-                },
-                "required": ["filename"],
-            },
-        },
-        {
-            "name": "create_directory",
-            "description": "Use this function to create a directory",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "directory_path": {
-                        "type": "string",
-                        "description": "The directory path to create",
-                    }
-                },
-                "required": ["directory_path"],
-            },
-        },
-    ]
-}
+llm_config_data = yaml.safe_load(Path('../config_examples/llm_configs.yml').read_text())
+llm_config = LLMConfig.parse_obj(llm_config_data)
 
 admin_user_proxy = UserProxyAgent(
     name="Admin",
@@ -277,7 +148,7 @@ boss_aid = RetrieveUserProxyAgent(
             # "https://raw.githubusercontent.com/Knuckles-Team/gitlab-api/main/gitlab_api/gitlab_api.py",
         ],
         "chunk_token_size": 8000,
-        "model": local_config_list[0]["model"],
+        "model": config_list[0]["model"],
         # "client": chromadb.PersistentClient(path="/tmp/chromadb"),
         "collection_name": "groupchat",
         "get_or_create": True,
@@ -291,7 +162,7 @@ media_downloader_assistant = RetrieveAssistantAgent(
     llm_config={
         "request_timeout": 600,
         "seed": 42,
-        "config_list": local_config_list,
+        "config_list": config_list,
     },
 )
 
@@ -307,7 +178,7 @@ aid = RetrieveUserProxyAgent(
             "https://raw.githubusercontent.com/Knuckles-Team/media-downloader/main/README.md"
         ],
         "chunk_token_size": 8000,
-        "model": local_config_list[0]["model"],
+        "model": config_list[0]["model"],
         # "client": chromadb.PersistentClient(path="/tmp/chromadb"),
         "collection_name": "groupchat",
         "get_or_create": True,
@@ -371,17 +242,17 @@ def exec_media_downloader(url, directory, audio=False):
     return user_proxy.execute_function(func_call=video_downloader_instance.download_all())
 
 
-def exec_write_to_file(filename, content):
+def exec_write_to_file(filename: str, content: str) -> str:
     with open(filename,'w') as f:
         f.write(content)
     return "file created successfully"
 
-def exec_read_from_file(filename):
+def exec_read_from_file(filename: str,) -> str:
     with open(filename, 'r') as f:
         contents = f.read()
     return contents
 
-def exec_create_directory(directory_path):
+def exec_create_directory(directory_path: str) -> str:
     import os
     path = directory_path
     if not os.path.exists(directory_path):
