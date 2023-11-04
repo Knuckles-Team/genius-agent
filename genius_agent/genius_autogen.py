@@ -2,17 +2,20 @@ import autogen
 import yaml
 import yaml
 from pathlib import Path
-from structs.llm_config_structs import LLMConfig
+# from structs.llm_config_structs import LLMConfig
 from structs.agent_structs import Manager, Agents
+import json
 
-# Load LLM Configuration Data from YAML file
-llm_config_data = yaml.safe_load(Path('../config_examples/llm_configs.yml').read_text())
-llm_config = LLMConfig.parse_obj(llm_config_data)
+# # Load LLM Configuration Data from YAML file
+# llm_config_data = yaml.safe_load(Path('../config_examples/llm_configs.yml').read_text())
+# llm_config = LLMConfig.model_validate(llm_config_data)
 
 # Load Agent COnfiguration Data from YAML file
 agent_config_data = yaml.safe_load(Path('../config_examples/agent_configs.yml').read_text())
-agent_config = Agents.parse_obj(agent_config_data)
+print(f"AGENT DATA: {json.dumps(agent_config_data, indent=2)}")
+agents = Agents.model_validate(agent_config_data)
 
+#agents.get
 
 autogen.ChatCompletion.start_logging()
 
@@ -36,7 +39,7 @@ def chat(prompt="Build snake game using pygame"):
     manager = Manager
 
     # Start chatting with boss as this is the user proxy agent.
-    agent_config.Admin.initiate_chat(
+    agents.Admin.initiate_chat(
         manager,
         message=prompt,
     )

@@ -1,4 +1,4 @@
-from typing import List, Dict, Optional
+from typing import List, Dict, Optional, Any
 from pydantic import BaseModel
 from itertools import chain
 from autogen import (AssistantAgent as AutoAssistantAgent,
@@ -12,6 +12,9 @@ from structs.llm_config_structs import LLMConfig
 from agent_functions import *
 import os
 import importlib.util
+import yaml
+from pathlib import Path
+from structs.llm_config_structs import LLMConfig
 
 
 # # Import all custom agent functions
@@ -49,7 +52,7 @@ class TeachConfig(BaseModel):
 
 class Agent(BaseModel):
     name: str
-    llm_config: dict
+    llm_config: LLMConfig
     system_message: Optional[str]
     is_termination_msg: Optional[str]
     human_input_mode: Optional[str] = "NEVER"
@@ -58,10 +61,21 @@ class Agent(BaseModel):
     retrieve_config: Optional[RetrieveConfig] = None
     teach_config: Optional[TeachConfig] = None
 
+    def __init__(self, **data: Any):
+        super().__init__(**data)
+        self.llm_config_data = yaml.safe_load(Path('../config_examples/llm_configs.yml').read_text())
+        self.llm_config = LLMConfig.model_validate(self.llm_config_data)
+
 
 class UserProxyAgent(Agent):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, name, llm_config, is_termination_msg=None, human_input_mode=None, system_message=None, code_execution_config=None):
+        super().__init__(
+            name=name,
+            llm_config=llm_config,
+            system_message=system_message,
+            is_termination_msg=is_termination_msg,
+            human_input_mode=human_input_mode,
+            code_execution_config=code_execution_config)
         self.agent = (AutoUserProxyAgent(
             name=self.name,
             is_termination_msg=self.is_termination_msg,
@@ -70,6 +84,7 @@ class UserProxyAgent(Agent):
             code_execution_config=self.code_execution_config
         ))
 
+
     def map_functions(self, functions_mapping):
         self.user_proxy_agent.register_function(
             function_map=functions_mapping
@@ -77,8 +92,14 @@ class UserProxyAgent(Agent):
 
 
 class AssistantAgent(Agent):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, name, llm_config, is_termination_msg=None, human_input_mode=None, system_message=None, code_execution_config=None):
+        super().__init__(
+            name=name,
+            llm_config=llm_config,
+            system_message=system_message,
+            is_termination_msg=is_termination_msg,
+            human_input_mode=human_input_mode,
+            code_execution_config=code_execution_config)
         self.agent = (AutoAssistantAgent(
             name=self.name,
             is_termination_msg=self.is_termination_msg,
@@ -89,13 +110,19 @@ class AssistantAgent(Agent):
 
 
 class RetrieveUserProxyAgent(Agent):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, name, llm_config, is_termination_msg=None, human_input_mode=None, system_message=None, code_execution_config=None):
+        super().__init__(
+            name=name,
+            llm_config=llm_config,
+            system_message=system_message,
+            is_termination_msg=is_termination_msg,
+            human_input_mode=human_input_mode,
+            code_execution_config=code_execution_config)
         self.agent = (AutoRetrieveUserProxyAgent(
             name=self.name,
             is_termination_msg=self.is_termination_msg,
             system_message=self.system_message,
-            uman_input_mode=self.human_input_mode or None,
+            human_input_mode=self.human_input_mode or None,
             code_execution_config=self.code_execution_config,
             retrieve_config=self.retrieve_config or None,
             llm_config=self.llm_config,
@@ -103,8 +130,12 @@ class RetrieveUserProxyAgent(Agent):
 
 
 class RetrieveAssistantAgent(Agent):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, name, llm_config, is_termination_msg=None, system_message=None):
+        super().__init__(
+            name=name,
+            llm_config=llm_config,
+            system_message=system_message,
+            is_termination_msg=is_termination_msg)
         self.agent = (AutoRetrieveAssistantAgent(
             name=self.name,
             is_termination_msg=self.is_termination_msg or None,
@@ -114,8 +145,13 @@ class RetrieveAssistantAgent(Agent):
 
 
 class TeachableAgent(Agent):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, name, llm_config, is_termination_msg=None, system_message=None, teach_config=None):
+        super().__init__(
+            name=name,
+            llm_config=llm_config,
+            system_message=system_message,
+            is_termination_msg=is_termination_msg,
+            teach_config=teach_config)
         self.agent = (AutoTeachableAgent(
             name=self.name,
             is_termination_msg=self.is_termination_msg or None,
@@ -142,10 +178,20 @@ class Agents(BaseModel):
             self.teachable_agents
         ))
 
+    def map_functions(self):
+        llm_config = LLMConfig
+        for user in self.user_proxy_agents:
+            user.map_functions(llm_config.function_map)
+
 
 class GroupChat(BaseModel):
-    AutoGroupChat(agents=Agents.get_all_agents(), messages=[], max_round=12)
+    def __init__(self, **data: Any):
+        super().__init__(**data)
+        self.group_chat = AutoGroupChat(agents=self.get_all_agents(), messages=[], max_round=12)
 
 
 class Manager(BaseModel):
-    AutoGroupChatManager(groupchat=GroupChat, llm_config=LLMConfig)
+    def __init__(self, **data: Any):
+        super().__init__(**data)
+
+        self.manager = AutoGroupChatManager(groupchat=self.group_chat, llm_config=LLMConfig)
