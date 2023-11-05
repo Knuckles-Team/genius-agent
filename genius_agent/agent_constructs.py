@@ -1,6 +1,15 @@
 from typing import List, Dict, Optional, Callable, Union
-from pydantic import BaseModel, field_validator
-
+from pydantic import BaseModel, field_validator, model_validator
+import json
+import yaml
+from pathlib import Path
+from autogen import (AssistantAgent,
+                     UserProxyAgent,
+                     GroupChat,
+                     GroupChatManager)
+from autogen.agentchat.contrib.retrieve_assistant_agent import RetrieveAssistantAgent
+from autogen.agentchat.contrib.retrieve_user_proxy_agent import RetrieveUserProxyAgent
+from autogen.agentchat.contrib.teachable_agent import TeachableAgent
 
 class LLMModel(BaseModel):
     model: str
@@ -83,7 +92,7 @@ class TeachConfig(BaseModel):
 
 
 # Base Agent Class that contains all shared variables between Agent Types
-class Agent(BaseModel):
+class AgentConfig(BaseModel):
     name: str
     llm_config: Optional[Union[LLMConfig, dict]] = None
     system_message: Optional[str] = None
@@ -95,11 +104,32 @@ class Agent(BaseModel):
     teach_config: Optional[TeachConfig] = None
     agent_type: str
 
-    @field_validator('agent_type')
-    def agent_type_selection(cls, value):
-        if value not in ["user_proxy", "teachable", "assistant", "retrieve_user_proxy", "retrieve_assistant"]:
-            raise ValueError
-        return value
+    # @model_validator(mode='before')
+    # def agent_type_selection(cls, values):
+    #     print(f"VALUES: {json.dumps(values, indent=2)}")
+    #     agent_type = values.get('agent_type') or None
+    #     teach_config = values.get('teach_config') or None
+    #     retrieve_config = values.get('retrieve_config') or None
+    #     llm_config = values.get('llm_config') or None
+    #
+    #     if llm_config is None:
+    #         print("LLM CONFIG MISSING")
+    #         raise ValueError
+    #     # if agent_type == "user_proxy":
+    #     #     raise ValueError
+    #     elif agent_type == "teachable" and teach_config is None:
+    #         print("TEACH CONFIG MISSING")
+    #         raise ValueError
+    #     # elif agent_type == "assistant":
+    #     #     raise ValueError
+    #     elif agent_type == "retrieve_user_proxy" and retrieve_config is None:
+    #         print("RETRIEVE CONFIG MISSING")
+    #         raise ValueError
+    #     elif agent_type == "retrieve_assistant" and retrieve_config is None:
+    #         print("RETRIEVE CONFIG MISSING")
+    #         raise ValueError
+    #     else:
+    #         return agent_type
 
     @field_validator("is_termination_msg")
     def convert_to_callable(cls, value):
@@ -125,6 +155,7 @@ class Agent(BaseModel):
             retrieve_config = value
         else:
             raise ValueError(f"Invalid type for retrieve_config '{value}', expected a dict with contents of retrieve_config")
+        print(f"VALID RETRIEVE CONFIG: {retrieve_config}")
         return retrieve_config
 
     @field_validator("teach_config")
@@ -138,8 +169,90 @@ class Agent(BaseModel):
             teach_config = value
         else:
             raise ValueError(f"Invalid type for teach_config '{value}', expected a dict with contents of teach_config")
+        print(f"VALID TEACH CONFIG: {teach_config}")
         return teach_config
 
 
-class Agents(BaseModel):
-    agents: List[Agent]
+class AgentsConfig(BaseModel):
+    agents: List[AgentConfig]
+
+
+class Agents:
+    def __init__(self):
+        self.agents_config = None
+        self.agents = None
+        self.chat_initiator = None
+        self.group_chat = None
+        self.group_chat_manager = None
+
+    def set_chat_initiator(self, name):
+        self.chat_initiator = self.find_agent(name)
+
+    def load_config(self, file: str = None, payload: dict = None):
+        if file is not None:
+            agents_data = yaml.safe_load(Path(file).read_text())
+        else:
+            agents_data = payload
+        self.agents_config = AgentsConfig.model_validate(agents_data)
+
+    def load_agents(self):
+        loaded_agents = []
+        # print(f"AGENTS: {agents}")
+        for agent in self.agents_config.agents:
+            print(f"AGENT: {agent}")
+            if agent.agent_type == "user_proxy":
+                loaded_agents.append(UserProxyAgent(
+                    name=agent.name,
+                    is_termination_msg=agent.is_termination_msg or None,
+                    human_input_mode=agent.human_input_mode or None,
+                    system_message=agent.system_message or None,
+                    code_execution_config=agent.code_execution_config or None,
+                    llm_config=agent.llm_config,
+                ))
+            elif agent.agent_type == "assistant":
+                loaded_agents.append(AssistantAgent(
+                    name=agent.name,
+                    is_termination_msg=agent.is_termination_msg or None,
+                    system_message=agent.system_message or None,
+                    code_execution_config=agent.code_execution_config or None,
+                    llm_config=agent.llm_config,
+                ))
+            elif agent.agent_type == "retrieve_user_proxy":
+                print(f"\n\nRETRIEVE_CONFIG MODEL DUMP: {agent.retrieve_config.model_dump()}")
+                loaded_agents.append(RetrieveUserProxyAgent(
+                    name=agent.name,
+                    is_termination_msg=agent.is_termination_msg or None,
+                    system_message=agent.system_message or None,
+                    human_input_mode=agent.human_input_mode or None,
+                    code_execution_config=agent.code_execution_config or None,
+                    retrieve_config=agent.retrieve_config.model_dump() or None,
+                    llm_config=agent.llm_config,
+                ))
+            elif agent.agent_type == "retrieve_assistant":
+                loaded_agents.append(RetrieveAssistantAgent(
+                    name=agent.name or None,
+                    is_termination_msg=agent.is_termination_msg or None,
+                    system_message=agent.system_message or None,
+                    llm_config=agent.llm_config,
+                ))
+            elif agent.agent_type == "teachable":
+                loaded_agents.append(TeachableAgent(
+                    name=agent.name or None,
+                    is_termination_msg=agent.is_termination_msg or None,
+                    system_message=agent.system_message or None,
+                    llm_config=agent.llm_config,
+                    teach_config=agent.teach_config.model_dump() or None
+                ))
+        return loaded_agents
+
+    def load_group_chat(self):
+        self.group_chat = GroupChat(agents=self.agents, messages=[], max_round=12)
+        print(f"LLMCONFIG: {self.chat_initiator.llm_config}")
+        self.group_chat_manager = GroupChatManager(groupchat=self.group_chat, llm_config=self.chat_initiator.llm_config)
+
+    def find_agent(self, name):
+        for agent in self.agents_config:
+            print(f"NAMES: {agent.name}")
+            if agent.name == name:
+                print(f"MATCH: {agent.name}")
+                return agent
