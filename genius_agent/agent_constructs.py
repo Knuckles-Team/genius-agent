@@ -104,33 +104,6 @@ class AgentConfig(BaseModel):
     teach_config: Optional[TeachConfig] = None
     agent_type: str
 
-    # @model_validator(mode='before')
-    # def agent_type_selection(cls, values):
-    #     print(f"VALUES: {json.dumps(values, indent=2)}")
-    #     agent_type = values.get('agent_type') or None
-    #     teach_config = values.get('teach_config') or None
-    #     retrieve_config = values.get('retrieve_config') or None
-    #     llm_config = values.get('llm_config') or None
-    #
-    #     if llm_config is None:
-    #         print("LLM CONFIG MISSING")
-    #         raise ValueError
-    #     # if agent_type == "user_proxy":
-    #     #     raise ValueError
-    #     elif agent_type == "teachable" and teach_config is None:
-    #         print("TEACH CONFIG MISSING")
-    #         raise ValueError
-    #     # elif agent_type == "assistant":
-    #     #     raise ValueError
-    #     elif agent_type == "retrieve_user_proxy" and retrieve_config is None:
-    #         print("RETRIEVE CONFIG MISSING")
-    #         raise ValueError
-    #     elif agent_type == "retrieve_assistant" and retrieve_config is None:
-    #         print("RETRIEVE CONFIG MISSING")
-    #         raise ValueError
-    #     else:
-    #         return agent_type
-
     @field_validator("is_termination_msg")
     def convert_to_callable(cls, value):
         if isinstance(value, str):
@@ -218,14 +191,14 @@ class Agents:
                     llm_config=agent.llm_config,
                 ))
             elif agent.agent_type == "retrieve_user_proxy":
-                print(f"\n\nRETRIEVE_CONFIG MODEL DUMP: {agent.retrieve_config.model_dump()}")
+                print(f"\n\nRETRIEVE_CONFIG MODEL DUMP: {agent.retrieve_config}")
                 loaded_agents.append(RetrieveUserProxyAgent(
                     name=agent.name,
                     is_termination_msg=agent.is_termination_msg or None,
                     system_message=agent.system_message or None,
                     human_input_mode=agent.human_input_mode or None,
                     code_execution_config=agent.code_execution_config or None,
-                    retrieve_config=agent.retrieve_config.model_dump() or None,
+                    retrieve_config=agent.retrieve_config or None,
                     llm_config=agent.llm_config,
                 ))
             elif agent.agent_type == "retrieve_assistant":
