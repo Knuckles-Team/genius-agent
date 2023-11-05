@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+  genius-agent:
+    build: .
+    container_name: genius-agent
+    hostname: genius-agent
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "5"
+    environment:
+      - VIRTUAL_HOST=genius-agent.arpa
+      - VIRTUAL_PORT=8080
+    ports:
+      - "7999:8080"
