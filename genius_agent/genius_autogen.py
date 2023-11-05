@@ -3,7 +3,7 @@ import yaml
 import yaml
 from pathlib import Path
 # from structs.llm_config_structs import LLMConfig
-from structs.agent_structs import Manager, Agents
+from structs.agent_structs import Manager, GroupChat, Agents
 import json
 
 # # Load LLM Configuration Data from YAML file
@@ -15,32 +15,25 @@ import json
 # print(f"AGENT DATA: {json.dumps(agent_config_data, indent=2)}")
 # agents = Agents.model_validate(agent_config_data)
 
-#agents.get
-
 autogen.ChatCompletion.start_logging()
 
-# def _reset_agents():
-#     for agent_list in lists:
-#         for agent in agent_list:
-#             agent.reset()
-#     agent_constructs.boss.reset()
-#     agent_constructs.boss_aid.reset()
-#     agent_constructs.coder.reset()
-#     agent_constructs.pm.reset()
-#     agent_constructs.reviewer.reset()
-#     agent_constructs.manager.reset()
-#     agent_constructs.geniusbot_qa.reset()
-#     agent_constructs.engineer.reset()
-#     agent_constructs.executor.reset()
-
-
-
 def chat(prompt="Build snake game using pygame"):
-    manager = Manager
-
+    agents_instance = Agents(file="./config_examples/agent_configs.yml")
+    agents = agents_instance.get_all_agents()
+    # def load_agents_from_yaml(self, file: str = None):
+    #     return list(chain(
+    #         self.user_proxy_agents,
+    #         self.assistant_agents,
+    #         self.retrieve_user_proxy_agents,
+    #         self.retrieve_assistant_agents,
+    #         self.teachable_agents
+    #     ))
+    #
+    # agent_config_data = yaml.safe_load(Path(file).read_text())
+    # agents = Agents.model_validate(agent_config_data)
     # Start chatting with boss as this is the user proxy agent.
     agents.Admin.initiate_chat(
-        manager,
+        agents_instance.manager,
         message=prompt,
     )
 

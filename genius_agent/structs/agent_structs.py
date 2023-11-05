@@ -17,19 +17,6 @@ from pathlib import Path
 from structs.llm_config_structs import LLMConfig
 
 
-# # Import all custom agent functions
-# current_directory = os.path.dirname(os.path.realpath(__file__))
-# agent_functions_path = os.path.join(current_directory, '..', 'agent_functions')
-# python_files = [f for f in os.listdir(agent_functions_path) if f.endswith('.py')]
-# for file_name in python_files:
-#     module_name = os.path.splitext(file_name)[0]
-#     module_path = os.path.join(agent_functions_path, file_name)
-#
-#     spec = importlib.util.spec_from_file_location(module_name, module_path)
-#     module = importlib.util.module_from_spec(spec)
-#     spec.loader.exec_module(module)
-
-
 class CodeExecutionConfig(BaseModel):
     work_dir: str
 
@@ -50,6 +37,7 @@ class TeachConfig(BaseModel):
     recall_threshold: Optional[int]
 
 
+# Base Agent Class that contains all shared variables between Agent Types
 class Agent(BaseModel):
     name: str
     llm_config: LLMConfig = None
@@ -170,30 +158,24 @@ class Agents(BaseModel):
     retrieve_assistant_agents: List[RetrieveAssistantAgent] or None
     teachable_agents: List[TeachableAgent] or None
 
-    def __init__(self, name, llm_config: LLMConfig = None, is_termination_msg=None, system_message=None):
-        super().__init__(
-            name=name,
-            llm_config=llm_config,
-            system_message=system_message,
-            is_termination_msg=is_termination_msg)
-        self.agents==
+    def __init__(self, file: str):
+        super().__init__()
+        self.agents = self.get_agents(file)
+        self.manager = None
 
-
-    def load_agents_from_yaml(self, file: str = None):
-        return list(chain(
-            self.user_proxy_agents,
-            self.assistant_agents,
-            self.retrieve_user_proxy_agents,
-            self.retrieve_assistant_agents,
-            self.teachable_agents
-        ))
-        agent_config_data = yaml.safe_load(Path(file).read_text())
-        self.agents = Agents.model_validate(agent_config_data)
-
-    def get_all_agents(self):
-        self.agent_config_data = yaml.safe_load(Path('../config_examples/agent_configs.yml').read_text())
+    def get_agents(self, file):
+        self.agent_config_data = yaml.safe_load(Path(file).read_text())
         self.agents = Agents.model_validate(self.agent_config_data)
         return self.agents
+
+    def reset_agents(self):
+        for agent_list in self.agents:
+            for agent in agent_list:
+                agent.reset()
+
+    def get_chat(self):
+        self.manager = Manager(group_chat=GroupChat())
+        return self.manager
 
     def map_functions(self):
         llm_config = LLMConfig
@@ -208,7 +190,7 @@ class GroupChat(BaseModel):
 
 
 class Manager(BaseModel):
-    def __init__(self, **data: Any):
-        super().__init__(**data)
-
+    def __init__(self, group_chat: GroupChat):
+        super().__init__()
+        self.group_chat=group_chat
         self.manager = AutoGroupChatManager(groupchat=self.group_chat, llm_config=LLMConfig)

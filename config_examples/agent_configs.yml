@@ -11,13 +11,15 @@ user_proxy_agents:
     is_termination_msg: TERMINATE
     max_consecutive_auto_reply: 10
   - name: Executor
-    llm_config: LLMConfigObject
+    llm_config:
+      ~
     system_message: Executor. Execute the code written by the engineer and report the
       result. Reply `TERMINATE` in the end when everything is done.
     is_termination_msg: TERMINATE
 assistant_agents:
   - name: Engineer
-    llm_config: LLMConfigObject
+    llm_config:
+      ~
     system_message: Engineer. You follow an approved plan. You write python/shell code
       to solve tasks. Wrap the code in a code block that specifies the script type.
       The user can't modify your code. So do not suggest incomplete code which requires
@@ -32,12 +34,14 @@ assistant_agents:
       is done.
     is_termination_msg: TERMINATE
   - name: Scientist
-    llm_config: LLMConfigObject
+    llm_config:
+      ~
     system_message: Scientist. You follow an approved plan. You are able to categorize
       papers after seeing their abstracts printed. You don't write code.
     is_termination_msg: TERMINATE
   - name: Planner
-    llm_config: LLMConfigObject
+    llm_config:
+      ~
     system_message: Planner. Suggest a plan. Revise the plan based on feedback from
       admin, critic, and aid, until admin approval. The plan may involve an engineer
       who can write code and a scientist who doesn't write code. Explain the plan first.
@@ -45,14 +49,16 @@ assistant_agents:
       a scientist. Reply `TERMINATE` in the end when everything is done.
     is_termination_msg: TERMINATE
   - name: Critic
-    llm_config: LLMConfigObject
+    llm_config:
+      ~
     system_message: Critic. Double check plan, claims, code from other agents and provide
       feedback. "Check whether the plan includes adding verifiable info such as source
       URL. Reply `TERMINATE` in the end when everything is done.
     is_termination_msg: TERMINATE
 retrieve_user_proxy_agents:
   - name: Genius Engineer
-    llm_config: LLMConfigObject
+    llm_config:
+      ~
     system_message: Geniusbot Engineer. You are the engineer that developed the Python
       modules in the documents retrieved. Reply `TERMINATE` in the end when everything
       is done.
@@ -66,14 +72,16 @@ retrieve_user_proxy_agents:
         - https://raw.githubusercontent.com/Knuckles-Team/repository-manager/main/README.md
 retrieve_assistant_agents:
   - name: Genius Assistant
-    llm_config: LLMConfigObject
+    llm_config:
+      ~
     system_message: Critic. Double check plan, claims, code from other agents and provide
       feedback. "Check whether the plan includes adding verifiable info such as source
       URL. Reply `TERMINATE` in the end when everything is done.
     is_termination_msg: TERMINATE
 teachable_agents:
   - name: Genius Learner
-    llm_config: LLMConfigObject
+    llm_config:
+      ~
     system_message: Critic. Double check plan, claims, code from other agents and provide
       feedback. "Check whether the plan includes adding verifiable info such as source
       URL. Reply `TERMINATE` in the end when everything is done.
