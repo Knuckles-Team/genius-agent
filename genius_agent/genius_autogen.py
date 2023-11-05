@@ -5,12 +5,12 @@ autogen.ChatCompletion.start_logging()
 
 
 def chat(prompt="Build snake game using pygame"):
-    agents_instance = Agents(file="./config_examples/agent_configs.yml")
-    agents = agents_instance.get_all_agents()
-    agents.Admin.initiate_chat(
-        agents_instance.manager,
+    #agents_instance = Agents(file="./config_examples/agent_configs.yml")
+    #agents = agents_instance.get_all_agents()
+    manager = Manager(file='./config_examples/agent_configs.yml')
+    manager.agents.Admin.initiate_chat(
+        manager.manager,
         message=prompt,
     )
-
 
 chat(prompt="Build snake game using pygame")

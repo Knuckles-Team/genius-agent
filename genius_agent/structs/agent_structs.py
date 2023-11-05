@@ -163,6 +163,8 @@ class Agents(BaseModel):
 
     def __init__(self):
         super().__init__()
+        self.agents = (self.user_proxy_agents + self.assistant_agents + self.retrieve_user_proxy_agents +
+                       self.retrieve_assistant_agents + self.teachable_agents)
 
     def map_functions(self, llm_config: LLMConfig = None, file: str = None):
         if not llm_config:
@@ -170,24 +172,44 @@ class Agents(BaseModel):
         for user in self.user_proxy_agents:
             user.map_functions(llm_config.function_map)
 
+    def get_agents(self):
+        return self.agents
 
-class GroupChat(BaseModel):
-    def __init__(self, **data: Any):
-        super().__init__(**data)
-        self.group_chat = AutoGroupChat(agents=self.get_all_agents(), messages=[], max_round=12)
+    # def load_agents_file(self):
+    #     agents_instance = Agents(file="./config_examples/agent_configs.yml")
+    #     self.agents = agents_instance.get_all_agents()
+
+
+class GroupChat(Agents):
+
+    def __init__(self, agents: Agents = None):
+        super().__init__()
+        if agents:
+            self.agents = agents
+        else:
+            self.agents = Agents()
+        self.group_chat = AutoGroupChat(agents=self.agents.get_agents(), messages=[], max_round=12)
 
 
 class Manager(BaseModel):
-    def __init__(self, group_chat: GroupChat):
+    def __init__(self, file: str):
         super().__init__()
-        self.agents = Agents()
-        self.manager = None
-        self.group_chat = group_chat
+        self.agents = self.load_agents(file)
+        self.grou_chat = GroupChat(agents=self.agents)
         self.manager = AutoGroupChatManager(groupchat=self.group_chat, llm_config=LLMConfig)
 
+    #def chat(self, prompt="Build motorcross 2D in pygame"):
+
+    def load_agents(self, file: str):
+        # agents_instance = Agents(file="./config_examples/agent_configs.yml")
+        # self.agents = agents_instance.get_all_agents()
+        self.agents_data = yaml.safe_load(Path(file).read_text())
+        self.agents = Agents.model_validate(self.agents_data)
+        return self.agents
+
     def get_agents(self, file: str):
-        self.agent_config_data = yaml.safe_load(Path(file).read_text())
-        self.agents = Agents.model_validate(self.agent_config_data)
+        # self.agent_config_data = yaml.safe_load(Path(file).read_text())
+        # self.agents = Agents.model_validate(self.agent_config_data)
         return self.agents
 
     def reset_agents(self):
