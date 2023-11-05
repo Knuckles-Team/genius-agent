@@ -105,8 +105,8 @@ class TeachConfig(BaseModel):
 
 # Base Agent Class that contains all shared variables between Agent Types
 class Agent(BaseModel):
-    name: str
-    llm_config: Union[LLMConfig, dict] = None
+    name: Optional[str]
+    llm_config: Optional[Union[LLMConfig, dict]] = None
     system_message: Optional[str] = None
     is_termination_msg: Optional[str] = None
     human_input_mode: Optional[str] = "NEVER"
@@ -115,33 +115,15 @@ class Agent(BaseModel):
     retrieve_config: Optional[RetrieveConfig] = None
     teach_config: Optional[TeachConfig] = None
 
-    # def __init__(self, name: str = None, llm_config:Union[LLMConfig, dict] = None,
-    #              system_message: Optional[str] = None,
-    #              is_termination_msg: Optional[str] = None,
-    #              human_input_mode: Optional[str] = "NEVER",
-    #              max_consecutive_auto_reply: Optional[int] = 10,
-    #              code_execution_config: Optional[CodeExecutionConfig] = None,
-    #              retrieve_config: Optional[RetrieveConfig] = None,
-    #              teach_config: Optional[TeachConfig] = None):
-    #     super().__init__(
-    #         name=name, llm_config=LLMConfig.model_validate(llm_config), system_messag=system_message, is_termination_msg=is_termination_msg,
-    #         human_input_mode=human_input_mode,
-    #         max_consecutive_auto_reply=max_consecutive_auto_reply,
-    #         code_execution_config=code_execution_config,
-    #         retrieve_config=retrieve_config,
-    #         teach_config=teach_config
-    #     )
-        # self.llm_config_data = yaml.safe_load(Path('../config_examples/llm_configs.yml').read_text())
-        # self.llm_config = LLMConfig.model_validate(self.llm_config_data)
-
 
 class UserProxyAgent(Agent):
+    agent: AutoUserProxyAgent = None
     def __init__(self, name, llm_config: Union[LLMConfig, dict] = None, is_termination_msg=None, human_input_mode=None,
                  system_message=None, code_execution_config=None):
-        print(f"LLM_CONFIG: {llm_config}")
+        #print(f"LLM_CONFIG: {llm_config}")
         super().__init__(
             name=name,
-            llm_config=LLMConfig.model_validate(llm_config),
+            llm_config=llm_config,
             system_message=system_message,
             is_termination_msg=is_termination_msg,
             human_input_mode=human_input_mode,
@@ -161,12 +143,13 @@ class UserProxyAgent(Agent):
 
 
 class AssistantAgent(Agent):
+    agent: AutoAssistantAgent = None
     def __init__(self, name, llm_config:Union[LLMConfig, dict] = None, is_termination_msg=None, human_input_mode=None,
                  system_message=None,
                  code_execution_config=None):
         super().__init__(
             name=name,
-            llm_config=LLMConfig.model_validate(llm_config),
+            llm_config=llm_config,
             system_message=system_message,
             is_termination_msg=is_termination_msg,
             human_input_mode=human_input_mode,
@@ -181,12 +164,14 @@ class AssistantAgent(Agent):
 
 
 class RetrieveUserProxyAgent(Agent):
+    agent: AutoRetrieveUserProxyAgent = None
+
     def __init__(self, name, llm_config:Union[LLMConfig, dict] = None, is_termination_msg=None, human_input_mode=None,
                  system_message=None,
                  code_execution_config=None):
         super().__init__(
             name=name,
-            llm_config=LLMConfig.model_validate(llm_config),
+            llm_config=llm_config,
             system_message=system_message,
             is_termination_msg=is_termination_msg,
             human_input_mode=human_input_mode,
@@ -203,10 +188,11 @@ class RetrieveUserProxyAgent(Agent):
 
 
 class RetrieveAssistantAgent(Agent):
+    agent: AutoRetrieveAssistantAgent = None
     def __init__(self, name, llm_config:Union[LLMConfig, dict] = None, is_termination_msg=None, system_message=None):
         super().__init__(
             name=name,
-            llm_config=LLMConfig.model_validate(llm_config),
+            llm_config=llm_config,
             system_message=system_message,
             is_termination_msg=is_termination_msg)
         self.agent = (AutoRetrieveAssistantAgent(
@@ -218,11 +204,12 @@ class RetrieveAssistantAgent(Agent):
 
 
 class TeachableAgent(Agent):
+    agent: AutoTeachableAgent = None
     def __init__(self, name, llm_config:Union[LLMConfig, dict] = None, is_termination_msg=None, system_message=None,
                  teach_config=None):
         super().__init__(
             name=name,
-            llm_config=LLMConfig.model_validate(llm_config),
+            llm_config=llm_config,
             system_message=system_message,
             is_termination_msg=is_termination_msg,
             teach_config=teach_config)
@@ -236,20 +223,30 @@ class TeachableAgent(Agent):
 
 
 class Agents(BaseModel):
-    user_proxy_agents: List[UserProxyAgent] or None
-    assistant_agents: List[AssistantAgent] or None
-    retrieve_user_proxy_agents: List[RetrieveUserProxyAgent] or None
-    retrieve_assistant_agents: List[RetrieveAssistantAgent] or None
-    teachable_agents: List[TeachableAgent] or None
+    user_proxy_agents: Optional[List[UserProxyAgent]] or None
+    assistant_agents: Optional[List[AssistantAgent]] or None
+    retrieve_user_proxy_agents: Optional[List[RetrieveUserProxyAgent]] or None
+    retrieve_assistant_agents: Optional[List[RetrieveAssistantAgent]] or None
+    teachable_agents: Optional[List[TeachableAgent]] or None
 
     def __init__(self, user_proxy_agents, assistant_agents, retrieve_user_proxy_agents,
                  retrieve_assistant_agents, teachable_agents):
-        super().__init__(user_proxy_agents=user_proxy_agents, assistant_agents=assistant_agents,
-                         retrieve_user_proxy_agents=retrieve_user_proxy_agents,
-                         retrieve_assistant_agents=retrieve_assistant_agents,
-                         teachable_agents=teachable_agents)
+        super().__init__(user_proxy_agents=[UserProxyAgent.model_validate(user_proxy_agent) for user_proxy_agent in user_proxy_agents],
+                         assistant_agents=[AssistantAgent.model_validate(assistant_agent) for assistant_agent in assistant_agents],
+                         retrieve_user_proxy_agents=[RetrieveUserProxyAgent.model_validate(retrieve_user_proxy_agent) for retrieve_user_proxy_agent in retrieve_user_proxy_agents],
+                         retrieve_assistant_agents=[RetrieveAssistantAgent.model_validate(retrieve_assistant_agent) for retrieve_assistant_agent in retrieve_assistant_agents],
+                         teachable_agents=[TeachableAgent.model_validate(teachable_agent) for teachable_agent in teachable_agents])
+        print(f"ALL user_proxy_agents: {json.dumps(user_proxy_agents, indent=2)}")
+        # for user_proxy_agent in user_proxy_agents:
+        #     self.user_proxy_agents.append(Agents.model_validate(user_proxy_agent))
+        # #self.user_proxy_agents = user_proxy_agents
+        # self.assistant_agents = assistant_agents
+        # self.retrieve_user_proxy_agents = retrieve_user_proxy_agents
+        # self.retrieve_assistant_agents = retrieve_assistant_agents
+        # self.teachable_agents = teachable_agents
         self.agents = (self.user_proxy_agents + self.assistant_agents + self.retrieve_user_proxy_agents +
                        self.retrieve_assistant_agents + self.teachable_agents)
+
 
     def get_agents(self):
         return self.agents
@@ -266,7 +263,7 @@ class GroupChat(BaseModel):
 class Manager(BaseModel):
     def __init__(self, file: str):
         super().__init__()
-        print(f"FILE {file}")
+        #print(f"FILE {file}")
         self.agents = self.load_agents(file)
         self.group_chat = GroupChat(agents=self.agents)
         self.manager = AutoGroupChatManager(groupchat=self.group_chat, llm_config=LLMConfig)
@@ -274,11 +271,11 @@ class Manager(BaseModel):
     def load_agents(self, file: str = None, dictionary: dict = None):
         if file:
             agents_data = yaml.safe_load(Path(file).read_text())
-            print(f"FILE DATA: {json.dumps(agents_data, indent=2)}")
+            #print(f"FILE DATA: {json.dumps(agents_data, indent=2)}")
         elif dictionary:
             agents_data = dictionary
         else:
-            print("Unable to load data")
+            #print("Unable to load data")
             return 1
         self.agents = Agents.model_validate(agents_data)
         return self.agents
