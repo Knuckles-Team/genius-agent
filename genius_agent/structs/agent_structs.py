@@ -80,7 +80,8 @@ class UserProxyAgent(Agent):
 
 
 class AssistantAgent(Agent):
-    def __init__(self, name, llm_config: LLMConfig = None, is_termination_msg=None, human_input_mode=None, system_message=None,
+    def __init__(self, name, llm_config: LLMConfig = None, is_termination_msg=None, human_input_mode=None,
+                 system_message=None,
                  code_execution_config=None):
         super().__init__(
             name=name,
@@ -99,7 +100,8 @@ class AssistantAgent(Agent):
 
 
 class RetrieveUserProxyAgent(Agent):
-    def __init__(self, name, llm_config: LLMConfig = None, is_termination_msg=None, human_input_mode=None, system_message=None,
+    def __init__(self, name, llm_config: LLMConfig = None, is_termination_msg=None, human_input_mode=None,
+                 system_message=None,
                  code_execution_config=None):
         super().__init__(
             name=name,
@@ -135,7 +137,8 @@ class RetrieveAssistantAgent(Agent):
 
 
 class TeachableAgent(Agent):
-    def __init__(self, name, llm_config: LLMConfig = None, is_termination_msg=None, system_message=None, teach_config=None):
+    def __init__(self, name, llm_config: LLMConfig = None, is_termination_msg=None, system_message=None,
+                 teach_config=None):
         super().__init__(
             name=name,
             llm_config=llm_config,
@@ -158,27 +161,12 @@ class Agents(BaseModel):
     retrieve_assistant_agents: List[RetrieveAssistantAgent] or None
     teachable_agents: List[TeachableAgent] or None
 
-    def __init__(self, file: str):
+    def __init__(self):
         super().__init__()
-        self.agents = self.get_agents(file)
-        self.manager = None
 
-    def get_agents(self, file):
-        self.agent_config_data = yaml.safe_load(Path(file).read_text())
-        self.agents = Agents.model_validate(self.agent_config_data)
-        return self.agents
-
-    def reset_agents(self):
-        for agent_list in self.agents:
-            for agent in agent_list:
-                agent.reset()
-
-    def get_chat(self):
-        self.manager = Manager(group_chat=GroupChat())
-        return self.manager
-
-    def map_functions(self):
-        llm_config = LLMConfig
+    def map_functions(self, llm_config: LLMConfig = None, file: str = None):
+        if not llm_config:
+            llm_config = LLMConfig(file=file)
         for user in self.user_proxy_agents:
             user.map_functions(llm_config.function_map)
 
@@ -192,5 +180,17 @@ class GroupChat(BaseModel):
 class Manager(BaseModel):
     def __init__(self, group_chat: GroupChat):
         super().__init__()
-        self.group_chat=group_chat
+        self.agents = Agents()
+        self.manager = None
+        self.group_chat = group_chat
         self.manager = AutoGroupChatManager(groupchat=self.group_chat, llm_config=LLMConfig)
+
+    def get_agents(self, file: str):
+        self.agent_config_data = yaml.safe_load(Path(file).read_text())
+        self.agents = Agents.model_validate(self.agent_config_data)
+        return self.agents
+
+    def reset_agents(self):
+        for agent_list in self.agents:
+            for agent in agent_list:
+                agent.reset()
