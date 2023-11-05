@@ -116,7 +116,16 @@ class Agent(BaseModel):
     teach_config: Optional[TeachConfig] = None
 
 
-class UserProxyAgent(Agent):
+class UserProxyAgent(BaseModel):
+    name: Optional[str]
+    llm_config: Optional[Union[LLMConfig, dict]] = None
+    system_message: Optional[str] = None
+    is_termination_msg: Optional[str] = None
+    human_input_mode: Optional[str] = "NEVER"
+    max_consecutive_auto_reply: Optional[int] = 10
+    code_execution_config: Optional[CodeExecutionConfig] = None
+    retrieve_config: Optional[RetrieveConfig] = None
+    teach_config: Optional[TeachConfig] = None
     agent: AutoUserProxyAgent = None
     def __init__(self, name, llm_config: Union[LLMConfig, dict] = None, is_termination_msg=None, human_input_mode=None,
                  system_message=None, code_execution_config=None):
@@ -142,7 +151,16 @@ class UserProxyAgent(Agent):
         )
 
 
-class AssistantAgent(Agent):
+class AssistantAgent(BaseModel):
+    name: Optional[str]
+    llm_config: Optional[Union[LLMConfig, dict]] = None
+    system_message: Optional[str] = None
+    is_termination_msg: Optional[str] = None
+    human_input_mode: Optional[str] = "NEVER"
+    max_consecutive_auto_reply: Optional[int] = 10
+    code_execution_config: Optional[CodeExecutionConfig] = None
+    retrieve_config: Optional[RetrieveConfig] = None
+    teach_config: Optional[TeachConfig] = None
     agent: AutoAssistantAgent = None
     def __init__(self, name, llm_config:Union[LLMConfig, dict] = None, is_termination_msg=None, human_input_mode=None,
                  system_message=None,
@@ -163,9 +181,17 @@ class AssistantAgent(Agent):
         ))
 
 
-class RetrieveUserProxyAgent(Agent):
+class RetrieveUserProxyAgent(BaseModel):
     agent: AutoRetrieveUserProxyAgent = None
-
+    name: Optional[str]
+    llm_config: Optional[Union[LLMConfig, dict]] = None
+    system_message: Optional[str] = None
+    is_termination_msg: Optional[str] = None
+    human_input_mode: Optional[str] = "NEVER"
+    max_consecutive_auto_reply: Optional[int] = 10
+    code_execution_config: Optional[CodeExecutionConfig] = None
+    retrieve_config: Optional[RetrieveConfig] = None
+    teach_config: Optional[TeachConfig] = None
     def __init__(self, name, llm_config:Union[LLMConfig, dict] = None, is_termination_msg=None, human_input_mode=None,
                  system_message=None,
                  code_execution_config=None):
@@ -187,7 +213,16 @@ class RetrieveUserProxyAgent(Agent):
         ))
 
 
-class RetrieveAssistantAgent(Agent):
+class RetrieveAssistantAgent(BaseModel):
+    name: Optional[str]
+    llm_config: Optional[Union[LLMConfig, dict]] = None
+    system_message: Optional[str] = None
+    is_termination_msg: Optional[str] = None
+    human_input_mode: Optional[str] = "NEVER"
+    max_consecutive_auto_reply: Optional[int] = 10
+    code_execution_config: Optional[CodeExecutionConfig] = None
+    retrieve_config: Optional[RetrieveConfig] = None
+    teach_config: Optional[TeachConfig] = None
     agent: AutoRetrieveAssistantAgent = None
     def __init__(self, name, llm_config:Union[LLMConfig, dict] = None, is_termination_msg=None, system_message=None):
         super().__init__(
@@ -203,7 +238,16 @@ class RetrieveAssistantAgent(Agent):
         ))
 
 
-class TeachableAgent(Agent):
+class TeachableAgent(BaseModel):
+    name: Optional[str]
+    llm_config: Optional[Union[LLMConfig, dict]] = None
+    system_message: Optional[str] = None
+    is_termination_msg: Optional[str] = None
+    human_input_mode: Optional[str] = "NEVER"
+    max_consecutive_auto_reply: Optional[int] = 10
+    code_execution_config: Optional[CodeExecutionConfig] = None
+    retrieve_config: Optional[RetrieveConfig] = None
+    teach_config: Optional[TeachConfig] = None
     agent: AutoTeachableAgent = None
     def __init__(self, name, llm_config:Union[LLMConfig, dict] = None, is_termination_msg=None, system_message=None,
                  teach_config=None):
