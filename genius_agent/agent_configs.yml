@@ -1,6 +1,6 @@
 ---
 agents:
-  - name: Admin
+  - name: admin
     system_message: A human admin. Interact with the planner to discuss the plan. Plan
       execution needs to be approved by this admin. Reply `TERMINATE` in the end when
       everything is done.
@@ -13,7 +13,7 @@ agents:
     is_termination_msg: TERMINATE
     max_consecutive_auto_reply: 10
     agent_type: user_proxy
-  - name: Executor
+  - name: executor
     llm_config:
       seed: 42
       temperature: 0.9
@@ -158,7 +158,7 @@ agents:
       result. Reply `TERMINATE` in the end when everything is done.
     is_termination_msg: TERMINATE
     agent_type: user_proxy
-  - name: Engineer
+  - name: engineer
     llm_config:
       seed: 42
       temperature: 0.9
@@ -313,7 +313,7 @@ agents:
       is done.
     is_termination_msg: TERMINATE
     agent_type: assistant
-  - name: Scientist
+  - name: scientist
     llm_config:
       seed: 42
       temperature: 0.9
@@ -458,7 +458,7 @@ agents:
       papers after seeing their abstracts printed. You don't write code.
     is_termination_msg: TERMINATE
     agent_type: assistant
-  - name: Planner
+  - name: planner
     llm_config:
       seed: 42
       temperature: 0.9
@@ -606,7 +606,7 @@ agents:
       a scientist. Reply `TERMINATE` in the end when everything is done.
     is_termination_msg: TERMINATE
     agent_type: assistant
-  - name: Critic
+  - name: critic
     llm_config:
       seed: 42
       temperature: 0.9
@@ -752,7 +752,7 @@ agents:
       URL. Reply `TERMINATE` in the end when everything is done.
     is_termination_msg: TERMINATE
     agent_type: assistant
-  - name: Genius Engineer
+  - name: genius_engineer
     llm_config:
       seed: 42
       temperature: 0.9
@@ -905,7 +905,7 @@ agents:
         - "https://raw.githubusercontent.com/Knuckles-Team/media-downloader/main/README.md"
         - "https://raw.githubusercontent.com/Knuckles-Team/repository-manager/main/README.md"
     agent_type: retrieve_user_proxy
-  - name: Genius Assistant
+  - name: genius_assistant
     llm_config:
       seed: 42
       temperature: 0.9
@@ -1051,7 +1051,7 @@ agents:
       URL. Reply `TERMINATE` in the end when everything is done.
     is_termination_msg: TERMINATE
     agent_type: retrieve_assistant
-  - name: Genius Learner
+  - name: genius_learner
     llm_config:
       seed: 42
       temperature: 0.9
