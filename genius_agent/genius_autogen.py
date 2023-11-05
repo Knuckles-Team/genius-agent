@@ -65,19 +65,6 @@ def load_agents(agents: Agents):
         return loaded_agents
 
 
-# def load_agents(file: str = None, dictionary: dict = None):
-#     # if file:
-#     agents_data = yaml.safe_load(Path(file).read_text())
-#     print(f"FILE DATA: {json.dumps(agents_data, indent=2)}")
-# elif dictionary:
-#     agents_data = dictionary
-# else:
-#     #print("Unable to load data")
-#     return 1
-# agents = Agents.model_validate(agents_data)
-# return agents
-
-
 def chat(prompt="Build snake game using pygame", chat_initiator_name: str = "admin"):
     agents_data = yaml.safe_load(Path("agent_configs.yml").read_text())
     agents_models = Agents.model_validate(agents_data)
