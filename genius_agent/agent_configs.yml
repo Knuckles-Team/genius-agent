@@ -145,6 +145,7 @@ agents:
         read_from_file: exec_read_from_file
         create_directory: exec_create_directory
     agent_type: user_proxy
+    is_termination_msg: 'lambda x: isinstance(x, dict) and x.get("content") is not None and "TERMINATE" == str(x.get("content", ""))[-9:].upper()'
   - name: user_proxy
     code_execution_config:
       work_dir: coding

@@ -198,7 +198,7 @@ class Agents:
                     system_message=agent.system_message or None,
                     human_input_mode=agent.human_input_mode or None,
                     code_execution_config=agent.code_execution_config or None,
-                    retrieve_config=agent.retrieve_config or None,
+                    retrieve_config=agent.retrieve_config,
                     llm_config=agent.llm_config,
                 ))
             elif agent.agent_type == "retrieve_assistant":
@@ -216,6 +216,7 @@ class Agents:
                     llm_config=agent.llm_config,
                     teach_config=agent.teach_config.model_dump() or None
                 ))
+        self.agents = loaded_agents
         return loaded_agents
 
     def load_group_chat(self):
@@ -224,8 +225,15 @@ class Agents:
         self.group_chat_manager = GroupChatManager(groupchat=self.group_chat, llm_config=self.chat_initiator.llm_config)
 
     def find_agent(self, name):
-        for agent in self.agents_config:
+        for agent in self.agents:
             print(f"NAMES: {agent.name}")
             if agent.name == name:
                 print(f"MATCH: {agent.name}")
                 return agent
+
+    def find_agent_config(self, name):
+        for agent_config in self.agents_config.agents:
+            print(f"NAMES: {agent_config.name}")
+            if agent_config.name == name:
+                print(f"MATCH: {agent_config.name}")
+                return agent_config
