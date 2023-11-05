@@ -2,6 +2,7 @@ import os
 import autogen
 import yaml
 import json
+import openai
 from agent_constructs import Agents
 from pathlib import Path
 from autogen import (AssistantAgent,
@@ -11,7 +12,11 @@ from autogen import (AssistantAgent,
 from autogen.agentchat.contrib.retrieve_assistant_agent import RetrieveAssistantAgent
 from autogen.agentchat.contrib.retrieve_user_proxy_agent import RetrieveUserProxyAgent
 from autogen.agentchat.contrib.teachable_agent import TeachableAgent
+# Set the OpenAI token
+openai.api_key = "YOUR_TOKEN"
 
+# Set the OpenAI URL
+openai.api_url = "https://localhost:8080/v1/"
 autogen.ChatCompletion.start_logging()
 
 
