@@ -1,15 +1,17 @@
 ---
-user_proxy_agents:
+agents:
   - name: Admin
     system_message: A human admin. Interact with the planner to discuss the plan. Plan
       execution needs to be approved by this admin. Reply `TERMINATE` in the end when
       everything is done.
-  - name: User Proxy
+  - name: user_proxy
     code_execution_config:
       work_dir: coding
-    human_input_mode: NEVER
+      user_docker: false
+    human_input_mode: NEVER # Never - Never wait for human input, Alawys - Always waits for input from user before AI begins, Terminate - Wait for input for user when conversation terminates
     is_termination_msg: TERMINATE
     max_consecutive_auto_reply: 10
+    type: user_proxy
   - name: Executor
     llm_config:
       seed: 42
@@ -154,7 +156,7 @@ user_proxy_agents:
     system_message: Executor. Execute the code written by the engineer and report the
       result. Reply `TERMINATE` in the end when everything is done.
     is_termination_msg: TERMINATE
-assistant_agents:
+    type: user_proxy
   - name: Engineer
     llm_config:
       seed: 42
@@ -309,6 +311,7 @@ assistant_agents:
       and think of a different approach to try. Reply `TERMINATE` in the end when everything
       is done.
     is_termination_msg: TERMINATE
+    type: assistant
   - name: Scientist
     llm_config:
       seed: 42
@@ -453,6 +456,7 @@ assistant_agents:
     system_message: Scientist. You follow an approved plan. You are able to categorize
       papers after seeing their abstracts printed. You don't write code.
     is_termination_msg: TERMINATE
+    type: assistant
   - name: Planner
     llm_config:
       seed: 42
@@ -600,6 +604,7 @@ assistant_agents:
       Be clear which step is performed by an engineer, and which step is performed by
       a scientist. Reply `TERMINATE` in the end when everything is done.
     is_termination_msg: TERMINATE
+    type: assistant
   - name: Critic
     llm_config:
       seed: 42
@@ -745,7 +750,7 @@ assistant_agents:
       feedback. "Check whether the plan includes adding verifiable info such as source
       URL. Reply `TERMINATE` in the end when everything is done.
     is_termination_msg: TERMINATE
-retrieve_user_proxy_agents:
+    type: assistant
   - name: Genius Engineer
     llm_config:
       seed: 42
@@ -898,7 +903,7 @@ retrieve_user_proxy_agents:
       docs_path:
         - https://raw.githubusercontent.com/Knuckles-Team/media-downloader/main/README.md
         - https://raw.githubusercontent.com/Knuckles-Team/repository-manager/main/README.md
-retrieve_assistant_agents:
+    type: retrieve_user_proxy
   - name: Genius Assistant
     llm_config:
       seed: 42
@@ -1044,7 +1049,7 @@ retrieve_assistant_agents:
       feedback. "Check whether the plan includes adding verifiable info such as source
       URL. Reply `TERMINATE` in the end when everything is done.
     is_termination_msg: TERMINATE
-teachable_agents:
+    type: retrieve_assistant
   - name: Genius Learner
     llm_config:
       seed: 42
@@ -1195,3 +1200,4 @@ teachable_agents:
       reset_db: true
       path_to_db_dir: "."
       recall_threshold: 1.5
+    type: teachable
