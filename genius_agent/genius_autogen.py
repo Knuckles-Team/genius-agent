@@ -48,8 +48,8 @@ def load_agents(agents: Agents):
                 is_termination_msg=agent.is_termination_msg,
                 system_message=agent.system_message,
                 human_input_mode=agent.human_input_mode or None,
-                code_execution_config=agent.code_execution_config,
-                retrieve_config=agent.retrieve_config or None,
+                code_execution_config=agent.code_execution_config.model_dump(),
+                retrieve_config=agent.retrieve_config.model_dump() or None,
                 llm_config=agent.llm_config,
             ))
         elif agent.agent_type == "retrieve_assistant":
@@ -68,6 +68,7 @@ def load_agents(agents: Agents):
                 teach_config=agent.teach_config
             ))
     return loaded_agents
+
 
 def find_agent(agents, name):
     for agent in agents:

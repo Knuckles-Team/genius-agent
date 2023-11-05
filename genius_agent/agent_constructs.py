@@ -1,5 +1,5 @@
 from typing import List, Dict, Optional, Callable, Union
-from pydantic import BaseModel, field_validator, validator
+from pydantic import BaseModel, field_validator
 
 
 class LLMModel(BaseModel):
@@ -45,7 +45,7 @@ class LLMConfig(BaseModel):
     functions: Optional[List[FunctionItem]]
     function_map: Optional[FunctionMap]
 
-    @validator("function_map", pre=True, always=True)
+    @field_validator("function_map")
     def convert_to_callable(cls, value):
         converted_callables = {}
         for key, item in value.items():
@@ -100,6 +100,45 @@ class Agent(BaseModel):
         if value not in ["user_proxy", "teachable", "assistant", "retrieve_user_proxy", "retrieve_assistant"]:
             raise ValueError
         return value
+
+    @field_validator("is_termination_msg")
+    def convert_to_callable(cls, value):
+        if isinstance(value, str):
+            try:
+                converted_callables = eval(value)
+            except Exception:
+                raise ValueError(f"Invalid callable string for value '{value}'")
+        elif isinstance(value, Callable):
+            converted_callables = value
+        else:
+            raise ValueError(f"Invalid type for value '{value}', expected a string or callable")
+        return converted_callables
+
+    @field_validator("retrieve_config")
+    def validate_retrieve_config(cls, value):
+        if isinstance(value, RetrieveConfig):
+            try:
+                retrieve_config = RetrieveConfig.model_validate(value)
+            except Exception:
+                raise ValueError(f"Invalid retrieve_config '{value}'")
+        elif isinstance(value, RetrieveConfig):
+            retrieve_config = value
+        else:
+            raise ValueError(f"Invalid type for retrieve_config '{value}', expected a dict with contents of retrieve_config")
+        return retrieve_config
+
+    @field_validator("teach_config")
+    def validate_teach_config(cls, value):
+        if isinstance(value, TeachConfig):
+            try:
+                teach_config = TeachConfig.model_validate(value)
+            except Exception:
+                raise ValueError(f"Invalid teach_config '{value}'")
+        elif isinstance(value, TeachConfig):
+            teach_config = value
+        else:
+            raise ValueError(f"Invalid type for teach_config '{value}', expected a dict with contents of teach_config")
+        return teach_config
 
 
 class Agents(BaseModel):

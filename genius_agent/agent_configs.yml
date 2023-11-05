@@ -10,7 +10,7 @@ agents:
       work_dir: coding
       user_docker: false
     human_input_mode: NEVER # Never - Never wait for human input, Alawys - Always waits for input from user before AI begins, Terminate - Wait for input for user when conversation terminates
-    is_termination_msg: TERMINATE
+    is_termination_msg: 'lambda x: isinstance(x, dict) and "TERMINATE" == str(x.get("content", ""))[-9:].upper()'
     max_consecutive_auto_reply: 10
     agent_type: user_proxy
   - name: executor
@@ -156,7 +156,7 @@ agents:
         create_directory: exec_create_directory
     system_message: Executor. Execute the code written by the engineer and report the
       result. Reply `TERMINATE` in the end when everything is done.
-    is_termination_msg: TERMINATE
+    is_termination_msg: 'lambda x: isinstance(x, dict) and "TERMINATE" == str(x.get("content", ""))[-9:].upper()'
     agent_type: user_proxy
   - name: engineer
     llm_config:
@@ -311,7 +311,7 @@ agents:
       analyze the problem, revisit your assumption, collect additional info you need,
       and think of a different approach to try. Reply `TERMINATE` in the end when everything
       is done.
-    is_termination_msg: TERMINATE
+    is_termination_msg: 'lambda x: isinstance(x, dict) and "TERMINATE" == str(x.get("content", ""))[-9:].upper()'
     agent_type: assistant
   - name: scientist
     llm_config:
@@ -456,7 +456,7 @@ agents:
         create_directory: exec_create_directory
     system_message: Scientist. You follow an approved plan. You are able to categorize
       papers after seeing their abstracts printed. You don't write code.
-    is_termination_msg: TERMINATE
+    is_termination_msg: 'lambda x: isinstance(x, dict) and "TERMINATE" == str(x.get("content", ""))[-9:].upper()'
     agent_type: assistant
   - name: planner
     llm_config:
@@ -604,7 +604,7 @@ agents:
       who can write code and a scientist who doesn't write code. Explain the plan first.
       Be clear which step is performed by an engineer, and which step is performed by
       a scientist. Reply `TERMINATE` in the end when everything is done.
-    is_termination_msg: TERMINATE
+    is_termination_msg: 'lambda x: isinstance(x, dict) and "TERMINATE" == str(x.get("content", ""))[-9:].upper()'
     agent_type: assistant
   - name: critic
     llm_config:
@@ -750,7 +750,7 @@ agents:
     system_message: Critic. Double check plan, claims, code from other agents and provide
       feedback. "Check whether the plan includes adding verifiable info such as source
       URL. Reply `TERMINATE` in the end when everything is done.
-    is_termination_msg: TERMINATE
+    is_termination_msg: 'lambda x: isinstance(x, dict) and "TERMINATE" == str(x.get("content", ""))[-9:].upper()'
     agent_type: assistant
   - name: genius_engineer
     llm_config:
@@ -897,7 +897,7 @@ agents:
       modules in the documents retrieved. Reply `TERMINATE` in the end when everything
       is done.
     human_input_mode: NEVER
-    is_termination_msg: TERMINATE
+    is_termination_msg: 'lambda x: isinstance(x, dict) and "TERMINATE" == str(x.get("content", ""))[-9:].upper()'
     max_consecutive_auto_reply: 10
     retrieve_config:
       task: qa
@@ -1049,7 +1049,7 @@ agents:
     system_message: Critic. Double check plan, claims, code from other agents and provide
       feedback. "Check whether the plan includes adding verifiable info such as source
       URL. Reply `TERMINATE` in the end when everything is done.
-    is_termination_msg: TERMINATE
+    is_termination_msg: 'lambda x: isinstance(x, dict) and "TERMINATE" == str(x.get("content", ""))[-9:].upper()'
     agent_type: retrieve_assistant
   - name: genius_learner
     llm_config:
@@ -1195,7 +1195,7 @@ agents:
     system_message: Critic. Double check plan, claims, code from other agents and provide
       feedback. "Check whether the plan includes adding verifiable info such as source
       URL. Reply `TERMINATE` in the end when everything is done.
-    is_termination_msg: TERMINATE
+    is_termination_msg: 'lambda x: isinstance(x, dict) and "TERMINATE" == str(x.get("content", ""))[-9:].upper()'
     teach_config:
       verbosity: 0
       reset_db: true
