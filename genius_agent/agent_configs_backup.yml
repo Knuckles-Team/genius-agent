@@ -1,15 +1,17 @@
 ---
-user_proxy_agents:
+agents:
   - name: Admin
     system_message: A human admin. Interact with the planner to discuss the plan. Plan
       execution needs to be approved by this admin. Reply `TERMINATE` in the end when
       everything is done.
+    type: user_proxy
   - name: User Proxy
     code_execution_config:
       work_dir: coding
     human_input_mode: NEVER
     is_termination_msg: TERMINATE
     max_consecutive_auto_reply: 10
+    type: user_proxy
   - name: Executor
     llm_config:
       seed: 42
@@ -28,7 +30,7 @@ user_proxy_agents:
     system_message: Executor. Execute the code written by the engineer and report the
       result. Reply `TERMINATE` in the end when everything is done.
     is_termination_msg: TERMINATE
-assistant_agents:
+    type: user_proxy
   - name: Engineer
     llm_config:
       seed: 42
@@ -44,6 +46,7 @@ assistant_agents:
           - yarn-mistral-7b-128k.Q3_K_L
       request_timeout: 3600
       repeat_penalty: 1.1
+    type: user_proxy
     system_message: Engineer. You follow an approved plan. You write python/shell code
       to solve tasks. Wrap the code in a code block that specifies the script type.
       The user can't modify your code. So do not suggest incomplete code which requires
@@ -57,6 +60,7 @@ assistant_agents:
       and think of a different approach to try. Reply `TERMINATE` in the end when everything
       is done.
     is_termination_msg: TERMINATE
+    type: user_proxy
   - name: Scientist
     llm_config:
       seed: 42
@@ -75,6 +79,7 @@ assistant_agents:
     system_message: Scientist. You follow an approved plan. You are able to categorize
       papers after seeing their abstracts printed. You don't write code.
     is_termination_msg: TERMINATE
+    type: user_proxy
   - name: Planner
     llm_config:
       seed: 42
@@ -96,6 +101,7 @@ assistant_agents:
       Be clear which step is performed by an engineer, and which step is performed by
       a scientist. Reply `TERMINATE` in the end when everything is done.
     is_termination_msg: TERMINATE
+    type: user_proxy
   - name: Critic
     llm_config:
       seed: 42
@@ -115,7 +121,7 @@ assistant_agents:
       feedback. "Check whether the plan includes adding verifiable info such as source
       URL. Reply `TERMINATE` in the end when everything is done.
     is_termination_msg: TERMINATE
-retrieve_user_proxy_agents:
+    type: user_proxy
   - name: Genius Engineer
     llm_config:
       seed: 42
@@ -142,7 +148,7 @@ retrieve_user_proxy_agents:
       docs_path:
         - https://raw.githubusercontent.com/Knuckles-Team/media-downloader/main/README.md
         - https://raw.githubusercontent.com/Knuckles-Team/repository-manager/main/README.md
-retrieve_assistant_agents:
+    type: assistant
   - name: Genius Assistant
     llm_config:
       seed: 42
@@ -162,7 +168,7 @@ retrieve_assistant_agents:
       feedback. "Check whether the plan includes adding verifiable info such as source
       URL. Reply `TERMINATE` in the end when everything is done.
     is_termination_msg: TERMINATE
-teachable_agents:
+    type: assistant
   - name: Genius Learner
     llm_config:
       seed: 42
@@ -187,3 +193,4 @@ teachable_agents:
       reset_db: true
       path_to_db_dir: "."
       recall_threshold: 1.5
+    type: assistant

@@ -55,17 +55,17 @@ class FunctionMap(BaseModel):
 class LLMConfig(BaseModel):
     seed: Optional[int] = 42
     temperature: Optional[float] = 0
-    config_list: List[LLMModel]
+    config_list: Optional[List[LLMModel]]
     filter_dict: Optional[FilterDict]
-    request_timeout: Optional[int]
+    request_timeout: Optional[float]
     repeat_penalty: Optional[float]
     functions: Optional[List[FunctionItem]]
     function_map: Optional[FunctionMap]
 
-    def __init__(self, **data: Any):
-
-        super().__init__(**data)
-
+    # def __init__(self, **data: Any):
+    #
+    #     super().__init__(**data)
+    #
     @validator("function_map", pre=True, always=True)
     def convert_to_callable(cls, value):
         converted_callables = {}
@@ -89,18 +89,18 @@ class CodeExecutionConfig(BaseModel):
 
 class RetrieveConfig(BaseModel):
     task: str
-    docs_path: List[str]
-    chunk_token_size: Optional[int]
-    model: Optional[str]
-    collection_name: Optional[str]
-    get_or_create: Optional[bool]
+    docs_path: Optional[List[str]]
+    chunk_token_size: Optional[float] = None
+    model: Optional[str] = None
+    collection_name: Optional[str] = None
+    get_or_create: Optional[bool] = None
 
 
 class TeachConfig(BaseModel):
     verbosity: Optional[int]
     reset_db: Optional[bool]
     path_to_db_dir: Optional[str]
-    recall_threshold: Optional[int]
+    recall_threshold: Optional[float]
 
 
 # Base Agent Class that contains all shared variables between Agent Types
@@ -118,7 +118,7 @@ class Agent(BaseModel):
 
     @field_validator('agent_type')
     def agent_type_selection(cls, value):
-        if value != ["user_proxy", "teachable", "assistant", "retrieve_user_proxy", "retrieve_assistant_agents"]:
+        if value not in ["user_proxy", "teachable", "assistant", "retrieve_user_proxy", "retrieve_assistant"]:
             raise ValueError
         return value
 
@@ -234,7 +234,7 @@ class Agent(BaseModel):
 
 
 class Agents(BaseModel):
-    agents: List[Agent] or None
+    agents: List[Agent]
 
     # def __init__(self, user_proxy_agents, assistant_agents, retrieve_user_proxy_agents,
     #              retrieve_assistant_agents, teachable_agents):
@@ -267,31 +267,31 @@ class Agents(BaseModel):
 #         self.agents = agents
 #         self.group_chat = AutoGroupChat(agents=self.agents.get_agents(), messages=[], max_round=12)
 
-
-class Manager(BaseModel):
-    def __init__(self, file: str):
-        super().__init__()
-        print(f"FILE {file}")
-        self.agents = self.load_agents(file)
-        self.group_chat = AutoGroupChat(agents=self.agents.get_agents(), messages=[], max_round=12)
-        self.manager = AutoGroupChatManager(groupchat=self.group_chat, llm_config=LLMConfig)
-
-    def load_agents(self, file: str = None, dictionary: dict = None):
-        if file:
-            agents_data = yaml.safe_load(Path(file).read_text())
-            #print(f"FILE DATA: {json.dumps(agents_data, indent=2)}")
-        elif dictionary:
-            agents_data = dictionary
-        else:
-            #print("Unable to load data")
-            return 1
-        self.agents = Agents.model_validate(agents_data)
-        return self.agents
-
-    def get_agents(self):
-        return self.agents
-
-    def reset_agents(self):
-        for agent_list in self.agents:
-            for agent in agent_list:
-                agent.reset()
+#
+# class Manager(BaseModel):
+#     def __init__(self, file: str):
+#         super().__init__()
+#         print(f"FILE {file}")
+#         self.agents = self.load_agents(file)
+#         self.group_chat = AutoGroupChat(agents=self.agents.get_agents(), messages=[], max_round=12)
+#         self.manager = AutoGroupChatManager(groupchat=self.group_chat, llm_config=LLMConfig)
+#
+#     def load_agents(self, file: str = None, dictionary: dict = None):
+#         if file:
+#             agents_data = yaml.safe_load(Path(file).read_text())
+#             #print(f"FILE DATA: {json.dumps(agents_data, indent=2)}")
+#         elif dictionary:
+#             agents_data = dictionary
+#         else:
+#             #print("Unable to load data")
+#             return 1
+#         self.agents = Agents.model_validate(agents_data)
+#         return self.agents
+#
+#     def get_agents(self):
+#         return self.agents
+#
+#     def reset_agents(self):
+#         for agent_list in self.agents:
+#             for agent in agent_list:
+#                 agent.reset()
