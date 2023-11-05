@@ -1,3 +1,4 @@
 pyautogen[retrievechat]==0.1.14
 chromadb==0.4.15
 pydantic==2.4.2
+media-downloader
