@@ -171,51 +171,56 @@ class Agents:
     def load_agents(self):
         loaded_agents = []
         # print(f"AGENTS: {agents}")
-        for agent in self.agents_config.agents:
-            print(f"AGENT: {agent}")
-            if agent.agent_type == "user_proxy":
-                loaded_agents.append(UserProxyAgent(
-                    name=agent.name,
-                    is_termination_msg=agent.is_termination_msg or None,
-                    human_input_mode=agent.human_input_mode or None,
-                    system_message=agent.system_message or None,
-                    code_execution_config=agent.code_execution_config or None,
-                    llm_config=agent.llm_config,
-                ))
-            elif agent.agent_type == "assistant":
-                loaded_agents.append(AssistantAgent(
-                    name=agent.name,
-                    is_termination_msg=agent.is_termination_msg or None,
-                    system_message=agent.system_message or None,
-                    code_execution_config=agent.code_execution_config or None,
-                    llm_config=agent.llm_config,
-                ))
-            elif agent.agent_type == "retrieve_user_proxy":
-                print(f"\n\nRETRIEVE_CONFIG MODEL DUMP: {agent.retrieve_config}")
-                loaded_agents.append(RetrieveUserProxyAgent(
-                    name=agent.name,
-                    is_termination_msg=agent.is_termination_msg or None,
-                    system_message=agent.system_message or None,
-                    human_input_mode=agent.human_input_mode or None,
-                    code_execution_config=agent.code_execution_config or None,
-                    retrieve_config=agent.retrieve_config,
-                    llm_config=agent.llm_config,
-                ))
-            elif agent.agent_type == "retrieve_assistant":
-                loaded_agents.append(RetrieveAssistantAgent(
-                    name=agent.name or None,
-                    is_termination_msg=agent.is_termination_msg or None,
-                    system_message=agent.system_message or None,
-                    llm_config=agent.llm_config,
-                ))
-            elif agent.agent_type == "teachable":
-                loaded_agents.append(TeachableAgent(
-                    name=agent.name or None,
-                    is_termination_msg=agent.is_termination_msg or None,
-                    system_message=agent.system_message or None,
-                    llm_config=agent.llm_config,
-                    teach_config=agent.teach_config.model_dump() or None
-                ))
+        for agent_config in self.agents_config.agents:
+            print(f"AGENT: {agent_config}")
+            if agent_config.agent_type == "user_proxy":
+                agent = UserProxyAgent(
+                    name=agent_config.name,
+                    is_termination_msg=agent_config.is_termination_msg or None,
+                    human_input_mode=agent_config.human_input_mode or None,
+                    system_message=agent_config.system_message or None,
+                    code_execution_config=agent_config.code_execution_config or None,
+                    llm_config=agent_config.llm_config,
+                )
+                loaded_agents.append(agent)
+            elif agent_config.agent_type == "assistant":
+                agent = AssistantAgent(
+                    name=agent_config.name,
+                    is_termination_msg=agent_config.is_termination_msg or None,
+                    system_message=agent_config.system_message or None,
+                    code_execution_config=agent_config.code_execution_config or None,
+                    llm_config=agent_config.llm_config,
+                )
+                loaded_agents.append(agent)
+            elif agent_config.agent_type == "retrieve_user_proxy":
+                #print(f"\n\nRETRIEVE_CONFIG MODEL DUMP: {agent_config.retrieve_config}")
+                agent = RetrieveUserProxyAgent(
+                    name=agent_config.name,
+                    is_termination_msg=agent_config.is_termination_msg or None,
+                    system_message=agent_config.system_message or None,
+                    human_input_mode=agent_config.human_input_mode or None,
+                    code_execution_config=agent_config.code_execution_config or None,
+                    retrieve_config=agent_config.retrieve_config.model_dump(),
+                    llm_config=agent_config.llm_config,
+                )
+                loaded_agents.append(agent)
+            elif agent_config.agent_type == "retrieve_assistant":
+                agent = RetrieveAssistantAgent(
+                    name=agent_config.name or None,
+                    is_termination_msg=agent_config.is_termination_msg or None,
+                    system_message=agent_config.system_message or None,
+                    llm_config=agent_config.llm_config,
+                )
+                loaded_agents.append(agent)
+            elif agent_config.agent_type == "teachable":
+                agent = TeachableAgent(
+                    name=agent_config.name or None,
+                    is_termination_msg=agent_config.is_termination_msg or None,
+                    system_message=agent_config.system_message or None,
+                    llm_config=agent_config.llm_config,
+                    teach_config=agent_config.teach_config.model_dump() or None
+                )
+                loaded_agents.append(agent)
         self.agents = loaded_agents
         return loaded_agents
 
