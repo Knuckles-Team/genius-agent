@@ -67,23 +67,26 @@ def load_agents(agents: Agents):
                 llm_config=agent.llm_config,
                 teach_config=agent.teach_config
             ))
-        return loaded_agents
+    return loaded_agents
+
+def find_agent(agents, name):
+    for agent in agents:
+        print(f"NAMES: {agent.name}")
+        if agent.name == name:
+            print(f"MATCH: {agent.name}")
+            return agent
 
 
-def chat(prompt="Build snake game using pygame", chat_initiator_name: str = "admin"):
+def chat(prompt="Build snake game using pygame", chat_initiator_name: str = "user_proxy"):
     agents_data = yaml.safe_load(Path("agent_configs.yml").read_text())
     agents_models = Agents.model_validate(agents_data)
+    print(f"AGENT MODELS: {len(agents_models.agents)}")
     agents = load_agents(agents_models)
-    chat_initiator = None
+    print(f"AGENTS: {agents}")
+    chat_initiator = find_agent(agents, "executor")
+    print(f"CHAT INITER: {chat_initiator}")
     group_chat = GroupChat(agents=agents, messages=[], max_round=12)
-    print(f"LLMCONFIG: {agents[0].llm_config}")
-
-    for agent in agents:
-        if agent.name == chat_initiator_name:
-            chat_initiator = agent
-            print(f"CHAT INITIATOR FOUND: {chat_initiator.name}")
-            break
-
+    print(f"LLMCONFIG: {chat_initiator.llm_config}")
     manager = GroupChatManager(groupchat=group_chat, llm_config=chat_initiator.llm_config)
     chat_initiator.initiate_chat(
         manager,
