@@ -1,8 +1,4 @@
 ---
-include:
-  merge:
-    - llm_configs.yml
-
 user_proxy_agents:
   - name: Admin
     system_message: A human admin. Interact with the planner to discuss the plan. Plan

@@ -1,6 +1,7 @@
-from typing import List, Dict, Optional, Any
+from typing import List, Dict, Optional, Any, Union
 from pydantic import BaseModel
 from itertools import chain
+import json
 from autogen import (AssistantAgent as AutoAssistantAgent,
                      UserProxyAgent as AutoUserProxyAgent,
                      GroupChat as AutoGroupChat,
@@ -105,7 +106,7 @@ class TeachConfig(BaseModel):
 # Base Agent Class that contains all shared variables between Agent Types
 class Agent(BaseModel):
     name: str
-    llm_config: LLMConfig = None
+    llm_config: Union[LLMConfig, dict] = None
     system_message: Optional[str] = None
     is_termination_msg: Optional[str] = None
     human_input_mode: Optional[str] = "NEVER"
@@ -114,32 +115,33 @@ class Agent(BaseModel):
     retrieve_config: Optional[RetrieveConfig] = None
     teach_config: Optional[TeachConfig] = None
 
-    def __init__(self, name: str = None, llm_config: LLMConfig = None,
-                 system_message: Optional[str] = None,
-                 is_termination_msg: Optional[str] = None,
-                 human_input_mode: Optional[str] = "NEVER",
-                 max_consecutive_auto_reply: Optional[int] = 10,
-                 code_execution_config: Optional[CodeExecutionConfig] = None,
-                 retrieve_config: Optional[RetrieveConfig] = None,
-                 teach_config: Optional[TeachConfig] = None):
-        super().__init__(
-            name=name, llm_config=llm_config, system_messag=system_message, is_termination_msg=is_termination_msg,
-            human_input_mode=human_input_mode,
-            max_consecutive_auto_reply=max_consecutive_auto_reply,
-            code_execution_config=code_execution_config,
-            retrieve_config=retrieve_config,
-            teach_config=teach_config
-        )
+    # def __init__(self, name: str = None, llm_config:Union[LLMConfig, dict] = None,
+    #              system_message: Optional[str] = None,
+    #              is_termination_msg: Optional[str] = None,
+    #              human_input_mode: Optional[str] = "NEVER",
+    #              max_consecutive_auto_reply: Optional[int] = 10,
+    #              code_execution_config: Optional[CodeExecutionConfig] = None,
+    #              retrieve_config: Optional[RetrieveConfig] = None,
+    #              teach_config: Optional[TeachConfig] = None):
+    #     super().__init__(
+    #         name=name, llm_config=LLMConfig.model_validate(llm_config), system_messag=system_message, is_termination_msg=is_termination_msg,
+    #         human_input_mode=human_input_mode,
+    #         max_consecutive_auto_reply=max_consecutive_auto_reply,
+    #         code_execution_config=code_execution_config,
+    #         retrieve_config=retrieve_config,
+    #         teach_config=teach_config
+    #     )
         # self.llm_config_data = yaml.safe_load(Path('../config_examples/llm_configs.yml').read_text())
         # self.llm_config = LLMConfig.model_validate(self.llm_config_data)
 
 
 class UserProxyAgent(Agent):
-    def __init__(self, name, llm_config: LLMConfig = None, is_termination_msg=None, human_input_mode=None,
+    def __init__(self, name, llm_config: Union[LLMConfig, dict] = None, is_termination_msg=None, human_input_mode=None,
                  system_message=None, code_execution_config=None):
+        print(f"LLM_CONFIG: {llm_config}")
         super().__init__(
             name=name,
-            llm_config=llm_config,
+            llm_config=LLMConfig.model_validate(llm_config),
             system_message=system_message,
             is_termination_msg=is_termination_msg,
             human_input_mode=human_input_mode,
@@ -159,12 +161,12 @@ class UserProxyAgent(Agent):
 
 
 class AssistantAgent(Agent):
-    def __init__(self, name, llm_config: LLMConfig = None, is_termination_msg=None, human_input_mode=None,
+    def __init__(self, name, llm_config:Union[LLMConfig, dict] = None, is_termination_msg=None, human_input_mode=None,
                  system_message=None,
                  code_execution_config=None):
         super().__init__(
             name=name,
-            llm_config=llm_config,
+            llm_config=LLMConfig.model_validate(llm_config),
             system_message=system_message,
             is_termination_msg=is_termination_msg,
             human_input_mode=human_input_mode,
@@ -179,12 +181,12 @@ class AssistantAgent(Agent):
 
 
 class RetrieveUserProxyAgent(Agent):
-    def __init__(self, name, llm_config: LLMConfig = None, is_termination_msg=None, human_input_mode=None,
+    def __init__(self, name, llm_config:Union[LLMConfig, dict] = None, is_termination_msg=None, human_input_mode=None,
                  system_message=None,
                  code_execution_config=None):
         super().__init__(
             name=name,
-            llm_config=llm_config,
+            llm_config=LLMConfig.model_validate(llm_config),
             system_message=system_message,
             is_termination_msg=is_termination_msg,
             human_input_mode=human_input_mode,
@@ -201,10 +203,10 @@ class RetrieveUserProxyAgent(Agent):
 
 
 class RetrieveAssistantAgent(Agent):
-    def __init__(self, name, llm_config: LLMConfig = None, is_termination_msg=None, system_message=None):
+    def __init__(self, name, llm_config:Union[LLMConfig, dict] = None, is_termination_msg=None, system_message=None):
         super().__init__(
             name=name,
-            llm_config=llm_config,
+            llm_config=LLMConfig.model_validate(llm_config),
             system_message=system_message,
             is_termination_msg=is_termination_msg)
         self.agent = (AutoRetrieveAssistantAgent(
@@ -216,11 +218,11 @@ class RetrieveAssistantAgent(Agent):
 
 
 class TeachableAgent(Agent):
-    def __init__(self, name, llm_config: LLMConfig = None, is_termination_msg=None, system_message=None,
+    def __init__(self, name, llm_config:Union[LLMConfig, dict] = None, is_termination_msg=None, system_message=None,
                  teach_config=None):
         super().__init__(
             name=name,
-            llm_config=llm_config,
+            llm_config=LLMConfig.model_validate(llm_config),
             system_message=system_message,
             is_termination_msg=is_termination_msg,
             teach_config=teach_config)
@@ -249,18 +251,8 @@ class Agents(BaseModel):
         self.agents = (self.user_proxy_agents + self.assistant_agents + self.retrieve_user_proxy_agents +
                        self.retrieve_assistant_agents + self.teachable_agents)
 
-    def map_functions(self, llm_config: LLMConfig = None, file: str = None):
-        if not llm_config:
-            llm_config = LLMConfig(file=file)
-        for user in self.user_proxy_agents:
-            user.map_functions(llm_config.function_map)
-
     def get_agents(self):
         return self.agents
-
-    # def load_agents_file(self):
-    #     agents_instance = Agents(file="./config_examples/agent_configs.yml")
-    #     self.agents = agents_instance.get_all_agents()
 
 
 class GroupChat(BaseModel):
@@ -279,18 +271,19 @@ class Manager(BaseModel):
         self.group_chat = GroupChat(agents=self.agents)
         self.manager = AutoGroupChatManager(groupchat=self.group_chat, llm_config=LLMConfig)
 
-    # def chat(self, prompt="Build motorcross 2D in pygame"):
-
-    def load_agents(self, file: str):
-        # agents_instance = Agents(file="./config_examples/agent_configs.yml")
-        # self.agents = agents_instance.get_all_agents()
-        agents_data = yaml.safe_load(Path(file).read_text())
+    def load_agents(self, file: str = None, dictionary: dict = None):
+        if file:
+            agents_data = yaml.safe_load(Path(file).read_text())
+            print(f"FILE DATA: {json.dumps(agents_data, indent=2)}")
+        elif dictionary:
+            agents_data = dictionary
+        else:
+            print("Unable to load data")
+            return 1
         self.agents = Agents.model_validate(agents_data)
         return self.agents
 
-    def get_agents(self, file: str):
-        # self.agent_config_data = yaml.safe_load(Path(file).read_text())
-        # self.agents = Agents.model_validate(self.agent_config_data)
+    def get_agents(self):
         return self.agents
 
     def reset_agents(self):
