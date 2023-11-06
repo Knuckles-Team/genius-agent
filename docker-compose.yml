@@ -12,6 +12,6 @@ services:
         max-file: "5"
     environment:
       - VIRTUAL_HOST=genius-agent.arpa
-      - VIRTUAL_PORT=8080
+      - VIRTUAL_PORT=7999
     ports:
-      - "7999:8080"
+      - "7999:7999"

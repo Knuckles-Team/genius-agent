@@ -38,11 +38,3 @@ async def post_chat(self, prompt: str):
         self.agents_manager.group_chat_manager,
         message=prompt,
     )
-
-#
-# def main():
-#
-#
-#
-# if __name__ == '__main__':
-#     main()

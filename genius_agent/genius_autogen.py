@@ -2,9 +2,7 @@ import os
 import sys
 import autogen
 import getopt
-from langchain.embeddings import HuggingFaceEmbeddings
 import json
-import openai
 from agent_constructs import Agents
 from pathlib import Path
 import logging
@@ -13,48 +11,21 @@ import logging
 def usage():
     print(f'Usage:\n'
           f'-h | --help               [ See usage for script ]\n'
-          f'-a | --assimilate         [ Assimilate knowledge from media provided in directory ]\n'
-          f'   | --batch-token        [ Number of tokens per batch ]\n'
-          f'   | --chromadb-directory [ Directory for chromadb persistent storage ]\n'
-          f'   | --chunks             [ Number of chunks to use ]\n'
-          f'-e | --embeddings-model   [ Embeddings model to use https://www.sbert.net/docs/pretrained_models.html ]\n'
-          f'   | --hide-source        [ Hide source of answer ]\n'
-          f'-j | --json               [ Export to JSON ]\n'
-          f'   | --openai-token       [ OpenAI token ]\n'
-          f'   | --openai-api         [ OpenAI API Url ]\n'
-          f'   | --pgvector-user      [ PGVector user ]\n'
-          f'   | --pgvector-password  [ PGVector password ]\n'
-          f'   | --pgvector-host      [ PGVector host ]\n'
-          f'   | --pgvector-port      [ PGVector port ]\n'
-          f'   | --pgvector-database  [ PGVector database ]\n'
-          f'   | --pgvector-driver    [ PGVector driver ]\n'
           f'-p | --prompt             [ Prompt for chatbot ]\n'
-          f'   | --mute-stream        [ Mute stream of generation ]\n'
-          f'-m | --model              [ Model to use from GPT4All https://gpt4all.io/index.html ]\n'
-          f'   | --max-token-limit    [ Maximum token to generate ]\n'
-          f'   | --model-directory    [ Directory to store models ]\n'
-          f'   | --model-engine       [ GPT4All, LlamaCPP, or OpenAI ]\n'
           f'\nExample:\n'
           f'genius-agent --prompt "What is the 10th digit of Pi?"\n')
 
 
 def genius_agent(argv):
     autogen.ChatCompletion.start_logging()
-
-    # def chat(prompt="Build snake game using pygame", chat_initiator_name: str = "executor"):
-    #
-    #
-    #
-    # chat(prompt="Build snake game using pygame")
-
     run_flag = False
     api_flag = False
     data = None
     file = None
-    prompt = 'Geniusbot is the smartest chatbot in existence.'
+    prompt = 'Build Tic-Tac-Toe in Pygame'
     try:
         opts, args = getopt.getopt(argv, 'h:d:f:p:',
-                                   ['help', 'prompt=', 'data=', 'api-host=', 'api-port=', "chat-initiator="])
+                                   ['help', 'prompt=', 'file=', 'data=', "chat-initiator="])
     except getopt.GetoptError as e:
         usage()
         logging.error("Error: {e}\nExiting...")

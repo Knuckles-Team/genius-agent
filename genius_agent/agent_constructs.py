@@ -10,6 +10,7 @@ from autogen import (AssistantAgent,
 from autogen.agentchat.contrib.retrieve_assistant_agent import RetrieveAssistantAgent
 from autogen.agentchat.contrib.retrieve_user_proxy_agent import RetrieveUserProxyAgent
 from autogen.agentchat.contrib.teachable_agent import TeachableAgent
+import openai
 
 
 ######################## Pydantic Classes for Models (Injesting YAML/JSON and Serving Models for API/CLI)###############
@@ -21,6 +22,13 @@ class LLMModel(BaseModel):
     api_type: Optional[str] = "NA"
     api_version: Optional[str] = None
 
+    @field_validator('api_base')
+    def openai_api_base(cls, value):
+        openai.api_base = value
+
+    @field_validator('api_key')
+    def openai_api_key(cls, value):
+        openai.api_key = value
 
 class FilterDict(BaseModel):
     model: Optional[List[str]]
@@ -197,7 +205,6 @@ class Agents:
                 )
                 loaded_agents.append(agent)
             elif agent_config.agent_type == "retrieve_user_proxy":
-                #print(f"\n\nRETRIEVE_CONFIG MODEL DUMP: {agent_config.retrieve_config}")
                 agent = RetrieveUserProxyAgent(
                     name=agent_config.name,
                     is_termination_msg=agent_config.is_termination_msg or None,
