@@ -113,6 +113,8 @@ class AgentConfig(BaseModel):
     code_execution_config: Optional[CodeExecutionConfig] = None
     retrieve_config: Optional[RetrieveConfig] = None
     teach_config: Optional[TeachConfig] = None
+    human: Optional[str] = None
+    persona: Optional[str] = None
     agent_type: str
 
     @field_validator("is_termination_msg")
@@ -230,6 +232,25 @@ class Agents:
                     system_message=agent_config.system_message or None,
                     llm_config=agent_config.llm_config,
                     teach_config=agent_config.teach_config.model_dump() or None
+                )
+                loaded_agents.append(agent)
+            elif agent_config.agent_type == "memgpt":
+                import memgpt.autogen.memgpt_agent as memgpt_autogen
+                import memgpt.autogen.interface as autogen_interface
+                import memgpt.agent as agent
+                import memgpt.system as system
+                import memgpt.utils as utils
+                import memgpt.presets as presets
+                import memgpt.constants as constants
+                import memgpt.personas.personas as personas
+                import memgpt.humans.humans as humans
+                from memgpt.persistence_manager import InMemoryStateManager, InMemoryStateManagerWithPreloadedArchivalMemory, InMemoryStateManagerWithFaiss
+                interface = autogen_interface.AutoGenInterface() # how MemGPT talks to AutoGen
+                persistence_manager = InMemoryStateManager()
+                memgpt_agent = presets.use_preset(presets.DEFAULT, 'gpt-4', agent.persona, agent.human, interface, persistence_manager)
+                agent = memgpt_autogen.MemGPTAgent(
+                    name="MemGPT_coder",
+                    agent=memgpt_agent,
                 )
                 loaded_agents.append(agent)
         self.agents = loaded_agents
