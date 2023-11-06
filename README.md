@@ -9,18 +9,20 @@ This repository comes with a Dockerfile and a docker-compose.yml file to host th
 
 
 ## Run through CLI
+
 ```bash
 python ./genius_autogen.py --prompt "Create Snake using Pygame" --file "./agent_configs.yml"
 ```
 
 
 ## Standalone API Server
+
 ```bash
 uvicorn genius_agent_api:app --reload --host "0.0.0.0" --port 7999
 ```
 
 ## Agent Config in YAML
-Agent Config
+
 ```yaml
 ---
 agents:
