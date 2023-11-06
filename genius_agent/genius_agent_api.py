@@ -9,7 +9,7 @@ agents_manager = Agents()
 app = FastAPI()
 
 @app.get("/agents_config/{name}")
-async def get_agent_config_by_name(name: str) -> [AgentsConfig, dict]:
+async def get_agent_config_by_name(name: str) -> [AgentsConfig]:
     agent_config = agents_manager.find_agent_config(name=name)
     if agent_config:
         return agent_config
