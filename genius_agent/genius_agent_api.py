@@ -34,7 +34,7 @@ async def post_load_agents():
     agents_manager.load_agents()
 
 @app.post("/agents/chat_initiator/{chat_initiator_name}")
-async def post_chat_initiator(, chat_initiator_name: str = None):
+async def post_chat_initiator(chat_initiator_name: str = None):
     agents_manager.set_chat_initiator(name=chat_initiator_name)
 
 @app.post("/group_chat/load")
