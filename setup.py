@@ -29,7 +29,7 @@ setup(
     maintainer=__author__,
     maintainer_email='knucklessg1@gmail.com',
     license='MIT',
-    packages=['genius_cagent'],
+    packages=['genius_agent'],
     include_package_data=True,
     install_requires=[str(requirement.requirement) for requirement in requirements],
     py_modules=['genius_agent'],
