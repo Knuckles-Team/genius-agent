@@ -39,10 +39,7 @@ def usage():
 
 
 def genius_agent(argv):
-    openai.api_key = "YOUR_TOKEN"
-    openai.api_url = "https://localhost:8080/v1/"
     autogen.ChatCompletion.start_logging()
-
 
     # def chat(prompt="Build snake game using pygame", chat_initiator_name: str = "executor"):
     #
@@ -50,25 +47,14 @@ def genius_agent(argv):
     #
     # chat(prompt="Build snake game using pygame")
 
-    agents_manager = Agents()
-    agents_manager.load_config(file=f'{Path("agent_configs.yml")}')
-    agents_manager.load_agents()
-    agents_manager.set_chat_initiator(name=chat_initiator_name)
-    agents_manager.load_group_chat()
-    agents_manager.chat_initiator.initiate_chat(
-        agents_manager.group_chat_manager,
-        message=prompt,
-    )
     run_flag = False
-    assimilate_flag = False
-    json_export_flag = False
+    api_flag = False
+    data = None
+    file = None
     prompt = 'Geniusbot is the smartest chatbot in existence.'
     try:
-        opts, args = getopt.getopt(argv, 'a:he:jm:p:',
-                                   ['help', 'assimilate=', 'prompt=', 'api-server',
-                                    'openai-token=', 'openai-api=',
-                                    'pgvector-user=','pgvector-password=','pgvector-host=','pgvector-port=',
-                                    'pgvector-driver=','pgvector-database='])
+        opts, args = getopt.getopt(argv, 'h:d:f:p:',
+                                   ['help', 'prompt=', 'data=', 'api-host=', 'api-port=', "chat-initiator="])
     except getopt.GetoptError as e:
         usage()
         logging.error("Error: {e}\nExiting...")
@@ -77,94 +63,58 @@ def genius_agent(argv):
         if opt in ('-h', '--help'):
             usage()
             sys.exit()
-        elif opt in ('-a', '--assimilate'):
-            if os.path.exists(arg):
-                agents_manager.source_directory = str(arg)
-                assimilate_flag = True
-            else:
-                logging.error(f'Path does not exist: {arg}')
-                sys.exit(1)
-        elif opt == '--batch-token':
-            agents_manager.model_n_batch = int(arg)
-        elif opt == '--chunks':
-            agents_manager.target_source_chunks = int(arg)
-        elif opt == '--chromadb-directory':
-            agents_manager.set_chromadb_directory(directory=str(arg))
-            agents_manager.vectorstore = "chromadb"
-        elif opt in ('-j', '--json'):
-            agents_manager.json_export_flag = True
-            agents_manager.hide_source_flag = True
-            agents_manager.mute_stream_flag = True
-        elif opt in ('-e', '--embeddings-model'):
-            agents_manager.embeddings_model_name = arg
-            agents_manager.embeddings = HuggingFaceEmbeddings(model_name=agents_manager.embeddings_model_name)
-        elif opt in ('-m', '--model'):
-            agents_manager.model = arg
-            agents_manager.model_path = os.path.normpath(
-                os.path.join(agents_manager.model_directory, agents_manager.model))
-            print(f"Model: {agents_manager.model}")
-        elif opt == '--openai-token':
-            os.environ["OPENAI_API_KEY"] = arg
-            agents_manager.openai_api_key = True
-        elif opt == '--openai-api':
-            os.environ["OPENAI_API_BASE"] = arg
-            agents_manager.openai_api_base = arg
-        elif opt == '--model-engine':
-            agents_manager.model_engine = arg
-            if (agents_manager.model_engine.lower() != "llamacpp"
-                    and agents_manager.model_engine.lower() != "gpt4all"
-                    and agents_manager.model_engine.lower() != "openai"):
-                logging.error("model type not supported")
-                usage()
-                sys.exit(2)
-        elif opt == '--model-directory':
-            agents_manager.set_models_directory(directory=str(arg))
+        # elif opt == '--api-host':
+        #     api_host = arg
+        #     api_flag = True
+        # elif opt == '--api-port':
+        #     api_port = arg
+        elif opt in ('-d', '--data'):
+            data = arg
+        elif opt in ('-f', '--file'):
+            file = arg
+        # elif opt == '--openai-token':
+        #     os.environ["OPENAI_API_KEY"] = arg
+        #     openai.api_key = arg
+        # elif opt == '--openai-api':
+        #     os.environ["OPENAI_API_BASE"] = arg
+        #     openai.api_url = arg
         elif opt in ('-p', '--prompt'):
             prompt = str(arg)
             run_flag = True
-        elif opt == '--hide-source':
-            agents_manager.hide_source_flag = True
-        elif opt == '--pgvector-user':
-            agents_manager.pgvector_user = arg
-        elif opt == '--pgvector-password':
-            agents_manager.pgvector_password = arg
-        elif opt == '--pgvector-host':
-            agents_manager.pgvector_host = arg
-            agents_manager.vectorstore = "pgvector"
-        elif opt == '--pgvector-port':
-            agents_manager.pgvector_port = arg
-        elif opt == '--pgvector-driver':
-            agents_manager.pgvector_driver = arg
-        elif opt == '--pgvector-database':
-            agents_manager.pgvector_database = arg
-        elif opt == '--max-token-limit':
-            agents_manager.model_n_ctx = int(arg)
-        elif opt == '--mute-stream':
-            agents_manager.mute_stream_flag = True
-
-    if assimilate_flag:
-        agents_manager.assimilate()
-
-    if agents_manager.openai_api_key:
-        agents_manager.embeddings = OpenAIEmbeddings()
+        elif opt == '--chat-initiator':
+            chat_initiator = arg
+        # elif opt == '--pgvector-user':
+        #     agents_manager.pgvector_user = arg
+        # elif opt == '--pgvector-password':
+        #     agents_manager.pgvector_password = arg
+        # elif opt == '--pgvector-host':
+        #     agents_manager.pgvector_host = arg
+        #     agents_manager.vectorstore = "pgvector"
+        # elif opt == '--pgvector-port':
+        #     agents_manager.pgvector_port = arg
+        # elif opt == '--pgvector-driver':
+        #     agents_manager.pgvector_driver = arg
+        # elif opt == '--pgvector-database':
+        #     agents_manager.pgvector_database = arg
 
     if run_flag:
-        if not agents_manager.does_vectorstore_exist():
-            agents_manager.assimilate()
-        if agents_manager.vectorstore == "chromadb":
-            agents_manager.chromadb_client = chromadb.PersistentClient(settings=agents_manager.chroma_settings,
-                                                                       path=agents_manager.persist_directory)
-        logging.info('RAM Utilization Before Loading Model')
-        agents_manager.check_hardware()
-        response = agents_manager.chat(prompt=prompt)
-        if json_export_flag:
-            print(json.dumps(response, indent=4))
+        agents_manager = Agents()
+        if file:
+            agents_manager.load_config(file=file)
+        elif data:
+            agents_manager.load_config(payload=json.loads(data))
         else:
-            print(f"\n\nQuestion: {response['prompt']}\n"
-                  f"Answer: {response['answer']}\n"
-                  f"Sources: {response['sources']}\n\n")
-            logging.info('RAM Utilization After Loading Model')
-        agents_manager.check_hardware()
+            agents_manager.load_config(file=f'{Path("agent_configs.yml")}')
+        agents_manager.load_agents()
+        agents_manager.set_chat_initiator(name=chat_initiator)
+        agents_manager.load_group_chat()
+        agents_manager.chat_initiator.initiate_chat(
+            agents_manager.group_chat_manager,
+            message=prompt,
+        )
+    if api_flag:
+        from agent_constructs import GeniusAgentAPI
+        genius_api_agent = GeniusAgentAPI(agents_manager=agents_manager)
 
 
 def main():
