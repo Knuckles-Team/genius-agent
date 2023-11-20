@@ -11,7 +11,7 @@ from pip._internal.req import parse_requirements
 
 readme = Path('README.md').read_text()
 version = __version__
-requirements_core = parse_requirements(os.path.join(os.path.dirname(__file__), 'requirements_core.txt'),
+requirements = parse_requirements(os.path.join(os.path.dirname(__file__), 'requirements.txt'),
                                        session=PipSession())
 requirements_api = parse_requirements(os.path.join(os.path.dirname(__file__), 'requirements_api.txt'),
                                        session=PipSession())
@@ -46,7 +46,7 @@ setup(
     license='MIT',
     packages=['genius_agent'],
     include_package_data=True,
-    install_requires=[str(requirement.requirement) for requirement in requirements_core],
+    install_requires=[str(requirement.requirement) for requirement in requirements],
     extras_require={
         'rag': [str(requirement.requirement) for requirement in requirements_rag],
         'openai': [str(requirement.requirement) for requirement in requirements_openai],
