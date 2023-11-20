@@ -3261,6 +3261,40 @@ uvicorn genius_agent_api:app --reload --host "0.0.0.0" --port 7999
 
 ### Docker API Server
 
+Dockerfile
+
+```dockerfile
+FROM python:3.11.6-slim-bookworm AS base
+RUN apt update && apt upgrade -y && pip install --upgrade pip
+RUN pip install --upgrade genius-agent[rag,openai,chromadb,pgvector,api,memgpt]
+CMD ["uvicorn", "genius_agent_api:app", "--reload", "--host", "0.0.0.0", "--port", "7999"]
+```
+
+docker-compose.yml
+
+```yaml
+---
+version: '3.9'
+
+services:
+  genius-agent:
+    build: .
+    container_name: genius-agent
+    hostname: genius-agent
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "5"
+    environment:
+      - VIRTUAL_HOST=genius-agent.com  # NGINX Reverse Proxy
+      - VIRTUAL_PORT=7999
+    ports:
+      - "7999:7999"
+```
+
+Run: 
+
 ```bash
 docker compose up --build -d
 ```
