@@ -1,5 +1,8 @@
-import autogen
+#!/usr/bin/env python
+# coding: utf-8
+
 import yfinance as yf
+
 
 def exec_get_stock_price(symbol: str) -> float:
     stock = yf.Ticker(symbol)

@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# coding: utf-8
+
 from agent_model import AgentsConfig
 from typing import List, Dict, Optional, Callable, Union
 import yaml

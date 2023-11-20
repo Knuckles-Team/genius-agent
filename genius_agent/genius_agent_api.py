@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# coding: utf-8
+
 from agent_constructs import Agents, AgentsConfig
 from fastapi import FastAPI
 from pydantic import BaseModel

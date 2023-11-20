@@ -1,3 +1,7 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+
 def exec_write_to_file(filename: str, content: str) -> str:
     with open(filename, 'w') as f:
         f.write(content)

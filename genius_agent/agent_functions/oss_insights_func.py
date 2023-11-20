@@ -1,5 +1,7 @@
+#!/usr/bin/env python
+# coding: utf-8
+
 import logging
-import os
 import requests
 
 logger = logging.getLogger(__name__)
