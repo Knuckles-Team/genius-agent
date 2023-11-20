@@ -32,7 +32,7 @@ async def get_agent_configs() -> AgentsConfig:
 
 
 @app.post("/agents_config/load")
-async def post_load_agents_config(agents_config: dict):
+async def post_load_agents_config(agents_config: AgentsConfig):
     agents_manager.load_config(payload=agents_config)
 
 
@@ -41,19 +41,6 @@ async def post_load_agents():
     agents_manager.load_agents()
 
 
-@app.post("/agents/chat_initiator/{chat_initiator_name}")
-async def post_chat_initiator(chat_initiator_name: str = None):
-    agents_manager.set_chat_initiator(name=chat_initiator_name)
-
-
-@app.post("/group_chat/load")
-async def post_load_group():
-    agents_manager.load_group_chat()
-
-
 @app.post("/chat/{prompt}")
 async def post_chat(prompt: str):
-    agents_manager.chat_initiator.initiate_chat(
-        agents_manager.group_chat_manager,
-        message=prompt,
-    )
+    agents_manager.chat(prompt=prompt)
