@@ -11,7 +11,22 @@ from pip._internal.req import parse_requirements
 
 readme = Path('README.md').read_text()
 version = __version__
-requirements = parse_requirements(os.path.join(os.path.dirname(__file__), 'requirements.txt'), session=PipSession())
+requirements_core = parse_requirements(os.path.join(os.path.dirname(__file__), 'requirements_core.txt'),
+                                       session=PipSession())
+requirements_api = parse_requirements(os.path.join(os.path.dirname(__file__), 'requirements_api.txt'),
+                                       session=PipSession())
+requirements_rag = parse_requirements(os.path.join(os.path.dirname(__file__), 'requirements_rag.txt'),
+                                       session=PipSession())
+requirements_lmm = parse_requirements(os.path.join(os.path.dirname(__file__), 'requirements_lmm.txt'),
+                                       session=PipSession())
+requirements_openai = parse_requirements(os.path.join(os.path.dirname(__file__), 'requirements_openai.txt'),
+                                       session=PipSession())
+requirements_memgpt = parse_requirements(os.path.join(os.path.dirname(__file__), 'requirements_memgpt.txt'),
+                                         session=PipSession())
+requirements_pgvector = parse_requirements(os.path.join(os.path.dirname(__file__), 'requirements_pgvector.txt'),
+                                         session=PipSession())
+requirements_chromadb = parse_requirements(os.path.join(os.path.dirname(__file__), 'requirements_chromadb.txt'),
+                                         session=PipSession())
 readme = re.sub(r"Version: [0-9]*\.[0-9]*\.[0-9][0-9]*", f"Version: {version}", readme)
 with open("README.md", "w") as readme_file:
     readme_file.write(readme)
@@ -31,7 +46,15 @@ setup(
     license='MIT',
     packages=['genius_agent'],
     include_package_data=True,
-    install_requires=[str(requirement.requirement) for requirement in requirements],
+    install_requires=[str(requirement.requirement) for requirement in requirements_core],
+    extras_require={
+        'rag': [str(requirement.requirement) for requirement in requirements_rag],
+        'openai': [str(requirement.requirement) for requirement in requirements_openai],
+        'chromadb': [str(requirement.requirement) for requirement in requirements_chromadb],
+        'pgvector': [str(requirement.requirement) for requirement in requirements_pgvector],
+        'api': [str(requirement.requirement) for requirement in requirements_api],
+        'memgpt': [str(requirement.requirement) for requirement in requirements_memgpt],
+    },
     py_modules=['genius_agent'],
     package_data={'genius_agent': ['genius_agent']},
     classifiers=[
