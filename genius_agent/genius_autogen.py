@@ -33,8 +33,6 @@ def genius_agent(argv):
         if opt in ('-h', '--help'):
             usage()
             sys.exit()
-        elif opt == '--chat-initiator':
-            chat_initiator = arg
         elif opt in ('-d', '--data'):
             data = arg
         elif opt in ('-f', '--file'):
@@ -51,15 +49,9 @@ def genius_agent(argv):
             agents_manager.load_config(payload=json.loads(data))
         else:
             agents_manager.load_config(file=f'{Path("agent_configs.yml")}')
+
         agents_manager.load_agents()
-        if not chat_initiator:
-            print("You forgot to specify which agent is the chat initiator")
-        agents_manager.set_chat_initiator(name=chat_initiator)
-        agents_manager.load_group_chat()
-        agents_manager.chat_initiator.initiate_chat(
-            agents_manager.group_chat_manager,
-            message=prompt,
-        )
+        agents_manager.chat(prompt)
 
 
 def main():
