@@ -3330,3 +3330,6 @@ python -m pip install genius-agent[rag,openai,chromadb,pgvector,api,memgpt]
 ![GitHub followers](https://img.shields.io/github/followers/Knucklessg1)
 ![GitHub User's stars](https://img.shields.io/github/stars/Knucklessg1)
 </details>
+
+
+Credits to OpenAI and Microsoft for usage in project!
