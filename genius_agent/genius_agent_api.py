@@ -7,7 +7,6 @@ from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 from prometheus_fastapi_instrumentator import Instrumentator
 
-
 class HealthResponse(BaseModel):
     status: str
 
@@ -51,3 +50,9 @@ async def post_load_agents():
 async def post_chat(prompt: str):
     return StreamingResponse(agents_manager.chat(prompt=prompt), media_type="text/plain")
 
+
+@app.post("/prometheus/{port}")
+async def deploy_exporter(port: [int, str] = 8999):
+    from prometheus_collector import start_prometheus_server_background
+    start_prometheus_server_background(port=port)
+    return f"Prometheus Exporter Running on port: {port}"
