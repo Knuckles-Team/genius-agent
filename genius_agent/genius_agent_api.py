@@ -3,7 +3,9 @@
 
 from agent_constructs import Agents, AgentsConfig
 from fastapi import FastAPI
+from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
+from prometheus_fastapi_instrumentator import Instrumentator
 
 
 class HealthResponse(BaseModel):
@@ -12,6 +14,7 @@ class HealthResponse(BaseModel):
 
 agents_manager = Agents()
 app = FastAPI()
+Instrumentator().instrument(app).expose(app, include_in_schema=False)
 
 
 @app.get("/agents_config/{name}")
@@ -46,4 +49,5 @@ async def post_load_agents():
 
 @app.post("/chat/{prompt}")
 async def post_chat(prompt: str):
-    agents_manager.chat(prompt=prompt)
+    return StreamingResponse(agents_manager.chat(prompt=prompt), media_type="text/plain")
+
