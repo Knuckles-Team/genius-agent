@@ -29,6 +29,16 @@ or as a standalone uvicorn FastAPI Server
 
 This repository comes with a Dockerfile and a docker-compose.yml file to host this yourself.
 
+Agent Types:
+- Assistant
+- User Proxy
+- Retrieve Assistant
+- Retrieve User Proxy
+- Teachable
+- MemGPT
+- GPT Assistant
+- Multimodal Assistant
+
 <details>
   <summary><b>Usage:</b></summary>
 
