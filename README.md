@@ -51,13 +51,13 @@ Agent Types:
 | -p         | --prompt  | Prompt for chat conversation                    |
 
 ### API Endpoints
-| Method | Endpoint          | Parameters | Payload                                       | Description                           |
-|--------|-------------------|------------|-----------------------------------------------|---------------------------------------| 
-| GET    | /api/health       |            |                                               | Health of API Server                  |
+| Method | Endpoint           | Parameters | Payload                                       | Description                           |
+|--------|--------------------|------------|-----------------------------------------------|---------------------------------------| 
+| GET    | /api/health        |            |                                               | Health of API Server                  |
 | GET    | /api/agents/{name} | name       |                                               | Get Agent configuration by name       |
-| GET    | /api/agents |            |                                               | Get all Agent configurations          | 
-| POST   | /api/agents/load  |            | {"name": "agent_name", "llm_config": {...}}   | Load agent configurations             | 
-| POST   | /api/chat/        | prompt     | {"prompt": "This is a prompt for the agents"} | Prompt the agents provided            | 
+| GET    | /api/agents        |            |                                               | Get all Agent configurations          | 
+| POST   | /api/agents/load   |            | {"name": "agent_name", "llm_config": {...}}   | Load agent configurations             | 
+| POST   | /api/chat/         | prompt     | {"prompt": "This is a prompt for the agents"} | Prompt the agents provided            | 
 
 </details>
 
