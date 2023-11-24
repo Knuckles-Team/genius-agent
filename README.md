@@ -56,7 +56,7 @@ Agent Types:
 | GET    | /api/health        |            |                                               | Health of API Server                  |
 | GET    | /api/agents/{name} | name       |                                               | Get Agent configuration by name       |
 | GET    | /api/agents        |            |                                               | Get all Agent configurations          | 
-| POST   | /api/agents/load   |            | {"name": "agent_name", "llm_config": {...}}   | Load agent configurations             | 
+| POST   | /api/agents        |            | {"name": "agent_name", "llm_config": {...}}   | Load agent configurations             | 
 | POST   | /api/chat/         | prompt     | {"prompt": "This is a prompt for the agents"} | Prompt the agents provided            | 
 
 </details>
