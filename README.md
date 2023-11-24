@@ -53,12 +53,12 @@ Agent Types:
 ### API Endpoints
 | Method | Endpoint              | Parameters | Payload                                     | Description                           |
 |--------|-----------------------|------------|---------------------------------------------|---------------------------------------| 
-| GET    | /health               |            |                                             | Health of API Server                  |
-| GET    | /agents_config/{name} | name       |                                             | Get Agent configuration by name       |
-| GET    | /agents_config        |            |                                             | Get all Agent configurations          | 
-| POST   | /agents_config/load   |            | {"name": "agent_name", "llm_config": {...}} | Load agent configurations             | 
-| POST   | /agents/load          |            |                                             | Load agents from agent configurations | 
-| POST   | /chat/{prompt}        | prompt     |                                             | Prompt the agents provided            | 
+| GET    | /api/health               |            |                                             | Health of API Server                  |
+| GET    | /api/agents_config/{name} | name       |                                             | Get Agent configuration by name       |
+| GET    | /api/agents_config        |            |                                             | Get all Agent configurations          | 
+| POST   | /api/agents_config/load   |            | {"name": "agent_name", "llm_config": {...}} | Load agent configurations             | 
+| POST   | /api/agents/load          |            |                                             | Load agents from agent configurations | 
+| POST   | /api/chat/{prompt}        | prompt     |                                             | Prompt the agents provided            | 
 
 </details>
 
