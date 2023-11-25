@@ -111,31 +111,32 @@ class Agents:
 
     def load_agents(self) -> List:
         loaded_agents = []
-        openai_base_url = ""
-        openai_api_key = ""
         agent = None
-        # print(f"AGENTS: {agents}")
         for agent_config in self.agents_config.agents:
-            print(f"AGENT: {agent_config.name} Instructions: {agent_config.instructions}")
-            if (hasattr(agent_config, 'llm_config')
-                    and hasattr(agent_config.llm_config, 'functions')
-                    and agent_config.llm_config.filter_dict):
-                print(f"Filter_Dict: {agent_config.llm_config.filter_dict}")
             try:
                 openai_base_url = agent_config.llm_config.config_list[0].base_url
-                #print(f"BASE URL FOUND: {openai_api_base}")
+                openai.api_base = openai_base_url
+                os.environ["OPENAI_BASE_URL"] = openai_base_url
             except Exception as e:
                 pass
             try:
                 openai_api_key = agent_config.llm_config.config_list[0].api_key
-                #print(f"BASE KEY FOUND: {openai_api_key}")
+                openai.api_key = openai_api_key
+                os.environ["OPENAI_API_KEY"] = openai_api_key
             except Exception as e:
                 pass
-            openai.api_key = openai_api_key
-            openai.api_base = openai_base_url
-            os.environ["OPENAI_API_KEY"] = openai_api_key
-            os.environ["OPENAI_BASE_URL"] = openai_base_url
-            print(f"BASE_URL: {openai_base_url}")
+            try:
+                azure_ad_token = agent_config.llm_config.config_list[0].api_key
+                openai.azure_ad_token = azure_ad_token
+                os.environ["AZURE_OPENAI_AD_TOKEN"] = azure_ad_token
+            except Exception as e:
+                pass
+            try:
+                azure_base_url = agent_config.llm_config.config_list[0].base_url
+                openai.azure_endpoint = azure_base_url
+                os.environ["AZURE_OPENAI_ENDPOINT"] = azure_base_url
+            except Exception as e:
+                pass
 
             if agent_config.agent_type == "user_proxy":
                 agent = UserProxyAgent(
@@ -208,23 +209,17 @@ class Agents:
                     function_map=agent_config.llm_config.function_map.model_dump()
                 )
             loaded_agents.append(agent)
-            if agent_config.chat_initiator is not None and agent_config.chat_initiator:
-                self.chat_initiator = agent
-                self.chat_initiator_config = agent_config
-            #print(f"CHAT INIT CONFIG FROM LOAD: {self.chat_initiator_config}")
         self.agents = loaded_agents
-        if len(self.agents) > 2:
-            self.load_group_chat()
-        else:
-            self.auto_set_chat_initiator()
         return loaded_agents
 
     def chat(self, prompt: str):
         if not self.agents:
             self.load_agents()
+        self.auto_set_chat_initiator()
+        # print(f"CHAT INIT CONFIG FROM LOAD: {self.chat_initiator_config}")
         # Handle group chat with more than 2 agents
         if len(self.agents) > 2:
-            #logging.debug(f"CHAT GROUP INITIATOR: {self.chat_initiator}")
+            self.load_group_chat()
             self.agent_chat_manager = GroupChatManager(groupchat=self.group_chat, llm_config=self.chat_initiator_config.llm_config)
             self.chat_initiator.initiate_chat(
                 self.agent_chat_manager,

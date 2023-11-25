@@ -42,7 +42,8 @@ class HealthResponse(BaseModel):
 
 class Prompt(BaseModel):
     prompt: str
-    max_consecutive_replies: int
+    max_consecutive_replies: Optional[int] = None
+    cache_seed: Optional[int] = None
 
     @field_validator("max_consecutive_replies")
     def validate_max_consecutive_replies(cls, value):
@@ -59,6 +60,20 @@ class Prompt(BaseModel):
             raise ValueError(f"max_consecutive_replies was not passed as int: {value}")
         return max_consecutive_replies
 
+    @field_validator("cache_seed")
+    def validate_cache_seed(cls, value):
+        if not value:
+            return value
+        if isinstance(value, str):
+            try:
+                cache_seed = int(value)
+            except Exception:
+                raise ValueError(f"cache_seed was not passed as str: {value}")
+        elif isinstance(value, int):
+            cache_seed = value
+        else:
+            raise ValueError(f"cache_seed was not passed as int: {value}")
+        return cache_seed
 
 @app.get("/api/agents/{name}")
 async def get_agent_config_by_name(name: str) -> Union[AgentsConfig, dict]:
@@ -90,6 +105,9 @@ async def post_load_agents_config(agents_config: AgentsConfig):
 
 @app.post("/api/chat") #, response_model=Chat)
 async def post_chat(prompt: Prompt):
+    ####
+    #### HANDLE SETTING CACHE SEED prompt.cache_seed
+    #### HANDLE SETTING GLOBAL MAX_CONSECURTIVE_REPLY_FIELD prompt.max_consecutive_reply
     return StreamingResponse(agents_manager.chat(prompt=prompt.prompt), media_type="text/plain")
 
 
@@ -156,7 +174,6 @@ if __name__ == "__main__":
         }
     }
 
-    # add your handler to it (in my case, I'm working with quart, but you can do this with Flask etc. as well, they're all the same)
     config['log_config']['loggers']['quart'] = {
         "handlers": [
             "default"
