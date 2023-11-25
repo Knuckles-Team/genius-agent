@@ -7,7 +7,6 @@ import getopt
 import json
 from genius_agent.agent_construct import Agents
 from pathlib import Path
-import logging
 
 
 try:
@@ -28,14 +27,18 @@ def genius_agent(argv):
     autogen.ChatCompletion.start_logging()
     run_flag = False
     server_flag = False
+    server_address = ''
+    server_port = ''
     data = None
     file = None
     prompt = 'Build Tic-Tac-Toe in Pygame'
     try:
         opts, args = getopt.getopt(argv, 'h:d:f:p:',
-                                   ['help', 'prompt=', 'file=', 'data=', "chat-initiator=", 'server='])
+                                   ['help', 'prompt=', 'file=', 'data=', "chat-initiator=", 'server-host=',
+                                    'server-port='])
     except getopt.GetoptError as e:
         usage()
+        import logging
         logging.error("Error: {e}\nExiting...")
         sys.exit(2)
     for opt, arg in opts:
@@ -49,8 +52,13 @@ def genius_agent(argv):
         elif opt in ('-p', '--prompt'):
             prompt = str(arg)
             run_flag = True
-        elif opt in ('-s', '--server'):
-            server_flag = arg
+        elif opt in ('-s', '--server-host'):
+            server_flag = True
+            server_address = arg
+        elif opt in ('-p', '--server-port'):
+            server_flag = True
+            server_port = int(arg)
+
 
     if run_flag:
         agents_manager = Agents()
@@ -68,9 +76,7 @@ def genius_agent(argv):
         import logging
 
         logging.basicConfig(level=logging.DEBUG)
-        config = {}
-
-        config['log_config'] = {
+        config = {'log_config': {
             "version": 1,
             "disable_existing_loggers": True,
             "formatters": {
@@ -118,9 +124,8 @@ def genius_agent(argv):
                     "propagate": False
                 }
             }
-        }
+        }}
 
-        # add your handler to it (in my case, I'm working with quart, but you can do this with Flask etc. as well, they're all the same)
         config['log_config']['loggers']['quart'] = {
             "handlers": [
                 "default"
@@ -128,7 +133,7 @@ def genius_agent(argv):
             "level": "INFO"
         }
 
-        uvicorn.run("genius_agent_api:app", host="0.0.0.0", port=3001, reload=True,
+        uvicorn.run("genius_agent_api:app", host=server_address, port=server_port, reload=True,
                     log_level="debug", **config)
 
 
