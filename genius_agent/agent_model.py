@@ -5,16 +5,27 @@ import glob
 import os
 from typing import List, Dict, Optional, Callable, Union
 from pydantic import BaseModel, field_validator, model_validator, PrivateAttr
-from genius_agent.agent_functions import *  # Used for all dynamically loaded agent functions
+from agent_functions import *  # Used for all dynamically loaded agent functions
 
 
 # Pydantic Classes for Models (Ingesting YAML/JSON and Serving Models for API/CLI)
 class LLMModel(BaseModel):
     model: str
     api_key: Optional[str] = "NA"
-    api_base: Optional[str] = "NA"
+    base_url: Optional[str] = "NA"
     api_type: Optional[str] = "NA"
     api_version: Optional[str] = None
+    max_retries: Optional[int] = None
+
+    @field_validator("base_url")
+    def validate_base_url(cls, value):
+        if not value:
+            return value
+        if isinstance(value, str) and ("http" in value or "https" in value):
+            pass
+        else:
+            raise ValueError(f"Filter Dict was not passed as dict: {value}")
+        return value
 
 
 class FilterDict(BaseModel):
@@ -35,7 +46,6 @@ class FunctionItem(BaseModel):
     function: str
 
 class FunctionMap(BaseModel):
-    _function_map: dict = PrivateAttr()
     python: Callable
     bash: Callable
     media_download: Callable
@@ -49,16 +59,29 @@ class FunctionMap(BaseModel):
         }
 
 class LLMConfig(BaseModel):
-    seed: Optional[int] = 42
+    cache_seed: Optional[int] = None
     temperature: Optional[float] = 0
-    config_list: Optional[List[LLMModel]]
-    filter_dict: Optional[FilterDict]
-    request_timeout: Optional[float] = None
-    repeat_penalty: Optional[float] = None
+    config_list: Optional[List[LLMModel]] = None
+    filter_dict: Optional[FilterDict] = None
+    timeout: Optional[float] = None
     functions_directory: Optional[str] = None  # Directory to load custom python functions for agent
     functions: Optional[List[FunctionItem]] = None  # Autogen Functions
     function_map: Optional[FunctionMap] = None
 
+    @field_validator("filter_dict")
+    def validate_filter_dict(cls, value):
+        #print(f"VALIDATING FILTER_DICT: {value}")
+        if not value:
+            return value
+        if isinstance(value, dict):
+            try:
+                filter_dict = FilterDict.model_validate(value)
+                #print(f"NEW OBJEcT FILTER DICT: {filter_dict}")
+            except Exception:
+                raise ValueError(f"Filter Dict was not passed as dict: {value}")
+        else:
+            raise ValueError(f"Filter Dict was not passed as dict: {value}")
+        return filter_dict
 
     @field_validator("functions_directory")
     def get_custom_functions(cls, value):
@@ -119,8 +142,8 @@ class TeachConfig(BaseModel):
 # Base Agent Class that contains all shared variables between Agent Types
 class AgentConfig(BaseModel):
     name: str
-    assistant_id: Optional[str] = None
-    llm_config: Optional[Union[LLMConfig, dict]] = None
+    agent_id: Optional[str] = None
+    llm_config: Union[LLMConfig, dict] = None
     chat_initiator: Optional[bool] = False
     instructions: Optional[str] = None
     is_termination_msg: Optional[Union[Callable, str]] = None
@@ -144,6 +167,13 @@ class AgentConfig(BaseModel):
         if isinstance(self.is_termination_msg, Callable):
             self.is_termination_msg = str(self.is_termination_msg)
 
+    @field_validator("instructions")
+    def validate_instructions(cls, value):
+        if isinstance(value, str) and len(value) > 3:
+            pass
+        else:
+            raise ValueError(f"Invalid type for instructions '{value}', a string of 3 or more characters")
+        return value
 
     @field_validator("is_termination_msg")
     def convert_to_callable(cls, value):
@@ -155,7 +185,7 @@ class AgentConfig(BaseModel):
         elif isinstance(value, Callable):
             converted_callables = value
         else:
-            raise ValueError(f"Invalid type for value '{value}', expected a string or callable")
+            raise ValueError(f"Invalid type for is_termination_msg '{value}', expected a string or callable")
         return converted_callables
 
     @field_validator("llm_config")
@@ -174,7 +204,7 @@ class AgentConfig(BaseModel):
         else:
             raise ValueError(
                 f"Invalid type for llm_config '{value}', expected a dict with contents of llm_config")
-        print(f"VALID LLM CONFIG: {llm_config}")
+        #print(f"VALID LLM CONFIG: {llm_config}")
         return llm_config
 
     @field_validator("retrieve_config")
@@ -191,7 +221,7 @@ class AgentConfig(BaseModel):
         else:
             raise ValueError(
                 f"Invalid type for retrieve_config '{value}', expected a dict with contents of retrieve_config")
-        print(f"VALID RETRIEVE CONFIG: {retrieve_config}")
+        #print(f"VALID RETRIEVE CONFIG: {retrieve_config}")
         return retrieve_config
 
     @field_validator("teach_config")
@@ -207,7 +237,7 @@ class AgentConfig(BaseModel):
             teach_config = value
         else:
             raise ValueError(f"Invalid type for teach_config '{value}', expected a dict with contents of teach_config")
-        print(f"VALID TEACH CONFIG: {teach_config}")
+        #print(f"VALID TEACH CONFIG: {teach_config}")
         return teach_config
 
 

@@ -1402,7 +1402,7 @@ uvicorn genius_agent_api:app --reload --host "0.0.0.0" --port 7999
 Test server
 
 ```bash
-curl --header "Content-Type: application/json" --request POST --data '{"prompt":"Write a game in python"}'  http://localhost:3001/api/chat
+curl -m 3600 --header "Content-Type: application/json" --request POST --data '{"prompt":"Write a game in python"}'  http://localhost:3001/api/chat
 ```
 
 ### Docker API Server

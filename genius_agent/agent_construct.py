@@ -3,9 +3,10 @@
 
 import logging
 import os
-from genius_agent.agent_model import AgentsConfig
+from agent_model import AgentsConfig
 from typing import List, Dict, Optional, Callable, Union
 import yaml
+import json
 from pathlib import Path
 from autogen import (GroupChat, GroupChatManager)
 import openai
@@ -61,11 +62,20 @@ class Agents:
         self.group_chat_enabled = True
 
     def auto_set_chat_initiator(self):
-        logging.error(f"AUTOSET INITIATOR AGENTS: {self.agents_config}")
-        for agent_config in self.agents_config:
+        #print(f"\n\nAUTOSET INITIATOR AGENTS: {self.agents_config}")
+        chat_initiator = None
+        chat_initiator_config = None
+        for agent_config in self.agents_config.agents:
+            #print(f"\n\nAGENT CONFIG: {agent_config}")
             if agent_config.chat_initiator is not None:
-                self.chat_initiator = self.find_agent(name=agent_config.name)
-                self.chat_initiator_config = agent_config
+                chat_initiator = self.find_agent(name=agent_config.name)
+                chat_initiator_config = agent_config
+        if chat_initiator:
+            self.chat_initiator = chat_initiator
+            self.chat_initiator_config = chat_initiator_config
+        else:
+            self.chat_initiator = self.agents[0]
+            self.chat_initiator_config = self.agents_config[0]
 
     def set_chat_initiator(self, name):
         self.chat_initiator = self.find_agent(name)
@@ -101,25 +111,31 @@ class Agents:
 
     def load_agents(self) -> List:
         loaded_agents = []
-        openai_api_base = ""
+        openai_base_url = ""
         openai_api_key = ""
+        agent = None
         # print(f"AGENTS: {agents}")
         for agent_config in self.agents_config.agents:
-            print(f"AGENT: {agent_config}")
+            print(f"AGENT: {agent_config.name} Instructions: {agent_config.instructions}")
+            if (hasattr(agent_config, 'llm_config')
+                    and hasattr(agent_config.llm_config, 'functions')
+                    and agent_config.llm_config.filter_dict):
+                print(f"Filter_Dict: {agent_config.llm_config.filter_dict}")
             try:
-                openai_api_base = agent_config.llm_config.config_list[0].api_base
-                print(f"BASE URL FOUND: {openai_api_base}")
+                openai_base_url = agent_config.llm_config.config_list[0].base_url
+                #print(f"BASE URL FOUND: {openai_api_base}")
             except Exception as e:
                 pass
             try:
                 openai_api_key = agent_config.llm_config.config_list[0].api_key
-                print(f"BASE KEY FOUND: {openai_api_key}")
+                #print(f"BASE KEY FOUND: {openai_api_key}")
             except Exception as e:
                 pass
             openai.api_key = openai_api_key
-            openai.api_base = openai_api_base
+            openai.api_base = openai_base_url
             os.environ["OPENAI_API_KEY"] = openai_api_key
-            os.environ["OPENAI_API_BASE"] = openai_api_base
+            os.environ["OPENAI_BASE_URL"] = openai_base_url
+            print(f"BASE_URL: {openai_base_url}")
 
             if agent_config.agent_type == "user_proxy":
                 agent = UserProxyAgent(
@@ -130,7 +146,6 @@ class Agents:
                     code_execution_config=agent_config.code_execution_config or None,
                     llm_config=agent_config.llm_config,
                 )
-                loaded_agents.append(agent)
             elif agent_config.agent_type == "assistant":
                 agent = AssistantAgent(
                     name=agent_config.name,
@@ -139,7 +154,6 @@ class Agents:
                     code_execution_config=agent_config.code_execution_config or None,
                     llm_config=agent_config.llm_config,
                 )
-                loaded_agents.append(agent)
             elif agent_config.agent_type == "retrieve_user_proxy":
                 agent = RetrieveUserProxyAgent(
                     name=agent_config.name,
@@ -150,24 +164,21 @@ class Agents:
                     retrieve_config=agent_config.retrieve_config.model_dump(),
                     llm_config=agent_config.llm_config,
                 )
-                loaded_agents.append(agent)
             elif agent_config.agent_type == "retrieve_assistant":
                 agent = RetrieveAssistantAgent(
-                    name=agent_config.name or None,
+                    name=agent_config.name,
                     is_termination_msg=agent_config.is_termination_msg or None,
-                    system_message=agent_config.instructions or None,
+                    system_message=agent_config.instructions,
                     llm_config=agent_config.llm_config,
                 )
-                loaded_agents.append(agent)
             elif agent_config.agent_type == "teachable":
                 agent = TeachableAgent(
-                    name=agent_config.name or None,
+                    name=agent_config.name,
                     is_termination_msg=agent_config.is_termination_msg or None,
                     system_message=agent_config.instructions or None,
                     llm_config=agent_config.llm_config,
                     teach_config=agent_config.teach_config.model_dump() or None
                 )
-                loaded_agents.append(agent)
             elif agent_config.agent_type == "memgpt":
                 interface = autogen_interface.AutoGenInterface()  # how MemGPT talks to AutoGen
                 persistence_manager = InMemoryStateManager()
@@ -177,45 +188,55 @@ class Agents:
                     name="MemGPT_coder",
                     agent=memgpt_agent,
                 )
-                loaded_agents.append(agent)
             elif agent_config.agent_type == "gpt_assistant":
                 agent = GPTAssistantAgent(
                     name=agent_config.name or None,
                     instructions=agent_config.instructions or None,
                     llm_config=agent_config.llm_config,
                 )
-                loaded_agents.append(agent)
             elif agent_config.agent_type == "multimodal_assistant":
                 agent = MultimodalConversableAgent(
                     name=agent_config.name or None,
                     max_consecutive_auto_reply=agent_config.max_consecutive_auto_reply or None,
                     llm_config=agent_config.llm_config,
                 )
-                loaded_agents.append(agent)
+
+            if (hasattr(agent_config, 'llm_config')
+                    and hasattr(agent_config.llm_config, 'functions')
+                    and agent_config.llm_config.functions):
+                agent.register_function(
+                    function_map=agent_config.llm_config.function_map.model_dump()
+                )
+            loaded_agents.append(agent)
             if agent_config.chat_initiator is not None and agent_config.chat_initiator:
                 self.chat_initiator = agent
                 self.chat_initiator_config = agent_config
-            print(f"CHAT INIT CONFIG FROM LOAD: {self.chat_initiator_config}")
+            #print(f"CHAT INIT CONFIG FROM LOAD: {self.chat_initiator_config}")
         self.agents = loaded_agents
-        if len(self.agents) > 1:
+        if len(self.agents) > 2:
             self.load_group_chat()
         else:
-            self.agent_chat_manager = self.agents
+            self.auto_set_chat_initiator()
         return loaded_agents
 
     def chat(self, prompt: str):
         if not self.agents:
             self.load_agents()
-        logging.debug(f"CHAT GROUP INITIATOR: {self.chat_initiator}")
-        if len(self.agents) > 1:
-            logging.error(f"LLMCONFIG: {self.chat_initiator}")
+        # Handle group chat with more than 2 agents
+        if len(self.agents) > 2:
+            #logging.debug(f"CHAT GROUP INITIATOR: {self.chat_initiator}")
             self.agent_chat_manager = GroupChatManager(groupchat=self.group_chat, llm_config=self.chat_initiator_config.llm_config)
             self.chat_initiator.initiate_chat(
                 self.agent_chat_manager,
                 message=prompt,
             )
+        # Load single user chat with less than 2 agents
         else:
-            self.agent_chat_manager = self.agents
+            self.agent_chat_manager = [agent for agent in self.agents if agent.name != self.chat_initiator.name][0]
+            self.chat_initiator.initiate_chat(
+                self.agent_chat_manager,
+                message=prompt,
+            )
 
 
     def load_group_chat(self):
@@ -224,14 +245,14 @@ class Agents:
 
     def find_agent(self, name: str) -> List:
         for agent in self.agents:
-            print(f"NAMES: {agent.name}")
+            #print(f"NAMES: {agent.name}")
             if agent.name == name:
-                print(f"MATCH: {agent.name}")
+                #print(f"MATCH: {agent.name}")
                 return agent
 
     def find_agent_config(self, name: str) -> AgentsConfig:
         for agent_config in self.agents_config.agents:
-            print(f"NAMES: {agent_config.name}")
+            #print(f"NAMES: {agent_config.name}")
             if agent_config.name == name:
-                print(f"MATCH: {agent_config.name}")
+                #print(f"MATCH: {agent_config.name}")
                 return agent_config

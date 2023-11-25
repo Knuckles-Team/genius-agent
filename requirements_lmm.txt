@@ -1,1 +1,1 @@
-pyautogen[lmm]==0.2.0b5
+pyautogen[lmm]==0.2.0

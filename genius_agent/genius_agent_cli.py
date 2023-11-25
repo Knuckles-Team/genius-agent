@@ -5,7 +5,7 @@ import sys
 import autogen
 import getopt
 import json
-from genius_agent.agent_construct import Agents
+from agent_construct import Agents
 from pathlib import Path
 
 
@@ -24,7 +24,6 @@ def usage():
 
 
 def genius_agent(argv):
-    autogen.ChatCompletion.start_logging()
     run_flag = False
     server_flag = False
     server_address = ''

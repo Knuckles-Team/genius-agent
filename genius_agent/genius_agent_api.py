@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 # coding: utf-8
 import uvicorn
-from genius_agent.agent_construct import Agents, AgentsConfig
+from agent_construct import Agents, AgentsConfig
 from fastapi import FastAPI
 from fastapi.responses import StreamingResponse
-from pydantic import BaseModel
+from pydantic import BaseModel, field_validator, model_validator
 from typing import List, Dict, Optional, Callable, Union
 from prometheus_fastapi_instrumentator import Instrumentator
 
@@ -30,12 +30,38 @@ app.add_middleware(
 agents_manager = Agents()
 Instrumentator().instrument(app).expose(app, include_in_schema=False)
 
+
+class Chat(BaseModel):
+    agents: list[str]
+    message: str
+
+
 class HealthResponse(BaseModel):
     status: str
 
 
+class Prompt(BaseModel):
+    prompt: str
+    max_consecutive_replies: int
+
+    @field_validator("max_consecutive_replies")
+    def validate_max_consecutive_replies(cls, value):
+        if not value:
+            return value
+        if isinstance(value, str):
+            try:
+                max_consecutive_replies = int(value)
+            except Exception:
+                raise ValueError(f"max_consecutive_replies was not passed as str: {value}")
+        elif isinstance(value, int):
+            max_consecutive_replies = value
+        else:
+            raise ValueError(f"max_consecutive_replies was not passed as int: {value}")
+        return max_consecutive_replies
+
+
 @app.get("/api/agents/{name}")
-async def get_agent_config_by_name(name: str) -> AgentsConfig:
+async def get_agent_config_by_name(name: str) -> Union[AgentsConfig, dict]:
     agent_config = agents_manager.find_agent_config(name=name)
     if agent_config:
         return agent_config
@@ -62,13 +88,13 @@ async def post_load_agents_config(agents_config: AgentsConfig):
     agents_manager.load_config(payload=agents_config)
 
 
-@app.post("/api/chat")
-async def post_chat(prompt: dict):
-    return StreamingResponse(agents_manager.chat(prompt=prompt['prompt']), media_type="text/plain")
+@app.post("/api/chat") #, response_model=Chat)
+async def post_chat(prompt: Prompt):
+    return StreamingResponse(agents_manager.chat(prompt=prompt.prompt), media_type="text/plain")
 
 
 @app.post("/api/prometheus/{port}")
-async def deploy_exporter(port: str = "8999"):
+async def deploy_exporter(port: Union[int, str]):
     from prometheus_collector import start_prometheus_server_background
     start_prometheus_server_background(port=port)
     return f"Prometheus Exporter Running on port: {port}"
