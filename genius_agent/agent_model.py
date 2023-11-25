@@ -4,7 +4,7 @@
 import glob
 import os
 from typing import List, Dict, Optional, Callable, Union
-from pydantic import BaseModel, field_validator, model_validator
+from pydantic import BaseModel, field_validator, model_validator, PrivateAttr
 from agent_functions import *  # Used for all dynamically loaded agent functions
 
 
@@ -31,14 +31,12 @@ class FunctionItem(BaseModel):
     name: str
     description: str
     parameters: Parameters
-
-
-class ToolItem(BaseModel):
     type: str
     function: str
 
-
 class FunctionMap(BaseModel):
+    print("IN FUNCTIONS MAP")
+    _function_map: dict = PrivateAttr()
     python: Callable
     bash: Callable
     media_download: Callable
@@ -46,22 +44,27 @@ class FunctionMap(BaseModel):
     read_from_file: Callable
     create_directory: Callable
 
+    class Config:
+        json_encoders = {
+            Callable: lambda v: str(v) if callable(v) else None
+        }
 
 class LLMConfig(BaseModel):
     seed: Optional[int] = 42
     temperature: Optional[float] = 0
     config_list: Optional[List[LLMModel]]
     filter_dict: Optional[FilterDict]
-    request_timeout: Optional[float]
-    repeat_penalty: Optional[float]
-    functions_directory: Optional[str]  # Directory to load custom python functions for agent
-    functions: Optional[List[FunctionItem]]  # Autogen Functions
-    tools: Optional[List[ToolItem]]  # OpenAI Functions
-    function_map: Optional[FunctionMap]
+    request_timeout: Optional[float] = None
+    repeat_penalty: Optional[float] = None
+    functions_directory: Optional[str] = None  # Directory to load custom python functions for agent
+    functions: Optional[List[FunctionItem]] = None  # Autogen Functions
+    function_map: Optional[FunctionMap] = None
 
 
     @field_validator("functions_directory")
     def get_custom_functions(cls, value):
+        if not value:
+            return []
         python_files = glob.glob(os.path.join(value, "*.py"))
         # Import each module dynamically
         for python_file in python_files:
@@ -75,21 +78,23 @@ class LLMConfig(BaseModel):
                 print(f"Error importing module {module_name}: {e}")
         return python_files
 
-    @field_validator("function_map")
-    def convert_to_callable(cls, value):
-        converted_callables = {}
-        for key, item in value.items():
-            if isinstance(item, str):
-                try:
-                    # Attempt to evaluate the string as a Python expression
-                    converted_callables[key] = eval(item)
-                except Exception:
-                    raise ValueError(f"Invalid callable string for value '{value}'")
-            elif isinstance(item, Callable):
-                converted_callables[key] = item
-            else:
-                raise ValueError(f"Invalid type for value '{value}', expected a string or callable")
-        return converted_callables
+    # @field_validator("function_map")
+    # def convert_to_callable(cls, value):
+    #     converted_callables = {}
+    #     if not value:
+    #         return converted_callables
+    #     for key, item in value.items():
+    #         if isinstance(item, str):
+    #             try:
+    #                 # Attempt to evaluate the string as a Python expression
+    #                 converted_callables[key] = eval(item)
+    #             except Exception:
+    #                 raise ValueError(f"Invalid callable string for value '{value}'")
+    #         elif isinstance(item, Callable):
+    #             converted_callables[key] = item
+    #         else:
+    #             raise ValueError(f"Invalid type for value '{value}', expected a string or callable")
+    #     return converted_callables
 
 
 class CodeExecutionConfig(BaseModel):
@@ -119,16 +124,27 @@ class AgentConfig(BaseModel):
     llm_config: Optional[Union[LLMConfig, dict]] = None
     chat_initiator: Optional[bool] = False
     instructions: Optional[str] = None
-    is_termination_msg: Optional[str] = None
+    is_termination_msg: Optional[Union[Callable, str]] = None
     human_input_mode: Optional[str] = "NEVER"
     max_consecutive_auto_reply: Optional[int] = 10
     code_execution_config: Optional[CodeExecutionConfig] = None
-    retrieve_config: Optional[RetrieveConfig] = None  # Autogen RAG
+    retrieve_config: Optional[Union[RetrieveConfig, None]] = None  # Autogen RAG
     file_ids: Optional[List[str]] = None  # OpenAI RAG - File IDs from OpenAI Account
-    teach_config: Optional[TeachConfig] = None
+    teach_config: Optional[Union[TeachConfig, None]] = None
     human: Optional[str] = None
     persona: Optional[str] = None
     agent_type: str
+
+    @classmethod
+    def from_orm(cls, db_model):
+        instance = super().from_orm(db_model)
+        instance.__post_init__()
+        return instance
+
+    def __post_init__(self):
+        if isinstance(self.is_termination_msg, Callable):
+            self.is_termination_msg = str(self.is_termination_msg)
+
 
     @field_validator("is_termination_msg")
     def convert_to_callable(cls, value):
@@ -143,6 +159,25 @@ class AgentConfig(BaseModel):
             raise ValueError(f"Invalid type for value '{value}', expected a string or callable")
         return converted_callables
 
+    @field_validator("llm_config")
+    def validate_llm_config(cls, value):
+        llm_config = value
+        if isinstance(value, dict):
+            try:
+                llm_config = LLMConfig.model_validate(value)
+            except Exception:
+                pass
+                # print(f"Invalid llm_config but passing '{value}'")
+        elif isinstance(value, LLMConfig):
+            llm_config = value
+        elif value is None:
+            llm_config = value
+        else:
+            raise ValueError(
+                f"Invalid type for llm_config '{value}', expected a dict with contents of llm_config")
+        print(f"VALID LLM CONFIG: {llm_config}")
+        return llm_config
+
     @field_validator("retrieve_config")
     def validate_retrieve_config(cls, value):
         if isinstance(value, RetrieveConfig):
@@ -151,6 +186,8 @@ class AgentConfig(BaseModel):
             except Exception:
                 raise ValueError(f"Invalid retrieve_config '{value}'")
         elif isinstance(value, RetrieveConfig):
+            retrieve_config = value
+        elif value is None:
             retrieve_config = value
         else:
             raise ValueError(
@@ -166,6 +203,8 @@ class AgentConfig(BaseModel):
             except Exception:
                 raise ValueError(f"Invalid teach_config '{value}'")
         elif isinstance(value, TeachConfig):
+            teach_config = value
+        elif value is None:
             teach_config = value
         else:
             raise ValueError(f"Invalid type for teach_config '{value}', expected a dict with contents of teach_config")

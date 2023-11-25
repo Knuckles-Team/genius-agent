@@ -48,7 +48,7 @@ except ImportError:
 # Python Agents Class with Autogen Models
 class Agents:
     def __init__(self):
-        self.agents_config = None
+        self.agents_config = self.load_config(file="./agent_configs.yml")
         self.agents = None
         self.agent_types = []
         self.chat_initiator = None
@@ -59,7 +59,7 @@ class Agents:
     def set_chat_initiator(self, name):
         self.chat_initiator = self.find_agent(name)
 
-    def load_config(self, file: str = None, payload: dict = None) -> AgentsConfig:
+    def load_config(self, file: str = None, payload: Union[AgentsConfig, dict] = None) -> AgentsConfig:
         if file is not None:
             agents_data = yaml.safe_load(Path(file).read_text())
         else:

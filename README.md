@@ -75,154 +75,6 @@ genius-agent --prompt "Create Snake using Pygame" --file "./agent_configs.yml"
 ```yaml
 ---
 agents:
-  - name: admin
-    chat_initiator: true
-    instructions: A human admin. Interact with the planner to discuss the plan. Plan
-      execution needs to be approved by this admin. Reply `TERMINATE` in the end when
-      everything is done.
-    llm_config:
-      seed: 42
-      temperature: 0
-      config_list:
-        - model: yarn-mistral-7b-128k.Q3_K_L
-          api_key: NA
-          api_base: http://localhost:8080/v1
-          api_type: openai
-          api_version: v1
-        - model: llama-2-7b-chat.ggmlv3.q4_K_S
-          api_key: NA
-          api_base: http://localhost:8080/v1
-          api_type: openai
-          api_version: v1
-        - model: mistral-7b--instruct-v0.1.Q5_K_S
-          api_key: NA
-          api_base: http://localhost:8080/v1
-          api_type: openai
-          api_version: v1
-        - model: TheBloke/WizardLM-13B-V1.2-GGML/wizardlm-13b-v1.2.ggmlv3.q2_K.bin
-          api_key: NA
-          api_base: http://localhost:8080/v1
-          api_type: openai
-          api_version: v1
-        - model: codellama-7b-instruct
-          api_key: NA
-          api_base: http://localhost:8080/v1
-          api_type: openai
-          api_version: v1
-        - model: gpt-4-32k
-          api_key: NA
-        - model: gpt-4-32k
-          api_key: NA
-          api_base: NA
-          api_type: azure
-          api_version: 2023-06-01-preview
-        - model: gpt-4-32k-0314
-          api_key: NA
-          api_base: NA
-          api_type: azure
-          api_version: 2023-06-01-preview
-      filter_dict:
-        model:
-          - yarn-mistral-7b-128k.Q3_K_L
-          - llama-2-7b-chat.ggmlv3.q4_K_S
-          - mistral-7b--instruct-v0.1.Q5_K_S
-          - TheBloke/WizardLM-13B-V1.2-GGML/wizardlm-13b-v1.2.ggmlv3.q2_K.bin
-          - mistral-7b-instruct-v0.1.Q8_0
-          - codellama-7b-instruct
-      request_timeout: 3600
-      repeat_penalty: 1.1
-      functions:
-        - name: python
-          description: run arbitrary python and return the result
-          parameters:
-            type: object
-            properties:
-              cell:
-                type: string
-                description: Valid Python code to execute.
-            required:
-              - cell
-        - name: bash
-          description: run a shell script and return the execution result.
-          parameters:
-            type: object
-            properties:
-              script:
-                type: string
-                description: Valid shell script to execute
-            required:
-              - script
-        - name: media_downloader
-          description: run media-downloader to download a video or audio from the internet
-          parameters:
-            type: object
-            properties:
-              url:
-                type: string
-                description: Valid url to download
-              audio:
-                type: bool
-                description: This optional argument is used if the link wants to be saved
-                  as an mp3 or audio only
-              directory:
-                type: string
-                description: Directory to save the video
-            required:
-              - url
-        - name: write_to_file
-          description: Use this function to write content to a file
-          parameters:
-            type: object
-            properties:
-              filename:
-                type: string
-                description: The filename to write to
-              content:
-                type: string
-                description: The content to write
-            required:
-              - filename
-              - content
-        - name: read_from_file
-          description: Use this function to read the content of a file
-          parameters:
-            type: object
-            properties:
-              filename:
-                type: string
-                description: The filename to read from
-            required:
-              - filename
-        - name: read_pdf
-          description: Use this function to read the content of a pdf file
-          parameters:
-            type: object
-            properties:
-              filename:
-                type: string
-                description: The filename to read from
-            required:
-              - filename
-        - name: create_directory
-          description: Use this function to create a directory
-          parameters:
-            type: object
-            properties:
-              directory_path:
-                type: string
-                description: The directory path to create
-            required:
-              - directory_path
-      function_map:
-        python: exec_python
-        bash: exec_bash
-        media_download: exec_media_downloader
-        write_to_file: exec_write_to_file
-        read_from_file: exec_read_from_file
-        create_directory: exec_create_directory
-    agent_type: user_proxy
-    is_termination_msg: 'lambda x: isinstance(x, dict) and x.get("content") is not None and "TERMINATE" == str(x.get("content", ""))[-9:].upper()'
-
   - name: user_proxy
     code_execution_config:
       work_dir: coding
@@ -231,51 +83,14 @@ agents:
       seed: 42
       temperature: 0
       config_list:
-        - model: yarn-mistral-7b-128k.Q3_K_L
+        - model: mistral-7b-instruct-v0.1.Q4_K_S
           api_key: NA
           api_base: http://localhost:8080/v1
           api_type: openai
           api_version: v1
-        - model: llama-2-7b-chat.ggmlv3.q4_K_S
-          api_key: NA
-          api_base: http://localhost:8080/v1
-          api_type: openai
-          api_version: v1
-        - model: mistral-7b--instruct-v0.1.Q5_K_S
-          api_key: NA
-          api_base: http://localhost:8080/v1
-          api_type: openai
-          api_version: v1
-        - model: TheBloke/WizardLM-13B-V1.2-GGML/wizardlm-13b-v1.2.ggmlv3.q2_K.bin
-          api_key: NA
-          api_base: http://localhost:8080/v1
-          api_type: openai
-          api_version: v1
-        - model: codellama-7b-instruct
-          api_key: NA
-          api_base: http://localhost:8080/v1
-          api_type: openai
-          api_version: v1
-        - model: gpt-4-32k
-          api_key: NA
-        - model: gpt-4-32k
-          api_key: NA
-          api_base: NA
-          api_type: azure
-          api_version: 2023-06-01-preview
-        - model: gpt-4-32k-0314
-          api_key: NA
-          api_base: NA
-          api_type: azure
-          api_version: 2023-06-01-preview
       filter_dict:
         model:
-          - yarn-mistral-7b-128k.Q3_K_L
-          - llama-2-7b-chat.ggmlv3.q4_K_S
-          - mistral-7b--instruct-v0.1.Q5_K_S
-          - TheBloke/WizardLM-13B-V1.2-GGML/wizardlm-13b-v1.2.ggmlv3.q2_K.bin
-          - mistral-7b-instruct-v0.1.Q8_0
-          - codellama-7b-instruct
+          - mistral-7b-instruct-v0.1.Q4_K_S
       request_timeout: 3600
       repeat_penalty: 1.1
       functions:
@@ -372,148 +187,24 @@ agents:
     max_consecutive_auto_reply: 10
     agent_type: user_proxy
 
-  - name: executor
+  - name: validator
     llm_config:
       seed: 42
       temperature: 0
       config_list:
-        - model: yarn-mistral-7b-128k.Q3_K_L
+        - model: mistral-7b-instruct-v0.1.Q4_K_S
           api_key: NA
           api_base: http://localhost:8080/v1
           api_type: openai
           api_version: v1
-        - model: llama-2-7b-chat.ggmlv3.q4_K_S
-          api_key: NA
-          api_base: http://localhost:8080/v1
-          api_type: openai
-          api_version: v1
-        - model: mistral-7b--instruct-v0.1.Q5_K_S
-          api_key: NA
-          api_base: http://localhost:8080/v1
-          api_type: openai
-          api_version: v1
-        - model: TheBloke/WizardLM-13B-V1.2-GGML/wizardlm-13b-v1.2.ggmlv3.q2_K.bin
-          api_key: NA
-          api_base: http://localhost:8080/v1
-          api_type: openai
-          api_version: v1
-        - model: codellama-7b-instruct
-          api_key: NA
-          api_base: http://localhost:8080/v1
-          api_type: openai
-          api_version: v1
-        - model: gpt-4-32k
-          api_key: NA
-        - model: gpt-4-32k
-          api_key: NA
-          api_base: NA
-          api_type: azure
-          api_version: 2023-06-01-preview
-        - model: gpt-4-32k-0314
-          api_key: NA
-          api_base: NA
-          api_type: azure
-          api_version: 2023-06-01-preview
       filter_dict:
         model:
-          - yarn-mistral-7b-128k.Q3_K_L
-          - llama-2-7b-chat.ggmlv3.q4_K_S
-          - mistral-7b--instruct-v0.1.Q5_K_S
-          - TheBloke/WizardLM-13B-V1.2-GGML/wizardlm-13b-v1.2.ggmlv3.q2_K.bin
-          - mistral-7b-instruct-v0.1.Q8_0
-          - codellama-7b-instruct
+          - mistral-7b-instruct-v0.1.Q4_K_S
       request_timeout: 3600
       repeat_penalty: 1.1
       functions:
-        - name: python
-          description: run arbitrary python and return the result
-          parameters:
-            type: object
-            properties:
-              cell:
-                type: string
-                description: Valid Python code to execute.
-            required:
-              - cell
-        - name: bash
-          description: run a shell script and return the execution result.
-          parameters:
-            type: object
-            properties:
-              script:
-                type: string
-                description: Valid shell script to execute
-            required:
-              - script
-        - name: media_downloader
-          description: run media-downloader to download a video or audio from the internet
-          parameters:
-            type: object
-            properties:
-              url:
-                type: string
-                description: Valid url to download
-              audio:
-                type: bool
-                description: This optional argument is used if the link wants to be saved
-                  as an mp3 or audio only
-              directory:
-                type: string
-                description: Directory to save the video
-            required:
-              - url
-        - name: write_to_file
-          description: Use this function to write content to a file
-          parameters:
-            type: object
-            properties:
-              filename:
-                type: string
-                description: The filename to write to
-              content:
-                type: string
-                description: The content to write
-            required:
-              - filename
-              - content
-        - name: read_from_file
-          description: Use this function to read the content of a file
-          parameters:
-            type: object
-            properties:
-              filename:
-                type: string
-                description: The filename to read from
-            required:
-              - filename
-        - name: read_pdf
-          description: Use this function to read the content of a pdf file
-          parameters:
-            type: object
-            properties:
-              filename:
-                type: string
-                description: The filename to read from
-            required:
-              - filename
-        - name: create_directory
-          description: Use this function to create a directory
-          parameters:
-            type: object
-            properties:
-              directory_path:
-                type: string
-                description: The directory path to create
-            required:
-              - directory_path
       function_map:
-        python: exec_python
-        bash: exec_bash
-        media_download: exec_media_downloader
-        write_to_file: exec_write_to_file
-        read_from_file: exec_read_from_file
-        create_directory: exec_create_directory
-    instructions: Executor. Execute the code written by the engineer and report the
+    instructions: Validator. Execute the code written by the engineer and report the
       result. Reply `TERMINATE` in the end when everything is done.
     is_termination_msg: 'lambda x: isinstance(x, dict) and x.get("content") is not None and "TERMINATE" == str(x.get("content", ""))[-9:].upper()'
     agent_type: user_proxy
@@ -523,51 +214,14 @@ agents:
       seed: 42
       temperature: 0
       config_list:
-        - model: yarn-mistral-7b-128k.Q3_K_L
+        - model: mistral-7b-instruct-v0.1.Q4_K_S
           api_key: NA
           api_base: http://localhost:8080/v1
           api_type: openai
           api_version: v1
-        - model: llama-2-7b-chat.ggmlv3.q4_K_S
-          api_key: NA
-          api_base: http://localhost:8080/v1
-          api_type: openai
-          api_version: v1
-        - model: mistral-7b--instruct-v0.1.Q5_K_S
-          api_key: NA
-          api_base: http://localhost:8080/v1
-          api_type: openai
-          api_version: v1
-        - model: TheBloke/WizardLM-13B-V1.2-GGML/wizardlm-13b-v1.2.ggmlv3.q2_K.bin
-          api_key: NA
-          api_base: http://localhost:8080/v1
-          api_type: openai
-          api_version: v1
-        - model: codellama-7b-instruct
-          api_key: NA
-          api_base: http://localhost:8080/v1
-          api_type: openai
-          api_version: v1
-        - model: gpt-4-32k
-          api_key: NA
-        - model: gpt-4-32k
-          api_key: NA
-          api_base: NA
-          api_type: azure
-          api_version: 2023-06-01-preview
-        - model: gpt-4-32k-0314
-          api_key: NA
-          api_base: NA
-          api_type: azure
-          api_version: 2023-06-01-preview
       filter_dict:
         model:
-          - yarn-mistral-7b-128k.Q3_K_L
-          - llama-2-7b-chat.ggmlv3.q4_K_S
-          - mistral-7b--instruct-v0.1.Q5_K_S
-          - TheBloke/WizardLM-13B-V1.2-GGML/wizardlm-13b-v1.2.ggmlv3.q2_K.bin
-          - mistral-7b-instruct-v0.1.Q8_0
-          - codellama-7b-instruct
+          - mistral-7b-instruct-v0.1.Q4_K_S
       request_timeout: 3600
       repeat_penalty: 1.1
       functions:
@@ -679,14 +333,14 @@ agents:
       seed: 42
       temperature: 0
       config_list:
-        - model: yarn-mistral-7b-128k.Q3_K_L
+        - model: mistral-7b-instruct-v0.1.Q4_K_S
           api_key: NA
           api_base: http://localhost:8080/v1
           api_type: openai
           api_version: v1
       filter_dict:
         model:
-          - yarn-mistral-7b-128k.Q3_K_L
+          - mistral-7b-instruct-v0.1.Q4_K_S
       request_timeout: 3600
       repeat_penalty: 1.1
       functions:
@@ -707,293 +361,23 @@ agents:
     is_termination_msg: 'lambda x: isinstance(x, dict) and x.get("content") is not None and "TERMINATE" == str(x.get("content", ""))[-9:].upper()'
     agent_type: assistant
 
-  - name: scientist
-    llm_config:
-      seed: 42
-      temperature: 0
-      config_list:
-        - model: yarn-mistral-7b-128k.Q3_K_L
-          api_key: NA
-          api_base: http://localhost:8080/v1
-          api_type: openai
-          api_version: v1
-        - model: llama-2-7b-chat.ggmlv3.q4_K_S
-          api_key: NA
-          api_base: http://localhost:8080/v1
-          api_type: openai
-          api_version: v1
-        - model: mistral-7b--instruct-v0.1.Q5_K_S
-          api_key: NA
-          api_base: http://localhost:8080/v1
-          api_type: openai
-          api_version: v1
-        - model: TheBloke/WizardLM-13B-V1.2-GGML/wizardlm-13b-v1.2.ggmlv3.q2_K.bin
-          api_key: NA
-          api_base: http://localhost:8080/v1
-          api_type: openai
-          api_version: v1
-        - model: codellama-7b-instruct
-          api_key: NA
-          api_base: http://localhost:8080/v1
-          api_type: openai
-          api_version: v1
-        - model: gpt-4-32k
-          api_key: NA
-        - model: gpt-4-32k
-          api_key: NA
-          api_base: NA
-          api_type: azure
-          api_version: 2023-06-01-preview
-        - model: gpt-4-32k-0314
-          api_key: NA
-          api_base: NA
-          api_type: azure
-          api_version: 2023-06-01-preview
-      filter_dict:
-        model:
-          - yarn-mistral-7b-128k.Q3_K_L
-          - llama-2-7b-chat.ggmlv3.q4_K_S
-          - mistral-7b--instruct-v0.1.Q5_K_S
-          - TheBloke/WizardLM-13B-V1.2-GGML/wizardlm-13b-v1.2.ggmlv3.q2_K.bin
-          - mistral-7b-instruct-v0.1.Q8_0
-          - codellama-7b-instruct
-      request_timeout: 3600
-      repeat_penalty: 1.1
-      functions:
-        - name: python
-          description: run arbitrary python and return the result
-          parameters:
-            type: object
-            properties:
-              cell:
-                type: string
-                description: Valid Python code to execute.
-            required:
-              - cell
-        - name: bash
-          description: run a shell script and return the execution result.
-          parameters:
-            type: object
-            properties:
-              script:
-                type: string
-                description: Valid shell script to execute
-            required:
-              - script
-        - name: media_downloader
-          description: run media-downloader to download a video or audio from the internet
-          parameters:
-            type: object
-            properties:
-              url:
-                type: string
-                description: Valid url to download
-              audio:
-                type: bool
-                description: This optional argument is used if the link wants to be saved
-                  as an mp3 or audio only
-              directory:
-                type: string
-                description: Directory to save the video
-            required:
-              - url
-        - name: write_to_file
-          description: Use this function to write content to a file
-          parameters:
-            type: object
-            properties:
-              filename:
-                type: string
-                description: The filename to write to
-              content:
-                type: string
-                description: The content to write
-            required:
-              - filename
-              - content
-        - name: read_from_file
-          description: Use this function to read the content of a file
-          parameters:
-            type: object
-            properties:
-              filename:
-                type: string
-                description: The filename to read from
-            required:
-              - filename
-        - name: read_pdf
-          description: Use this function to read the content of a pdf file
-          parameters:
-            type: object
-            properties:
-              filename:
-                type: string
-                description: The filename to read from
-            required:
-              - filename
-        - name: create_directory
-          description: Use this function to create a directory
-          parameters:
-            type: object
-            properties:
-              directory_path:
-                type: string
-                description: The directory path to create
-            required:
-              - directory_path
-      function_map:
-        python: exec_python
-        bash: exec_bash
-        media_download: exec_media_downloader
-        write_to_file: exec_write_to_file
-        read_from_file: exec_read_from_file
-        create_directory: exec_create_directory
-    instructions: Scientist. You follow an approved plan. You are able to categorize
-      papers after seeing their abstracts printed. You don't write code.
-    is_termination_msg: 'lambda x: isinstance(x, dict) and x.get("content") is not None and "TERMINATE" == str(x.get("content", ""))[-9:].upper()'
-    agent_type: assistant
-
   - name: planner
     llm_config:
       seed: 42
       temperature: 0
       config_list:
-        - model: yarn-mistral-7b-128k.Q3_K_L
+        - model: mistral-7b-instruct-v0.1.Q4_K_S
           api_key: NA
           api_base: http://localhost:8080/v1
           api_type: openai
           api_version: v1
-        - model: llama-2-7b-chat.ggmlv3.q4_K_S
-          api_key: NA
-          api_base: http://localhost:8080/v1
-          api_type: openai
-          api_version: v1
-        - model: mistral-7b--instruct-v0.1.Q5_K_S
-          api_key: NA
-          api_base: http://localhost:8080/v1
-          api_type: openai
-          api_version: v1
-        - model: TheBloke/WizardLM-13B-V1.2-GGML/wizardlm-13b-v1.2.ggmlv3.q2_K.bin
-          api_key: NA
-          api_base: http://localhost:8080/v1
-          api_type: openai
-          api_version: v1
-        - model: codellama-7b-instruct
-          api_key: NA
-          api_base: http://localhost:8080/v1
-          api_type: openai
-          api_version: v1
-        - model: gpt-4-32k
-          api_key: NA
-        - model: gpt-4-32k
-          api_key: NA
-          api_base: NA
-          api_type: azure
-          api_version: 2023-06-01-preview
-        - model: gpt-4-32k-0314
-          api_key: NA
-          api_base: NA
-          api_type: azure
-          api_version: 2023-06-01-preview
       filter_dict:
         model:
-          - yarn-mistral-7b-128k.Q3_K_L
-          - llama-2-7b-chat.ggmlv3.q4_K_S
-          - mistral-7b--instruct-v0.1.Q5_K_S
-          - TheBloke/WizardLM-13B-V1.2-GGML/wizardlm-13b-v1.2.ggmlv3.q2_K.bin
-          - mistral-7b-instruct-v0.1.Q8_0
-          - codellama-7b-instruct
+          - mistral-7b-instruct-v0.1.Q4_K_S
       request_timeout: 3600
       repeat_penalty: 1.1
       functions:
-        - name: python
-          description: run arbitrary python and return the result
-          parameters:
-            type: object
-            properties:
-              cell:
-                type: string
-                description: Valid Python code to execute.
-            required:
-              - cell
-        - name: bash
-          description: run a shell script and return the execution result.
-          parameters:
-            type: object
-            properties:
-              script:
-                type: string
-                description: Valid shell script to execute
-            required:
-              - script
-        - name: media_downloader
-          description: run media-downloader to download a video or audio from the internet
-          parameters:
-            type: object
-            properties:
-              url:
-                type: string
-                description: Valid url to download
-              audio:
-                type: bool
-                description: This optional argument is used if the link wants to be saved
-                  as an mp3 or audio only
-              directory:
-                type: string
-                description: Directory to save the video
-            required:
-              - url
-        - name: write_to_file
-          description: Use this function to write content to a file
-          parameters:
-            type: object
-            properties:
-              filename:
-                type: string
-                description: The filename to write to
-              content:
-                type: string
-                description: The content to write
-            required:
-              - filename
-              - content
-        - name: read_from_file
-          description: Use this function to read the content of a file
-          parameters:
-            type: object
-            properties:
-              filename:
-                type: string
-                description: The filename to read from
-            required:
-              - filename
-        - name: read_pdf
-          description: Use this function to read the content of a pdf file
-          parameters:
-            type: object
-            properties:
-              filename:
-                type: string
-                description: The filename to read from
-            required:
-              - filename
-        - name: create_directory
-          description: Use this function to create a directory
-          parameters:
-            type: object
-            properties:
-              directory_path:
-                type: string
-                description: The directory path to create
-            required:
-              - directory_path
       function_map:
-        python: exec_python
-        bash: exec_bash
-        media_download: exec_media_downloader
-        write_to_file: exec_write_to_file
-        read_from_file: exec_read_from_file
-        create_directory: exec_create_directory
     instructions: Planner. Suggest a plan. Revise the plan based on feedback from
       admin, critic, and aid, until admin approval. The plan may involve an engineer
       who can write code and a scientist who doesn't write code. Explain the plan first.
@@ -1002,154 +386,7 @@ agents:
     is_termination_msg: 'lambda x: isinstance(x, dict) and x.get("content") is not None and "TERMINATE" == str(x.get("content", ""))[-9:].upper()'
     agent_type: assistant
 
-  - name: critic
-    llm_config:
-      seed: 42
-      temperature: 0
-      config_list:
-        - model: yarn-mistral-7b-128k.Q3_K_L
-          api_key: NA
-          api_base: http://localhost:8080/v1
-          api_type: openai
-          api_version: v1
-        - model: llama-2-7b-chat.ggmlv3.q4_K_S
-          api_key: NA
-          api_base: http://localhost:8080/v1
-          api_type: openai
-          api_version: v1
-        - model: mistral-7b--instruct-v0.1.Q5_K_S
-          api_key: NA
-          api_base: http://localhost:8080/v1
-          api_type: openai
-          api_version: v1
-        - model: TheBloke/WizardLM-13B-V1.2-GGML/wizardlm-13b-v1.2.ggmlv3.q2_K.bin
-          api_key: NA
-          api_base: http://localhost:8080/v1
-          api_type: openai
-          api_version: v1
-        - model: codellama-7b-instruct
-          api_key: NA
-          api_base: http://localhost:8080/v1
-          api_type: openai
-          api_version: v1
-        - model: gpt-4-32k
-          api_key: NA
-        - model: gpt-4-32k
-          api_key: NA
-          api_base: NA
-          api_type: azure
-          api_version: 2023-06-01-preview
-        - model: gpt-4-32k-0314
-          api_key: NA
-          api_base: NA
-          api_type: azure
-          api_version: 2023-06-01-preview
-      filter_dict:
-        model:
-          - yarn-mistral-7b-128k.Q3_K_L
-          - llama-2-7b-chat.ggmlv3.q4_K_S
-          - mistral-7b--instruct-v0.1.Q5_K_S
-          - TheBloke/WizardLM-13B-V1.2-GGML/wizardlm-13b-v1.2.ggmlv3.q2_K.bin
-          - mistral-7b-instruct-v0.1.Q8_0
-          - codellama-7b-instruct
-      request_timeout: 3600
-      repeat_penalty: 1.1
-      functions:
-        - name: python
-          description: run arbitrary python and return the result
-          parameters:
-            type: object
-            properties:
-              cell:
-                type: string
-                description: Valid Python code to execute.
-            required:
-              - cell
-        - name: bash
-          description: run a shell script and return the execution result.
-          parameters:
-            type: object
-            properties:
-              script:
-                type: string
-                description: Valid shell script to execute
-            required:
-              - script
-        - name: media_downloader
-          description: run media-downloader to download a video or audio from the internet
-          parameters:
-            type: object
-            properties:
-              url:
-                type: string
-                description: Valid url to download
-              audio:
-                type: bool
-                description: This optional argument is used if the link wants to be saved
-                  as an mp3 or audio only
-              directory:
-                type: string
-                description: Directory to save the video
-            required:
-              - url
-        - name: write_to_file
-          description: Use this function to write content to a file
-          parameters:
-            type: object
-            properties:
-              filename:
-                type: string
-                description: The filename to write to
-              content:
-                type: string
-                description: The content to write
-            required:
-              - filename
-              - content
-        - name: read_from_file
-          description: Use this function to read the content of a file
-          parameters:
-            type: object
-            properties:
-              filename:
-                type: string
-                description: The filename to read from
-            required:
-              - filename
-        - name: read_pdf
-          description: Use this function to read the content of a pdf file
-          parameters:
-            type: object
-            properties:
-              filename:
-                type: string
-                description: The filename to read from
-            required:
-              - filename
-        - name: create_directory
-          description: Use this function to create a directory
-          parameters:
-            type: object
-            properties:
-              directory_path:
-                type: string
-                description: The directory path to create
-            required:
-              - directory_path
-      function_map:
-        python: exec_python
-        bash: exec_bash
-        media_download: exec_media_downloader
-        write_to_file: exec_write_to_file
-        read_from_file: exec_read_from_file
-        create_directory: exec_create_directory
-    instructions: Critic. Double check plan, claims, code from other agents and provide
-      feedback. "Check whether the plan includes adding verifiable info such as source
-      URL. Reply `TERMINATE` in the end when everything is done.
-    is_termination_msg: 'lambda x: isinstance(x, dict) and x.get("content") is not None and "TERMINATE" == str(x.get("content", ""))[-9:].upper()'
-    agent_type: assistant
-
-  - name: genius_engineer
+  - name: retrieve_engineer
     llm_config:
       seed: 42
       temperature: 0
@@ -1307,7 +544,7 @@ agents:
       model: "gpt-4" # Only for determining token size: Options are: 32k 32000 , 16k for 16000 gpt-4 8000 or something else for 4000
     agent_type: retrieve_user_proxy
 
-  - name: genius_assistant
+  - name: retrieve_assistant
     llm_config:
       seed: 42
       temperature: 0
@@ -1324,13 +561,11 @@ agents:
       repeat_penalty: 1.1
       functions:
       function_map:
-    instructions: Critic. Double check plan, claims, code from other agents and provide
-      feedback. "Check whether the plan includes adding verifiable info such as source
-      URL. Reply `TERMINATE` in the end when everything is done.
+    instructions: Retrieve assistant. You are in charge of providing information to the other agents relevant to the task at hand.
     is_termination_msg: 'lambda x: isinstance(x, dict) and x.get("content") is not None and "TERMINATE" == str(x.get("content", ""))[-9:].upper()'
     agent_type: retrieve_assistant
 
-  - name: genius_learner
+  - name: teachable_assistant
     llm_config:
       seed: 42
       temperature: 0
@@ -1386,7 +621,9 @@ agents:
     agent_type: gpt_assistant
 
 
-```            
+```
+
+
 </details>
 
 
@@ -1396,219 +633,6 @@ agents:
 ```json
 {
   "agents": [
-    {
-      "name": "admin",
-      "chat_initiator": true,
-      "instructions": "A human admin. Interact with the planner to discuss the plan. Plan execution needs to be approved by this admin. Reply `TERMINATE` in the end when everything is done.",
-      "llm_config": {
-        "seed": 42,
-        "temperature": 0,
-        "config_list": [
-          {
-            "model": "yarn-mistral-7b-128k.Q3_K_L",
-            "api_key": "NA",
-            "api_base": "http://localhost:8080/v1",
-            "api_type": "openai",
-            "api_version": "v1"
-          },
-          {
-            "model": "llama-2-7b-chat.ggmlv3.q4_K_S",
-            "api_key": "NA",
-            "api_base": "http://localhost:8080/v1",
-            "api_type": "openai",
-            "api_version": "v1"
-          },
-          {
-            "model": "mistral-7b--instruct-v0.1.Q5_K_S",
-            "api_key": "NA",
-            "api_base": "http://localhost:8080/v1",
-            "api_type": "openai",
-            "api_version": "v1"
-          },
-          {
-            "model": "TheBloke/WizardLM-13B-V1.2-GGML/wizardlm-13b-v1.2.ggmlv3.q2_K.bin",
-            "api_key": "NA",
-            "api_base": "http://localhost:8080/v1",
-            "api_type": "openai",
-            "api_version": "v1"
-          },
-          {
-            "model": "codellama-7b-instruct",
-            "api_key": "NA",
-            "api_base": "http://localhost:8080/v1",
-            "api_type": "openai",
-            "api_version": "v1"
-          },
-          {
-            "model": "gpt-4-32k",
-            "api_key": "NA"
-          },
-          {
-            "model": "gpt-4-32k",
-            "api_key": "NA",
-            "api_base": "NA",
-            "api_type": "azure",
-            "api_version": "2023-06-01-preview"
-          },
-          {
-            "model": "gpt-4-32k-0314",
-            "api_key": "NA",
-            "api_base": "NA",
-            "api_type": "azure",
-            "api_version": "2023-06-01-preview"
-          }
-        ],
-        "filter_dict": {
-          "model": [
-            "yarn-mistral-7b-128k.Q3_K_L",
-            "llama-2-7b-chat.ggmlv3.q4_K_S",
-            "mistral-7b--instruct-v0.1.Q5_K_S",
-            "TheBloke/WizardLM-13B-V1.2-GGML/wizardlm-13b-v1.2.ggmlv3.q2_K.bin",
-            "mistral-7b-instruct-v0.1.Q8_0",
-            "codellama-7b-instruct"
-          ]
-        },
-        "request_timeout": 3600,
-        "repeat_penalty": 1.1,
-        "functions": [
-          {
-            "name": "python",
-            "description": "run arbitrary python and return the result",
-            "parameters": {
-              "type": "object",
-              "properties": {
-                "cell": {
-                  "type": "string",
-                  "description": "Valid Python code to execute."
-                }
-              },
-              "required": [
-                "cell"
-              ]
-            }
-          },
-          {
-            "name": "bash",
-            "description": "run a shell script and return the execution result.",
-            "parameters": {
-              "type": "object",
-              "properties": {
-                "script": {
-                  "type": "string",
-                  "description": "Valid shell script to execute"
-                }
-              },
-              "required": [
-                "script"
-              ]
-            }
-          },
-          {
-            "name": "media_downloader",
-            "description": "run media-downloader to download a video or audio from the internet",
-            "parameters": {
-              "type": "object",
-              "properties": {
-                "url": {
-                  "type": "string",
-                  "description": "Valid url to download"
-                },
-                "audio": {
-                  "type": "bool",
-                  "description": "This optional argument is used if the link wants to be saved as an mp3 or audio only"
-                },
-                "directory": {
-                  "type": "string",
-                  "description": "Directory to save the video"
-                }
-              },
-              "required": [
-                "url"
-              ]
-            }
-          },
-          {
-            "name": "write_to_file",
-            "description": "Use this function to write content to a file",
-            "parameters": {
-              "type": "object",
-              "properties": {
-                "filename": {
-                  "type": "string",
-                  "description": "The filename to write to"
-                },
-                "content": {
-                  "type": "string",
-                  "description": "The content to write"
-                }
-              },
-              "required": [
-                "filename",
-                "content"
-              ]
-            }
-          },
-          {
-            "name": "read_from_file",
-            "description": "Use this function to read the content of a file",
-            "parameters": {
-              "type": "object",
-              "properties": {
-                "filename": {
-                  "type": "string",
-                  "description": "The filename to read from"
-                }
-              },
-              "required": [
-                "filename"
-              ]
-            }
-          },
-          {
-            "name": "read_pdf",
-            "description": "Use this function to read the content of a pdf file",
-            "parameters": {
-              "type": "object",
-              "properties": {
-                "filename": {
-                  "type": "string",
-                  "description": "The filename to read from"
-                }
-              },
-              "required": [
-                "filename"
-              ]
-            }
-          },
-          {
-            "name": "create_directory",
-            "description": "Use this function to create a directory",
-            "parameters": {
-              "type": "object",
-              "properties": {
-                "directory_path": {
-                  "type": "string",
-                  "description": "The directory path to create"
-                }
-              },
-              "required": [
-                "directory_path"
-              ]
-            }
-          }
-        ],
-        "function_map": {
-          "python": "exec_python",
-          "bash": "exec_bash",
-          "media_download": "exec_media_downloader",
-          "write_to_file": "exec_write_to_file",
-          "read_from_file": "exec_read_from_file",
-          "create_directory": "exec_create_directory"
-        }
-      },
-      "agent_type": "user_proxy",
-      "is_termination_msg": "lambda x: isinstance(x, dict) and x.get(\"content\") is not None and \"TERMINATE\" == str(x.get(\"content\", \"\"))[-9:].upper()"
-    },
     {
       "name": "user_proxy",
       "code_execution_config": {
@@ -1620,67 +644,16 @@ agents:
         "temperature": 0,
         "config_list": [
           {
-            "model": "yarn-mistral-7b-128k.Q3_K_L",
+            "model": "mistral-7b-instruct-v0.1.Q4_K_S",
             "api_key": "NA",
             "api_base": "http://localhost:8080/v1",
             "api_type": "openai",
             "api_version": "v1"
-          },
-          {
-            "model": "llama-2-7b-chat.ggmlv3.q4_K_S",
-            "api_key": "NA",
-            "api_base": "http://localhost:8080/v1",
-            "api_type": "openai",
-            "api_version": "v1"
-          },
-          {
-            "model": "mistral-7b--instruct-v0.1.Q5_K_S",
-            "api_key": "NA",
-            "api_base": "http://localhost:8080/v1",
-            "api_type": "openai",
-            "api_version": "v1"
-          },
-          {
-            "model": "TheBloke/WizardLM-13B-V1.2-GGML/wizardlm-13b-v1.2.ggmlv3.q2_K.bin",
-            "api_key": "NA",
-            "api_base": "http://localhost:8080/v1",
-            "api_type": "openai",
-            "api_version": "v1"
-          },
-          {
-            "model": "codellama-7b-instruct",
-            "api_key": "NA",
-            "api_base": "http://localhost:8080/v1",
-            "api_type": "openai",
-            "api_version": "v1"
-          },
-          {
-            "model": "gpt-4-32k",
-            "api_key": "NA"
-          },
-          {
-            "model": "gpt-4-32k",
-            "api_key": "NA",
-            "api_base": "NA",
-            "api_type": "azure",
-            "api_version": "2023-06-01-preview"
-          },
-          {
-            "model": "gpt-4-32k-0314",
-            "api_key": "NA",
-            "api_base": "NA",
-            "api_type": "azure",
-            "api_version": "2023-06-01-preview"
           }
         ],
         "filter_dict": {
           "model": [
-            "yarn-mistral-7b-128k.Q3_K_L",
-            "llama-2-7b-chat.ggmlv3.q4_K_S",
-            "mistral-7b--instruct-v0.1.Q5_K_S",
-            "TheBloke/WizardLM-13B-V1.2-GGML/wizardlm-13b-v1.2.ggmlv3.q2_K.bin",
-            "mistral-7b-instruct-v0.1.Q8_0",
-            "codellama-7b-instruct"
+            "mistral-7b-instruct-v0.1.Q4_K_S"
           ]
         },
         "request_timeout": 3600,
@@ -1827,214 +800,30 @@ agents:
       "agent_type": "user_proxy"
     },
     {
-      "name": "executor",
+      "name": "validator",
       "llm_config": {
         "seed": 42,
         "temperature": 0,
         "config_list": [
           {
-            "model": "yarn-mistral-7b-128k.Q3_K_L",
+            "model": "mistral-7b-instruct-v0.1.Q4_K_S",
             "api_key": "NA",
             "api_base": "http://localhost:8080/v1",
             "api_type": "openai",
             "api_version": "v1"
-          },
-          {
-            "model": "llama-2-7b-chat.ggmlv3.q4_K_S",
-            "api_key": "NA",
-            "api_base": "http://localhost:8080/v1",
-            "api_type": "openai",
-            "api_version": "v1"
-          },
-          {
-            "model": "mistral-7b--instruct-v0.1.Q5_K_S",
-            "api_key": "NA",
-            "api_base": "http://localhost:8080/v1",
-            "api_type": "openai",
-            "api_version": "v1"
-          },
-          {
-            "model": "TheBloke/WizardLM-13B-V1.2-GGML/wizardlm-13b-v1.2.ggmlv3.q2_K.bin",
-            "api_key": "NA",
-            "api_base": "http://localhost:8080/v1",
-            "api_type": "openai",
-            "api_version": "v1"
-          },
-          {
-            "model": "codellama-7b-instruct",
-            "api_key": "NA",
-            "api_base": "http://localhost:8080/v1",
-            "api_type": "openai",
-            "api_version": "v1"
-          },
-          {
-            "model": "gpt-4-32k",
-            "api_key": "NA"
-          },
-          {
-            "model": "gpt-4-32k",
-            "api_key": "NA",
-            "api_base": "NA",
-            "api_type": "azure",
-            "api_version": "2023-06-01-preview"
-          },
-          {
-            "model": "gpt-4-32k-0314",
-            "api_key": "NA",
-            "api_base": "NA",
-            "api_type": "azure",
-            "api_version": "2023-06-01-preview"
           }
         ],
         "filter_dict": {
           "model": [
-            "yarn-mistral-7b-128k.Q3_K_L",
-            "llama-2-7b-chat.ggmlv3.q4_K_S",
-            "mistral-7b--instruct-v0.1.Q5_K_S",
-            "TheBloke/WizardLM-13B-V1.2-GGML/wizardlm-13b-v1.2.ggmlv3.q2_K.bin",
-            "mistral-7b-instruct-v0.1.Q8_0",
-            "codellama-7b-instruct"
+            "mistral-7b-instruct-v0.1.Q4_K_S"
           ]
         },
         "request_timeout": 3600,
         "repeat_penalty": 1.1,
-        "functions": [
-          {
-            "name": "python",
-            "description": "run arbitrary python and return the result",
-            "parameters": {
-              "type": "object",
-              "properties": {
-                "cell": {
-                  "type": "string",
-                  "description": "Valid Python code to execute."
-                }
-              },
-              "required": [
-                "cell"
-              ]
-            }
-          },
-          {
-            "name": "bash",
-            "description": "run a shell script and return the execution result.",
-            "parameters": {
-              "type": "object",
-              "properties": {
-                "script": {
-                  "type": "string",
-                  "description": "Valid shell script to execute"
-                }
-              },
-              "required": [
-                "script"
-              ]
-            }
-          },
-          {
-            "name": "media_downloader",
-            "description": "run media-downloader to download a video or audio from the internet",
-            "parameters": {
-              "type": "object",
-              "properties": {
-                "url": {
-                  "type": "string",
-                  "description": "Valid url to download"
-                },
-                "audio": {
-                  "type": "bool",
-                  "description": "This optional argument is used if the link wants to be saved as an mp3 or audio only"
-                },
-                "directory": {
-                  "type": "string",
-                  "description": "Directory to save the video"
-                }
-              },
-              "required": [
-                "url"
-              ]
-            }
-          },
-          {
-            "name": "write_to_file",
-            "description": "Use this function to write content to a file",
-            "parameters": {
-              "type": "object",
-              "properties": {
-                "filename": {
-                  "type": "string",
-                  "description": "The filename to write to"
-                },
-                "content": {
-                  "type": "string",
-                  "description": "The content to write"
-                }
-              },
-              "required": [
-                "filename",
-                "content"
-              ]
-            }
-          },
-          {
-            "name": "read_from_file",
-            "description": "Use this function to read the content of a file",
-            "parameters": {
-              "type": "object",
-              "properties": {
-                "filename": {
-                  "type": "string",
-                  "description": "The filename to read from"
-                }
-              },
-              "required": [
-                "filename"
-              ]
-            }
-          },
-          {
-            "name": "read_pdf",
-            "description": "Use this function to read the content of a pdf file",
-            "parameters": {
-              "type": "object",
-              "properties": {
-                "filename": {
-                  "type": "string",
-                  "description": "The filename to read from"
-                }
-              },
-              "required": [
-                "filename"
-              ]
-            }
-          },
-          {
-            "name": "create_directory",
-            "description": "Use this function to create a directory",
-            "parameters": {
-              "type": "object",
-              "properties": {
-                "directory_path": {
-                  "type": "string",
-                  "description": "The directory path to create"
-                }
-              },
-              "required": [
-                "directory_path"
-              ]
-            }
-          }
-        ],
-        "function_map": {
-          "python": "exec_python",
-          "bash": "exec_bash",
-          "media_download": "exec_media_downloader",
-          "write_to_file": "exec_write_to_file",
-          "read_from_file": "exec_read_from_file",
-          "create_directory": "exec_create_directory"
-        }
+        "functions": null,
+        "function_map": null
       },
-      "instructions": "Executor. Execute the code written by the engineer and report the result. Reply `TERMINATE` in the end when everything is done.",
+      "instructions": "Validator. Execute the code written by the engineer and report the result. Reply `TERMINATE` in the end when everything is done.",
       "is_termination_msg": "lambda x: isinstance(x, dict) and x.get(\"content\") is not None and \"TERMINATE\" == str(x.get(\"content\", \"\"))[-9:].upper()",
       "agent_type": "user_proxy"
     },
@@ -2045,67 +834,16 @@ agents:
         "temperature": 0,
         "config_list": [
           {
-            "model": "yarn-mistral-7b-128k.Q3_K_L",
+            "model": "mistral-7b-instruct-v0.1.Q4_K_S",
             "api_key": "NA",
             "api_base": "http://localhost:8080/v1",
             "api_type": "openai",
             "api_version": "v1"
-          },
-          {
-            "model": "llama-2-7b-chat.ggmlv3.q4_K_S",
-            "api_key": "NA",
-            "api_base": "http://localhost:8080/v1",
-            "api_type": "openai",
-            "api_version": "v1"
-          },
-          {
-            "model": "mistral-7b--instruct-v0.1.Q5_K_S",
-            "api_key": "NA",
-            "api_base": "http://localhost:8080/v1",
-            "api_type": "openai",
-            "api_version": "v1"
-          },
-          {
-            "model": "TheBloke/WizardLM-13B-V1.2-GGML/wizardlm-13b-v1.2.ggmlv3.q2_K.bin",
-            "api_key": "NA",
-            "api_base": "http://localhost:8080/v1",
-            "api_type": "openai",
-            "api_version": "v1"
-          },
-          {
-            "model": "codellama-7b-instruct",
-            "api_key": "NA",
-            "api_base": "http://localhost:8080/v1",
-            "api_type": "openai",
-            "api_version": "v1"
-          },
-          {
-            "model": "gpt-4-32k",
-            "api_key": "NA"
-          },
-          {
-            "model": "gpt-4-32k",
-            "api_key": "NA",
-            "api_base": "NA",
-            "api_type": "azure",
-            "api_version": "2023-06-01-preview"
-          },
-          {
-            "model": "gpt-4-32k-0314",
-            "api_key": "NA",
-            "api_base": "NA",
-            "api_type": "azure",
-            "api_version": "2023-06-01-preview"
           }
         ],
         "filter_dict": {
           "model": [
-            "yarn-mistral-7b-128k.Q3_K_L",
-            "llama-2-7b-chat.ggmlv3.q4_K_S",
-            "mistral-7b--instruct-v0.1.Q5_K_S",
-            "TheBloke/WizardLM-13B-V1.2-GGML/wizardlm-13b-v1.2.ggmlv3.q2_K.bin",
-            "mistral-7b-instruct-v0.1.Q8_0",
-            "codellama-7b-instruct"
+            "mistral-7b-instruct-v0.1.Q4_K_S"
           ]
         },
         "request_timeout": 3600,
@@ -2257,7 +995,7 @@ agents:
         "temperature": 0,
         "config_list": [
           {
-            "model": "yarn-mistral-7b-128k.Q3_K_L",
+            "model": "mistral-7b-instruct-v0.1.Q4_K_S",
             "api_key": "NA",
             "api_base": "http://localhost:8080/v1",
             "api_type": "openai",
@@ -2266,7 +1004,7 @@ agents:
         ],
         "filter_dict": {
           "model": [
-            "yarn-mistral-7b-128k.Q3_K_L"
+            "mistral-7b-instruct-v0.1.Q4_K_S"
           ]
         },
         "request_timeout": 3600,
@@ -2298,643 +1036,35 @@ agents:
       "agent_type": "assistant"
     },
     {
-      "name": "scientist",
-      "llm_config": {
-        "seed": 42,
-        "temperature": 0,
-        "config_list": [
-          {
-            "model": "yarn-mistral-7b-128k.Q3_K_L",
-            "api_key": "NA",
-            "api_base": "http://localhost:8080/v1",
-            "api_type": "openai",
-            "api_version": "v1"
-          },
-          {
-            "model": "llama-2-7b-chat.ggmlv3.q4_K_S",
-            "api_key": "NA",
-            "api_base": "http://localhost:8080/v1",
-            "api_type": "openai",
-            "api_version": "v1"
-          },
-          {
-            "model": "mistral-7b--instruct-v0.1.Q5_K_S",
-            "api_key": "NA",
-            "api_base": "http://localhost:8080/v1",
-            "api_type": "openai",
-            "api_version": "v1"
-          },
-          {
-            "model": "TheBloke/WizardLM-13B-V1.2-GGML/wizardlm-13b-v1.2.ggmlv3.q2_K.bin",
-            "api_key": "NA",
-            "api_base": "http://localhost:8080/v1",
-            "api_type": "openai",
-            "api_version": "v1"
-          },
-          {
-            "model": "codellama-7b-instruct",
-            "api_key": "NA",
-            "api_base": "http://localhost:8080/v1",
-            "api_type": "openai",
-            "api_version": "v1"
-          },
-          {
-            "model": "gpt-4-32k",
-            "api_key": "NA"
-          },
-          {
-            "model": "gpt-4-32k",
-            "api_key": "NA",
-            "api_base": "NA",
-            "api_type": "azure",
-            "api_version": "2023-06-01-preview"
-          },
-          {
-            "model": "gpt-4-32k-0314",
-            "api_key": "NA",
-            "api_base": "NA",
-            "api_type": "azure",
-            "api_version": "2023-06-01-preview"
-          }
-        ],
-        "filter_dict": {
-          "model": [
-            "yarn-mistral-7b-128k.Q3_K_L",
-            "llama-2-7b-chat.ggmlv3.q4_K_S",
-            "mistral-7b--instruct-v0.1.Q5_K_S",
-            "TheBloke/WizardLM-13B-V1.2-GGML/wizardlm-13b-v1.2.ggmlv3.q2_K.bin",
-            "mistral-7b-instruct-v0.1.Q8_0",
-            "codellama-7b-instruct"
-          ]
-        },
-        "request_timeout": 3600,
-        "repeat_penalty": 1.1,
-        "functions": [
-          {
-            "name": "python",
-            "description": "run arbitrary python and return the result",
-            "parameters": {
-              "type": "object",
-              "properties": {
-                "cell": {
-                  "type": "string",
-                  "description": "Valid Python code to execute."
-                }
-              },
-              "required": [
-                "cell"
-              ]
-            }
-          },
-          {
-            "name": "bash",
-            "description": "run a shell script and return the execution result.",
-            "parameters": {
-              "type": "object",
-              "properties": {
-                "script": {
-                  "type": "string",
-                  "description": "Valid shell script to execute"
-                }
-              },
-              "required": [
-                "script"
-              ]
-            }
-          },
-          {
-            "name": "media_downloader",
-            "description": "run media-downloader to download a video or audio from the internet",
-            "parameters": {
-              "type": "object",
-              "properties": {
-                "url": {
-                  "type": "string",
-                  "description": "Valid url to download"
-                },
-                "audio": {
-                  "type": "bool",
-                  "description": "This optional argument is used if the link wants to be saved as an mp3 or audio only"
-                },
-                "directory": {
-                  "type": "string",
-                  "description": "Directory to save the video"
-                }
-              },
-              "required": [
-                "url"
-              ]
-            }
-          },
-          {
-            "name": "write_to_file",
-            "description": "Use this function to write content to a file",
-            "parameters": {
-              "type": "object",
-              "properties": {
-                "filename": {
-                  "type": "string",
-                  "description": "The filename to write to"
-                },
-                "content": {
-                  "type": "string",
-                  "description": "The content to write"
-                }
-              },
-              "required": [
-                "filename",
-                "content"
-              ]
-            }
-          },
-          {
-            "name": "read_from_file",
-            "description": "Use this function to read the content of a file",
-            "parameters": {
-              "type": "object",
-              "properties": {
-                "filename": {
-                  "type": "string",
-                  "description": "The filename to read from"
-                }
-              },
-              "required": [
-                "filename"
-              ]
-            }
-          },
-          {
-            "name": "read_pdf",
-            "description": "Use this function to read the content of a pdf file",
-            "parameters": {
-              "type": "object",
-              "properties": {
-                "filename": {
-                  "type": "string",
-                  "description": "The filename to read from"
-                }
-              },
-              "required": [
-                "filename"
-              ]
-            }
-          },
-          {
-            "name": "create_directory",
-            "description": "Use this function to create a directory",
-            "parameters": {
-              "type": "object",
-              "properties": {
-                "directory_path": {
-                  "type": "string",
-                  "description": "The directory path to create"
-                }
-              },
-              "required": [
-                "directory_path"
-              ]
-            }
-          }
-        ],
-        "function_map": {
-          "python": "exec_python",
-          "bash": "exec_bash",
-          "media_download": "exec_media_downloader",
-          "write_to_file": "exec_write_to_file",
-          "read_from_file": "exec_read_from_file",
-          "create_directory": "exec_create_directory"
-        }
-      },
-      "instructions": "Scientist. You follow an approved plan. You are able to categorize papers after seeing their abstracts printed. You don't write code.",
-      "is_termination_msg": "lambda x: isinstance(x, dict) and x.get(\"content\") is not None and \"TERMINATE\" == str(x.get(\"content\", \"\"))[-9:].upper()",
-      "agent_type": "assistant"
-    },
-    {
       "name": "planner",
       "llm_config": {
         "seed": 42,
         "temperature": 0,
         "config_list": [
           {
-            "model": "yarn-mistral-7b-128k.Q3_K_L",
+            "model": "mistral-7b-instruct-v0.1.Q4_K_S",
             "api_key": "NA",
             "api_base": "http://localhost:8080/v1",
             "api_type": "openai",
             "api_version": "v1"
-          },
-          {
-            "model": "llama-2-7b-chat.ggmlv3.q4_K_S",
-            "api_key": "NA",
-            "api_base": "http://localhost:8080/v1",
-            "api_type": "openai",
-            "api_version": "v1"
-          },
-          {
-            "model": "mistral-7b--instruct-v0.1.Q5_K_S",
-            "api_key": "NA",
-            "api_base": "http://localhost:8080/v1",
-            "api_type": "openai",
-            "api_version": "v1"
-          },
-          {
-            "model": "TheBloke/WizardLM-13B-V1.2-GGML/wizardlm-13b-v1.2.ggmlv3.q2_K.bin",
-            "api_key": "NA",
-            "api_base": "http://localhost:8080/v1",
-            "api_type": "openai",
-            "api_version": "v1"
-          },
-          {
-            "model": "codellama-7b-instruct",
-            "api_key": "NA",
-            "api_base": "http://localhost:8080/v1",
-            "api_type": "openai",
-            "api_version": "v1"
-          },
-          {
-            "model": "gpt-4-32k",
-            "api_key": "NA"
-          },
-          {
-            "model": "gpt-4-32k",
-            "api_key": "NA",
-            "api_base": "NA",
-            "api_type": "azure",
-            "api_version": "2023-06-01-preview"
-          },
-          {
-            "model": "gpt-4-32k-0314",
-            "api_key": "NA",
-            "api_base": "NA",
-            "api_type": "azure",
-            "api_version": "2023-06-01-preview"
           }
         ],
         "filter_dict": {
           "model": [
-            "yarn-mistral-7b-128k.Q3_K_L",
-            "llama-2-7b-chat.ggmlv3.q4_K_S",
-            "mistral-7b--instruct-v0.1.Q5_K_S",
-            "TheBloke/WizardLM-13B-V1.2-GGML/wizardlm-13b-v1.2.ggmlv3.q2_K.bin",
-            "mistral-7b-instruct-v0.1.Q8_0",
-            "codellama-7b-instruct"
+            "mistral-7b-instruct-v0.1.Q4_K_S"
           ]
         },
         "request_timeout": 3600,
         "repeat_penalty": 1.1,
-        "functions": [
-          {
-            "name": "python",
-            "description": "run arbitrary python and return the result",
-            "parameters": {
-              "type": "object",
-              "properties": {
-                "cell": {
-                  "type": "string",
-                  "description": "Valid Python code to execute."
-                }
-              },
-              "required": [
-                "cell"
-              ]
-            }
-          },
-          {
-            "name": "bash",
-            "description": "run a shell script and return the execution result.",
-            "parameters": {
-              "type": "object",
-              "properties": {
-                "script": {
-                  "type": "string",
-                  "description": "Valid shell script to execute"
-                }
-              },
-              "required": [
-                "script"
-              ]
-            }
-          },
-          {
-            "name": "media_downloader",
-            "description": "run media-downloader to download a video or audio from the internet",
-            "parameters": {
-              "type": "object",
-              "properties": {
-                "url": {
-                  "type": "string",
-                  "description": "Valid url to download"
-                },
-                "audio": {
-                  "type": "bool",
-                  "description": "This optional argument is used if the link wants to be saved as an mp3 or audio only"
-                },
-                "directory": {
-                  "type": "string",
-                  "description": "Directory to save the video"
-                }
-              },
-              "required": [
-                "url"
-              ]
-            }
-          },
-          {
-            "name": "write_to_file",
-            "description": "Use this function to write content to a file",
-            "parameters": {
-              "type": "object",
-              "properties": {
-                "filename": {
-                  "type": "string",
-                  "description": "The filename to write to"
-                },
-                "content": {
-                  "type": "string",
-                  "description": "The content to write"
-                }
-              },
-              "required": [
-                "filename",
-                "content"
-              ]
-            }
-          },
-          {
-            "name": "read_from_file",
-            "description": "Use this function to read the content of a file",
-            "parameters": {
-              "type": "object",
-              "properties": {
-                "filename": {
-                  "type": "string",
-                  "description": "The filename to read from"
-                }
-              },
-              "required": [
-                "filename"
-              ]
-            }
-          },
-          {
-            "name": "read_pdf",
-            "description": "Use this function to read the content of a pdf file",
-            "parameters": {
-              "type": "object",
-              "properties": {
-                "filename": {
-                  "type": "string",
-                  "description": "The filename to read from"
-                }
-              },
-              "required": [
-                "filename"
-              ]
-            }
-          },
-          {
-            "name": "create_directory",
-            "description": "Use this function to create a directory",
-            "parameters": {
-              "type": "object",
-              "properties": {
-                "directory_path": {
-                  "type": "string",
-                  "description": "The directory path to create"
-                }
-              },
-              "required": [
-                "directory_path"
-              ]
-            }
-          }
-        ],
-        "function_map": {
-          "python": "exec_python",
-          "bash": "exec_bash",
-          "media_download": "exec_media_downloader",
-          "write_to_file": "exec_write_to_file",
-          "read_from_file": "exec_read_from_file",
-          "create_directory": "exec_create_directory"
-        }
+        "functions": null,
+        "function_map": null
       },
       "instructions": "Planner. Suggest a plan. Revise the plan based on feedback from admin, critic, and aid, until admin approval. The plan may involve an engineer who can write code and a scientist who doesn't write code. Explain the plan first. Be clear which step is performed by an engineer, and which step is performed by a scientist. Reply `TERMINATE` in the end when everything is done.",
       "is_termination_msg": "lambda x: isinstance(x, dict) and x.get(\"content\") is not None and \"TERMINATE\" == str(x.get(\"content\", \"\"))[-9:].upper()",
       "agent_type": "assistant"
     },
     {
-      "name": "critic",
-      "llm_config": {
-        "seed": 42,
-        "temperature": 0,
-        "config_list": [
-          {
-            "model": "yarn-mistral-7b-128k.Q3_K_L",
-            "api_key": "NA",
-            "api_base": "http://localhost:8080/v1",
-            "api_type": "openai",
-            "api_version": "v1"
-          },
-          {
-            "model": "llama-2-7b-chat.ggmlv3.q4_K_S",
-            "api_key": "NA",
-            "api_base": "http://localhost:8080/v1",
-            "api_type": "openai",
-            "api_version": "v1"
-          },
-          {
-            "model": "mistral-7b--instruct-v0.1.Q5_K_S",
-            "api_key": "NA",
-            "api_base": "http://localhost:8080/v1",
-            "api_type": "openai",
-            "api_version": "v1"
-          },
-          {
-            "model": "TheBloke/WizardLM-13B-V1.2-GGML/wizardlm-13b-v1.2.ggmlv3.q2_K.bin",
-            "api_key": "NA",
-            "api_base": "http://localhost:8080/v1",
-            "api_type": "openai",
-            "api_version": "v1"
-          },
-          {
-            "model": "codellama-7b-instruct",
-            "api_key": "NA",
-            "api_base": "http://localhost:8080/v1",
-            "api_type": "openai",
-            "api_version": "v1"
-          },
-          {
-            "model": "gpt-4-32k",
-            "api_key": "NA"
-          },
-          {
-            "model": "gpt-4-32k",
-            "api_key": "NA",
-            "api_base": "NA",
-            "api_type": "azure",
-            "api_version": "2023-06-01-preview"
-          },
-          {
-            "model": "gpt-4-32k-0314",
-            "api_key": "NA",
-            "api_base": "NA",
-            "api_type": "azure",
-            "api_version": "2023-06-01-preview"
-          }
-        ],
-        "filter_dict": {
-          "model": [
-            "yarn-mistral-7b-128k.Q3_K_L",
-            "llama-2-7b-chat.ggmlv3.q4_K_S",
-            "mistral-7b--instruct-v0.1.Q5_K_S",
-            "TheBloke/WizardLM-13B-V1.2-GGML/wizardlm-13b-v1.2.ggmlv3.q2_K.bin",
-            "mistral-7b-instruct-v0.1.Q8_0",
-            "codellama-7b-instruct"
-          ]
-        },
-        "request_timeout": 3600,
-        "repeat_penalty": 1.1,
-        "functions": [
-          {
-            "name": "python",
-            "description": "run arbitrary python and return the result",
-            "parameters": {
-              "type": "object",
-              "properties": {
-                "cell": {
-                  "type": "string",
-                  "description": "Valid Python code to execute."
-                }
-              },
-              "required": [
-                "cell"
-              ]
-            }
-          },
-          {
-            "name": "bash",
-            "description": "run a shell script and return the execution result.",
-            "parameters": {
-              "type": "object",
-              "properties": {
-                "script": {
-                  "type": "string",
-                  "description": "Valid shell script to execute"
-                }
-              },
-              "required": [
-                "script"
-              ]
-            }
-          },
-          {
-            "name": "media_downloader",
-            "description": "run media-downloader to download a video or audio from the internet",
-            "parameters": {
-              "type": "object",
-              "properties": {
-                "url": {
-                  "type": "string",
-                  "description": "Valid url to download"
-                },
-                "audio": {
-                  "type": "bool",
-                  "description": "This optional argument is used if the link wants to be saved as an mp3 or audio only"
-                },
-                "directory": {
-                  "type": "string",
-                  "description": "Directory to save the video"
-                }
-              },
-              "required": [
-                "url"
-              ]
-            }
-          },
-          {
-            "name": "write_to_file",
-            "description": "Use this function to write content to a file",
-            "parameters": {
-              "type": "object",
-              "properties": {
-                "filename": {
-                  "type": "string",
-                  "description": "The filename to write to"
-                },
-                "content": {
-                  "type": "string",
-                  "description": "The content to write"
-                }
-              },
-              "required": [
-                "filename",
-                "content"
-              ]
-            }
-          },
-          {
-            "name": "read_from_file",
-            "description": "Use this function to read the content of a file",
-            "parameters": {
-              "type": "object",
-              "properties": {
-                "filename": {
-                  "type": "string",
-                  "description": "The filename to read from"
-                }
-              },
-              "required": [
-                "filename"
-              ]
-            }
-          },
-          {
-            "name": "read_pdf",
-            "description": "Use this function to read the content of a pdf file",
-            "parameters": {
-              "type": "object",
-              "properties": {
-                "filename": {
-                  "type": "string",
-                  "description": "The filename to read from"
-                }
-              },
-              "required": [
-                "filename"
-              ]
-            }
-          },
-          {
-            "name": "create_directory",
-            "description": "Use this function to create a directory",
-            "parameters": {
-              "type": "object",
-              "properties": {
-                "directory_path": {
-                  "type": "string",
-                  "description": "The directory path to create"
-                }
-              },
-              "required": [
-                "directory_path"
-              ]
-            }
-          }
-        ],
-        "function_map": {
-          "python": "exec_python",
-          "bash": "exec_bash",
-          "media_download": "exec_media_downloader",
-          "write_to_file": "exec_write_to_file",
-          "read_from_file": "exec_read_from_file",
-          "create_directory": "exec_create_directory"
-        }
-      },
-      "instructions": "Critic. Double check plan, claims, code from other agents and provide feedback. \"Check whether the plan includes adding verifiable info such as source URL. Reply `TERMINATE` in the end when everything is done.",
-      "is_termination_msg": "lambda x: isinstance(x, dict) and x.get(\"content\") is not None and \"TERMINATE\" == str(x.get(\"content\", \"\"))[-9:].upper()",
-      "agent_type": "assistant"
-    },
-    {
-      "name": "genius_engineer",
+      "name": "retrieve_engineer",
       "llm_config": {
         "seed": 42,
         "temperature": 0,
@@ -3159,7 +1289,7 @@ agents:
       "agent_type": "retrieve_user_proxy"
     },
     {
-      "name": "genius_assistant",
+      "name": "retrieve_assistant",
       "llm_config": {
         "seed": 42,
         "temperature": 0,
@@ -3182,12 +1312,12 @@ agents:
         "functions": null,
         "function_map": null
       },
-      "instructions": "Critic. Double check plan, claims, code from other agents and provide feedback. \"Check whether the plan includes adding verifiable info such as source URL. Reply `TERMINATE` in the end when everything is done.",
+      "instructions": "Retrieve assistant. You are in charge of providing information to the other agents relevant to the task at hand.",
       "is_termination_msg": "lambda x: isinstance(x, dict) and x.get(\"content\") is not None and \"TERMINATE\" == str(x.get(\"content\", \"\"))[-9:].upper()",
       "agent_type": "retrieve_assistant"
     },
     {
-      "name": "genius_learner",
+      "name": "teachable_assistant",
       "llm_config": {
         "seed": 42,
         "temperature": 0,
@@ -3258,7 +1388,8 @@ agents:
   ]
 }
 
-```
+```            
+
 
 </details>
 

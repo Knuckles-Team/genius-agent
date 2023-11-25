@@ -5,7 +5,7 @@ import sys
 import autogen
 import getopt
 import json
-from agent_constructs import Agents
+from agent_construct import Agents
 from pathlib import Path
 import logging
 
@@ -22,7 +22,6 @@ def genius_agent(argv):
     autogen.ChatCompletion.start_logging()
     run_flag = False
     data = None
-    chat_initiator = None
     file = None
     prompt = 'Build Tic-Tac-Toe in Pygame'
     try:
@@ -68,4 +67,5 @@ if __name__ == '__main__':
     if len(sys.argv) < 2:
         usage()
         sys.exit(2)
+
     genius_agent(sys.argv[1:])
