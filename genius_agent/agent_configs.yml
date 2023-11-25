@@ -5,14 +5,14 @@ agents:
       seed: 42
       temperature: 0
       config_list:
-        - model: zephyr-7b-beta.Q4_K_S
+        - model: mistral-7b-instruct-v0.1.Q4_K_S
           api_key: NA
           api_base: http://localhost:8080/v1
           api_type: openai
           api_version: v1
       filter_dict:
         model:
-          - zephyr-7b-beta.Q4_K_S
+          - mistral-7b-instruct-v0.1.Q4_K_S
       request_timeout: 3600
       repeat_penalty: 1.1
       functions:
@@ -41,14 +41,14 @@ agents:
       seed: 42
       temperature: 0
       config_list:
-        - model: zephyr-7b-beta.Q4_K_S
+        - model: mistral-7b-instruct-v0.1.Q4_K_S
           api_key: NA
           api_base: http://localhost:8080/v1
           api_type: openai
           api_version: v1
       filter_dict:
         model:
-          - zephyr-7b-beta.Q4_K_S
+          - mistral-7b-instruct-v0.1.Q4_K_S
       request_timeout: 3600
       repeat_penalty: 1.1
       functions:
@@ -150,14 +150,14 @@ agents:
       seed: 42
       temperature: 0
       config_list:
-        - model: zephyr-7b-beta.Q4_K_S
+        - model: mistral-7b-instruct-v0.1.Q4_K_S
           api_key: NA
           api_base: http://localhost:8080/v1
           api_type: openai
           api_version: v1
       filter_dict:
         model:
-          - zephyr-7b-beta.Q4_K_S
+          - mistral-7b-instruct-v0.1.Q4_K_S
       request_timeout: 3600
       repeat_penalty: 1.1
       functions:
@@ -172,14 +172,14 @@ agents:
       seed: 42
       temperature: 0
       config_list:
-        - model: zephyr-7b-beta.Q4_K_S
+        - model: mistral-7b-instruct-v0.1.Q4_K_S
           api_key: NA
           api_base: http://localhost:8080/v1
           api_type: openai
           api_version: v1
       filter_dict:
         model:
-          - zephyr-7b-beta.Q4_K_S
+          - mistral-7b-instruct-v0.1.Q4_K_S
       request_timeout: 3600
       repeat_penalty: 1.1
       functions:
@@ -202,7 +202,7 @@ agents:
           api_base: http://localhost:8080/v1
           api_type: openai
           api_version: v1
-        - model: zephyr-7b-beta.Q4_K_S
+        - model: mistral-7b-instruct-v0.1.Q4_K_S
           api_key: NA
           api_base: http://localhost:8080/v1
           api_type: openai
@@ -237,7 +237,7 @@ agents:
       filter_dict:
         model:
           - yarn-mistral-7b-128k.Q3_K_L
-          - zephyr-7b-beta.Q4_K_S
+          - mistral-7b-instruct-v0.1.Q4_K_S
           - mistral-7b--instruct-v0.1.Q5_K_S
           - TheBloke/WizardLM-13B-V1.2-GGML/wizardlm-13b-v1.2.ggmlv3.q2_K.bin
           - mistral-7b-instruct-v0.1.Q8_0
