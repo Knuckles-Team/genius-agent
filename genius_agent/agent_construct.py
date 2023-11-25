@@ -1,11 +1,14 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+import logging
+import os
 from agent_model import AgentsConfig
 from typing import List, Dict, Optional, Callable, Union
 import yaml
 from pathlib import Path
 from autogen import (GroupChat, GroupChatManager)
+import openai
 try:
     from autogen import UserProxyAgent
 except ImportError:
@@ -48,13 +51,21 @@ except ImportError:
 # Python Agents Class with Autogen Models
 class Agents:
     def __init__(self):
-        self.agents_config = self.load_config(file="./agent_configs.yml")
-        self.agents = None
+        self.agents_config: AgentsConfig = self.load_config(file="./agent_configs.yml")
+        self.agents: Agents = None
         self.agent_types = []
         self.chat_initiator = None
+        self.chat_initiator_config = None
         self.group_chat = None
         self.agent_chat_manager = None
         self.group_chat_enabled = True
+
+    def auto_set_chat_initiator(self):
+        logging.error(f"AUTOSET INITIATOR AGENTS: {self.agents_config}")
+        for agent_config in self.agents_config:
+            if agent_config.chat_initiator is not None:
+                self.chat_initiator = self.find_agent(name=agent_config.name)
+                self.chat_initiator_config = agent_config
 
     def set_chat_initiator(self, name):
         self.chat_initiator = self.find_agent(name)
@@ -90,9 +101,26 @@ class Agents:
 
     def load_agents(self) -> List:
         loaded_agents = []
+        openai_api_base = ""
+        openai_api_key = ""
         # print(f"AGENTS: {agents}")
         for agent_config in self.agents_config.agents:
             print(f"AGENT: {agent_config}")
+            try:
+                openai_api_base = agent_config.llm_config.config_list[0].api_base
+                print(f"BASE URL FOUND: {openai_api_base}")
+            except Exception as e:
+                pass
+            try:
+                openai_api_key = agent_config.llm_config.config_list[0].api_key
+                print(f"BASE KEY FOUND: {openai_api_key}")
+            except Exception as e:
+                pass
+            openai.api_key = openai_api_key
+            openai.api_base = openai_api_base
+            os.environ["OPENAI_API_KEY"] = openai_api_key
+            os.environ["OPENAI_API_BASE"] = openai_api_base
+
             if agent_config.agent_type == "user_proxy":
                 agent = UserProxyAgent(
                     name=agent_config.name,
@@ -164,6 +192,10 @@ class Agents:
                     llm_config=agent_config.llm_config,
                 )
                 loaded_agents.append(agent)
+            if agent_config.chat_initiator is not None and agent_config.chat_initiator:
+                self.chat_initiator = agent
+                self.chat_initiator_config = agent_config
+            print(f"CHAT INIT CONFIG FROM LOAD: {self.chat_initiator_config}")
         self.agents = loaded_agents
         if len(self.agents) > 1:
             self.load_group_chat()
@@ -172,15 +204,23 @@ class Agents:
         return loaded_agents
 
     def chat(self, prompt: str):
-        self.chat_initiator.initiate_chat(
-            self.agent_chat_manager,
-            message=prompt,
-        )
+        if not self.agents:
+            self.load_agents()
+        logging.debug(f"CHAT GROUP INITIATOR: {self.chat_initiator}")
+        if len(self.agents) > 1:
+            logging.error(f"LLMCONFIG: {self.chat_initiator}")
+            self.agent_chat_manager = GroupChatManager(groupchat=self.group_chat, llm_config=self.chat_initiator_config.llm_config)
+            self.chat_initiator.initiate_chat(
+                self.agent_chat_manager,
+                message=prompt,
+            )
+        else:
+            self.agent_chat_manager = self.agents
+
 
     def load_group_chat(self):
         self.group_chat = GroupChat(agents=self.agents, messages=[], max_round=12)
-        print(f"LLMCONFIG: {self.chat_initiator.llm_config}")
-        self.agent_chat_manager = GroupChatManager(groupchat=self.group_chat, llm_config=self.chat_initiator.llm_config)
+
 
     def find_agent(self, name: str) -> List:
         for agent in self.agents:

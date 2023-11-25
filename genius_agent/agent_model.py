@@ -35,7 +35,6 @@ class FunctionItem(BaseModel):
     function: str
 
 class FunctionMap(BaseModel):
-    print("IN FUNCTIONS MAP")
     _function_map: dict = PrivateAttr()
     python: Callable
     bash: Callable

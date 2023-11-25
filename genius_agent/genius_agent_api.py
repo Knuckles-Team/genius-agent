@@ -6,16 +6,32 @@ from fastapi import FastAPI
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 from typing import List, Dict, Optional, Callable, Union
-#from prometheus_fastapi_instrumentator import Instrumentator
+from prometheus_fastapi_instrumentator import Instrumentator
 
+from fastapi.middleware.cors import CORSMiddleware
+
+
+app = FastAPI(debug=True)
+
+# Set up CORS
+origins = [
+    "http://localhost:3000",  # your React front-end address
+    "https://your.production.domain",  # if applicable
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+agents_manager = Agents()
+Instrumentator().instrument(app).expose(app, include_in_schema=False)
 
 class HealthResponse(BaseModel):
     status: str
-
-
-agents_manager = Agents()
-app = FastAPI(debug=True)
-#Instrumentator().instrument(app).expose(app, include_in_schema=False)
 
 
 @app.get("/api/agents/{name}")
