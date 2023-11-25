@@ -2,7 +2,7 @@
 # coding: utf-8
 
 from genius_agent.version import __version__, __author__, __credits__
-from genius_agent.genius_chatbot import genius_agent, main, Agents
+from genius_agent.genius_agent import genius_agent, main, Agents
 """
 genius-agent
 
