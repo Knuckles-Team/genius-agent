@@ -19,8 +19,6 @@ requirements_rag = parse_requirements(os.path.join(os.path.dirname(__file__), 'r
                                        session=PipSession())
 requirements_lmm = parse_requirements(os.path.join(os.path.dirname(__file__), 'requirements_lmm.txt'),
                                        session=PipSession())
-requirements_openai = parse_requirements(os.path.join(os.path.dirname(__file__), 'requirements_openai.txt'),
-                                       session=PipSession())
 requirements_memgpt = parse_requirements(os.path.join(os.path.dirname(__file__), 'requirements_memgpt.txt'),
                                          session=PipSession())
 requirements_pgvector = parse_requirements(os.path.join(os.path.dirname(__file__), 'requirements_pgvector.txt'),
@@ -49,7 +47,6 @@ setup(
     install_requires=[str(requirement.requirement) for requirement in requirements],
     extras_require={
         'rag': [str(requirement.requirement) for requirement in requirements_rag],
-        'openai': [str(requirement.requirement) for requirement in requirements_openai],
         'chromadb': [str(requirement.requirement) for requirement in requirements_chromadb],
         'pgvector': [str(requirement.requirement) for requirement in requirements_pgvector],
         'api': [str(requirement.requirement) for requirement in requirements_api],
