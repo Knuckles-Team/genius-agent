@@ -5,7 +5,7 @@ import sys
 import autogen
 import getopt
 import json
-from agent_construct import Agents
+from genius_agent.agent_construct import Agents
 from pathlib import Path
 import logging
 

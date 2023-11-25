@@ -5,7 +5,7 @@ import glob
 import os
 from typing import List, Dict, Optional, Callable, Union
 from pydantic import BaseModel, field_validator, model_validator, PrivateAttr
-from agent_functions import *  # Used for all dynamically loaded agent functions
+from genius_agent.agent_functions import *  # Used for all dynamically loaded agent functions
 
 
 # Pydantic Classes for Models (Ingesting YAML/JSON and Serving Models for API/CLI)

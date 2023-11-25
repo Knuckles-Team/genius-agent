@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-from version import __version__, __author__, __credits__
-from genius_agent import genius_agent, main, Agents
-from agent_construct import Agents
-from agent_model import AgentsConfig, AgentConfig
+from genius_agent.version import __version__, __author__, __credits__
+from genius_agent.genius_agent import genius_agent, main, Agents
+from genius_agent.agent_construct import Agents
+from genius_agent.agent_model import AgentsConfig, AgentConfig
 """
 genius-agent
 

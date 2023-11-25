@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 import uvicorn
-from agent_construct import Agents, AgentsConfig
+from genius_agent.agent_construct import Agents, AgentsConfig
 from fastapi import FastAPI
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel

@@ -3,7 +3,7 @@
 
 import logging
 import os
-from agent_model import AgentsConfig
+from genius_agent.agent_model import AgentsConfig
 from typing import List, Dict, Optional, Callable, Union
 import yaml
 from pathlib import Path
