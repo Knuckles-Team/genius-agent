@@ -2,7 +2,7 @@
 # coding: utf-8
 
 from setuptools import setup
-from genius_chatbot.version import __version__, __author__
+from genius_agent.version import __version__, __author__
 from pathlib import Path
 import os
 import re
