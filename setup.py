@@ -65,5 +65,5 @@ setup(
         'Programming Language :: Python :: 3.11',
         'Programming Language :: Python :: 3.12',
     ],
-    entry_points={'console_scripts': ['genius-agent = genius_agent.genius_agent:main']},
+    entry_points={'console_scripts': ['genius-agent = genius_agent.genius_agent_cli:main']},
 )
