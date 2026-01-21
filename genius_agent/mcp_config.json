@@ -1,0 +1,21 @@
+{
+  "mcpServers": {
+    "crawl4ai": {
+      "url": "http://localhost:11235/mcp/sse",
+      "transport": "sse",
+      "timeout": 300000
+    },
+    "graphiti": {
+      "url": "http://localhost:8034/mcp",
+      "timeout": 300000
+    },
+    "vector-mcp": {
+      "url": "http://localhost:8024/mcp",
+      "timeout": 300000
+    },
+    "searxng-mcp": {
+      "url": "http://localhost:8001/mcp",
+      "timeout": 300000
+    }
+  }
+}
