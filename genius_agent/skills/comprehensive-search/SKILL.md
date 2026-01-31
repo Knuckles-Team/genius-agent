@@ -18,7 +18,7 @@ This is the primary search skill for the agent. It implements a tiered search st
 
 3.  **Deep Dive (Acquisition)**:
     - **Step 6**: If a web search result looks promising but lacks detail, use **Web Scraping** (`crawl` or `md`) to read the full page.
-    - **Step 7**: (Optional) Trigger the `ingestion` skill to save this new high-value info if relevant to the existing knowledge base.
+    - **Step 7**: (Optional) Trigger the `ingestion` skill with the desired URL to save this new high-value info if relevant to the existing knowledge base.
 
 ### Tools
 - `vector_search` (Vector MCP): Semantic search.

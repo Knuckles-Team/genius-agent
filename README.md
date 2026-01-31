@@ -24,7 +24,7 @@
 
 Deploy agents to solve problems using Autogen
 
-This python library will accept an agent configuration file in YAML/JSON, or as a JSON String payload in CLI 
+This python library will accept an agent configuration file in YAML/JSON, or as a JSON String payload in CLI
 or as a standalone uvicorn FastAPI Server
 
 This repository comes with a Dockerfile and a docker-compose.yml file to host this yourself.
@@ -52,12 +52,12 @@ Agent Types:
 
 ### API Endpoints
 | Method | Endpoint           | Parameters | Payload                                       | Description                           |
-|--------|--------------------|------------|-----------------------------------------------|---------------------------------------| 
+|--------|--------------------|------------|-----------------------------------------------|---------------------------------------|
 | GET    | /api/health        |            |                                               | Health of API Server                  |
 | GET    | /api/agents/{name} | name       |                                               | Get Agent configuration by name       |
-| GET    | /api/agents        |            |                                               | Get all Agent configurations          | 
-| POST   | /api/agents        |            | {"name": "agent_name", "llm_config": {...}}   | Load agent configurations             | 
-| POST   | /api/chat/         | prompt     | {"prompt": "This is a prompt for the agents"} | Prompt the agents provided            | 
+| GET    | /api/agents        |            |                                               | Get all Agent configurations          |
+| POST   | /api/agents        |            | {"name": "agent_name", "llm_config": {...}}   | Load agent configurations             |
+| POST   | /api/chat/         | prompt     | {"prompt": "This is a prompt for the agents"} | Prompt the agents provided            |
 
 </details>
 
@@ -613,9 +613,9 @@ agents:
           function: ossinsight_api_schema
       function_map:
         get_oss_insights: exec_get_ossinsight
-    instructions: Hello, Open Source Project Analyst. You'll conduct comprehensive evaluations of open source projects 
-      or organizations on the GitHub platform, 
-      analyzing project trajectories, contributor engagements, open source trends, and other vital parameters. 
+    instructions: Hello, Open Source Project Analyst. You'll conduct comprehensive evaluations of open source projects
+      or organizations on the GitHub platform,
+      analyzing project trajectories, contributor engagements, open source trends, and other vital parameters.
       Please carefully read the context of the conversation to identify the current analysis question or problem that needs add
     is_termination_msg: 'lambda x: isinstance(x, dict) and x.get("content") is not None and "TERMINATE" == str(x.get("content", ""))[-9:].upper()'
     agent_type: gpt_assistant
@@ -1388,7 +1388,7 @@ agents:
   ]
 }
 
-```            
+```
 
 
 </details>
@@ -1402,7 +1402,7 @@ uvicorn genius_agent_api:app --reload --host "0.0.0.0" --port 7999
 Test server
 
 2 Agent Chat:
-- You <--> Agent 
+- You <--> Agent
 - Agent <--> Agent
 
 ```bash
@@ -1448,7 +1448,7 @@ services:
       - "7999:7999"
 ```
 
-Run: 
+Run:
 
 ```bash
 docker compose up --build -d

@@ -3,3 +3,10 @@
 pytest.ini
 ./tests/
 Dockerfile
+debug.Dockerfile
+./scripts/
+./mcp/
+./genius_agent.egg-info/
+./build/
+./.ruff_cache/
+./.git/

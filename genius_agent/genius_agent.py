@@ -32,6 +32,8 @@ from pydantic import ValidationError
 from pydantic_ai.ui import SSE_CONTENT_TYPE
 from pydantic_ai.ui.ag_ui import AGUIAdapter
 
+__version__ = "2.12.0"
+
 # Configure logging
 logging.basicConfig(
     level=logging.INFO,
@@ -49,7 +51,9 @@ DEFAULT_PORT = to_integer(os.getenv("PORT", "9000"))
 DEFAULT_DEBUG = to_boolean(os.getenv("DEBUG", "False"))
 DEFAULT_PROVIDER = os.getenv("PROVIDER", "openai")
 DEFAULT_MODEL_ID = os.getenv("MODEL_ID", "qwen/qwen3-4b-2507")
-DEFAULT_OPENAI_BASE_URL = os.getenv("OPENAI_BASE_URL", "http://host.docker.internal:1234/v1")
+DEFAULT_OPENAI_BASE_URL = os.getenv(
+    "OPENAI_BASE_URL", "http://host.docker.internal:1234/v1"
+)
 DEFAULT_OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "ollama")
 DEFAULT_MCP_URL = os.getenv("MCP_URL", None)
 DEFAULT_MCP_CONFIG = os.getenv("MCP_CONFIG", get_mcp_config_path())
@@ -58,26 +62,28 @@ DEFAULT_SKILLS_DIRECTORY = os.getenv("SKILLS_DIRECTORY", get_skills_path())
 DEFAULT_ENABLE_WEB_UI = to_boolean(os.getenv("ENABLE_WEB_UI", "False"))
 
 AGENT_NAME = "Genius Agent"
-AGENT_DESCRIPTION = "A research specialist agent for web search and information gathering using GeniusAgent."
+AGENT_DESCRIPTION = "A research specialist agent for information gathering and knowledge building using Genius Agent."
 AGENT_SYSTEM_PROMPT = (
     "You are an intelligent AI assistant specializing in analyzing information about big tech companies and their AI initiatives.\n"
     "You have access to a powerful suite of tools including:\n"
-    "1. **Web Search (SearXNG)**: finding real-time information on the web.\n"
-    "2. **Web Scraping (Crawl4AI)**: reading and extracting content from websites.\n"
-    "3. **Vector Search (Vector MCP)**: finding relevant information using semantic similarity search.\n"
-    "4. **Knowledge Graph (Graphiti)**: exploring relationships, entities, and temporal facts.\n"
+    "1. **Comprehensive Search**: A combination of vector and graph search, supplemented with web search and web scraping.\n"
+    "2. **Ingestion**: Use the `crawl` tool to read and extract content from websites. You should then ingest important findings into the Knowledge Graph (`add_episode`) or Vector DB (`add_document`) to build your long-term memory.\n"
+    "3. **Web Scraping (Crawl4AI)**: reading and extracting content from websites.\n"
+    "4. **Vector Database Management (Vector MCP)**: Manage the vector database collections.\n"
+    "5. **Knowledge Graph Management (Graphiti)**: Manage the knowledge graph.\n"
+    "6. **Memory Management (Mem0)**: Use `add_memory` to save important context like user preferences or research goals, and `search_memories` to retrieve them.\n"
     "\n"
     "Your responsibilities:\n"
     "- **Analyze**: When a user asks a question, analyze if you have the information by running a graph search if the question is relational, otherwise vector search for relevant information. \n"
-    " If nothing is found, use Web Search to find it then use Web Scraping to parse the content.\n"
+    " If nothing is found, use Web Search to find it then use Web Scraping to parse the content of the Web Search URL.\n"
     "- **Crawl & Ingest**: If you find specific URLs that are highly relevant but need detailed analysis, use the `crawl` tool to read them. You should then ingest important findings into the Knowledge Graph (`add_episode`) or Vector DB (`add_document`) to build your long-term memory.\n"
     "- **Synthesize**: Combine insights from all sources (Search, Vector, Graph) to provide a comprehensive answer.\n"
     "- **Cite**: Always include URLs and sources for your information.\n"
     "\n"
     "When answering questions:\n"
     "- Always search for relevant information before responding if you are unsure.\n"
-    "- Use the Knowledge Graph for understanding relationships between companies or initiatives.\n"
-    "- If the documentation/context doesn't contain the answer, clearly state that and optionally perform a web search to find it.\n"
+    "- Use the Knowledge Graph for understanding relationships in the users prompt.\n"
+    "- If the documentation/context doesn't contain the answer, clearly state that and optionally perform a web search with a web scrape to find it.\n"
     "- Be objective, accurate, and transparent about your sources.\n"
 )
 
@@ -204,7 +210,7 @@ def create_agent_server(
     a2a_app = agent.to_a2a(
         name=AGENT_NAME,
         description=AGENT_DESCRIPTION,
-        version="2.12.0",
+        version=__version__,
         skills=skills,
         debug=debug,
     )
@@ -226,6 +232,10 @@ def create_agent_server(
         debug=debug,
         lifespan=lifespan,
     )
+
+    @app.get("/health")
+    async def health_check():
+        return {"status": "OK"}
 
     # Mount A2A as sub-app at /a2a
     app.mount("/a2a", a2a_app)
@@ -276,6 +286,7 @@ def create_agent_server(
 
 
 def agent_server():
+    print(f"genius_agent v{__version__}")
     parser = argparse.ArgumentParser(
         description=f"Run the {AGENT_NAME} A2A + AG-UI Server"
     )
