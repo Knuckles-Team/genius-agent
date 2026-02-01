@@ -52,7 +52,6 @@ except ImportError as e:
     OpenAIEmbedder = None
     GeminiRerankerClient = None
     OpenAIRerankerClient = None
-    OpenAIRerankerClient = None
     FalkorDriver = None
     Neo4jDriver = None
     KuzuDriver = None
