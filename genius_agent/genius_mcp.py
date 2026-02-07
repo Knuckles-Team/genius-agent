@@ -75,7 +75,7 @@ from fastmcp import Client
 
 from genius_agent.utils import to_boolean, to_integer
 
-__version__ = "2.12.0"
+__version__ = "2.12.1"
 
 logging.basicConfig(
     level=logging.DEBUG, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
@@ -747,7 +747,9 @@ def genius_agent_mcp():
     print(f"genius_mcp v{__version__}")
     import argparse
 
-    parser = argparse.ArgumentParser(description="Genius Agent MCP Server")
+    parser = argparse.ArgumentParser(
+        add_help=False, description="Genius Agent MCP Server"
+    )
     parser.add_argument(
         "-t",
         "--transport",
@@ -785,6 +787,24 @@ def genius_agent_mcp():
         mcp.run(transport="streamable-http", host=args.host, port=args.port)
     else:
         mcp.run(transport="stdio")
+
+
+def usage():
+    print(
+        f"Genius Agent ({__version__}): Genius Agent MCP Server\n\n"
+        "Usage:\n"
+        "-t | --transport    [ Transport method ]\n"
+        "-s | --host         [ Host address ]\n"
+        "-p | --port         [ Port number ]\n"
+        "--auth-type         [ None ]\n"
+        "--token-jwks-uri    [ None ]\n"
+        "--token-issuer      [ None ]\n"
+        "--token-audience    [ None ]\n"
+        "\n"
+        "Examples:\n"
+        "  [Simple]  genius-mcp \n"
+        '  [Complex] genius-mcp --transport "value" --host "value" --port "value" --auth-type "value" --token-jwks-uri "value" --token-issuer "value" --token-audience "value"\n'
+    )
 
 
 if __name__ == "__main__":
