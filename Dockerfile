@@ -58,7 +58,7 @@ RUN apt update \
     && apt-get install -y nodejs unzip \
     && curl -fsSL https://deno.land/install.sh | sh \
     && curl -LsSf https://astral.sh/uv/install.sh | sh \
-    && uv pip install --system --upgrade --verbose --no-cache --break-system-packages --prerelease=allow genius-agent>=2.13.0 \
+    && uv pip install --system --upgrade --verbose --no-cache --break-system-packages --prerelease=allow genius-agent>=2.13.1 \
     && crawl4ai-setup
 
 CMD ["genius-agent"]
