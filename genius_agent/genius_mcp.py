@@ -75,7 +75,7 @@ from fastmcp import Client
 
 from genius_agent.utils import to_boolean, to_integer
 
-__version__ = "2.12.1"
+__version__ = "2.12.2"
 
 logging.basicConfig(
     level=logging.DEBUG, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
