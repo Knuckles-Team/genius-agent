@@ -75,7 +75,7 @@ from fastmcp import Client
 
 from genius_agent.utils import to_boolean, to_integer
 
-__version__ = "2.13.1"
+__version__ = "2.13.2"
 
 logging.basicConfig(
     level=logging.DEBUG, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
@@ -112,17 +112,15 @@ DEFAULT_GRAPHDB_NAME = os.environ.get("GRAPHDB_NAME", "neo4j")
 
 # LLM Configuration
 DEFAULT_PROVIDER = os.getenv("PROVIDER", "openai")
-DEFAULT_MODEL_ID = os.getenv("MODEL_ID", "qwen/qwen3-4b-2507")
-DEFAULT_OPENAI_BASE_URL = os.getenv(
-    "OPENAI_BASE_URL", "http://host.docker.internal:1234/v1"
-)
-DEFAULT_OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "ollama")
+DEFAULT_MODEL_ID = os.getenv("MODEL_ID", "qwen/qwen3-coder-next")
+DEFAULT_LLM_BASE_URL = os.getenv("LLM_BASE_URL", "http://host.docker.internal:1234/v1")
+DEFAULT_LLM_API_KEY = os.getenv("LLM_API_KEY", "ollama")
 
 # Embedder Configuration
 DEFAULT_EMBEDDING_PROVIDER = os.getenv("EMBEDDING_PROVIDER", DEFAULT_PROVIDER)
 DEFAULT_EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "nomic-embed-text")
-DEFAULT_EMBEDDING_BASE_URL = os.getenv("EMBEDDING_BASE_URL", DEFAULT_OPENAI_BASE_URL)
-DEFAULT_EMBEDDING_API_KEY = os.getenv("EMBEDDING_API_KEY", DEFAULT_OPENAI_API_KEY)
+DEFAULT_EMBEDDING_BASE_URL = os.getenv("EMBEDDING_BASE_URL", DEFAULT_LLM_BASE_URL)
+DEFAULT_EMBEDDING_API_KEY = os.getenv("EMBEDDING_API_KEY", DEFAULT_LLM_API_KEY)
 DEFAULT_EMBEDDING_DIM = to_integer(os.getenv("EMBEDDING_DIM", "768"))
 
 # Vector MCP Config
@@ -136,8 +134,8 @@ INGESTION_STATE: Dict[str, Dict[str, Any]] = {}
 def create_graphiti_resources(
     provider: str = DEFAULT_PROVIDER,
     model_id: str = DEFAULT_MODEL_ID,
-    base_url: Optional[str] = DEFAULT_OPENAI_BASE_URL,
-    api_key: Optional[str] = DEFAULT_OPENAI_API_KEY,
+    base_url: Optional[str] = DEFAULT_LLM_BASE_URL,
+    api_key: Optional[str] = DEFAULT_LLM_API_KEY,
     graph_type: str = DEFAULT_GRAPHDB_TYPE,
     graph_uri: str = DEFAULT_GRAPHDB_URI,
     graph_user: str = DEFAULT_GRAPHDB_USERNAME,
@@ -150,8 +148,8 @@ def create_graphiti_resources(
 
     # 1. LLM Client
     if provider == "openai":
-        base_url = os.environ.get("OPENAI_BASE_URL", base_url)
-        api_key = os.environ.get("OPENAI_API_KEY", api_key)
+        base_url = os.environ.get("LLM_BASE_URL", base_url)
+        api_key = os.environ.get("LLM_API_KEY", api_key)
         config = LLMConfig(api_key=api_key, model=model_id, base_url=base_url)
         resources["llm_client"] = OpenAIClient(config=config)
 
@@ -159,12 +157,12 @@ def create_graphiti_resources(
         from graphiti_core.llm_client.azure_openai_client import AzureOpenAILLMClient
 
         # Azure requires special client initialization
-        # We assume OPENAI_API_KEY and OPENAI_BASE_URL are used for Azure as well or specific vars
+        # We assume LLM_API_KEY and LLM_BASE_URL are used for Azure as well or specific vars
         # But typically Azure needs an AsyncOpenAI client passed in
         from openai import AsyncOpenAI
 
         azure_endpoint = os.environ.get("AZURE_OPENAI_ENDPOINT", base_url)
-        azure_key = os.environ.get("AZURE_OPENAI_API_KEY", api_key)
+        azure_key = os.environ.get("AZURE_LLM_API_KEY", api_key)
 
         azure_client = AsyncOpenAI(
             base_url=azure_endpoint,
@@ -180,9 +178,7 @@ def create_graphiti_resources(
 
     elif provider == "google":
         api_key = (
-            os.environ.get("GEMINI_API_KEY")
-            or os.environ.get("GOOGLE_API_KEY")
-            or api_key
+            os.environ.get("LLM_API_KEY") or os.environ.get("LLM_API_KEY") or api_key
         )
         config = LLMConfig(api_key=api_key, model=model_id)
         resources["llm_client"] = GeminiClient(config=config)
@@ -198,12 +194,12 @@ def create_graphiti_resources(
         resources["llm_client"] = OpenAIGenericClient(config=config)
 
     elif provider == "anthropic":
-        api_key = os.environ.get("ANTHROPIC_API_KEY", api_key)
+        api_key = os.environ.get("LLM_API_KEY", api_key)
         config = LLMConfig(api_key=api_key, model=model_id)
         resources["llm_client"] = AnthropicClient(config=config)
 
     elif provider == "groq":
-        api_key = os.environ.get("GROQ_API_KEY", api_key)
+        api_key = os.environ.get("LLM_API_KEY", api_key)
         config = LLMConfig(api_key=api_key, model=model_id)
         resources["llm_client"] = GroqClient(config=config)
 
@@ -221,7 +217,7 @@ def create_graphiti_resources(
         from openai import AsyncOpenAI
 
         azure_endpoint = os.environ.get("AZURE_OPENAI_ENDPOINT", base_url)
-        azure_key = os.environ.get("AZURE_OPENAI_API_KEY", api_key)
+        azure_key = os.environ.get("AZURE_LLM_API_KEY", api_key)
 
         # Reuse azure client if possible or create new
         if provider == "azure" and "llm_client" in resources:
@@ -241,9 +237,7 @@ def create_graphiti_resources(
 
     elif emb_provider == "google":
         api_key = (
-            os.environ.get("GEMINI_API_KEY")
-            or os.environ.get("GOOGLE_API_KEY")
-            or api_key
+            os.environ.get("LLM_API_KEY") or os.environ.get("LLM_API_KEY") or api_key
         )
         resources["embedder"] = GeminiEmbedder(
             config=GeminiEmbedderConfig(
@@ -360,8 +354,8 @@ async def ingest_to_graphiti(doc_dir: Path, job_id: str = None):
     resources = create_graphiti_resources(
         provider=DEFAULT_PROVIDER,
         model_id=DEFAULT_MODEL_ID,
-        base_url=DEFAULT_OPENAI_BASE_URL,
-        api_key=DEFAULT_OPENAI_API_KEY,
+        base_url=DEFAULT_LLM_BASE_URL,
+        api_key=DEFAULT_LLM_API_KEY,
         graph_name=DEFAULT_GRAPHDB_NAME,
     )
 
