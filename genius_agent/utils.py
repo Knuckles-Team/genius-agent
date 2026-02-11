@@ -11,6 +11,36 @@ from importlib.resources import files, as_file
 import yaml
 from fasta2a import Skill
 
+# Try importing specific clients/providers, but don't fail if variables are missing
+try:
+
+    from openai import AsyncOpenAI
+    from pydantic_ai.providers.openai import OpenAIProvider
+except ImportError:
+    AsyncOpenAI = None
+    OpenAIProvider = None
+
+try:
+    from groq import AsyncGroq
+    from pydantic_ai.providers.groq import GroqProvider
+except ImportError:
+    AsyncGroq = None
+    GroqProvider = None
+
+try:
+    from mistralai import Mistral
+    from pydantic_ai.providers.mistral import MistralProvider
+except ImportError:
+    Mistral = None
+    MistralProvider = None
+
+try:
+    from anthropic import AsyncAnthropic
+    from pydantic_ai.providers.anthropic import AnthropicProvider
+except ImportError:
+    AsyncAnthropic = None
+    AnthropicProvider = None
+
 
 def to_integer(string: Union[str, int] = None) -> int:
     if isinstance(string, int):
