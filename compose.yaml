@@ -68,7 +68,7 @@ services:
       - "HOST=0.0.0.0"
       - "PORT=9033"
       - "PROVIDER=openai"
-      - "LLM_BASE_URL=http://host.docker.internal:1234/v1"
+      - "LLM_BASE_URL=${LLM_BASE_URL:-http://host.docker.internal:1234/v1}"
       - "LLM_API_KEY=llama"
       - "MODEL_ID=${MODEL_ID:-qwen/qwen3-coder-next}"
       - "DEBUG=True"
@@ -138,13 +138,13 @@ services:
       - LLM_PROVIDER=openai
       - LLM_API_KEY=llama
       - LLM_MODEL=${MODEL_ID:-qwen/qwen3-coder-next}
-      - LLM_BASE_URL=http://host.docker.internal:1234/v1
+      - LLM_BASE_URL=${LLM_BASE_URL:-http://host.docker.internal:1234/v1}
       - EMBEDDER_PROVIDER=openai
       - EMBEDDER_API_KEY=llama
       - EMBEDDER_MODEL=nomic-embed-text
       - EMBEDDER_BASE_URL=http://host.docker.internal:1234/v1
       - LLM_API_KEY=llama
-      - LLM_BASE_URL=http://host.docker.internal:1234/v1
+      - LLM_BASE_URL=${LLM_BASE_URL:-http://host.docker.internal:1234/v1}
       - GRAPHITI_TELEMETRY_ENABLED=false
     extra_hosts:
       - "host.docker.internal:host-gateway"
