@@ -17,7 +17,6 @@ from fastmcp.utilities.logging import get_logger
 from starlette.requests import Request
 from starlette.responses import JSONResponse
 
-# Graphiti & Crawl4AI imports
 try:
     from graphiti_core import Graphiti
     from graphiti_core.llm_client.openai_client import OpenAIClient
@@ -70,19 +69,17 @@ except ImportError:
 
 from urllib.parse import urldefrag
 
-# For Vector MCP Client
 from fastmcp import Client
 
 from genius_agent.utils import to_boolean, to_integer
 
-__version__ = "2.13.4"
+__version__ = "2.13.5"
 
 logging.basicConfig(
     level=logging.DEBUG, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 )
 logger = get_logger("GeniusAgentMCP")
 
-# Configuration
 config = {
     "enable_delegation": to_boolean(os.environ.get("ENABLE_DELEGATION", "False")),
     "audience": os.environ.get("AUDIENCE", None),
@@ -103,31 +100,25 @@ DEFAULT_TRANSPORT = os.environ.get("TRANSPORT", "stdio")
 DEFAULT_HOST = os.environ.get("HOST", "0.0.0.0")
 DEFAULT_PORT = to_integer(os.environ.get("PORT", "9000"))
 
-# Graphiti Config
 DEFAULT_GRAPHDB_URI = os.environ.get("GRAPHDB_URI", "./kuzu_db")
 DEFAULT_GRAPHDB_USERNAME = os.environ.get("GRAPHDB_USERNAME", "neo4j")
 DEFAULT_GRAPHDB_PASSWORD = os.environ.get("GRAPHDB_PASSWORD", "password")
-DEFAULT_GRAPHDB_TYPE = os.environ.get("GRAPHDB_TYPE", "kuzu")  # kuzu, neo4j or falkordb
+DEFAULT_GRAPHDB_TYPE = os.environ.get("GRAPHDB_TYPE", "kuzu")
 DEFAULT_GRAPHDB_NAME = os.environ.get("GRAPHDB_NAME", "neo4j")
 
-# LLM Configuration
 DEFAULT_PROVIDER = os.getenv("PROVIDER", "openai")
 DEFAULT_MODEL_ID = os.getenv("MODEL_ID", "qwen/qwen3-coder-next")
 DEFAULT_LLM_BASE_URL = os.getenv("LLM_BASE_URL", "http://host.docker.internal:1234/v1")
 DEFAULT_LLM_API_KEY = os.getenv("LLM_API_KEY", "ollama")
 
-# Embedder Configuration
 DEFAULT_EMBEDDING_PROVIDER = os.getenv("EMBEDDING_PROVIDER", DEFAULT_PROVIDER)
 DEFAULT_EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "nomic-embed-text")
 DEFAULT_EMBEDDING_BASE_URL = os.getenv("EMBEDDING_BASE_URL", DEFAULT_LLM_BASE_URL)
 DEFAULT_EMBEDDING_API_KEY = os.getenv("EMBEDDING_API_KEY", DEFAULT_LLM_API_KEY)
 DEFAULT_EMBEDDING_DIM = to_integer(os.getenv("EMBEDDING_DIM", "768"))
 
-# Vector MCP Config
 VECTOR_MCP_URL = os.environ.get("VECTOR_MCP_URL", "http://vector-mcp:8000/sse")
 
-# Global Ingestion State
-# Format: {job_id: {"status": str, "total": int, "processed": int, "collection": str, "current_step": str, "error": str}}
 INGESTION_STATE: Dict[str, Dict[str, Any]] = {}
 
 
@@ -146,7 +137,6 @@ def create_graphiti_resources(
 
     resources = {}
 
-    # 1. LLM Client
     if provider == "openai":
         base_url = os.environ.get("LLM_BASE_URL", base_url)
         api_key = os.environ.get("LLM_API_KEY", api_key)
@@ -156,9 +146,6 @@ def create_graphiti_resources(
     elif provider == "azure":
         from graphiti_core.llm_client.azure_openai_client import AzureOpenAILLMClient
 
-        # Azure requires special client initialization
-        # We assume LLM_API_KEY and LLM_BASE_URL are used for Azure as well or specific vars
-        # But typically Azure needs an AsyncOpenAI client passed in
         from openai import AsyncOpenAI
 
         azure_endpoint = os.environ.get("AZURE_OPENAI_ENDPOINT", base_url)
@@ -184,7 +171,6 @@ def create_graphiti_resources(
         resources["llm_client"] = GeminiClient(config=config)
 
     elif provider == "ollama":
-        # Use OpenAIGenericClient for Ollama
         config = LLMConfig(
             api_key="llama",
             model=model_id,
@@ -203,13 +189,11 @@ def create_graphiti_resources(
         config = LLMConfig(api_key=api_key, model=model_id)
         resources["llm_client"] = GroqClient(config=config)
 
-    else:  # Default to OpenAI
+    else:
         logger.warning(f"Unknown provider {provider}, defaulting to OpenAIClient")
         config = LLMConfig(api_key=api_key, model=model_id, base_url=base_url)
         resources["llm_client"] = OpenAIClient(config=config)
 
-    # 2. Embedder
-    # Intelligent selection: use provider unless EMBEDDING_PROVIDER is explicitly different
     emb_provider = os.getenv("EMBEDDING_PROVIDER", provider)
 
     if emb_provider == "azure":
@@ -219,9 +203,7 @@ def create_graphiti_resources(
         azure_endpoint = os.environ.get("AZURE_OPENAI_ENDPOINT", base_url)
         azure_key = os.environ.get("AZURE_LLM_API_KEY", api_key)
 
-        # Reuse azure client if possible or create new
         if provider == "azure" and "llm_client" in resources:
-            # We can't easily extract the azure_key from the wrapper, so recreate
             pass
 
         azure_client_emb = AsyncOpenAI(
@@ -245,11 +227,10 @@ def create_graphiti_resources(
                 embedding_model=DEFAULT_EMBEDDING_MODEL or "embedding-001",
             )
         )
-        # Also auto-configure reranker for Google if not specified otherwise
         resources["cross_encoder"] = GeminiRerankerClient(
             config=LLMConfig(
                 api_key=api_key,
-                model="gemini-2.5-flash-lite",  # Default for reranking per instructions
+                model="gemini-2.5-flash-lite",
             )
         )
 
@@ -263,13 +244,11 @@ def create_graphiti_resources(
                 or "http://host.docker.internal:1234/v1",
             )
         )
-        # Use OpenAIReranker with Ollama client context
-        # We need the LLM client we just created
         resources["cross_encoder"] = OpenAIRerankerClient(
             client=resources["llm_client"], config=resources["llm_client"].config
         )
 
-    else:  # Default OpenAI
+    else:
         resources["embedder"] = OpenAIEmbedder(
             config=OpenAIEmbedderConfig(
                 api_key=api_key,
@@ -278,10 +257,7 @@ def create_graphiti_resources(
             )
         )
 
-    # 3. Graph Driver
     if graph_type == "falkordb":
-        # FalkorDB usually runs on 6379, check if URI needs adjustment or User provides correct one.
-        # Assuming URI is just passed through.
         try:
             from graphiti_core.driver.falkordb_driver import FalkorDriver
 
@@ -298,13 +274,11 @@ def create_graphiti_resources(
         try:
             from graphiti_core.driver.kuzu_driver import KuzuDriver
 
-            # Kuzu uses a local path
             resources["graph_driver"] = KuzuDriver(db=graph_uri)
         except ImportError:
             logger.error("Kuzu driver not available")
             raise
     else:
-        # Default is Neo4j
         try:
             from graphiti_core.driver.neo4j_driver import Neo4jDriver
 
@@ -325,14 +299,11 @@ def get_collection_name_from_url(url: str) -> str:
     """Generate a collection name from a URL."""
     parsed = urlparse(url)
     domain = parsed.netloc
-    # Remove www.
     if domain.startswith("www."):
         domain = domain[4:]
-    # Remove .com, .org, etc (simple heuristic: remove last part after dot)
     if "." in domain:
         domain = domain.rsplit(".", 1)[0]
 
-    # Clean up non-alphanumeric
     clean_name = re.sub(r"[^a-zA-Z0-9_]", "_", domain)
     return clean_name.lower()
 
@@ -350,7 +321,6 @@ async def ingest_to_graphiti(doc_dir: Path, job_id: str = None):
     if job_id and job_id in INGESTION_STATE:
         INGESTION_STATE[job_id]["current_step"] = "Initializing Graphiti"
 
-    # Initialize Graphiti with dynamic LLM client
     resources = create_graphiti_resources(
         provider=DEFAULT_PROVIDER,
         model_id=DEFAULT_MODEL_ID,
@@ -369,8 +339,6 @@ async def ingest_to_graphiti(doc_dir: Path, job_id: str = None):
         graph_driver=resources.get("graph_driver"),
     )
 
-    # await graphiti.initialize() # Method removed in recent versions
-    # Instead we build indices if needed
     try:
         await graphiti.build_indices_and_constraints()
     except Exception as e:
@@ -408,7 +376,6 @@ async def ingest_to_graphiti(doc_dir: Path, job_id: str = None):
             INGESTION_STATE[job_id]["total"] = total_episodes
             INGESTION_STATE[job_id]["current_step"] = "Ingesting to Graphiti"
 
-        # Chunked Ingestion
         CHUNK_SIZE = 10
         chunks = [
             episodes[i : i + CHUNK_SIZE] for i in range(0, total_episodes, CHUNK_SIZE)
@@ -421,7 +388,6 @@ async def ingest_to_graphiti(doc_dir: Path, job_id: str = None):
                 )
                 await graphiti.add_episode_bulk(chunk)
 
-                # Update progress
                 if job_id and job_id in INGESTION_STATE:
                     processed = min((i + 1) * CHUNK_SIZE, total_episodes)
                     INGESTION_STATE[job_id]["processed"] = processed
@@ -430,7 +396,6 @@ async def ingest_to_graphiti(doc_dir: Path, job_id: str = None):
                 logger.error(f"Failed to ingest chunk {i}: {e}")
                 if job_id and job_id in INGESTION_STATE:
                     INGESTION_STATE[job_id]["error"] = f"Chunk {i} failed: {str(e)}"
-                    # We might want to continue or break? Let's continue to try other chunks.
 
         logger.info("Graphiti ingestion complete.")
 
@@ -441,8 +406,6 @@ async def call_vector_mcp_create_collection(
     """Call Vector MCP to create a collection."""
     logger.info(f"Connecting to Vector MCP at {VECTOR_MCP_URL}...")
 
-    # We use FastMCP Client for simplicity if it supports HTTP/SSE
-    # Assuming Vector MCP is running SSE or HTTP
     try:
         async with Client(VECTOR_MCP_URL) as client:
             logger.info(f"Calling create_collection for {collection_name}...")
@@ -452,18 +415,13 @@ async def call_vector_mcp_create_collection(
                     "collection_name": collection_name,
                     "overwrite": True,
                     "document_directory": document_directory,
-                    "db_type": "promethai",  # Or default, usage says 'defaults to chromadb' usually but user said 'Vector-MCP FastMCP Server'. Assuming default db_type is fine or passed.
-                    # Actually user didn't specify db_type, so we rely on Vector MCP default.
-                    # Wait, Vector MCP default is CHROMA.
+                    "db_type": "promethai",
                 },
             )
             logger.info(f"Vector MCP Result: {result}")
             return result
     except Exception as e:
         logger.error(f"Failed to call Vector MCP: {e}")
-        # Fallback or re-raise?
-        # If Vector MCP is not reachable, we should probably warn but not fail the whole tool if Graphiti succeeded?
-        # The user requirement implies we WANT to do this.
         raise RuntimeError(f"Vector MCP interaction failed: {e}")
 
 
@@ -493,7 +451,6 @@ async def process_ingestion_background(
             logger.error(f"Graphiti ingestion failed: {e}")
             if job_id in INGESTION_STATE:
                 INGESTION_STATE[job_id]["error"] = str(e)
-            # Don't re-raise, let other tasks finish
 
     async def run_vector_mcp():
         logger.info("Calling Vector MCP...")
@@ -505,15 +462,12 @@ async def process_ingestion_background(
         except Exception as e:
             logger.error(f"Vector MCP failed: {e}")
             if job_id in INGESTION_STATE:
-                # Append error if one exists? Or just overwrite?
-                # Simple append for visibility
                 current_err = INGESTION_STATE[job_id].get("error", "")
                 sep = " | " if current_err else ""
                 INGESTION_STATE[job_id][
                     "error"
                 ] = f"{current_err}{sep}Vector MCP failed: {e}"
 
-    # Run both in parallel
     await asyncio.gather(run_graphiti(), run_vector_mcp())
 
     if job_id in INGESTION_STATE:
@@ -552,7 +506,6 @@ def register_tools(mcp: FastMCP):
             return state
 
         if collection_name:
-            # Find latest job for collection
             matches = [
                 s
                 for s in INGESTION_STATE.values()
@@ -560,9 +513,8 @@ def register_tools(mcp: FastMCP):
             ]
             if not matches:
                 return {"status": 404, "error": "No jobs found for collection"}
-            return matches[-1]  # Return latest
+            return matches[-1]
 
-        # Return all running jobs if no filters
         running_jobs = {
             k: v for k, v in INGESTION_STATE.items() if v["status"] == "running"
         }
@@ -614,7 +566,6 @@ def register_tools(mcp: FastMCP):
         doc_dir_path = Path(document_directory)
         doc_dir_path.mkdir(parents=True, exist_ok=True)
 
-        # 1. Recursive Crawl
         if ctx:
             await ctx.report_progress(10, 100)
         logger.info("Starting Crawl4AI Recursive Batch...")
@@ -649,7 +600,6 @@ def register_tools(mcp: FastMCP):
                             10 + int((depth + 1) / max_depth * 40), 100
                         )
 
-                    # Filter URLs: Not visited yet AND same domain (basic safety)
                     urls_to_crawl = []
                     for u in current_urls:
                         if u not in visited and urlparse(u).netloc == root_domain:
@@ -668,8 +618,6 @@ def register_tools(mcp: FastMCP):
                         visited.add(norm_url)
 
                         if result.success and result.markdown:
-                            # Save file
-                            # Generate a safe filename from path
                             path_slug = (
                                 urlparse(norm_url).path.strip("/").replace("/", "_")
                                 or "index"
@@ -677,20 +625,16 @@ def register_tools(mcp: FastMCP):
                             if not path_slug.endswith(".md"):
                                 path_slug += ".md"
                             filename = f"{collection_name}_{path_slug}"
-                            # Cleanup filename
                             filename = re.sub(r"[^a-zA-Z0-9_\-\.]", "", filename)
 
                             file_path = os.path.join(doc_dir_path, filename)
                             try:
                                 with open(file_path, "w", encoding="utf-8") as f:
-                                    f.write(
-                                        result.markdown.raw_markdown
-                                    )  # Use raw_markdown if available, else just string
+                                    f.write(result.markdown.raw_markdown)
                                 total_saved += 1
                             except Exception as e:
                                 logger.error(f"Failed to save {norm_url}: {e}")
 
-                            # Collect internal links
                             links = result.links.get("internal", [])
                             for link in links:
                                 next_url = normalize_url(link["href"])
@@ -708,7 +652,6 @@ def register_tools(mcp: FastMCP):
             logger.error("Crawl4AI not installed, skipping crawl step.")
             return {"status": 500, "error": "Crawl4AI not installed"}
 
-        # Fire and forget background ingestion
         job_id = str(uuid.uuid4())
         INGESTION_STATE[job_id] = {
             "status": "pending",
@@ -756,17 +699,10 @@ def genius_agent_mcp():
         "-p", "--port", type=int, default=DEFAULT_PORT, help="Port number"
     )
 
-    # ... (Add other auth args if needed, preserving from template) ...
-    # For brevity in this internal tool creation, I'll keep the args minimal or just what's needed.
-    # The user template was huge. I should probably keep the args to ensure it works compatible.
-
-    # Re-adding Auth arguments to be safe and compatible with expected startup scripts
     parser.add_argument("--auth-type", default="none")
     parser.add_argument("--token-jwks-uri", default=None)
     parser.add_argument("--token-issuer", default=None)
     parser.add_argument("--token-audience", default=None)
-    # ... ignoring the massive list suitable for a library, assuming standard needed for now.
-    # Actually, better to just accept unknown args or parse known ones.
 
     args, unknown = parser.parse_known_args()
 
