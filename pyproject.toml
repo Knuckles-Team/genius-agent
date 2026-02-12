@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "genius-agent"
-version = "2.13.6"
+version = "2.13.7"
 description = "GeniusAgent Search Engine MCP Server for Agentic AI!"
 readme = "README.md"
 authors = [{ name = "Audel Rouhi", email = "knucklessg1@gmail.com" }]
@@ -24,8 +24,7 @@ dependencies = [
     "crawl4ai>=0.8.0",
     "graphiti-core[neo4j,falkordb,kuzu,anthropic,google-genai,openai,groq]>=0.26.3",
     "fastmcp>=3.0.0b1",
-    "eunomia-mcp>=0.3.10",
-    "mem0-mcp-server>=0.2.1",
+    "eunomia-mcp>=0.3.10"
 ]
 
 [project.scripts]

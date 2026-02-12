@@ -38,7 +38,7 @@ from genius_agent.utils import (
     prune_large_messages,
 )
 
-__version__ = "2.13.6"
+__version__ = "2.13.7"
 
 logging.basicConfig(
     level=logging.INFO,
@@ -87,7 +87,6 @@ AGENT_SYSTEM_PROMPT = (
     "3. **Web Scraping (Crawl4AI)**: reading and extracting content from websites.\n"
     "4. **Vector Database Management (Vector MCP)**: Manage the vector database collections.\n"
     "5. **Knowledge Graph Management (Graphiti)**: Manage the knowledge graph.\n"
-    "6. **Memory Management (Mem0)**: Use `add_memory` to save important context like user preferences or research goals, and `search_memories` to retrieve them.\n"
     "\n"
     "Your responsibilities:\n"
     "- **Analyze**: When a user asks a question, analyze if you have the information by running a graph search if the question is relational, otherwise vector search for relevant information. \n"
@@ -119,11 +118,17 @@ def create_agent(
     if mcp_url:
         if "sse" in mcp_url.lower():
             server = MCPServerSSE(
-                mcp_url, http_client=httpx.AsyncClient(verify=ssl_verify)
+                mcp_url,
+                http_client=httpx.AsyncClient(
+                    verify=ssl_verify, timeout=DEFAULT_TIMEOUT
+                ),
             )
         else:
             server = MCPServerStreamableHTTP(
-                mcp_url, http_client=httpx.AsyncClient(verify=ssl_verify)
+                mcp_url,
+                http_client=httpx.AsyncClient(
+                    verify=ssl_verify, timeout=DEFAULT_TIMEOUT
+                ),
             )
         agent_toolsets.append(server)
         logger.info(f"Connected to MCP Server: {mcp_url}")
@@ -131,7 +136,9 @@ def create_agent(
         mcp_toolset = load_mcp_servers(mcp_config)
         for server in mcp_toolset:
             if hasattr(server, "http_client"):
-                server.http_client = httpx.AsyncClient(verify=ssl_verify)
+                server.http_client = httpx.AsyncClient(
+                    verify=ssl_verify, timeout=DEFAULT_TIMEOUT
+                )
         agent_toolsets.extend(mcp_toolset)
         logger.info(f"Connected to MCP Config JSON: {mcp_toolset}")
 
@@ -147,6 +154,7 @@ def create_agent(
         base_url=base_url,
         api_key=api_key,
         ssl_verify=ssl_verify,
+        timeout=DEFAULT_TIMEOUT,
     )
 
     logger.info("Initializing Agent...")
@@ -207,6 +215,7 @@ def create_agent_server(
         mcp_config=mcp_config,
         skills_directory=skills_directory,
         ssl_verify=ssl_verify,
+        timeout=DEFAULT_TIMEOUT,
     )
 
     if skills_directory and os.path.exists(skills_directory):
@@ -272,8 +281,16 @@ def create_agent_server(
         event_stream = adapter.run_stream()
         sse_stream = adapter.encode_stream(event_stream)
 
+        async def stream_wrapper(stream):
+            try:
+                async for chunk in stream:
+                    yield chunk
+            except Exception as e:
+                logger.error(f"Stream error: {e}", exc_info=True)
+                raise e
+
         return StreamingResponse(
-            sse_stream,
+            stream_wrapper(sse_stream),
             media_type=accept,
         )
 
