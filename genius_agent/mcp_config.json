@@ -4,17 +4,6 @@
       "url": "http://genius-mcp:8033/mcp",
       "timeout": 300000
     },
-    "mem0": {
-      "command": "uv",
-      "args": [
-        "run",
-        "mem0-mcp-server"
-      ],
-      "env": {
-        "MEM0_API_KEY": "${MEM0_API_KEY}"
-      },
-      "timeout": 300000
-    },
     "crawl4ai": {
       "url": "http://crawl4ai:11235/mcp/sse",
       "transport": "sse",

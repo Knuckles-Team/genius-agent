@@ -11,7 +11,6 @@ from importlib.resources import files, as_file
 import yaml
 from fasta2a import Skill
 
-# Try importing specific clients/providers, but don't fail if variables are missing
 try:
 
     from openai import AsyncOpenAI
@@ -121,22 +120,17 @@ def prune_large_messages(messages: list[Any], max_length: int = 5000) -> list[An
                 f"... {content[-200:]}"
             )
 
-            # Replace content
             if isinstance(msg, dict):
                 msg["content"] = summary
                 pruned_messages.append(msg)
             elif hasattr(msg, "content"):
-                # Try to create a copy or modify in place if mutable
-                # If it's a Pydantic model it might be immutable or require copy
                 try:
-                    # Attempt shallow copy with update
                     from copy import copy
 
                     new_msg = copy(msg)
                     new_msg.content = summary
                     pruned_messages.append(new_msg)
                 except Exception:
-                    # Fallback: keep original if we can't modify
                     pruned_messages.append(msg)
             else:
                 pruned_messages.append(msg)
@@ -187,7 +181,6 @@ def load_skills_from_directory(directory: str) -> List[Skill]:
             if skill_file.exists():
                 try:
                     with open(skill_file, "r") as f:
-                        # Extract frontmatter
                         content = f.read()
                         if content.startswith("---"):
                             _, frontmatter, _ = content.split("---", 2)
