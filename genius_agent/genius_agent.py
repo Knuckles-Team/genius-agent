@@ -1,24 +1,30 @@
-#!/usr/bin/python
-import sys
-
-# coding: utf-8
+#!/usr/bin/env python3
 import json
+import sys
 import os
-import argparse
 import logging
-import uvicorn
-import httpx
-from contextlib import asynccontextmanager
+import argparse
 from typing import Optional, Any
+from contextlib import asynccontextmanager
 
 from pydantic_ai import Agent, ModelSettings
-from pydantic_ai.mcp import load_mcp_servers, MCPServerStreamableHTTP, MCPServerSSE
+from pydantic_ai.mcp import (
+    load_mcp_servers,
+    MCPServerStreamableHTTP,
+    MCPServerSSE,
+)
 from pydantic_ai_skills import SkillsToolset
-from pydantic_ai.models.openai import OpenAIChatModel
-from pydantic_ai.models.anthropic import AnthropicModel
-from pydantic_ai.models.google import GoogleModel
-from pydantic_ai.models.huggingface import HuggingFaceModel
 from fasta2a import Skill
+from pydantic_ai.ui.ag_ui import AGUIAdapter
+from pydantic_ai.ui import SSE_CONTENT_TYPE
+
+from fastapi import FastAPI, Request
+from starlette.responses import Response, StreamingResponse
+from pydantic import ValidationError
+import uvicorn
+import httpx
+
+
 from genius_agent.utils import (
     to_boolean,
     to_integer,
@@ -28,16 +34,11 @@ from genius_agent.utils import (
     get_mcp_config_path,
     get_skills_path,
     load_skills_from_directory,
+    create_model,
     prune_large_messages,
 )
 
-from fastapi import FastAPI, Request
-from starlette.responses import Response, StreamingResponse
-from pydantic import ValidationError
-from pydantic_ai.ui import SSE_CONTENT_TYPE
-from pydantic_ai.ui.ag_ui import AGUIAdapter
-
-__version__ = "2.13.5"
+__version__ = "2.13.6"
 
 logging.basicConfig(
     level=logging.INFO,
@@ -50,8 +51,8 @@ logging.getLogger("httpx").setLevel(logging.INFO)
 logger = logging.getLogger(__name__)
 
 DEFAULT_HOST = os.getenv("HOST", "0.0.0.0")
-DEFAULT_PORT = to_integer(os.getenv("PORT", "9000"))
-DEFAULT_DEBUG = to_boolean(os.getenv("DEBUG", "False"))
+DEFAULT_PORT = to_integer(string=os.getenv("PORT", "9000"))
+DEFAULT_DEBUG = to_boolean(string=os.getenv("DEBUG", "False"))
 DEFAULT_PROVIDER = os.getenv("PROVIDER", "openai")
 DEFAULT_MODEL_ID = os.getenv("MODEL_ID", "qwen/qwen3-coder-next")
 DEFAULT_LLM_BASE_URL = os.getenv("LLM_BASE_URL", "http://host.docker.internal:1234/v1")
@@ -101,37 +102,6 @@ AGENT_SYSTEM_PROMPT = (
     "- If the documentation/context doesn't contain the answer, clearly state that and optionally perform a web search with a web scrape to find it.\n"
     "- Be objective, accurate, and transparent about your sources.\n"
 )
-
-
-def create_model(
-    provider: str = DEFAULT_PROVIDER,
-    model_id: str = DEFAULT_MODEL_ID,
-    base_url: Optional[str] = DEFAULT_LLM_BASE_URL,
-    api_key: Optional[str] = DEFAULT_LLM_API_KEY,
-):
-    if provider == "openai":
-        target_base_url = base_url or DEFAULT_LLM_BASE_URL
-        target_api_key = api_key or DEFAULT_LLM_API_KEY
-        if target_base_url:
-            os.environ["LLM_BASE_URL"] = target_base_url
-        if target_api_key:
-            os.environ["LLM_API_KEY"] = target_api_key
-        return OpenAIChatModel(model_id, provider="openai")
-
-    elif provider == "anthropic":
-        if api_key:
-            os.environ["LLM_API_KEY"] = api_key
-        return AnthropicModel(model_id)
-
-    elif provider == "google":
-        if api_key:
-            os.environ["LLM_API_KEY"] = api_key
-        return GoogleModel(model_id)
-
-    elif provider == "huggingface":
-        if api_key:
-            os.environ["LLM_API_KEY"] = api_key
-        return HuggingFaceModel(model_id)
 
 
 def create_agent(
@@ -369,6 +339,12 @@ def agent_server():
         action="store_true",
         default=DEFAULT_ENABLE_WEB_UI,
         help="Enable Pydantic AI Web UI",
+    )
+
+    parser.add_argument(
+        "--insecure",
+        action="store_true",
+        help="Disable SSL verification for LLM requests (Use with caution)",
     )
 
     parser.add_argument("--help", action="store_true", help="Show usage")
