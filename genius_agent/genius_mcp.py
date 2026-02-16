@@ -76,9 +76,18 @@ from genius_agent.utils import to_boolean, to_integer
 __version__ = "2.13.10"
 
 logging.basicConfig(
-    level=logging.DEBUG, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+    level=logging.INFO,
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    force=True,
 )
 logger = get_logger("GeniusAgentMCP")
+
+# Silence noisy libraries
+logging.getLogger("crawl4ai").setLevel(logging.ERROR)
+logging.getLogger("graphiti_core").setLevel(logging.ERROR)
+logging.getLogger("httpx").setLevel(logging.WARNING)
+logging.getLogger("httpcore").setLevel(logging.WARNING)
+logging.getLogger("asyncio").setLevel(logging.WARNING)
 
 config = {
     "enable_delegation": to_boolean(os.environ.get("ENABLE_DELEGATION", "False")),
@@ -101,8 +110,8 @@ DEFAULT_HOST = os.environ.get("HOST", "0.0.0.0")
 DEFAULT_PORT = to_integer(os.environ.get("PORT", "9000"))
 
 DEFAULT_GRAPHDB_URI = os.environ.get("GRAPHDB_URI", "./kuzu_db")
-DEFAULT_GRAPHDB_USERNAME = os.environ.get("GRAPHDB_USERNAME", "neo4j")
-DEFAULT_GRAPHDB_PASSWORD = os.environ.get("GRAPHDB_PASSWORD", "password")
+DEFAULT_GRAPHDB_USERNAME = os.environ.get("GRAPHDB_USERNAME", None)
+DEFAULT_GRAPHDB_PASSWORD = os.environ.get("GRAPHDB_PASSWORD", None)
 DEFAULT_GRAPHDB_TYPE = os.environ.get("GRAPHDB_TYPE", "kuzu")
 DEFAULT_GRAPHDB_NAME = os.environ.get("GRAPHDB_NAME", "neo4j")
 
@@ -117,6 +126,7 @@ DEFAULT_EMBEDDING_BASE_URL = os.getenv("EMBEDDING_BASE_URL", DEFAULT_LLM_BASE_UR
 DEFAULT_EMBEDDING_API_KEY = os.getenv("EMBEDDING_API_KEY", DEFAULT_LLM_API_KEY)
 DEFAULT_EMBEDDING_DIM = to_integer(os.getenv("EMBEDDING_DIM", "768"))
 
+DEFAULT_DATABASE_TYPE = os.getenv("DATABASE_TYPE", "chromadb")
 VECTOR_MCP_URL = os.environ.get("VECTOR_MCP_URL", "http://vector-mcp:8000/sse")
 
 INGESTION_STATE: Dict[str, Dict[str, Any]] = {}
@@ -260,9 +270,15 @@ def create_graphiti_resources(
     if graph_type == "falkordb":
         try:
             from graphiti_core.driver.falkordb_driver import FalkorDriver
+            from urllib.parse import urlparse
+
+            parsed = urlparse(graph_uri)
+            host = parsed.hostname or "localhost"
+            port = parsed.port or 6379
 
             resources["graph_driver"] = FalkorDriver(
-                uri=graph_uri,
+                host=host,
+                port=port,
                 username=graph_user,
                 password=graph_password,
                 database=graph_name,
@@ -308,7 +324,7 @@ def get_collection_name_from_url(url: str) -> str:
     return clean_name.lower()
 
 
-async def ingest_to_graphiti(doc_dir: Path, job_id: str = None):
+async def ingest_to_graphiti(doc_dir: Path, collection_name: str, job_id: str = None):
     """Ingest markdown files from directory to Graphiti."""
     if not Graphiti:
         logger.error("Graphiti not available")
@@ -386,7 +402,7 @@ async def ingest_to_graphiti(doc_dir: Path, job_id: str = None):
                 logger.info(
                     f"Ingesting chunk {i+1}/{len(chunks)} ({len(chunk)} episodes)..."
                 )
-                await graphiti.add_episode_bulk(chunk)
+                await graphiti.add_episode_bulk(chunk, group_id=collection_name)
 
                 if job_id and job_id in INGESTION_STATE:
                     processed = min((i + 1) * CHUNK_SIZE, total_episodes)
@@ -401,7 +417,9 @@ async def ingest_to_graphiti(doc_dir: Path, job_id: str = None):
 
 
 async def call_vector_mcp_create_collection(
-    collection_name: str, document_directory: str = os.path.normpath("/documents")
+    collection_name: str,
+    document_directory: str = os.path.normpath("/documents"),
+    db_type: str = DEFAULT_DATABASE_TYPE,
 ):
     """Call Vector MCP to create a collection."""
     logger.info(f"Connecting to Vector MCP at {VECTOR_MCP_URL}...")
@@ -415,7 +433,7 @@ async def call_vector_mcp_create_collection(
                     "collection_name": collection_name,
                     "overwrite": True,
                     "document_directory": document_directory,
-                    "db_type": "promethai",
+                    "db_type": db_type,
                 },
             )
             logger.info(f"Vector MCP Result: {result}")
@@ -446,7 +464,9 @@ async def process_ingestion_background(
     async def run_graphiti():
         logger.info("Starting Graphiti ingestion...")
         try:
-            await ingest_to_graphiti(doc_dir_path, job_id=job_id)
+            await ingest_to_graphiti(
+                doc_dir_path, collection_name=collection_name, job_id=job_id
+            )
         except Exception as e:
             logger.error(f"Graphiti ingestion failed: {e}")
             if job_id in INGESTION_STATE:
@@ -669,7 +689,7 @@ def register_tools(mcp: FastMCP):
         if ctx:
             await ctx.report_progress(100, 100)
 
-        return {
+        response = {
             "status": 200,
             "message": "Recursive crawl complete. Background ingestion started.",
             "job_id": job_id,
@@ -678,6 +698,11 @@ def register_tools(mcp: FastMCP):
             "files_saved": total_saved,
             "note": "Use 'get_ingestion_progress' with the job_id to track Graphiti ingestion.",
         }
+
+        if job_id in INGESTION_STATE:
+            response.update(INGESTION_STATE[job_id])
+
+        return response
 
 
 def genius_agent_mcp():

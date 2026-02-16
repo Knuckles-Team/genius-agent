@@ -27,7 +27,9 @@ services:
       - "TRANSPORT=streamable-http"
       - "PROVIDER=${PROVIDER:-openai}"
       - "LLM_BASE_URL=${LLM_BASE_URL:-http://host.docker.internal:1234/v1}"
-      - "LLM_API_KEY=${LLM_API_KEY:-ollama}"
+      - "LLM_API_KEY=${LLM_API_KEY:-llama}"
+      - "OPENAI_API_URL=${LLM_BASE_URL:-http://host.docker.internal:1234/v1}"
+      - "OPENAI_API_KEY=${LLM_API_KEY:-llama}"
       - "MODEL_ID=${MODEL_ID:-qwen/qwen3-coder-next}"
       - "EMBEDDING_PROVIDER=${MODEL_ID:-openai}"
       - "EMBEDDING_BASE_URL=${LLM_BASE_URL:-http://host.docker.internal:1234/v1}"
@@ -35,10 +37,12 @@ services:
       - "EMBEDDER_MODEL=${EMBEDDER_MODEL:-text-embedding-nomic-embed-text-v2-moe}"
       - "EMBEDDING_DIM=${EMBEDDING_DIM:-512}"
       - "SEMAPHORE_LIMIT=10"
+      - "DATABASE_TYPE=${DATABASE_TYPE:-chromadb}"
       - "VECTOR_MCP_URL=${VECTOR_MCP_URL:-http://vector-mcp-chromadb:8002/mcp}"
       - "GRAPHDB_URI=${GRAPHDB_URI:-redis://falkordb:6379}"
       - "GRAPHDB_NAME=falkordb"
       - "GRAPHDB_TYPE=falkordb"
+      - "GRAPHDB_PASSWORD=${GRAPHDB_PASSWORD}"
     ports:
       - "8033:8033"
     healthcheck:
@@ -83,7 +87,7 @@ services:
       #- vector-mcp-pgvector
       searxng-mcp:
         condition: service_healthy
-      crawl4ai:
+      crawl4ai-mcp:
         condition: service_healthy
     ports:
       - "9033:9033"
@@ -128,6 +132,16 @@ services:
     volumes:
       - ./mcp/falkordb_data:/data
     restart: always
+    env_file:
+      - .env
+    environment:
+      - REDIS_ARGS=--requirepass ${GRAPHDB_PASSWORD}
+    healthcheck:
+      test: [ "CMD", "redis-cli", "-a", "${GRAPHDB_PASSWORD}", "ping" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
 
   graphiti-mcp:
     image: zepai/knowledge-graph-mcp:standalone
@@ -136,6 +150,8 @@ services:
     depends_on:
       falkordb:
         condition: service_started
+    env_file:
+      - .env
     environment:
       - HOST=0.0.0.0
       - PORT=8000
@@ -157,12 +173,15 @@ services:
       - EMBEDDER_BASE_URL=${EMBEDDING_BASE_URL:-http://host.docker.internal:1234/v1}
       # Database Configuration
       - FALKORDB_URI=redis://falkordb:6379
+      - FALKORDB_PASSWORD=${GRAPHDB_PASSWORD}
     extra_hosts:
       - "host.docker.internal:host-gateway"
     volumes:
-      - ./mcp/graphiti/falkordb/config.yaml:/app/mcp/config/config.yaml:ro
+      - ./graphiti/falkordb/config.yaml:/app/mcp/config/config.yaml:ro
+      # - ./graphiti/kuzu/config.yaml:/app/mcp/config/config.yaml:ro
+      # - ./graphiti/neo4j/config.yaml:/app/mcp/config/config.yaml:ro
     ports:
-      - "8034:8000"
+      - "8000:8000"
     healthcheck:
       test: [ "CMD", "python3", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')" ]
       interval: 30s
@@ -195,6 +214,7 @@ services:
       - "DATABASE_TYPE=${DATABASE_TYPE:-chromadb}"
       - "DATABASE_PATH=${DATABASE_PATH:-/data/chromadb}"
       - "DOCUMENT_DIRECTORY=${DOCUMENT_DIRECTORY:-/documents}"
+      - "CHUNK_SIZE=512"
     ports:
       - "8002:8002"
     healthcheck:
@@ -262,10 +282,10 @@ services:
   #   depends_on:
   #     - postgres
 
-  crawl4ai:
+  crawl4ai-mcp:
     image: docker.io/unclecode/crawl4ai:latest
-    container_name: crawl4ai
-    hostname: crawl4ai
+    container_name: crawl4ai-mcp
+    hostname: crawl4ai-mcp
     environment:
       - PORT=11235
       - HOST=0.0.0.0
