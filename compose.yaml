@@ -35,13 +35,10 @@ services:
       - "EMBEDDER_MODEL=${EMBEDDER_MODEL:-text-embedding-nomic-embed-text-v2-moe}"
       - "EMBEDDING_DIM=${EMBEDDING_DIM:-512}"
       - "SEMAPHORE_LIMIT=10"
-      - "VECTOR_MCP_URL=${VECTOR_MCP_URL:-http://vector-mcp-pgvector:8002/mcp}"
-      # - "GRAPHDB_URI=${GRAPHDB_URI:-bolt://neo4j:7687}"
-      - "GRAPHDB_URI=${GRAPHDB_URI:-/app/data/kuzu}"
-      # - "GRAPHDB_USERNAME=${GRAPHDB_USERNAME:-neo4j}"
-      # - "GRAPHDB_PASSWORD=${GRAPHDB_PASSWORD:-password}"
-      - "GRAPHDB_NAME=kuzu"
-      - "GRAPHDB_TYPE=kuzu"
+      - "VECTOR_MCP_URL=${VECTOR_MCP_URL:-http://vector-mcp-chromadb:8002/mcp}"
+      - "GRAPHDB_URI=${GRAPHDB_URI:-redis://falkordb:6379}"
+      - "GRAPHDB_NAME=falkordb"
+      - "GRAPHDB_TYPE=falkordb"
     ports:
       - "8033:8033"
     healthcheck:
@@ -77,12 +74,17 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
     depends_on:
-      - genius-mcp
-      - graphiti-mcp
-      - vector-mcp-chromadb
+      genius-mcp:
+        condition: service_healthy
+      graphiti-mcp:
+        condition: service_healthy
+      vector-mcp-chromadb:
+        condition: service_healthy
       #- vector-mcp-pgvector
-      - searxng-mcp
-      - crawl4ai
+      searxng-mcp:
+        condition: service_healthy
+      crawl4ai:
+        condition: service_healthy
     ports:
       - "9033:9033"
     healthcheck:
@@ -116,28 +118,27 @@ services:
   #     retries: 5
   #     start_period: 30s
 
-  # falkordb:
-  #   image: falkordb/falkordb:latest
-  #   container_name: falkordb
-  #   hostname: falkordb
-  #   ports:
-  #     - "6379:6379"
-  #     - "3000:3000"
-  #   volumes:
-  #     - ./mcp/falkordb_data:/data
-  #   restart: always
-
+  falkordb:
+    image: falkordb/falkordb:latest
+    container_name: falkordb
+    hostname: falkordb
+    ports:
+      - "6379:6379"
+      - "3000:3000"
+    volumes:
+      - ./mcp/falkordb_data:/data
+    restart: always
 
   graphiti-mcp:
     image: zepai/knowledge-graph-mcp:standalone
     container_name: graphiti-mcp
     hostname: graphiti-mcp
-    # depends_on:
-    #   neo4j:
-    #     condition: service_healthy
+    depends_on:
+      falkordb:
+        condition: service_started
     environment:
       - HOST=0.0.0.0
-      - PORT=8034
+      - PORT=8000
       - CONFIG_PATH=/app/mcp/config/config.yaml
       - GRAPHITI_GROUP_ID=main
       - SEMAPHORE_LIMIT=${SEMAPHORE_LIMIT:-10}
@@ -147,36 +148,33 @@ services:
       # LLM Configuration
       - LLM_PROVIDER=${PROVIDER:-openai}
       - LLM_MODEL=${MODEL_ID:-qwen/qwen3-coder-next}
-      - LLM_API_KEY=${LLM_API_KEY:-llama}
-      - LLM_BASE_URL=${LLM_BASE_URL:-http://host.docker.internal:1234/v1}
+      - OPENAI_API_KEY=${LLM_API_KEY:-llama}
+      - OPENAI_API_URL=${LLM_BASE_URL:-http://host.docker.internal:1234/v1}
       # Embedder Configuration
       - EMBEDDER_PROVIDER=${EMBEDDING_PROVIDER:-openai}
       - EMBEDDER_MODEL=${EMBEDDER_MODEL:-nomic-embed-text}
       - EMBEDDER_API_KEY=${EMBEDDING_API_KEY:-llama}
       - EMBEDDER_BASE_URL=${EMBEDDING_BASE_URL:-http://host.docker.internal:1234/v1}
       # Database Configuration
-      - GRAPHDB_URI=${GRAPHDB_URI:-/app/data/kuzu}
-      # - NEO4J_URI=bolt://neo4j:7687
-      # - NEO4J_USER=${NEO4J_USER:-neo4j}
-      # - NEO4J_PASSWORD=${NEO4J_PASSWORD:-password}
-      # - NEO4J_DATABASE=${NEO4J_DATABASE:-neo4j}
-      # - FALKORDB_URI=redis://falkordb:6379
+      - FALKORDB_URI=redis://falkordb:6379
     extra_hosts:
       - "host.docker.internal:host-gateway"
     volumes:
-      - ./mcp/graphiti/config.yaml:/app/mcp/config/config.yaml:ro
+      - ./mcp/graphiti/falkordb/config.yaml:/app/mcp/config/config.yaml:ro
     ports:
-      - "8034:8034"
+      - "8034:8000"
     healthcheck:
-      test: [ "CMD", "python3", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8034/health')" ]
+      test: [ "CMD", "python3", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')" ]
       interval: 30s
       timeout: 10s
       retries: 3
       start_period: 10s
 
   vector-mcp-chromadb:
-    image: docker.io/knucklessg1/vector-mcp:latest
-    # build: . # Debug
+    # image: docker.io/knucklessg1/vector-mcp:latest
+    build:
+      context: ../vector-mcp # Debug
+      dockerfile: debug.Dockerfile
     container_name: vector-mcp-chromadb
     hostname: vector-mcp-chromadb
     command: [ "vector-mcp" ]
@@ -273,6 +271,12 @@ services:
       - HOST=0.0.0.0
     ports:
       - "11235:11235"
+    healthcheck:
+      test: [ "CMD", "curl", "-s", "-f", "http://localhost:11235/health" ]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
 
   searxng-mcp:
     image: docker.io/knucklessg1/searxng-mcp:latest

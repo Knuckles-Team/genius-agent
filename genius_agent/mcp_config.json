@@ -10,7 +10,7 @@
       "timeout": 300000
     },
     "graphiti": {
-      "url": "http://graphiti-mcp:8034/mcp",
+      "url": "http://graphiti-mcp:8000/mcp",
       "timeout": 300000
     },
     "vector-mcp": {

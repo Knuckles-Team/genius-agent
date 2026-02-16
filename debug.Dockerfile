@@ -56,10 +56,7 @@ WORKDIR /app
 COPY . /app
 RUN apt update \
     && apt upgrade -y \
-    && apt install -y build-essential libxml2-dev libxslt1-dev python3-dev curl make \
-    && curl -fsSL https://deb.nodesource.com/setup_24.x | bash - \
-    && apt-get install -y nodejs unzip \
-    && curl -fsSL https://deno.land/install.sh | sh \
+    && apt install -y curl build-essential libxml2-dev libxslt1-dev python3-dev \
     && curl -LsSf https://astral.sh/uv/install.sh | sh \
     && uv pip install --system --upgrade --verbose --no-cache --break-system-packages --prerelease=allow . \
     && crawl4ai-setup
