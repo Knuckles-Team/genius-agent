@@ -38,7 +38,7 @@ from genius_agent.utils import (
     prune_large_messages,
 )
 
-__version__ = "2.13.8"
+__version__ = "2.13.9"
 
 logging.basicConfig(
     level=logging.INFO,

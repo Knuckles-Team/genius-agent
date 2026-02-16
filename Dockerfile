@@ -45,6 +45,7 @@ ENV HOST=${HOST} \
     EUNOMIA_TYPE=${EUNOMIA_TYPE} \
     EUNOMIA_POLICY_FILE=${EUNOMIA_POLICY_FILE} \
     EUNOMIA_REMOTE_URL=${EUNOMIA_REMOTE_URL} \
+    PYTHONUNBUFFERED=1 \
     GRAPHITI_TELEMETRY_ENABLED=false \
     PATH="/root/.local/bin:/usr/local/bin:${PATH}" \
     UV_HTTP_TIMEOUT=3600 \
@@ -55,7 +56,7 @@ RUN apt update \
     && apt upgrade -y \
     && apt install -y curl build-essential libxml2-dev libxslt1-dev python3-dev \
     && curl -LsSf https://astral.sh/uv/install.sh | sh \
-    && uv pip install --system --upgrade --verbose --no-cache --break-system-packages --prerelease=allow genius-agent>=2.13.8 \
+    && uv pip install --system --upgrade --verbose --no-cache --break-system-packages --prerelease=allow genius-agent>=2.13.9 \
     && crawl4ai-setup
 
 CMD ["genius-agent"]
