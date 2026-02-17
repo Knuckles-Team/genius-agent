@@ -1,4 +1,5 @@
-#!/usr/bin/env python3
+#!/usr/bin/python
+# coding: utf-8
 import json
 import sys
 import os
@@ -38,7 +39,7 @@ from genius_agent.utils import (
     prune_large_messages,
 )
 
-__version__ = "2.13.11"
+__version__ = "2.13.12"
 
 logging.basicConfig(
     level=logging.INFO,
@@ -80,19 +81,23 @@ DEFAULT_EXTRA_BODY = to_dict(os.getenv("EXTRA_BODY", None))
 AGENT_NAME = "Genius Agent"
 AGENT_DESCRIPTION = "A research specialist agent for information gathering and knowledge building using Genius Agent."
 AGENT_SYSTEM_PROMPT = (
-    "You are an intelligent AI assistant specializing in analyzing information about big tech companies and their AI initiatives.\n"
+    "You are an intelligent AI assistant specializing in acquiring, assimilating, and becoming a domain expert in given knowledge.\n"
     "You have access to a powerful suite of tools including:\n"
-    "1. **Comprehensive Search**: A combination of vector and graph search, supplemented with web search and web scraping.\n"
-    "2. **Ingestion**: Use the `ingest` tool to read and extract content from websites or local paths. This tool can accept a list of inputs (URLs or file paths). If you provide URLs and want to crawl them recursively, set `crawl=True`. It ingests findings into the Knowledge Graph and Vector DB to build your long-term memory. You do not need to run `create_collection` separately.\n"
-    "3. **Web Scraping (Crawl4AI)**: reading and extracting content from websites.\n"
-    "4. **Vector Database Management (Vector MCP)**: Manage the vector database collections.\n"
-    "5. **Knowledge Graph Management (Graphiti)**: Manage the knowledge graph.\n"
-    "6. **Document Database Management (DocumentDB MCP)**: Manage the document database. Use the `find` tool to search for documents.\n"
+    "1. **Comprehensive Search**: A combination of vector, graph, and document search, supplemented with web search and web scraping. You should always perform a comprehensive search first!\n"
+    "2. **Ingestion**: Use the `ingest` tool to read and extract content from websites or local paths. This tool can accept a list of inputs (URLs or file paths). If you provide URLs and want to crawl them recursively, set `crawl=True`. It ingests findings into the Knowledge Graph, Vector DB, and Document DB to build your long-term memory. You do not need to run `create_collection` separately.\n"
+    "3. **Vector Database Management (Vector MCP)**: Manage the vector database collections.\n"
+    "4. **Knowledge Graph Management (Graphiti)**: Manage the knowledge graph.\n"
+    "5. **Document Database Management (DocumentDB MCP)**: Manage the document database. Use the `find` tool to search for documents.\n"
+    "6. **Web Searching (SearXNG)**: Search for content using a search engine."
+    "3. **Web Scraping (Crawl4AI)**: Read and extract content from websites.\n"
     "\n"
     "Your responsibilities:\n"
-    "- **Analyze**: When a user asks a question, analyze if you have the information by running a graph search if the question is relational, vector search for relevant information, or use `find` from DocumentDB for specific document retrieval.\n"
-    " If nothing is found, use Web Search to find it then use Web Scraping to parse the content of the Web Search URL.\n"
-    "- **Ingest**: If you find specific URLs or have local files that are highly relevant but need detailed analysis, use the `ingest` tool. Pass them as a list to the `path` argument. Set `crawl=True` if you want to spider the URLs.\n"
+    "- **Analyze**: When a user asks a question, analyze if you have the information by executing the following tools in parallel: "
+    "  1. Executing tool `vector_search` to search for relevant information in our Vector database.\n"
+    "  2. Executing tool `search_knowledge_base` to search for relevant information in our Graph database.\n"
+    "  3. Executing tool `find` to search for relevant documents in our DocumentDB database.\n"
+    "  4. Executing tool `web_search` to search for relevant websites.\n"
+    "- **Ingest**: If you find specific URLs or have local files that are highly relevant but need detailed analysis, use the `ingest` tool. Pass them as a list to the `path` argument. Set `crawl=True` if you want to spider crawl the URLs.\n"
     "- **Synthesize**: Combine insights from all sources (Search, Vector, Graph, DocumentDB) to provide a comprehensive answer.\n"
     "- **Cite**: Always include URLs and sources for your information.\n"
     "\n"
@@ -103,9 +108,8 @@ AGENT_SYSTEM_PROMPT = (
     "\n"
     "When answering questions:\n"
     "- Always search for relevant information before responding if you are unsure.\n"
-    "- Use the Knowledge Graph for understanding relationships in the users prompt.\n"
-    "- If the documentation/context doesn't contain the answer, clearly state that and optionally perform a web search with a web scrape to find it.\n"
-    "- Be objective, accurate, and transparent about your sources.\n"
+    "- If the documentation/context doesn't contain the answer, clearly state that and optionally use the `web_search` tool and then take relevant URLs and use the `ingest` tool to save those URLs to our databases.\n"
+    "- Be objective, accurate, and cite your sources and documents. If you cannot find any information after searching comprehensively, clearly state that you do not have it.\n"
 )
 
 
@@ -391,7 +395,7 @@ def agent_server():
 
     if hasattr(args, "help") and args.help:
 
-        usage()
+        parser.print_help()
 
         sys.exit(0)
 
@@ -425,29 +429,6 @@ def agent_server():
         port=args.port,
         enable_web_ui=args.web,
         ssl_verify=not args.insecure,
-    )
-
-
-def usage():
-    print(
-        f"Genius Agent ({__version__}): CLI Tool\n\n"
-        "Usage:\n"
-        "--host                [ Host to bind the server to ]\n"
-        "--port                [ Port to bind the server to ]\n"
-        "--debug               [ Debug mode ]\n"
-        "--reload              [ Enable auto-reload ]\n"
-        "--provider            [ LLM Provider ]\n"
-        "--model-id            [ LLM Model ID ]\n"
-        "--base-url            [ LLM Base URL (for OpenAI compatible providers) ]\n"
-        "--api-key             [ LLM API Key ]\n"
-        "--mcp-url             [ MCP Server URL ]\n"
-        "--mcp-config          [ MCP Server Config ]\n"
-        "--custom-skills-directory    [ Directory containing additional custom agent skills ]\n"
-        "--web                 [ Enable Pydantic AI Web UI ]\n"
-        "\n"
-        "Examples:\n"
-        "  [Simple]  genius-agent \n"
-        '  [Complex] genius-agent --host "value" --port "value" --debug "value" --reload --provider "value" --model-id "value" --base-url "value" --api-key "value" --mcp-url "value" --mcp-config "value" --custom-skills-directory "value" --web\n'
     )
 
 

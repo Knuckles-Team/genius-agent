@@ -2,6 +2,7 @@
 # coding: utf-8
 import asyncio
 import os
+import json
 
 os.environ["GRAPHITI_TELEMETRY_ENABLED"] = "false"
 import logging
@@ -77,15 +78,18 @@ try:
 
         apply_patch(OpenAIClient, "_extract_json", patched_extract_json)
 
-    # 2. Patch _handle_json_response (Potential new method name)
-    # We attempt to apply the same markdown stripping logic if it expects a string
+    # 2. Patch _handle_json_response
     if hasattr(OpenAIClient, "_handle_json_response"):
         original_handle_json_response = OpenAIClient._handle_json_response
 
         def patched_handle_json_response(self, response: Any) -> Dict[str, Any]:
-            content = response
-            # If strictly a string, we strip markdown
-            if isinstance(content, str):
+            # Try to get content from response object
+            content = None
+            if hasattr(response, "choices") and response.choices:
+                content = response.choices[0].message.content
+
+            # If we got content, strip markdown
+            if content and isinstance(content, str):
                 if content.startswith("```json"):
                     content = content[7:]
                 elif content.startswith("```"):
@@ -93,22 +97,67 @@ try:
                 if content.endswith("```"):
                     content = content[:-3]
                 content = content.strip()
-                return original_handle_json_response(self, content)
+                try:
+                    return json.loads(content)
+                except json.JSONDecodeError:
+                    pass  # Fallback to original
 
-            # If not a string, pass through unchanged
             return original_handle_json_response(self, response)
 
         apply_patch(OpenAIClient, "_handle_json_response", patched_handle_json_response)
+
+    # 3. Patch _handle_structured_response
+    if hasattr(OpenAIClient, "_handle_structured_response"):
+        original_handle_structured_response = OpenAIClient._handle_structured_response
+
+        def patched_handle_structured_response(self, response: Any) -> Dict[str, Any]:
+            # Try to get content from response.output_text
+            content = getattr(response, "output_text", None)
+
+            if content and isinstance(content, str):
+                # Strip markdown
+                if content.startswith("```json"):
+                    content = content[7:]
+                elif content.startswith("```"):
+                    content = content[3:]
+                if content.endswith("```"):
+                    content = content[:-3]
+                content = content.strip()
+
+                try:
+                    parsed = json.loads(content)
+
+                    # FIX: Handle ExtractedEntities list vs object mismatch
+                    # If parsed is a list, and items look like ExtractedEntity (have "entity_type_id"),
+                    # wrap it in "extracted_entities" to match Pydantic model.
+                    if isinstance(parsed, list):
+                        if not parsed or (
+                            isinstance(parsed[0], dict)
+                            and "entity_type_id" in parsed[0]
+                        ):
+                            return {"extracted_entities": parsed}
+
+                    return parsed
+                except json.JSONDecodeError:
+                    pass
+
+            return original_handle_structured_response(self, response)
+
+        apply_patch(
+            OpenAIClient,
+            "_handle_structured_response",
+            patched_handle_structured_response,
+        )
 
     # 3. Patch generate_response (Refusal Error)
     if hasattr(OpenAIClient, "generate_response"):
         original_generate_response = OpenAIClient.generate_response
 
         async def patched_generate_response(
-            self, prompt: str, schema: Any = None
+            self, prompt: str, schema: Any = None, **kwargs
         ) -> Any:
             try:
-                return await original_generate_response(self, prompt, schema)
+                return await original_generate_response(self, prompt, schema, **kwargs)
             except AttributeError as e:
                 # Catch specific refusal error commonly seen with some proxies/models
                 if "'str' object has no attribute 'refusal'" in str(e):
@@ -142,7 +191,7 @@ from fastmcp import Client
 
 from genius_agent.utils import to_boolean, to_integer
 
-__version__ = "2.13.11"
+__version__ = "2.13.12"
 
 logging.basicConfig(
     level=logging.INFO,
@@ -177,6 +226,9 @@ config = {
 DEFAULT_TRANSPORT = os.environ.get("TRANSPORT", "stdio")
 DEFAULT_HOST = os.environ.get("HOST", "0.0.0.0")
 DEFAULT_PORT = to_integer(os.environ.get("PORT", "9000"))
+
+DEFAULT_DOCUMENTS_DIRECTORY = os.environ.get("DOCUMENTS_DIRECTORY", "/documents")
+DEFAULT_COLLECTIONS_DIRECTORY = os.environ.get("COLLECTIONS_DIRECTORY", "/collections")
 
 DEFAULT_GRAPHDB_URI = os.environ.get("GRAPHDB_URI", "./kuzu_db")
 DEFAULT_GRAPHDB_USERNAME = os.environ.get("GRAPHDB_USERNAME", None)
@@ -551,7 +603,7 @@ async def call_documentdb_mcp_insert(
                     "create_collection",
                     arguments={
                         "collection_name": collection_name,
-                        "database": "genius",
+                        "database_name": "genius",
                     },
                 )
             except Exception as e:
@@ -579,9 +631,9 @@ async def call_documentdb_mcp_insert(
                     await client.call_tool(
                         "insert_one",
                         arguments={
-                            "collection": collection_name,
+                            "collection_name": collection_name,
                             "document": document,
-                            "database": "genius",
+                            "database_name": "genius",
                         },
                     )
                     inserted_count += 1
@@ -748,7 +800,11 @@ def register_tools(mcp: FastMCP):
         ),
         document_directory: str = Field(
             description="Directory to ingest documents from. This is also the directory that crawled URLs get saved to as Markdown",
-            default="/documents",
+            default=DEFAULT_DOCUMENTS_DIRECTORY,
+        ),
+        collections_directory: str = Field(
+            description="This is the directory that we will store our organized collections. There will be a directory with the collection name and all documents in that collection in the directory.",
+            default=DEFAULT_COLLECTIONS_DIRECTORY,
         ),
         max_depth: int = Field(
             description="Maximum depth to crawl recursively if crawl is True. Default: 3",
@@ -793,8 +849,13 @@ def register_tools(mcp: FastMCP):
             collection_name = re.sub(r"[^a-zA-Z0-9_]", "_", collection_name).lower()
             logger.info(f"Generated collection name: {collection_name}")
 
-        doc_dir_path = Path(document_directory)
-        doc_dir_path.mkdir(parents=True, exist_ok=True)
+        # Create subdirectory for the collection in the collections directory
+        # This keeps the source /documents directory clean
+        collection_dir_path = Path(collections_directory) / collection_name
+        collection_dir_path.mkdir(parents=True, exist_ok=True)
+
+        # We also need to know the document directory to check if we should move or copy
+        source_doc_dir = Path(document_directory)
 
         if ctx:
             await ctx.report_progress(10, 100)
@@ -814,13 +875,31 @@ def register_tools(mcp: FastMCP):
 
                 if local_path.is_file():
                     try:
-                        dest_name = f"{collection_name}_{local_path.name}"
-                        dest_path = doc_dir_path / dest_name
-                        shutil.copy2(local_path, dest_path)
+                        # Use filename directly inside collection folder
+                        dest_name = local_path.name
+                        dest_path = collection_dir_path / dest_name
+
+                        # Decide whether to move or copy
+                        # If file is in source_doc_dir, we MOVE it to keep source clean
+                        # Otherwise we COPY it
+                        is_in_doc_dir = False
+                        try:
+                            # Check if local_path is relative to source_doc_dir
+                            local_path.relative_to(source_doc_dir)
+                            is_in_doc_dir = True
+                        except ValueError:
+                            is_in_doc_dir = False
+
+                        if is_in_doc_dir:
+                            shutil.move(str(local_path), str(dest_path))
+                            logger.info(f"Moved file: {local_path} -> {dest_path}")
+                        else:
+                            shutil.copy2(local_path, dest_path)
+                            logger.info(f"Copied file: {local_path} -> {dest_path}")
+
                         total_saved += 1
-                        logger.info(f"Copied file: {local_path} -> {dest_path}")
                     except Exception as e:
-                        logger.error(f"Failed to copy file {local_path}: {e}")
+                        logger.error(f"Failed to process file {local_path}: {e}")
 
                 elif local_path.is_dir():
                     # Walk directory for .md and .mdx
@@ -831,8 +910,9 @@ def register_tools(mcp: FastMCP):
                                     # Create a unique name to avoid collisions
                                     rel_path = f.relative_to(local_path)
                                     safe_rel_path = str(rel_path).replace(os.sep, "_")
-                                    dest_name = f"{collection_name}_{safe_rel_path}"
-                                    dest_path = doc_dir_path / dest_name
+                                    # Use relative path as filename inside collection folder
+                                    dest_name = safe_rel_path
+                                    dest_path = collection_dir_path / dest_name
                                     shutil.copy2(f, dest_path)
                                     total_saved += 1
                                 except Exception as e:
@@ -913,10 +993,11 @@ def register_tools(mcp: FastMCP):
                                 )
                                 if not path_slug.endswith(".md"):
                                     path_slug += ".md"
-                                filename = f"{collection_name}_{path_slug}"
+                                # Use path_slug directly as filename inside collection folder
+                                filename = path_slug
                                 filename = re.sub(r"[^a-zA-Z0-9_\-\.]", "", filename)
 
-                                file_path = os.path.join(doc_dir_path, filename)
+                                file_path = os.path.join(collection_dir_path, filename)
                                 try:
                                     with open(file_path, "w", encoding="utf-8") as f:
                                         f.write(result.markdown.raw_markdown)
@@ -966,7 +1047,7 @@ def register_tools(mcp: FastMCP):
         }
 
         asyncio.create_task(
-            process_ingestion_background(doc_dir_path, collection_name, job_id)
+            process_ingestion_background(collection_dir_path, collection_name, job_id)
         )
 
         if ctx:
@@ -977,7 +1058,7 @@ def register_tools(mcp: FastMCP):
             "message": "Recursive crawl complete. Background ingestion started.",
             "job_id": job_id,
             "collection": collection_name,
-            "directory": str(doc_dir_path),
+            "directory": str(collection_dir_path),
             "files_saved": total_saved,
             "note": "INGESTION IS RUNNING IN THE BACKGROUND. Inform the user that ingestion has started and provided the job_id, then END YOUR TURN. Do not call get_ingestion_progress unless the user asks in a NEW query.",
         }
@@ -1032,24 +1113,6 @@ def genius_agent_mcp():
         mcp.run(transport="streamable-http", host=args.host, port=args.port)
     else:
         mcp.run(transport="stdio")
-
-
-def usage():
-    print(
-        f"Genius Agent ({__version__}): Genius Agent MCP Server\n\n"
-        "Usage:\n"
-        "-t | --transport    [ Transport method ]\n"
-        "-s | --host         [ Host address ]\n"
-        "-p | --port         [ Port number ]\n"
-        "--auth-type         [ None ]\n"
-        "--token-jwks-uri    [ None ]\n"
-        "--token-issuer      [ None ]\n"
-        "--token-audience    [ None ]\n"
-        "\n"
-        "Examples:\n"
-        "  [Simple]  genius-mcp \n"
-        '  [Complex] genius-mcp --transport "value" --host "value" --port "value" --auth-type "value" --token-jwks-uri "value" --token-issuer "value" --token-audience "value"\n'
-    )
 
 
 if __name__ == "__main__":
