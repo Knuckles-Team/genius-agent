@@ -45,6 +45,8 @@ services:
       - "GRAPHDB_NAME=falkordb"
       - "GRAPHDB_TYPE=falkordb"
       - "GRAPHDB_PASSWORD=${GRAPHDB_PASSWORD}"
+      - "DOCUMENTS_DIRECTORY=${DOCUMENTS_DIRECTORY:-/documents}"
+      - "COLLECTIONS_DIRECTORY=${COLLECTIONS_DIRECTORY:-/collections}"
     ports:
       - "8033:8033"
     healthcheck:
@@ -55,6 +57,7 @@ services:
       start_period: 10s
     volumes:
       - ./mcp/documents:/documents
+      - ./mcp/collections:/collections
 
   genius-agent:
     build:
