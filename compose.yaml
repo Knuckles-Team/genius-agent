@@ -13,6 +13,7 @@ services:
       - graphiti-mcp
       - vector-mcp-chromadb
       #- vector-mcp-pgvector
+      - documentdb-mcp
     logging:
       driver: json-file
       options:
@@ -30,15 +31,16 @@ services:
       - "LLM_API_KEY=${LLM_API_KEY:-llama}"
       - "OPENAI_API_URL=${LLM_BASE_URL:-http://host.docker.internal:1234/v1}"
       - "OPENAI_API_KEY=${LLM_API_KEY:-llama}"
-      - "MODEL_ID=${MODEL_ID:-qwen/qwen3-coder-next}"
+      - "MODEL_ID=${GRAPH_MODEL_ID:-zai-org/glm-4.7-flash}"
       - "EMBEDDING_PROVIDER=${MODEL_ID:-openai}"
       - "EMBEDDING_BASE_URL=${LLM_BASE_URL:-http://host.docker.internal:1234/v1}"
       - "EMBEDDING_API_KEY=${LLM_API_KEY:-llama}"
       - "EMBEDDER_MODEL=${EMBEDDER_MODEL:-text-embedding-nomic-embed-text-v2-moe}"
       - "EMBEDDING_DIM=${EMBEDDING_DIM:-512}"
-      - "SEMAPHORE_LIMIT=10"
+      - "SEMAPHORE_LIMIT=${SEMAPHORE_LIMIT:-21}"
       - "DATABASE_TYPE=${DATABASE_TYPE:-chromadb}"
       - "VECTOR_MCP_URL=${VECTOR_MCP_URL:-http://vector-mcp-chromadb:8002/mcp}"
+      - "DOCUMENTDB_MCP_URL=${DOCUMENTDB_MCP_URL:-http://documentdb-mcp:8015/mcp}"
       - "GRAPHDB_URI=${GRAPHDB_URI:-redis://falkordb:6379}"
       - "GRAPHDB_NAME=falkordb"
       - "GRAPHDB_TYPE=falkordb"
@@ -75,6 +77,12 @@ services:
       - "MODEL_ID=${MODEL_ID:-qwen/qwen3-coder-next}"
       - "DEBUG=True"
       - "ENABLE_WEB_UI=True"
+      - "GENIUS_MCP_URL=${GENIUS_MCP_URL:-http://genius-mcp:8033/mcp}"
+      - "VECTOR_MCP_URL=${VECTOR_MCP_URL:-http://vector-mcp-chromadb:8002/mcp}"
+      - "DOCUMENTDB_MCP_URL=${DOCUMENTDB_MCP_URL:-http://documentdb-mcp:8015/mcp}"
+      - "SEARXNG_MCP_URL=${SEARXNG_MCP_URL:-http://searxng-mcp:8001/mcp}"
+      - "GRAPHITI_MCP_URL=${GRAPHITI_MCP_URL:-http://graphiti-mcp:8000/mcp}"
+      - "CRAWL4AI_MCP_URL=${CRAWL4AI_MCP_URL:-http://crawl4ai-mcp:11235/mcp/sse}"
     extra_hosts:
       - "host.docker.internal:host-gateway"
     depends_on:
@@ -85,6 +93,8 @@ services:
       vector-mcp-chromadb:
         condition: service_healthy
       #- vector-mcp-pgvector
+      documentdb-mcp:
+        condition: service_healthy
       searxng-mcp:
         condition: service_healthy
       crawl4ai-mcp:
@@ -163,7 +173,7 @@ services:
       - TRANSPORT=${TRANSPORT:-http}
       # LLM Configuration
       - LLM_PROVIDER=${PROVIDER:-openai}
-      - LLM_MODEL=${MODEL_ID:-qwen/qwen3-coder-next}
+      - LLM_MODEL=${GRAPH_MODEL_ID:-zai-org/glm-4.7-flash}
       - OPENAI_API_KEY=${LLM_API_KEY:-llama}
       - OPENAI_API_URL=${LLM_BASE_URL:-http://host.docker.internal:1234/v1}
       # Embedder Configuration
@@ -286,6 +296,8 @@ services:
     image: docker.io/unclecode/crawl4ai:latest
     container_name: crawl4ai-mcp
     hostname: crawl4ai-mcp
+    env_file:
+      - .env
     environment:
       - PORT=11235
       - HOST=0.0.0.0
@@ -299,7 +311,10 @@ services:
       start_period: 10s
 
   searxng-mcp:
-    image: docker.io/knucklessg1/searxng-mcp:latest
+    # image: docker.io/knucklessg1/searxng-mcp:latest
+    build:
+      context: ../searxng-mcp # Debug
+      dockerfile: debug.Dockerfile
     container_name: searxng-mcp
     hostname: searxng-mcp
     command: [ "searxng-mcp" ]
@@ -311,6 +326,8 @@ services:
         max-size: "10m"
         max-file: "3"
     restart: always
+    env_file:
+      - .env
     environment:
       - "HOST=0.0.0.0"
       - "PORT=8001"
@@ -329,6 +346,8 @@ services:
     image: docker.io/searxng/searxng:latest
     container_name: searxng
     hostname: searxng
+    env_file:
+      - .env
     environment:
       - SEARXNG_INSTANCE_NAME=Private SearXNG
       - SEARXNG_BIND_ADDRESS=0.0.0.0:8080
@@ -357,3 +376,60 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
+
+  documentdb-mcp:
+    # image: docker.io/knucklessg1/documentdb-mcp:latest
+    build:
+      context: ../documentdb-mcp # Debug
+      dockerfile: debug.Dockerfile
+    container_name: documentdb-mcp
+    hostname: documentdb-mcp
+    command: [ "documentdb-mcp" ]
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      - documentdb
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+    restart: always
+    env_file:
+      - .env
+    environment:
+      - "PYTHONUNBUFFERED=1"
+      - "HOST=0.0.0.0"
+      - "PORT=8015"
+      - "TRANSPORT=streamable-http"
+      - "MONGODB_URI=mongodb://${DOCUMENTDB_USERNAME:-administrator}:${DOCUMENTDB_PASSWORD:-documentdbadmin}@documentdb:27017/"
+    ports:
+      - "8015:8015"
+    healthcheck:
+      test: [ "CMD", "python3", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8015/health')" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+  documentdb:
+    image: ghcr.io/microsoft/documentdb/documentdb-local:latest
+    container_name: documentdb
+    hostname: documentdb
+    env_file:
+      - .env
+    environment:
+      - "PYTHONUNBUFFERED=1"
+      - USERNAME=${DOCUMENTDB_USERNAME:-administrator}
+      - PASSWORD=${DOCUMENTDB_PASSWORD:-documentdbadmin}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - ./mcp/documentdb-data:/data
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+    ports:
+      - "10260:27017"

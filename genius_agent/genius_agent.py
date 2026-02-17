@@ -38,7 +38,7 @@ from genius_agent.utils import (
     prune_large_messages,
 )
 
-__version__ = "2.13.10"
+__version__ = "2.13.11"
 
 logging.basicConfig(
     level=logging.INFO,
@@ -59,7 +59,7 @@ DEFAULT_LLM_BASE_URL = os.getenv("LLM_BASE_URL", "http://host.docker.internal:12
 DEFAULT_LLM_API_KEY = os.getenv("LLM_API_KEY", "ollama")
 DEFAULT_MCP_URL = os.getenv("MCP_URL", None)
 DEFAULT_MCP_CONFIG = os.getenv("MCP_CONFIG", get_mcp_config_path())
-DEFAULT_SKILLS_DIRECTORY = os.getenv("SKILLS_DIRECTORY", get_skills_path())
+DEFAULT_CUSTOM_SKILLS_DIRECTORY = os.getenv("CUSTOM_SKILLS_DIRECTORY", None)
 DEFAULT_ENABLE_WEB_UI = to_boolean(os.getenv("ENABLE_WEB_UI", "False"))
 DEFAULT_SSL_VERIFY = to_boolean(os.getenv("SSL_VERIFY", "True"))
 
@@ -83,17 +83,23 @@ AGENT_SYSTEM_PROMPT = (
     "You are an intelligent AI assistant specializing in analyzing information about big tech companies and their AI initiatives.\n"
     "You have access to a powerful suite of tools including:\n"
     "1. **Comprehensive Search**: A combination of vector and graph search, supplemented with web search and web scraping.\n"
-    "2. **Ingestion**: Use the `ingest` tool to read and extract content from websites. This tool AUTOMATICALLY crawls the URL and ingests findings into the Knowledge Graph and Vector DB to build your long-term memory. Please run `get_ingestion_progress` immediately afterwards to get the progress of the ingestion. You do not need to run `create_collection` separately, as the `ingest` tool will create the collection if it doesn't exist.\n"
+    "2. **Ingestion**: Use the `ingest` tool to read and extract content from websites or local paths. This tool can accept a list of inputs (URLs or file paths). If you provide URLs and want to crawl them recursively, set `crawl=True`. It ingests findings into the Knowledge Graph and Vector DB to build your long-term memory. You do not need to run `create_collection` separately.\n"
     "3. **Web Scraping (Crawl4AI)**: reading and extracting content from websites.\n"
     "4. **Vector Database Management (Vector MCP)**: Manage the vector database collections.\n"
     "5. **Knowledge Graph Management (Graphiti)**: Manage the knowledge graph.\n"
+    "6. **Document Database Management (DocumentDB MCP)**: Manage the document database. Use the `find` tool to search for documents.\n"
     "\n"
     "Your responsibilities:\n"
-    "- **Analyze**: When a user asks a question, analyze if you have the information by running a graph search if the question is relational, otherwise vector search for relevant information. \n"
+    "- **Analyze**: When a user asks a question, analyze if you have the information by running a graph search if the question is relational, vector search for relevant information, or use `find` from DocumentDB for specific document retrieval.\n"
     " If nothing is found, use Web Search to find it then use Web Scraping to parse the content of the Web Search URL.\n"
-    "- **Ingest**: If you find specific URLs that are highly relevant but need detailed analysis, use the `ingest` tool. This will handle crawling and storing the information for you.\n"
-    "- **Synthesize**: Combine insights from all sources (Search, Vector, Graph) to provide a comprehensive answer.\n"
+    "- **Ingest**: If you find specific URLs or have local files that are highly relevant but need detailed analysis, use the `ingest` tool. Pass them as a list to the `path` argument. Set `crawl=True` if you want to spider the URLs.\n"
+    "- **Synthesize**: Combine insights from all sources (Search, Vector, Graph, DocumentDB) to provide a comprehensive answer.\n"
     "- **Cite**: Always include URLs and sources for your information.\n"
+    "\n"
+    "**Background Ingestion Policy**:\n"
+    "- Ingestion is a background process. Once the `ingest` tool returns a job ID, **STOP** and inform the user that ingestion has started. Provide the job ID and the collection name.\n"
+    "- Offer to check progress if an ingestion job has been started and only check progress if specifically requested by the user in a subsequent message.\n"
+    "- **DO NOT** call `get_ingestion_progress` to poll for completion in the same turn unless specifically requested by the user.\n"
     "\n"
     "When answering questions:\n"
     "- Always search for relevant information before responding if you are unsure.\n"
@@ -110,7 +116,7 @@ def create_agent(
     api_key: Optional[str] = DEFAULT_LLM_API_KEY,
     mcp_url: str = DEFAULT_MCP_URL,
     mcp_config: str = DEFAULT_MCP_CONFIG,
-    skills_directory: Optional[str] = DEFAULT_SKILLS_DIRECTORY,
+    custom_skills_directory: Optional[str] = DEFAULT_CUSTOM_SKILLS_DIRECTORY,
     ssl_verify: bool = DEFAULT_SSL_VERIFY,
 ) -> Agent:
     agent_toolsets = []
@@ -142,11 +148,18 @@ def create_agent(
         agent_toolsets.extend(mcp_toolset)
         logger.info(f"Connected to MCP Config JSON: {mcp_toolset}")
 
-    if skills_directory and os.path.exists(skills_directory):
-        logger.debug(f"Loading skills {skills_directory}")
-        skills = SkillsToolset(directories=[str(skills_directory)])
-        agent_toolsets.append(skills)
-        logger.info(f"Loaded Skills at {skills_directory}")
+    # Always load default skills
+    skill_dirs = [get_skills_path()]
+
+    # Load custom skills if provided
+    if custom_skills_directory and os.path.exists(custom_skills_directory):
+        logger.debug(f"Loading custom skills {custom_skills_directory}")
+        skill_dirs.append(str(custom_skills_directory))
+        logger.info(f"Loaded Custom Skills at {custom_skills_directory}")
+
+    skills = SkillsToolset(directories=skill_dirs)
+    agent_toolsets.append(skills)
+    logger.info(f"Loaded Default Skills at {get_skills_path()}")
 
     model = create_model(
         provider=provider,
@@ -191,7 +204,7 @@ def create_agent_server(
     api_key: Optional[str] = DEFAULT_LLM_API_KEY,
     mcp_url: str = DEFAULT_MCP_URL,
     mcp_config: str = DEFAULT_MCP_CONFIG,
-    skills_directory: Optional[str] = DEFAULT_SKILLS_DIRECTORY,
+    custom_skills_directory: Optional[str] = DEFAULT_CUSTOM_SKILLS_DIRECTORY,
     debug: Optional[bool] = DEFAULT_DEBUG,
     host: Optional[str] = DEFAULT_HOST,
     port: Optional[int] = DEFAULT_PORT,
@@ -213,14 +226,23 @@ def create_agent_server(
         api_key=api_key,
         mcp_url=mcp_url,
         mcp_config=mcp_config,
-        skills_directory=skills_directory,
+        custom_skills_directory=custom_skills_directory,
         ssl_verify=ssl_verify,
     )
 
-    if skills_directory and os.path.exists(skills_directory):
-        skills = load_skills_from_directory(skills_directory)
-        logger.info(f"Loaded {len(skills)} skills from {skills_directory}")
-    else:
+    # Always load default skills
+    skills = load_skills_from_directory(get_skills_path())
+    logger.info(f"Loaded {len(skills)} default skills from {get_skills_path()}")
+
+    # Load custom skills if provided
+    if custom_skills_directory and os.path.exists(custom_skills_directory):
+        custom_skills = load_skills_from_directory(custom_skills_directory)
+        skills.extend(custom_skills)
+        logger.info(
+            f"Loaded {len(custom_skills)} custom skills from {custom_skills_directory}"
+        )
+
+    if not skills:
         skills = [
             Skill(
                 id="searxng_agent",
@@ -345,9 +367,9 @@ def agent_server():
         "--mcp-config", default=DEFAULT_MCP_CONFIG, help="MCP Server Config"
     )
     parser.add_argument(
-        "--skills-directory",
-        default=DEFAULT_SKILLS_DIRECTORY,
-        help="Directory containing agent skills",
+        "--custom-skills-directory",
+        default=DEFAULT_CUSTOM_SKILLS_DIRECTORY,
+        help="Directory containing additional custom agent skills",
     )
 
     parser.add_argument(
@@ -397,7 +419,7 @@ def agent_server():
         api_key=args.api_key,
         mcp_url=args.mcp_url,
         mcp_config=args.mcp_config,
-        skills_directory=args.skills_directory,
+        custom_skills_directory=args.custom_skills_directory,
         debug=args.debug,
         host=args.host,
         port=args.port,
@@ -420,12 +442,12 @@ def usage():
         "--api-key             [ LLM API Key ]\n"
         "--mcp-url             [ MCP Server URL ]\n"
         "--mcp-config          [ MCP Server Config ]\n"
-        "--skills-directory    [ Directory containing agent skills ]\n"
+        "--custom-skills-directory    [ Directory containing additional custom agent skills ]\n"
         "--web                 [ Enable Pydantic AI Web UI ]\n"
         "\n"
         "Examples:\n"
         "  [Simple]  genius-agent \n"
-        '  [Complex] genius-agent --host "value" --port "value" --debug "value" --reload --provider "value" --model-id "value" --base-url "value" --api-key "value" --mcp-url "value" --mcp-config "value" --skills-directory "value" --web\n'
+        '  [Complex] genius-agent --host "value" --port "value" --debug "value" --reload --provider "value" --model-id "value" --base-url "value" --api-key "value" --mcp-url "value" --mcp-config "value" --custom-skills-directory "value" --web\n'
     )
 
 

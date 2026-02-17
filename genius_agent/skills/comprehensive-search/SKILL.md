@@ -8,7 +8,7 @@ This is the primary search skill for the agent. It implements a tiered search st
 
 ### Strategy (Order of Operations)
 1.  **Internal Search (Memory)**:
-    - **Step 1**: Always query the **Vector Database** (`vector_search`) and **Knowledge Graph** (`search_knowledge_base`) first.
+    - **Step 1**: Always query the **Vector Database** (`vector_search`), **Knowledge Graph** (`search_knowledge_base`), and **Document Database** (`find`) first.
     - **Step 2**: Analyze the results. Do they fully answer the user's question with high confidence?
     - **Step 3**: If yes, synthesize the answer and Stop.
 
@@ -18,11 +18,12 @@ This is the primary search skill for the agent. It implements a tiered search st
 
 3.  **Deep Dive (Acquisition)**:
     - **Step 6**: If a web search result looks promising but lacks detail, use **Web Scraping** (`crawl` or `md`) to read the full page.
-    - **Step 7**: (Optional) Trigger the `ingestion` skill with the desired URL to save this new high-value info if relevant to the existing knowledge base.
+    - **Step 7**: (Optional) Trigger the `ingest` tool (from Ingestion Skill) with the desired URL or document paths to save this new high-value info if relevant to the existing knowledge base.
 
 ### Tools
 - `vector_search` (Vector MCP): Semantic search.
 - `search_knowledge_base` (Graphiti): Graph/Fact search.
+- `find` (DocumentDB MCP): Document search.
 - `web_search` (SearXNG): Live web search.
 - `ingestion` (Ingestion Skill): Save new high-value info to the knowledge base.
 - `crawl` (Crawl4AI): Multiple page fetching.
