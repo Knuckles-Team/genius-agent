@@ -191,7 +191,7 @@ from fastmcp import Client
 
 from genius_agent.utils import to_boolean, to_integer
 
-__version__ = "2.13.13"
+__version__ = "2.13.14"
 
 logging.basicConfig(
     level=logging.INFO,
