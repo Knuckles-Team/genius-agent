@@ -1,6 +1,7 @@
 ---
-name: a2a-client
+name: a2a_client copy
 description: Communicate with other agents using the Agent-to-Agent (A2A) protocol.
+tags: [a2a_client copy]
 ---
 
 ### Overview

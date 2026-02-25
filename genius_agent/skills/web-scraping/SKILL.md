@@ -1,6 +1,7 @@
 ---
 name: web-scraping
 description: Web scraping and crawling capabilities for gathering information from websites.
+tags: [web-scraping]
 ---
 
 ### Overview

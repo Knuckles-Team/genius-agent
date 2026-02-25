@@ -1,6 +1,7 @@
 ---
 name: comprehensive-search
 description: Unified search capability that intelligently combines Vector Search, Knowledge Graph, and Web Search.
+tags: [comprehensive-search]
 ---
 
 ### Overview

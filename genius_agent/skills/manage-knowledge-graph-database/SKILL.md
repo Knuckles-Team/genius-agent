@@ -1,6 +1,7 @@
 ---
-name: knowledge-graph
+name: manage-knowledge-graph-database
 description: Capabilities for managing a Knowledge Graph.
+tags: [manage-knowledge-graph-database]
 ---
 
 ### Overview

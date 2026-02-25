@@ -1,6 +1,7 @@
 ---
 name: ingest
 description: Pipeline for ingesting content from URLs or documents directory into the Knowledge Graph, Vector Database, and Document Database.
+tags: [ingest]
 ---
 
 ### Overview

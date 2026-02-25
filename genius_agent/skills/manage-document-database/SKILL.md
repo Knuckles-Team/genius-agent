@@ -1,6 +1,7 @@
 ---
 name: manage-document-database
 description: Manage the DocumentDB instance, including creating collections, inserting documents, and searching.
+tags: [manage-document-database]
 ---
 
 ### Overview

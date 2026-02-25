@@ -18,6 +18,10 @@ from fastmcp import FastMCP, Context
 from fastmcp.utilities.logging import get_logger
 from starlette.requests import Request
 from starlette.responses import JSONResponse
+from agent_utilities.middlewares import (
+    UserTokenMiddleware,
+    JWTClaimsLoggingMiddleware,
+)
 
 try:
     from graphiti_core import Graphiti
@@ -190,9 +194,11 @@ from urllib.parse import urldefrag
 from fastmcp import Client
 
 from agent_utilities.base_utilities import to_boolean, to_integer
-from agent_utilities.mcp_utilities import create_mcp_parser
+from agent_utilities.mcp_utilities import (
+    create_mcp_parser,
+)
 
-__version__ = "2.13.14"
+__version__ = "2.13.15"
 
 logging.basicConfig(
     level=logging.INFO,
@@ -208,25 +214,6 @@ logging.getLogger("httpx").setLevel(logging.WARNING)
 logging.getLogger("httpcore").setLevel(logging.WARNING)
 logging.getLogger("asyncio").setLevel(logging.WARNING)
 
-config = {
-    "enable_delegation": to_boolean(os.environ.get("ENABLE_DELEGATION", "False")),
-    "audience": os.environ.get("AUDIENCE", None),
-    "delegated_scopes": os.environ.get("DELEGATED_SCOPES", "api"),
-    "token_endpoint": None,
-    "oidc_client_id": os.environ.get("OIDC_CLIENT_ID", None),
-    "oidc_client_secret": os.environ.get("OIDC_CLIENT_SECRET", None),
-    "oidc_config_url": os.environ.get("OIDC_CONFIG_URL", None),
-    "jwt_jwks_uri": os.getenv("FASTMCP_SERVER_AUTH_JWT_JWKS_URI", None),
-    "jwt_issuer": os.getenv("FASTMCP_SERVER_AUTH_JWT_ISSUER", None),
-    "jwt_audience": os.getenv("FASTMCP_SERVER_AUTH_JWT_AUDIENCE", None),
-    "jwt_algorithm": os.getenv("FASTMCP_SERVER_AUTH_JWT_ALGORITHM", None),
-    "jwt_secret": os.getenv("FASTMCP_SERVER_AUTH_JWT_PUBLIC_KEY", None),
-    "jwt_required_scopes": os.getenv("FASTMCP_SERVER_AUTH_JWT_REQUIRED_SCOPES", None),
-}
-
-DEFAULT_TRANSPORT = os.environ.get("TRANSPORT", "stdio")
-DEFAULT_HOST = os.environ.get("HOST", "0.0.0.0")
-DEFAULT_PORT = to_integer(os.environ.get("PORT", "9000"))
 
 DEFAULT_DOCUMENTS_DIRECTORY = os.environ.get("DOCUMENTS_DIRECTORY", "/documents")
 DEFAULT_COLLECTIONS_DIRECTORY = os.environ.get("COLLECTIONS_DIRECTORY", "/collections")
@@ -1077,33 +1064,33 @@ def register_tools(mcp: FastMCP):
         return response
 
 
-def genius_agent_mcp():
+def mcp_server():
     print(f"genius_mcp v{__version__}")
-    import argparse
 
-    parser = argparse.ArgumentParser(
-        add_help=False, description="Genius Agent MCP Server"
-    )
-    parser.add_argument(
-        "-t",
-        "--transport",
-        default=DEFAULT_TRANSPORT,
-        choices=["stdio", "streamable-http", "sse"],
-        help="Transport method",
-    )
-    parser.add_argument("-s", "--host", default=DEFAULT_HOST, help="Host address")
-    parser.add_argument(
-        "-p", "--port", type=int, default=DEFAULT_PORT, help="Port number"
-    )
-
-    parser.add_argument("--auth-type", default="none")
-    parser.add_argument("--token-jwks-uri", default=None)
-    parser.add_argument("--token-issuer", default=None)
-    parser.add_argument("--token-audience", default=None)
-
-    args, unknown = parser.parse_known_args()
+    parser = create_mcp_parser()
+    parser.description = "Genius Agent MCP Server"
+    parser.set_defaults(port=to_integer(os.environ.get("PORT", "9000")))
+    args = parser.parse_args()
 
     mcp = FastMCP(name="GeniusAgentMCP")
+    mcp.add_middleware(
+        UserTokenMiddleware(
+            config={
+                "enable_delegation": to_boolean(
+                    os.environ.get("ENABLE_DELEGATION", "False")
+                ),
+            }
+        )
+    )
+    mcp.add_middleware(
+        JWTClaimsLoggingMiddleware(
+            config={
+                "enable_delegation": to_boolean(
+                    os.environ.get("ENABLE_DELEGATION", "False")
+                ),
+            }
+        )
+    )
     register_tools(mcp)
 
     print(f"Starting Genius Agent MCP on {args.host}:{args.port}")
@@ -1117,4 +1104,4 @@ def genius_agent_mcp():
 
 
 if __name__ == "__main__":
-    genius_agent_mcp()
+    mcp_server()
