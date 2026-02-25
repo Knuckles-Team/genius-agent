@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "genius-agent"
-version = "2.12.0"
+version = "2.13.15"
 description = "GeniusAgent Search Engine MCP Server for Agentic AI!"
 readme = "README.md"
 authors = [{ name = "Audel Rouhi", email = "knucklessg1@gmail.com" }]
@@ -18,19 +18,25 @@ classifiers = [
 ]
 requires-python = ">=3.10"
 dependencies = [
-    "pydantic-ai-slim[fastmcp,openai,anthropic,google,huggingface,a2a,ag-ui,web]>=1.32.0",
-    "pydantic-ai-skills",
-    "fastapi>=0.128.0"
+    "tree-sitter>=0.23.2",
+    "pydantic-ai-slim[fastmcp,openai,groq,anthropic,mistral,google,huggingface,a2a,ag-ui,web]>=1.60.0",
+    "pydantic-ai-skills>=v0.4.0",
+    "fastapi>=0.128.0",
+    "crawl4ai>=0.8.0",
+    "graphiti-core[neo4j,falkordb,kuzu,anthropic,google-genai,openai,groq]>=0.26.3",
+    "fastmcp>=3.0.0b1",
+    "eunomia-mcp>=0.3.10"
 ]
 
 [project.scripts]
+genius-mcp = "genius_agent.mcp:mcp_server"
 genius-agent = "genius_agent.genius_agent:agent_server"
 
 [tool.setuptools.packages.find]
 where = ["."]
 
 [tool.setuptools.package-data]
-genius_agent = ["mcp_config.json", "skills/**"]
+genius_agent = [ "mcp_config.json", "skills/**", "agent/**",]
 
 [tool.setuptools]
 include-package-data = true

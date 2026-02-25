@@ -27,11 +27,12 @@ repos:
     hooks:
     - id: black
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.14.13
+    rev: v0.15.2
     hooks:
       - id: ruff
         types_or: [ python, pyi, jupyter ]
         args: ["--fix", "--ignore=E402"]
+        exclude: ^(tests/|scripts/)
   - repo: https://github.com/codespell-project/codespell
     rev: v2.4.1
     hooks:

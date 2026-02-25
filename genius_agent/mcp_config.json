@@ -1,20 +1,28 @@
 {
   "mcpServers": {
+    "genius-mcp": {
+      "url": "${GENIUS_MCP_URL:-http://genius-mcp:8033/mcp}",
+      "timeout": 300000
+    },
     "crawl4ai": {
-      "url": "http://localhost:11235/mcp/sse",
+      "url": "${CRAWL4AI_MCP_URL:-http://crawl4ai-mcp:11235/mcp/sse}",
       "transport": "sse",
       "timeout": 300000
     },
     "graphiti": {
-      "url": "http://localhost:8034/mcp",
+      "url": "${GRAPHITI_MCP_URL:-http://graphiti-mcp:8000/mcp}",
       "timeout": 300000
     },
     "vector-mcp": {
-      "url": "http://localhost:8024/mcp",
+      "url": "${VECTOR_MCP_URL:-http://vector-mcp-chromadb:8002/mcp}",
       "timeout": 300000
     },
     "searxng-mcp": {
-      "url": "http://localhost:8001/mcp",
+      "url": "${SEARXNG_MCP_URL:-http://searxng-mcp:8001/mcp}",
+      "timeout": 300000
+    },
+    "documentdb-mcp": {
+      "url": "${DOCUMENTDB_MCP_URL:-http://documentdb-mcp:8015/mcp}",
       "timeout": 300000
     }
   }

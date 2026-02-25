@@ -1,8 +1,68 @@
 services:
+
+  genius-mcp:
+    build:
+      context: .
+      dockerfile: debug.Dockerfile
+    container_name: genius-mcp
+    hostname: genius-mcp
+    command: [ "genius-mcp" ]
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      - graphiti-mcp
+      - vector-mcp-chromadb
+      #- vector-mcp-pgvector
+      - documentdb-mcp
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+    restart: always
+    env_file:
+      - .env
+    environment:
+      - "HOST=0.0.0.0"
+      - "PORT=8033"
+      - "TRANSPORT=streamable-http"
+      - "PROVIDER=${PROVIDER:-openai}"
+      - "LLM_BASE_URL=${LLM_BASE_URL:-http://host.docker.internal:1234/v1}"
+      - "LLM_API_KEY=${LLM_API_KEY:-llama}"
+      - "OPENAI_API_URL=${LLM_BASE_URL:-http://host.docker.internal:1234/v1}"
+      - "OPENAI_API_KEY=${LLM_API_KEY:-llama}"
+      - "MODEL_ID=${GRAPH_MODEL_ID:-zai-org/glm-4.7-flash}"
+      - "EMBEDDING_PROVIDER=${MODEL_ID:-openai}"
+      - "EMBEDDING_BASE_URL=${LLM_BASE_URL:-http://host.docker.internal:1234/v1}"
+      - "EMBEDDING_API_KEY=${LLM_API_KEY:-llama}"
+      - "EMBEDDER_MODEL=${EMBEDDER_MODEL:-text-embedding-nomic-embed-text-v2-moe}"
+      - "EMBEDDING_DIM=${EMBEDDING_DIM:-512}"
+      - "SEMAPHORE_LIMIT=${SEMAPHORE_LIMIT:-21}"
+      - "DATABASE_TYPE=${DATABASE_TYPE:-chromadb}"
+      - "VECTOR_MCP_URL=${VECTOR_MCP_URL:-http://vector-mcp-chromadb:8002/mcp}"
+      - "DOCUMENTDB_MCP_URL=${DOCUMENTDB_MCP_URL:-http://documentdb-mcp:8015/mcp}"
+      - "GRAPHDB_URI=${GRAPHDB_URI:-redis://falkordb:6379}"
+      - "GRAPHDB_NAME=falkordb"
+      - "GRAPHDB_TYPE=falkordb"
+      - "GRAPHDB_PASSWORD=${GRAPHDB_PASSWORD}"
+      - "DOCUMENTS_DIRECTORY=${DOCUMENTS_DIRECTORY:-/documents}"
+      - "COLLECTIONS_DIRECTORY=${COLLECTIONS_DIRECTORY:-/collections}"
+    ports:
+      - "8033:8033"
+    healthcheck:
+      test: [ "CMD", "python3", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8033/health')" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    volumes:
+      - ./mcp/documents:/documents
+      - ./mcp/collections:/collections
+
   genius-agent:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: debug.Dockerfile
     container_name: genius-agent
     hostname: genius-agent
     logging:
@@ -15,86 +75,140 @@ services:
       - "HOST=0.0.0.0"
       - "PORT=9033"
       - "PROVIDER=openai"
-      - "OPENAI_BASE_URL=http://host.docker.internal:1234/v1"
-      - "OPENAI_API_KEY=llama"
-      - "MODEL_ID=qwen/qwen3-4b-2507"
+      - "LLM_BASE_URL=${LLM_BASE_URL:-http://host.docker.internal:1234/v1}"
+      - "LLM_API_KEY=${LLM_API_KEY:-llama}"
+      - "MODEL_ID=${MODEL_ID:-qwen/qwen3-coder-next}"
       - "DEBUG=True"
       - "ENABLE_WEB_UI=True"
+      - "GENIUS_MCP_URL=${GENIUS_MCP_URL:-http://genius-mcp:8033/mcp}"
+      - "VECTOR_MCP_URL=${VECTOR_MCP_URL:-http://vector-mcp-chromadb:8002/mcp}"
+      - "DOCUMENTDB_MCP_URL=${DOCUMENTDB_MCP_URL:-http://documentdb-mcp:8015/mcp}"
+      - "SEARXNG_MCP_URL=${SEARXNG_MCP_URL:-http://searxng-mcp:8001/mcp}"
+      - "GRAPHITI_MCP_URL=${GRAPHITI_MCP_URL:-http://graphiti-mcp:8000/mcp}"
+      - "CRAWL4AI_MCP_URL=${CRAWL4AI_MCP_URL:-http://crawl4ai-mcp:11235/mcp/sse}"
     extra_hosts:
       - "host.docker.internal:host-gateway"
     depends_on:
-      - postgres
-      - neo4j
-      - graphiti-mcp
-      - vector-mcp-pgvector
-      - searxng-mcp
-      - searxng
-      - crawl4ai
+      genius-mcp:
+        condition: service_healthy
+      graphiti-mcp:
+        condition: service_healthy
+      vector-mcp-chromadb:
+        condition: service_healthy
+      #- vector-mcp-pgvector
+      documentdb-mcp:
+        condition: service_healthy
+      searxng-mcp:
+        condition: service_healthy
+      crawl4ai-mcp:
+        condition: service_healthy
     ports:
       - "9033:9033"
-
-  neo4j:
-    image: neo4j:5.26.0
-    container_name: neo4j
-    hostname: neo4j
-    ports:
-      - "7474:7474" # HTTP
-      - "7687:7687" # Bolt
-    environment:
-      - NEO4J_AUTH=${NEO4J_USER:-neo4j}/${NEO4J_PASSWORD:-password}
-      - NEO4J_server_memory_heap_initial__size=512m
-      - NEO4J_server_memory_heap_max__size=1G
-      - NEO4J_server_memory_pagecache_size=512m
-    volumes:
-      - ./mcp/neo4j_data:/data
-      - ./mcp/neo4j_logs:/logs
     healthcheck:
-      test: [ "CMD", "wget", "-O", "/dev/null", "http://localhost:7474" ]
+      test: [ "CMD", "python3", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:9033/health')" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    volumes:
+      - ./mcp/documents:/documents
+
+  # neo4j:
+  #   image: neo4j:5.26.0
+  #   container_name: neo4j
+  #   hostname: neo4j
+  #   ports:
+  #     - "7474:7474" # HTTP
+  #     - "7687:7687" # Bolt
+  #   environment:
+  #     - NEO4J_AUTH=${NEO4J_USER:-neo4j}/${NEO4J_PASSWORD:-password}
+  #     - NEO4J_server_memory_heap_initial__size=512m
+  #     - NEO4J_server_memory_heap_max__size=1G
+  #     - NEO4J_server_memory_pagecache_size=512m
+  #   volumes:
+  #     - ./mcp/neo4j_data:/data
+  #     - ./mcp/neo4j_logs:/logs
+  #   healthcheck:
+  #     test: [ "CMD", "wget", "-O", "/dev/null", "http://localhost:7474" ]
+  #     interval: 10s
+  #     timeout: 5s
+  #     retries: 5
+  #     start_period: 30s
+
+  falkordb:
+    image: falkordb/falkordb:latest
+    container_name: falkordb
+    hostname: falkordb
+    ports:
+      - "6379:6379"
+      - "3000:3000"
+    volumes:
+      - ./mcp/falkordb_data:/data
+    restart: always
+    env_file:
+      - .env
+    environment:
+      - REDIS_ARGS=--requirepass ${GRAPHDB_PASSWORD}
+    healthcheck:
+      test: [ "CMD", "redis-cli", "-a", "${GRAPHDB_PASSWORD}", "ping" ]
       interval: 10s
       timeout: 5s
       retries: 5
-      start_period: 30s
+      start_period: 10s
 
   graphiti-mcp:
     image: zepai/knowledge-graph-mcp:standalone
     container_name: graphiti-mcp
     hostname: graphiti-mcp
     depends_on:
-      neo4j:
-        condition: service_healthy
+      falkordb:
+        condition: service_started
+    env_file:
+      - .env
     environment:
-      - NEO4J_URI=bolt://neo4j:7687
-      - NEO4J_USER=${NEO4J_USER:-neo4j}
-      - NEO4J_PASSWORD=${NEO4J_PASSWORD:-password}
-      - NEO4J_DATABASE=${NEO4J_DATABASE:-neo4j}
-      - GRAPHITI_GROUP_ID=main
-      - SEMAPHORE_LIMIT=10
-      - CONFIG_PATH=/app/mcp/config/config.yaml
       - HOST=0.0.0.0
-      - PORT=8034
+      - PORT=8000
+      - CONFIG_PATH=/app/mcp/config/config.yaml
+      - GRAPHITI_GROUP_ID=main
+      - SEMAPHORE_LIMIT=${SEMAPHORE_LIMIT:-10}
+      - GRAPHITI_TELEMETRY_ENABLED=false
+      # Transport
+      - TRANSPORT=${TRANSPORT:-http}
+      # LLM Configuration
+      - LLM_PROVIDER=${PROVIDER:-openai}
+      - LLM_MODEL=${GRAPH_MODEL_ID:-zai-org/glm-4.7-flash}
+      - OPENAI_API_KEY=${LLM_API_KEY:-llama}
+      - OPENAI_API_URL=${LLM_BASE_URL:-http://host.docker.internal:1234/v1}
+      # Embedder Configuration
+      - EMBEDDER_PROVIDER=${EMBEDDING_PROVIDER:-openai}
+      - EMBEDDER_MODEL=${EMBEDDER_MODEL:-nomic-embed-text}
+      - EMBEDDER_API_KEY=${EMBEDDING_API_KEY:-llama}
+      - EMBEDDER_BASE_URL=${EMBEDDING_BASE_URL:-http://host.docker.internal:1234/v1}
+      # Database Configuration
+      - FALKORDB_URI=redis://falkordb:6379
+      - FALKORDB_PASSWORD=${GRAPHDB_PASSWORD}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     volumes:
-      - ./mcp/graphiti_config/config.yaml:/app/mcp/config/config.yaml:ro
+      - ./graphiti/falkordb/config.yaml:/app/mcp/config/config.yaml:ro
+      # - ./graphiti/kuzu/config.yaml:/app/mcp/config/config.yaml:ro
+      # - ./graphiti/neo4j/config.yaml:/app/mcp/config/config.yaml:ro
     ports:
-      - "8034:8034"
+      - "8000:8000"
+    healthcheck:
+      test: [ "CMD", "python3", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
 
-  postgres:
-    image: pgvector/pgvector:pg16
-    container_name: postgres
-    hostname: postgres
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: vectordb
-    ports:
-      - "5432:5432"
-    restart: always
-    volumes:
-      - ./mcp/postgres_data:/var/lib/postgresql/data
-
-  vector-mcp-pgvector:
-    image: docker.io/knucklessg1/vector-mcp:latest
-    container_name: vector-mcp-pgvector
-    hostname: vector-mcp-pgvector
+  vector-mcp-chromadb:
+    # image: docker.io/knucklessg1/vector-mcp:latest
+    build:
+      context: ../vector-mcp # Debug
+      dockerfile: debug.Dockerfile
+    container_name: vector-mcp-chromadb
+    hostname: vector-mcp-chromadb
     command: [ "vector-mcp" ]
     extra_hosts:
       - "host.docker.internal:host-gateway"
@@ -104,35 +218,106 @@ services:
         max-size: "10m"
         max-file: "3"
     restart: always
+    env_file:
+      - .env
     environment:
       - "HOST=0.0.0.0"
       - "PORT=8002"
       - "TRANSPORT=streamable-http"
-      - "DATABASE_TYPE=pgvector"
-      - "DB_HOST=postgres"
-      - "DB_PORT=5432"
-      - "DBNAME=vectordb"
-      - "USERNAME=postgres"
-      - "PASSWORD=password"
+      - "DATABASE_TYPE=${DATABASE_TYPE:-chromadb}"
+      - "DATABASE_PATH=${DATABASE_PATH:-/data/chromadb}"
+      - "DOCUMENT_DIRECTORY=${DOCUMENT_DIRECTORY:-/documents}"
+      - "CHUNK_SIZE=512"
     ports:
       - "8002:8002"
+    healthcheck:
+      test: [ "CMD", "python3", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8002/health')" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
     volumes:
-      - ./mcp/vector_db:/app/data
-    depends_on:
-      - postgres
+      - ./mcp/vector_data:/data
+      - ./mcp/documents:/documents
 
-  crawl4ai:
+  # postgres:
+  #   image: pgvector/pgvector:pg16
+  #   container_name: postgres
+  #   hostname: postgres
+  #   environment:
+  #     POSTGRES_USER: postgres
+  #     POSTGRES_PASSWORD: password
+  #     POSTGRES_DB: vectordb
+  #   ports:
+  #     - "5432:5432"
+  #   restart: always
+  #    env_file:
+  #      - .env
+  #   volumes:
+  #     - ./mcp/postgres_data:/var/lib/postgresql/data:rw
+
+  # vector-mcp-pgvector:
+  #   build:
+  #     context: ../vector-mcp
+  #     dockerfile: debug.Dockerfile
+  #   container_name: vector-mcp-pgvector
+  #   hostname: vector-mcp-pgvector
+  #   command: [ "vector-mcp" ]
+  #   extra_hosts:
+  #     - "host.docker.internal:host-gateway"
+  #   logging:
+  #     driver: json-file
+  #     options:
+  #       max-size: "10m"
+  #       max-file: "3"
+  #   restart: always
+  #   environment:
+  #     - "HOST=0.0.0.0"
+  #     - "PORT=8002"
+  #     - "TRANSPORT=streamable-http"
+  #     - "DATABASE_TYPE=pgvector"
+  #     - "DB_HOST=postgres"
+  #     - "DB_PORT=5432"
+  #     - "DBNAME=vectordb"
+  #     - "USERNAME=postgres"
+  #     - "PASSWORD=password"
+  #   ports:
+  #     - "8002:8002"
+  #   healthcheck:
+  #     test: [ "CMD", "python3", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8002/health')" ]
+  #     interval: 30s
+  #     timeout: 10s
+  #     retries: 3
+  #     start_period: 10s
+  #   volumes:
+  #     - ./mcp/vector_db:/app/data
+  #     - ./mcp/documents:/documents
+  #   depends_on:
+  #     - postgres
+
+  crawl4ai-mcp:
     image: docker.io/unclecode/crawl4ai:latest
-    container_name: crawl4ai
-    hostname: crawl4ai
+    container_name: crawl4ai-mcp
+    hostname: crawl4ai-mcp
+    env_file:
+      - .env
     environment:
       - PORT=11235
       - HOST=0.0.0.0
     ports:
       - "11235:11235"
+    healthcheck:
+      test: [ "CMD", "curl", "-s", "-f", "http://localhost:11235/health" ]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
 
   searxng-mcp:
-    image: docker.io/knucklessg1/searxng-mcp:latest
+    # image: docker.io/knucklessg1/searxng-mcp:latest
+    build:
+      context: ../searxng-mcp # Debug
+      dockerfile: debug.Dockerfile
     container_name: searxng-mcp
     hostname: searxng-mcp
     command: [ "searxng-mcp" ]
@@ -144,6 +329,8 @@ services:
         max-size: "10m"
         max-file: "3"
     restart: always
+    env_file:
+      - .env
     environment:
       - "HOST=0.0.0.0"
       - "PORT=8001"
@@ -151,11 +338,19 @@ services:
       - "SEARXNG_INSTANCE_URL=http://searxng:8080"
     ports:
       - "8001:8001"
+    healthcheck:
+      test: [ "CMD", "python3", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8001/health')" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
 
   searxng:
     image: docker.io/searxng/searxng:latest
     container_name: searxng
     hostname: searxng
+    env_file:
+      - .env
     environment:
       - SEARXNG_INSTANCE_NAME=Private SearXNG
       - SEARXNG_BIND_ADDRESS=0.0.0.0:8080
@@ -184,3 +379,60 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
+
+  documentdb-mcp:
+    # image: docker.io/knucklessg1/documentdb-mcp:latest
+    build:
+      context: ../documentdb-mcp # Debug
+      dockerfile: debug.Dockerfile
+    container_name: documentdb-mcp
+    hostname: documentdb-mcp
+    command: [ "documentdb-mcp" ]
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      - documentdb
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+    restart: always
+    env_file:
+      - .env
+    environment:
+      - "PYTHONUNBUFFERED=1"
+      - "HOST=0.0.0.0"
+      - "PORT=8015"
+      - "TRANSPORT=streamable-http"
+      - "MONGODB_URI=mongodb://${DOCUMENTDB_USERNAME:-administrator}:${DOCUMENTDB_PASSWORD:-documentdbadmin}@documentdb:27017/"
+    ports:
+      - "8015:8015"
+    healthcheck:
+      test: [ "CMD", "python3", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8015/health')" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+  documentdb:
+    image: ghcr.io/microsoft/documentdb/documentdb-local:latest
+    container_name: documentdb
+    hostname: documentdb
+    env_file:
+      - .env
+    environment:
+      - "PYTHONUNBUFFERED=1"
+      - USERNAME=${DOCUMENTDB_USERNAME:-administrator}
+      - PASSWORD=${DOCUMENTDB_PASSWORD:-documentdbadmin}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - ./mcp/documentdb-data:/data
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+    ports:
+      - "10260:27017"

@@ -1,6 +1,7 @@
 ---
-name: vector-search
+name: manage-vector-database
 description: Capabilities for managing a vector database.
+tags: [manage-vector-database]
 ---
 
 ### Overview
