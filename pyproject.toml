@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "genius-agent"
-version = "2.13.16"
+version = "2.13.17"
 description = "GeniusAgent Search Engine MCP Server for Agentic AI!"
 readme = "README.md"
 authors = [{ name = "Audel Rouhi", email = "knucklessg1@gmail.com" }]
@@ -31,7 +31,7 @@ dependencies = [
 
 [project.scripts]
 genius-mcp = "genius_agent.mcp:mcp_server"
-genius-agent = "genius_agent.genius_agent:agent_server"
+genius-agent = "genius_agent.agent:agent_server"
 
 [tool.setuptools.packages.find]
 where = ["."]

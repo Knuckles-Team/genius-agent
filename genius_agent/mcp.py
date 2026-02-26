@@ -198,7 +198,7 @@ from agent_utilities.mcp_utilities import (
     create_mcp_parser,
 )
 
-__version__ = "2.13.16"
+__version__ = "2.13.17"
 
 logging.basicConfig(
     level=logging.INFO,
