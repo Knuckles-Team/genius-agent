@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # coding: utf-8
-from genius_agent.genius_agent import genius_agent
+from genius_agent.agent import agent_server
 
 if __name__ == "__main__":
-    genius_agent()
+    agent_server()
