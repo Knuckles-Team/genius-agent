@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "genius-agent"
-version = "2.13.19"
+version = "2.13.20"
 description = "GeniusAgent Search Engine MCP Server for Agentic AI!"
 readme = "README.md"
 authors = [{ name = "Audel Rouhi", email = "knucklessg1@gmail.com" }]
@@ -19,7 +19,7 @@ classifiers = [
 requires-python = ">=3.10"
 dependencies = [
     "universal-skills[web-crawler,web-search]",
-    "agent-utilities[agent,logfire]>=0.2.5",
+    "agent-utilities[agent,logfire]>=0.2.6",
 ]
 
 [project.scripts]
