@@ -4,8 +4,8 @@ Join us at the inaugural PyAI Conf in San Francisco on March 10th! [Learn More](
 v3
   * [](https://discord.gg/uu8dJCgttd)
   * [](https://prefect.io/horizon)
-  * [PrefectHQ/fastmcp](https://github.com/PrefectHQ/fastmcp "PrefectHQ/fastmcp")
-  * [PrefectHQ/fastmcp](https://github.com/PrefectHQ/fastmcp "PrefectHQ/fastmcp")
+  * [ PrefectHQ/fastmcp 23,195 ](https://github.com/PrefectHQ/fastmcp "PrefectHQ/fastmcp")
+  * [ PrefectHQ/fastmcp 23,195 ](https://github.com/PrefectHQ/fastmcp "PrefectHQ/fastmcp")
 
 
 Search...
@@ -13,7 +13,7 @@ Navigation
 Servers
 The FastMCP Server
 Search the docs...
-⌘K
+Ctrl K
 Documentation
 ##### Get Started
   * [Welcome!](https://gofastmcp.com/getting-started/welcome)
@@ -327,5 +327,6 @@ Custom routes are served alongside your MCP endpoint and are useful for:
 
 For more complex web applications, consider [mounting your MCP server into a FastAPI or Starlette app](https://gofastmcp.com/deployment/http#integration-with-web-frameworks).
 [ Upgrading from the MCP Low-Level SDK Previous ](https://gofastmcp.com/getting-started/upgrading/from-low-level-sdk)[ Tools Next ](https://gofastmcp.com/servers/tools)
+Ctrl+I
 [discord](https://discord.gg/uu8dJCgttd)[github](https://github.com/PrefectHQ/fastmcp)[website](https://www.prefect.io)[x](https://x.com/fastmcp)
 [Powered by](https://www.mintlify.com?utm_campaign=poweredBy&utm_medium=referral&utm_source=fastmcp)

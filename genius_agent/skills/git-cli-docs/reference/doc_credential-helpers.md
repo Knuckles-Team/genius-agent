@@ -1,4 +1,4 @@
-[![Git](https://git-scm.com/images/logo@2x.png)](https://git-scm.com/) --fast-version-control
+[![Git](https://git-scm.com/images/logo@2x.png)](https://git-scm.com/) --distributed-is-the-new-centralized
 ![](https://git-scm.com/images/dark-mode.svg)
   * [About](https://git-scm.com/about)
     * [Trademark](https://git-scm.com/about/trademark)
@@ -47,6 +47,6 @@ The following cross-platform helpers support authentication using OAuth. Initial
   * [git-credential-azure](https://github.com/hickford/git-credential-azure): authenticates to Azure Repos.
 
 
-[About this site](https://git-scm.com/site)
-Patches, suggestions, and comments are welcome.
+[About this site](https://git-scm.com/site)  
+Patches, suggestions, and comments are welcome. 
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

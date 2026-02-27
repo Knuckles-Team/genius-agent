@@ -4,8 +4,8 @@ Join us at the inaugural PyAI Conf in San Francisco on March 10th! [Learn More](
 v3
   * [](https://discord.gg/uu8dJCgttd)
   * [](https://prefect.io/horizon)
-  * [PrefectHQ/fastmcp](https://github.com/PrefectHQ/fastmcp "PrefectHQ/fastmcp")
-  * [PrefectHQ/fastmcp](https://github.com/PrefectHQ/fastmcp "PrefectHQ/fastmcp")
+  * [ PrefectHQ/fastmcp 23,195 ](https://github.com/PrefectHQ/fastmcp "PrefectHQ/fastmcp")
+  * [ PrefectHQ/fastmcp 23,195 ](https://github.com/PrefectHQ/fastmcp "PrefectHQ/fastmcp")
 
 
 Search...
@@ -13,7 +13,7 @@ Navigation
 Development
 Contrib Modules
 Search the docs...
-⌘K
+Ctrl K
 Documentation
 ##### Get Started
   * [Welcome!](https://gofastmcp.com/getting-started/welcome)
@@ -111,5 +111,6 @@ The ideal contrib module:
 
 
 [ Changelog Previous ](https://gofastmcp.com/changelog)
+Ctrl+I
 [discord](https://discord.gg/uu8dJCgttd)[github](https://github.com/PrefectHQ/fastmcp)[website](https://www.prefect.io)[x](https://x.com/fastmcp)
 [Powered by](https://www.mintlify.com?utm_campaign=poweredBy&utm_medium=referral&utm_source=fastmcp)

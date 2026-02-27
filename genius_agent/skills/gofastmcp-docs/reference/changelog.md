@@ -4,8 +4,8 @@ Join us at the inaugural PyAI Conf in San Francisco on March 10th! [Learn More](
 v3
   * [](https://discord.gg/uu8dJCgttd)
   * [](https://prefect.io/horizon)
-  * [ PrefectHQ/fastmcp 23,115 ](https://github.com/PrefectHQ/fastmcp "PrefectHQ/fastmcp")
-  * [ PrefectHQ/fastmcp 23,115 ](https://github.com/PrefectHQ/fastmcp "PrefectHQ/fastmcp")
+  * [ PrefectHQ/fastmcp 23,195 ](https://github.com/PrefectHQ/fastmcp "PrefectHQ/fastmcp")
+  * [ PrefectHQ/fastmcp 23,195 ](https://github.com/PrefectHQ/fastmcp "PrefectHQ/fastmcp")
 
 
 Search...
@@ -64,7 +64,6 @@ Documentation
 
 
 On this page
-  * [v3.0.2](https://gofastmcp.com/changelog#v3-0-2)
   * [v3.0.1](https://gofastmcp.com/changelog#v3-0-1)
   * [v3.0.0](https://gofastmcp.com/changelog#v3-0-0)
   * [v3.0.0rc1](https://gofastmcp.com/changelog#v3-0-0rc1)
@@ -148,24 +147,6 @@ Development
 # Changelog
 Copy page
 Copy page
-[​](https://gofastmcp.com/changelog#v3-0-2)
-v3.0.2
-2026-02-22
-**[v3.0.2: Threecovery Mode II](https://github.com/PrefectHQ/fastmcp/releases/tag/v3.0.2)** Two community-contributed fixes: auth headers from MCP transport no longer leak through to downstream OpenAPI APIs, and background task workers now correctly receive the originating request ID. Plus a new docs example for context-aware tool factories.
-###
-[​](https://gofastmcp.com/changelog#fixes-)
-Fixes 🐞
-  * fix: prevent MCP transport auth header from leaking to downstream OpenAPI APIs by [@stakeswky](https://github.com/stakeswky) in [#3262](https://github.com/PrefectHQ/fastmcp/pull/3262)
-  * fix: propagate origin_request_id to background task workers by [@gfortaine](https://github.com/gfortaine) in [#3175](https://github.com/PrefectHQ/fastmcp/pull/3175)
-
-
-###
-[​](https://gofastmcp.com/changelog#docs-)
-Docs 📚
-  * Add v3.0.1 release notes by [@jlowin](https://github.com/jlowin) in [#3259](https://github.com/PrefectHQ/fastmcp/pull/3259)
-  * docs: add context-aware tool factory example by [@machov](https://github.com/machov) in [#3264](https://github.com/PrefectHQ/fastmcp/pull/3264)
-
-**Full Changelog** : [v3.0.1…v3.0.2](https://github.com/PrefectHQ/fastmcp/compare/v3.0.1...v3.0.2)
 [​](https://gofastmcp.com/changelog#v3-0-1)
 v3.0.1
 2026-02-20
@@ -177,7 +158,7 @@ Enhancements 🔧
 
 
 ###
-[​](https://gofastmcp.com/changelog#fixes--2)
+[​](https://gofastmcp.com/changelog#fixes-)
 Fixes 🐞
   * Fix v3.0.0 changelog compare link by [@jlowin](https://github.com/jlowin) in [#3223](https://github.com/PrefectHQ/fastmcp/pull/3223)
   * Fix MDX parse error in upgrade guide prompts by [@jlowin](https://github.com/jlowin) in [#3227](https://github.com/PrefectHQ/fastmcp/pull/3227)
@@ -193,7 +174,7 @@ Fixes 🐞
 
 
 ###
-[​](https://gofastmcp.com/changelog#docs--2)
+[​](https://gofastmcp.com/changelog#docs-)
 Docs 📚
   * Sync README with welcome.mdx, fix install count by [@jlowin](https://github.com/jlowin) in [#3224](https://github.com/PrefectHQ/fastmcp/pull/3224)
   * Document dict-to-Message prompt migration in upgrade guides by [@jlowin](https://github.com/jlowin) in [#3225](https://github.com/PrefectHQ/fastmcp/pull/3225)
@@ -348,7 +329,7 @@ Enhancements 🔧
 
 
 ###
-[​](https://gofastmcp.com/changelog#fixes--3)
+[​](https://gofastmcp.com/changelog#fixes--2)
 Fixes 🐞
   * Let FastMCPError propagate from dependencies by [@chrisguidry](https://github.com/chrisguidry) in [#2646](https://github.com/PrefectHQ/fastmcp/pull/2646)
   * Fix task execution for tools with custom names by [@chrisguidry](https://github.com/chrisguidry) in [#2645](https://github.com/PrefectHQ/fastmcp/pull/2645)
@@ -474,7 +455,7 @@ Enhancements 🔧
 
 
 ###
-[​](https://gofastmcp.com/changelog#fixes--4)
+[​](https://gofastmcp.com/changelog#fixes--3)
 Fixes 🐞
   * Updated deprecation URL for V3 by [@SrzStephen](https://github.com/SrzStephen) in [#3108](https://github.com/PrefectHQ/fastmcp/pull/3108)
   * Fix Windows test timeouts in OAuth proxy provider tests by [@strawgate](https://github.com/strawgate) in [#3123](https://github.com/PrefectHQ/fastmcp/pull/3123)
@@ -497,7 +478,7 @@ Breaking Changes 🛫
 
 
 ###
-[​](https://gofastmcp.com/changelog#docs--3)
+[​](https://gofastmcp.com/changelog#docs--2)
 Docs 📚
   * Update docs to reference beta 2 by [@jlowin](https://github.com/jlowin) in [#3112](https://github.com/PrefectHQ/fastmcp/pull/3112)
   * docs: add pre-registered OAuth clients to v3-features by [@jlowin](https://github.com/jlowin) in [#3129](https://github.com/PrefectHQ/fastmcp/pull/3129)
@@ -565,7 +546,7 @@ Enhancements 🔧
 
 
 ###
-[​](https://gofastmcp.com/changelog#fixes--5)
+[​](https://gofastmcp.com/changelog#fixes--4)
 Fixes 🐞
   * Fix FastAPI mounting examples in docs by [@jlowin](https://github.com/jlowin) in [#2962](https://github.com/PrefectHQ/fastmcp/pull/2962)
   * Remove outdated ‘FastMCP 3.0 is coming!’ CLI banner by [@jlowin](https://github.com/jlowin) in [#2974](https://github.com/PrefectHQ/fastmcp/pull/2974)
@@ -594,7 +575,7 @@ Fixes 🐞
 
 
 ###
-[​](https://gofastmcp.com/changelog#docs--4)
+[​](https://gofastmcp.com/changelog#docs--3)
 Docs 📚
   * Prepare docs for v3.0 beta release by [@jlowin](https://github.com/jlowin) in [#2954](https://github.com/PrefectHQ/fastmcp/pull/2954)
   * Restructure docs: move transforms to dedicated section by [@jlowin](https://github.com/jlowin) in [#2956](https://github.com/PrefectHQ/fastmcp/pull/2956)
@@ -756,7 +737,7 @@ Enhancements 🔧
 
 
 ###
-[​](https://gofastmcp.com/changelog#fixes--6)
+[​](https://gofastmcp.com/changelog#fixes--5)
 Fixes 🐞
   * Let FastMCPError propagate from dependencies by [@chrisguidry](https://github.com/chrisguidry) in [#2646](https://github.com/PrefectHQ/fastmcp/pull/2646)
   * Fix task execution for tools with custom names by [@chrisguidry](https://github.com/chrisguidry) in [#2645](https://github.com/PrefectHQ/fastmcp/pull/2645)
@@ -804,7 +785,7 @@ Breaking Changes 🛫
 
 
 ###
-[​](https://gofastmcp.com/changelog#docs--5)
+[​](https://gofastmcp.com/changelog#docs--4)
 Docs 📚
   * Undocumented `McpError` exceptions by [@ivanbelenky](https://github.com/ivanbelenky) in [#2656](https://github.com/PrefectHQ/fastmcp/pull/2656)
   * docs(server): add http to transport options in run() method docstring by [@Ashif4354](https://github.com/Ashif4354) in [#2707](https://github.com/PrefectHQ/fastmcp/pull/2707)
@@ -875,7 +856,7 @@ Enhancements 🔧
 
 
 ###
-[​](https://gofastmcp.com/changelog#fixes--7)
+[​](https://gofastmcp.com/changelog#fixes--6)
 Fixes 🐞
   * Backport: Dereference $ref in tool schemas for MCP client compatibility by [@jlowin](https://github.com/jlowin) in [#2861](https://github.com/PrefectHQ/fastmcp/pull/2861)
   * Fix task capabilities location (issue #2870) by [@jlowin](https://github.com/jlowin) in [#2874](https://github.com/PrefectHQ/fastmcp/pull/2874)
@@ -898,7 +879,7 @@ Enhancements 🔧
 
 
 ###
-[​](https://gofastmcp.com/changelog#fixes--8)
+[​](https://gofastmcp.com/changelog#fixes--7)
 Fixes 🐞
   * Backport OAuth token storage TTL fix to release/2.x by [@jlowin](https://github.com/jlowin) in [#2798](https://github.com/PrefectHQ/fastmcp/pull/2798)
   * Prefix Redis keys with docket name for ACL isolation (2.x backport) by [@chrisguidry](https://github.com/chrisguidry) in [#2812](https://github.com/PrefectHQ/fastmcp/pull/2812)
@@ -922,7 +903,7 @@ Enhancements 🔧
 
 
 ###
-[​](https://gofastmcp.com/changelog#fixes--9)
+[​](https://gofastmcp.com/changelog#fixes--8)
 Fixes 🐞
   * Let FastMCPError propagate unchanged from managers by [@jlowin](https://github.com/jlowin) in [#2697](https://github.com/PrefectHQ/fastmcp/pull/2697)
   * Fix test cleanup for uvicorn 0.39+ context isolation by [@jlowin](https://github.com/jlowin) in [#2696](https://github.com/PrefectHQ/fastmcp/pull/2696)
@@ -937,7 +918,7 @@ Fixes 🐞
 
 
 ###
-[​](https://gofastmcp.com/changelog#docs--6)
+[​](https://gofastmcp.com/changelog#docs--5)
 Docs 📚
   * Add v3 breaking changes notice to README and docs by [@jlowin](https://github.com/jlowin) in [#2713](https://github.com/PrefectHQ/fastmcp/pull/2713)
   * Add changelog entries for v2.13.1 through v2.14.1 by [@jlowin](https://github.com/jlowin) in [#2724](https://github.com/PrefectHQ/fastmcp/pull/2724)
@@ -971,7 +952,7 @@ Enhancements 🔧
 
 
 ###
-[​](https://gofastmcp.com/changelog#fixes--10)
+[​](https://gofastmcp.com/changelog#fixes--9)
 Fixes 🐞
   * Fix prompt tasks to return mcp.types.PromptMessage by [@jlowin](https://github.com/jlowin) in [#2650](https://github.com/PrefectHQ/fastmcp/pull/2650)
   * Fix Windows test warnings by [@jlowin](https://github.com/jlowin) in [#2653](https://github.com/PrefectHQ/fastmcp/pull/2653)
@@ -980,7 +961,7 @@ Fixes 🐞
 
 
 ###
-[​](https://gofastmcp.com/changelog#docs--7)
+[​](https://gofastmcp.com/changelog#docs--6)
 Docs 📚
   * Simplify Docket tip wording by [@chrisguidry](https://github.com/chrisguidry) in [#2662](https://github.com/PrefectHQ/fastmcp/pull/2662)
 
@@ -1031,7 +1012,7 @@ Enhancements 🔧
 
 
 ###
-[​](https://gofastmcp.com/changelog#fixes--11)
+[​](https://gofastmcp.com/changelog#fixes--10)
 Fixes 🐞
   * Fix OAuth metadata discovery by [@jlowin](https://github.com/jlowin) in [#2565](https://github.com/PrefectHQ/fastmcp/pull/2565)
   * Fix fastapi.cli package structure by [@jlowin](https://github.com/jlowin) in [#2570](https://github.com/PrefectHQ/fastmcp/pull/2570)
@@ -1044,7 +1025,7 @@ Fixes 🐞
 
 
 ###
-[​](https://gofastmcp.com/changelog#docs--8)
+[​](https://gofastmcp.com/changelog#docs--7)
 Docs 📚
   * Add OCI and Supabase integration docs by [@jlowin](https://github.com/jlowin) in [#2580](https://github.com/PrefectHQ/fastmcp/pull/2580)
   * Add v2.14.0 upgrade guide by [@jlowin](https://github.com/jlowin) in [#2598](https://github.com/PrefectHQ/fastmcp/pull/2598)
@@ -1064,7 +1045,7 @@ v2.13.3
 [​](https://gofastmcp.com/changelog#what%E2%80%99s-changed-11)
 What’s Changed
 ###
-[​](https://gofastmcp.com/changelog#fixes--12)
+[​](https://gofastmcp.com/changelog#fixes--11)
 Fixes 🐞
   * Pin MCP SDK below 1.23 by [@jlowin](https://github.com/jlowin) in [#2545](https://github.com/PrefectHQ/fastmcp/pull/2545)
 
@@ -1092,7 +1073,7 @@ Enhancements 🔧
 
 
 ###
-[​](https://gofastmcp.com/changelog#fixes--13)
+[​](https://gofastmcp.com/changelog#fixes--12)
 Fixes 🐞
   * Google Provider now defaults to refresh token support by [@jlowin](https://github.com/jlowin) in [#2468](https://github.com/PrefectHQ/fastmcp/pull/2468)
   * Fix Azure OAuth token refresh with unprefixed scopes by [@jlowin](https://github.com/jlowin) in [#2475](https://github.com/PrefectHQ/fastmcp/pull/2475)
@@ -1131,7 +1112,7 @@ Enhancements 🔧
 
 
 ###
-[​](https://gofastmcp.com/changelog#fixes--14)
+[​](https://gofastmcp.com/changelog#fixes--13)
 Fixes 🐞
   * Security: Update authlib for CVE-2025-61920 by [@jlowin](https://github.com/jlowin) in [#2398](https://github.com/PrefectHQ/fastmcp/pull/2398)
   * Validate Cursor deeplink URLs using safer Windows APIs by [@jlowin](https://github.com/jlowin) in [#2405](https://github.com/PrefectHQ/fastmcp/pull/2405)
@@ -1166,7 +1147,7 @@ v2.12.5
 [​](https://gofastmcp.com/changelog#what%E2%80%99s-changed-14)
 What’s Changed
 ###
-[​](https://gofastmcp.com/changelog#fixes--15)
+[​](https://gofastmcp.com/changelog#fixes--14)
 Fixes 🐞
   * Pin MCP SDK version below 1.17 by [@jlowin](https://github.com/jlowin) in [a1b2c3d](https://github.com/PrefectHQ/fastmcp/commit/dab2b316ddc3883b7896a86da21cacb68da01e5c)
 
@@ -1207,7 +1188,7 @@ Enhancements 🔧
 
 
 ###
-[​](https://gofastmcp.com/changelog#fixes--16)
+[​](https://gofastmcp.com/changelog#fixes--15)
 Fixes 🐞
   * Update quickstart.mdx by [@radi-dev](https://github.com/radi-dev) in [#1821](https://github.com/PrefectHQ/fastmcp/pull/1821)
   * Remove extraneous union import by [@jlowin](https://github.com/jlowin) in [#1823](https://github.com/PrefectHQ/fastmcp/pull/1823)
@@ -1233,7 +1214,7 @@ Fixes 🐞
 
 
 ###
-[​](https://gofastmcp.com/changelog#docs--9)
+[​](https://gofastmcp.com/changelog#docs--8)
 Docs 📚
   * docs: make Gemini CLI integration discoverable by [@jackwotherspoon](https://github.com/jackwotherspoon) in [#1827](https://github.com/PrefectHQ/fastmcp/pull/1827)
   * docs: update NEW tags for AI assistant integrations by [@jackwotherspoon](https://github.com/jackwotherspoon) in [#1829](https://github.com/PrefectHQ/fastmcp/pull/1829)
@@ -1281,7 +1262,7 @@ Enhancements 🔧
 
 
 ###
-[​](https://gofastmcp.com/changelog#fixes--17)
+[​](https://gofastmcp.com/changelog#fixes--16)
 Fixes 🐞
   * fix: correct merge mistake during auth0 refactor by [@strawgate](https://github.com/strawgate) in [#1742](https://github.com/PrefectHQ/fastmcp/pull/1742)
   * Remove extraneous union import by [@jlowin](https://github.com/jlowin) in [#1823](https://github.com/PrefectHQ/fastmcp/pull/1823)
@@ -1296,7 +1277,7 @@ Fixes 🐞
 
 
 ###
-[​](https://gofastmcp.com/changelog#docs--10)
+[​](https://gofastmcp.com/changelog#docs--9)
 Docs 📚
   * Add migration docs for 2.12 by [@jlowin](https://github.com/jlowin) in [#1745](https://github.com/PrefectHQ/fastmcp/pull/1745)
   * Update docs for default sampling implementation to mention OpenAI API Key by [@strawgate](https://github.com/strawgate) in [#1763](https://github.com/PrefectHQ/fastmcp/pull/1763)
@@ -1329,7 +1310,7 @@ v2.12.2
 [​](https://gofastmcp.com/changelog#what%E2%80%99s-changed-17)
 What’s Changed
 ###
-[​](https://gofastmcp.com/changelog#fixes--18)
+[​](https://gofastmcp.com/changelog#fixes--17)
 Fixes 🐞
   * Fix streamable-http transport validation in fastmcp.json config by [@jlowin](https://github.com/jlowin) in [#1739](https://github.com/PrefectHQ/fastmcp/pull/1739)
 
@@ -1359,7 +1340,7 @@ Enhancements 🔧
 
 
 ###
-[​](https://gofastmcp.com/changelog#fixes--19)
+[​](https://gofastmcp.com/changelog#fixes--18)
 Fixes 🐞
   * refactor: replace auth provider registry with ImportString by [@jlowin](https://github.com/jlowin) in [#1710](https://github.com/PrefectHQ/fastmcp/pull/1710)
   * Fix OAuth resource URL handling and WWW-Authenticate header by [@jlowin](https://github.com/jlowin) in [#1706](https://github.com/PrefectHQ/fastmcp/pull/1706)
@@ -1367,7 +1348,7 @@ Fixes 🐞
 
 
 ###
-[​](https://gofastmcp.com/changelog#docs--11)
+[​](https://gofastmcp.com/changelog#docs--10)
 Docs 📚
   * Fix documentation: use StreamableHttpTransport for headers in testing by [@jlowin](https://github.com/jlowin) in [#1702](https://github.com/PrefectHQ/fastmcp/pull/1702)
   * docs: add performance warnings for mounted servers and proxies by [@strawgate](https://github.com/strawgate) in [#1669](https://github.com/PrefectHQ/fastmcp/pull/1669)
@@ -1455,7 +1436,7 @@ Enhancements 🔧
 
 
 ###
-[​](https://gofastmcp.com/changelog#fixes--20)
+[​](https://gofastmcp.com/changelog#fixes--19)
 Fixes 🐞
   * Fix breaking change: restore output_schema=False compatibility by [@jlowin](https://github.com/jlowin) in [#1482](https://github.com/PrefectHQ/fastmcp/pull/1482)
   * Fix #1506: Update tool filtering documentation from _meta to meta by [@maybenotconnor](https://github.com/maybenotconnor) in [#1511](https://github.com/PrefectHQ/fastmcp/pull/1511)
@@ -1482,7 +1463,7 @@ Breaking Changes 🛫
 
 
 ###
-[​](https://gofastmcp.com/changelog#docs--12)
+[​](https://gofastmcp.com/changelog#docs--11)
 Docs 📚
   * Update changelog by [@jlowin](https://github.com/jlowin) in [#1453](https://github.com/PrefectHQ/fastmcp/pull/1453)
   * Update banner by [@jlowin](https://github.com/jlowin) in [#1472](https://github.com/PrefectHQ/fastmcp/pull/1472)
@@ -1556,7 +1537,7 @@ Enhancements 🔧
 
 
 ###
-[​](https://gofastmcp.com/changelog#fixes--21)
+[​](https://gofastmcp.com/changelog#fixes--20)
 Fixes 🐞
   * Fix client-side logging bug #1394 by [@chi2liu](https://github.com/chi2liu) in [#1397](https://github.com/PrefectHQ/fastmcp/pull/1397)
   * fix: Fix httpx_client_factory type annotation to match MCP SDK (#1402) by [@chi2liu](https://github.com/chi2liu) in [#1405](https://github.com/PrefectHQ/fastmcp/pull/1405)
@@ -1567,7 +1548,7 @@ Fixes 🐞
 
 
 ###
-[​](https://gofastmcp.com/changelog#docs--13)
+[​](https://gofastmcp.com/changelog#docs--12)
 Docs 📚
   * docs(client/logging): reflect corrected default log level mapping by [@jlowin](https://github.com/jlowin) in [#1403](https://github.com/PrefectHQ/fastmcp/pull/1403)
   * Add documentation for get_access_token() dependency function by [@jlowin](https://github.com/jlowin) in [#1446](https://github.com/PrefectHQ/fastmcp/pull/1446)
@@ -1612,7 +1593,7 @@ Enhancements 🔧
 
 
 ###
-[​](https://gofastmcp.com/changelog#fixes--22)
+[​](https://gofastmcp.com/changelog#fixes--21)
 Fixes 🐞
   * Fix server_version field in inspect manifest by [@jlowin](https://github.com/jlowin) in [#1383](https://github.com/PrefectHQ/fastmcp/pull/1383)
   * Fix Settings field with both default and default_factory by [@jlowin](https://github.com/jlowin) in [#1380](https://github.com/PrefectHQ/fastmcp/pull/1380)
@@ -1653,14 +1634,14 @@ Enhancements 🔧
 
 
 ###
-[​](https://gofastmcp.com/changelog#fixes--23)
+[​](https://gofastmcp.com/changelog#fixes--22)
 Fixes 🐞
   * Fix method-bound FunctionTool schemas by [@strawgate](https://github.com/strawgate) in [#1360](https://github.com/PrefectHQ/fastmcp/pull/1360)
   * Manually set `_key` after `model_copy()` to enable prefixing Transformed Tools by [@strawgate](https://github.com/strawgate) in [#1357](https://github.com/PrefectHQ/fastmcp/pull/1357)
 
 
 ###
-[​](https://gofastmcp.com/changelog#docs--14)
+[​](https://gofastmcp.com/changelog#docs--13)
 Docs 📚
   * Docs updates by [@jlowin](https://github.com/jlowin) in [#1336](https://github.com/PrefectHQ/fastmcp/pull/1336)
   * Add 2.11 to changelog by [@jlowin](https://github.com/jlowin) in [#1337](https://github.com/PrefectHQ/fastmcp/pull/1337)
@@ -1721,7 +1702,7 @@ Enhancements 🔧
 
 
 ###
-[​](https://gofastmcp.com/changelog#fixes--24)
+[​](https://gofastmcp.com/changelog#fixes--23)
 Fixes 🐞
   * fix: preserve def reference when referenced in allOf / oneOf / anyOf by [@algirdasci](https://github.com/algirdasci) in [#1208](https://github.com/PrefectHQ/fastmcp/pull/1208)
   * fix: add type hint to custom_route decorator by [@zzstoatzz](https://github.com/zzstoatzz) in [#1210](https://github.com/PrefectHQ/fastmcp/pull/1210)
@@ -1745,7 +1726,7 @@ Breaking Changes 🛫
 
 
 ###
-[​](https://gofastmcp.com/changelog#docs--15)
+[​](https://gofastmcp.com/changelog#docs--14)
 Docs 📚
   * Remove unused import from FastAPI integration documentation by [@mariotaddeucci](https://github.com/mariotaddeucci) in [#1194](https://github.com/PrefectHQ/fastmcp/pull/1194)
   * Update fastapi docs by [@jlowin](https://github.com/jlowin) in [#1198](https://github.com/PrefectHQ/fastmcp/pull/1198)
@@ -1816,7 +1797,7 @@ Enhancements 🔧
 
 
 ###
-[​](https://gofastmcp.com/changelog#fixes--25)
+[​](https://gofastmcp.com/changelog#fixes--24)
 Fixes 🐞
   * Fix OpenAPI empty parameters by [@FabrizioSandri](https://github.com/FabrizioSandri) in [#1128](https://github.com/PrefectHQ/fastmcp/pull/1128)
   * Fix title field preservation in tool transformations by [@jlowin](https://github.com/jlowin) in [#1131](https://github.com/PrefectHQ/fastmcp/pull/1131)
@@ -1830,7 +1811,7 @@ Fixes 🐞
 
 
 ###
-[​](https://gofastmcp.com/changelog#docs--16)
+[​](https://gofastmcp.com/changelog#docs--15)
 Docs 📚
   * Update changelog.mdx by [@jlowin](https://github.com/jlowin) in [#1127](https://github.com/PrefectHQ/fastmcp/pull/1127)
   * Eunomia Authorization with native FastMCP’s Middleware by [@tommitt](https://github.com/tommitt) in [#1144](https://github.com/PrefectHQ/fastmcp/pull/1144)
@@ -1878,7 +1859,7 @@ Enhancements 🔧
 
 
 ###
-[​](https://gofastmcp.com/changelog#fixes--26)
+[​](https://gofastmcp.com/changelog#fixes--25)
 Fixes 🐞
   * Fix OpenAPI deepObject style parameter encoding by [@jlowin](https://github.com/jlowin) in [#1122](https://github.com/PrefectHQ/fastmcp/pull/1122)
   * xfail when github token is not set (” or None) by [@jlowin](https://github.com/jlowin) in [#1123](https://github.com/PrefectHQ/fastmcp/pull/1123)
@@ -1888,7 +1869,7 @@ Fixes 🐞
 
 
 ###
-[​](https://gofastmcp.com/changelog#docs--17)
+[​](https://gofastmcp.com/changelog#docs--16)
 Docs 📚
   * Improve transport + integration docs by [@jlowin](https://github.com/jlowin) in [#1103](https://github.com/PrefectHQ/fastmcp/pull/1103)
   * Update proxy.mdx by [@coldfire-x](https://github.com/coldfire-x) in [#1108](https://github.com/PrefectHQ/fastmcp/pull/1108)
@@ -1918,7 +1899,7 @@ A quick fix to ensure the CLI accepts “streamable-http” as a valid transport
 [​](https://gofastmcp.com/changelog#what%E2%80%99s-changed-26)
 What’s Changed
 ###
-[​](https://gofastmcp.com/changelog#fixes--27)
+[​](https://gofastmcp.com/changelog#fixes--26)
 Fixes 🐞
   * Ensure the CLI accepts “streamable-http” as a valid transport by [@jlowin](https://github.com/jlowin) in [#1099](https://github.com/PrefectHQ/fastmcp/pull/1099)
 
@@ -1952,7 +1933,7 @@ Enhancements 🔧
 
 
 ###
-[​](https://gofastmcp.com/changelog#fixes--28)
+[​](https://gofastmcp.com/changelog#fixes--27)
 Fixes 🐞
   * Refactor Client context management to avoid concurrency issue by [@hopeful0](https://github.com/hopeful0) in [#1054](https://github.com/PrefectHQ/fastmcp/pull/1054)
   * Keep json schema $defs on transform by [@strawgate](https://github.com/strawgate) in [#1066](https://github.com/PrefectHQ/fastmcp/pull/1066)
@@ -1963,7 +1944,7 @@ Fixes 🐞
 
 
 ###
-[​](https://gofastmcp.com/changelog#docs--18)
+[​](https://gofastmcp.com/changelog#docs--17)
 Docs 📚
   * Docs: add example of more concise way to use bearer auth by [@neilconway](https://github.com/neilconway) in [#1055](https://github.com/PrefectHQ/fastmcp/pull/1055)
   * Update favicon by [@jlowin](https://github.com/jlowin) in [#1058](https://github.com/PrefectHQ/fastmcp/pull/1058)
@@ -2015,14 +1996,14 @@ Enhancements 🔧
 
 
 ###
-[​](https://gofastmcp.com/changelog#fixes--29)
+[​](https://gofastmcp.com/changelog#fixes--28)
 Fixes 🐞
   * Expose stateless_http kwarg for mcp.run() by [@jlowin](https://github.com/jlowin) in [#1018](https://github.com/PrefectHQ/fastmcp/pull/1018)
   * Avoid propagating logs by [@jlowin](https://github.com/jlowin) in [#1042](https://github.com/PrefectHQ/fastmcp/pull/1042)
 
 
 ###
-[​](https://gofastmcp.com/changelog#docs--19)
+[​](https://gofastmcp.com/changelog#docs--18)
 Docs 📚
   * Clean up docs by [@jlowin](https://github.com/jlowin) in [#1028](https://github.com/PrefectHQ/fastmcp/pull/1028)
   * Docs: clarify server URL paths for ChatGPT integration by [@thap2331](https://github.com/thap2331) in [#1017](https://github.com/PrefectHQ/fastmcp/pull/1017)
@@ -2055,7 +2036,7 @@ A quick patch to revert the CLI banner that was added in v2.10.0.
 [​](https://gofastmcp.com/changelog#what%E2%80%99s-changed-29)
 What’s Changed
 ###
-[​](https://gofastmcp.com/changelog#docs--20)
+[​](https://gofastmcp.com/changelog#docs--19)
 Docs 📚
   * Update changelog.mdx by [@jlowin](https://github.com/jlowin) in [#1009](https://github.com/PrefectHQ/fastmcp/pull/1009)
   * Revert “Add CLI banner” by [@jlowin](https://github.com/jlowin) in [#1011](https://github.com/PrefectHQ/fastmcp/pull/1011)
@@ -2099,7 +2080,7 @@ Enhancements 🔧
 
 
 ###
-[​](https://gofastmcp.com/changelog#fixes--30)
+[​](https://gofastmcp.com/changelog#fixes--29)
 Fixes 🐞
   * Improve stdio error handling to raise connection failures immediately by [@jlowin](https://github.com/jlowin) in [#984](https://github.com/PrefectHQ/fastmcp/pull/984)
   * Fix type hints for FunctionResource:fn by [@CfirTsabari](https://github.com/CfirTsabari) in [#986](https://github.com/PrefectHQ/fastmcp/pull/986)
@@ -2116,7 +2097,7 @@ Breaking Changes 🛫
 
 
 ###
-[​](https://gofastmcp.com/changelog#docs--21)
+[​](https://gofastmcp.com/changelog#docs--20)
 Docs 📚
   * Update middleware imports and documentation by [@jlowin](https://github.com/jlowin) in [#999](https://github.com/PrefectHQ/fastmcp/pull/999)
   * Update OpenAI docs by [@jlowin](https://github.com/jlowin) in [#1001](https://github.com/PrefectHQ/fastmcp/pull/1001)
@@ -2158,7 +2139,7 @@ This is a patch release to pin `mcp` below 1.10, which includes changes related 
 [​](https://gofastmcp.com/changelog#what%E2%80%99s-changed-31)
 What’s Changed
 ###
-[​](https://gofastmcp.com/changelog#docs--22)
+[​](https://gofastmcp.com/changelog#docs--21)
 Docs 📚
   * Fix version badge for messages by [@jlowin](https://github.com/jlowin) in [#960](https://github.com/PrefectHQ/fastmcp/pull/960)
 
@@ -2192,7 +2173,7 @@ Enhancements 🔧
 
 
 ###
-[​](https://gofastmcp.com/changelog#fixes--31)
+[​](https://gofastmcp.com/changelog#fixes--30)
 Fixes 🐞
   * Fix duplicate error logging in exception handlers by [@jlowin](https://github.com/jlowin) in [#938](https://github.com/PrefectHQ/fastmcp/pull/938)
   * Fix parameter location enum handling in OpenAPI parser by [@jlowin](https://github.com/jlowin) in [#953](https://github.com/PrefectHQ/fastmcp/pull/953)
@@ -2200,7 +2181,7 @@ Fixes 🐞
 
 
 ###
-[​](https://gofastmcp.com/changelog#docs--23)
+[​](https://gofastmcp.com/changelog#docs--22)
 Docs 📚
   * Update changelog for 2.9 release by [@jlowin](https://github.com/jlowin) in [#929](https://github.com/PrefectHQ/fastmcp/pull/929)
   * Regenerate API references by [@zzstoatzz](https://github.com/zzstoatzz) in [#935](https://github.com/PrefectHQ/fastmcp/pull/935)
@@ -2260,7 +2241,7 @@ Enhancements 🔧
 
 
 ###
-[​](https://gofastmcp.com/changelog#fixes--32)
+[​](https://gofastmcp.com/changelog#fixes--31)
 Fixes 🐞
   * “report_progress missing passing related_request_id causes notifications not working” by [@alexsee](https://github.com/alexsee) in [#838](https://github.com/PrefectHQ/fastmcp/pull/838)
   * Fix JWT issuer validation to support string values per RFC 7519 by [@jlowin](https://github.com/jlowin) in [#892](https://github.com/PrefectHQ/fastmcp/pull/892)
@@ -2268,7 +2249,7 @@ Fixes 🐞
 
 
 ###
-[​](https://gofastmcp.com/changelog#docs--24)
+[​](https://gofastmcp.com/changelog#docs--23)
 Docs 📚
   * Add CLAUDE.md development guidelines by [@jlowin](https://github.com/jlowin) in [#880](https://github.com/PrefectHQ/fastmcp/pull/880)
   * Update context docs for session_id property by [@jlowin](https://github.com/jlowin) in [#882](https://github.com/PrefectHQ/fastmcp/pull/882)
@@ -2334,7 +2315,7 @@ Enhancements 🔧
 
 
 ###
-[​](https://gofastmcp.com/changelog#fixes--33)
+[​](https://gofastmcp.com/changelog#fixes--32)
 Fixes 🐞
   * Restore .settings access as deprecated by [@jlowin](https://github.com/jlowin) in [#800](https://github.com/PrefectHQ/fastmcp/pull/800)
   * Ensure handling of false http kwargs correctly; removed unused kwarg by [@jlowin](https://github.com/jlowin) in [#804](https://github.com/PrefectHQ/fastmcp/pull/804)
@@ -2342,7 +2323,7 @@ Fixes 🐞
 
 
 ###
-[​](https://gofastmcp.com/changelog#docs--25)
+[​](https://gofastmcp.com/changelog#docs--24)
 Docs 📚
   * Update changelog for 2.8.0 by [@jlowin](https://github.com/jlowin) in [#794](https://github.com/PrefectHQ/fastmcp/pull/794)
   * Update welcome docs by [@jlowin](https://github.com/jlowin) in [#808](https://github.com/PrefectHQ/fastmcp/pull/808)
@@ -2401,7 +2382,7 @@ Enhancements 🔧
 
 
 ###
-[​](https://gofastmcp.com/changelog#fixes--34)
+[​](https://gofastmcp.com/changelog#fixes--33)
 Fixes 🐞
   * Ensure client is only initialized once by [@jlowin](https://github.com/jlowin) in [#758](https://github.com/PrefectHQ/fastmcp/pull/758)
   * Fix field validator for resource by [@jlowin](https://github.com/jlowin) in [#778](https://github.com/PrefectHQ/fastmcp/pull/778)
@@ -2416,7 +2397,7 @@ Breaking Changes 🛫
 
 
 ###
-[​](https://gofastmcp.com/changelog#docs--26)
+[​](https://gofastmcp.com/changelog#docs--25)
 Docs 📚
   * Minor docs updates by [@jlowin](https://github.com/jlowin) in [#755](https://github.com/PrefectHQ/fastmcp/pull/755)
   * Add 2.7 update by [@jlowin](https://github.com/jlowin) in [#756](https://github.com/PrefectHQ/fastmcp/pull/756)
@@ -2468,14 +2449,14 @@ New Features 🎉
 
 
 ###
-[​](https://gofastmcp.com/changelog#fixes--35)
+[​](https://gofastmcp.com/changelog#fixes--34)
 Fixes 🐞
   * Ensure event store is properly typed by [@jlowin](https://github.com/jlowin) in [#753](https://github.com/PrefectHQ/fastmcp/pull/753)
   * Fix passing token string to client auth & add auth to MCPConfig clients by [@jlowin](https://github.com/jlowin) in [#754](https://github.com/PrefectHQ/fastmcp/pull/754)
 
 
 ###
-[​](https://gofastmcp.com/changelog#docs--27)
+[​](https://gofastmcp.com/changelog#docs--26)
 Docs 📚
   * Docs : fix client to mcp_client in Gemini example by [@yrangana](https://github.com/yrangana) in [#734](https://github.com/PrefectHQ/fastmcp/pull/734)
   * update add tool docstring by [@strawgate](https://github.com/strawgate) in [#739](https://github.com/PrefectHQ/fastmcp/pull/739)
@@ -2529,7 +2510,7 @@ New Features 🎉
 
 
 ###
-[​](https://gofastmcp.com/changelog#fixes--36)
+[​](https://gofastmcp.com/changelog#fixes--35)
 Fixes 🐞
   * Updates / Fixes for Tool Content Conversion by [@strawgate](https://github.com/strawgate) in [#642](https://github.com/PrefectHQ/fastmcp/pull/642)
   * Fix pr labeler permissions by [@jlowin](https://github.com/jlowin) in [#708](https://github.com/PrefectHQ/fastmcp/pull/708)
@@ -2554,7 +2535,7 @@ v2.6.1
 [v2.6.1: Blast Auth (second ignition)](https://github.com/PrefectHQ/fastmcp/releases/tag/v2.6.1)
 This is a patch release to restore py.typed in #686.
 ###
-[​](https://gofastmcp.com/changelog#docs--28)
+[​](https://gofastmcp.com/changelog#docs--27)
 Docs 📚
   * Update readme by [@jlowin](https://github.com/jlowin) in [#679](https://github.com/PrefectHQ/fastmcp/pull/679)
   * Add gemini tutorial by [@jlowin](https://github.com/jlowin) in [#680](https://github.com/PrefectHQ/fastmcp/pull/680)
@@ -2595,7 +2576,7 @@ New Features 🎉
 
 
 ###
-[​](https://gofastmcp.com/changelog#fixes--37)
+[​](https://gofastmcp.com/changelog#fixes--36)
 Fixes 🐞
   * fix: Support concurrency in FastMcpProxy (and Client) by [@Sillocan](https://github.com/Sillocan) in [#635](https://github.com/PrefectHQ/fastmcp/pull/635)
   * Ensure Client.close() cleans up client context appropriately by [@jlowin](https://github.com/jlowin) in [#643](https://github.com/PrefectHQ/fastmcp/pull/643)
@@ -2603,7 +2584,7 @@ Fixes 🐞
 
 
 ###
-[​](https://gofastmcp.com/changelog#docs--29)
+[​](https://gofastmcp.com/changelog#docs--28)
 Docs 📚
   * Make FastMCPTransport support simulated Streamable HTTP Transport (didn’t work) by [@jlowin](https://github.com/jlowin) in [#645](https://github.com/PrefectHQ/fastmcp/pull/645)
   * Document exclude_args by [@jlowin](https://github.com/jlowin) in [#653](https://github.com/PrefectHQ/fastmcp/pull/653)
@@ -2642,7 +2623,7 @@ New Features 🎉
 
 
 ###
-[​](https://gofastmcp.com/changelog#fixes--38)
+[​](https://gofastmcp.com/changelog#fixes--37)
 Fixes 🐞
   * Fix handling tools without descriptions by [@jlowin](https://github.com/jlowin) in [#610](https://github.com/PrefectHQ/fastmcp/pull/610)
   * Don’t print env vars to console when format is wrong by [@jlowin](https://github.com/jlowin) in [#615](https://github.com/PrefectHQ/fastmcp/pull/615)
@@ -2650,7 +2631,7 @@ Fixes 🐞
 
 
 ###
-[​](https://gofastmcp.com/changelog#docs--30)
+[​](https://gofastmcp.com/changelog#docs--29)
 Docs 📚
   * Add notes about uv and claude desktop by [@jlowin](https://github.com/jlowin) in [#597](https://github.com/PrefectHQ/fastmcp/pull/597)
 
@@ -2677,13 +2658,13 @@ v2.5.1
 [​](https://gofastmcp.com/changelog#v2-5-1-route-awakening-part-2)
 [v2.5.1: Route Awakening (Part 2)](https://github.com/PrefectHQ/fastmcp/releases/tag/v2.5.1)
 ###
-[​](https://gofastmcp.com/changelog#fixes--39)
+[​](https://gofastmcp.com/changelog#fixes--38)
 Fixes 🐞
   * Ensure content-length is always stripped from client headers by [@jlowin](https://github.com/jlowin) in [#589](https://github.com/PrefectHQ/fastmcp/pull/589)
 
 
 ###
-[​](https://gofastmcp.com/changelog#docs--31)
+[​](https://gofastmcp.com/changelog#docs--30)
 Docs 📚
   * Fix redundant section of docs by [@jlowin](https://github.com/jlowin) in [#583](https://github.com/PrefectHQ/fastmcp/pull/583)
 
@@ -2715,7 +2696,7 @@ New Features 🎉
 
 
 ###
-[​](https://gofastmcp.com/changelog#docs--32)
+[​](https://gofastmcp.com/changelog#docs--31)
 Docs 📚
   * Add version badge for prefix formats by [@jlowin](https://github.com/jlowin) in [#537](https://github.com/PrefectHQ/fastmcp/pull/537)
   * Add versioning note to docs by [@jlowin](https://github.com/jlowin) in [#551](https://github.com/PrefectHQ/fastmcp/pull/551)
@@ -2739,7 +2720,7 @@ New Features 🎉
 
 
 ###
-[​](https://gofastmcp.com/changelog#fixes--40)
+[​](https://gofastmcp.com/changelog#fixes--39)
 Fixes 🐞
   * Avoid hanging on initializing server session by [@jlowin](https://github.com/jlowin) in [#523](https://github.com/PrefectHQ/fastmcp/pull/523)
 
@@ -2751,7 +2732,7 @@ Breaking Changes 🛫
 
 
 ###
-[​](https://gofastmcp.com/changelog#docs--33)
+[​](https://gofastmcp.com/changelog#docs--32)
 Docs 📚
   * Improve client documentation by [@jlowin](https://github.com/jlowin) in [#517](https://github.com/PrefectHQ/fastmcp/pull/517)
 
@@ -2783,13 +2764,13 @@ New Features 🎉
 
 
 ###
-[​](https://gofastmcp.com/changelog#fixes--41)
+[​](https://gofastmcp.com/changelog#fixes--40)
 Fixes 🐞
   * Remove patch and use upstream SSEServerTransport by [@jlowin](https://github.com/jlowin) in [#425](https://github.com/PrefectHQ/fastmcp/pull/425)
 
 
 ###
-[​](https://gofastmcp.com/changelog#docs--34)
+[​](https://gofastmcp.com/changelog#docs--33)
 Docs 📚
   * Update transport docs by [@jlowin](https://github.com/jlowin) in [#458](https://github.com/PrefectHQ/fastmcp/pull/458)
   * update proxy docs + example by [@zzstoatzz](https://github.com/zzstoatzz) in [#460](https://github.com/PrefectHQ/fastmcp/pull/460)
@@ -2843,7 +2824,7 @@ New Features 🎉
 
 
 ###
-[​](https://gofastmcp.com/changelog#fixes--42)
+[​](https://gofastmcp.com/changelog#fixes--41)
 Fixes 🐞
   * Pin to mcp 1.8.1 to resolve callback deadlocks with SHTTP by [@jlowin](https://github.com/jlowin) in [#427](https://github.com/PrefectHQ/fastmcp/pull/427)
   * Add reprs for OpenAPI objects by [@jlowin](https://github.com/jlowin) in [#447](https://github.com/PrefectHQ/fastmcp/pull/447)
@@ -2853,7 +2834,7 @@ Fixes 🐞
 
 
 ###
-[​](https://gofastmcp.com/changelog#docs--35)
+[​](https://gofastmcp.com/changelog#docs--34)
 Docs 📚
   * Add documentation for tool removal by [@jlowin](https://github.com/jlowin) in [#440](https://github.com/PrefectHQ/fastmcp/pull/440)
 
@@ -2880,13 +2861,13 @@ v2.3.3
 [v2.3.3: SSE you later](https://github.com/PrefectHQ/fastmcp/releases/tag/v2.3.3)
 This is a hotfix for a bug introduced in 2.3.2 that broke SSE servers
 ###
-[​](https://gofastmcp.com/changelog#fixes--43)
+[​](https://gofastmcp.com/changelog#fixes--42)
 Fixes 🐞
   * Fix bug that sets message path and sse path to same value by [@jlowin](https://github.com/jlowin) in [#405](https://github.com/PrefectHQ/fastmcp/pull/405)
 
 
 ###
-[​](https://gofastmcp.com/changelog#docs--36)
+[​](https://gofastmcp.com/changelog#docs--35)
 Docs 📚
   * Update composition docs by [@jlowin](https://github.com/jlowin) in [#403](https://github.com/PrefectHQ/fastmcp/pull/403)
 
@@ -2911,7 +2892,7 @@ New Features 🎉
 
 
 ###
-[​](https://gofastmcp.com/changelog#docs--37)
+[​](https://gofastmcp.com/changelog#docs--36)
 Docs 📚
   * Update CLI docs by [@jlowin](https://github.com/jlowin) in [#402](https://github.com/PrefectHQ/fastmcp/pull/402)
 
@@ -2930,14 +2911,14 @@ v2.3.1
 [v2.3.1: For Good-nests Sake](https://github.com/PrefectHQ/fastmcp/releases/tag/v2.3.1)
 This release primarily patches a long-standing bug with nested ASGI SSE servers.
 ###
-[​](https://gofastmcp.com/changelog#fixes--44)
+[​](https://gofastmcp.com/changelog#fixes--43)
 Fixes 🐞
   * Fix tool result serialization when the tool returns a list by [@strawgate](https://github.com/strawgate) in [#379](https://github.com/PrefectHQ/fastmcp/pull/379)
   * Ensure FastMCP handles nested SSE and SHTTP apps properly in ASGI frameworks by [@jlowin](https://github.com/jlowin) in [#390](https://github.com/PrefectHQ/fastmcp/pull/390)
 
 
 ###
-[​](https://gofastmcp.com/changelog#docs--38)
+[​](https://gofastmcp.com/changelog#docs--37)
 Docs 📚
   * Update transport docs by [@jlowin](https://github.com/jlowin) in [#377](https://github.com/PrefectHQ/fastmcp/pull/377)
   * Add llms.txt to docs by [@jlowin](https://github.com/jlowin) in [#384](https://github.com/PrefectHQ/fastmcp/pull/384)
@@ -2972,13 +2953,13 @@ New Features 🎉
 
 
 ###
-[​](https://gofastmcp.com/changelog#fixes--45)
+[​](https://gofastmcp.com/changelog#fixes--44)
 Fixes 🐞
   * Fix streaming transport initialization by [@jlowin](https://github.com/jlowin) in [#368](https://github.com/PrefectHQ/fastmcp/pull/368)
 
 
 ###
-[​](https://gofastmcp.com/changelog#docs--39)
+[​](https://gofastmcp.com/changelog#docs--38)
 Docs 📚
   * Update transport documentation for streaming support by [@jlowin](https://github.com/jlowin) in [#369](https://github.com/PrefectHQ/fastmcp/pull/369)
 
@@ -2990,7 +2971,7 @@ v2.2.10
 [​](https://gofastmcp.com/changelog#v2-2-10-that%E2%80%99s-json-bourne)
 [v2.2.10: That’s JSON Bourne](https://github.com/PrefectHQ/fastmcp/releases/tag/v2.2.10)
 ###
-[​](https://gofastmcp.com/changelog#fixes--46)
+[​](https://gofastmcp.com/changelog#fixes--45)
 Fixes 🐞
   * Disable automatic JSON parsing of tool args by [@jlowin](https://github.com/jlowin) in [#341](https://github.com/PrefectHQ/fastmcp/pull/341)
   * Fix prompt test by [@jlowin](https://github.com/jlowin) in [#342](https://github.com/PrefectHQ/fastmcp/pull/342)
@@ -3017,14 +2998,14 @@ v2.2.9
 [v2.2.9: Str-ing the Pot (Hotfix)](https://github.com/PrefectHQ/fastmcp/releases/tag/v2.2.9)
 This release is a hotfix for the issue detailed in #330
 ###
-[​](https://gofastmcp.com/changelog#fixes--47)
+[​](https://gofastmcp.com/changelog#fixes--46)
 Fixes 🐞
   * Prevent invalid resource URIs by [@jlowin](https://github.com/jlowin) in [#336](https://github.com/PrefectHQ/fastmcp/pull/336)
   * Coerce numbers to str by [@jlowin](https://github.com/jlowin) in [#337](https://github.com/PrefectHQ/fastmcp/pull/337)
 
 
 ###
-[​](https://gofastmcp.com/changelog#docs--40)
+[​](https://gofastmcp.com/changelog#docs--39)
 Docs 📚
   * Add client badge by [@jlowin](https://github.com/jlowin) in [#327](https://github.com/PrefectHQ/fastmcp/pull/327)
   * Update bug.yml by [@jlowin](https://github.com/jlowin) in [#328](https://github.com/PrefectHQ/fastmcp/pull/328)
@@ -3058,13 +3039,13 @@ New Features 🎉
 
 
 ###
-[​](https://gofastmcp.com/changelog#fixes--48)
+[​](https://gofastmcp.com/changelog#fixes--47)
 Fixes 🐞
   * Ensure that tool serialization has a graceful fallback by [@jlowin](https://github.com/jlowin) in [#310](https://github.com/PrefectHQ/fastmcp/pull/310)
 
 
 ###
-[​](https://gofastmcp.com/changelog#docs--41)
+[​](https://gofastmcp.com/changelog#docs--40)
 Docs 📚
   * Update docs for clarity by [@jlowin](https://github.com/jlowin) in [#312](https://github.com/PrefectHQ/fastmcp/pull/312)
 
@@ -3121,7 +3102,7 @@ New Features 🎉
 
 
 ###
-[​](https://gofastmcp.com/changelog#fixes--49)
+[​](https://gofastmcp.com/changelog#fixes--48)
 Fixes 🐞
   * Ensure openapi tool responses are properly converted by [@jlowin](https://github.com/jlowin) in [#283](https://github.com/PrefectHQ/fastmcp/pull/283)
   * Fix OpenAPI examples by [@jlowin](https://github.com/jlowin) in [#285](https://github.com/PrefectHQ/fastmcp/pull/285)
@@ -3156,7 +3137,7 @@ New Features 🎉
 
 
 ###
-[​](https://gofastmcp.com/changelog#docs--42)
+[​](https://gofastmcp.com/changelog#docs--41)
 Docs 📚
   * Update wildcards to 2.2.4 by [@jlowin](https://github.com/jlowin) in [#257](https://github.com/PrefectHQ/fastmcp/pull/257)
   * Update note in templates docs by [@jlowin](https://github.com/jlowin) in [#258](https://github.com/PrefectHQ/fastmcp/pull/258)
@@ -3177,7 +3158,7 @@ New Features 🎉
 
 
 ###
-[​](https://gofastmcp.com/changelog#fixes--50)
+[​](https://gofastmcp.com/changelog#fixes--49)
 Fixes 🐞
   * fix: unintended type convert by [@cutekibry](https://github.com/cutekibry) in [#252](https://github.com/PrefectHQ/fastmcp/pull/252)
   * Ensure openapi resources return valid responses by [@jlowin](https://github.com/jlowin) in [#254](https://github.com/PrefectHQ/fastmcp/pull/254)
@@ -3185,7 +3166,7 @@ Fixes 🐞
 
 
 ###
-[​](https://gofastmcp.com/changelog#docs--43)
+[​](https://gofastmcp.com/changelog#docs--42)
 Docs 📚
   * Update README.md Grammar error by [@TechWithTy](https://github.com/TechWithTy) in [#249](https://github.com/PrefectHQ/fastmcp/pull/249)
 
@@ -3216,7 +3197,7 @@ New Features 🎉
 
 
 ###
-[​](https://gofastmcp.com/changelog#docs--44)
+[​](https://gofastmcp.com/changelog#docs--43)
 Docs 📚
   * Indicate that Image class is for returns by [@jlowin](https://github.com/jlowin) in [#242](https://github.com/PrefectHQ/fastmcp/pull/242)
   * Update mermaid diagram by [@jlowin](https://github.com/jlowin) in [#243](https://github.com/PrefectHQ/fastmcp/pull/243)
@@ -3241,13 +3222,13 @@ New Features 🎉
 
 
 ###
-[​](https://gofastmcp.com/changelog#fixes--51)
+[​](https://gofastmcp.com/changelog#fixes--50)
 Fixes 🐞
   * Ensure that resource templates are properly exposed by [@jlowin](https://github.com/jlowin) in [#238](https://github.com/PrefectHQ/fastmcp/pull/238)
 
 
 ###
-[​](https://gofastmcp.com/changelog#docs--45)
+[​](https://gofastmcp.com/changelog#docs--44)
 Docs 📚
   * Update docs for prompts by [@jlowin](https://github.com/jlowin) in [#236](https://github.com/PrefectHQ/fastmcp/pull/236)
 
@@ -3271,13 +3252,13 @@ New Features 🎉
 
 
 ###
-[​](https://gofastmcp.com/changelog#fixes--52)
+[​](https://gofastmcp.com/changelog#fixes--51)
 Fixes 🐞
   * Ensure that resource templates are properly exposed by [@jlowin](https://github.com/jlowin) in [#231](https://github.com/PrefectHQ/fastmcp/pull/231)
 
 
 ###
-[​](https://gofastmcp.com/changelog#docs--46)
+[​](https://gofastmcp.com/changelog#docs--45)
 Docs 📚
   * Update docs for resource templates by [@jlowin](https://github.com/jlowin) in [#232](https://github.com/PrefectHQ/fastmcp/pull/232)
 
@@ -3308,7 +3289,7 @@ Breaking Changes 🛫
 
 
 ###
-[​](https://gofastmcp.com/changelog#docs--47)
+[​](https://gofastmcp.com/changelog#docs--46)
 Docs 📚
   * Improve integration documentation by [@jlowin](https://github.com/jlowin) in [#184](https://github.com/PrefectHQ/fastmcp/pull/184)
   * Improve documentation by [@jlowin](https://github.com/jlowin) in [#185](https://github.com/PrefectHQ/fastmcp/pull/185)
@@ -3336,13 +3317,13 @@ v2.1.2
 [v2.1.2: Copy That, Good Buddy](https://github.com/PrefectHQ/fastmcp/releases/tag/v2.1.2)
 The main improvement in this release is a fix that allows FastAPI / OpenAPI-generated servers to be mounted as sub-servers.
 ###
-[​](https://gofastmcp.com/changelog#fixes--53)
+[​](https://gofastmcp.com/changelog#fixes--52)
 Fixes 🐞
   * Ensure objects are copied properly and test mounting fastapi by [@jlowin](https://github.com/jlowin) in [#153](https://github.com/PrefectHQ/fastmcp/pull/153)
 
 
 ###
-[​](https://gofastmcp.com/changelog#docs--48)
+[​](https://gofastmcp.com/changelog#docs--47)
 Docs 📚
   * Fix broken links in docs by [@jlowin](https://github.com/jlowin) in [#154](https://github.com/PrefectHQ/fastmcp/pull/154)
 
@@ -3363,7 +3344,7 @@ v2.1.1
 [v2.1.1: Doc Holiday](https://github.com/PrefectHQ/fastmcp/releases/tag/v2.1.1)
 FastMCP’s docs are now available at gofastmcp.com.
 ###
-[​](https://gofastmcp.com/changelog#docs--49)
+[​](https://gofastmcp.com/changelog#docs--48)
 Docs 📚
   * Add docs by [@jlowin](https://github.com/jlowin) in [#136](https://github.com/PrefectHQ/fastmcp/pull/136)
   * Add docs link to readme by [@jlowin](https://github.com/jlowin) in [#137](https://github.com/PrefectHQ/fastmcp/pull/137)
@@ -3371,7 +3352,7 @@ Docs 📚
 
 
 ###
-[​](https://gofastmcp.com/changelog#fixes--54)
+[​](https://gofastmcp.com/changelog#fixes--53)
 Fixes 🐞
   * fix branch name in example by [@zzstoatzz](https://github.com/zzstoatzz) in [#140](https://github.com/PrefectHQ/fastmcp/pull/140)
 
@@ -3402,7 +3383,7 @@ New Features 🎉
 
 
 ###
-[​](https://gofastmcp.com/changelog#fixes--55)
+[​](https://gofastmcp.com/changelog#fixes--54)
 Fixes 🐞
   * Change default mounted tool separator from / to _ by [@jlowin](https://github.com/jlowin) in [#128](https://github.com/PrefectHQ/fastmcp/pull/128)
   * Enter mounted app lifespans by [@jlowin](https://github.com/jlowin) in [#129](https://github.com/PrefectHQ/fastmcp/pull/129)
@@ -3442,7 +3423,7 @@ New Features 🎉
 
 
 ###
-[​](https://gofastmcp.com/changelog#fixes--56)
+[​](https://gofastmcp.com/changelog#fixes--55)
 Fixes 🐞
   * Fix bug with tools that return lists by [@jlowin](https://github.com/jlowin) in [#116](https://github.com/PrefectHQ/fastmcp/pull/116)
 
@@ -3472,7 +3453,7 @@ from mcp.server.fastmcp import FastMCP
 
 To the best of my knowledge, v1 is identical to the upstream version included with `mcp`.
 ###
-[​](https://gofastmcp.com/changelog#docs--50)
+[​](https://gofastmcp.com/changelog#docs--49)
 Docs 📚
   * Update readme to redirect to the official SDK by [@jlowin](https://github.com/jlowin) in [#79](https://github.com/PrefectHQ/fastmcp/pull/79)
 
@@ -3496,13 +3477,13 @@ v0.4.1
 [​](https://gofastmcp.com/changelog#v0-4-1-string-theory)
 [v0.4.1: String Theory](https://github.com/PrefectHQ/fastmcp/releases/tag/v0.4.1)
 ###
-[​](https://gofastmcp.com/changelog#fixes--57)
+[​](https://gofastmcp.com/changelog#fixes--56)
 Fixes 🐞
   * fix: handle strings containing numbers correctly by [@sd2k](https://github.com/sd2k) in [#63](https://github.com/PrefectHQ/fastmcp/pull/63)
 
 
 ###
-[​](https://gofastmcp.com/changelog#docs--51)
+[​](https://gofastmcp.com/changelog#docs--50)
 Docs 📚
   * patch: Update pyproject.toml license by [@leonkozlowski](https://github.com/leonkozlowski) in [#67](https://github.com/PrefectHQ/fastmcp/pull/67)
 
@@ -3535,13 +3516,13 @@ New Features 🎉
 
 
 ###
-[​](https://gofastmcp.com/changelog#fixes--58)
+[​](https://gofastmcp.com/changelog#fixes--57)
 Fixes 🐞
   * fix: use stderr for logging by [@sd2k](https://github.com/sd2k) in [#51](https://github.com/PrefectHQ/fastmcp/pull/51)
 
 
 ###
-[​](https://gofastmcp.com/changelog#docs--52)
+[​](https://gofastmcp.com/changelog#docs--51)
 Docs 📚
   * Update ai-labeler.yml by [@jlowin](https://github.com/jlowin) in [#48](https://github.com/PrefectHQ/fastmcp/pull/48)
   * Relicense from Apache 2.0 to MIT by [@jlowin](https://github.com/jlowin) in [#54](https://github.com/PrefectHQ/fastmcp/pull/54)
@@ -3575,7 +3556,7 @@ New Features 🎉
 
 
 ###
-[​](https://gofastmcp.com/changelog#docs--53)
+[​](https://gofastmcp.com/changelog#docs--52)
 Docs 📚
   * Make AI labeler more conservative by [@jlowin](https://github.com/jlowin) in [#46](https://github.com/PrefectHQ/fastmcp/pull/46)
 
@@ -3600,7 +3581,7 @@ v0.3.4
 [​](https://gofastmcp.com/changelog#v0-3-4-url%E2%80%99s-well-that-ends-well)
 [v0.3.4: URL’s Well That Ends Well](https://github.com/PrefectHQ/fastmcp/releases/tag/v0.3.4)
 ###
-[​](https://gofastmcp.com/changelog#fixes--59)
+[​](https://gofastmcp.com/changelog#fixes--58)
 Fixes 🐞
   * Handle missing config file when installing by [@jlowin](https://github.com/jlowin) in [#37](https://github.com/PrefectHQ/fastmcp/pull/37)
   * Remove BaseURL reference and use AnyURL by [@jlowin](https://github.com/jlowin) in [#40](https://github.com/PrefectHQ/fastmcp/pull/40)
@@ -3620,7 +3601,7 @@ New Features 🎉
 
 
 ###
-[​](https://gofastmcp.com/changelog#docs--54)
+[​](https://gofastmcp.com/changelog#docs--53)
 Docs 📚
   * add `Contributing` section to README by [@zzstoatzz](https://github.com/zzstoatzz) in [#32](https://github.com/PrefectHQ/fastmcp/pull/32)
 
@@ -3638,7 +3619,7 @@ New Features 🎉
 
 
 ###
-[​](https://gofastmcp.com/changelog#docs--55)
+[​](https://gofastmcp.com/changelog#docs--54)
 Docs 📚
   * Remove top level env var by [@jlowin](https://github.com/jlowin) in [#28](https://github.com/PrefectHQ/fastmcp/pull/28)
 
@@ -3658,7 +3639,7 @@ New Features 🎉
 
 
 ###
-[​](https://gofastmcp.com/changelog#docs--56)
+[​](https://gofastmcp.com/changelog#docs--55)
 Docs 📚
   * Update README.md by [@jlowin](https://github.com/jlowin) in [#24](https://github.com/PrefectHQ/fastmcp/pull/24)
 
@@ -3727,5 +3708,6 @@ v0.1.0
 [v0.1.0](https://github.com/PrefectHQ/fastmcp/releases/tag/v0.1.0)
 The very first release of FastMCP! 🎉**Full Changelog** : [Initial commits](https://github.com/PrefectHQ/fastmcp/commits/v0.1.0)
 [ FastMCP Updates Previous ](https://gofastmcp.com/updates)[ Contrib Modules Next ](https://gofastmcp.com/patterns/contrib)
+Ctrl+I
 [discord](https://discord.gg/uu8dJCgttd)[github](https://github.com/PrefectHQ/fastmcp)[website](https://www.prefect.io)[x](https://x.com/fastmcp)
 [Powered by](https://www.mintlify.com?utm_campaign=poweredBy&utm_medium=referral&utm_source=fastmcp)

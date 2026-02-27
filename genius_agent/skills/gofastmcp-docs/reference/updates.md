@@ -4,8 +4,8 @@ Join us at the inaugural PyAI Conf in San Francisco on March 10th! [Learn More](
 v3
   * [](https://discord.gg/uu8dJCgttd)
   * [](https://prefect.io/horizon)
-  * [PrefectHQ/fastmcp](https://github.com/PrefectHQ/fastmcp "PrefectHQ/fastmcp")
-  * [PrefectHQ/fastmcp](https://github.com/PrefectHQ/fastmcp "PrefectHQ/fastmcp")
+  * [ PrefectHQ/fastmcp 23,195 ](https://github.com/PrefectHQ/fastmcp "PrefectHQ/fastmcp")
+  * [ PrefectHQ/fastmcp 23,195 ](https://github.com/PrefectHQ/fastmcp "PrefectHQ/fastmcp")
 
 
 Search...
@@ -69,11 +69,6 @@ Development
 # FastMCP Updates
 Copy page
 Copy page
-[​](https://gofastmcp.com/updates#fastmcp-3-0-2)
-FastMCP 3.0.2
-Releases
-February 22, 2026
-## [FastMCP v3.0.2: Threecovery Mode II Two community-contributed fixes: auth headers from MCP transport no longer leak through to downstream OpenAPI APIs, and background task workers now correctly receive the originating request ID. Plus a new docs example for context-aware tool factories. Read the release notes ](https://github.com/PrefectHQ/fastmcp/releases/tag/v3.0.2)
 [​](https://gofastmcp.com/updates#fastmcp-3-0-1)
 FastMCP 3.0.1
 Releases
@@ -253,5 +248,6 @@ ReleasesBlog Posts
 December 1, 2024
 [![_image?href=%2F_astro%2Ffastmcp.Bep7YlTw](https://www.jlowin.dev/_image?href=%2F_astro%2Ffastmcp.Bep7YlTw.png&w=1000&h=500&f=webp) Introducing FastMCP 🚀 Because life’s too short for boilerplate.This is where it all started. FastMCP’s launch post introduced a clean, Pythonic way to build MCP servers without the protocol overhead. Just write functions; FastMCP handles the rest. What began as a weekend project quickly became the foundation of a growing ecosystem. Read more ](https://www.jlowin.dev/blog/introducing-fastmcp)
 [ Releases Previous ](https://gofastmcp.com/development/releases)[ Changelog Next ](https://gofastmcp.com/changelog)
+Ctrl+I
 [discord](https://discord.gg/uu8dJCgttd)[github](https://github.com/PrefectHQ/fastmcp)[website](https://www.prefect.io)[x](https://x.com/fastmcp)
 [Powered by](https://www.mintlify.com?utm_campaign=poweredBy&utm_medium=referral&utm_source=fastmcp)

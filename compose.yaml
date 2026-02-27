@@ -11,6 +11,8 @@ services:
         max-size: "10m"
         max-file: "3"
     restart: always
+    dns:
+      - "${IP_DNS:-1.1.1.1}"
     environment:
       - "HOST=0.0.0.0"
       - "PORT=9033"
@@ -20,6 +22,7 @@ services:
       - "MODEL_ID=${MODEL_ID:-qwen/qwen3-coder-next}"
       - "DEBUG=True"
       - "ENABLE_WEB_UI=True"
+      - "ENABLE_OTEL=True"
     extra_hosts:
       - "host.docker.internal:host-gateway"
     ports:

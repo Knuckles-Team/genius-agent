@@ -496,62 +496,26 @@ from pydantic_graph import BaseNode, End, Graph, GraphRunContext
 
 
 @dataclass
-class MachineState:
-The state of the vending machine is defined as a dataclass with the user's balance and the product they've selected, if any.
-
-[](https://ai.pydantic.dev/graph/#__code_7_annotation_1)
+class MachineState:  [](https://ai.pydantic.dev/graph/#__code_7_annotation_1)
     user_balance: float = 0.0
     product: str | None = None
 
 
 @dataclass
-class InsertCoin(BaseNode[MachineState]):
-The InsertCoin node, BaseNode[](https://ai.pydantic.dev/api/pydantic_graph/nodes/#pydantic_graph.nodes.BaseNode "BaseNode") is parameterized with MachineState as that's the state used in this graph.
-
-[](https://ai.pydantic.dev/graph/#__code_7_annotation_3)
-    async def run(self, ctx: GraphRunContext[MachineState]) -> CoinsInserted:
-The return type of the node's run[](https://ai.pydantic.dev/api/pydantic_graph/nodes/#pydantic_graph.nodes.BaseNode.run "run
-
-
-
-      abstractmethod
-      async
-  ") method is important as it is used to determine the outgoing edges of the node. This information in turn is used to render mermaid diagrams[](https://ai.pydantic.dev/graph/#mermaid-diagrams) and is enforced at runtime to detect misbehavior as soon as possible.
-
-[](https://ai.pydantic.dev/graph/#__code_7_annotation_16)
-        return CoinsInserted(float(Prompt.ask('Insert coins')))
-The InsertCoin node prompts the user to insert coins. We keep things simple by just entering a monetary amount as a float. Before you start thinking this is a toy too since it's using rich's Prompt.ask[](https://rich.readthedocs.io/en/stable/reference/prompt.html#rich.prompt.PromptBase.ask) within nodes, see below[](https://ai.pydantic.dev/graph/#example-human-in-the-loop) for how control flow can be managed when nodes require external input.
-
-[](https://ai.pydantic.dev/graph/#__code_7_annotation_4)
+class InsertCoin(BaseNode[MachineState]):  [](https://ai.pydantic.dev/graph/#__code_7_annotation_3)
+    async def run(self, ctx: GraphRunContext[MachineState]) -> CoinsInserted:  [](https://ai.pydantic.dev/graph/#__code_7_annotation_16)
+        return CoinsInserted(float(Prompt.ask('Insert coins')))  [](https://ai.pydantic.dev/graph/#__code_7_annotation_4)
 
 
 @dataclass
 class CoinsInserted(BaseNode[MachineState]):
-    amount: float
-The CoinsInserted node; again this is a dataclass[](https://docs.python.org/3/library/dataclasses.html#dataclasses.dataclass) with one field amount.
-
-[](https://ai.pydantic.dev/graph/#__code_7_annotation_5)
+    amount: float  [](https://ai.pydantic.dev/graph/#__code_7_annotation_5)
 
     async def run(
         self, ctx: GraphRunContext[MachineState]
-    ) -> SelectProduct | Purchase:
-The return type of CoinsInserted's run[](https://ai.pydantic.dev/api/pydantic_graph/nodes/#pydantic_graph.nodes.BaseNode.run "run
-
-
-
-      abstractmethod
-      async
-  ") method is a union, meaning multiple outgoing edges are possible.
-
-[](https://ai.pydantic.dev/graph/#__code_7_annotation_17)
-        ctx.state.user_balance += self.amount
-Update the user's balance with the amount inserted.
-
-[](https://ai.pydantic.dev/graph/#__code_7_annotation_6)
-        if ctx.state.product is not None:
-If the user has already selected a product, go to Purchase, otherwise go to SelectProduct.
-
-[](https://ai.pydantic.dev/graph/#__code_7_annotation_7)
+    ) -> SelectProduct | Purchase:  [](https://ai.pydantic.dev/graph/#__code_7_annotation_17)
+        ctx.state.user_balance += self.amount  [](https://ai.pydantic.dev/graph/#__code_7_annotation_6)
+        if ctx.state.product is not None:  [](https://ai.pydantic.dev/graph/#__code_7_annotation_7)
             return Purchase(ctx.state.product)
         else:
             return SelectProduct()
@@ -563,10 +527,7 @@ class SelectProduct(BaseNode[MachineState]):
         return Purchase(Prompt.ask('Select product'))
 
 
-PRODUCT_PRICES = {
-A dictionary of products mapped to prices.
-
-[](https://ai.pydantic.dev/graph/#__code_7_annotation_2)
+PRODUCT_PRICES = {  [](https://ai.pydantic.dev/graph/#__code_7_annotation_2)
     'water': 1.25,
     'soda': 1.50,
     'crisps': 1.75,
@@ -575,87 +536,35 @@ A dictionary of products mapped to prices.
 
 
 @dataclass
-class Purchase(BaseNode[MachineState, None, None]):
-Unlike other nodes, Purchase can end the run, so the RunEndT[](https://ai.pydantic.dev/api/pydantic_graph/nodes/#pydantic_graph.nodes.RunEndT "RunEndT
-
-
-
-      module-attribute
-  ") generic parameter must be set. In this case it's None since the graph run return type is None.
-
-[](https://ai.pydantic.dev/graph/#__code_7_annotation_18)
+class Purchase(BaseNode[MachineState, None, None]):  [](https://ai.pydantic.dev/graph/#__code_7_annotation_18)
     product: str
 
     async def run(
         self, ctx: GraphRunContext[MachineState]
     ) -> End | InsertCoin | SelectProduct:
-        if price := PRODUCT_PRICES.get(self.product):
-In the Purchase node, look up the price of the product if the user entered a valid product.
-
-[](https://ai.pydantic.dev/graph/#__code_7_annotation_8)
-            ctx.state.product = self.product
-If the user did enter a valid product, set the product in the state so we don't revisit SelectProduct.
-
-[](https://ai.pydantic.dev/graph/#__code_7_annotation_9)
-            if ctx.state.user_balance >= price:
-If the balance is enough to purchase the product, adjust the balance to reflect the purchase and return End[](https://ai.pydantic.dev/api/pydantic_graph/nodes/#pydantic_graph.nodes.End "End
-
-
-
-      dataclass
-  ") to end the graph. We're not using the run return type, so we call End with None.
-
-[](https://ai.pydantic.dev/graph/#__code_7_annotation_10)
+        if price := PRODUCT_PRICES.get(self.product):  [](https://ai.pydantic.dev/graph/#__code_7_annotation_8)
+            ctx.state.product = self.product  [](https://ai.pydantic.dev/graph/#__code_7_annotation_9)
+            if ctx.state.user_balance >= price:  [](https://ai.pydantic.dev/graph/#__code_7_annotation_10)
                 ctx.state.user_balance -= price
                 return End(None)
             else:
                 diff = price - ctx.state.user_balance
                 print(f'Not enough money for {self.product}, need {diff:0.2f} more')
                 #> Not enough money for crisps, need 0.75 more
-                return InsertCoin()
-If the balance is insufficient, go to InsertCoin to prompt the user to insert more coins.
-
-[](https://ai.pydantic.dev/graph/#__code_7_annotation_11)
+                return InsertCoin()  [](https://ai.pydantic.dev/graph/#__code_7_annotation_11)
         else:
             print(f'No such product: {self.product}, try again')
-            return SelectProduct()
-If the product is invalid, go to SelectProduct to prompt the user to select a product again.
-
-[](https://ai.pydantic.dev/graph/#__code_7_annotation_12)
+            return SelectProduct()  [](https://ai.pydantic.dev/graph/#__code_7_annotation_12)
 
 
-vending_machine_graph = Graph(
-The graph is created by passing a list of nodes to Graph[](https://ai.pydantic.dev/api/pydantic_graph/graph/#pydantic_graph.graph.Graph "Graph
-
-
-
-      dataclass
-  "). Order of nodes is not important, but it can affect how diagrams[](https://ai.pydantic.dev/graph/#mermaid-diagrams) are displayed.
-
-[](https://ai.pydantic.dev/graph/#__code_7_annotation_13)
+vending_machine_graph = Graph(  [](https://ai.pydantic.dev/graph/#__code_7_annotation_13)
     nodes=[InsertCoin, CoinsInserted, SelectProduct, Purchase]
 )
 
 
 async def main():
-    state = MachineState()
-Initialize the state. This will be passed to the graph run and mutated as the graph runs.
-
-[](https://ai.pydantic.dev/graph/#__code_7_annotation_14)
-    await vending_machine_graph.run(InsertCoin(), state=state)
-Run the graph with the initial state. Since the graph can be run from any node, we must pass the start node — in this case, InsertCoin. Graph.run[](https://ai.pydantic.dev/api/pydantic_graph/graph/#pydantic_graph.graph.Graph.run "run
-
-
-
-      async
-  ") returns a GraphRunResult[](https://ai.pydantic.dev/api/pydantic_graph/graph/#pydantic_graph.graph.GraphRunResult "GraphRunResult
-
-
-
-      dataclass
-  ") that provides the final data and a history of the run.
-
-[](https://ai.pydantic.dev/graph/#__code_7_annotation_15)
+    state = MachineState()  [](https://ai.pydantic.dev/graph/#__code_7_annotation_14)
+    await vending_machine_graph.run(InsertCoin(), state=state)  [](https://ai.pydantic.dev/graph/#__code_7_annotation_15)
     print(f'purchase successful item={state.product} change={state.user_balance:0.2f}')
     #> purchase successful item=crisps change=0.25
 
@@ -941,35 +850,15 @@ count_down_graph = Graph(nodes=[CountDown])
 
 async def main():
     state = CountDownState(counter=3)
-    async with count_down_graph.iter(CountDown(), state=state) as run:
-
-Graph.iter(...) returns a GraphRun[](https://ai.pydantic.dev/api/pydantic_graph/graph/#pydantic_graph.graph.GraphRun "GraphRun").
-
-[](https://ai.pydantic.dev/graph/#__code_11_annotation_1)
-        async for node in run:
-Here, we step through each node as it is executed.
-
-[](https://ai.pydantic.dev/graph/#__code_11_annotation_2)
+    async with count_down_graph.iter(CountDown(), state=state) as run:  [](https://ai.pydantic.dev/graph/#__code_11_annotation_1)
+        async for node in run:  [](https://ai.pydantic.dev/graph/#__code_11_annotation_2)
             print('Node:', node)
             #> Node: CountDown()
             #> Node: CountDown()
             #> Node: CountDown()
             #> Node: CountDown()
             #> Node: End(data=0)
-    print('Final output:', run.result.output)
-Once the graph returns an End[](https://ai.pydantic.dev/api/pydantic_graph/nodes/#pydantic_graph.nodes.End "End
-
-
-
-      dataclass
-  "), the loop ends, and run.result becomes a GraphRunResult[](https://ai.pydantic.dev/api/pydantic_graph/graph/#pydantic_graph.graph.GraphRunResult "GraphRunResult
-
-
-
-      dataclass
-  ") containing the final outcome (0 here).
-
-[](https://ai.pydantic.dev/graph/#__code_11_annotation_3)
+    print('Final output:', run.result.output)  [](https://ai.pydantic.dev/graph/#__code_11_annotation_3)
     #> Final output: 0
 
 ```
@@ -989,51 +878,25 @@ from count_down import CountDown, CountDownState, count_down_graph
 
 async def main():
     state = CountDownState(counter=5)
-    persistence = FullStatePersistence()
-Use FullStatePersistence[](https://ai.pydantic.dev/api/pydantic_graph/persistence/#pydantic_graph.persistence.in_mem.FullStatePersistence "FullStatePersistence
-
-
-
-      dataclass
-  ") so we can show the history of the run, see State Persistence[](https://ai.pydantic.dev/graph/#state-persistence) below for more information.
-
-[](https://ai.pydantic.dev/graph/#__code_12_annotation_7)
+    persistence = FullStatePersistence()  [](https://ai.pydantic.dev/graph/#__code_12_annotation_7)
     async with count_down_graph.iter(
         CountDown(), state=state, persistence=persistence
     ) as run:
-        node = run.next_node
-We start by grabbing the first node that will be run in the agent's graph.
-
-[](https://ai.pydantic.dev/graph/#__code_12_annotation_1)
-        while not isinstance(node, End):
-The agent run is finished once an End node has been produced; instances of End cannot be passed to next.
-
-[](https://ai.pydantic.dev/graph/#__code_12_annotation_2)
+        node = run.next_node  [](https://ai.pydantic.dev/graph/#__code_12_annotation_1)
+        while not isinstance(node, End):  [](https://ai.pydantic.dev/graph/#__code_12_annotation_2)
             print('Node:', node)
             #> Node: CountDown()
             #> Node: CountDown()
             #> Node: CountDown()
             #> Node: CountDown()
             if state.counter == 2:
-                break
-If the user decides to stop early, we break out of the loop. The graph run won't have a real final result in that case (run.result remains None).
+                break  [](https://ai.pydantic.dev/graph/#__code_12_annotation_3)
+            node = await run.next(node)  [](https://ai.pydantic.dev/graph/#__code_12_annotation_4)
 
-[](https://ai.pydantic.dev/graph/#__code_12_annotation_3)
-            node = await run.next(node)
-At each step, we call await run.next(node) to run it and get the next node (or an End).
-
-[](https://ai.pydantic.dev/graph/#__code_12_annotation_4)
-
-        print(run.result)
-Because we did not continue the run until it finished, the result is not set.
-
-[](https://ai.pydantic.dev/graph/#__code_12_annotation_5)
+        print(run.result)  [](https://ai.pydantic.dev/graph/#__code_12_annotation_5)
         #> None
 
-        for step in persistence.history:
-The run's history is still populated with the steps we executed so far.
-
-[](https://ai.pydantic.dev/graph/#__code_12_annotation_6)
+        for step in persistence.history:  [](https://ai.pydantic.dev/graph/#__code_12_annotation_6)
             print('History Step:', step.state, step.state)
             #> History Step: CountDownState(counter=5) CountDownState(counter=5)
             #> History Step: CountDownState(counter=4) CountDownState(counter=4)
@@ -1113,25 +976,9 @@ from count_down import CountDown, CountDownState, count_down_graph
 
 async def main():
     run_id = 'run_abc123'
-    persistence = FileStatePersistence(Path(f'count_down_{run_id}.json'))
-Create a FileStatePersistence[](https://ai.pydantic.dev/api/pydantic_graph/persistence/#pydantic_graph.persistence.file.FileStatePersistence "FileStatePersistence
-
-
-
-      dataclass
-  ") to use to start the graph.
-
-[](https://ai.pydantic.dev/graph/#__code_13_annotation_1)
+    persistence = FileStatePersistence(Path(f'count_down_{run_id}.json'))  [](https://ai.pydantic.dev/graph/#__code_13_annotation_1)
     state = CountDownState(counter=5)
-    await count_down_graph.initialize(
-Call graph.initialize()[](https://ai.pydantic.dev/api/pydantic_graph/graph/#pydantic_graph.graph.Graph.initialize "initialize
-
-
-
-      async
-  ") to set the initial graph state in the persistence object.
-
-[](https://ai.pydantic.dev/graph/#__code_13_annotation_2)
+    await count_down_graph.initialize(  [](https://ai.pydantic.dev/graph/#__code_13_annotation_2)
         CountDown(), state=state, persistence=persistence
     )
 
@@ -1140,36 +987,10 @@ Call graph.initialize()[](https://ai.pydantic.dev/api/pydantic_graph/graph/#pyda
         done = await run_node(run_id)
 
 
-async def run_node(run_id: str) -> bool:
-
-run_node is a pure function that doesn't need access to any other process state to run the next node of the graph, except the ID of the run.
-
-[](https://ai.pydantic.dev/graph/#__code_13_annotation_3)
+async def run_node(run_id: str) -> bool:  [](https://ai.pydantic.dev/graph/#__code_13_annotation_3)
     persistence = FileStatePersistence(Path(f'count_down_{run_id}.json'))
-    async with count_down_graph.iter_from_persistence(persistence) as run:
-Call graph.iter_from_persistence()[](https://ai.pydantic.dev/api/pydantic_graph/graph/#pydantic_graph.graph.Graph.iter_from_persistence "iter_from_persistence
-
-
-
-      async
-  ") create a GraphRun[](https://ai.pydantic.dev/api/pydantic_graph/graph/#pydantic_graph.graph.GraphRun "GraphRun") object that will run the next node of the graph from the state stored in persistence. This will return either a node or an End object.
-
-[](https://ai.pydantic.dev/graph/#__code_13_annotation_4)
-        node_or_end = await run.next()
-
-graph.run()[](https://ai.pydantic.dev/api/pydantic_graph/graph/#pydantic_graph.graph.Graph.run "run
-
-
-
-      async
-  ") will return either a node[](https://ai.pydantic.dev/api/pydantic_graph/nodes/#pydantic_graph.nodes.BaseNode "BaseNode") or an End[](https://ai.pydantic.dev/api/pydantic_graph/nodes/#pydantic_graph.nodes.End "End
-
-
-
-      dataclass
-  ") object.
-
-[](https://ai.pydantic.dev/graph/#__code_13_annotation_5)
+    async with count_down_graph.iter_from_persistence(persistence) as run:  [](https://ai.pydantic.dev/graph/#__code_13_annotation_4)
+        node_or_end = await run.next()  [](https://ai.pydantic.dev/graph/#__code_13_annotation_5)
 
     print('Node:', node_or_end)
     #> Node: CountDown()
@@ -1178,15 +999,7 @@ graph.run()[](https://ai.pydantic.dev/api/pydantic_graph/graph/#pydantic_graph.g
     #> Node: CountDown()
     #> Node: CountDown()
     #> Node: End(data=0)
-    return isinstance(node_or_end, End)
-Check if the node is an End[](https://ai.pydantic.dev/api/pydantic_graph/nodes/#pydantic_graph.nodes.End "End
-
-
-
-      dataclass
-  ") object, if it is, the graph run is complete.
-
-[](https://ai.pydantic.dev/graph/#__code_13_annotation_6)
+    return isinstance(node_or_end, End)  [](https://ai.pydantic.dev/graph/#__code_13_annotation_6)
 
 ```
 
@@ -1412,76 +1225,27 @@ from ai_q_and_a_graph import Ask, question_graph, Evaluate, QuestionState, Answe
 
 
 async def main():
-    answer: str | None = sys.argv[1] if len(sys.argv) > 1 else None
-Get the user's answer from the command line, if provided. See question graph example[](https://ai.pydantic.dev/examples/question-graph/) for a complete example.
+    answer: str | None = sys.argv[1] if len(sys.argv) > 1 else None  [](https://ai.pydantic.dev/graph/#__code_16_annotation_1)
+    persistence = FileStatePersistence(Path('question_graph.json'))  [](https://ai.pydantic.dev/graph/#__code_16_annotation_2)
+    persistence.set_graph_types(question_graph)  [](https://ai.pydantic.dev/graph/#__code_16_annotation_3)
 
-[](https://ai.pydantic.dev/graph/#__code_16_annotation_1)
-    persistence = FileStatePersistence(Path('question_graph.json'))
-Create a state persistence instance the 'question_graph.json' file may or may not already exist.
-
-[](https://ai.pydantic.dev/graph/#__code_16_annotation_2)
-    persistence.set_graph_types(question_graph)
-Since we're using the persistence interface[](https://ai.pydantic.dev/api/pydantic_graph/persistence/#pydantic_graph.persistence.BaseStatePersistence "BaseStatePersistence") outside a graph, we need to call set_graph_types[](https://ai.pydantic.dev/api/pydantic_graph/persistence/#pydantic_graph.persistence.BaseStatePersistence.set_graph_types "set_graph_types") to set the graph generic types StateT and RunEndT for the persistence instance. This is necessary to allow the persistence instance to know how to serialize and deserialize graph nodes.
-
-[](https://ai.pydantic.dev/graph/#__code_16_annotation_3)
-
-    if snapshot := await persistence.load_next():
-If we're run the graph before, load_next[](https://ai.pydantic.dev/api/pydantic_graph/persistence/#pydantic_graph.persistence.BaseStatePersistence.load_next "load_next
-
-
-
-      abstractmethod
-      async
-  ") will return a snapshot of the next node to run, here we use state from that snapshot, and create a new Evaluate node with the answer provided on the command line.
-
-[](https://ai.pydantic.dev/graph/#__code_16_annotation_4)
+    if snapshot := await persistence.load_next():  [](https://ai.pydantic.dev/graph/#__code_16_annotation_4)
         state = snapshot.state
         assert answer is not None
         node = Evaluate(answer)
     else:
         state = QuestionState()
-        node = Ask()
-If the graph hasn't been run before, we create a new QuestionState and start with the Ask node.
-
-[](https://ai.pydantic.dev/graph/#__code_16_annotation_5)
+        node = Ask()  [](https://ai.pydantic.dev/graph/#__code_16_annotation_5)
 
     async with question_graph.iter(node, state=state, persistence=persistence) as run:
         while True:
-            node = await run.next()
-Call GraphRun.next()[](https://ai.pydantic.dev/api/pydantic_graph/graph/#pydantic_graph.graph.GraphRun.next "next
-
-
-
-      async
-  ") to run the node. This will return either a node or an End object.
-
-[](https://ai.pydantic.dev/graph/#__code_16_annotation_6)
-            if isinstance(node, End):
-If the node is an End object, the graph run is complete. The data field of the End object contains the comment returned by the evaluate_agent about the correct answer.
-
-[](https://ai.pydantic.dev/graph/#__code_16_annotation_7)
+            node = await run.next()  [](https://ai.pydantic.dev/graph/#__code_16_annotation_6)
+            if isinstance(node, End):  [](https://ai.pydantic.dev/graph/#__code_16_annotation_7)
                 print('END:', node.data)
-                history = await persistence.load_all()
-To demonstrate the state persistence, we call load_all[](https://ai.pydantic.dev/api/pydantic_graph/persistence/#pydantic_graph.persistence.BaseStatePersistence.load_all "load_all
-
-
-
-      abstractmethod
-      async
-  ") to get all the snapshots from the persistence instance. This will return a list of Snapshot[](https://ai.pydantic.dev/api/pydantic_graph/persistence/#pydantic_graph.persistence.Snapshot "Snapshot
-
-
-
-      module-attribute
-  ") objects.
-
-[](https://ai.pydantic.dev/graph/#__code_16_annotation_8)
+                history = await persistence.load_all()  [](https://ai.pydantic.dev/graph/#__code_16_annotation_8)
                 print([e.node for e in history])
                 break
-            elif isinstance(node, Answer):
-If the node is an Answer object, we print the question and break out of the loop to end the process and wait for user input.
-
-[](https://ai.pydantic.dev/graph/#__code_16_annotation_9)
+            elif isinstance(node, Answer):  [](https://ai.pydantic.dev/graph/#__code_16_annotation_9)
                 print(node.question)
                 #> What is the capital of France?
                 break

@@ -1,31 +1,44 @@
 ---
 name: gofastmcp-docs
-description: Agent skill for GoFastMCP documentation.
-categories: [Documentation, Knowledge Base]
-tags: [docs, gofastmcp-docs, reference]
+description: Agent skill for GoFastMCP framework documentation.
+source_url: https://gofastmcp.com/getting-started/welcome
+categories: [Documentation, Knowledge Base, Reference]
+tags: [docs, reference, gofastmcp-docs, knowledge-base]
 ---
 
 # Gofastmcp Docs Documentation
 
-Agent skill for GoFastMCP documentation.
+Agent skill for GoFastMCP framework documentation.
 
-## Reference Files
+**Original Source**: [https://gofastmcp.com/getting-started/welcome](https://gofastmcp.com/getting-started/welcome)
 
-- [Low-Level API](file:///home/genius/Workspace/agent-packages/universal-skills/universal_skills/skills/gofastmcp-docs/reference/apps_low-level.md)
-- [Apps](file:///home/genius/Workspace/agent-packages/universal-skills/universal_skills/skills/gofastmcp-docs/reference/apps_overview.md)
-- [Changelog](file:///home/genius/Workspace/agent-packages/universal-skills/universal_skills/skills/gofastmcp-docs/reference/changelog.md)
-- [The FastMCP Client](file:///home/genius/Workspace/agent-packages/universal-skills/universal_skills/skills/gofastmcp-docs/reference/clients_client.md)
-- [Client Transports](file:///home/genius/Workspace/agent-packages/universal-skills/universal_skills/skills/gofastmcp-docs/reference/clients_transports.md)
-- [Contributing](file:///home/genius/Workspace/agent-packages/universal-skills/universal_skills/skills/gofastmcp-docs/reference/development_contributing.md)
-- [Releases](file:///home/genius/Workspace/agent-packages/universal-skills/universal_skills/skills/gofastmcp-docs/reference/development_releases.md)
-- [Tests](file:///home/genius/Workspace/agent-packages/universal-skills/universal_skills/skills/gofastmcp-docs/reference/development_tests.md)
-- [Installation](file:///home/genius/Workspace/agent-packages/universal-skills/universal_skills/skills/gofastmcp-docs/reference/getting-started_installation.md)
-- [Quickstart](file:///home/genius/Workspace/agent-packages/universal-skills/universal_skills/skills/gofastmcp-docs/reference/getting-started_quickstart.md)
-- [Welcome to FastMCP](file:///home/genius/Workspace/agent-packages/universal-skills/universal_skills/skills/gofastmcp-docs/reference/getting-started_welcome.md)
-- [Welcome to FastMCP](file:///home/genius/Workspace/agent-packages/universal-skills/universal_skills/skills/gofastmcp-docs/reference/index.md)
-- [Low-Level API](file:///home/genius/Workspace/agent-packages/universal-skills/universal_skills/skills/gofastmcp-docs/reference/llms-full.txt.md)
-- [FastMCP](file:///home/genius/Workspace/agent-packages/universal-skills/universal_skills/skills/gofastmcp-docs/reference/llms.txt.md)
-- [Contrib Modules](file:///home/genius/Workspace/agent-packages/universal-skills/universal_skills/skills/gofastmcp-docs/reference/patterns_contrib.md)
-- [Authorization](file:///home/genius/Workspace/agent-packages/universal-skills/universal_skills/skills/gofastmcp-docs/reference/servers_authorization.md)
-- [The FastMCP Server](file:///home/genius/Workspace/agent-packages/universal-skills/universal_skills/skills/gofastmcp-docs/reference/servers_server.md)
-- [FastMCP Updates](file:///home/genius/Workspace/agent-packages/universal-skills/universal_skills/skills/gofastmcp-docs/reference/updates.md)
+**Contains**: 18 markdown files with full folder structure.
+*Last updated: February 27, 2026*
+
+## 📚 Table of Contents
+
+- [Low-Level API](reference/apps_low-level.md)
+- [Apps](reference/apps_overview.md)
+- [Changelog](reference/changelog.md)
+- [The FastMCP Client](reference/clients_client.md)
+- [Client Transports](reference/clients_transports.md)
+- [Development Contributing](reference/development_contributing.md)
+- [Releases](reference/development_releases.md)
+- [Tests](reference/development_tests.md)
+- [Installation](reference/getting-started_installation.md)
+- [Quickstart](reference/getting-started_quickstart.md)
+- [Welcome to FastMCP](reference/getting-started_welcome.md)
+- [Welcome to FastMCP](reference/index.md)
+- [Low-Level API](reference/llms-full.txt.md)
+- [FastMCP](reference/llms.txt.md)
+- [Contrib Modules](reference/patterns_contrib.md)
+- [Authorization](reference/servers_authorization.md)
+- [The FastMCP Server](reference/servers_server.md)
+- [FastMCP Updates](reference/updates.md)
+
+## 🤖 Agent Usage Guide
+
+- When the user asks anything about **Gofastmcp Docs**, consult the reference files.
+- Prefer exact quotes and direct links to the relevant file/section.
+- The hierarchical TOC above makes navigation fast and intuitive.
+- All images and assets are preserved so links work perfectly.

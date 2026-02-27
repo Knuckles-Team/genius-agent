@@ -59,6 +59,6 @@ RUN apt update \
     && apt upgrade -y \
     && apt install -y ripgrep tree fd-find curl build-essential libxml2-dev libxslt1-dev python3-dev \
     && curl -LsSf https://astral.sh/uv/install.sh | sh \
-    && uv pip install --system --upgrade --verbose --no-cache --break-system-packages --prerelease=allow . 
+    && uv pip install --system --upgrade --verbose --no-cache --break-system-packages --prerelease=allow .
 
 CMD ["genius-agent"]

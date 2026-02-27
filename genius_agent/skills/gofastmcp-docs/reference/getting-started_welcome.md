@@ -4,8 +4,8 @@ Join us at the inaugural PyAI Conf in San Francisco on March 10th! [Learn More](
 v3
   * [](https://discord.gg/uu8dJCgttd)
   * [](https://prefect.io/horizon)
-  * [PrefectHQ/fastmcp](https://github.com/PrefectHQ/fastmcp "PrefectHQ/fastmcp")
-  * [PrefectHQ/fastmcp](https://github.com/PrefectHQ/fastmcp "PrefectHQ/fastmcp")
+  * [ PrefectHQ/fastmcp 23,195 ](https://github.com/PrefectHQ/fastmcp "PrefectHQ/fastmcp")
+  * [ PrefectHQ/fastmcp 23,195 ](https://github.com/PrefectHQ/fastmcp "PrefectHQ/fastmcp")
 
 
 Search...
@@ -126,5 +126,6 @@ The docs are also available in [llms.txt format](https://llmstxt.org/):
 
 Any page can be accessed as markdown by appending `.md` to the URL. For example, this page becomes `https://gofastmcp.com/getting-started/welcome.md`. You can also copy any page as markdown by pressing “Cmd+C” (or “Ctrl+C” on Windows) on your keyboard.
 [ Installation Next ](https://gofastmcp.com/getting-started/installation)
+Ctrl+I
 [discord](https://discord.gg/uu8dJCgttd)[github](https://github.com/PrefectHQ/fastmcp)[website](https://www.prefect.io)[x](https://x.com/fastmcp)
 [Powered by](https://www.mintlify.com?utm_campaign=poweredBy&utm_medium=referral&utm_source=fastmcp)

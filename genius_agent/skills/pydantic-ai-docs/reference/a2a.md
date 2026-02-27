@@ -4,9 +4,19 @@
 Pydantic AI
 Agent2Agent (A2A)
 Type to start searching
-[ pydantic/pydantic-ai  ](https://github.com/pydantic/pydantic-ai "Go to repository")
+[ pydantic/pydantic-ai
+  * v1.63.0
+  * 15.1k
+  * 1.7k
+
+](https://github.com/pydantic/pydantic-ai "Go to repository")
 [ ![logo](https://ai.pydantic.dev/img/logo-white.svg) ](https://ai.pydantic.dev/ "Pydantic AI") Pydantic AI
-[ pydantic/pydantic-ai  ](https://github.com/pydantic/pydantic-ai "Go to repository")
+[ pydantic/pydantic-ai
+  * v1.63.0
+  * 15.1k
+  * 1.7k
+
+](https://github.com/pydantic/pydantic-ai "Go to repository")
   * [ Pydantic AI  ](https://ai.pydantic.dev/)
   * [ Installation  ](https://ai.pydantic.dev/install/)
   * [ Getting Help  ](https://ai.pydantic.dev/help/)
@@ -258,21 +268,6 @@ Given the nature of the A2A protocol, it's important to understand the design be
 
 
 Let's have a look at how those components fit together:
-```
-flowchart TB
-    Server["HTTP Server"] <--> |Sends Requests/<br>Receives Results| TM
-
-    subgraph CC[Core Components]
-        direction RL
-        TM["TaskManager<br>(coordinates)"] --> |Schedules Tasks| Broker
-        TM <--> Storage
-        Broker["Broker<br>(queues & schedules)"] <--> Storage["Storage<br>(persistence)"]
-        Broker --> |Delegates Execution| Worker
-    end
-
-    Worker["Worker<br>(implementation)"]
-```
-
 FastA2A allows you to bring your own [`Storage`](https://ai.pydantic.dev/api/fasta2a/#fasta2a.Storage "Storage"), [`Broker`](https://ai.pydantic.dev/api/fasta2a/#fasta2a.Broker "Broker
 
 

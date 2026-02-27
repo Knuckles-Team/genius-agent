@@ -335,22 +335,7 @@ app = FastAPI()
 async def run_agent(request: Request) -> Response:
     accept = request.headers.get('accept', SSE_CONTENT_TYPE)
     try:
-        run_input = AGUIAdapter.build_run_input(await request.body())  #
-
-AGUIAdapter.build_run_input()[](https://ai.pydantic.dev/api/ui/ag_ui/#pydantic_ai.ui.ag_ui.AGUIAdapter.build_run_input "build_run_input
-
-
-
-      classmethod
-  ") takes the request body as bytes and returns an AG-UI RunAgentInput[](https://docs.ag-ui.com/sdk/python/core/types#runagentinput) object. You can also use the AGUIAdapter.from_request()[](https://ai.pydantic.dev/api/ui/base/#pydantic_ai.ui.UIAdapter.from_request "from_request
-
-
-
-      async
-      classmethod
-  ") class method to build an adapter directly from a request.
-
-[](https://ai.pydantic.dev/ui/ag-ui/#__code_4_annotation_1)
+        run_input = AGUIAdapter.build_run_input(await request.body())  # [](https://ai.pydantic.dev/ui/ag-ui/#__code_4_annotation_1)
     except ValidationError as e:
         return Response(
             content=json.dumps(e.json()),
@@ -359,18 +344,10 @@ AGUIAdapter.build_run_input()[](https://ai.pydantic.dev/api/ui/ag_ui/#pydantic_a
         )
 
     adapter = AGUIAdapter(agent=agent, run_input=run_input, accept=accept)
-    event_stream = adapter.run_stream() #
-
-AGUIAdapter.run_stream()[](https://ai.pydantic.dev/api/ui/base/#pydantic_ai.ui.UIAdapter.run_stream "run_stream") runs the agent and returns a stream of AG-UI events. It supports the same optional arguments as Agent.run_stream_events()[](https://ai.pydantic.dev/agent/#running-agents), including deps. You can also use AGUIAdapter.run_stream_native()[](https://ai.pydantic.dev/api/ui/base/#pydantic_ai.ui.UIAdapter.run_stream_native "run_stream_native") to run the agent and return a stream of Pydantic AI events instead, which can then be transformed into AG-UI events using AGUIAdapter.transform_stream()[](https://ai.pydantic.dev/api/ui/base/#pydantic_ai.ui.UIAdapter.transform_stream "transform_stream").
-
-[](https://ai.pydantic.dev/ui/ag-ui/#__code_4_annotation_2)
+    event_stream = adapter.run_stream() # [](https://ai.pydantic.dev/ui/ag-ui/#__code_4_annotation_2)
 
     sse_event_stream = adapter.encode_stream(event_stream)
-    return StreamingResponse(sse_event_stream, media_type=accept) #
-
-AGUIAdapter.encode_stream()[](https://ai.pydantic.dev/api/ui/base/#pydantic_ai.ui.UIAdapter.encode_stream "encode_stream") encodes the stream of AG-UI events as strings according to the accept header value. You can also use AGUIAdapter.streaming_response()[](https://ai.pydantic.dev/api/ui/base/#pydantic_ai.ui.UIAdapter.streaming_response "streaming_response") to generate a streaming response directly from the AG-UI event stream returned by run_stream().
-
-[](https://ai.pydantic.dev/ui/ag-ui/#__code_4_annotation_3)
+    return StreamingResponse(sse_event_stream, media_type=accept) # [](https://ai.pydantic.dev/ui/ag-ui/#__code_4_annotation_3)
 
 ```
 
@@ -464,10 +441,7 @@ app = FastAPI()
 
 @app.post('/')
 async def run_agent(request: Request) -> Response:
-    return await AGUIAdapter.dispatch_request(request, agent=agent) #
-This method essentially does the same as the previous example, but it's more convenient to use when you're already using a Starlette/FastAPI app.
-
-[](https://ai.pydantic.dev/ui/ag-ui/#__code_7_annotation_1)
+    return await AGUIAdapter.dispatch_request(request, agent=agent) # [](https://ai.pydantic.dev/ui/ag-ui/#__code_7_annotation_1)
 
 ```
 

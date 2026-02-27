@@ -4,8 +4,8 @@ Join us at the inaugural PyAI Conf in San Francisco on March 10th! [Learn More](
 v3
   * [](https://discord.gg/uu8dJCgttd)
   * [](https://prefect.io/horizon)
-  * [PrefectHQ/fastmcp](https://github.com/PrefectHQ/fastmcp "PrefectHQ/fastmcp")
-  * [PrefectHQ/fastmcp](https://github.com/PrefectHQ/fastmcp "PrefectHQ/fastmcp")
+  * [ PrefectHQ/fastmcp 23,195 ](https://github.com/PrefectHQ/fastmcp "PrefectHQ/fastmcp")
+  * [ PrefectHQ/fastmcp 23,195 ](https://github.com/PrefectHQ/fastmcp "PrefectHQ/fastmcp")
 
 
 Search...
@@ -13,7 +13,7 @@ Navigation
 Servers
 Authorization
 Search the docs...
-⌘K
+Ctrl K
 Documentation
 ##### Get Started
   * [Welcome!](https://gofastmcp.com/getting-started/welcome)
@@ -475,5 +475,6 @@ from fastmcp.server.middleware import AuthMiddleware
 ```
 
 [ Full OAuth Server Previous ](https://gofastmcp.com/servers/auth/full-oauth-server)[ Running Your Server Next ](https://gofastmcp.com/deployment/running-server)
+Ctrl+I
 [discord](https://discord.gg/uu8dJCgttd)[github](https://github.com/PrefectHQ/fastmcp)[website](https://www.prefect.io)[x](https://x.com/fastmcp)
 [Powered by](https://www.mintlify.com?utm_campaign=poweredBy&utm_medium=referral&utm_source=fastmcp)
