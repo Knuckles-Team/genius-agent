@@ -18,11 +18,11 @@ classifiers = [
 ]
 requires-python = ">=3.10"
 dependencies = [
+    "universal-skills[web-crawler,web-search]",
     "agent-utilities[agent,logfire]>=0.2.5",
 ]
 
 [project.scripts]
-# genius-mcp = "genius_agent.mcp:mcp_server"
 genius-agent = "genius_agent.agent:agent_server"
 
 [tool.setuptools.packages.find]
