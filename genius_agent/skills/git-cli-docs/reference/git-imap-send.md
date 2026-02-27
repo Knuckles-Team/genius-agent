@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-imap-send#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-imap-send#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-imap-send#_description)
@@ -37,8 +37,8 @@ Localized versions of **git-imap-send** manual
   4. [українська мова ](https://git-scm.com/docs/git-imap-send/uk)
   5. [简体中文 ](https://git-scm.com/docs/git-imap-send/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-imap-send)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -219,78 +219,78 @@ Typical usage is something like:
 $ git format-patch --signoff --stdout --attach origin | git imap-send
 ```
 
-##  [](https://git-scm.com/docs/git-imap-send#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-imap-send#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-imap-send#Documentation/git-imap-send.txt--v)-v 
-
-
-[](https://git-scm.com/docs/git-imap-send#Documentation/git-imap-send.txt---verbose)--verbose 
-    
-Be verbose. 
-
-[](https://git-scm.com/docs/git-imap-send#Documentation/git-imap-send.txt--q)-q 
+[](https://git-scm.com/docs/git-imap-send#Documentation/git-imap-send.txt--v)-v
 
 
-[](https://git-scm.com/docs/git-imap-send#Documentation/git-imap-send.txt---quiet)--quiet 
-    
-Be quiet. 
+[](https://git-scm.com/docs/git-imap-send#Documentation/git-imap-send.txt---verbose)--verbose
 
-[](https://git-scm.com/docs/git-imap-send#Documentation/git-imap-send.txt--ffolder)-f <folder> 
+Be verbose.
+
+[](https://git-scm.com/docs/git-imap-send#Documentation/git-imap-send.txt--q)-q
 
 
-[](https://git-scm.com/docs/git-imap-send#Documentation/git-imap-send.txt---folderfolder)--folder=<folder> 
-    
-Specify the folder in which the emails have to saved. For example: `--folder=`[`Gmail`]`/Drafts` or `-f` `INBOX/Drafts`. 
+[](https://git-scm.com/docs/git-imap-send#Documentation/git-imap-send.txt---quiet)--quiet
 
-[](https://git-scm.com/docs/git-imap-send#Documentation/git-imap-send.txt---curl)--curl 
-    
-Use libcurl to communicate with the IMAP server, unless tunneling into it. Ignored if Git was built without the USE_CURL_FOR_IMAP_SEND option set. 
+Be quiet.
 
-[](https://git-scm.com/docs/git-imap-send#Documentation/git-imap-send.txt---no-curl)--no-curl 
-    
-Talk to the IMAP server using git’s own IMAP routines instead of using libcurl. Ignored if Git was built with the NO_OPENSSL option set. 
+[](https://git-scm.com/docs/git-imap-send#Documentation/git-imap-send.txt--ffolder)-f <folder>
 
-[](https://git-scm.com/docs/git-imap-send#Documentation/git-imap-send.txt---list)--list 
-    
+
+[](https://git-scm.com/docs/git-imap-send#Documentation/git-imap-send.txt---folderfolder)--folder=<folder>
+
+Specify the folder in which the emails have to saved. For example: `--folder=`[`Gmail`]`/Drafts` or `-f` `INBOX/Drafts`.
+
+[](https://git-scm.com/docs/git-imap-send#Documentation/git-imap-send.txt---curl)--curl
+
+Use libcurl to communicate with the IMAP server, unless tunneling into it. Ignored if Git was built without the USE_CURL_FOR_IMAP_SEND option set.
+
+[](https://git-scm.com/docs/git-imap-send#Documentation/git-imap-send.txt---no-curl)--no-curl
+
+Talk to the IMAP server using git’s own IMAP routines instead of using libcurl. Ignored if Git was built with the NO_OPENSSL option set.
+
+[](https://git-scm.com/docs/git-imap-send#Documentation/git-imap-send.txt---list)--list
+
 Run the IMAP LIST command to output a list of all the folders present.
 ##  [](https://git-scm.com/docs/git-imap-send#_configuration)CONFIGURATION
 To use the tool, `imap.folder` and either `imap.tunnel` or `imap.host` must be set to appropriate values.
-Everything above this line in this section isn’t included from the [git-config[1]](https://git-scm.com/docs/git-config) documentation. The content that follows is the same as what’s found there: 
+Everything above this line in this section isn’t included from the [git-config[1]](https://git-scm.com/docs/git-config) documentation. The content that follows is the same as what’s found there:
 
-[](https://git-scm.com/docs/git-imap-send#Documentation/git-imap-send.txt-imapfolder)imap.folder 
-    
-The folder to drop the mails into, which is typically the Drafts folder. For example: `INBOX.Drafts`, `INBOX/Drafts` or [`Gmail`]`/Drafts`. The IMAP folder to interact with MUST be specified; the value of this configuration variable is used as the fallback default value when the `--folder` option is not given. 
+[](https://git-scm.com/docs/git-imap-send#Documentation/git-imap-send.txt-imapfolder)imap.folder
 
-[](https://git-scm.com/docs/git-imap-send#Documentation/git-imap-send.txt-imaptunnel)imap.tunnel 
-    
-Command used to set up a tunnel to the IMAP server through which commands will be piped instead of using a direct network connection to the server. Required when imap.host is not set. 
+The folder to drop the mails into, which is typically the Drafts folder. For example: `INBOX.Drafts`, `INBOX/Drafts` or [`Gmail`]`/Drafts`. The IMAP folder to interact with MUST be specified; the value of this configuration variable is used as the fallback default value when the `--folder` option is not given.
 
-[](https://git-scm.com/docs/git-imap-send#Documentation/git-imap-send.txt-imaphost)imap.host 
-    
-A URL identifying the server. Use an `imap://` prefix for non-secure connections and an `imaps://` prefix for secure connections. Ignored when imap.tunnel is set, but required otherwise. 
+[](https://git-scm.com/docs/git-imap-send#Documentation/git-imap-send.txt-imaptunnel)imap.tunnel
 
-[](https://git-scm.com/docs/git-imap-send#Documentation/git-imap-send.txt-imapuser)imap.user 
-    
-The username to use when logging in to the server. 
+Command used to set up a tunnel to the IMAP server through which commands will be piped instead of using a direct network connection to the server. Required when imap.host is not set.
 
-[](https://git-scm.com/docs/git-imap-send#Documentation/git-imap-send.txt-imappass)imap.pass 
-    
-The password to use when logging in to the server. 
+[](https://git-scm.com/docs/git-imap-send#Documentation/git-imap-send.txt-imaphost)imap.host
 
-[](https://git-scm.com/docs/git-imap-send#Documentation/git-imap-send.txt-imapport)imap.port 
-    
-An integer port number to connect to on the server. Defaults to 143 for imap:// hosts and 993 for imaps:// hosts. Ignored when imap.tunnel is set. 
+A URL identifying the server. Use an `imap://` prefix for non-secure connections and an `imaps://` prefix for secure connections. Ignored when imap.tunnel is set, but required otherwise.
 
-[](https://git-scm.com/docs/git-imap-send#Documentation/git-imap-send.txt-imapsslverify)imap.sslverify 
-    
-A boolean to enable/disable verification of the server certificate used by the SSL/TLS connection. Default is `true`. Ignored when imap.tunnel is set. 
+[](https://git-scm.com/docs/git-imap-send#Documentation/git-imap-send.txt-imapuser)imap.user
 
-[](https://git-scm.com/docs/git-imap-send#Documentation/git-imap-send.txt-imappreformattedHTML)imap.preformattedHTML 
-    
-A boolean to enable/disable the use of html encoding when sending a patch. An html encoded patch will be bracketed with <pre> and have a content type of text/html. Ironically, enabling this option causes Thunderbird to send the patch as a plain/text, format=fixed email. Default is `false`. 
+The username to use when logging in to the server.
 
-[](https://git-scm.com/docs/git-imap-send#Documentation/git-imap-send.txt-imapauthMethod)imap.authMethod 
-    
+[](https://git-scm.com/docs/git-imap-send#Documentation/git-imap-send.txt-imappass)imap.pass
+
+The password to use when logging in to the server.
+
+[](https://git-scm.com/docs/git-imap-send#Documentation/git-imap-send.txt-imapport)imap.port
+
+An integer port number to connect to on the server. Defaults to 143 for imap:// hosts and 993 for imaps:// hosts. Ignored when imap.tunnel is set.
+
+[](https://git-scm.com/docs/git-imap-send#Documentation/git-imap-send.txt-imapsslverify)imap.sslverify
+
+A boolean to enable/disable verification of the server certificate used by the SSL/TLS connection. Default is `true`. Ignored when imap.tunnel is set.
+
+[](https://git-scm.com/docs/git-imap-send#Documentation/git-imap-send.txt-imappreformattedHTML)imap.preformattedHTML
+
+A boolean to enable/disable the use of html encoding when sending a patch. An html encoded patch will be bracketed with <pre> and have a content type of text/html. Ironically, enabling this option causes Thunderbird to send the patch as a plain/text, format=fixed email. Default is `false`.
+
+[](https://git-scm.com/docs/git-imap-send#Documentation/git-imap-send.txt-imapauthMethod)imap.authMethod
+
 Specify the authentication method for authenticating with the IMAP server. If Git was built with the NO_CURL option, or if your curl version is older than 7.34.0, or if you’re running git-imap-send with the `--no-curl` option, the only supported methods are `PLAIN`, `CRAM-MD5`, `OAUTHBEARER` and `XOAUTH2`. If this is not set then `git` `imap-send` uses the basic IMAP plaintext `LOGIN` command.
 ##  [](https://git-scm.com/docs/git-imap-send#_getting_a_list_of_available_folders)GETTING A LIST OF AVAILABLE FOLDERS
 In order to send an email to a specific folder, you need to know the correct name of intended folder in your mailbox. The names like "Junk", "Trash" etc. displayed by various email clients need not be the actual names of the folders stored in the mail server of your email provider.
@@ -336,8 +336,8 @@ Using direct mode with SSL:
     ; sslVerify = false
 ```
 
-Note |  You may want to use `sslVerify=false` while troubleshooting, if you suspect that the reason you are having trouble connecting is because the certificate you use at the private server `example.com` you are trying to set up (or have set up) may not be verified correctly.   
----|---  
+Note |  You may want to use `sslVerify=false` while troubleshooting, if you suspect that the reason you are having trouble connecting is because the certificate you use at the private server `example.com` you are trying to set up (or have set up) may not be verified correctly.
+---|---
 Using Gmail’s IMAP interface:
 ```
 [imap]
@@ -348,10 +348,10 @@ Using Gmail’s IMAP interface:
 ```
 
 Gmail does not allow using your regular password for `git` `imap-send`. If you have multi-factor authentication set up on your Gmail account, you can generate an app-specific password for use with `git` `imap-send`. Visit <https://security.google.com/settings/security/apppasswords> to create it. Alternatively, use OAuth2.0 authentication as described below.
-Note |  You might need to instead use: `folder` `=` `"`[`Google` `Mail`]`/Drafts"` if you get an error that the "Folder doesn’t exist". You can also run `git` `imap-send` `--list` to get a list of available folders.   
----|---  
-Note |  If your Gmail account is set to another language than English, the name of the "Drafts" folder will be localized.   
----|---  
+Note |  You might need to instead use: `folder` `=` `"`[`Google` `Mail`]`/Drafts"` if you get an error that the "Folder doesn’t exist". You can also run `git` `imap-send` `--list` to get a list of available folders.
+---|---
+Note |  If your Gmail account is set to another language than English, the name of the "Drafts" folder will be localized.
+---|---
 If you want to use OAuth2.0 based authentication, you can specify `OAUTHBEARER` or `XOAUTH2` mechanism in your config. It is more secure than using app-specific passwords, and also does not enforce the need of having multi-factor authentication. You will have to use an OAuth2.0 access token in place of your password when using this authentication.
 ```
 [imap]
@@ -388,6 +388,6 @@ Thunderbird in particular is known to be problematic. Thunderbird users may wish
 ##  [](https://git-scm.com/docs/git-imap-send#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### imap-send
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

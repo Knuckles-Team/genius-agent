@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/gitattributes#_name)
     * [SYNOPSIS](https://git-scm.com/docs/gitattributes#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/gitattributes#_description)
@@ -34,8 +34,8 @@
 Localized versions of **gitattributes** manual
   1. [English ](https://git-scm.com/docs/gitattributes)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/gitattributes)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -249,22 +249,22 @@ pattern attr1 attr2 ...
 ```
 
 That is, a pattern followed by an attributes list, separated by whitespaces. Leading and trailing whitespaces are ignored. Lines that begin with _#_ are ignored. Patterns that begin with a double quote are quoted in C style. When the pattern matches the path in question, the attributes listed on the line are given to the path.
-Each attribute can be in one of these states for a given path: 
+Each attribute can be in one of these states for a given path:
 
-[](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-Set)Set 
-    
-The path has the attribute with special value "true"; this is specified by listing only the name of the attribute in the attribute list. 
+[](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-Set)Set
 
-[](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-Unset)Unset 
-    
-The path has the attribute with special value "false"; this is specified by listing the name of the attribute prefixed with a dash `-` in the attribute list. 
+The path has the attribute with special value "true"; this is specified by listing only the name of the attribute in the attribute list.
 
-[](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-Settoavalue)Set to a value 
-    
-The path has the attribute with specified string value; this is specified by listing the name of the attribute followed by an equal sign `=` and its value in the attribute list. 
+[](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-Unset)Unset
 
-[](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-Unspecified)Unspecified 
-    
+The path has the attribute with special value "false"; this is specified by listing the name of the attribute prefixed with a dash `-` in the attribute list.
+
+[](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-Settoavalue)Set to a value
+
+The path has the attribute with specified string value; this is specified by listing the name of the attribute followed by an equal sign `=` and its value in the attribute list.
+
+[](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-Unspecified)Unspecified
+
 No pattern matches the path, and nothing says if the path has or does not have the attribute, the attribute for the path is said to be Unspecified.
 When more than one pattern matches the path, a later line overrides an earlier line. This overriding is done per attribute.
 The rules by which the pattern matches paths are the same as in `.gitignore` files (see [gitignore[5]](https://git-scm.com/docs/gitignore)), with a few exceptions:
@@ -285,37 +285,37 @@ Certain operations by Git can be influenced by assigning particular attributes t
 ###  [](https://git-scm.com/docs/gitattributes#_checking_out_and_checking_in)Checking-out and checking-in
 These attributes affect how the contents stored in the repository are copied to the working tree files when commands such as _git switch_ , _git checkout_ and _git merge_ run. They also affect how Git stores the contents you prepare in the working tree in the repository upon _git add_ and _git commit_.
 ####  [](https://git-scm.com/docs/gitattributes#_text)`text`
-This attribute marks the path as a text file, which enables end-of-line conversion: When a matching file is added to the index, the file’s line endings are normalized to LF in the index. Conversely, when the file is copied from the index to the working directory, its line endings may be converted from LF to CRLF depending on the `eol` attribute, the Git config, and the platform (see explanation of `eol` below). 
+This attribute marks the path as a text file, which enables end-of-line conversion: When a matching file is added to the index, the file’s line endings are normalized to LF in the index. Conversely, when the file is copied from the index to the working directory, its line endings may be converted from LF to CRLF depending on the `eol` attribute, the Git config, and the platform (see explanation of `eol` below).
 
-[](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-Set-1)Set 
-    
-Setting the `text` attribute on a path enables end-of-line conversion on checkin and checkout as described above. Line endings are normalized to LF in the index every time the file is checked in, even if the file was previously added to Git with CRLF line endings. 
+[](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-Set-1)Set
 
-[](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-Unset-1)Unset 
-    
-Unsetting the `text` attribute on a path tells Git not to attempt any end-of-line conversion upon checkin or checkout. 
+Setting the `text` attribute on a path enables end-of-line conversion on checkin and checkout as described above. Line endings are normalized to LF in the index every time the file is checked in, even if the file was previously added to Git with CRLF line endings.
 
-[](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-Settostringvalueauto)Set to string value "auto" 
-    
-When `text` is set to "auto", Git decides by itself whether the file is text or binary. If it is text and the file was not already in Git with CRLF endings, line endings are converted on checkin and checkout as described above. Otherwise, no conversion is done on checkin or checkout. 
+[](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-Unset-1)Unset
 
-[](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-Unspecified-1)Unspecified 
-    
+Unsetting the `text` attribute on a path tells Git not to attempt any end-of-line conversion upon checkin or checkout.
+
+[](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-Settostringvalueauto)Set to string value "auto"
+
+When `text` is set to "auto", Git decides by itself whether the file is text or binary. If it is text and the file was not already in Git with CRLF endings, line endings are converted on checkin and checkout as described above. Otherwise, no conversion is done on checkin or checkout.
+
+[](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-Unspecified-1)Unspecified
+
 If the `text` attribute is unspecified, Git uses the `core.autocrlf` configuration variable to determine if the file should be converted.
 Any other value causes Git to act as if `text` has been left unspecified.
 ####  [](https://git-scm.com/docs/gitattributes#_eol)`eol`
-This attribute marks a path to use a specific line-ending style in the working tree when it is checked out. It has effect only if `text` or `text=auto` is set (see above), but specifying `eol` automatically sets `text` if `text` was left unspecified. 
+This attribute marks a path to use a specific line-ending style in the working tree when it is checked out. It has effect only if `text` or `text=auto` is set (see above), but specifying `eol` automatically sets `text` if `text` was left unspecified.
 
-[](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-Settostringvaluecrlf)Set to string value "crlf" 
-    
-This setting converts the file’s line endings in the working directory to CRLF when the file is checked out. 
+[](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-Settostringvaluecrlf)Set to string value "crlf"
 
-[](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-Settostringvaluelf)Set to string value "lf" 
-    
-This setting uses the same line endings in the working directory as in the index when the file is checked out. 
+This setting converts the file’s line endings in the working directory to CRLF when the file is checked out.
 
-[](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-Unspecified-1-1)Unspecified 
-    
+[](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-Settostringvaluelf)Set to string value "lf"
+
+This setting uses the same line endings in the working directory as in the index when the file is checked out.
+
+[](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-Unspecified-1-1)Unspecified
+
 If the `eol` attribute is unspecified for a file, its line endings in the working directory are determined by the `core.autocrlf` or `core.eol` configuration variable (see the definitions of those options in [git-config[1]](https://git-scm.com/docs/git-config)). If `text` is set but neither of those variables is, the default is `eol=crlf` on Windows and `eol=lf` on all other platforms.
 ####  [](https://git-scm.com/docs/gitattributes#_backwards_compatibility_with_crlf_attribute)Backwards compatibility with `crlf` attribute
 For backwards compatibility, the `crlf` attribute is interpreted as follows:
@@ -348,8 +348,8 @@ The attributes allow a fine-grained control, how the line endings are converted.
 *.jpg		-text
 ```
 
-Note |  When `text=auto` conversion is enabled in a cross-platform project using push and pull to a central repository the text files containing CRLFs should be normalized.   
----|---  
+Note |  When `text=auto` conversion is enabled in a cross-platform project using push and pull to a central repository the text files containing CRLFs should be normalized.
+---|---
 From a clean working directory:
 ```
 $ echo "* text=auto" >.gitattributes
@@ -548,22 +548,22 @@ To prevent these unnecessary merge conflicts, Git can be told to run a virtual c
 As long as a "smudge→clean" results in the same output as a "clean" even on files that are already smudged, this strategy will automatically resolve all filter-related conflicts. Filters that do not act in this way may cause additional merge conflicts that must be resolved manually.
 ###  [](https://git-scm.com/docs/gitattributes#_generating_diff_text)Generating diff text
 ####  [](https://git-scm.com/docs/gitattributes#_diff)`diff`
-The attribute `diff` affects how Git generates diffs for particular files. It can tell Git whether to generate a textual patch for the path or to treat the path as a binary file. It can also affect what line is shown on the hunk header `@@` `-k,l` `+n,m` `@@` line, tell Git to use an external command to generate the diff, or ask Git to convert binary files to a text format before generating the diff. 
+The attribute `diff` affects how Git generates diffs for particular files. It can tell Git whether to generate a textual patch for the path or to treat the path as a binary file. It can also affect what line is shown on the hunk header `@@` `-k,l` `+n,m` `@@` line, tell Git to use an external command to generate the diff, or ask Git to convert binary files to a text format before generating the diff.
 
-[](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-Set-1-1)Set 
-    
-A path to which the `diff` attribute is set is treated as text, even when they contain byte values that normally never appear in text files, such as NUL. 
+[](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-Set-1-1)Set
 
-[](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-Unset-1-1)Unset 
-    
-A path to which the `diff` attribute is unset will generate `Binary` `files` `differ` (or a binary patch, if binary patches are enabled). 
+A path to which the `diff` attribute is set is treated as text, even when they contain byte values that normally never appear in text files, such as NUL.
 
-[](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-Unspecified-1-1-1)Unspecified 
-    
-A path to which the `diff` attribute is unspecified first gets its contents inspected, and if it looks like text and is smaller than core.bigFileThreshold, it is treated as text. Otherwise it would generate `Binary` `files` `differ`. 
+[](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-Unset-1-1)Unset
 
-[](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-String)String 
-    
+A path to which the `diff` attribute is unset will generate `Binary` `files` `differ` (or a binary patch, if binary patches are enabled).
+
+[](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-Unspecified-1-1-1)Unspecified
+
+A path to which the `diff` attribute is unspecified first gets its contents inspected, and if it looks like text and is smaller than core.bigFileThreshold, it is treated as text. Otherwise it would generate `Binary` `files` `differ`.
+
+[](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-String)String
+
 Diff is shown using the specified diff driver. Each driver may specify one or more options, as described in the following section. The options for the diff driver "foo" are defined by the configuration variables in the "diff.foo" section of the Git config file.
 ####  [](https://git-scm.com/docs/gitattributes#_defining_an_external_diff_driver)Defining an external diff driver
 The definition of a diff driver is done in `gitconfig`, not `gitattributes` file, so strictly speaking this manual page is a wrong place to talk about it. However…​
@@ -589,8 +589,8 @@ Then, define a "diff.<name>.algorithm" configuration to specify the diff algorit
 ```
 
 This diff algorithm applies to user facing diff output like git-diff(1), git-show(1) and is used for the `--stat` output as well. The merge machinery will not use the diff algorithm set through this method.
-Note |  If `diff.`_< name>_`.command` is defined for path with the `diff=`_< name>_ attribute, it is executed as an external diff driver (see above), and adding `diff.`_< name>_`.algorithm` has no effect, as the algorithm is not passed to the external diff driver.   
----|---  
+Note |  If `diff.`_< name>_`.command` is defined for path with the `diff=`_< name>_ attribute, it is executed as an external diff driver (see above), and adding `diff.`_< name>_`.algorithm` has no effect, as the algorithm is not passed to the external diff driver.
+---|---
 ####  [](https://git-scm.com/docs/gitattributes#_defining_a_custom_hunk_header)Defining a custom hunk-header
 Each group of changes (called a "hunk") in the textual diff output is prefixed with a line of the form:
 ```
@@ -655,8 +655,8 @@ For example, to show the diff of the exif information of a file instead of the b
 	textconv = exif
 ```
 
-Note |  The text conversion is generally a one-way conversion; in this example, we lose the actual image contents and focus just on the text data. This means that diffs generated by textconv are _not_ suitable for applying. For this reason, only `git` `diff` and the `git` `log` family of commands (i.e., log, whatchanged, show) will perform text conversion. `git` `format-patch` will never generate this output. If you want to send somebody a text-converted diff of a binary file (e.g., because it quickly conveys the changes you have made), you should generate it separately and send it as a comment _in addition to_ the usual binary diff that you might send.   
----|---  
+Note |  The text conversion is generally a one-way conversion; in this example, we lose the actual image contents and focus just on the text data. This means that diffs generated by textconv are _not_ suitable for applying. For this reason, only `git` `diff` and the `git` `log` family of commands (i.e., log, whatchanged, show) will perform text conversion. `git` `format-patch` will never generate this output. If you want to send somebody a text-converted diff of a binary file (e.g., because it quickly conveys the changes you have made), you should generate it separately and send it as a comment _in addition to_ the usual binary diff that you might send.
+---|---
 Because text conversion can be slow, especially when doing a large number of them with `git` `log` `-p`, Git provides a mechanism to cache the output and use it in future diffs. To enable caching, set the "cachetextconv" variable in your diff driver’s config. For example:
 ```
 [diff "jpg"]
@@ -691,36 +691,36 @@ However, one may also want to specify other diff driver attributes. For example,
 
 ###  [](https://git-scm.com/docs/gitattributes#_performing_a_three_way_merge)Performing a three-way merge
 ####  [](https://git-scm.com/docs/gitattributes#_merge)`merge`
-The attribute `merge` affects how three versions of a file are merged when a file-level merge is necessary during `git` `merge`, and other commands such as `git` `revert` and `git` `cherry-pick`. 
+The attribute `merge` affects how three versions of a file are merged when a file-level merge is necessary during `git` `merge`, and other commands such as `git` `revert` and `git` `cherry-pick`.
 
-[](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-Set-1-1-1)Set 
-    
-Built-in 3-way merge driver is used to merge the contents in a way similar to _merge_ command of `RCS` suite. This is suitable for ordinary text files. 
+[](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-Set-1-1-1)Set
 
-[](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-Unset-1-1-1)Unset 
-    
-Take the version from the current branch as the tentative merge result, and declare that the merge has conflicts. This is suitable for binary files that do not have a well-defined merge semantics. 
+Built-in 3-way merge driver is used to merge the contents in a way similar to _merge_ command of `RCS` suite. This is suitable for ordinary text files.
 
-[](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-Unspecified-1-1-1-1)Unspecified 
-    
-By default, this uses the same built-in 3-way merge driver as is the case when the `merge` attribute is set. However, the `merge.default` configuration variable can name different merge driver to be used with paths for which the `merge` attribute is unspecified. 
+[](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-Unset-1-1-1)Unset
 
-[](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-String-1)String 
-    
+Take the version from the current branch as the tentative merge result, and declare that the merge has conflicts. This is suitable for binary files that do not have a well-defined merge semantics.
+
+[](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-Unspecified-1-1-1-1)Unspecified
+
+By default, this uses the same built-in 3-way merge driver as is the case when the `merge` attribute is set. However, the `merge.default` configuration variable can name different merge driver to be used with paths for which the `merge` attribute is unspecified.
+
+[](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-String-1)String
+
 3-way merge is performed using the specified custom merge driver. The built-in 3-way merge driver can be explicitly specified by asking for "text" driver; the built-in "take the current branch" driver can be requested with "binary".
 ####  [](https://git-scm.com/docs/gitattributes#_built_in_merge_drivers)Built-in merge drivers
-There are a few built-in low-level merge drivers defined that can be asked for via the `merge` attribute. 
+There are a few built-in low-level merge drivers defined that can be asked for via the `merge` attribute.
 
-[](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-text)text 
-    
-Usual 3-way file level merge for text files. Conflicted regions are marked with conflict markers _< <<<<<<_, `=======` and _> >>>>>>_. The version from your branch appears before the `=======` marker, and the version from the merged branch appears after the `=======` marker. 
+[](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-text)text
 
-[](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-binary)binary 
-    
-Keep the version from your branch in the work tree, but leave the path in the conflicted state for the user to sort out. 
+Usual 3-way file level merge for text files. Conflicted regions are marked with conflict markers _< <<<<<<_, `=======` and _> >>>>>>_. The version from your branch appears before the `=======` marker, and the version from the merged branch appears after the `=======` marker.
 
-[](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-union)union 
-    
+[](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-binary)binary
+
+Keep the version from your branch in the work tree, but leave the path in the conflicted state for the user to sort out.
+
+[](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-union)union
+
 Run 3-way file level merge for text files, but take lines from both versions, instead of leaving conflict markers. This tends to leave the added lines in the resulting file in random order and the user should verify the result. Do not use this if you do not understand the implications.
 ####  [](https://git-scm.com/docs/gitattributes#_defining_a_custom_merge_driver)Defining a custom merge driver
 The definition of a merge driver is done in the `.git/config` file, not in the `gitattributes` file, so strictly speaking this manual page is a wrong place to talk about it. However…​
@@ -746,22 +746,22 @@ Documentation/git-merge.adoc	conflict-marker-size=32
 
 ###  [](https://git-scm.com/docs/gitattributes#_checking_whitespace_errors)Checking whitespace errors
 ####  [](https://git-scm.com/docs/gitattributes#_whitespace)`whitespace`
-The `core.whitespace` configuration variable allows you to define what _diff_ and _apply_ should consider whitespace errors for all paths in the project (See [git-config[1]](https://git-scm.com/docs/git-config)). This attribute gives you finer control per path. 
+The `core.whitespace` configuration variable allows you to define what _diff_ and _apply_ should consider whitespace errors for all paths in the project (See [git-config[1]](https://git-scm.com/docs/git-config)). This attribute gives you finer control per path.
 
-[](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-Set-1-1-1-1)Set 
-    
-Notice all types of potential whitespace errors known to Git. The tab width is taken from the value of the `core.whitespace` configuration variable. 
+[](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-Set-1-1-1-1)Set
 
-[](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-Unset-1-1-1-1)Unset 
-    
-Do not notice anything as error. 
+Notice all types of potential whitespace errors known to Git. The tab width is taken from the value of the `core.whitespace` configuration variable.
 
-[](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-Unspecified-1-1-1-1-1)Unspecified 
-    
-Use the value of the `core.whitespace` configuration variable to decide what to notice as error. 
+[](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-Unset-1-1-1-1)Unset
 
-[](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-String-1-1)String 
-    
+Do not notice anything as error.
+
+[](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-Unspecified-1-1-1-1-1)Unspecified
+
+Use the value of the `core.whitespace` configuration variable to decide what to notice as error.
+
+[](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-String-1-1)String
+
 Specify a comma separated list of common whitespace problems to notice in the same format as the `core.whitespace` configuration variable.
 ###  [](https://git-scm.com/docs/gitattributes#_creating_an_archive)Creating an archive
 ####  [](https://git-scm.com/docs/gitattributes#_export_ignore)`export-ignore`
@@ -831,6 +831,6 @@ frotz	unspecified
 ##  [](https://git-scm.com/docs/gitattributes#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### gitattributes
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

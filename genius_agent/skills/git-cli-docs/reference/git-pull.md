@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-pull#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-pull#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-pull#_description)
@@ -42,8 +42,8 @@ Localized versions of **git-pull** manual
   5. [українська мова ](https://git-scm.com/docs/git-pull/uk)
   6. [简体中文 ](https://git-scm.com/docs/git-pull/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-pull)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -290,370 +290,370 @@ There are 4 main options for integrating the remote branch:
 
 You can also set the configuration options `pull.rebase`, `pull.squash`, or `pull.ff` with your preferred behaviour.
 If there’s a merge conflict during the merge or rebase that you don’t want to handle, you can safely abort it with `git` `merge` `--abort` or `git` `rebase` `--abort`.
-##  [](https://git-scm.com/docs/git-pull#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-pull#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-repository)_< repository>_ 
-    
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-repository)_< repository>_
+
 The "remote" repository to pull from. This can be either a URL (see the section [GIT URLS](https://git-scm.com/docs/git-pull#URLS) below) or the name of a remote (see the section [REMOTES](https://git-scm.com/docs/git-pull#REMOTES) below).
-Defaults to the configured upstream for the current branch, or `origin`. See [UPSTREAM BRANCHES](https://git-scm.com/docs/git-pull#UPSTREAM-BRANCHES) below for more on how to configure upstreams. 
+Defaults to the configured upstream for the current branch, or `origin`. See [UPSTREAM BRANCHES](https://git-scm.com/docs/git-pull#UPSTREAM-BRANCHES) below for more on how to configure upstreams.
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-refspec)_< refspec>_ 
-    
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-refspec)_< refspec>_
+
 Which branch or other reference(s) to fetch and integrate into the current branch, for example `main` in `git` `pull` `origin` `main`. Defaults to the configured upstream for the current branch.
-This can be a branch, tag, or other collection of reference(s). See [_< refspec>_](https://git-scm.com/docs/git-pull#fetch-refspec) below under "Options related to fetching" for the full syntax, and [DEFAULT BEHAVIOUR](https://git-scm.com/docs/git-pull#DEFAULT-BEHAVIOUR) below for how `git` `pull` uses this argument to determine which remote branch to integrate. 
+This can be a branch, tag, or other collection of reference(s). See [_< refspec>_](https://git-scm.com/docs/git-pull#fetch-refspec) below under "Options related to fetching" for the full syntax, and [DEFAULT BEHAVIOUR](https://git-scm.com/docs/git-pull#DEFAULT-BEHAVIOUR) below for how `git` `pull` uses this argument to determine which remote branch to integrate.
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt--q)`-q` 
-
-
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---quiet)`--quiet` 
-    
-This is passed to both underlying git-fetch to squelch reporting of during transfer, and underlying git-merge to squelch output during merging. 
-
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt--v)`-v` 
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt--q)`-q`
 
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---verbose)`--verbose` 
-    
-Pass `--verbose` to git-fetch and git-merge. 
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---quiet)`--quiet`
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---recurse-submodulesyeson-demandno)`--recurse-submodules`[`=`(`yes`|`on-demand`|`no`)] 
+This is passed to both underlying git-fetch to squelch reporting of during transfer, and underlying git-merge to squelch output during merging.
+
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt--v)`-v`
 
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---no-recurse-submodules)`--no-recurse-submodules` 
-    
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---verbose)`--verbose`
+
+Pass `--verbose` to git-fetch and git-merge.
+
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---recurse-submodulesyeson-demandno)`--recurse-submodules`[`=`(`yes`|`on-demand`|`no`)]
+
+
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---no-recurse-submodules)`--no-recurse-submodules`
+
 This option controls if new commits of populated submodules should be fetched, and if the working trees of active submodules should be updated, too (see [git-fetch[1]](https://git-scm.com/docs/git-fetch), [git-config[1]](https://git-scm.com/docs/git-config) and [gitmodules[5]](https://git-scm.com/docs/gitmodules)).
 If the checkout is done via rebase, local submodule commits are rebased as well.
 If the update is done via merge, the submodule conflicts are resolved and checked out.
-###  [](https://git-scm.com/docs/git-pull#_options_related_to_merging)Options related to merging 
+###  [](https://git-scm.com/docs/git-pull#_options_related_to_merging)Options related to merging
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---commit)`--commit` 
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---commit)`--commit`
 
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---no-commit)`--no-commit` 
-    
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---no-commit)`--no-commit`
+
 Perform the merge and commit the result. This option can be used to override `--no-commit`. Only useful when merging.
 With `--no-commit` perform the merge and stop just before creating a merge commit, to give the user a chance to inspect and further tweak the merge result before committing.
-Note that fast-forward updates do not create a merge commit and therefore there is no way to stop those merges with `--no-commit`. Thus, if you want to ensure your branch is not changed or updated by the merge command, use `--no-ff` with `--no-commit`. 
+Note that fast-forward updates do not create a merge commit and therefore there is no way to stop those merges with `--no-commit`. Thus, if you want to ensure your branch is not changed or updated by the merge command, use `--no-ff` with `--no-commit`.
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---edit)`--edit` 
-
-
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt--e)`-e` 
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---edit)`--edit`
 
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---no-edit)`--no-edit` 
-    
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt--e)`-e`
+
+
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---no-edit)`--no-edit`
+
 Invoke an editor before committing successful mechanical merge to further edit the auto-generated merge message, so that the user can explain and justify the merge. The `--no-edit` option can be used to accept the auto-generated message (this is generally discouraged).
-Older scripts may depend on the historical behaviour of not allowing the user to edit the merge log message. They will see an editor opened when they run `git` `merge`. To make it easier to adjust such scripts to the updated behaviour, the environment variable `GIT_MERGE_AUTOEDIT` can be set to `no` at the beginning of them. 
+Older scripts may depend on the historical behaviour of not allowing the user to edit the merge log message. They will see an editor opened when they run `git` `merge`. To make it easier to adjust such scripts to the updated behaviour, the environment variable `GIT_MERGE_AUTOEDIT` can be set to `no` at the beginning of them.
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---cleanupmode)`--cleanup=`_< mode>_ 
-    
-This option determines how the merge message will be cleaned up before committing. See [git-commit[1]](https://git-scm.com/docs/git-commit) for more details. In addition, if the _< mode>_ is given a value of `scissors`, scissors will be appended to `MERGE_MSG` before being passed on to the commit machinery in the case of a merge conflict. 
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---cleanupmode)`--cleanup=`_< mode>_
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---ff-only)`--ff-only` 
-    
-Only update to the new history if there is no divergent local history. This is the default when no method for reconciling divergent histories is provided (via the `--rebase` flags). 
+This option determines how the merge message will be cleaned up before committing. See [git-commit[1]](https://git-scm.com/docs/git-commit) for more details. In addition, if the _< mode>_ is given a value of `scissors`, scissors will be appended to `MERGE_MSG` before being passed on to the commit machinery in the case of a merge conflict.
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---ff)`--ff` 
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---ff-only)`--ff-only`
+
+Only update to the new history if there is no divergent local history. This is the default when no method for reconciling divergent histories is provided (via the `--rebase` flags).
+
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---ff)`--ff`
 
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---no-ff)`--no-ff` 
-    
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---no-ff)`--no-ff`
+
 When merging rather than rebasing, specifies how a merge is handled when the merged-in history is already a descendant of the current history. If merging is requested, `--ff` is the default unless merging an annotated (and possibly signed) tag that is not stored in its natural place in the `refs/tags/` hierarchy, in which case `--no-ff` is assumed.
 With `--ff`, when possible resolve the merge as a fast-forward (only update the branch pointer to match the merged branch; do not create a merge commit). When not possible (when the merged-in history is not a descendant of the current history), create a merge commit.
-With `--no-ff`, create a merge commit in all cases, even when the merge could instead be resolved as a fast-forward. 
+With `--no-ff`, create a merge commit in all cases, even when the merge could instead be resolved as a fast-forward.
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt--Skey-id)`-S`[_< key-id>_] 
-
-
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---gpg-signkey-id)`--gpg-sign`[`=`_< key-id>_] 
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt--Skey-id)`-S`[_< key-id>_]
 
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---no-gpg-sign)`--no-gpg-sign` 
-    
-GPG-sign the resulting merge commit. The _< key-id>_ argument is optional and defaults to the committer identity; if specified, it must be stuck to the option without a space. `--no-gpg-sign` is useful to countermand both `commit.gpgSign` configuration variable, and earlier `--gpg-sign`. 
-
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---logn)`--log`[`=`_< n>_] 
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---gpg-signkey-id)`--gpg-sign`[`=`_< key-id>_]
 
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---no-log)`--no-log` 
-    
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---no-gpg-sign)`--no-gpg-sign`
+
+GPG-sign the resulting merge commit. The _< key-id>_ argument is optional and defaults to the committer identity; if specified, it must be stuck to the option without a space. `--no-gpg-sign` is useful to countermand both `commit.gpgSign` configuration variable, and earlier `--gpg-sign`.
+
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---logn)`--log`[`=`_< n>_]
+
+
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---no-log)`--no-log`
+
 In addition to branch names, populate the log message with one-line descriptions from at most _< n>_ actual commits that are being merged. See also [git-fmt-merge-msg[1]](https://git-scm.com/docs/git-fmt-merge-msg). Only useful when merging.
-With `--no-log` do not list one-line descriptions from the actual commits being merged. 
+With `--no-log` do not list one-line descriptions from the actual commits being merged.
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---signoff)`--signoff` 
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---signoff)`--signoff`
 
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---no-signoff)`--no-signoff` 
-    
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---no-signoff)`--no-signoff`
+
 Add a `Signed-off-by` trailer by the committer at the end of the commit log message. The meaning of a signoff depends on the project to which you’re committing. For example, it may certify that the committer has the rights to submit the work under the project’s license or agrees to some contributor representation, such as a Developer Certificate of Origin. (See <https://developercertificate.org> for the one used by the Linux kernel and Git projects.) Consult the documentation or leadership of the project to which you’re contributing to understand how the signoffs are used in that project.
 The `--no-signoff` option can be used to countermand an earlier `--signoff` option on the command line.
-Git does not (and will not) have a configuration variable to enable the `--signoff` command line option by default; see the `commit.signoff` entry in [gitfaq[7]](https://git-scm.com/docs/gitfaq) for more details. 
+Git does not (and will not) have a configuration variable to enable the `--signoff` command line option by default; see the `commit.signoff` entry in [gitfaq[7]](https://git-scm.com/docs/gitfaq) for more details.
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---stat)`--stat` 
-
-
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt--n)`-n` 
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---stat)`--stat`
 
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---no-stat)`--no-stat` 
-    
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt--n)`-n`
+
+
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---no-stat)`--no-stat`
+
 Show a diffstat at the end of the merge. The diffstat is also controlled by the configuration option merge.stat.
-With `-n` or `--no-stat` do not show a diffstat at the end of the merge. 
+With `-n` or `--no-stat` do not show a diffstat at the end of the merge.
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---compact-summary)`--compact-summary` 
-    
-Show a compact-summary at the end of the merge. 
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---compact-summary)`--compact-summary`
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---squash)`--squash` 
+Show a compact-summary at the end of the merge.
+
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---squash)`--squash`
 
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---no-squash)`--no-squash` 
-    
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---no-squash)`--no-squash`
+
 Produce the working tree and index state as if a real merge happened (except for the merge information), but do not actually make a commit, move the `HEAD`, or record `$GIT_DIR/MERGE_HEAD` (to cause the next `git` `commit` command to create a merge commit). This allows you to create a single commit on top of the current branch whose effect is the same as merging another branch (or more in case of an octopus).
 With `--no-squash` perform the merge and commit the result. This option can be used to override `--squash`.
 With `--squash`, `--commit` is not allowed, and will fail.
-Only useful when merging. 
+Only useful when merging.
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---verify)`--verify` 
-
-
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---no-verify)`--no-verify` 
-    
-By default, the pre-merge and commit-msg hooks are run. When `--no-verify` is given, these are bypassed. See also [githooks[5]](https://git-scm.com/docs/githooks). Only useful when merging. 
-
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt--sstrategy)`-s` _< strategy>_ 
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---verify)`--verify`
 
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---strategystrategy)`--strategy=`_< strategy>_ 
-    
-Use the given merge strategy; can be supplied more than once to specify them in the order they should be tried. If there is no `-s` option, a built-in list of strategies is used instead (`ort` when merging a single head, `octopus` otherwise). 
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---no-verify)`--no-verify`
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt--Xoption)`-X` _< option>_ 
+By default, the pre-merge and commit-msg hooks are run. When `--no-verify` is given, these are bypassed. See also [githooks[5]](https://git-scm.com/docs/githooks). Only useful when merging.
 
-
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---strategy-optionoption)`--strategy-option=`_< option>_ 
-    
-Pass merge strategy specific option through to the merge strategy. 
-
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---verify-signatures)`--verify-signatures` 
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt--sstrategy)`-s` _< strategy>_
 
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---no-verify-signatures)`--no-verify-signatures` 
-    
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---strategystrategy)`--strategy=`_< strategy>_
+
+Use the given merge strategy; can be supplied more than once to specify them in the order they should be tried. If there is no `-s` option, a built-in list of strategies is used instead (`ort` when merging a single head, `octopus` otherwise).
+
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt--Xoption)`-X` _< option>_
+
+
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---strategy-optionoption)`--strategy-option=`_< option>_
+
+Pass merge strategy specific option through to the merge strategy.
+
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---verify-signatures)`--verify-signatures`
+
+
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---no-verify-signatures)`--no-verify-signatures`
+
 Verify that the tip commit of the side branch being merged is signed with a valid key, i.e. a key that has a valid uid: in the default trust model, this means the signing key has been signed by a trusted key. If the tip commit of the side branch is not signed with a valid key, the merge is aborted.
-Only useful when merging. 
+Only useful when merging.
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---summary)`--summary` 
-
-
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---no-summary)`--no-summary` 
-    
-Synonyms to `--stat` and `--no-stat`; these are deprecated and will be removed in the future. 
-
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---autostash)`--autostash` 
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---summary)`--summary`
 
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---no-autostash)`--no-autostash` 
-    
-Automatically create a temporary stash entry before the operation begins, record it in the ref `MERGE_AUTOSTASH` and apply it after the operation ends. This means that you can run the operation on a dirty worktree. However, use with care: the final stash application after a successful merge might result in non-trivial conflicts. 
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---no-summary)`--no-summary`
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---allow-unrelated-histories)`--allow-unrelated-histories` 
-    
+Synonyms to `--stat` and `--no-stat`; these are deprecated and will be removed in the future.
+
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---autostash)`--autostash`
+
+
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---no-autostash)`--no-autostash`
+
+Automatically create a temporary stash entry before the operation begins, record it in the ref `MERGE_AUTOSTASH` and apply it after the operation ends. This means that you can run the operation on a dirty worktree. However, use with care: the final stash application after a successful merge might result in non-trivial conflicts.
+
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---allow-unrelated-histories)`--allow-unrelated-histories`
+
 By default, `git` `merge` command refuses to merge histories that do not share a common ancestor. This option can be used to override this safety when merging histories of two projects that started their lives independently. As that is a very rare occasion, no configuration variable to enable this by default exists or will be added.
-Only useful when merging. 
+Only useful when merging.
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt--r)`-r` 
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt--r)`-r`
 
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---rebasetruemergesfalseinteractive)`--rebase`[`=`(`true`|`merges`|`false`|`interactive`)] 
-     
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---rebasetruemergesfalseinteractive)`--rebase`[`=`(`true`|`merges`|`false`|`interactive`)]
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-true)`true` 
-    
-rebase the current branch on top of the upstream branch after fetching. If there is a remote-tracking branch corresponding to the upstream branch and the upstream branch was rebased since last fetched, the rebase uses that information to avoid rebasing non-local changes. This is the default. 
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-merges)`merges` 
-    
-rebase using `git` `rebase` `--rebase-merges` so that the local merge commits are included in the rebase (see [git-rebase[1]](https://git-scm.com/docs/git-rebase) for details). 
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-true)`true`
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-false)`false` 
-    
-merge the upstream branch into the current branch. 
+rebase the current branch on top of the upstream branch after fetching. If there is a remote-tracking branch corresponding to the upstream branch and the upstream branch was rebased since last fetched, the rebase uses that information to avoid rebasing non-local changes. This is the default.
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-interactive)`interactive` 
-    
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-merges)`merges`
+
+rebase using `git` `rebase` `--rebase-merges` so that the local merge commits are included in the rebase (see [git-rebase[1]](https://git-scm.com/docs/git-rebase) for details).
+
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-false)`false`
+
+merge the upstream branch into the current branch.
+
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-interactive)`interactive`
+
 enable the interactive mode of rebase.
 See `pull.rebase`, `branch.`_< name>_`.rebase` and `branch.autoSetupRebase` in [git-config[1]](https://git-scm.com/docs/git-config) if you want to make `git` `pull` always use `--rebase` instead of merging.
 +
-Note |  This is a potentially _dangerous_ mode of operation. It rewrites history, which does not bode well when you published that history already. Do **not** use this option unless you have read [git-rebase[1]](https://git-scm.com/docs/git-rebase) carefully.   
----|--- 
+Note |  This is a potentially _dangerous_ mode of operation. It rewrites history, which does not bode well when you published that history already. Do **not** use this option unless you have read [git-rebase[1]](https://git-scm.com/docs/git-rebase) carefully.
+---|---
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---no-rebase)`--no-rebase` 
-      
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---no-rebase)`--no-rebase`
+
 This is shorthand for `--rebase=false`.
-###  [](https://git-scm.com/docs/git-pull#_options_related_to_fetching)Options related to fetching 
+###  [](https://git-scm.com/docs/git-pull#_options_related_to_fetching)Options related to fetching
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---all)`--all` 
-
-
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---no-all)`--no-all` 
-    
-Fetch all remotes, except for the ones that has the `remote.`_< name>_`.skipFetchAll` configuration variable set. This overrides the configuration variable `fetch.all`. 
-
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt--a)`-a` 
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---all)`--all`
 
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---append)`--append` 
-    
-Append ref names and object names of fetched refs to the existing contents of `.git/FETCH_HEAD`. Without this option old data in `.git/FETCH_HEAD` will be overwritten. 
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---no-all)`--no-all`
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---atomic)`--atomic` 
-    
-Use an atomic transaction to update local refs. Either all refs are updated, or on error, no refs are updated. 
+Fetch all remotes, except for the ones that has the `remote.`_< name>_`.skipFetchAll` configuration variable set. This overrides the configuration variable `fetch.all`.
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---depthdepth)`--depth=`_< depth>_ 
-    
-Limit fetching to the specified number of commits from the tip of each remote branch history. If fetching to a _shallow_ repository created by `git` `clone` with `--depth=`_< depth>_ option (see [git-clone[1]](https://git-scm.com/docs/git-clone)), deepen or shorten the history to the specified number of commits. Tags for the deepened commits are not fetched. 
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt--a)`-a`
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---deependepth)`--deepen=`_< depth>_ 
-    
-Similar to `--depth`, except it specifies the number of commits from the current shallow boundary instead of from the tip of each remote branch history. 
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---shallow-sincedate)`--shallow-since=`_< date>_ 
-    
-Deepen or shorten the history of a shallow repository to include all reachable commits after _< date>_. 
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---append)`--append`
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---shallow-excluderef)`--shallow-exclude=`_< ref>_ 
-    
-Deepen or shorten the history of a shallow repository to exclude commits reachable from a specified remote branch or tag. This option can be specified multiple times. 
+Append ref names and object names of fetched refs to the existing contents of `.git/FETCH_HEAD`. Without this option old data in `.git/FETCH_HEAD` will be overwritten.
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---unshallow)`--unshallow` 
-    
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---atomic)`--atomic`
+
+Use an atomic transaction to update local refs. Either all refs are updated, or on error, no refs are updated.
+
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---depthdepth)`--depth=`_< depth>_
+
+Limit fetching to the specified number of commits from the tip of each remote branch history. If fetching to a _shallow_ repository created by `git` `clone` with `--depth=`_< depth>_ option (see [git-clone[1]](https://git-scm.com/docs/git-clone)), deepen or shorten the history to the specified number of commits. Tags for the deepened commits are not fetched.
+
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---deependepth)`--deepen=`_< depth>_
+
+Similar to `--depth`, except it specifies the number of commits from the current shallow boundary instead of from the tip of each remote branch history.
+
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---shallow-sincedate)`--shallow-since=`_< date>_
+
+Deepen or shorten the history of a shallow repository to include all reachable commits after _< date>_.
+
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---shallow-excluderef)`--shallow-exclude=`_< ref>_
+
+Deepen or shorten the history of a shallow repository to exclude commits reachable from a specified remote branch or tag. This option can be specified multiple times.
+
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---unshallow)`--unshallow`
+
 If the source repository is complete, convert a shallow repository to a complete one, removing all the limitations imposed by shallow repositories.
-If the source repository is shallow, fetch as much as possible so that the current repository has the same history as the source repository. 
+If the source repository is shallow, fetch as much as possible so that the current repository has the same history as the source repository.
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---update-shallow)`--update-shallow` 
-    
-By default when fetching from a shallow repository, `git` `fetch` refuses refs that require updating `.git/shallow`. This option updates `.git/shallow` and accepts such refs. 
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---update-shallow)`--update-shallow`
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---negotiation-tipcommitglob)`--negotiation-tip=`(_< commit>_|_< glob>_) 
-    
+By default when fetching from a shallow repository, `git` `fetch` refuses refs that require updating `.git/shallow`. This option updates `.git/shallow` and accepts such refs.
+
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---negotiation-tipcommitglob)`--negotiation-tip=`(_< commit>_|_< glob>_)
+
 By default, Git will report, to the server, commits reachable from all local refs to find common commits in an attempt to reduce the size of the to-be-received packfile. If specified, Git will only report commits reachable from the given tips. This is useful to speed up fetches when the user knows which local ref is likely to have commits in common with the upstream ref being fetched.
 This option may be specified more than once; if so, Git will report commits reachable from any of the given commits.
 The argument to this option may be a glob on ref names, a ref, or the (possibly abbreviated) SHA-1 of a commit. Specifying a glob is equivalent to specifying this option multiple times, one for each matching ref name.
-See also the `fetch.negotiationAlgorithm` and `push.negotiate` configuration variables documented in [git-config[1]](https://git-scm.com/docs/git-config), and the `--negotiate-only` option below. 
+See also the `fetch.negotiationAlgorithm` and `push.negotiate` configuration variables documented in [git-config[1]](https://git-scm.com/docs/git-config), and the `--negotiate-only` option below.
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---negotiate-only)`--negotiate-only` 
-    
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---negotiate-only)`--negotiate-only`
+
 Do not fetch anything from the server, and instead print the ancestors of the provided `--negotiation-tip=` arguments, which we have in common with the server.
-This is incompatible with `--recurse-submodules=`(`yes`|`on-demand`). Internally this is used to implement the `push.negotiate` option, see [git-config[1]](https://git-scm.com/docs/git-config). 
+This is incompatible with `--recurse-submodules=`(`yes`|`on-demand`). Internally this is used to implement the `push.negotiate` option, see [git-config[1]](https://git-scm.com/docs/git-config).
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---dry-run)`--dry-run` 
-    
-Show what would be done, without making any changes. 
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---dry-run)`--dry-run`
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---porcelain)`--porcelain` 
-    
+Show what would be done, without making any changes.
+
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---porcelain)`--porcelain`
+
 Print the output to standard output in an easy-to-parse format for scripts. See section OUTPUT in [git-fetch[1]](https://git-scm.com/docs/git-fetch) for details.
-This is incompatible with `--recurse-submodules=`(`yes`|`on-demand`) and takes precedence over the `fetch.output` config option. 
+This is incompatible with `--recurse-submodules=`(`yes`|`on-demand`) and takes precedence over the `fetch.output` config option.
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt--f)`-f` 
-
-
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---force)`--force` 
-    
-When `git` `fetch` is used with _< src>_`:`_< dst>_ refspec, it may refuse to update the local branch as discussed in the _< refspec>_ part of the [git-fetch[1]](https://git-scm.com/docs/git-fetch) documentation. This option overrides that check. 
-
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt--k)`-k` 
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt--f)`-f`
 
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---keep)`--keep` 
-    
-Keep downloaded pack. 
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---force)`--force`
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---prefetch)`--prefetch` 
-    
-Modify the configured refspec to place all refs into the `refs/prefetch/` namespace. See the `prefetch` task in [git-maintenance[1]](https://git-scm.com/docs/git-maintenance). 
+When `git` `fetch` is used with _< src>_`:`_< dst>_ refspec, it may refuse to update the local branch as discussed in the _< refspec>_ part of the [git-fetch[1]](https://git-scm.com/docs/git-fetch) documentation. This option overrides that check.
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt--p)`-p` 
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt--k)`-k`
 
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---prune)`--prune` 
-    
-Before fetching, remove any remote-tracking references that no longer exist on the remote. Tags are not subject to pruning if they are fetched only because of the default tag auto-following or due to a `--tags` option. However, if tags are fetched due to an explicit refspec (either on the command line or in the remote configuration, for example if the remote was cloned with the `--mirror` option), then they are also subject to pruning. Supplying `--prune-tags` is a shorthand for providing the tag refspec. 
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---keep)`--keep`
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---no-tags)`--no-tags` 
-    
-By default, tags that point at objects that are downloaded from the remote repository are fetched and stored locally. This option disables this automatic tag following. The default behavior for a remote may be specified with the `remote.`_< name>_`.tagOpt` setting. See [git-config[1]](https://git-scm.com/docs/git-config). 
+Keep downloaded pack.
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---refmaprefspec)`--refmap=`_< refspec>_ 
-    
-When fetching refs listed on the command line, use the specified refspec (can be given more than once) to map the refs to remote-tracking branches, instead of the values of `remote.`_< name>_`.fetch` configuration variables for the remote repository. Providing an empty _< refspec>_ to the `--refmap` option causes Git to ignore the configured refspecs and rely entirely on the refspecs supplied as command-line arguments. See section on "Configured Remote-tracking Branches" for details. 
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---prefetch)`--prefetch`
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt--t)`-t` 
+Modify the configured refspec to place all refs into the `refs/prefetch/` namespace. See the `prefetch` task in [git-maintenance[1]](https://git-scm.com/docs/git-maintenance).
+
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt--p)`-p`
 
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---tags)`--tags` 
-    
-Fetch all tags from the remote (i.e., fetch remote tags `refs/tags/*` into local tags with the same name), in addition to whatever else would otherwise be fetched. Using this option alone does not subject tags to pruning, even if `--prune` is used (though tags may be pruned anyway if they are also the destination of an explicit refspec; see `--prune`). 
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---prune)`--prune`
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt--jn)`-j` _< n>_ 
+Before fetching, remove any remote-tracking references that no longer exist on the remote. Tags are not subject to pruning if they are fetched only because of the default tag auto-following or due to a `--tags` option. However, if tags are fetched due to an explicit refspec (either on the command line or in the remote configuration, for example if the remote was cloned with the `--mirror` option), then they are also subject to pruning. Supplying `--prune-tags` is a shorthand for providing the tag refspec.
+
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---no-tags)`--no-tags`
+
+By default, tags that point at objects that are downloaded from the remote repository are fetched and stored locally. This option disables this automatic tag following. The default behavior for a remote may be specified with the `remote.`_< name>_`.tagOpt` setting. See [git-config[1]](https://git-scm.com/docs/git-config).
+
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---refmaprefspec)`--refmap=`_< refspec>_
+
+When fetching refs listed on the command line, use the specified refspec (can be given more than once) to map the refs to remote-tracking branches, instead of the values of `remote.`_< name>_`.fetch` configuration variables for the remote repository. Providing an empty _< refspec>_ to the `--refmap` option causes Git to ignore the configured refspecs and rely entirely on the refspecs supplied as command-line arguments. See section on "Configured Remote-tracking Branches" for details.
+
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt--t)`-t`
 
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---jobsn)`--jobs=`_< n>_ 
-    
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---tags)`--tags`
+
+Fetch all tags from the remote (i.e., fetch remote tags `refs/tags/*` into local tags with the same name), in addition to whatever else would otherwise be fetched. Using this option alone does not subject tags to pruning, even if `--prune` is used (though tags may be pruned anyway if they are also the destination of an explicit refspec; see `--prune`).
+
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt--jn)`-j` _< n>_
+
+
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---jobsn)`--jobs=`_< n>_
+
 Parallelize all forms of fetching up to _< n>_ jobs at a time.
 If the `--multiple` option was specified, the different remotes will be fetched in parallel. If multiple submodules are fetched, they will be fetched in parallel. To control them independently, use the config settings `fetch.parallel` and `submodule.fetchJobs` (see [git-config[1]](https://git-scm.com/docs/git-config)).
-Typically, parallel recursive and multi-remote fetches will be faster. By default fetches are performed sequentially, not in parallel. 
+Typically, parallel recursive and multi-remote fetches will be faster. By default fetches are performed sequentially, not in parallel.
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---set-upstream)`--set-upstream` 
-    
-If the remote is fetched successfully, add upstream (tracking) reference, used by argument-less [git-pull[1]](https://git-scm.com/docs/git-pull) and other commands. For more information, see `branch.`_< name>_`.merge` and `branch.`_< name>_`.remote` in [git-config[1]](https://git-scm.com/docs/git-config). 
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---set-upstream)`--set-upstream`
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---upload-packupload-pack)`--upload-pack` _< upload-pack>_ 
-    
-When given, and the repository to fetch from is handled by `git` `fetch-pack`, `--exec=`_< upload-pack>_ is passed to the command to specify non-default path for the command run on the other end. 
+If the remote is fetched successfully, add upstream (tracking) reference, used by argument-less [git-pull[1]](https://git-scm.com/docs/git-pull) and other commands. For more information, see `branch.`_< name>_`.merge` and `branch.`_< name>_`.remote` in [git-config[1]](https://git-scm.com/docs/git-config).
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---progress)`--progress` 
-    
-Progress status is reported on the standard error stream by default when it is attached to a terminal, unless `-q` is specified. This flag forces progress status even if the standard error stream is not directed to a terminal. 
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---upload-packupload-pack)`--upload-pack` _< upload-pack>_
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt--ooption)`-o` _< option>_ 
+When given, and the repository to fetch from is handled by `git` `fetch-pack`, `--exec=`_< upload-pack>_ is passed to the command to specify non-default path for the command run on the other end.
 
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---progress)`--progress`
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---server-optionoption)`--server-option=`_< option>_ 
-    
-Transmit the given string to the server when communicating using protocol version 2. The given string must not contain a _NUL_ or _LF_ character. The server’s handling of server options, including unknown ones, is server-specific. When multiple `--server-option=`_< option>_ are given, they are all sent to the other side in the order listed on the command line. When no `--server-option=`_< option>_ is given from the command line, the values of configuration variable `remote.`_< name>_`.serverOption` are used instead. 
+Progress status is reported on the standard error stream by default when it is attached to a terminal, unless `-q` is specified. This flag forces progress status even if the standard error stream is not directed to a terminal.
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---show-forced-updates)`--show-forced-updates` 
-    
-By default, git checks if a branch is force-updated during fetch. This can be disabled through `fetch.showForcedUpdates`, but the `--show-forced-updates` option guarantees this check occurs. See [git-config[1]](https://git-scm.com/docs/git-config). 
-
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---no-show-forced-updates)`--no-show-forced-updates` 
-    
-By default, git checks if a branch is force-updated during fetch. Pass `--no-show-forced-updates` or set `fetch.showForcedUpdates` to false to skip this check for performance reasons. If used during `git-pull` the `--ff-only` option will still check for forced updates before attempting a fast-forward update. See [git-config[1]](https://git-scm.com/docs/git-config). 
-
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt--4)`-4` 
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt--ooption)`-o` _< option>_
 
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---ipv4)`--ipv4` 
-    
-Use IPv4 addresses only, ignoring IPv6 addresses. 
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---server-optionoption)`--server-option=`_< option>_
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt--6)`-6` 
+Transmit the given string to the server when communicating using protocol version 2. The given string must not contain a _NUL_ or _LF_ character. The server’s handling of server options, including unknown ones, is server-specific. When multiple `--server-option=`_< option>_ are given, they are all sent to the other side in the order listed on the command line. When no `--server-option=`_< option>_ is given from the command line, the values of configuration variable `remote.`_< name>_`.serverOption` are used instead.
+
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---show-forced-updates)`--show-forced-updates`
+
+By default, git checks if a branch is force-updated during fetch. This can be disabled through `fetch.showForcedUpdates`, but the `--show-forced-updates` option guarantees this check occurs. See [git-config[1]](https://git-scm.com/docs/git-config).
+
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---no-show-forced-updates)`--no-show-forced-updates`
+
+By default, git checks if a branch is force-updated during fetch. Pass `--no-show-forced-updates` or set `fetch.showForcedUpdates` to false to skip this check for performance reasons. If used during `git-pull` the `--ff-only` option will still check for forced updates before attempting a fast-forward update. See [git-config[1]](https://git-scm.com/docs/git-config).
+
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt--4)`-4`
 
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---ipv6)`--ipv6` 
-    
-Use IPv6 addresses only, ignoring IPv4 addresses. 
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---ipv4)`--ipv4`
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-repository-1)_< repository>_ 
-    
-The "remote" repository that is the source of a fetch or pull operation. This parameter can be either a URL (see the section [GIT URLS](https://git-scm.com/docs/git-pull#URLS) below) or the name of a remote (see the section [REMOTES](https://git-scm.com/docs/git-pull#REMOTES) below). 
+Use IPv4 addresses only, ignoring IPv6 addresses.
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-refspec-1)_< refspec>_ 
-    
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt--6)`-6`
+
+
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt---ipv6)`--ipv6`
+
+Use IPv6 addresses only, ignoring IPv4 addresses.
+
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-repository-1)_< repository>_
+
+The "remote" repository that is the source of a fetch or pull operation. This parameter can be either a URL (see the section [GIT URLS](https://git-scm.com/docs/git-pull#URLS) below) or the name of a remote (see the section [REMOTES](https://git-scm.com/docs/git-pull#REMOTES) below).
+
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-refspec-1)_< refspec>_
+
 Specifies which refs to fetch and which local refs to update. When no _< refspec>_s appear on the command line, the refs to fetch are read from `remote.`_< repository>_`.fetch` variables instead (see the section "CONFIGURED REMOTE-TRACKING BRANCHES" in [git-fetch[1]](https://git-scm.com/docs/git-fetch)).
 The format of a _< refspec>_ parameter is an optional plus `+`, followed by the source _< src>_, followed by a colon `:`, followed by the destination _< dst>_. The colon can be omitted when _< dst>_ is empty. _< src>_ is typically a ref, or a glob pattern with a single `*` that is used to match a set of refs, but it can also be a fully spelled hex object name.
 A _< refspec>_ may contain a `*` in its _< src>_ to indicate a simple pattern match. Such a refspec functions like a glob that matches any ref with the pattern. A pattern _< refspec>_ must have one and only one `*` in both the _< src>_ and _< dst>_. It will map refs to the destination by replacing the `*` with the contents matched from the source.
@@ -665,10 +665,10 @@ Until Git version 2.20, and unlike when pushing with [git-push[1]](https://git-s
 Unlike when pushing with [git-push[1]](https://git-scm.com/docs/git-push), any updates outside of `refs/{tags,heads}/*` will be accepted without `+` in the refspec (or `--force`), whether that’s swapping e.g. a tree object for a blob, or a commit for another commit that doesn’t have the previous commit as an ancestor etc.
 Unlike when pushing with [git-push[1]](https://git-scm.com/docs/git-push), there is no configuration which’ll amend these rules, and nothing like a `pre-fetch` hook analogous to the `pre-receive` hook.
 As with pushing with [git-push[1]](https://git-scm.com/docs/git-push), all of the rules described above about what’s not allowed as an update can be overridden by adding an optional leading `+` to a refspec (or using the `--force` command line option). The only exception to this is that no amount of forcing will make the `refs/heads/*` namespace accept a non-commit object.
-Note |  When the remote branch you want to fetch is known to be rewound and rebased regularly, it is expected that its new tip will not be a descendant of its previous tip (as stored in your remote-tracking branch the last time you fetched). You would want to use the `+` sign to indicate non-fast-forward updates will be needed for such branches. There is no way to determine or declare that a branch will be made available in a repository with this behavior; the pulling user simply must know this is the expected usage pattern for a branch.   
----|---  
-Note |  There is a difference between listing multiple _< refspec>_ directly on `git` `pull` command line and having multiple `remote.`_< repository>_`.fetch` entries in your configuration for a _< repository>_ and running a `git` `pull` command without any explicit _< refspec>_ parameters. _< refspec>_s listed explicitly on the command line are always merged into the current branch after fetching. In other words, if you list more than one remote ref, `git` `pull` will create an Octopus merge. On the other hand, if you do not list any explicit _< refspec>_ parameter on the command line, `git` `pull` will fetch all the _< refspec>_s it finds in the `remote.`_< repository>_`.fetch` configuration and merge only the first _< refspec>_ found into the current branch. This is because making an Octopus from remote refs is rarely done, while keeping track of multiple remote heads in one-go by fetching more than one is often useful.   
----|---  
+Note |  When the remote branch you want to fetch is known to be rewound and rebased regularly, it is expected that its new tip will not be a descendant of its previous tip (as stored in your remote-tracking branch the last time you fetched). You would want to use the `+` sign to indicate non-fast-forward updates will be needed for such branches. There is no way to determine or declare that a branch will be made available in a repository with this behavior; the pulling user simply must know this is the expected usage pattern for a branch.
+---|---
+Note |  There is a difference between listing multiple _< refspec>_ directly on `git` `pull` command line and having multiple `remote.`_< repository>_`.fetch` entries in your configuration for a _< repository>_ and running a `git` `pull` command without any explicit _< refspec>_ parameters. _< refspec>_s listed explicitly on the command line are always merged into the current branch after fetching. In other words, if you list more than one remote ref, `git` `pull` will create an Octopus merge. On the other hand, if you do not list any explicit _< refspec>_ parameter on the command line, `git` `pull` will fetch all the _< refspec>_s it finds in the `remote.`_< repository>_`.fetch` configuration and merge only the first _< refspec>_ found into the current branch. This is because making an Octopus from remote refs is rarely done, while keeping track of multiple remote heads in one-go by fetching more than one is often useful.
+---|---
 ##  [](https://git-scm.com/docs/git-pull#_git_urls)GIT URLS
 In general, URLs contain information about the transport protocol, the address of the remote server, and the path to the repository. Depending on the transport protocol, some of this information may be absent.
 Git supports ssh, git, http, and https protocols (in addition, ftp and ftps can be used for fetching, but this is inefficient and deprecated; do not use them).
@@ -796,37 +796,37 @@ You can set an upstream branch explicitly with `git` `push` `--set-upstream` _< 
   * Checking out a remote-tracking branch with `git` `checkout` _< branch>_ will automatically create a local branch with that name and set the upstream to the remote branch.
 
 
-Note |  Upstream branches are sometimes referred to as "tracking information", as in "set the branch’s tracking information".   
----|---  
+Note |  Upstream branches are sometimes referred to as "tracking information", as in "set the branch’s tracking information".
+---|---
 ##  [](https://git-scm.com/docs/git-pull#_merge_strategies)MERGE STRATEGIES
-The merge mechanism (`git` `merge` and `git` `pull` commands) allows the backend _merge strategies_ to be chosen with `-s` option. Some strategies can also take their own options, which can be passed by giving `-X`_< option>_ arguments to `git` `merge` and/or `git` `pull`. 
+The merge mechanism (`git` `merge` and `git` `pull` commands) allows the backend _merge strategies_ to be chosen with `-s` option. Some strategies can also take their own options, which can be passed by giving `-X`_< option>_ arguments to `git` `merge` and/or `git` `pull`.
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-ort)`ort` 
-    
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-ort)`ort`
+
 This is the default merge strategy when pulling or merging one branch. This strategy can only resolve two heads using a 3-way merge algorithm. When there is more than one common ancestor that can be used for 3-way merge, it creates a merged tree of the common ancestors and uses that as the reference tree for the 3-way merge. This has been reported to result in fewer merge conflicts without causing mismerges by tests done on actual merge commits taken from Linux 2.6 kernel development history. Additionally this strategy can detect and handle merges involving renames. It does not make use of detected copies. The name for this algorithm is an acronym ("Ostensibly Recursive’s Twin") and came from the fact that it was written as a replacement for the previous default algorithm, `recursive`.
 In the case where the path is a submodule, if the submodule commit used on one side of the merge is a descendant of the submodule commit used on the other side of the merge, Git attempts to fast-forward to the descendant. Otherwise, Git will treat this case as a conflict, suggesting as a resolution a submodule commit that is descendant of the conflicting ones, if one exists.
-The `ort` strategy can take the following options: 
+The `ort` strategy can take the following options:
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-ours)`ours` 
-    
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-ours)`ours`
+
 This option forces conflicting hunks to be auto-resolved cleanly by favoring _our_ version. Changes from the other tree that do not conflict with our side are reflected in the merge result. For a binary file, the entire contents are taken from our side.
-This should not be confused with the `ours` merge strategy, which does not even look at what the other tree contains at all. It discards everything the other tree did, declaring _our_ history contains all that happened in it. 
+This should not be confused with the `ours` merge strategy, which does not even look at what the other tree contains at all. It discards everything the other tree did, declaring _our_ history contains all that happened in it.
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-theirs)`theirs` 
-    
-This is the opposite of `ours`; note that, unlike `ours`, there is no `theirs` merge strategy to confuse this merge option with. 
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-theirs)`theirs`
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-ignore-space-change)`ignore-space-change` 
+This is the opposite of `ours`; note that, unlike `ours`, there is no `theirs` merge strategy to confuse this merge option with.
 
-
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-ignore-all-space)`ignore-all-space` 
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-ignore-space-change)`ignore-space-change`
 
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-ignore-space-at-eol)`ignore-space-at-eol` 
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-ignore-all-space)`ignore-all-space`
 
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-ignore-cr-at-eol)`ignore-cr-at-eol` 
-    
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-ignore-space-at-eol)`ignore-space-at-eol`
+
+
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-ignore-cr-at-eol)`ignore-cr-at-eol`
+
 Treats lines with the indicated type of whitespace change as unchanged for the sake of a three-way merge. Whitespace changes mixed with other changes to a line are not ignored. See also [git-diff[1]](https://git-scm.com/docs/git-diff) `-b`, `-w`, `--ignore-space-at-eol`, and `--ignore-cr-at-eol`.
   * If _their_ version only introduces whitespace changes to a line, _our_ version is used;
   * If _our_ version introduces whitespace changes but _their_ version includes a substantial change, _their_ version is used;
@@ -834,60 +834,60 @@ Treats lines with the indicated type of whitespace change as unchanged for the s
 
 
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-renormalize)`renormalize` 
-    
-This runs a virtual check-out and check-in of all three stages of any file which needs a three-way merge. This option is meant to be used when merging branches with different clean filters or end-of-line normalization rules. See "Merging branches with differing checkin/checkout attributes" in [gitattributes[5]](https://git-scm.com/docs/gitattributes) for details. 
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-renormalize)`renormalize`
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-no-renormalize)`no-renormalize` 
-    
-Disables the `renormalize` option. This overrides the `merge.renormalize` configuration variable. 
+This runs a virtual check-out and check-in of all three stages of any file which needs a three-way merge. This option is meant to be used when merging branches with different clean filters or end-of-line normalization rules. See "Merging branches with differing checkin/checkout attributes" in [gitattributes[5]](https://git-scm.com/docs/gitattributes) for details.
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-find-renamesn)`find-renames`[`=`_< n>_] 
-    
-Turn on rename detection, optionally setting the similarity threshold. This is the default. This overrides the `merge.renames` configuration variable. See also [git-diff[1]](https://git-scm.com/docs/git-diff) `--find-renames`. 
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-no-renormalize)`no-renormalize`
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-rename-thresholdn)`rename-threshold=`_< n>_ 
-    
-Deprecated synonym for `find-renames=`_< n>_. 
+Disables the `renormalize` option. This overrides the `merge.renormalize` configuration variable.
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-no-renames)`no-renames` 
-    
-Turn off rename detection. This overrides the `merge.renames` configuration variable. See also [git-diff[1]](https://git-scm.com/docs/git-diff) `--no-renames`. 
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-find-renamesn)`find-renames`[`=`_< n>_]
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-histogram)`histogram` 
-    
-Deprecated synonym for `diff-algorithm=histogram`. 
+Turn on rename detection, optionally setting the similarity threshold. This is the default. This overrides the `merge.renames` configuration variable. See also [git-diff[1]](https://git-scm.com/docs/git-diff) `--find-renames`.
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-patience)`patience` 
-    
-Deprecated synonym for `diff-algorithm=patience`. 
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-rename-thresholdn)`rename-threshold=`_< n>_
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-diff-algorithmhistogramminimalmyerspatience)`diff-algorithm=`(`histogram`|`minimal`|`myers`|`patience`) 
-    
-Use a different diff algorithm while merging, which can help avoid mismerges that occur due to unimportant matching lines (such as braces from distinct functions). See also [git-diff[1]](https://git-scm.com/docs/git-diff) `--diff-algorithm`. Note that `ort` defaults to `diff-algorithm=histogram`, while regular diffs currently default to the `diff.algorithm` config setting. 
+Deprecated synonym for `find-renames=`_< n>_.
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-subtreepath)`subtree`[`=`_< path>_] 
-    
-This option is a more advanced form of _subtree_ strategy, where the strategy makes a guess on how two trees must be shifted to match with each other when merging. Instead, the specified path is prefixed (or stripped from the beginning) to make the shape of two trees to match. 
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-no-renames)`no-renames`
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-recursive)`recursive` 
-    
-This is now a synonym for `ort`. It was an alternative implementation until v2.49.0, but was redirected to mean `ort` in v2.50.0. The previous recursive strategy was the default strategy for resolving two heads from Git v0.99.9k until v2.33.0. 
+Turn off rename detection. This overrides the `merge.renames` configuration variable. See also [git-diff[1]](https://git-scm.com/docs/git-diff) `--no-renames`.
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-resolve)`resolve` 
-    
-This can only resolve two heads (i.e. the current branch and another branch you pulled from) using a 3-way merge algorithm. It tries to carefully detect criss-cross merge ambiguities. It does not handle renames. 
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-histogram)`histogram`
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-octopus)`octopus` 
-    
-This resolves cases with more than two heads, but refuses to do a complex merge that needs manual resolution. It is primarily meant to be used for bundling topic branch heads together. This is the default merge strategy when pulling or merging more than one branch. 
+Deprecated synonym for `diff-algorithm=histogram`.
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-ours-1)`ours` 
-    
-This resolves any number of heads, but the resulting tree of the merge is always that of the current branch head, effectively ignoring all changes from all other branches. It is meant to be used to supersede old development history of side branches. Note that this is different from the `-Xours` option to the `ort` merge strategy. 
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-patience)`patience`
 
-[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-subtree)`subtree` 
-    
+Deprecated synonym for `diff-algorithm=patience`.
+
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-diff-algorithmhistogramminimalmyerspatience)`diff-algorithm=`(`histogram`|`minimal`|`myers`|`patience`)
+
+Use a different diff algorithm while merging, which can help avoid mismerges that occur due to unimportant matching lines (such as braces from distinct functions). See also [git-diff[1]](https://git-scm.com/docs/git-diff) `--diff-algorithm`. Note that `ort` defaults to `diff-algorithm=histogram`, while regular diffs currently default to the `diff.algorithm` config setting.
+
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-subtreepath)`subtree`[`=`_< path>_]
+
+This option is a more advanced form of _subtree_ strategy, where the strategy makes a guess on how two trees must be shifted to match with each other when merging. Instead, the specified path is prefixed (or stripped from the beginning) to make the shape of two trees to match.
+
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-recursive)`recursive`
+
+This is now a synonym for `ort`. It was an alternative implementation until v2.49.0, but was redirected to mean `ort` in v2.50.0. The previous recursive strategy was the default strategy for resolving two heads from Git v0.99.9k until v2.33.0.
+
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-resolve)`resolve`
+
+This can only resolve two heads (i.e. the current branch and another branch you pulled from) using a 3-way merge algorithm. It tries to carefully detect criss-cross merge ambiguities. It does not handle renames.
+
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-octopus)`octopus`
+
+This resolves cases with more than two heads, but refuses to do a complex merge that needs manual resolution. It is primarily meant to be used for bundling topic branch heads together. This is the default merge strategy when pulling or merging more than one branch.
+
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-ours-1)`ours`
+
+This resolves any number of heads, but the resulting tree of the merge is always that of the current branch head, effectively ignoring all changes from all other branches. It is meant to be used to supersede old development history of side branches. Note that this is different from the `-Xours` option to the `ort` merge strategy.
+
+[](https://git-scm.com/docs/git-pull#Documentation/git-pull.txt-subtree)`subtree`
+
 This is a modified `ort` strategy. When merging trees A and B, if B corresponds to a subtree of A, B is first adjusted to match the tree structure of A, instead of reading the trees at the same level. This adjustment is also done to the common ancestor tree.
 With the strategies that use 3-way merge (including the default, `ort`), if a change is made on both branches, but later reverted on one of the branches, that change will be present in the merged result; some people find this behavior confusing. It occurs because only the heads and the merge base are considered when performing a merge, not the individual commits. The merge algorithm therefore considers the reverted change as no change at all, and substitutes the changed version instead.
 ##  [](https://git-scm.com/docs/git-pull#DEFAULT-BEHAVIOUR)DEFAULT BEHAVIOUR
@@ -943,6 +943,6 @@ Using `--recurse-submodules` can only fetch new commits in already checked out s
 ##  [](https://git-scm.com/docs/git-pull#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### pull
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

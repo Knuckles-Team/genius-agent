@@ -157,6 +157,6 @@ Quick reference guide: [Cheat Sheet](https://git-scm.com/cheat-sheet)
   * [ write-tree ](https://git-scm.com/docs/git-write-tree)
 
 
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

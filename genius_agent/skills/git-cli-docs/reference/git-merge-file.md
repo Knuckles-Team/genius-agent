@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-merge-file#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-merge-file#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-merge-file#_description)
@@ -33,8 +33,8 @@ Localized versions of **git-merge-file** manual
   4. [українська мова ](https://git-scm.com/docs/git-merge-file/uk)
   5. [简体中文 ](https://git-scm.com/docs/git-merge-file/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-merge-file)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -214,62 +214,62 @@ If there are conflicts, the user should edit the result and delete one of the al
 If `--object-id` is specified, exactly the same behavior occurs, except that instead of specifying what to merge as files, it is specified as a list of object IDs referring to blobs.
 The exit value of this program is negative on error, and the number of conflicts otherwise (truncated to 127 if there are more than that many conflicts). If the merge was clean, the exit value is 0.
 _git merge-file_ is designed to be a minimal clone of RCS _merge_ ; that is, it implements all of RCS _merge_ 's functionality which is needed by [git[1]](https://git-scm.com/docs/git).
-##  [](https://git-scm.com/docs/git-merge-file#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-merge-file#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-merge-file#Documentation/git-merge-file.txt---object-id)--object-id 
-    
+[](https://git-scm.com/docs/git-merge-file#Documentation/git-merge-file.txt---object-id)--object-id
+
 Specify the contents to merge as blobs in the current repository instead of files. In this case, the operation must take place within a valid repository.
-If the `-p` option is specified, the merged file (including conflicts, if any) goes to standard output as normal; otherwise, the merged file is written to the object store and the object ID of its blob is written to standard output. 
+If the `-p` option is specified, the merged file (including conflicts, if any) goes to standard output as normal; otherwise, the merged file is written to the object store and the object ID of its blob is written to standard output.
 
-[](https://git-scm.com/docs/git-merge-file#Documentation/git-merge-file.txt--Llabel)-L <label> 
-    
-This option may be given up to three times, and specifies labels to be used in place of the corresponding file names in conflict reports. That is, `git` `merge-file` `-L` `x` `-L` `y` `-L` `z` `a` `b` `c` generates output that looks like it came from files x, y and z instead of from files a, b and c. 
+[](https://git-scm.com/docs/git-merge-file#Documentation/git-merge-file.txt--Llabel)-L <label>
 
-[](https://git-scm.com/docs/git-merge-file#Documentation/git-merge-file.txt--p)-p 
-    
-Send results to standard output instead of overwriting _< current>_. 
+This option may be given up to three times, and specifies labels to be used in place of the corresponding file names in conflict reports. That is, `git` `merge-file` `-L` `x` `-L` `y` `-L` `z` `a` `b` `c` generates output that looks like it came from files x, y and z instead of from files a, b and c.
 
-[](https://git-scm.com/docs/git-merge-file#Documentation/git-merge-file.txt--q)-q 
-    
-Quiet; do not warn about conflicts. 
+[](https://git-scm.com/docs/git-merge-file#Documentation/git-merge-file.txt--p)-p
 
-[](https://git-scm.com/docs/git-merge-file#Documentation/git-merge-file.txt---diff3)--diff3 
-    
-Show conflicts in "diff3" style. 
+Send results to standard output instead of overwriting _< current>_.
 
-[](https://git-scm.com/docs/git-merge-file#Documentation/git-merge-file.txt---zdiff3)--zdiff3 
-    
-Show conflicts in "zdiff3" style. 
+[](https://git-scm.com/docs/git-merge-file#Documentation/git-merge-file.txt--q)-q
 
-[](https://git-scm.com/docs/git-merge-file#Documentation/git-merge-file.txt---ours)--ours 
+Quiet; do not warn about conflicts.
 
+[](https://git-scm.com/docs/git-merge-file#Documentation/git-merge-file.txt---diff3)--diff3
 
-[](https://git-scm.com/docs/git-merge-file#Documentation/git-merge-file.txt---theirs)--theirs 
+Show conflicts in "diff3" style.
+
+[](https://git-scm.com/docs/git-merge-file#Documentation/git-merge-file.txt---zdiff3)--zdiff3
+
+Show conflicts in "zdiff3" style.
+
+[](https://git-scm.com/docs/git-merge-file#Documentation/git-merge-file.txt---ours)--ours
 
 
-[](https://git-scm.com/docs/git-merge-file#Documentation/git-merge-file.txt---union)--union 
-    
-Instead of leaving conflicts in the file, resolve conflicts favouring our (or their or both) side of the lines. 
+[](https://git-scm.com/docs/git-merge-file#Documentation/git-merge-file.txt---theirs)--theirs
 
-[](https://git-scm.com/docs/git-merge-file#Documentation/git-merge-file.txt---diff-algorithmpatienceminimalhistogrammyers)--diff-algorithm={patience|minimal|histogram|myers} 
-    
+
+[](https://git-scm.com/docs/git-merge-file#Documentation/git-merge-file.txt---union)--union
+
+Instead of leaving conflicts in the file, resolve conflicts favouring our (or their or both) side of the lines.
+
+[](https://git-scm.com/docs/git-merge-file#Documentation/git-merge-file.txt---diff-algorithmpatienceminimalhistogrammyers)--diff-algorithm={patience|minimal|histogram|myers}
+
 Use a different diff algorithm while merging. The current default is "myers", but selecting more recent algorithm such as "histogram" can help avoid mismerges that occur due to unimportant matching lines (such as braces from distinct functions). See also [git-diff[1]](https://git-scm.com/docs/git-diff) `--diff-algorithm`.
-##  [](https://git-scm.com/docs/git-merge-file#_examples)EXAMPLES 
+##  [](https://git-scm.com/docs/git-merge-file#_examples)EXAMPLES
 
-[](https://git-scm.com/docs/git-merge-file#Documentation/git-merge-file.txt-gitmerge-fileREADMEmyREADMEREADMEupstream)`git` `merge-file` `README.my` `README` `README.upstream` 
-    
-combines the changes of README.my and README.upstream since README, tries to merge them and writes the result into README.my. 
+[](https://git-scm.com/docs/git-merge-file#Documentation/git-merge-file.txt-gitmerge-fileREADMEmyREADMEREADMEupstream)`git` `merge-file` `README.my` `README` `README.upstream`
 
-[](https://git-scm.com/docs/git-merge-file#Documentation/git-merge-file.txt-gitmerge-file-La-Lb-Lctmpa123tmpb234tmpc345)`git` `merge-file` `-L` `a` `-L` `b` `-L` `c` `tmp/a123` `tmp/b234` `tmp/c345` 
-    
-merges tmp/a123 and tmp/c345 with the base tmp/b234, but uses labels `a` and `c` instead of `tmp/a123` and `tmp/c345`. 
+combines the changes of README.my and README.upstream since README, tries to merge them and writes the result into README.my.
 
-[](https://git-scm.com/docs/git-merge-file#Documentation/git-merge-file.txt-gitmerge-file-p--object-idabc1234def567890abcd)`git` `merge-file` `-p` `--object-id` `abc1234` `def567` `890abcd` 
-    
+[](https://git-scm.com/docs/git-merge-file#Documentation/git-merge-file.txt-gitmerge-file-La-Lb-Lctmpa123tmpb234tmpc345)`git` `merge-file` `-L` `a` `-L` `b` `-L` `c` `tmp/a123` `tmp/b234` `tmp/c345`
+
+merges tmp/a123 and tmp/c345 with the base tmp/b234, but uses labels `a` and `c` instead of `tmp/a123` and `tmp/c345`.
+
+[](https://git-scm.com/docs/git-merge-file#Documentation/git-merge-file.txt-gitmerge-file-p--object-idabc1234def567890abcd)`git` `merge-file` `-p` `--object-id` `abc1234` `def567` `890abcd`
+
 combines the changes of the blob abc1234 and 890abcd since def567, tries to merge them and writes the result to standard output
 ##  [](https://git-scm.com/docs/git-merge-file#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### merge-file
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

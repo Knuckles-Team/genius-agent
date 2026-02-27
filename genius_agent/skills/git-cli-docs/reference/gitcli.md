@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/gitcli#_name)
     * [SYNOPSIS](https://git-scm.com/docs/gitcli#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/gitcli#_description)
@@ -29,8 +29,8 @@
 Localized versions of **gitcli** manual
   1. [English ](https://git-scm.com/docs/gitcli)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/gitcli)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -240,10 +240,10 @@ Here are the rules regarding the "flags" that you should follow when you are scr
 From the Git 1.5.4 series and further, many Git commands (not all of them at the time of the writing though) come with an enhanced option parser.
 Here is a list of the facilities provided by this option parser.
 ###  [](https://git-scm.com/docs/gitcli#_magic_options)Magic Options
-Commands which have the enhanced option parser activated all understand a couple of magic command-line options: 
+Commands which have the enhanced option parser activated all understand a couple of magic command-line options:
 
-[](https://git-scm.com/docs/gitcli#Documentation/gitcli.txt--h)-h 
-    
+[](https://git-scm.com/docs/gitcli#Documentation/gitcli.txt--h)-h
+
 gives a pretty printed usage of the command.
 ```
 $ git describe -h
@@ -258,10 +258,10 @@ usage: git describe [<options>] <commit-ish>*
     --abbrev[=<n>]        use <n> digits to display SHA-1s
 ```
 
-Note that some subcommand (e.g. `git` `grep`) may behave differently when there are things on the command line other than `-h`, but `git` `subcmd` `-h` without anything else on the command line is meant to consistently give the usage. 
+Note that some subcommand (e.g. `git` `grep`) may behave differently when there are things on the command line other than `-h`, but `git` `subcmd` `-h` without anything else on the command line is meant to consistently give the usage.
 
-[](https://git-scm.com/docs/gitcli#Documentation/gitcli.txt---help-all)--help-all 
-    
+[](https://git-scm.com/docs/gitcli#Documentation/gitcli.txt---help-all)--help-all
+
 Some Git commands take options that are only used for plumbing or that are deprecated, and such options are hidden from the default usage. This option gives the full list of options.
 ###  [](https://git-scm.com/docs/gitcli#_negating_options)Negating options
 Options with long option names can be negated by prefixing `--no-`. For example, `git` `branch` has the option `--track` which is _on_ by default. You can use `--no-track` to override that behaviour. The same goes for `--color` and `--no-color`.
@@ -314,6 +314,6 @@ Some other commands that also work on files in the working tree and/or in the in
 ##  [](https://git-scm.com/docs/gitcli#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### gitcli
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

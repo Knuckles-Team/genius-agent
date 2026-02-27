@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/gitprotocol-v2#_name)
     * [SYNOPSIS](https://git-scm.com/docs/gitprotocol-v2#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/gitprotocol-v2#_description)
@@ -32,8 +32,8 @@
 Localized versions of **gitprotocol-v2** manual
   1. [English ](https://git-scm.com/docs/gitprotocol-v2)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/gitprotocol-v2)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -659,41 +659,41 @@ One way that servers could take advantage of these bundles is that the server wo
 A `bundle-uri` request takes no arguments, and as noted above does not currently advertise a capability value. Both may be added in the future.
 When the client issues a `command=bundle-uri` request, the response is a list of key-value pairs provided as packet lines with value _< key>_`=`_< value>_. Each _< key>_ should be interpreted as a config key from the `bundle.*` namespace to construct a list of bundles. These keys are grouped by a `bundle.`_< id>_`.` subsection, where each key corresponding to a given _< id>_ contributes attributes to the bundle defined by that _< id>_. See [git-config[1]](https://git-scm.com/docs/git-config) for the specific details of these keys and how the Git client will interpret their values.
 Clients MUST parse the line according to the above format, lines that do not conform to the format SHOULD be discarded. The user MAY be warned in such a case.
-####  [](https://git-scm.com/docs/gitprotocol-v2#_bundle_uri_client_and_server_expectations)bundle-uri CLIENT AND SERVER EXPECTATIONS 
+####  [](https://git-scm.com/docs/gitprotocol-v2#_bundle_uri_client_and_server_expectations)bundle-uri CLIENT AND SERVER EXPECTATIONS
 
-[](https://git-scm.com/docs/gitprotocol-v2#Documentation/gitprotocol-v2.txt-URICONTENTS)URI CONTENTS 
-    
+[](https://git-scm.com/docs/gitprotocol-v2#Documentation/gitprotocol-v2.txt-URICONTENTS)URI CONTENTS
+
 The content at the advertised URIs MUST be one of two types.
 The advertised URI may contain a bundle file that `git` `bundle` `verify` would accept. I.e. they MUST contain one or more reference tips for use by the client, MUST indicate prerequisites (in any) with standard "-" prefixes, and MUST indicate their "object-format", if applicable.
-The advertised URI may alternatively contain a plaintext file that `git` `config` `--list` would accept (with the `--file` option). The key-value pairs in this list are in the `bundle.*` namespace (see [git-config[1]](https://git-scm.com/docs/git-config)). 
+The advertised URI may alternatively contain a plaintext file that `git` `config` `--list` would accept (with the `--file` option). The key-value pairs in this list are in the `bundle.*` namespace (see [git-config[1]](https://git-scm.com/docs/git-config)).
 
-[](https://git-scm.com/docs/gitprotocol-v2#Documentation/gitprotocol-v2.txt-bundle-uriCLIENTERRORRECOVERY)bundle-uri CLIENT ERROR RECOVERY 
-    
+[](https://git-scm.com/docs/gitprotocol-v2#Documentation/gitprotocol-v2.txt-bundle-uriCLIENTERRORRECOVERY)bundle-uri CLIENT ERROR RECOVERY
+
 A client MUST above all gracefully degrade on errors, whether that error is because of bad missing/data in the bundle URI(s), because that client is too dumb to e.g. understand and fully parse out bundle headers and their prerequisite relationships, or something else.
 Server operators should feel confident in turning on "bundle-uri" and not worry if e.g. their CDN goes down that clones or fetches will run into hard failures. Even if the server bundle(s) are incomplete, or bad in some way the client should still end up with a functioning repository, just as if it had chosen not to use this protocol extension.
-All subsequent discussion on client and server interaction MUST keep this in mind. 
+All subsequent discussion on client and server interaction MUST keep this in mind.
 
-[](https://git-scm.com/docs/gitprotocol-v2#Documentation/gitprotocol-v2.txt-bundle-uriSERVERTOCLIENT)bundle-uri SERVER TO CLIENT 
-    
+[](https://git-scm.com/docs/gitprotocol-v2#Documentation/gitprotocol-v2.txt-bundle-uriSERVERTOCLIENT)bundle-uri SERVER TO CLIENT
+
 The ordering of the returned bundle uris is not significant. Clients MUST parse their headers to discover their contained OIDS and prerequisites. A client MUST consider the content of the bundle(s) themselves and their header as the ultimate source of truth.
-A server MAY even return bundle(s) that don’t have any direct relationship to the repository being cloned (either through accident, or intentional "clever" configuration), and expect a client to sort out what data they’d like from the bundle(s), if any. 
+A server MAY even return bundle(s) that don’t have any direct relationship to the repository being cloned (either through accident, or intentional "clever" configuration), and expect a client to sort out what data they’d like from the bundle(s), if any.
 
-[](https://git-scm.com/docs/gitprotocol-v2#Documentation/gitprotocol-v2.txt-bundle-uriCLIENTTOSERVER)bundle-uri CLIENT TO SERVER 
-    
-The client SHOULD provide reference tips found in the bundle header(s) as _have_ lines in any subsequent `fetch` request. A client MAY also ignore the bundle(s) entirely if doing so is deemed worse for some reason, e.g. if the bundles can’t be downloaded, it doesn’t like the tips it finds etc. 
+[](https://git-scm.com/docs/gitprotocol-v2#Documentation/gitprotocol-v2.txt-bundle-uriCLIENTTOSERVER)bundle-uri CLIENT TO SERVER
 
-[](https://git-scm.com/docs/gitprotocol-v2#Documentation/gitprotocol-v2.txt-WHENADVERTISEDBUNDLESREQUIRENOFURTHERNEGOTIATION)WHEN ADVERTISED BUNDLE(S) REQUIRE NO FURTHER NEGOTIATION 
-    
-If after issuing `bundle-uri` and `ls-refs`, and getting the header(s) of the bundle(s) the client finds that the ref tips it wants can be retrieved entirely from advertised bundle(s), the client MAY disconnect from the Git server. The results of such a _clone_ or _fetch_ should be indistinguishable from the state attained without using bundle-uri. 
+The client SHOULD provide reference tips found in the bundle header(s) as _have_ lines in any subsequent `fetch` request. A client MAY also ignore the bundle(s) entirely if doing so is deemed worse for some reason, e.g. if the bundles can’t be downloaded, it doesn’t like the tips it finds etc.
 
-[](https://git-scm.com/docs/gitprotocol-v2#Documentation/gitprotocol-v2.txt-EARLYCLIENTDISCONNECTIONSANDERRORRECOVERY)EARLY CLIENT DISCONNECTIONS AND ERROR RECOVERY 
-    
+[](https://git-scm.com/docs/gitprotocol-v2#Documentation/gitprotocol-v2.txt-WHENADVERTISEDBUNDLESREQUIRENOFURTHERNEGOTIATION)WHEN ADVERTISED BUNDLE(S) REQUIRE NO FURTHER NEGOTIATION
+
+If after issuing `bundle-uri` and `ls-refs`, and getting the header(s) of the bundle(s) the client finds that the ref tips it wants can be retrieved entirely from advertised bundle(s), the client MAY disconnect from the Git server. The results of such a _clone_ or _fetch_ should be indistinguishable from the state attained without using bundle-uri.
+
+[](https://git-scm.com/docs/gitprotocol-v2#Documentation/gitprotocol-v2.txt-EARLYCLIENTDISCONNECTIONSANDERRORRECOVERY)EARLY CLIENT DISCONNECTIONS AND ERROR RECOVERY
+
 A client MAY perform an early disconnect while still downloading the bundle(s) (having streamed and parsed their headers). In such a case the client MUST gracefully recover from any errors related to finishing the download and validation of the bundle(s).
 I.e. a client might need to re-connect and issue a _fetch_ command, and possibly fall back to not making use of _bundle-uri_ at all.
-This "MAY" behavior is specified as such (and not a "SHOULD") on the assumption that a server advertising bundle uris is more likely than not to be serving up a relatively large repository, and to be pointing to URIs that have a good chance of being in working order. A client MAY e.g. look at the payload size of the bundles as a heuristic to see if an early disconnect is worth it, should falling back on a full "fetch" dialog be necessary. 
+This "MAY" behavior is specified as such (and not a "SHOULD") on the assumption that a server advertising bundle uris is more likely than not to be serving up a relatively large repository, and to be pointing to URIs that have a good chance of being in working order. A client MAY e.g. look at the payload size of the bundles as a heuristic to see if an early disconnect is worth it, should falling back on a full "fetch" dialog be necessary.
 
-[](https://git-scm.com/docs/gitprotocol-v2#Documentation/gitprotocol-v2.txt-WHENADVERTISEDBUNDLESREQUIREFURTHERNEGOTIATION)WHEN ADVERTISED BUNDLE(S) REQUIRE FURTHER NEGOTIATION 
-    
+[](https://git-scm.com/docs/gitprotocol-v2#Documentation/gitprotocol-v2.txt-WHENADVERTISEDBUNDLESREQUIREFURTHERNEGOTIATION)WHEN ADVERTISED BUNDLE(S) REQUIRE FURTHER NEGOTIATION
+
 A client SHOULD commence a negotiation of a PACK from the server via the "fetch" command using the OID tips found in advertised bundles, even if’s still in the process of downloading those bundle(s).
 This allows for aggressive early disconnects from any interactive server dialog. The client blindly trusts that the advertised OID tips are relevant, and issues them as _have_ lines, it then requests any tips it would like (usually from the "ls-refs" advertisement) via _want_ lines. The server will then compute a (hopefully small) PACK with the expected difference between the tips from the bundle(s) and the data requested.
 The only connection the client then needs to keep active is to the concurrently downloading static bundle(s), when those and the incremental PACK are retrieved they should be inflated and validated. Any errors at this point should be gracefully recovered from, see above.
@@ -726,14 +726,14 @@ pr-field = field-name "=" field-value
 
 where all the `field-name` and `field-value` in a given `pr-fields` are field names and values related to a single promisor remote. A given `field-name` MUST NOT appear more than once in given `pr-fields`.
 The server MUST advertise at least the "name" and "url" field names along with the associated field values, which are the name of a valid remote and its URL, in each `pr-fields`. The "name" and "url" fields MUST appear first in each pr-fields, in that order.
-After these mandatory fields, the server MAY advertise the following optional fields in any order: 
+After these mandatory fields, the server MAY advertise the following optional fields in any order:
 
-[](https://git-scm.com/docs/gitprotocol-v2#Documentation/gitprotocol-v2.txt-partialCloneFilter)`partialCloneFilter` 
-    
-The filter specification used by the remote. Clients can use this to determine if the remote’s filtering strategy is compatible with their needs (e.g., checking if both use "blob:none"). It corresponds to the "remote.<name>.partialCloneFilter" config setting. 
+[](https://git-scm.com/docs/gitprotocol-v2#Documentation/gitprotocol-v2.txt-partialCloneFilter)`partialCloneFilter`
 
-[](https://git-scm.com/docs/gitprotocol-v2#Documentation/gitprotocol-v2.txt-token)`token` 
-    
+The filter specification used by the remote. Clients can use this to determine if the remote’s filtering strategy is compatible with their needs (e.g., checking if both use "blob:none"). It corresponds to the "remote.<name>.partialCloneFilter" config setting.
+
+[](https://git-scm.com/docs/gitprotocol-v2#Documentation/gitprotocol-v2.txt-token)`token`
+
 An authentication token that clients can use when connecting to the remote. It corresponds to the "remote.<name>.token" config setting.
 No other fields are defined by the protocol at this time. Field names are case-sensitive and MUST be transmitted exactly as specified above. Clients MUST ignore fields they don’t recognize to allow for future protocol extensions.
 For now, the client can only use information transmitted through these fields to decide if it accepts the advertised promisor remote. In the future that information might be used for other purposes though.
@@ -752,6 +752,6 @@ Note that in the future it would be nice if the "promisor-remote" protocol capab
 ##  [](https://git-scm.com/docs/gitprotocol-v2#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### gitprotocol-v2
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

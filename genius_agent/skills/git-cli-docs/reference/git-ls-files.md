@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-ls-files#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-ls-files#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-ls-files#_description)
@@ -35,8 +35,8 @@ Localized versions of **git-ls-files** manual
   3. [українська мова ](https://git-scm.com/docs/git-ls-files/uk)
   4. [简体中文 ](https://git-scm.com/docs/git-ls-files/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-ls-files)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -245,196 +245,196 @@ _git ls-files_ [-z] [-t] [-v] [-f]
 ##  [](https://git-scm.com/docs/git-ls-files#_description)DESCRIPTION
 This command merges the file listing in the index with the actual working directory list, and shows different combinations of the two.
 Several flags can be used to determine which files are shown, and each file may be printed multiple times if there are multiple entries in the index or if multiple statuses are applicable for the relevant file selection options.
-##  [](https://git-scm.com/docs/git-ls-files#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-ls-files#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt--c)-c 
-
-
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt---cached)--cached 
-    
-Show all files cached in Git’s index, i.e. all tracked files. (This is the default if no -c/-s/-d/-o/-u/-k/-m/--resolve-undo options are specified.) 
-
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt--d)-d 
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt--c)-c
 
 
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt---deleted)--deleted 
-    
-Show files with an unstaged deletion 
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt---cached)--cached
 
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt--m)-m 
+Show all files cached in Git’s index, i.e. all tracked files. (This is the default if no -c/-s/-d/-o/-u/-k/-m/--resolve-undo options are specified.)
 
-
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt---modified)--modified 
-    
-Show files with an unstaged modification (note that an unstaged deletion also counts as an unstaged modification) 
-
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt--o)-o 
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt--d)-d
 
 
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt---others)--others 
-    
-Show other (i.e. untracked) files in the output 
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt---deleted)--deleted
 
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt--i)-i 
+Show files with an unstaged deletion
 
-
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt---ignored)--ignored 
-    
-Show only ignored files in the output. Must be used with either an explicit _-c_ or _-o_. When showing files in the index (i.e. when used with _-c_), print only those files matching an exclude pattern. When showing "other" files (i.e. when used with _-o_), show only those matched by an exclude pattern. Standard ignore rules are not automatically activated; therefore, at least one of the `--exclude*` options is required. 
-
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt--s)-s 
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt--m)-m
 
 
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt---stage)--stage 
-    
-Show staged contents' mode bits, object name and stage number in the output. 
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt---modified)--modified
 
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt---directory)--directory 
-    
-If a whole directory is classified as "other", show just its name (with a trailing slash) and not its whole contents. Has no effect without -o/--others. 
+Show files with an unstaged modification (note that an unstaged deletion also counts as an unstaged modification)
 
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt---no-empty-directory)--no-empty-directory 
-    
-Do not list empty directories. Has no effect without --directory. 
-
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt--u)-u 
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt--o)-o
 
 
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt---unmerged)--unmerged 
-    
-Show information about unmerged files in the output, but do not show any other tracked files (forces --stage, overrides --cached). 
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt---others)--others
 
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt--k)-k 
+Show other (i.e. untracked) files in the output
 
-
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt---killed)--killed 
-    
-Show untracked files on the filesystem that need to be removed due to file/directory conflicts for tracked files to be able to be written to the filesystem. 
-
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt---resolve-undo)--resolve-undo 
-    
-Show files having resolve-undo information in the index together with their resolve-undo information. (resolve-undo information is what is used to implement "git checkout -m $PATH", i.e. to recreate merge conflicts that were accidentally resolved) 
-
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt--z)-z 
-    
-\0 line termination on output and do not quote filenames. See OUTPUT below for more information. 
-
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt---deduplicate)--deduplicate 
-    
-When only filenames are shown, suppress duplicates that may come from having multiple stages during a merge, or giving `--deleted` and `--modified` option at the same time. When any of the `-t`, `--unmerged`, or `--stage` option is in use, this option has no effect. 
-
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt--xpattern)-x <pattern> 
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt--i)-i
 
 
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt---excludepattern)--exclude=<pattern> 
-    
-Skip untracked files matching pattern. Note that pattern is a shell wildcard pattern. See EXCLUDE PATTERNS below for more information. 
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt---ignored)--ignored
 
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt--Xfile)-X <file> 
+Show only ignored files in the output. Must be used with either an explicit _-c_ or _-o_. When showing files in the index (i.e. when used with _-c_), print only those files matching an exclude pattern. When showing "other" files (i.e. when used with _-o_), show only those matched by an exclude pattern. Standard ignore rules are not automatically activated; therefore, at least one of the `--exclude*` options is required.
+
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt--s)-s
 
 
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt---exclude-fromfile)--exclude-from=<file> 
-    
-Read exclude patterns from <file>; 1 per line. 
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt---stage)--stage
 
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt---exclude-per-directoryfile)--exclude-per-directory=<file> 
-    
-Read additional exclude patterns that apply only to the directory and its subdirectories in <file>. If you are trying to emulate the way Porcelain commands work, using the `--exclude-standard` option instead is easier and more thorough. 
+Show staged contents' mode bits, object name and stage number in the output.
 
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt---exclude-standard)--exclude-standard 
-    
-Add the standard Git exclusions: .git/info/exclude, .gitignore in each directory, and the user’s global exclusion file. 
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt---directory)--directory
 
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt---error-unmatch)--error-unmatch 
-    
-If any <file> does not appear in the index, treat this as an error (return 1). 
+If a whole directory is classified as "other", show just its name (with a trailing slash) and not its whole contents. Has no effect without -o/--others.
 
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt---with-treetree-ish)--with-tree=<tree-ish> 
-    
-When using --error-unmatch to expand the user supplied <file> (i.e. path pattern) arguments to paths, pretend that paths which were removed in the index since the named <tree-ish> are still present. Using this option with `-s` or `-u` options does not make any sense. 
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt---no-empty-directory)--no-empty-directory
 
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt--t)-t 
-    
+Do not list empty directories. Has no effect without --directory.
+
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt--u)-u
+
+
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt---unmerged)--unmerged
+
+Show information about unmerged files in the output, but do not show any other tracked files (forces --stage, overrides --cached).
+
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt--k)-k
+
+
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt---killed)--killed
+
+Show untracked files on the filesystem that need to be removed due to file/directory conflicts for tracked files to be able to be written to the filesystem.
+
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt---resolve-undo)--resolve-undo
+
+Show files having resolve-undo information in the index together with their resolve-undo information. (resolve-undo information is what is used to implement "git checkout -m $PATH", i.e. to recreate merge conflicts that were accidentally resolved)
+
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt--z)-z
+
+\0 line termination on output and do not quote filenames. See OUTPUT below for more information.
+
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt---deduplicate)--deduplicate
+
+When only filenames are shown, suppress duplicates that may come from having multiple stages during a merge, or giving `--deleted` and `--modified` option at the same time. When any of the `-t`, `--unmerged`, or `--stage` option is in use, this option has no effect.
+
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt--xpattern)-x <pattern>
+
+
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt---excludepattern)--exclude=<pattern>
+
+Skip untracked files matching pattern. Note that pattern is a shell wildcard pattern. See EXCLUDE PATTERNS below for more information.
+
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt--Xfile)-X <file>
+
+
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt---exclude-fromfile)--exclude-from=<file>
+
+Read exclude patterns from <file>; 1 per line.
+
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt---exclude-per-directoryfile)--exclude-per-directory=<file>
+
+Read additional exclude patterns that apply only to the directory and its subdirectories in <file>. If you are trying to emulate the way Porcelain commands work, using the `--exclude-standard` option instead is easier and more thorough.
+
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt---exclude-standard)--exclude-standard
+
+Add the standard Git exclusions: .git/info/exclude, .gitignore in each directory, and the user’s global exclusion file.
+
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt---error-unmatch)--error-unmatch
+
+If any <file> does not appear in the index, treat this as an error (return 1).
+
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt---with-treetree-ish)--with-tree=<tree-ish>
+
+When using --error-unmatch to expand the user supplied <file> (i.e. path pattern) arguments to paths, pretend that paths which were removed in the index since the named <tree-ish> are still present. Using this option with `-s` or `-u` options does not make any sense.
+
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt--t)-t
+
 Show status tags together with filenames. Note that for scripting purposes, [git-status[1]](https://git-scm.com/docs/git-status) `--porcelain` and [git-diff-files[1]](https://git-scm.com/docs/git-diff-files) `--name-status` are almost always superior alternatives; users should look at [git-status[1]](https://git-scm.com/docs/git-status) `--short` or [git-diff[1]](https://git-scm.com/docs/git-diff) `--name-status` for more user-friendly alternatives.
-This option provides a reason for showing each filename, in the form of a status tag (which is followed by a space and then the filename). The status tags are all single characters from the following list: 
+This option provides a reason for showing each filename, in the form of a status tag (which is followed by a space and then the filename). The status tags are all single characters from the following list:
 
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt-H)H 
-    
-tracked file that is not either unmerged or skip-worktree 
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt-H)H
 
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt-S)S 
-    
-tracked file that is skip-worktree 
+tracked file that is not either unmerged or skip-worktree
 
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt-M)M 
-    
-tracked file that is unmerged 
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt-S)S
 
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt-R)R 
-    
-tracked file with unstaged removal/deletion 
+tracked file that is skip-worktree
 
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt-C)C 
-    
-tracked file with unstaged modification/change 
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt-M)M
 
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt-K)K 
-    
-untracked paths which are part of file/directory conflicts which prevent checking out tracked files 
+tracked file that is unmerged
 
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt-)? 
-    
-untracked file 
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt-R)R
 
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt-U)U 
-    
-file with resolve-undo information 
+tracked file with unstaged removal/deletion
 
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt--v)-v 
-    
-Similar to `-t`, but use lowercase letters for files that are marked as _assume unchanged_ (see [git-update-index[1]](https://git-scm.com/docs/git-update-index)). 
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt-C)C
 
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt--f)-f 
-    
-Similar to `-t`, but use lowercase letters for files that are marked as _fsmonitor valid_ (see [git-update-index[1]](https://git-scm.com/docs/git-update-index)). 
+tracked file with unstaged modification/change
 
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt---full-name)--full-name 
-    
-When run from a subdirectory, the command usually outputs paths relative to the current directory. This option forces paths to be output relative to the project top directory. 
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt-K)K
 
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt---recurse-submodules)--recurse-submodules 
-    
-Recursively calls ls-files on each active submodule in the repository. Currently there is only support for the --cached and --stage modes. 
+untracked paths which are part of file/directory conflicts which prevent checking out tracked files
 
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt---abbrevn)--abbrev[=<n>] 
-    
-Instead of showing the full 40-byte hexadecimal object lines, show the shortest prefix that is at least _< n>_ hexdigits long that uniquely refers the object. Non default number of digits can be specified with --abbrev=<n>. 
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt-)?
 
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt---debug)--debug 
-    
-After each line that describes a file, add more data about its cache entry. This is intended to show as much information as possible for manual inspection; the exact format may change at any time. 
+untracked file
 
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt---eol)--eol 
-    
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt-U)U
+
+file with resolve-undo information
+
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt--v)-v
+
+Similar to `-t`, but use lowercase letters for files that are marked as _assume unchanged_ (see [git-update-index[1]](https://git-scm.com/docs/git-update-index)).
+
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt--f)-f
+
+Similar to `-t`, but use lowercase letters for files that are marked as _fsmonitor valid_ (see [git-update-index[1]](https://git-scm.com/docs/git-update-index)).
+
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt---full-name)--full-name
+
+When run from a subdirectory, the command usually outputs paths relative to the current directory. This option forces paths to be output relative to the project top directory.
+
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt---recurse-submodules)--recurse-submodules
+
+Recursively calls ls-files on each active submodule in the repository. Currently there is only support for the --cached and --stage modes.
+
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt---abbrevn)--abbrev[=<n>]
+
+Instead of showing the full 40-byte hexadecimal object lines, show the shortest prefix that is at least _< n>_ hexdigits long that uniquely refers the object. Non default number of digits can be specified with --abbrev=<n>.
+
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt---debug)--debug
+
+After each line that describes a file, add more data about its cache entry. This is intended to show as much information as possible for manual inspection; the exact format may change at any time.
+
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt---eol)--eol
+
 Show <eolinfo> and <eolattr> of files. <eolinfo> is the file content identification used by Git when the "text" attribute is "auto" (or not set and core.autocrlf is not false). <eolinfo> is either "-text", "none", "lf", "crlf", "mixed" or "".
 "" means the file is not a regular file, it is not in the index or not accessible in the working tree.
 <eolattr> is the attribute that is used when checking out or committing, it is either "", "-text", "text", "text=auto", "text eol=lf", "text eol=crlf". Since Git 2.10 "text=auto eol=lf" and "text=auto eol=crlf" are supported.
-Both the <eolinfo> in the index ("i/<eolinfo>") and in the working tree ("w/<eolinfo>") are shown for regular files, followed by the ("attr/<eolattr>"). 
+Both the <eolinfo> in the index ("i/<eolinfo>") and in the working tree ("w/<eolinfo>") are shown for regular files, followed by the ("attr/<eolattr>").
 
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt---sparse)--sparse 
-    
-If the index is sparse, show the sparse directories without expanding to the contained files. Sparse directories will be shown with a trailing slash, such as "x/" for a sparse directory "x". 
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt---sparse)--sparse
 
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt---formatformat)--format=<format> 
-    
-A string that interpolates `%`(`fieldname`) from the result being shown. It also interpolates `%%` to `%`, and `%xXX` where `XX` are hex digits interpolates to character with hex code `XX`; for example `%x00` interpolates to _\0_ (NUL), `%x09` to _\t_ (TAB) and %x0a to _\n_ (LF). --format cannot be combined with `-s`, `-o`, `-k`, `-t`, `--resolve-undo` and `--eol`. 
+If the index is sparse, show the sparse directories without expanding to the contained files. Sparse directories will be shown with a trailing slash, such as "x/" for a sparse directory "x".
 
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt---)-- 
-    
-Do not interpret any more arguments as options. 
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt---formatformat)--format=<format>
 
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt-file)<file> 
-    
+A string that interpolates `%`(`fieldname`) from the result being shown. It also interpolates `%%` to `%`, and `%xXX` where `XX` are hex digits interpolates to character with hex code `XX`; for example `%x00` interpolates to _\0_ (NUL), `%x09` to _\t_ (TAB) and %x0a to _\n_ (LF). --format cannot be combined with `-s`, `-o`, `-k`, `-t`, `--resolve-undo` and `--eol`.
+
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt---)--
+
+Do not interpret any more arguments as options.
+
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt-file)<file>
+
 Files to show. If no files are given all files which match the other specified criteria are shown.
 ##  [](https://git-scm.com/docs/git-ls-files#_output)OUTPUT
 _git ls-files_ just outputs the filenames unless `--stage` is specified in which case it outputs:
@@ -452,41 +452,41 @@ git ls-files --format='%(objectname) %(path)'
 ```
 
 ##  [](https://git-scm.com/docs/git-ls-files#_field_names)FIELD NAMES
-The way each path is shown can be customized by using the `--format=`_< format>_ option, where the %(fieldname) in the <format> string for various aspects of the index entry are interpolated. The following "fieldname" are understood: 
+The way each path is shown can be customized by using the `--format=`_< format>_ option, where the %(fieldname) in the <format> string for various aspects of the index entry are interpolated. The following "fieldname" are understood:
 
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt-objectmode)objectmode 
-    
-The mode of the file which is recorded in the index. 
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt-objectmode)objectmode
 
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt-objecttype)objecttype 
-    
-The object type of the file which is recorded in the index. 
+The mode of the file which is recorded in the index.
 
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt-objectname)objectname 
-    
-The name of the file which is recorded in the index. 
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt-objecttype)objecttype
 
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt-objectsizepadded)objectsize[:padded] 
-    
-The object size of the file which is recorded in the index ("-" if the object is a `commit` or `tree`). It also supports a padded format of size with "%(objectsize:padded)". 
+The object type of the file which is recorded in the index.
 
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt-stage)stage 
-    
-The stage of the file which is recorded in the index. 
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt-objectname)objectname
 
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt-eolinfoindex)eolinfo:index 
+The name of the file which is recorded in the index.
+
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt-objectsizepadded)objectsize[:padded]
+
+The object size of the file which is recorded in the index ("-" if the object is a `commit` or `tree`). It also supports a padded format of size with "%(objectsize:padded)".
+
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt-stage)stage
+
+The stage of the file which is recorded in the index.
+
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt-eolinfoindex)eolinfo:index
 
 
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt-eolinfoworktree)eolinfo:worktree 
-    
-The <eolinfo> (see the description of the `--eol` option) of the contents in the index or in the worktree for the path. 
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt-eolinfoworktree)eolinfo:worktree
 
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt-eolattr)eolattr 
-    
-The <eolattr> (see the description of the `--eol` option) that applies to the path. 
+The <eolinfo> (see the description of the `--eol` option) of the contents in the index or in the worktree for the path.
 
-[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt-path)path 
-    
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt-eolattr)eolattr
+
+The <eolattr> (see the description of the `--eol` option) that applies to the path.
+
+[](https://git-scm.com/docs/git-ls-files#Documentation/git-ls-files.txt-path)path
+
 The pathname of the file which is recorded in the index.
 ##  [](https://git-scm.com/docs/git-ls-files#_exclude_patterns)EXCLUDE PATTERNS
 _git ls-files_ can use a list of "exclude patterns" when traversing the directory tree and finding files to show when the flags --others or --ignored are specified. [gitignore[5]](https://git-scm.com/docs/gitignore) specifies the format of exclude patterns.
@@ -508,6 +508,6 @@ via the `--exclude-from=` option.
 ##  [](https://git-scm.com/docs/git-ls-files#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### ls-files
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

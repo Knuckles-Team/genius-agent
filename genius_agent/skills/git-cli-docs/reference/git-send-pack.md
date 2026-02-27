@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-send-pack#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-send-pack#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-send-pack#_description)
@@ -32,8 +32,8 @@ Localized versions of **git-send-pack** manual
   3. [українська мова ](https://git-scm.com/docs/git-send-pack/uk)
   4. [简体中文 ](https://git-scm.com/docs/git-send-pack/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-send-pack)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -216,69 +216,69 @@ _git send-pack_ [--mirror] [--dry-run] [--force]
 ##  [](https://git-scm.com/docs/git-send-pack#_description)DESCRIPTION
 Usually you would want to use _git push_ , which is a higher-level wrapper of this command, instead. See [git-push[1]](https://git-scm.com/docs/git-push).
 Invokes _git-receive-pack_ on a possibly remote repository, and updates it from the current repository, sending named refs.
-##  [](https://git-scm.com/docs/git-send-pack#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-send-pack#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-send-pack#Documentation/git-send-pack.txt---receive-packgit-receive-pack)--receive-pack=<git-receive-pack> 
-    
-Path to the _git-receive-pack_ program on the remote end. Sometimes useful when pushing to a remote repository over ssh, and you do not have the program in a directory on the default $PATH. 
+[](https://git-scm.com/docs/git-send-pack#Documentation/git-send-pack.txt---receive-packgit-receive-pack)--receive-pack=<git-receive-pack>
 
-[](https://git-scm.com/docs/git-send-pack#Documentation/git-send-pack.txt---execgit-receive-pack)--exec=<git-receive-pack> 
-    
-Same as --receive-pack=<git-receive-pack>. 
+Path to the _git-receive-pack_ program on the remote end. Sometimes useful when pushing to a remote repository over ssh, and you do not have the program in a directory on the default $PATH.
 
-[](https://git-scm.com/docs/git-send-pack#Documentation/git-send-pack.txt---all)--all 
-    
-Instead of explicitly specifying which refs to update, update all heads that locally exist. 
+[](https://git-scm.com/docs/git-send-pack#Documentation/git-send-pack.txt---execgit-receive-pack)--exec=<git-receive-pack>
 
-[](https://git-scm.com/docs/git-send-pack#Documentation/git-send-pack.txt---stdin)--stdin 
-    
+Same as --receive-pack=<git-receive-pack>.
+
+[](https://git-scm.com/docs/git-send-pack#Documentation/git-send-pack.txt---all)--all
+
+Instead of explicitly specifying which refs to update, update all heads that locally exist.
+
+[](https://git-scm.com/docs/git-send-pack#Documentation/git-send-pack.txt---stdin)--stdin
+
 Take the list of refs from stdin, one per line. If there are refs specified on the command line in addition to this option, then the refs from stdin are processed after those on the command line.
-If `--stateless-rpc` is specified together with this option then the list of refs must be in packet format (pkt-line). Each ref must be in a separate packet, and the list must end with a flush packet. 
+If `--stateless-rpc` is specified together with this option then the list of refs must be in packet format (pkt-line). Each ref must be in a separate packet, and the list must end with a flush packet.
 
-[](https://git-scm.com/docs/git-send-pack#Documentation/git-send-pack.txt---dry-run)--dry-run 
-    
-Do everything except actually send the updates. 
+[](https://git-scm.com/docs/git-send-pack#Documentation/git-send-pack.txt---dry-run)--dry-run
 
-[](https://git-scm.com/docs/git-send-pack#Documentation/git-send-pack.txt---force)--force 
-    
-Usually, the command refuses to update a remote ref that is not an ancestor of the local ref used to overwrite it. This flag disables the check. This means that the remote repository can lose commits; use it with care. 
+Do everything except actually send the updates.
 
-[](https://git-scm.com/docs/git-send-pack#Documentation/git-send-pack.txt---verbose)--verbose 
-    
-Run verbosely. 
+[](https://git-scm.com/docs/git-send-pack#Documentation/git-send-pack.txt---force)--force
 
-[](https://git-scm.com/docs/git-send-pack#Documentation/git-send-pack.txt---thin)--thin 
-    
-Send a "thin" pack, which records objects in deltified form based on objects not included in the pack to reduce network traffic. 
+Usually, the command refuses to update a remote ref that is not an ancestor of the local ref used to overwrite it. This flag disables the check. This means that the remote repository can lose commits; use it with care.
 
-[](https://git-scm.com/docs/git-send-pack#Documentation/git-send-pack.txt---atomic)--atomic 
-    
-Use an atomic transaction for updating the refs. If any of the refs fails to update then the entire push will fail without changing any refs. 
+[](https://git-scm.com/docs/git-send-pack#Documentation/git-send-pack.txt---verbose)--verbose
 
-[](https://git-scm.com/docs/git-send-pack#Documentation/git-send-pack.txt---signed)--signed 
+Run verbosely.
 
+[](https://git-scm.com/docs/git-send-pack#Documentation/git-send-pack.txt---thin)--thin
 
-[](https://git-scm.com/docs/git-send-pack#Documentation/git-send-pack.txt---no-signed)--no-signed 
+Send a "thin" pack, which records objects in deltified form based on objects not included in the pack to reduce network traffic.
+
+[](https://git-scm.com/docs/git-send-pack#Documentation/git-send-pack.txt---atomic)--atomic
+
+Use an atomic transaction for updating the refs. If any of the refs fails to update then the entire push will fail without changing any refs.
+
+[](https://git-scm.com/docs/git-send-pack#Documentation/git-send-pack.txt---signed)--signed
 
 
-[](https://git-scm.com/docs/git-send-pack#Documentation/git-send-pack.txt---signedtruefalseif-asked)--signed=(true|false|if-asked) 
-    
-GPG-sign the push request to update refs on the receiving side, to allow it to be checked by the hooks and/or be logged. If `false` or `--no-signed`, no signing will be attempted. If `true` or `--signed`, the push will fail if the server does not support signed pushes. If set to `if-asked`, sign if and only if the server supports signed pushes. The push will also fail if the actual call to `gpg` `--sign` fails. See [git-receive-pack[1]](https://git-scm.com/docs/git-receive-pack) for the details on the receiving end. 
+[](https://git-scm.com/docs/git-send-pack#Documentation/git-send-pack.txt---no-signed)--no-signed
 
-[](https://git-scm.com/docs/git-send-pack#Documentation/git-send-pack.txt---push-optionstring)--push-option=<string> 
-    
-Pass the specified string as a push option for consumption by hooks on the server side. If the server doesn’t support push options, error out. See [git-push[1]](https://git-scm.com/docs/git-push) and [githooks[5]](https://git-scm.com/docs/githooks) for details. 
 
-[](https://git-scm.com/docs/git-send-pack#Documentation/git-send-pack.txt-host)<host> 
-    
-A remote host to house the repository. When this part is specified, _git-receive-pack_ is invoked via ssh. 
+[](https://git-scm.com/docs/git-send-pack#Documentation/git-send-pack.txt---signedtruefalseif-asked)--signed=(true|false|if-asked)
 
-[](https://git-scm.com/docs/git-send-pack#Documentation/git-send-pack.txt-directory)<directory> 
-    
-The repository to update. 
+GPG-sign the push request to update refs on the receiving side, to allow it to be checked by the hooks and/or be logged. If `false` or `--no-signed`, no signing will be attempted. If `true` or `--signed`, the push will fail if the server does not support signed pushes. If set to `if-asked`, sign if and only if the server supports signed pushes. The push will also fail if the actual call to `gpg` `--sign` fails. See [git-receive-pack[1]](https://git-scm.com/docs/git-receive-pack) for the details on the receiving end.
 
-[](https://git-scm.com/docs/git-send-pack#Documentation/git-send-pack.txt-ref)<ref>…​ 
-    
+[](https://git-scm.com/docs/git-send-pack#Documentation/git-send-pack.txt---push-optionstring)--push-option=<string>
+
+Pass the specified string as a push option for consumption by hooks on the server side. If the server doesn’t support push options, error out. See [git-push[1]](https://git-scm.com/docs/git-push) and [githooks[5]](https://git-scm.com/docs/githooks) for details.
+
+[](https://git-scm.com/docs/git-send-pack#Documentation/git-send-pack.txt-host)<host>
+
+A remote host to house the repository. When this part is specified, _git-receive-pack_ is invoked via ssh.
+
+[](https://git-scm.com/docs/git-send-pack#Documentation/git-send-pack.txt-directory)<directory>
+
+The repository to update.
+
+[](https://git-scm.com/docs/git-send-pack#Documentation/git-send-pack.txt-ref)<ref>…​
+
 The remote refs to update.
 ##  [](https://git-scm.com/docs/git-send-pack#_specifying_the_refs)SPECIFYING THE REFS
 There are three ways to specify which refs to update on the remote end.
@@ -299,6 +299,6 @@ Optionally, a <ref> parameter can be prefixed with a plus _+_ sign to disable th
 ##  [](https://git-scm.com/docs/git-send-pack#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### send-pack
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

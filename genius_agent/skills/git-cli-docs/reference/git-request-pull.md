@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-request-pull#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-request-pull#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-request-pull#_description)
@@ -33,8 +33,8 @@ Localized versions of **git-request-pull** manual
   4. [українська мова ](https://git-scm.com/docs/git-request-pull/uk)
   5. [简体中文 ](https://git-scm.com/docs/git-request-pull/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-request-pull)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -200,22 +200,22 @@ _git request-pull_ [-p] <start> <URL> [<end>]
 ##  [](https://git-scm.com/docs/git-request-pull#_description)DESCRIPTION
 Generate a request asking your upstream project to pull changes into their tree. The request, printed to the standard output, begins with the branch description, summarizes the changes, and indicates from where they can be pulled.
 The upstream project is expected to have the commit named by _< start>_ and the output asks it to integrate the changes you made since that commit, up to the commit named by _< end>_, by visiting the repository named by _< URL>_.
-##  [](https://git-scm.com/docs/git-request-pull#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-request-pull#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-request-pull#Documentation/git-request-pull.txt--p)-p 
-    
-Include patch text in the output. 
+[](https://git-scm.com/docs/git-request-pull#Documentation/git-request-pull.txt--p)-p
 
-[](https://git-scm.com/docs/git-request-pull#Documentation/git-request-pull.txt-start)<start> 
-    
-Commit to start at. This names a commit that is already in the upstream history. 
+Include patch text in the output.
 
-[](https://git-scm.com/docs/git-request-pull#Documentation/git-request-pull.txt-URL)<URL> 
-    
-The repository URL to be pulled from. 
+[](https://git-scm.com/docs/git-request-pull#Documentation/git-request-pull.txt-start)<start>
 
-[](https://git-scm.com/docs/git-request-pull#Documentation/git-request-pull.txt-end)<end> 
-    
+Commit to start at. This names a commit that is already in the upstream history.
+
+[](https://git-scm.com/docs/git-request-pull#Documentation/git-request-pull.txt-URL)<URL>
+
+The repository URL to be pulled from.
+
+[](https://git-scm.com/docs/git-request-pull#Documentation/git-request-pull.txt-end)<end>
+
 Commit to end at (defaults to HEAD). This names the commit at the tip of the history you are asking to be pulled.
 When the repository named by _< URL>_ has the commit at a tip of a ref that is different from the ref you have locally, you can use the _< local>_`:`_< remote>_ syntax, to have its local name, a colon `:`, and its remote name.
 ##  [](https://git-scm.com/docs/git-request-pull#_examples)EXAMPLES
@@ -243,6 +243,6 @@ git request-pull v1.0 https://git.ko.xz/project master:for-linus
 ##  [](https://git-scm.com/docs/git-request-pull#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### request-pull
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

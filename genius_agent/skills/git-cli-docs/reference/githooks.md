@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/githooks#_name)
     * [SYNOPSIS](https://git-scm.com/docs/githooks#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/githooks#_description)
@@ -29,8 +29,8 @@
 Localized versions of **githooks** manual
   1. [English ](https://git-scm.com/docs/githooks)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/githooks)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -421,10 +421,10 @@ The hook receives a list of the rewritten commits on stdin, in the format
 
 The _extra-info_ is again command-dependent. If it is empty, the preceding SP is also omitted. Currently, no commands pass any _extra-info_.
 The hook always runs after the automatic note copying (see "notes.rewrite.<command>" in [git-config[1]](https://git-scm.com/docs/git-config)) has happened, and thus has access to these notes.
-The following command-specific comments apply: 
+The following command-specific comments apply:
 
-[](https://git-scm.com/docs/githooks#Documentation/githooks.txt-rebase)rebase 
-    
+[](https://git-scm.com/docs/githooks#Documentation/githooks.txt-rebase)rebase
+
 For the _squash_ and _fixup_ operation, all commits that were squashed are listed as being rewritten to the squashed commit. This means that there will be several lines sharing the same _new-object-name_.
 The commits are guaranteed to be listed in the order that they were processed by rebase.
 ###  [](https://git-scm.com/docs/githooks#_sendemail_validate)sendemail-validate
@@ -443,14 +443,14 @@ Subject: PATCH-STRING
 ```
 
 Exiting with a non-zero status causes `git` `send-email` to abort before sending any e-mails.
-The following environment variables are set when executing the hook. 
+The following environment variables are set when executing the hook.
 
-[](https://git-scm.com/docs/githooks#Documentation/githooks.txt-GITSENDEMAILFILECOUNTER)`GIT_SENDEMAIL_FILE_COUNTER` 
-    
-A 1-based counter incremented by one for every file holding an e-mail to be sent (excluding any FIFOs). This counter does not follow the patch series counter scheme. It will always start at 1 and will end at GIT_SENDEMAIL_FILE_TOTAL. 
+[](https://git-scm.com/docs/githooks#Documentation/githooks.txt-GITSENDEMAILFILECOUNTER)`GIT_SENDEMAIL_FILE_COUNTER`
 
-[](https://git-scm.com/docs/githooks#Documentation/githooks.txt-GITSENDEMAILFILETOTAL)`GIT_SENDEMAIL_FILE_TOTAL` 
-    
+A 1-based counter incremented by one for every file holding an e-mail to be sent (excluding any FIFOs). This counter does not follow the patch series counter scheme. It will always start at 1 and will end at GIT_SENDEMAIL_FILE_TOTAL.
+
+[](https://git-scm.com/docs/githooks#Documentation/githooks.txt-GITSENDEMAILFILETOTAL)`GIT_SENDEMAIL_FILE_TOTAL`
+
 The total number of files that will be sent (excluding any FIFOs). This counter does not follow the patch series counter scheme. It will always be equal to the number of files being sent, whether there is a cover letter or not.
 These variables may for instance be used to validate patch series.
 The sample `sendemail-validate` hook that comes with Git checks that all sent patches (excluding the cover letter) can be applied on top of the upstream repository default branch without conflicts. Some placeholders are left for additional validation steps to be performed after all patches of a given series have been applied.
@@ -489,6 +489,6 @@ Only one parameter should be set to "1" when the hook runs. The hook running pas
 ##  [](https://git-scm.com/docs/githooks#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### githooks
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

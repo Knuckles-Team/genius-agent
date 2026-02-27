@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-range-diff#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-range-diff#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-range-diff#_description)
@@ -37,8 +37,8 @@ Localized versions of **git-range-diff** manual
   4. [українська мова ](https://git-scm.com/docs/git-range-diff/uk)
   5. [简体中文 ](https://git-scm.com/docs/git-range-diff/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-range-diff)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -223,52 +223,52 @@ There are three ways to specify the commit ranges:
   * _< base>_ _< rev1>_ _< rev2>_: This is equivalent to _< base>_`..`_< rev1>_ _< base>_`..`_< rev2>_.
 
 
-##  [](https://git-scm.com/docs/git-range-diff#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-range-diff#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-range-diff#Documentation/git-range-diff.txt---no-dual-color)--no-dual-color 
-    
+[](https://git-scm.com/docs/git-range-diff#Documentation/git-range-diff.txt---no-dual-color)--no-dual-color
+
 When the commit diffs differ, `git` `range-diff` recreates the original diffs' coloring, and adds outer -/+ diff markers with the **background** being red/green to make it easier to see e.g. when there was a change in what exact lines were added.
 Additionally, the commit diff lines that are only present in the first commit range are shown "dimmed" (this can be overridden using the `color.diff.`_< slot>_ config setting where _< slot>_ is one of `contextDimmed`, `oldDimmed` and `newDimmed`), and the commit diff lines that are only present in the second commit range are shown in bold (which can be overridden using the config settings `color.diff.`_< slot>_ with _< slot>_ being one of `contextBold`, `oldBold` or `newBold`).
-This is known to `range-diff` as "dual coloring". Use `--no-dual-color` to revert to color all lines according to the outer diff markers (and completely ignore the inner diff when it comes to color). 
+This is known to `range-diff` as "dual coloring". Use `--no-dual-color` to revert to color all lines according to the outer diff markers (and completely ignore the inner diff when it comes to color).
 
-[](https://git-scm.com/docs/git-range-diff#Documentation/git-range-diff.txt---creation-factorpercent)--creation-factor=<percent> 
-    
-Set the creation/deletion cost fudge factor to _< percent>_. Defaults to 60. Try a larger value if `git` `range-diff` erroneously considers a large change a total rewrite (deletion of one commit and addition of another), and a smaller one in the reverse case. See the ``Algorithm`` section below for an explanation of why this is needed. 
+[](https://git-scm.com/docs/git-range-diff#Documentation/git-range-diff.txt---creation-factorpercent)--creation-factor=<percent>
 
-[](https://git-scm.com/docs/git-range-diff#Documentation/git-range-diff.txt---left-only)--left-only 
-    
-Suppress commits that are missing from the first specified range (or the "left range" when using the _< rev1>_`...`_< rev2>_ format). 
+Set the creation/deletion cost fudge factor to _< percent>_. Defaults to 60. Try a larger value if `git` `range-diff` erroneously considers a large change a total rewrite (deletion of one commit and addition of another), and a smaller one in the reverse case. See the ``Algorithm`` section below for an explanation of why this is needed.
 
-[](https://git-scm.com/docs/git-range-diff#Documentation/git-range-diff.txt---right-only)--right-only 
-    
-Suppress commits that are missing from the second specified range (or the "right range" when using the _< rev1>_`...`_< rev2>_ format). 
+[](https://git-scm.com/docs/git-range-diff#Documentation/git-range-diff.txt---left-only)--left-only
 
-[](https://git-scm.com/docs/git-range-diff#Documentation/git-range-diff.txt---diff-mergesformat)--diff-merges=<format> 
-    
+Suppress commits that are missing from the first specified range (or the "left range" when using the _< rev1>_`...`_< rev2>_ format).
+
+[](https://git-scm.com/docs/git-range-diff#Documentation/git-range-diff.txt---right-only)--right-only
+
+Suppress commits that are missing from the second specified range (or the "right range" when using the _< rev1>_`...`_< rev2>_ format).
+
+[](https://git-scm.com/docs/git-range-diff#Documentation/git-range-diff.txt---diff-mergesformat)--diff-merges=<format>
+
 Instead of ignoring merge commits, generate diffs for them using the corresponding `--diff-merges=`_< format>_ option of [git-log[1]](https://git-scm.com/docs/git-log), and include them in the comparison.
-Note: In the common case, the `remerge` mode will be the most natural one to use, as it shows only the diff on top of what Git’s merge machinery would have produced. In other words, if a merge commit is the result of a non-conflicting `git` `merge`, the `remerge` mode will represent it with an empty diff. 
+Note: In the common case, the `remerge` mode will be the most natural one to use, as it shows only the diff on top of what Git’s merge machinery would have produced. In other words, if a merge commit is the result of a non-conflicting `git` `merge`, the `remerge` mode will represent it with an empty diff.
 
-[](https://git-scm.com/docs/git-range-diff#Documentation/git-range-diff.txt---remerge-diff)--remerge-diff 
-    
-Convenience option, equivalent to `--diff-merges=remerge`. 
+[](https://git-scm.com/docs/git-range-diff#Documentation/git-range-diff.txt---remerge-diff)--remerge-diff
 
-[](https://git-scm.com/docs/git-range-diff#Documentation/git-range-diff.txt---notesref)--notes[=<ref>] 
+Convenience option, equivalent to `--diff-merges=remerge`.
+
+[](https://git-scm.com/docs/git-range-diff#Documentation/git-range-diff.txt---notesref)--notes[=<ref>]
 
 
-[](https://git-scm.com/docs/git-range-diff#Documentation/git-range-diff.txt---no-notes)--no-notes 
-    
-This flag is passed to the `git` `log` program (see [git-log[1]](https://git-scm.com/docs/git-log)) that generates the patches. 
+[](https://git-scm.com/docs/git-range-diff#Documentation/git-range-diff.txt---no-notes)--no-notes
 
-[](https://git-scm.com/docs/git-range-diff#Documentation/git-range-diff.txt-range1range2)<range1> <range2> 
-    
-Compare the commits specified by the two ranges, where _< range1>_ is considered an older version of _< range2>_. 
+This flag is passed to the `git` `log` program (see [git-log[1]](https://git-scm.com/docs/git-log)) that generates the patches.
 
-[](https://git-scm.com/docs/git-range-diff#Documentation/git-range-diff.txt-rev1rev2)<rev1>…​<rev2> 
-    
-Equivalent to passing _< rev2>_`..`_< rev1>_ and _< rev1>_`..`_< rev2>_. 
+[](https://git-scm.com/docs/git-range-diff#Documentation/git-range-diff.txt-range1range2)<range1> <range2>
 
-[](https://git-scm.com/docs/git-range-diff#Documentation/git-range-diff.txt-baserev1rev2)<base> <rev1> <rev2> 
-    
+Compare the commits specified by the two ranges, where _< range1>_ is considered an older version of _< range2>_.
+
+[](https://git-scm.com/docs/git-range-diff#Documentation/git-range-diff.txt-rev1rev2)<rev1>…​<rev2>
+
+Equivalent to passing _< rev2>_`..`_< rev1>_ and _< rev1>_`..`_< rev2>_.
+
+[](https://git-scm.com/docs/git-range-diff#Documentation/git-range-diff.txt-baserev1rev2)<base> <rev1> <rev2>
+
 Equivalent to passing _< base>_`..`_< rev1>_ and _< base>_`..`_< rev2>_. Note that _< base>_ does not need to be the exact branch point of the branches. Example: after rebasing a branch `my-topic`, `git` `range-diff` `my-topic@{u}` `my-topic@{1}` `my-topic` would show the differences introduced by the rebase.
 `git` `range-diff` also accepts the regular diff options (see [git-diff[1]](https://git-scm.com/docs/git-diff)), most notably the `--color=`[_< when>_] and `--no-color` options. These options are used when generating the "diff between patches", i.e. to compare the author, commit message and diff of corresponding old/new commits. There is currently no means to tweak most of the diff options passed to `git` `log` when generating those patches.
 ##  [](https://git-scm.com/docs/git-range-diff#_output_stability)OUTPUT STABILITY
@@ -371,6 +371,6 @@ The overall time needed to compute this algorithm is the time needed to compute 
 ##  [](https://git-scm.com/docs/git-range-diff#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### range-diff
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

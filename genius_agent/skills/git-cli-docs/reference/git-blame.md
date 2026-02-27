@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-blame#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-blame#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-blame#_description)
@@ -41,8 +41,8 @@ Localized versions of **git-blame** manual
   6. [українська мова ](https://git-scm.com/docs/git-blame/uk)
   7. [简体中文 ](https://git-scm.com/docs/git-blame/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-blame)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -249,25 +249,25 @@ $ git log --pretty=oneline -S'blame_usage'
 ea4c7f9bf69e781dd0cd88d2bccb2bf5cc15c9a7 git-blame: Make the output
 ```
 
-##  [](https://git-scm.com/docs/git-blame#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-blame#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt--b)`-b` 
-    
-Show blank SHA-1 for boundary commits. This can also be controlled via the `blame.blankBoundary` config option. 
+[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt--b)`-b`
 
-[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt---root)`--root` 
-    
-Do not treat root commits as boundaries. This can also be controlled via the `blame.showRoot` config option. 
+Show blank SHA-1 for boundary commits. This can also be controlled via the `blame.blankBoundary` config option.
 
-[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt---show-stats)`--show-stats` 
-    
-Include additional statistics at the end of blame output. 
+[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt---root)`--root`
 
-[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt--Lstartend)`-L` _< start>_`,`_< end>_ 
+Do not treat root commits as boundaries. This can also be controlled via the `blame.showRoot` config option.
+
+[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt---show-stats)`--show-stats`
+
+Include additional statistics at the end of blame output.
+
+[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt--Lstartend)`-L` _< start>_`,`_< end>_
 
 
-[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt--Lfuncname)`-L` `:`_< funcname>_ 
-    
+[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt--Lfuncname)`-L` `:`_< funcname>_
+
 Annotate only the line range given by _< start>_`,`_< end>_, or by the function name regex _< funcname>_. May be specified multiple times. Overlapping ranges are allowed.
 _< start>_ and _< end>_ are optional. `-L` _< start>_ or `-L` _< start>_`,` spans from _< start>_ to end of file. `-L` `,`_< end>_ spans from start of file to _< end>_.
 _< start>_ and _< end>_ can take one of these forms:
@@ -279,155 +279,155 @@ This form will use the first line matching the given POSIX _< regex>_. If _< sta
 This is only valid for _< end>_ and will specify a number of lines before or after the line given by _< start>_.
 
 
-If `:`_< funcname>_ is given in place of _< start>_ and _< end>_, it is a regular expression that denotes the range from the first funcname line that matches _< funcname>_, up to the next funcname line. `:`_< funcname>_ searches from the end of the previous `-L` range, if any, otherwise from the start of file. `^:`_< funcname>_ searches from the start of file. The function names are determined in the same way as `git` `diff` works out patch hunk headers (see _Defining a custom hunk-header_ in [gitattributes[5]](https://git-scm.com/docs/gitattributes)). 
+If `:`_< funcname>_ is given in place of _< start>_ and _< end>_, it is a regular expression that denotes the range from the first funcname line that matches _< funcname>_, up to the next funcname line. `:`_< funcname>_ searches from the end of the previous `-L` range, if any, otherwise from the start of file. `^:`_< funcname>_ searches from the start of file. The function names are determined in the same way as `git` `diff` works out patch hunk headers (see _Defining a custom hunk-header_ in [gitattributes[5]](https://git-scm.com/docs/gitattributes)).
 
-[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt--l)`-l` 
-    
-Show long rev (Default: off). 
+[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt--l)`-l`
 
-[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt--t)`-t` 
-    
-Show raw timestamp (Default: off). 
+Show long rev (Default: off).
 
-[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt--Srevs-file)`-S` _< revs-file>_ 
-    
-Use revisions from _< revs-file>_ instead of calling [git-rev-list[1]](https://git-scm.com/docs/git-rev-list). 
+[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt--t)`-t`
 
-[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt---reversestartend)`--reverse` _< start>_`..`_< end>_ 
-    
-Walk history forward instead of backward. Instead of showing the revision in which a line appeared, this shows the last revision in which a line has existed. This requires a range of revision like _< start>_`..`_< end>_ where the path to blame exists in _< start>_. `git` `blame` `--reverse` _< start>_ is taken as `git` `blame` `--reverse` _< start>_`..HEAD` for convenience. 
+Show raw timestamp (Default: off).
 
-[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt---first-parent)`--first-parent` 
-    
-Follow only the first parent commit upon seeing a merge commit. This option can be used to determine when a line was introduced to a particular integration branch, rather than when it was introduced to the history overall. 
+[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt--Srevs-file)`-S` _< revs-file>_
 
-[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt--p)`-p` 
+Use revisions from _< revs-file>_ instead of calling [git-rev-list[1]](https://git-scm.com/docs/git-rev-list).
 
+[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt---reversestartend)`--reverse` _< start>_`..`_< end>_
 
-[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt---porcelain)`--porcelain` 
-    
-Show in a format designed for machine consumption. 
+Walk history forward instead of backward. Instead of showing the revision in which a line appeared, this shows the last revision in which a line has existed. This requires a range of revision like _< start>_`..`_< end>_ where the path to blame exists in _< start>_. `git` `blame` `--reverse` _< start>_ is taken as `git` `blame` `--reverse` _< start>_`..HEAD` for convenience.
 
-[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt---line-porcelain)`--line-porcelain` 
-    
-Show the porcelain format, but output commit information for each line, not just the first time a commit is referenced. Implies `--porcelain`. 
+[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt---first-parent)`--first-parent`
 
-[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt---incremental)`--incremental` 
-    
-Show the result incrementally in a format designed for machine consumption. 
+Follow only the first parent commit upon seeing a merge commit. This option can be used to determine when a line was introduced to a particular integration branch, rather than when it was introduced to the history overall.
 
-[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt---encodingencoding)`--encoding=`_< encoding>_ 
-    
-Specify the encoding used to output author names and commit summaries. Setting it to `none` makes blame output unconverted data. For more information see the discussion about encoding in the [git-log[1]](https://git-scm.com/docs/git-log) manual page. 
-
-[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt---contentsfile)`--contents` _< file>_ 
-    
-Annotate using the contents from _< file>_, starting from _< rev>_ if it is specified, and `HEAD` otherwise. You may specify `-` to make the command read from the standard input for the file contents. 
-
-[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt---dateformat)`--date` _< format>_ 
-    
-Specify the format used to output dates. If `--date` is not provided, the value of the `blame.date` config variable is used. If the `blame.date` config variable is also not set, the iso format is used. For supported values, see the discussion of the `--date` option at [git-log[1]](https://git-scm.com/docs/git-log). 
-
-[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt---progress)`--progress` 
+[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt--p)`-p`
 
 
-[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt---no-progress)`--no-progress` 
-    
-Enable progress reporting on the standard error stream even if not attached to a terminal. By default, progress status is reported only when it is attached. You can’t use `--progress` together with `--porcelain` or `--incremental`. 
+[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt---porcelain)`--porcelain`
 
-[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt--Mnum)`-M`[_< num>_] 
-    
+Show in a format designed for machine consumption.
+
+[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt---line-porcelain)`--line-porcelain`
+
+Show the porcelain format, but output commit information for each line, not just the first time a commit is referenced. Implies `--porcelain`.
+
+[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt---incremental)`--incremental`
+
+Show the result incrementally in a format designed for machine consumption.
+
+[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt---encodingencoding)`--encoding=`_< encoding>_
+
+Specify the encoding used to output author names and commit summaries. Setting it to `none` makes blame output unconverted data. For more information see the discussion about encoding in the [git-log[1]](https://git-scm.com/docs/git-log) manual page.
+
+[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt---contentsfile)`--contents` _< file>_
+
+Annotate using the contents from _< file>_, starting from _< rev>_ if it is specified, and `HEAD` otherwise. You may specify `-` to make the command read from the standard input for the file contents.
+
+[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt---dateformat)`--date` _< format>_
+
+Specify the format used to output dates. If `--date` is not provided, the value of the `blame.date` config variable is used. If the `blame.date` config variable is also not set, the iso format is used. For supported values, see the discussion of the `--date` option at [git-log[1]](https://git-scm.com/docs/git-log).
+
+[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt---progress)`--progress`
+
+
+[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt---no-progress)`--no-progress`
+
+Enable progress reporting on the standard error stream even if not attached to a terminal. By default, progress status is reported only when it is attached. You can’t use `--progress` together with `--porcelain` or `--incremental`.
+
+[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt--Mnum)`-M`[_< num>_]
+
 Detect moved or copied lines within a file. When a commit moves or copies a block of lines (e.g. the original file has _A_ and then _B_ , and the commit changes it to _B_ and then _A_), the traditional `blame` algorithm notices only half of the movement and typically blames the lines that were moved up (i.e. _B_) to the parent and assigns blame to the lines that were moved down (i.e. _A_) to the child commit. With this option, both groups of lines are blamed on the parent by running extra passes of inspection.
-_< num>_ is optional, but it is the lower bound on the number of alphanumeric characters that Git must detect as moving/copying within a file for it to associate those lines with the parent commit. The default value is 20. 
+_< num>_ is optional, but it is the lower bound on the number of alphanumeric characters that Git must detect as moving/copying within a file for it to associate those lines with the parent commit. The default value is 20.
 
-[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt--Cnum)`-C`[_< num>_] 
-    
+[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt--Cnum)`-C`[_< num>_]
+
 In addition to `-M`, detect lines moved or copied from other files that were modified in the same commit. This is useful when you reorganize your program and move code around across files. When this option is given twice, the command additionally looks for copies from other files in the commit that creates the file. When this option is given three times, the command additionally looks for copies from other files in any commit.
-_< num>_ is optional, but it is the lower bound on the number of alphanumeric characters that Git must detect as moving/copying between files for it to associate those lines with the parent commit. And the default value is 40. If there are more than one `-C` options given, the _< num>_ argument of the last `-C` will take effect. 
+_< num>_ is optional, but it is the lower bound on the number of alphanumeric characters that Git must detect as moving/copying between files for it to associate those lines with the parent commit. And the default value is 40. If there are more than one `-C` options given, the _< num>_ argument of the last `-C` will take effect.
 
-[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt---ignore-revrev)`--ignore-rev` _< rev>_ 
-    
-Ignore changes made by the revision when assigning blame, as if the change never happened. Lines that were changed or added by an ignored commit will be blamed on the previous commit that changed that line or nearby lines. This option may be specified multiple times to ignore more than one revision. If the `blame.markIgnoredLines` config option is set, then lines that were changed by an ignored commit and attributed to another commit will be marked with a _?_ in the blame output. If the `blame.markUnblamableLines` config option is set, then those lines touched by an ignored commit that we could not attribute to another revision are marked with a `*`. In the porcelain modes, we print `ignored` and `unblamable` on a newline respectively. 
+[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt---ignore-revrev)`--ignore-rev` _< rev>_
 
-[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt---ignore-revs-filefile)`--ignore-revs-file` _< file>_ 
-    
-Ignore revisions listed in _< file>_, which must be in the same format as an `fsck.skipList`. This option may be repeated, and these files will be processed after any files specified with the `blame.ignoreRevsFile` config option. An empty file name, `""`, will clear the list of revs from previously processed files. 
+Ignore changes made by the revision when assigning blame, as if the change never happened. Lines that were changed or added by an ignored commit will be blamed on the previous commit that changed that line or nearby lines. This option may be specified multiple times to ignore more than one revision. If the `blame.markIgnoredLines` config option is set, then lines that were changed by an ignored commit and attributed to another commit will be marked with a _?_ in the blame output. If the `blame.markUnblamableLines` config option is set, then those lines touched by an ignored commit that we could not attribute to another revision are marked with a `*`. In the porcelain modes, we print `ignored` and `unblamable` on a newline respectively.
 
-[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt---color-lines)`--color-lines` 
-    
-Color line annotations in the default format differently if they come from the same commit as the preceding line. This makes it easier to distinguish code blocks introduced by different commits. The color defaults to cyan and can be adjusted using the `color.blame.repeatedLines` config option. 
+[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt---ignore-revs-filefile)`--ignore-revs-file` _< file>_
 
-[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt---color-by-age)`--color-by-age` 
-    
-Color line annotations depending on the age of the line in the default format. The `color.blame.highlightRecent` config option controls what color is used for each range of age. 
+Ignore revisions listed in _< file>_, which must be in the same format as an `fsck.skipList`. This option may be repeated, and these files will be processed after any files specified with the `blame.ignoreRevsFile` config option. An empty file name, `""`, will clear the list of revs from previously processed files.
 
-[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt--h)`-h` 
-    
-Show help message. 
+[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt---color-lines)`--color-lines`
 
-[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt--c)`-c` 
-    
-Use the same output mode as [git-annotate[1]](https://git-scm.com/docs/git-annotate) (Default: off). 
+Color line annotations in the default format differently if they come from the same commit as the preceding line. This makes it easier to distinguish code blocks introduced by different commits. The color defaults to cyan and can be adjusted using the `color.blame.repeatedLines` config option.
 
-[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt---score-debug)`--score-debug` 
-    
-Include debugging information related to the movement of lines between files (see `-C`) and lines moved within a file (see `-M`). The first number listed is the score. This is the number of alphanumeric characters detected as having been moved between or within files. This must be above a certain threshold for `git` `blame` to consider those lines of code to have been moved. 
+[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt---color-by-age)`--color-by-age`
 
-[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt--f)`-f` 
+Color line annotations depending on the age of the line in the default format. The `color.blame.highlightRecent` config option controls what color is used for each range of age.
 
+[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt--h)`-h`
 
-[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt---show-name)`--show-name` 
-    
-Show the filename in the original commit. By default the filename is shown if there is any line that came from a file with a different name, due to rename detection. 
+Show help message.
 
-[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt--n)`-n` 
+[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt--c)`-c`
+
+Use the same output mode as [git-annotate[1]](https://git-scm.com/docs/git-annotate) (Default: off).
+
+[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt---score-debug)`--score-debug`
+
+Include debugging information related to the movement of lines between files (see `-C`) and lines moved within a file (see `-M`). The first number listed is the score. This is the number of alphanumeric characters detected as having been moved between or within files. This must be above a certain threshold for `git` `blame` to consider those lines of code to have been moved.
+
+[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt--f)`-f`
 
 
-[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt---show-number)`--show-number` 
-    
-Show the line number in the original commit (Default: off). 
+[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt---show-name)`--show-name`
 
-[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt--s)`-s` 
-    
-Suppress the author name and timestamp from the output. 
+Show the filename in the original commit. By default the filename is shown if there is any line that came from a file with a different name, due to rename detection.
 
-[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt--e)`-e` 
+[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt--n)`-n`
 
 
-[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt---show-email)`--show-email` 
-    
-Show the author email instead of the author name (Default: off). This can also be controlled via the `blame.showEmail` config option. 
+[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt---show-number)`--show-number`
 
-[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt--w)`-w` 
-    
-Ignore whitespace when comparing the parent’s version and the child’s to find where the lines came from. 
+Show the line number in the original commit (Default: off).
 
-[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt---diff-algorithmpatienceminimalhistogrammyers)`--diff-algorithm=`(`patience`|`minimal`|`histogram`|`myers`) 
-    
-Choose a diff algorithm. The variants are as follows: 
+[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt--s)`-s`
 
-[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt-default)`default` 
+Suppress the author name and timestamp from the output.
+
+[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt--e)`-e`
 
 
-[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt-myers)`myers` 
-    
-The basic greedy diff algorithm. Currently, this is the default. 
+[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt---show-email)`--show-email`
 
-[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt-minimal)`minimal` 
-    
-Spend extra time to make sure the smallest possible diff is produced. 
+Show the author email instead of the author name (Default: off). This can also be controlled via the `blame.showEmail` config option.
 
-[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt-patience)`patience` 
-    
-Use "patience diff" algorithm when generating patches. 
+[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt--w)`-w`
 
-[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt-histogram)`histogram` 
-    
+Ignore whitespace when comparing the parent’s version and the child’s to find where the lines came from.
+
+[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt---diff-algorithmpatienceminimalhistogrammyers)`--diff-algorithm=`(`patience`|`minimal`|`histogram`|`myers`)
+
+Choose a diff algorithm. The variants are as follows:
+
+[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt-default)`default`
+
+
+[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt-myers)`myers`
+
+The basic greedy diff algorithm. Currently, this is the default.
+
+[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt-minimal)`minimal`
+
+Spend extra time to make sure the smallest possible diff is produced.
+
+[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt-patience)`patience`
+
+Use "patience diff" algorithm when generating patches.
+
+[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt-histogram)`histogram`
+
 This algorithm extends the patience algorithm to "support low-occurrence common elements".
-For instance, if you configured the `diff.algorithm` variable to a non-default value and want to use the default one, then you have to use `--diff-algorithm=default` option. 
+For instance, if you configured the `diff.algorithm` variable to a non-default value and want to use the default one, then you have to use `--diff-algorithm=default` option.
 
-[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt---abbrevn)`--abbrev=`_< n>_ 
-    
+[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt---abbrevn)`--abbrev=`_< n>_
+
 Instead of using the default _7+1_ hexadecimal digits as the abbreviated object name, use _< m>+1_ digits, where _< m>_ is at least _< n>_ but ensures the commit object names are unique. Note that 1 column is used for a caret to mark the boundary commit.
 ##  [](https://git-scm.com/docs/git-blame#_the_default_format)THE DEFAULT FORMAT
 When neither `--porcelain` nor `--incremental` option is specified, `git` `blame` will output annotation for each line with:
@@ -507,51 +507,51 @@ filename _<whitespace-quoted-filename-goes-here>_
 ```
 
 and thus it is really quite easy to parse for some line- and word-oriented parser (which should be quite natural for most scripting languages).
-Note |  For people who do parsing: to make it more robust, just ignore any lines between the first and last one (_< 40-byte-hex-sha1>_ and `filename` lines) where you do not recognize the tag words (or care about that particular one) at the beginning of the "extended information" lines. That way, if there is ever added information (like the commit encoding or extended commit commentary), a blame viewer will not care.   
----|---  
+Note |  For people who do parsing: to make it more robust, just ignore any lines between the first and last one (_< 40-byte-hex-sha1>_ and `filename` lines) where you do not recognize the tag words (or care about that particular one) at the beginning of the "extended information" lines. That way, if there is ever added information (like the commit encoding or extended commit commentary), a blame viewer will not care.
+---|---
 
 
 ##  [](https://git-scm.com/docs/git-blame#_mapping_authors)MAPPING AUTHORS
 See [gitmailmap[5]](https://git-scm.com/docs/gitmailmap).
 ##  [](https://git-scm.com/docs/git-blame#_configuration)CONFIGURATION
-Everything below this line in this section is selectively included from the [git-config[1]](https://git-scm.com/docs/git-config) documentation. The content is the same as what’s found there: 
+Everything below this line in this section is selectively included from the [git-config[1]](https://git-scm.com/docs/git-config) documentation. The content is the same as what’s found there:
 
-[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt-blameblankBoundary)blame.blankBoundary 
-    
-Show blank commit object name for boundary commits in [git-blame[1]](https://git-scm.com/docs/git-blame). This option defaults to false. 
+[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt-blameblankBoundary)blame.blankBoundary
 
-[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt-blamecoloring)blame.coloring 
-    
-This determines the coloring scheme to be applied to blame output. It can be _repeatedLines_ , _highlightRecent_ , or _none_ which is the default. 
+Show blank commit object name for boundary commits in [git-blame[1]](https://git-scm.com/docs/git-blame). This option defaults to false.
 
-[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt-blamedate)blame.date 
-    
-Specifies the format used to output dates in [git-blame[1]](https://git-scm.com/docs/git-blame). If unset the iso format is used. For supported values, see the discussion of the `--date` option at [git-log[1]](https://git-scm.com/docs/git-log). 
+[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt-blamecoloring)blame.coloring
 
-[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt-blameshowEmail)blame.showEmail 
-    
-Show the author email instead of author name in [git-blame[1]](https://git-scm.com/docs/git-blame). This option defaults to false. 
+This determines the coloring scheme to be applied to blame output. It can be _repeatedLines_ , _highlightRecent_ , or _none_ which is the default.
 
-[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt-blameshowRoot)blame.showRoot 
-    
-Do not treat root commits as boundaries in [git-blame[1]](https://git-scm.com/docs/git-blame). This option defaults to false. 
+[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt-blamedate)blame.date
 
-[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt-blameignoreRevsFile)blame.ignoreRevsFile 
-    
-Ignore revisions listed in the file, one unabbreviated object name per line, in [git-blame[1]](https://git-scm.com/docs/git-blame). Whitespace and comments beginning with `#` are ignored. This option may be repeated multiple times. Empty file names will reset the list of ignored revisions. This option will be handled before the command line option `--ignore-revs-file`. 
+Specifies the format used to output dates in [git-blame[1]](https://git-scm.com/docs/git-blame). If unset the iso format is used. For supported values, see the discussion of the `--date` option at [git-log[1]](https://git-scm.com/docs/git-log).
 
-[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt-blamemarkUnblamableLines)blame.markUnblamableLines 
-    
-Mark lines that were changed by an ignored revision that we could not attribute to another commit with a _*_ in the output of [git-blame[1]](https://git-scm.com/docs/git-blame). 
+[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt-blameshowEmail)blame.showEmail
 
-[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt-blamemarkIgnoredLines)blame.markIgnoredLines 
-    
+Show the author email instead of author name in [git-blame[1]](https://git-scm.com/docs/git-blame). This option defaults to false.
+
+[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt-blameshowRoot)blame.showRoot
+
+Do not treat root commits as boundaries in [git-blame[1]](https://git-scm.com/docs/git-blame). This option defaults to false.
+
+[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt-blameignoreRevsFile)blame.ignoreRevsFile
+
+Ignore revisions listed in the file, one unabbreviated object name per line, in [git-blame[1]](https://git-scm.com/docs/git-blame). Whitespace and comments beginning with `#` are ignored. This option may be repeated multiple times. Empty file names will reset the list of ignored revisions. This option will be handled before the command line option `--ignore-revs-file`.
+
+[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt-blamemarkUnblamableLines)blame.markUnblamableLines
+
+Mark lines that were changed by an ignored revision that we could not attribute to another commit with a _*_ in the output of [git-blame[1]](https://git-scm.com/docs/git-blame).
+
+[](https://git-scm.com/docs/git-blame#Documentation/git-blame.txt-blamemarkIgnoredLines)blame.markIgnoredLines
+
 Mark lines that were changed by an ignored revision that we attributed to another commit with a _?_ in the output of [git-blame[1]](https://git-scm.com/docs/git-blame).
 ##  [](https://git-scm.com/docs/git-blame#_see_also)SEE ALSO
 [git-annotate[1]](https://git-scm.com/docs/git-annotate)
 ##  [](https://git-scm.com/docs/git-blame#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### blame
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

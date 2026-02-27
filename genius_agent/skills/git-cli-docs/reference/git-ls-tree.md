@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-ls-tree#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-ls-tree#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-ls-tree#_description)
@@ -33,8 +33,8 @@ Localized versions of **git-ls-tree** manual
   3. [українська мова ](https://git-scm.com/docs/git-ls-tree/uk)
   4. [简体中文 ](https://git-scm.com/docs/git-ls-tree/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-ls-tree)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -209,64 +209,64 @@ Lists the contents of a given tree object, like what "/bin/ls -a" does in the cu
   * the behaviour is similar to that of "/bin/ls" in that the _< path>_ is taken as relative to the current working directory. E.g. when you are in a directory _sub_ that has a directory _dir_ , you can run _git ls-tree -r HEAD dir_ to list the contents of the tree (that is `sub/dir` in `HEAD`). You don’t want to give a tree that is not at the root level (e.g. `git` `ls-tree` `-r` `HEAD:sub` `dir`) in this case, as that would result in asking for `sub/sub/dir` in the `HEAD` commit. However, the current working directory can be ignored by passing --full-tree option.
 
 
-##  [](https://git-scm.com/docs/git-ls-tree#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-ls-tree#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-ls-tree#Documentation/git-ls-tree.txt-tree-ish)<tree-ish> 
-    
-Id of a tree-ish. 
+[](https://git-scm.com/docs/git-ls-tree#Documentation/git-ls-tree.txt-tree-ish)<tree-ish>
 
-[](https://git-scm.com/docs/git-ls-tree#Documentation/git-ls-tree.txt--d)-d 
-    
-Show only the named tree entry itself, not its children. 
+Id of a tree-ish.
 
-[](https://git-scm.com/docs/git-ls-tree#Documentation/git-ls-tree.txt--r)-r 
-    
-Recurse into sub-trees. 
+[](https://git-scm.com/docs/git-ls-tree#Documentation/git-ls-tree.txt--d)-d
 
-[](https://git-scm.com/docs/git-ls-tree#Documentation/git-ls-tree.txt--t)-t 
-    
-Show tree entries even when going to recurse them. Has no effect if `-r` was not passed. `-d` implies `-t`. 
+Show only the named tree entry itself, not its children.
 
-[](https://git-scm.com/docs/git-ls-tree#Documentation/git-ls-tree.txt--l)-l 
+[](https://git-scm.com/docs/git-ls-tree#Documentation/git-ls-tree.txt--r)-r
 
+Recurse into sub-trees.
 
-[](https://git-scm.com/docs/git-ls-tree#Documentation/git-ls-tree.txt---long)--long 
-    
-Show object size of blob (file) entries. 
+[](https://git-scm.com/docs/git-ls-tree#Documentation/git-ls-tree.txt--t)-t
 
-[](https://git-scm.com/docs/git-ls-tree#Documentation/git-ls-tree.txt--z)-z 
-    
-\0 line termination on output and do not quote filenames. See OUTPUT FORMAT below for more information. 
+Show tree entries even when going to recurse them. Has no effect if `-r` was not passed. `-d` implies `-t`.
 
-[](https://git-scm.com/docs/git-ls-tree#Documentation/git-ls-tree.txt---name-only)--name-only 
+[](https://git-scm.com/docs/git-ls-tree#Documentation/git-ls-tree.txt--l)-l
 
 
-[](https://git-scm.com/docs/git-ls-tree#Documentation/git-ls-tree.txt---name-status)--name-status 
-    
-List only filenames (instead of the "long" output), one per line. Cannot be combined with `--object-only`. 
+[](https://git-scm.com/docs/git-ls-tree#Documentation/git-ls-tree.txt---long)--long
 
-[](https://git-scm.com/docs/git-ls-tree#Documentation/git-ls-tree.txt---object-only)--object-only 
-    
-List only names of the objects, one per line. Cannot be combined with `--name-only` or `--name-status`. This is equivalent to specifying `--format='%`(`objectname`), but for both this option and that exact format the command takes a hand-optimized codepath instead of going through the generic formatting mechanism. 
+Show object size of blob (file) entries.
 
-[](https://git-scm.com/docs/git-ls-tree#Documentation/git-ls-tree.txt---abbrevn)--abbrev[=<n>] 
-    
-Instead of showing the full 40-byte hexadecimal object lines, show the shortest prefix that is at least _< n>_ hexdigits long that uniquely refers the object. Non default number of digits can be specified with --abbrev=<n>. 
+[](https://git-scm.com/docs/git-ls-tree#Documentation/git-ls-tree.txt--z)-z
 
-[](https://git-scm.com/docs/git-ls-tree#Documentation/git-ls-tree.txt---full-name)--full-name 
-    
-Instead of showing the path names relative to the current working directory, show the full path names. 
+\0 line termination on output and do not quote filenames. See OUTPUT FORMAT below for more information.
 
-[](https://git-scm.com/docs/git-ls-tree#Documentation/git-ls-tree.txt---full-tree)--full-tree 
-    
-Do not limit the listing to the current working directory. Implies --full-name. 
+[](https://git-scm.com/docs/git-ls-tree#Documentation/git-ls-tree.txt---name-only)--name-only
 
-[](https://git-scm.com/docs/git-ls-tree#Documentation/git-ls-tree.txt---formatformat)--format=<format> 
-    
-A string that interpolates `%`(`fieldname`) from the result being shown. It also interpolates `%%` to `%`, and `%xNN` where `NN` are hex digits interpolates to character with hex code `NN`; for example `%x00` interpolates to _\0_ (NUL), `%x09` to _\t_ (TAB) and `%x0a` to _\n_ (LF). When specified, `--format` cannot be combined with other format-altering options, including `--long`, `--name-only` and `--object-only`. 
 
-[](https://git-scm.com/docs/git-ls-tree#Documentation/git-ls-tree.txt-path)[<path>…​] 
-    
+[](https://git-scm.com/docs/git-ls-tree#Documentation/git-ls-tree.txt---name-status)--name-status
+
+List only filenames (instead of the "long" output), one per line. Cannot be combined with `--object-only`.
+
+[](https://git-scm.com/docs/git-ls-tree#Documentation/git-ls-tree.txt---object-only)--object-only
+
+List only names of the objects, one per line. Cannot be combined with `--name-only` or `--name-status`. This is equivalent to specifying `--format='%`(`objectname`), but for both this option and that exact format the command takes a hand-optimized codepath instead of going through the generic formatting mechanism.
+
+[](https://git-scm.com/docs/git-ls-tree#Documentation/git-ls-tree.txt---abbrevn)--abbrev[=<n>]
+
+Instead of showing the full 40-byte hexadecimal object lines, show the shortest prefix that is at least _< n>_ hexdigits long that uniquely refers the object. Non default number of digits can be specified with --abbrev=<n>.
+
+[](https://git-scm.com/docs/git-ls-tree#Documentation/git-ls-tree.txt---full-name)--full-name
+
+Instead of showing the path names relative to the current working directory, show the full path names.
+
+[](https://git-scm.com/docs/git-ls-tree#Documentation/git-ls-tree.txt---full-tree)--full-tree
+
+Do not limit the listing to the current working directory. Implies --full-name.
+
+[](https://git-scm.com/docs/git-ls-tree#Documentation/git-ls-tree.txt---formatformat)--format=<format>
+
+A string that interpolates `%`(`fieldname`) from the result being shown. It also interpolates `%%` to `%`, and `%xNN` where `NN` are hex digits interpolates to character with hex code `NN`; for example `%x00` interpolates to _\0_ (NUL), `%x09` to _\t_ (TAB) and `%x0a` to _\n_ (LF). When specified, `--format` cannot be combined with other format-altering options, including `--long`, `--name-only` and `--object-only`.
+
+[](https://git-scm.com/docs/git-ls-tree#Documentation/git-ls-tree.txt-path)[<path>…​]
+
 When paths are given, show them (note that this isn’t really raw pathnames, but rather a list of patterns to match). Otherwise implicitly uses the root level of the tree as the sole path argument.
 ##  [](https://git-scm.com/docs/git-ls-tree#_output_format)Output Format
 The output format of `ls-tree` is determined by either the `--format` option, or other format-altering options such as `--name-only` etc. (see `--format` above).
@@ -291,30 +291,30 @@ git ls-tree --format='%(objectname) %(path)' <tree-ish>
 ```
 
 ##  [](https://git-scm.com/docs/git-ls-tree#_field_names)FIELD NAMES
-Various values from structured fields can be used to interpolate into the resulting output. For each outputting line, the following names can be used: 
+Various values from structured fields can be used to interpolate into the resulting output. For each outputting line, the following names can be used:
 
-[](https://git-scm.com/docs/git-ls-tree#Documentation/git-ls-tree.txt-objectmode)objectmode 
-    
-The mode of the object. 
+[](https://git-scm.com/docs/git-ls-tree#Documentation/git-ls-tree.txt-objectmode)objectmode
 
-[](https://git-scm.com/docs/git-ls-tree#Documentation/git-ls-tree.txt-objecttype)objecttype 
-    
-The type of the object (`commit`, `blob` or `tree`). 
+The mode of the object.
 
-[](https://git-scm.com/docs/git-ls-tree#Documentation/git-ls-tree.txt-objectname)objectname 
-    
-The name of the object. 
+[](https://git-scm.com/docs/git-ls-tree#Documentation/git-ls-tree.txt-objecttype)objecttype
 
-[](https://git-scm.com/docs/git-ls-tree#Documentation/git-ls-tree.txt-objectsizepadded)objectsize[:padded] 
-    
-The size of a `blob` object ("-" if it’s a `commit` or `tree`). It also supports a padded format of size with "%(objectsize:padded)". 
+The type of the object (`commit`, `blob` or `tree`).
 
-[](https://git-scm.com/docs/git-ls-tree#Documentation/git-ls-tree.txt-path-1)path 
-    
+[](https://git-scm.com/docs/git-ls-tree#Documentation/git-ls-tree.txt-objectname)objectname
+
+The name of the object.
+
+[](https://git-scm.com/docs/git-ls-tree#Documentation/git-ls-tree.txt-objectsizepadded)objectsize[:padded]
+
+The size of a `blob` object ("-" if it’s a `commit` or `tree`). It also supports a padded format of size with "%(objectsize:padded)".
+
+[](https://git-scm.com/docs/git-ls-tree#Documentation/git-ls-tree.txt-path-1)path
+
 The pathname of the object.
 ##  [](https://git-scm.com/docs/git-ls-tree#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### ls-tree
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

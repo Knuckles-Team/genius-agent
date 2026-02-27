@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-http-push#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-http-push#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-http-push#_description)
@@ -33,8 +33,8 @@ Localized versions of **git-http-push** manual
   4. [українська мова ](https://git-scm.com/docs/git-http-push/uk)
   5. [简体中文 ](https://git-scm.com/docs/git-http-push/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-http-push)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -200,29 +200,29 @@ _git http-push_ [--all] [--dry-run] [--force] [--verbose] <URL> <ref> [<ref>…�
 ##  [](https://git-scm.com/docs/git-http-push#_description)DESCRIPTION
 Sends missing objects to the remote repository, and updates the remote branch.
 **NOTE** : This command is temporarily disabled if your libcurl is older than 7.16, as the combination has been reported not to work and sometimes corrupts the repository.
-##  [](https://git-scm.com/docs/git-http-push#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-http-push#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-http-push#Documentation/git-http-push.txt---all)--all 
-    
-Do not assume that the remote repository is complete in its current state, and verify all objects in the entire local ref’s history exist in the remote repository. 
+[](https://git-scm.com/docs/git-http-push#Documentation/git-http-push.txt---all)--all
 
-[](https://git-scm.com/docs/git-http-push#Documentation/git-http-push.txt---force)--force 
-    
-Usually, the command refuses to update a remote ref that is not an ancestor of the local ref used to overwrite it. This flag disables the check. What this means is that the remote repository can lose commits; use it with care. 
+Do not assume that the remote repository is complete in its current state, and verify all objects in the entire local ref’s history exist in the remote repository.
 
-[](https://git-scm.com/docs/git-http-push#Documentation/git-http-push.txt---dry-run)--dry-run 
-    
-Do everything except actually send the updates. 
+[](https://git-scm.com/docs/git-http-push#Documentation/git-http-push.txt---force)--force
 
-[](https://git-scm.com/docs/git-http-push#Documentation/git-http-push.txt---verbose)--verbose 
-    
-Report the list of objects being walked locally and the list of objects successfully sent to the remote repository. 
+Usually, the command refuses to update a remote ref that is not an ancestor of the local ref used to overwrite it. This flag disables the check. What this means is that the remote repository can lose commits; use it with care.
 
-[](https://git-scm.com/docs/git-http-push#Documentation/git-http-push.txt--d)-d 
+[](https://git-scm.com/docs/git-http-push#Documentation/git-http-push.txt---dry-run)--dry-run
+
+Do everything except actually send the updates.
+
+[](https://git-scm.com/docs/git-http-push#Documentation/git-http-push.txt---verbose)--verbose
+
+Report the list of objects being walked locally and the list of objects successfully sent to the remote repository.
+
+[](https://git-scm.com/docs/git-http-push#Documentation/git-http-push.txt--d)-d
 
 
-[](https://git-scm.com/docs/git-http-push#Documentation/git-http-push.txt--D)-D 
-    
+[](https://git-scm.com/docs/git-http-push#Documentation/git-http-push.txt--D)-D
+
 Remove <ref> from remote repository. The specified branch cannot be the remote HEAD. If -d is specified, the following other conditions must also be met:
   * Remote HEAD must resolve to an object that exists locally
   * Specified branch resolves to an object that exists locally
@@ -230,8 +230,8 @@ Remove <ref> from remote repository. The specified branch cannot be the remote H
 
 
 
-[](https://git-scm.com/docs/git-http-push#Documentation/git-http-push.txt-ref)<ref>…​ 
-    
+[](https://git-scm.com/docs/git-http-push#Documentation/git-http-push.txt-ref)<ref>…​
+
 The remote refs to update.
 ##  [](https://git-scm.com/docs/git-http-push#_specifying_the_refs)SPECIFYING THE REFS
 A _< ref>_ specification can be either a single pattern, or a pair of such patterns separated by a colon ":" (this means that a ref name cannot have a colon in it). A single pattern _< name>_ is just a shorthand for _< name>:<name>_.
@@ -248,6 +248,6 @@ Optionally, a <ref> parameter can be prefixed with a plus _+_ sign to disable th
 ##  [](https://git-scm.com/docs/git-http-push#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### http-push
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

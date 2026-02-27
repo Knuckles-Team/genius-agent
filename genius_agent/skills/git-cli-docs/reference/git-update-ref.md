@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-update-ref#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-update-ref#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-update-ref#_description)
@@ -33,8 +33,8 @@ Localized versions of **git-update-ref** manual
   3. [українська мова ](https://git-scm.com/docs/git-update-ref/uk)
   4. [简体中文 ](https://git-scm.com/docs/git-update-ref/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-update-ref)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -263,58 +263,58 @@ abort NUL
 ```
 
 In this format, use 40 "0" to specify a zero value, and use the empty string to specify a missing value.
-In either format, values can be specified in any form that Git recognizes as an object name. Commands in any other format or a repeated <ref> produce an error. Command meanings are: 
+In either format, values can be specified in any form that Git recognizes as an object name. Commands in any other format or a repeated <ref> produce an error. Command meanings are:
 
-[](https://git-scm.com/docs/git-update-ref#Documentation/git-update-ref.txt-update)update 
-    
-Set <ref> to <new-oid> after verifying <old-oid>, if given. Specify a zero <new-oid> to ensure the ref does not exist after the update and/or a zero <old-oid> to make sure the ref does not exist before the update. 
+[](https://git-scm.com/docs/git-update-ref#Documentation/git-update-ref.txt-update)update
 
-[](https://git-scm.com/docs/git-update-ref#Documentation/git-update-ref.txt-create)create 
-    
-Create <ref> with <new-oid> after verifying that it does not exist. The given <new-oid> may not be zero. 
+Set <ref> to <new-oid> after verifying <old-oid>, if given. Specify a zero <new-oid> to ensure the ref does not exist after the update and/or a zero <old-oid> to make sure the ref does not exist before the update.
 
-[](https://git-scm.com/docs/git-update-ref#Documentation/git-update-ref.txt-delete)delete 
-    
-Delete <ref> after verifying that it exists with <old-oid>, if given. If given, <old-oid> may not be zero. 
+[](https://git-scm.com/docs/git-update-ref#Documentation/git-update-ref.txt-create)create
 
-[](https://git-scm.com/docs/git-update-ref#Documentation/git-update-ref.txt-symref-update)symref-update 
-    
-Set <ref> to <new-target> after verifying <old-target> or <old-oid>, if given. Specify a zero <old-oid> to ensure that the ref does not exist before the update. 
+Create <ref> with <new-oid> after verifying that it does not exist. The given <new-oid> may not be zero.
 
-[](https://git-scm.com/docs/git-update-ref#Documentation/git-update-ref.txt-verify)verify 
-    
-Verify <ref> against <old-oid> but do not change it. If <old-oid> is zero or missing, the ref must not exist. 
+[](https://git-scm.com/docs/git-update-ref#Documentation/git-update-ref.txt-delete)delete
 
-[](https://git-scm.com/docs/git-update-ref#Documentation/git-update-ref.txt-symref-create)symref-create 
-    
-Create symbolic ref <ref> with <new-target> after verifying that it does not exist. 
+Delete <ref> after verifying that it exists with <old-oid>, if given. If given, <old-oid> may not be zero.
 
-[](https://git-scm.com/docs/git-update-ref#Documentation/git-update-ref.txt-symref-delete)symref-delete 
-    
-Delete <ref> after verifying that it exists with <old-target>, if given. 
+[](https://git-scm.com/docs/git-update-ref#Documentation/git-update-ref.txt-symref-update)symref-update
 
-[](https://git-scm.com/docs/git-update-ref#Documentation/git-update-ref.txt-symref-verify)symref-verify 
-    
-Verify symbolic <ref> against <old-target> but do not change it. If <old-target> is missing, the ref must not exist. Can only be used in `no-deref` mode. 
+Set <ref> to <new-target> after verifying <old-target> or <old-oid>, if given. Specify a zero <old-oid> to ensure that the ref does not exist before the update.
 
-[](https://git-scm.com/docs/git-update-ref#Documentation/git-update-ref.txt-option)option 
-    
-Modify the behavior of the next command naming a <ref>. The only valid option is `no-deref` to avoid dereferencing a symbolic ref. 
+[](https://git-scm.com/docs/git-update-ref#Documentation/git-update-ref.txt-verify)verify
 
-[](https://git-scm.com/docs/git-update-ref#Documentation/git-update-ref.txt-start)start 
-    
-Start a transaction. In contrast to a non-transactional session, a transaction will automatically abort if the session ends without an explicit commit. This command may create a new empty transaction when the current one has been committed or aborted already. 
+Verify <ref> against <old-oid> but do not change it. If <old-oid> is zero or missing, the ref must not exist.
 
-[](https://git-scm.com/docs/git-update-ref#Documentation/git-update-ref.txt-prepare)prepare 
-    
-Prepare to commit the transaction. This will create lock files for all queued reference updates. If one reference could not be locked, the transaction will be aborted. 
+[](https://git-scm.com/docs/git-update-ref#Documentation/git-update-ref.txt-symref-create)symref-create
 
-[](https://git-scm.com/docs/git-update-ref#Documentation/git-update-ref.txt-commit)commit 
-    
-Commit all reference updates queued for the transaction, ending the transaction. 
+Create symbolic ref <ref> with <new-target> after verifying that it does not exist.
 
-[](https://git-scm.com/docs/git-update-ref#Documentation/git-update-ref.txt-abort)abort 
-    
+[](https://git-scm.com/docs/git-update-ref#Documentation/git-update-ref.txt-symref-delete)symref-delete
+
+Delete <ref> after verifying that it exists with <old-target>, if given.
+
+[](https://git-scm.com/docs/git-update-ref#Documentation/git-update-ref.txt-symref-verify)symref-verify
+
+Verify symbolic <ref> against <old-target> but do not change it. If <old-target> is missing, the ref must not exist. Can only be used in `no-deref` mode.
+
+[](https://git-scm.com/docs/git-update-ref#Documentation/git-update-ref.txt-option)option
+
+Modify the behavior of the next command naming a <ref>. The only valid option is `no-deref` to avoid dereferencing a symbolic ref.
+
+[](https://git-scm.com/docs/git-update-ref#Documentation/git-update-ref.txt-start)start
+
+Start a transaction. In contrast to a non-transactional session, a transaction will automatically abort if the session ends without an explicit commit. This command may create a new empty transaction when the current one has been committed or aborted already.
+
+[](https://git-scm.com/docs/git-update-ref#Documentation/git-update-ref.txt-prepare)prepare
+
+Prepare to commit the transaction. This will create lock files for all queued reference updates. If one reference could not be locked, the transaction will be aborted.
+
+[](https://git-scm.com/docs/git-update-ref#Documentation/git-update-ref.txt-commit)commit
+
+Commit all reference updates queued for the transaction, ending the transaction.
+
+[](https://git-scm.com/docs/git-update-ref#Documentation/git-update-ref.txt-abort)abort
+
 Abort the transaction, releasing all locks if the transaction is in prepared state.
 If all <ref>s can be locked with matching <old-oid>s simultaneously, all modifications are performed. Otherwise, no modifications are performed. Note that while each individual <ref> is updated or deleted atomically, a concurrent reader may still see a subset of the modifications.
 ##  [](https://git-scm.com/docs/git-update-ref#_logging_updates)LOGGING UPDATES
@@ -339,6 +339,6 @@ This command follows **real** symlinks only if they start with "refs/": otherwis
 ##  [](https://git-scm.com/docs/git-update-ref#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### update-ref
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-fetch-pack#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-fetch-pack#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-fetch-pack#_description)
@@ -33,8 +33,8 @@ Localized versions of **git-fetch-pack** manual
   4. [українська мова ](https://git-scm.com/docs/git-fetch-pack/uk)
   5. [简体中文 ](https://git-scm.com/docs/git-fetch-pack/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-fetch-pack)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -211,85 +211,85 @@ _git fetch-pack_ [--all] [--quiet|-q] [--keep|-k] [--thin] [--include-tag]
 Usually you would want to use _git fetch_ , which is a higher level wrapper of this command, instead.
 Invokes _git-upload-pack_ on a possibly remote repository and asks it to send objects missing from this repository, to update the named heads. The list of commits available locally is found out by scanning the local refs/ hierarchy and sent to _git-upload-pack_ running on the other end.
 This command degenerates to download everything to complete the asked refs from the remote side when the local side does not have a common ancestor commit.
-##  [](https://git-scm.com/docs/git-fetch-pack#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-fetch-pack#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-fetch-pack#Documentation/git-fetch-pack.txt---all)--all 
-    
-Fetch all remote refs. 
+[](https://git-scm.com/docs/git-fetch-pack#Documentation/git-fetch-pack.txt---all)--all
 
-[](https://git-scm.com/docs/git-fetch-pack#Documentation/git-fetch-pack.txt---stdin)--stdin 
-    
+Fetch all remote refs.
+
+[](https://git-scm.com/docs/git-fetch-pack#Documentation/git-fetch-pack.txt---stdin)--stdin
+
 Take the list of refs from stdin, one per line. If there are refs specified on the command line in addition to this option, then the refs from stdin are processed after those on the command line.
-If `--stateless-rpc` is specified together with this option then the list of refs must be in packet format (pkt-line). Each ref must be in a separate packet, and the list must end with a flush packet. 
+If `--stateless-rpc` is specified together with this option then the list of refs must be in packet format (pkt-line). Each ref must be in a separate packet, and the list must end with a flush packet.
 
-[](https://git-scm.com/docs/git-fetch-pack#Documentation/git-fetch-pack.txt--q)-q 
-
-
-[](https://git-scm.com/docs/git-fetch-pack#Documentation/git-fetch-pack.txt---quiet)--quiet 
-    
-Pass `-q` flag to _git unpack-objects_ ; this makes the cloning process less verbose. 
-
-[](https://git-scm.com/docs/git-fetch-pack#Documentation/git-fetch-pack.txt--k)-k 
+[](https://git-scm.com/docs/git-fetch-pack#Documentation/git-fetch-pack.txt--q)-q
 
 
-[](https://git-scm.com/docs/git-fetch-pack#Documentation/git-fetch-pack.txt---keep)--keep 
-    
-Do not invoke _git unpack-objects_ on received data, but create a single packfile out of it instead, and store it in the object database. If provided twice then the pack is locked against repacking. 
+[](https://git-scm.com/docs/git-fetch-pack#Documentation/git-fetch-pack.txt---quiet)--quiet
 
-[](https://git-scm.com/docs/git-fetch-pack#Documentation/git-fetch-pack.txt---thin)--thin 
-    
-Fetch a "thin" pack, which records objects in deltified form based on objects not included in the pack to reduce network traffic. 
+Pass `-q` flag to _git unpack-objects_ ; this makes the cloning process less verbose.
 
-[](https://git-scm.com/docs/git-fetch-pack#Documentation/git-fetch-pack.txt---include-tag)--include-tag 
-    
-If the remote side supports it, annotated tags objects will be downloaded on the same connection as the other objects if the object the tag references is downloaded. The caller must otherwise determine the tags this option made available. 
+[](https://git-scm.com/docs/git-fetch-pack#Documentation/git-fetch-pack.txt--k)-k
 
-[](https://git-scm.com/docs/git-fetch-pack#Documentation/git-fetch-pack.txt---upload-packgit-upload-pack)--upload-pack=<git-upload-pack> 
-    
-Use this to specify the path to _git-upload-pack_ on the remote side, if it is not found on your $PATH. Installations of sshd ignores the user’s environment setup scripts for login shells (e.g. .bash_profile) and your privately installed git may not be found on the system default $PATH. Another workaround suggested is to set up your $PATH in ".bashrc", but this flag is for people who do not want to pay the overhead for non-interactive shells by having a lean .bashrc file (they set most of the things up in .bash_profile). 
 
-[](https://git-scm.com/docs/git-fetch-pack#Documentation/git-fetch-pack.txt---execgit-upload-pack)--exec=<git-upload-pack> 
-    
-Same as --upload-pack=<git-upload-pack>. 
+[](https://git-scm.com/docs/git-fetch-pack#Documentation/git-fetch-pack.txt---keep)--keep
 
-[](https://git-scm.com/docs/git-fetch-pack#Documentation/git-fetch-pack.txt---depthn)--depth=<n> 
-    
-Limit fetching to ancestor-chains not longer than n. _git-upload-pack_ treats the special depth 2147483647 as infinite even if there is an ancestor-chain that long. 
+Do not invoke _git unpack-objects_ on received data, but create a single packfile out of it instead, and store it in the object database. If provided twice then the pack is locked against repacking.
 
-[](https://git-scm.com/docs/git-fetch-pack#Documentation/git-fetch-pack.txt---shallow-sincedate)--shallow-since=<date> 
-    
-Deepen or shorten the history of a shallow repository to include all reachable commits after <date>. 
+[](https://git-scm.com/docs/git-fetch-pack#Documentation/git-fetch-pack.txt---thin)--thin
 
-[](https://git-scm.com/docs/git-fetch-pack#Documentation/git-fetch-pack.txt---shallow-excluderef)--shallow-exclude=<ref> 
-    
-Deepen or shorten the history of a shallow repository to exclude commits reachable from a specified remote branch or tag. This option can be specified multiple times. 
+Fetch a "thin" pack, which records objects in deltified form based on objects not included in the pack to reduce network traffic.
 
-[](https://git-scm.com/docs/git-fetch-pack#Documentation/git-fetch-pack.txt---deepen-relative)--deepen-relative 
-    
-Argument --depth specifies the number of commits from the current shallow boundary instead of from the tip of each remote branch history. 
+[](https://git-scm.com/docs/git-fetch-pack#Documentation/git-fetch-pack.txt---include-tag)--include-tag
 
-[](https://git-scm.com/docs/git-fetch-pack#Documentation/git-fetch-pack.txt---refetch)--refetch 
-    
-Skips negotiating commits with the server in order to fetch all matching objects. Use to reapply a new partial clone blob/tree filter. 
+If the remote side supports it, annotated tags objects will be downloaded on the same connection as the other objects if the object the tag references is downloaded. The caller must otherwise determine the tags this option made available.
 
-[](https://git-scm.com/docs/git-fetch-pack#Documentation/git-fetch-pack.txt---no-progress)--no-progress 
-    
-Do not show the progress. 
+[](https://git-scm.com/docs/git-fetch-pack#Documentation/git-fetch-pack.txt---upload-packgit-upload-pack)--upload-pack=<git-upload-pack>
 
-[](https://git-scm.com/docs/git-fetch-pack#Documentation/git-fetch-pack.txt---check-self-contained-and-connected)--check-self-contained-and-connected 
-    
-Output "connectivity-ok" if the received pack is self-contained and connected. 
+Use this to specify the path to _git-upload-pack_ on the remote side, if it is not found on your $PATH. Installations of sshd ignores the user’s environment setup scripts for login shells (e.g. .bash_profile) and your privately installed git may not be found on the system default $PATH. Another workaround suggested is to set up your $PATH in ".bashrc", but this flag is for people who do not want to pay the overhead for non-interactive shells by having a lean .bashrc file (they set most of the things up in .bash_profile).
 
-[](https://git-scm.com/docs/git-fetch-pack#Documentation/git-fetch-pack.txt--v)-v 
-    
-Run verbosely. 
+[](https://git-scm.com/docs/git-fetch-pack#Documentation/git-fetch-pack.txt---execgit-upload-pack)--exec=<git-upload-pack>
 
-[](https://git-scm.com/docs/git-fetch-pack#Documentation/git-fetch-pack.txt-repository)<repository> 
-    
-The URL to the remote repository. 
+Same as --upload-pack=<git-upload-pack>.
 
-[](https://git-scm.com/docs/git-fetch-pack#Documentation/git-fetch-pack.txt-refs)<refs>…​ 
-    
+[](https://git-scm.com/docs/git-fetch-pack#Documentation/git-fetch-pack.txt---depthn)--depth=<n>
+
+Limit fetching to ancestor-chains not longer than n. _git-upload-pack_ treats the special depth 2147483647 as infinite even if there is an ancestor-chain that long.
+
+[](https://git-scm.com/docs/git-fetch-pack#Documentation/git-fetch-pack.txt---shallow-sincedate)--shallow-since=<date>
+
+Deepen or shorten the history of a shallow repository to include all reachable commits after <date>.
+
+[](https://git-scm.com/docs/git-fetch-pack#Documentation/git-fetch-pack.txt---shallow-excluderef)--shallow-exclude=<ref>
+
+Deepen or shorten the history of a shallow repository to exclude commits reachable from a specified remote branch or tag. This option can be specified multiple times.
+
+[](https://git-scm.com/docs/git-fetch-pack#Documentation/git-fetch-pack.txt---deepen-relative)--deepen-relative
+
+Argument --depth specifies the number of commits from the current shallow boundary instead of from the tip of each remote branch history.
+
+[](https://git-scm.com/docs/git-fetch-pack#Documentation/git-fetch-pack.txt---refetch)--refetch
+
+Skips negotiating commits with the server in order to fetch all matching objects. Use to reapply a new partial clone blob/tree filter.
+
+[](https://git-scm.com/docs/git-fetch-pack#Documentation/git-fetch-pack.txt---no-progress)--no-progress
+
+Do not show the progress.
+
+[](https://git-scm.com/docs/git-fetch-pack#Documentation/git-fetch-pack.txt---check-self-contained-and-connected)--check-self-contained-and-connected
+
+Output "connectivity-ok" if the received pack is self-contained and connected.
+
+[](https://git-scm.com/docs/git-fetch-pack#Documentation/git-fetch-pack.txt--v)-v
+
+Run verbosely.
+
+[](https://git-scm.com/docs/git-fetch-pack#Documentation/git-fetch-pack.txt-repository)<repository>
+
+The URL to the remote repository.
+
+[](https://git-scm.com/docs/git-fetch-pack#Documentation/git-fetch-pack.txt-refs)<refs>…​
+
 The remote heads to update from. This is relative to $GIT_DIR (e.g. "HEAD", "refs/heads/master"). When unspecified, update from all heads the remote side has.
 If the remote has enabled the options `uploadpack.allowTipSHA1InWant`, `uploadpack.allowReachableSHA1InWant`, or `uploadpack.allowAnySHA1InWant`, they may alternatively be 40-hex sha1s present on the remote.
 ##  [](https://git-scm.com/docs/git-fetch-pack#_see_also)SEE ALSO
@@ -297,6 +297,6 @@ If the remote has enabled the options `uploadpack.allowTipSHA1InWant`, `uploadpa
 ##  [](https://git-scm.com/docs/git-fetch-pack#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### fetch-pack
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-cherry-pick#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-cherry-pick#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-cherry-pick#_description)
@@ -35,8 +35,8 @@ Localized versions of **git-cherry-pick** manual
   4. [українська мова ](https://git-scm.com/docs/git-cherry-pick/uk)
   5. [简体中文 ](https://git-scm.com/docs/git-cherry-pick/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-cherry-pick)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -231,164 +231,164 @@ When it is not obvious how to apply a change, the following happens:
 
 
 See [git-merge[1]](https://git-scm.com/docs/git-merge) for some hints on resolving such conflicts.
-##  [](https://git-scm.com/docs/git-cherry-pick#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-cherry-pick#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt-commit)<commit>…​ 
-    
-Commits to cherry-pick. For a more complete list of ways to spell commits, see [gitrevisions[7]](https://git-scm.com/docs/gitrevisions). Sets of commits can be passed but no traversal is done by default, as if the `--no-walk` option was specified, see [git-rev-list[1]](https://git-scm.com/docs/git-rev-list). Note that specifying a range will feed all <commit>…​ arguments to a single revision walk (see a later example that uses _maint master..next_). 
+[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt-commit)<commit>…​
 
-[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt--e)-e 
+Commits to cherry-pick. For a more complete list of ways to spell commits, see [gitrevisions[7]](https://git-scm.com/docs/gitrevisions). Sets of commits can be passed but no traversal is done by default, as if the `--no-walk` option was specified, see [git-rev-list[1]](https://git-scm.com/docs/git-rev-list). Note that specifying a range will feed all <commit>…​ arguments to a single revision walk (see a later example that uses _maint master..next_).
 
-
-[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt---edit)--edit 
-    
-With this option, _git cherry-pick_ will let you edit the commit message prior to committing. 
-
-[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt---cleanupmode)--cleanup=<mode> 
-    
-This option determines how the commit message will be cleaned up before being passed on to the commit machinery. See [git-commit[1]](https://git-scm.com/docs/git-commit) for more details. In particular, if the _< mode>_ is given a value of `scissors`, scissors will be appended to `MERGE_MSG` before being passed on in the case of a conflict. 
-
-[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt--x)-x 
-    
-When recording the commit, append a line that says "(cherry picked from commit …​)" to the original commit message in order to indicate which commit this change was cherry-picked from. This is done only for cherry picks without conflicts. Do not use this option if you are cherry-picking from your private branch because the information is useless to the recipient. If on the other hand you are cherry-picking between two publicly visible branches (e.g. backporting a fix to a maintenance branch for an older release from a development branch), adding this information can be useful. 
-
-[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt--r)-r 
-    
-It used to be that the command defaulted to do `-x` described above, and `-r` was to disable it. Now the default is not to do `-x` so this option is a no-op. 
-
-[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt--mparent-number)-m <parent-number> 
+[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt--e)-e
 
 
-[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt---mainlineparent-number)--mainline <parent-number> 
-    
-Usually you cannot cherry-pick a merge because you do not know which side of the merge should be considered the mainline. This option specifies the parent number (starting from 1) of the mainline and allows cherry-pick to replay the change relative to the specified parent. 
+[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt---edit)--edit
 
-[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt--n)-n 
+With this option, _git cherry-pick_ will let you edit the commit message prior to committing.
+
+[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt---cleanupmode)--cleanup=<mode>
+
+This option determines how the commit message will be cleaned up before being passed on to the commit machinery. See [git-commit[1]](https://git-scm.com/docs/git-commit) for more details. In particular, if the _< mode>_ is given a value of `scissors`, scissors will be appended to `MERGE_MSG` before being passed on in the case of a conflict.
+
+[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt--x)-x
+
+When recording the commit, append a line that says "(cherry picked from commit …​)" to the original commit message in order to indicate which commit this change was cherry-picked from. This is done only for cherry picks without conflicts. Do not use this option if you are cherry-picking from your private branch because the information is useless to the recipient. If on the other hand you are cherry-picking between two publicly visible branches (e.g. backporting a fix to a maintenance branch for an older release from a development branch), adding this information can be useful.
+
+[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt--r)-r
+
+It used to be that the command defaulted to do `-x` described above, and `-r` was to disable it. Now the default is not to do `-x` so this option is a no-op.
+
+[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt--mparent-number)-m <parent-number>
 
 
-[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt---no-commit)--no-commit 
-    
+[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt---mainlineparent-number)--mainline <parent-number>
+
+Usually you cannot cherry-pick a merge because you do not know which side of the merge should be considered the mainline. This option specifies the parent number (starting from 1) of the mainline and allows cherry-pick to replay the change relative to the specified parent.
+
+[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt--n)-n
+
+
+[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt---no-commit)--no-commit
+
 Usually the command automatically creates a sequence of commits. This flag applies the changes necessary to cherry-pick each named commit to your working tree and the index, without making any commit. In addition, when this option is used, your index does not have to match the HEAD commit. The cherry-pick is done against the beginning state of your index.
-This is useful when cherry-picking more than one commits' effect to your index in a row. 
+This is useful when cherry-picking more than one commits' effect to your index in a row.
 
-[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt--s)-s 
-
-
-[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt---signoff)--signoff 
-    
-Add a `Signed-off-by` trailer at the end of the commit message. See the signoff option in [git-commit[1]](https://git-scm.com/docs/git-commit) for more information. 
-
-[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt--Skeyid)-S[<keyid>] 
+[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt--s)-s
 
 
-[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt---gpg-signkeyid)--gpg-sign[=<keyid>] 
+[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt---signoff)--signoff
+
+Add a `Signed-off-by` trailer at the end of the commit message. See the signoff option in [git-commit[1]](https://git-scm.com/docs/git-commit) for more information.
+
+[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt--Skeyid)-S[<keyid>]
 
 
-[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt---no-gpg-sign)--no-gpg-sign 
-    
-GPG-sign commits. The `keyid` argument is optional and defaults to the committer identity; if specified, it must be stuck to the option without a space. `--no-gpg-sign` is useful to countermand both `commit.gpgSign` configuration variable, and earlier `--gpg-sign`. 
+[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt---gpg-signkeyid)--gpg-sign[=<keyid>]
 
-[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt---ff)--ff 
-    
-If the current HEAD is the same as the parent of the cherry-pick’ed commit, then a fast forward to this commit will be performed. 
 
-[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt---allow-empty)--allow-empty 
-    
-By default, cherry-picking an empty commit will fail, indicating that an explicit invocation of `git` `commit` `--allow-empty` is required. This option overrides that behavior, allowing empty commits to be preserved automatically in a cherry-pick. Note that when "--ff" is in effect, empty commits that meet the "fast-forward" requirement will be kept even without this option. Note also, that use of this option only keeps commits that were initially empty (i.e. the commit recorded the same tree as its parent). Commits which are made empty due to a previous commit will cause the cherry-pick to fail. To force the inclusion of those commits, use `--empty=keep`. 
+[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt---no-gpg-sign)--no-gpg-sign
 
-[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt---allow-empty-message)--allow-empty-message 
-    
-By default, cherry-picking a commit with an empty message will fail. This option overrides that behavior, allowing commits with empty messages to be cherry picked. 
+GPG-sign commits. The `keyid` argument is optional and defaults to the committer identity; if specified, it must be stuck to the option without a space. `--no-gpg-sign` is useful to countermand both `commit.gpgSign` configuration variable, and earlier `--gpg-sign`.
 
-[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt---emptydropkeepstop)--empty=(drop|keep|stop) 
-    
-How to handle commits being cherry-picked that are redundant with changes already in the current history. 
+[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt---ff)--ff
 
-[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt-drop)`drop` 
-    
-The commit will be dropped. 
+If the current HEAD is the same as the parent of the cherry-pick’ed commit, then a fast forward to this commit will be performed.
 
-[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt-keep)`keep` 
-    
-The commit will be kept. Implies `--allow-empty`. 
+[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt---allow-empty)--allow-empty
 
-[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt-stop)`stop` 
-    
+By default, cherry-picking an empty commit will fail, indicating that an explicit invocation of `git` `commit` `--allow-empty` is required. This option overrides that behavior, allowing empty commits to be preserved automatically in a cherry-pick. Note that when "--ff" is in effect, empty commits that meet the "fast-forward" requirement will be kept even without this option. Note also, that use of this option only keeps commits that were initially empty (i.e. the commit recorded the same tree as its parent). Commits which are made empty due to a previous commit will cause the cherry-pick to fail. To force the inclusion of those commits, use `--empty=keep`.
+
+[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt---allow-empty-message)--allow-empty-message
+
+By default, cherry-picking a commit with an empty message will fail. This option overrides that behavior, allowing commits with empty messages to be cherry picked.
+
+[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt---emptydropkeepstop)--empty=(drop|keep|stop)
+
+How to handle commits being cherry-picked that are redundant with changes already in the current history.
+
+[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt-drop)`drop`
+
+The commit will be dropped.
+
+[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt-keep)`keep`
+
+The commit will be kept. Implies `--allow-empty`.
+
+[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt-stop)`stop`
+
 The cherry-pick will stop when the commit is applied, allowing you to examine the commit. This is the default behavior.
-Note that `--empty=drop` and `--empty=stop` only specify how to handle a commit that was not initially empty, but rather became empty due to a previous commit. Commits that were initially empty will still cause the cherry-pick to fail unless one of `--empty=keep` or `--allow-empty` are specified. 
+Note that `--empty=drop` and `--empty=stop` only specify how to handle a commit that was not initially empty, but rather became empty due to a previous commit. Commits that were initially empty will still cause the cherry-pick to fail unless one of `--empty=keep` or `--allow-empty` are specified.
 
-[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt---keep-redundant-commits)--keep-redundant-commits 
-    
-Deprecated synonym for `--empty=keep`. 
+[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt---keep-redundant-commits)--keep-redundant-commits
 
-[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt---strategystrategy)--strategy=<strategy> 
-    
-Use the given merge strategy. Should only be used once. See the MERGE STRATEGIES section in [git-merge[1]](https://git-scm.com/docs/git-merge) for details. 
+Deprecated synonym for `--empty=keep`.
 
-[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt--Xoption)-X<option> 
+[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt---strategystrategy)--strategy=<strategy>
 
+Use the given merge strategy. Should only be used once. See the MERGE STRATEGIES section in [git-merge[1]](https://git-scm.com/docs/git-merge) for details.
 
-[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt---strategy-optionoption)--strategy-option=<option> 
-    
-Pass the merge strategy-specific option through to the merge strategy. See [git-merge[1]](https://git-scm.com/docs/git-merge) for details. 
-
-[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt---rerere-autoupdate)`--rerere-autoupdate` 
+[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt--Xoption)-X<option>
 
 
-[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt---no-rerere-autoupdate)`--no-rerere-autoupdate` 
-    
+[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt---strategy-optionoption)--strategy-option=<option>
+
+Pass the merge strategy-specific option through to the merge strategy. See [git-merge[1]](https://git-scm.com/docs/git-merge) for details.
+
+[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt---rerere-autoupdate)`--rerere-autoupdate`
+
+
+[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt---no-rerere-autoupdate)`--no-rerere-autoupdate`
+
 After the rerere mechanism reuses a recorded resolution on the current conflict to update the files in the working tree, allow it to also update the index with the result of resolution. `--no-rerere-autoupdate` is a good way to double-check what `rerere` did and catch potential mismerges, before committing the result to the index with a separate `git` `add`.
-##  [](https://git-scm.com/docs/git-cherry-pick#_sequencer_subcommands)SEQUENCER SUBCOMMANDS 
+##  [](https://git-scm.com/docs/git-cherry-pick#_sequencer_subcommands)SEQUENCER SUBCOMMANDS
 
-[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt---continue)--continue 
-    
-Continue the operation in progress using the information in `.git/sequencer`. Can be used to continue after resolving conflicts in a failed cherry-pick or revert. 
+[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt---continue)--continue
 
-[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt---skip)--skip 
-    
-Skip the current commit and continue with the rest of the sequence. 
+Continue the operation in progress using the information in `.git/sequencer`. Can be used to continue after resolving conflicts in a failed cherry-pick or revert.
 
-[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt---quit)--quit 
-    
-Forget about the current operation in progress. Can be used to clear the sequencer state after a failed cherry-pick or revert. 
+[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt---skip)--skip
 
-[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt---abort)--abort 
-    
+Skip the current commit and continue with the rest of the sequence.
+
+[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt---quit)--quit
+
+Forget about the current operation in progress. Can be used to clear the sequencer state after a failed cherry-pick or revert.
+
+[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt---abort)--abort
+
 Cancel the operation and return to the pre-sequence state.
-##  [](https://git-scm.com/docs/git-cherry-pick#_examples)EXAMPLES 
+##  [](https://git-scm.com/docs/git-cherry-pick#_examples)EXAMPLES
 
-[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt-gitcherry-pickmaster)`git` `cherry-pick` `master` 
-    
-Apply the change introduced by the commit at the tip of the master branch and create a new commit with this change. 
+[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt-gitcherry-pickmaster)`git` `cherry-pick` `master`
 
-[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt-gitcherry-pickmaster-1)`git` `cherry-pick` `..master` 
+Apply the change introduced by the commit at the tip of the master branch and create a new commit with this change.
 
-
-[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt-gitcherry-pickHEADmaster)`git` `cherry-pick` `^HEAD` `master` 
-    
-Apply the changes introduced by all commits that are ancestors of master but not of HEAD to produce new commits. 
-
-[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt-gitcherry-pickmaintnextmaster)`git` `cherry-pick` `maint` `next` `^master` 
+[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt-gitcherry-pickmaster-1)`git` `cherry-pick` `..master`
 
 
-[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt-gitcherry-pickmaintmasternext)`git` `cherry-pick` `maint` `master..next` 
-    
-Apply the changes introduced by all commits that are ancestors of maint or next, but not master or any of its ancestors. Note that the latter does not mean `maint` and everything between `master` and `next`; specifically, `maint` will not be used if it is included in `master`. 
+[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt-gitcherry-pickHEADmaster)`git` `cherry-pick` `^HEAD` `master`
 
-[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt-gitcherry-pickmaster4master2)`git` `cherry-pick` `master~4` `master~2` 
-    
-Apply the changes introduced by the fifth and third last commits pointed to by master and create 2 new commits with these changes. 
+Apply the changes introduced by all commits that are ancestors of master but not of HEAD to produce new commits.
 
-[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt-gitcherry-pick-nmaster1next)`git` `cherry-pick` `-n` `master~1` `next` 
-    
-Apply to the working tree and the index the changes introduced by the second last commit pointed to by master and by the last commit pointed to by next, but do not create any commit with these changes. 
+[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt-gitcherry-pickmaintnextmaster)`git` `cherry-pick` `maint` `next` `^master`
 
-[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt-gitcherry-pick--ffnext)`git` `cherry-pick` `--ff` `..next` 
-    
-If history is linear and HEAD is an ancestor of next, update the working tree and advance the HEAD pointer to match next. Otherwise, apply the changes introduced by those commits that are in next but not HEAD to the current branch, creating a new commit for each new change. 
 
-[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt-gitrev-list--reversemaster--READMEgitcherry-pick-n--stdin)`git` `rev-list` `--reverse` `master` `--` `README` | `git` `cherry-pick` `-n` `--stdin` 
-    
+[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt-gitcherry-pickmaintmasternext)`git` `cherry-pick` `maint` `master..next`
+
+Apply the changes introduced by all commits that are ancestors of maint or next, but not master or any of its ancestors. Note that the latter does not mean `maint` and everything between `master` and `next`; specifically, `maint` will not be used if it is included in `master`.
+
+[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt-gitcherry-pickmaster4master2)`git` `cherry-pick` `master~4` `master~2`
+
+Apply the changes introduced by the fifth and third last commits pointed to by master and create 2 new commits with these changes.
+
+[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt-gitcherry-pick-nmaster1next)`git` `cherry-pick` `-n` `master~1` `next`
+
+Apply to the working tree and the index the changes introduced by the second last commit pointed to by master and by the last commit pointed to by next, but do not create any commit with these changes.
+
+[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt-gitcherry-pick--ffnext)`git` `cherry-pick` `--ff` `..next`
+
+If history is linear and HEAD is an ancestor of next, update the working tree and advance the HEAD pointer to match next. Otherwise, apply the changes introduced by those commits that are in next but not HEAD to the current branch, creating a new commit for each new change.
+
+[](https://git-scm.com/docs/git-cherry-pick#Documentation/git-cherry-pick.txt-gitrev-list--reversemaster--READMEgitcherry-pick-n--stdin)`git` `rev-list` `--reverse` `master` `--` `README` | `git` `cherry-pick` `-n` `--stdin`
+
 Apply the changes introduced by all commits on the master branch that touched README to the working tree and index, so the result can be inspected and made into a single new commit if suitable.
 The following sequence attempts to backport a patch, bails out because the code the patch applies to has changed too much, and then tries again, this time exercising more care about matching up context lines.
 ```
@@ -409,6 +409,6 @@ $ git cherry-pick -Xpatience topic^  **(4)**
 ##  [](https://git-scm.com/docs/git-cherry-pick#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### cherry-pick
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

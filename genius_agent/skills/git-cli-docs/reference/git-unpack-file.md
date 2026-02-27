@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-unpack-file#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-unpack-file#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-unpack-file#_description)
@@ -32,8 +32,8 @@ Localized versions of **git-unpack-file** manual
   4. [українська мова ](https://git-scm.com/docs/git-unpack-file/uk)
   5. [简体中文 ](https://git-scm.com/docs/git-unpack-file/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-unpack-file)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -190,14 +190,14 @@ _git unpack-file_ <blob>
 
 ##  [](https://git-scm.com/docs/git-unpack-file#_description)DESCRIPTION
 Creates a file holding the contents of the blob specified by sha1. It returns the name of the temporary file in the following format: .merge_file_XXXXX
-##  [](https://git-scm.com/docs/git-unpack-file#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-unpack-file#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-unpack-file#Documentation/git-unpack-file.txt-blob)<blob> 
-    
+[](https://git-scm.com/docs/git-unpack-file#Documentation/git-unpack-file.txt-blob)<blob>
+
 Must be a blob id
 ##  [](https://git-scm.com/docs/git-unpack-file#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### unpack-file
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

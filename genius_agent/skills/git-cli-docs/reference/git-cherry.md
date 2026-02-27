@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-cherry#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-cherry#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-cherry#_description)
@@ -35,8 +35,8 @@ Localized versions of **git-cherry** manual
   5. [українська мова ](https://git-scm.com/docs/git-cherry/uk)
   6. [简体中文 ](https://git-scm.com/docs/git-cherry/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-cherry)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -195,22 +195,22 @@ _git cherry_ [-v] [<upstream> [<head> [<limit>]]]
 Determine whether there are commits in _< head>_`..`_< upstream>_ that are equivalent to those in the range _< limit>_`..`_< head>_.
 The equivalence test is based on the diff, after removing whitespace and line numbers. git-cherry therefore detects when commits have been "copied" by means of [git-cherry-pick[1]](https://git-scm.com/docs/git-cherry-pick), [git-am[1]](https://git-scm.com/docs/git-am) or [git-rebase[1]](https://git-scm.com/docs/git-rebase).
 Outputs the SHA1 of every commit in _< limit>_`..`_< head>_, prefixed with `-` for commits that have an equivalent in <upstream>, and `+` for commits that do not.
-##  [](https://git-scm.com/docs/git-cherry#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-cherry#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-cherry#Documentation/git-cherry.txt--v)-v 
-    
-Show the commit subjects next to the SHA1s. 
+[](https://git-scm.com/docs/git-cherry#Documentation/git-cherry.txt--v)-v
 
-[](https://git-scm.com/docs/git-cherry#Documentation/git-cherry.txt-upstream)<upstream> 
-    
-Upstream branch to search for equivalent commits. Defaults to the upstream branch of HEAD. 
+Show the commit subjects next to the SHA1s.
 
-[](https://git-scm.com/docs/git-cherry#Documentation/git-cherry.txt-head)<head> 
-    
-Working branch; defaults to HEAD. 
+[](https://git-scm.com/docs/git-cherry#Documentation/git-cherry.txt-upstream)<upstream>
 
-[](https://git-scm.com/docs/git-cherry#Documentation/git-cherry.txt-limit)<limit> 
-    
+Upstream branch to search for equivalent commits. Defaults to the upstream branch of HEAD.
+
+[](https://git-scm.com/docs/git-cherry#Documentation/git-cherry.txt-head)<head>
+
+Working branch; defaults to HEAD.
+
+[](https://git-scm.com/docs/git-cherry#Documentation/git-cherry.txt-limit)<limit>
+
 Do not report commits up to (and including) limit.
 ##  [](https://git-scm.com/docs/git-cherry#_examples)EXAMPLES
 ###  [](https://git-scm.com/docs/git-cherry#_patch_workflows)Patch workflows
@@ -285,6 +285,6 @@ $ git cherry origin/master topic base
 ##  [](https://git-scm.com/docs/git-cherry#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### cherry
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

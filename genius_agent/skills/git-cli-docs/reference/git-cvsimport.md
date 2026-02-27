@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-cvsimport#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-cvsimport#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-cvsimport#_description)
@@ -34,8 +34,8 @@ Localized versions of **git-cvsimport** manual
   4. [українська мова ](https://git-scm.com/docs/git-cvsimport/uk)
   5. [简体中文 ](https://git-scm.com/docs/git-cvsimport/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-cvsimport)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -210,86 +210,86 @@ Splitting the CVS log into patch sets is done by _cvsps_. At least version 2.1 i
 **WARNING:** for certain situations the import leads to incorrect results. Please see the section [ISSUES](https://git-scm.com/docs/git-cvsimport#issues) for further reference.
 You should **never** do any work of your own on the branches that are created by _git cvsimport_. By default initial import will create and populate a "master" branch from the CVS repository’s main branch which you’re free to work with; after that, you need to _git merge_ incremental imports, or any CVS branches, yourself. It is advisable to specify a named remote via -r to separate and protect the incoming branches.
 If you intend to set up a shared public repository that all developers can read/write, or if you want to use [git-cvsserver[1]](https://git-scm.com/docs/git-cvsserver), then you probably want to make a bare clone of the imported repository, and use the clone as the shared repository. See [gitcvs-migration[7]](https://git-scm.com/docs/gitcvs-migration).
-##  [](https://git-scm.com/docs/git-cvsimport#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-cvsimport#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-cvsimport#Documentation/git-cvsimport.txt--v)-v 
-    
-Verbosity: let _cvsimport_ report what it is doing. 
+[](https://git-scm.com/docs/git-cvsimport#Documentation/git-cvsimport.txt--v)-v
 
-[](https://git-scm.com/docs/git-cvsimport#Documentation/git-cvsimport.txt--dCVSROOT)-d <CVSROOT> 
-    
-The root of the CVS archive. May be local (a simple path) or remote; currently, only the :local:, :ext: and :pserver: access methods are supported. If not given, _git cvsimport_ will try to read it from `CVS/Root`. If no such file exists, it checks for the `CVSROOT` environment variable. 
+Verbosity: let _cvsimport_ report what it is doing.
 
-[](https://git-scm.com/docs/git-cvsimport#Documentation/git-cvsimport.txt-CVS-module)<CVS-module> 
-    
-The CVS module you want to import. Relative to <CVSROOT>. If not given, _git cvsimport_ tries to read it from `CVS/Repository`. 
+[](https://git-scm.com/docs/git-cvsimport#Documentation/git-cvsimport.txt--dCVSROOT)-d <CVSROOT>
 
-[](https://git-scm.com/docs/git-cvsimport#Documentation/git-cvsimport.txt--Ctarget-dir)-C <target-dir> 
-    
-The Git repository to import to. If the directory doesn’t exist, it will be created. Default is the current directory. 
+The root of the CVS archive. May be local (a simple path) or remote; currently, only the :local:, :ext: and :pserver: access methods are supported. If not given, _git cvsimport_ will try to read it from `CVS/Root`. If no such file exists, it checks for the `CVSROOT` environment variable.
 
-[](https://git-scm.com/docs/git-cvsimport#Documentation/git-cvsimport.txt--rremote)-r <remote> 
-    
-The Git remote to import this CVS repository into. Moves all CVS branches into remotes/<remote>/<branch> akin to the way _git clone_ uses _origin_ by default. 
+[](https://git-scm.com/docs/git-cvsimport#Documentation/git-cvsimport.txt-CVS-module)<CVS-module>
 
-[](https://git-scm.com/docs/git-cvsimport#Documentation/git-cvsimport.txt--obranch-for-HEAD)-o <branch-for-HEAD> 
-    
+The CVS module you want to import. Relative to <CVSROOT>. If not given, _git cvsimport_ tries to read it from `CVS/Repository`.
+
+[](https://git-scm.com/docs/git-cvsimport#Documentation/git-cvsimport.txt--Ctarget-dir)-C <target-dir>
+
+The Git repository to import to. If the directory doesn’t exist, it will be created. Default is the current directory.
+
+[](https://git-scm.com/docs/git-cvsimport#Documentation/git-cvsimport.txt--rremote)-r <remote>
+
+The Git remote to import this CVS repository into. Moves all CVS branches into remotes/<remote>/<branch> akin to the way _git clone_ uses _origin_ by default.
+
+[](https://git-scm.com/docs/git-cvsimport#Documentation/git-cvsimport.txt--obranch-for-HEAD)-o <branch-for-HEAD>
+
 When no remote is specified (via -r) the `HEAD` branch from CVS is imported to the _origin_ branch within the Git repository, as `HEAD` already has a special meaning for Git. When a remote is specified the `HEAD` branch is named remotes/<remote>/master mirroring _git clone_ behaviour. Use this option if you want to import into a different branch.
-Use _-o master_ for continuing an import that was initially done by the old cvs2git tool. 
+Use _-o master_ for continuing an import that was initially done by the old cvs2git tool.
 
-[](https://git-scm.com/docs/git-cvsimport#Documentation/git-cvsimport.txt--i)-i 
-    
-Import-only: don’t perform a checkout after importing. This option ensures the working directory and index remain untouched and will not create them if they do not exist. 
+[](https://git-scm.com/docs/git-cvsimport#Documentation/git-cvsimport.txt--i)-i
 
-[](https://git-scm.com/docs/git-cvsimport#Documentation/git-cvsimport.txt--k)-k 
-    
-Kill keywords: will extract files with _-kk_ from the CVS archive to avoid noisy changesets. Highly recommended, but off by default to preserve compatibility with early imported trees. 
+Import-only: don’t perform a checkout after importing. This option ensures the working directory and index remain untouched and will not create them if they do not exist.
 
-[](https://git-scm.com/docs/git-cvsimport#Documentation/git-cvsimport.txt--u)-u 
-    
-Convert underscores in tag and branch names to dots. 
+[](https://git-scm.com/docs/git-cvsimport#Documentation/git-cvsimport.txt--k)-k
 
-[](https://git-scm.com/docs/git-cvsimport#Documentation/git-cvsimport.txt--ssubst)-s <subst> 
-    
-Substitute the character "/" in branch names with <subst> 
+Kill keywords: will extract files with _-kk_ from the CVS archive to avoid noisy changesets. Highly recommended, but off by default to preserve compatibility with early imported trees.
 
-[](https://git-scm.com/docs/git-cvsimport#Documentation/git-cvsimport.txt--poptions-for-cvsps)-p <options-for-cvsps> 
-    
+[](https://git-scm.com/docs/git-cvsimport#Documentation/git-cvsimport.txt--u)-u
+
+Convert underscores in tag and branch names to dots.
+
+[](https://git-scm.com/docs/git-cvsimport#Documentation/git-cvsimport.txt--ssubst)-s <subst>
+
+Substitute the character "/" in branch names with <subst>
+
+[](https://git-scm.com/docs/git-cvsimport#Documentation/git-cvsimport.txt--poptions-for-cvsps)-p <options-for-cvsps>
+
 Additional options for cvsps. The options `-u` and _-A_ are implicit and should not be used here.
-If you need to pass multiple options, separate them with a comma. 
+If you need to pass multiple options, separate them with a comma.
 
-[](https://git-scm.com/docs/git-cvsimport#Documentation/git-cvsimport.txt--zfuzz)-z <fuzz> 
-    
-Pass the timestamp fuzz factor to cvsps, in seconds. If unset, cvsps defaults to 300s. 
+[](https://git-scm.com/docs/git-cvsimport#Documentation/git-cvsimport.txt--zfuzz)-z <fuzz>
 
-[](https://git-scm.com/docs/git-cvsimport#Documentation/git-cvsimport.txt--Pcvsps-output-file)-P <cvsps-output-file> 
-    
-Instead of calling cvsps, read the provided cvsps output file. Useful for debugging or when cvsps is being handled outside cvsimport. 
+Pass the timestamp fuzz factor to cvsps, in seconds. If unset, cvsps defaults to 300s.
 
-[](https://git-scm.com/docs/git-cvsimport#Documentation/git-cvsimport.txt--m)-m 
-    
-Attempt to detect merges based on the commit message. This option will enable default regexes that try to capture the source branch name from the commit message. 
+[](https://git-scm.com/docs/git-cvsimport#Documentation/git-cvsimport.txt--Pcvsps-output-file)-P <cvsps-output-file>
 
-[](https://git-scm.com/docs/git-cvsimport#Documentation/git-cvsimport.txt--Mregex)-M <regex> 
-    
+Instead of calling cvsps, read the provided cvsps output file. Useful for debugging or when cvsps is being handled outside cvsimport.
+
+[](https://git-scm.com/docs/git-cvsimport#Documentation/git-cvsimport.txt--m)-m
+
+Attempt to detect merges based on the commit message. This option will enable default regexes that try to capture the source branch name from the commit message.
+
+[](https://git-scm.com/docs/git-cvsimport#Documentation/git-cvsimport.txt--Mregex)-M <regex>
+
 Attempt to detect merges based on the commit message with a custom regex. It can be used with `-m` to enable the default regexes as well. You must escape forward slashes.
 The regex must capture the source branch name in $1.
-This option can be used several times to provide several detection regexes. 
+This option can be used several times to provide several detection regexes.
 
-[](https://git-scm.com/docs/git-cvsimport#Documentation/git-cvsimport.txt--Sregex)-S <regex> 
-    
-Skip paths matching the regex. 
+[](https://git-scm.com/docs/git-cvsimport#Documentation/git-cvsimport.txt--Sregex)-S <regex>
 
-[](https://git-scm.com/docs/git-cvsimport#Documentation/git-cvsimport.txt--a)-a 
-    
-Import all commits, including recent ones. cvsimport by default skips commits that have a timestamp less than 10 minutes ago. 
+Skip paths matching the regex.
 
-[](https://git-scm.com/docs/git-cvsimport#Documentation/git-cvsimport.txt--Llimit)-L <limit> 
-    
-Limit the number of commits imported. Workaround for cases where cvsimport leaks memory. 
+[](https://git-scm.com/docs/git-cvsimport#Documentation/git-cvsimport.txt--a)-a
 
-[](https://git-scm.com/docs/git-cvsimport#Documentation/git-cvsimport.txt--Aauthor-conv-file)-A <author-conv-file> 
-    
+Import all commits, including recent ones. cvsimport by default skips commits that have a timestamp less than 10 minutes ago.
+
+[](https://git-scm.com/docs/git-cvsimport#Documentation/git-cvsimport.txt--Llimit)-L <limit>
+
+Limit the number of commits imported. Workaround for cases where cvsimport leaks memory.
+
+[](https://git-scm.com/docs/git-cvsimport#Documentation/git-cvsimport.txt--Aauthor-conv-file)-A <author-conv-file>
+
 CVS by default uses the Unix username when writing its commit logs. Using this option and an author-conv-file maps the name recorded in CVS to author name, e-mail and optional time zone:
 ```
 	exon=Andreas Ericsson <ae@op5.se>
@@ -298,20 +298,20 @@ CVS by default uses the Unix username when writing its commit logs. Using this o
 
 _git cvsimport_ will make it appear as those authors had their GIT_AUTHOR_NAME and GIT_AUTHOR_EMAIL set properly all along. If a time zone is specified, GIT_AUTHOR_DATE will have the corresponding offset applied.
 For convenience, this data is saved to `$GIT_DIR/cvs-authors` each time the _-A_ option is provided and read from that same file each time _git cvsimport_ is run.
-It is not recommended to use this feature if you intend to export changes back to CVS again later with _git cvsexportcommit_. 
+It is not recommended to use this feature if you intend to export changes back to CVS again later with _git cvsexportcommit_.
 
-[](https://git-scm.com/docs/git-cvsimport#Documentation/git-cvsimport.txt--R)-R 
-    
+[](https://git-scm.com/docs/git-cvsimport#Documentation/git-cvsimport.txt--R)-R
+
 Generate a `$GIT_DIR/cvs-revisions` file containing a mapping from CVS revision numbers to newly-created Git commit IDs. The generated file will contain one line for each (filename, revision) pair imported; each line will look like
 ```
 src/widget.c 1.1 1d862f173cdc7325b6fa6d2ae1cfd61fd1b512b7
 ```
 
 The revision data is appended to the file if it already exists, for use when doing incremental imports.
-This option may be useful if you have CVS revision numbers stored in commit messages, bug-tracking systems, email archives, and the like. 
+This option may be useful if you have CVS revision numbers stored in commit messages, bug-tracking systems, email archives, and the like.
 
-[](https://git-scm.com/docs/git-cvsimport#Documentation/git-cvsimport.txt--h)-h 
-    
+[](https://git-scm.com/docs/git-cvsimport#Documentation/git-cvsimport.txt--h)-h
+
 Print a short usage message and exit.
 ##  [](https://git-scm.com/docs/git-cvsimport#_output)OUTPUT
 If `-v` is specified, the script reports what it is doing.
@@ -340,6 +340,6 @@ If you suspect that any of these issues may apply to the repository you want to 
 ##  [](https://git-scm.com/docs/git-cvsimport#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### cvsimport
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

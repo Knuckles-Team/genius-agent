@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-diff-files#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-diff-files#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-diff-files#_description)
@@ -39,8 +39,8 @@ Localized versions of **git-diff-files** manual
   6. [українська мова ](https://git-scm.com/docs/git-diff-files/uk)
   7. [简体中文 ](https://git-scm.com/docs/git-diff-files/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-diff-files)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -273,366 +273,366 @@ _git diff-files_ [-q] [-0 | -1 | -2 | -3 | -c | --cc] [<common-diff-options>] [<
 
 ##  [](https://git-scm.com/docs/git-diff-files#_description)DESCRIPTION
 Compares the files in the working tree and the index. When paths are specified, compares only those named paths. Otherwise all entries in the index are compared. The output format is the same as for _git diff-index_ and _git diff-tree_.
-##  [](https://git-scm.com/docs/git-diff-files#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-diff-files#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt--p)`-p` 
-
-
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt--u)`-u` 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt--p)`-p`
 
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---patch)`--patch` 
-    
-Generate patch (see [Generating patch text with -p](https://git-scm.com/docs/git-diff-files#generate_patch_text_with_p)). 
-
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt--s)`-s` 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt--u)`-u`
 
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---no-patch)`--no-patch` 
-    
-Suppress all output from the diff machinery. Useful for commands like `git` `show` that show the patch by default to squelch their output, or to cancel the effect of options like `--patch`, `--stat` earlier on the command line in an alias. 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---patch)`--patch`
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt--Un)`-U`_< n>_ 
+Generate patch (see [Generating patch text with -p](https://git-scm.com/docs/git-diff-files#generate_patch_text_with_p)).
 
-
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---unifiedn)`--unified=`_< n>_ 
-    
-Generate diffs with _< n>_ lines of context instead of the usual three. Implies `--patch`. 
-
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---outputfile)`--output=`_< file>_ 
-    
-Output to a specific file instead of stdout. 
-
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---output-indicator-newchar)`--output-indicator-new=`_< char>_ 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt--s)`-s`
 
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---output-indicator-oldchar)`--output-indicator-old=`_< char>_ 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---no-patch)`--no-patch`
+
+Suppress all output from the diff machinery. Useful for commands like `git` `show` that show the patch by default to squelch their output, or to cancel the effect of options like `--patch`, `--stat` earlier on the command line in an alias.
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt--Un)`-U`_< n>_
 
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---output-indicator-contextchar)`--output-indicator-context=`_< char>_ 
-    
-Specify the character used to indicate new, old or context lines in the generated patch. Normally they are `+`, `-` and ' ' respectively. 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---unifiedn)`--unified=`_< n>_
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---raw)`--raw` 
-    
-Generate the diff in raw format. This is the default. 
+Generate diffs with _< n>_ lines of context instead of the usual three. Implies `--patch`.
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---patch-with-raw)`--patch-with-raw` 
-    
-Synonym for `-p` `--raw`. 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---outputfile)`--output=`_< file>_
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---indent-heuristic)`--indent-heuristic` 
-    
-Enable the heuristic that shifts diff hunk boundaries to make patches easier to read. This is the default. 
+Output to a specific file instead of stdout.
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---no-indent-heuristic)`--no-indent-heuristic` 
-    
-Disable the indent heuristic. 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---output-indicator-newchar)`--output-indicator-new=`_< char>_
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---minimal)`--minimal` 
-    
-Spend extra time to make sure the smallest possible diff is produced. 
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---patience)`--patience` 
-    
-Generate a diff using the "patience diff" algorithm. 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---output-indicator-oldchar)`--output-indicator-old=`_< char>_
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---histogram)`--histogram` 
-    
-Generate a diff using the "histogram diff" algorithm. 
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---anchoredtext)`--anchored=`_< text>_ 
-    
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---output-indicator-contextchar)`--output-indicator-context=`_< char>_
+
+Specify the character used to indicate new, old or context lines in the generated patch. Normally they are `+`, `-` and ' ' respectively.
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---raw)`--raw`
+
+Generate the diff in raw format. This is the default.
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---patch-with-raw)`--patch-with-raw`
+
+Synonym for `-p` `--raw`.
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---indent-heuristic)`--indent-heuristic`
+
+Enable the heuristic that shifts diff hunk boundaries to make patches easier to read. This is the default.
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---no-indent-heuristic)`--no-indent-heuristic`
+
+Disable the indent heuristic.
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---minimal)`--minimal`
+
+Spend extra time to make sure the smallest possible diff is produced.
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---patience)`--patience`
+
+Generate a diff using the "patience diff" algorithm.
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---histogram)`--histogram`
+
+Generate a diff using the "histogram diff" algorithm.
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---anchoredtext)`--anchored=`_< text>_
+
 Generate a diff using the "anchored diff" algorithm.
 This option may be specified more than once.
-If a line exists in both the source and destination, exists only once, and starts with _< text>_, this algorithm attempts to prevent it from appearing as a deletion or addition in the output. It uses the "patience diff" algorithm internally. 
+If a line exists in both the source and destination, exists only once, and starts with _< text>_, this algorithm attempts to prevent it from appearing as a deletion or addition in the output. It uses the "patience diff" algorithm internally.
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---diff-algorithmpatienceminimalhistogrammyers)`--diff-algorithm=`(`patience`|`minimal`|`histogram`|`myers`) 
-    
-Choose a diff algorithm. The variants are as follows: 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---diff-algorithmpatienceminimalhistogrammyers)`--diff-algorithm=`(`patience`|`minimal`|`histogram`|`myers`)
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-default)`default` 
+Choose a diff algorithm. The variants are as follows:
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-default)`default`
 
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-myers)`myers` 
-    
-The basic greedy diff algorithm. Currently, this is the default. 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-myers)`myers`
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-minimal)`minimal` 
-    
-Spend extra time to make sure the smallest possible diff is produced. 
+The basic greedy diff algorithm. Currently, this is the default.
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-patience)`patience` 
-    
-Use "patience diff" algorithm when generating patches. 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-minimal)`minimal`
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-histogram)`histogram` 
-    
+Spend extra time to make sure the smallest possible diff is produced.
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-patience)`patience`
+
+Use "patience diff" algorithm when generating patches.
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-histogram)`histogram`
+
 This algorithm extends the patience algorithm to "support low-occurrence common elements".
-For instance, if you configured the `diff.algorithm` variable to a non-default value and want to use the default one, then you have to use `--diff-algorithm=default` option. 
+For instance, if you configured the `diff.algorithm` variable to a non-default value and want to use the default one, then you have to use `--diff-algorithm=default` option.
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---statwidthname-widthcount)`--stat`[`=`_< width>_[`,`_< name-width>_[`,`_< count>_]]] 
-    
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---statwidthname-widthcount)`--stat`[`=`_< width>_[`,`_< name-width>_[`,`_< count>_]]]
+
 Generate a diffstat. By default, as much space as necessary will be used for the filename part, and the rest for the graph part. Maximum width defaults to terminal width, or 80 columns if not connected to a terminal, and can be overridden by _< width>_. The width of the filename part can be limited by giving another width _< name-width>_ after a comma or by setting `diff.statNameWidth=`_< name-width>_. The width of the graph part can be limited by using `--stat-graph-width=`_< graph-width>_ or by setting `diff.statGraphWidth=`_< graph-width>_. Using `--stat` or `--stat-graph-width` affects all commands generating a stat graph, while setting `diff.statNameWidth` or `diff.statGraphWidth` does not affect `git` `format-patch`. By giving a third parameter _< count>_, you can limit the output to the first _< count>_ lines, followed by ... if there are more.
-These parameters can also be set individually with `--stat-width=`_< width>_, `--stat-name-width=`_< name-width>_ and `--stat-count=`_< count>_. 
+These parameters can also be set individually with `--stat-width=`_< width>_, `--stat-name-width=`_< name-width>_ and `--stat-count=`_< count>_.
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---compact-summary)`--compact-summary` 
-    
-Output a condensed summary of extended header information such as file creations or deletions ("new" or "gone", optionally `+l` if it’s a symlink) and mode changes (`+x` or `-x` for adding or removing executable bit respectively) in diffstat. The information is put between the filename part and the graph part. Implies `--stat`. 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---compact-summary)`--compact-summary`
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---numstat)`--numstat` 
-    
-Similar to `--stat`, but shows number of added and deleted lines in decimal notation and pathname without abbreviation, to make it more machine friendly. For binary files, outputs two `-` instead of saying `0` `0`. 
+Output a condensed summary of extended header information such as file creations or deletions ("new" or "gone", optionally `+l` if it’s a symlink) and mode changes (`+x` or `-x` for adding or removing executable bit respectively) in diffstat. The information is put between the filename part and the graph part. Implies `--stat`.
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---shortstat)`--shortstat` 
-    
-Output only the last line of the `--stat` format containing total number of modified files, as well as number of added and deleted lines. 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---numstat)`--numstat`
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt--Xparam)`-X` [_< param>_`,...`] 
+Similar to `--stat`, but shows number of added and deleted lines in decimal notation and pathname without abbreviation, to make it more machine friendly. For binary files, outputs two `-` instead of saying `0` `0`.
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---shortstat)`--shortstat`
+
+Output only the last line of the `--stat` format containing total number of modified files, as well as number of added and deleted lines.
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt--Xparam)`-X` [_< param>_`,...`]
 
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---dirstatparam)`--dirstat`[`=`_< param>_`,...`] 
-    
-Output the distribution of relative amount of changes for each sub-directory. The behavior of `--dirstat` can be customized by passing it a comma separated list of parameters. The defaults are controlled by the `diff.dirstat` configuration variable (see [git-config[1]](https://git-scm.com/docs/git-config)). The following parameters are available: 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---dirstatparam)`--dirstat`[`=`_< param>_`,...`]
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-changes)`changes` 
-    
-Compute the dirstat numbers by counting the lines that have been removed from the source, or added to the destination. This ignores the amount of pure code movements within a file. In other words, rearranging lines in a file is not counted as much as other changes. This is the default behavior when no parameter is given. 
+Output the distribution of relative amount of changes for each sub-directory. The behavior of `--dirstat` can be customized by passing it a comma separated list of parameters. The defaults are controlled by the `diff.dirstat` configuration variable (see [git-config[1]](https://git-scm.com/docs/git-config)). The following parameters are available:
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-lines)`lines` 
-    
-Compute the dirstat numbers by doing the regular line-based diff analysis, and summing the removed/added line counts. (For binary files, count 64-byte chunks instead, since binary files have no natural concept of lines). This is a more expensive `--dirstat` behavior than the `changes` behavior, but it does count rearranged lines within a file as much as other changes. The resulting output is consistent with what you get from the other `--*stat` options. 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-changes)`changes`
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-files)`files` 
-    
-Compute the dirstat numbers by counting the number of files changed. Each changed file counts equally in the dirstat analysis. This is the computationally cheapest `--dirstat` behavior, since it does not have to look at the file contents at all. 
+Compute the dirstat numbers by counting the lines that have been removed from the source, or added to the destination. This ignores the amount of pure code movements within a file. In other words, rearranging lines in a file is not counted as much as other changes. This is the default behavior when no parameter is given.
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-cumulative)`cumulative` 
-    
-Count changes in a child directory for the parent directory as well. Note that when using `cumulative`, the sum of the percentages reported may exceed 100%. The default (non-cumulative) behavior can be specified with the `noncumulative` parameter. 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-lines)`lines`
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-limit)_< limit>_ 
-    
+Compute the dirstat numbers by doing the regular line-based diff analysis, and summing the removed/added line counts. (For binary files, count 64-byte chunks instead, since binary files have no natural concept of lines). This is a more expensive `--dirstat` behavior than the `changes` behavior, but it does count rearranged lines within a file as much as other changes. The resulting output is consistent with what you get from the other `--*stat` options.
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-files)`files`
+
+Compute the dirstat numbers by counting the number of files changed. Each changed file counts equally in the dirstat analysis. This is the computationally cheapest `--dirstat` behavior, since it does not have to look at the file contents at all.
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-cumulative)`cumulative`
+
+Count changes in a child directory for the parent directory as well. Note that when using `cumulative`, the sum of the percentages reported may exceed 100%. The default (non-cumulative) behavior can be specified with the `noncumulative` parameter.
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-limit)_< limit>_
+
 An integer parameter specifies a cut-off percent (3% by default). Directories contributing less than this percentage of the changes are not shown in the output.
-Example: The following will count changed files, while ignoring directories with less than 10% of the total amount of changed files, and accumulating child directory counts in the parent directories: `--dirstat=files,10,cumulative`. 
+Example: The following will count changed files, while ignoring directories with less than 10% of the total amount of changed files, and accumulating child directory counts in the parent directories: `--dirstat=files,10,cumulative`.
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---cumulative)`--cumulative` 
-    
-Synonym for `--dirstat=cumulative`. 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---cumulative)`--cumulative`
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---dirstat-by-fileparam)`--dirstat-by-file`[`=`_< param>_`,...`] 
-    
-Synonym for `--dirstat=files,`_< param>_`,...`. 
+Synonym for `--dirstat=cumulative`.
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---summary)`--summary` 
-    
-Output a condensed summary of extended header information such as creations, renames and mode changes. 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---dirstat-by-fileparam)`--dirstat-by-file`[`=`_< param>_`,...`]
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---patch-with-stat)`--patch-with-stat` 
-    
-Synonym for `-p` `--stat`. 
+Synonym for `--dirstat=files,`_< param>_`,...`.
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt--z)`-z` 
-    
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---summary)`--summary`
+
+Output a condensed summary of extended header information such as creations, renames and mode changes.
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---patch-with-stat)`--patch-with-stat`
+
+Synonym for `-p` `--stat`.
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt--z)`-z`
+
 When `--raw`, `--numstat`, `--name-only` or `--name-status` has been given, do not munge pathnames and use NULs as output field terminators.
-Without this option, pathnames with "unusual" characters are quoted as explained for the configuration variable `core.quotePath` (see [git-config[1]](https://git-scm.com/docs/git-config)). 
+Without this option, pathnames with "unusual" characters are quoted as explained for the configuration variable `core.quotePath` (see [git-config[1]](https://git-scm.com/docs/git-config)).
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---name-only)`--name-only` 
-    
-Show only the name of each changed file in the post-image tree. The file names are often encoded in UTF-8. For more information see the discussion about encoding in the [git-log[1]](https://git-scm.com/docs/git-log) manual page. 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---name-only)`--name-only`
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---name-status)`--name-status` 
-    
-Show only the name(s) and status of each changed file. See the description of the `--diff-filter` option on what the status letters mean. Just like `--name-only` the file names are often encoded in UTF-8. 
+Show only the name of each changed file in the post-image tree. The file names are often encoded in UTF-8. For more information see the discussion about encoding in the [git-log[1]](https://git-scm.com/docs/git-log) manual page.
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---submoduleformat)`--submodule`[`=`_< format>_] 
-    
-Specify how differences in submodules are shown. When specifying `--submodule=short` the `short` format is used. This format just shows the names of the commits at the beginning and end of the range. When `--submodule` or `--submodule=log` is specified, the `log` format is used. This format lists the commits in the range like [git-submodule[1]](https://git-scm.com/docs/git-submodule) `summary` does. When `--submodule=diff` is specified, the `diff` format is used. This format shows an inline diff of the changes in the submodule contents between the commit range. Defaults to `diff.submodule` or the `short` format if the config option is unset. 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---name-status)`--name-status`
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---colorwhen)`--color`[`=`_< when>_] 
-    
-Show colored diff. `--color` (i.e. without `=`_< when>_) is the same as `--color=always`. _< when>_ can be one of `always`, `never`, or `auto`. 
+Show only the name(s) and status of each changed file. See the description of the `--diff-filter` option on what the status letters mean. Just like `--name-only` the file names are often encoded in UTF-8.
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---no-color)`--no-color` 
-    
-Turn off colored diff. It is the same as `--color=never`. 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---submoduleformat)`--submodule`[`=`_< format>_]
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---color-movedmode)`--color-moved`[`=`_< mode>_] 
-    
-Moved lines of code are colored differently. The _< mode>_ defaults to `no` if the option is not given and to `zebra` if the option with no mode is given. The mode must be one of: 
+Specify how differences in submodules are shown. When specifying `--submodule=short` the `short` format is used. This format just shows the names of the commits at the beginning and end of the range. When `--submodule` or `--submodule=log` is specified, the `log` format is used. This format lists the commits in the range like [git-submodule[1]](https://git-scm.com/docs/git-submodule) `summary` does. When `--submodule=diff` is specified, the `diff` format is used. This format shows an inline diff of the changes in the submodule contents between the commit range. Defaults to `diff.submodule` or the `short` format if the config option is unset.
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-no)`no` 
-    
-Moved lines are not highlighted. 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---colorwhen)`--color`[`=`_< when>_]
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-default-1)`default` 
-    
-Is a synonym for `zebra`. This may change to a more sensible mode in the future. 
+Show colored diff. `--color` (i.e. without `=`_< when>_) is the same as `--color=always`. _< when>_ can be one of `always`, `never`, or `auto`.
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-plain)`plain` 
-    
-Any line that is added in one location and was removed in another location will be colored with `color.diff.newMoved`. Similarly `color.diff.oldMoved` will be used for removed lines that are added somewhere else in the diff. This mode picks up any moved line, but it is not very useful in a review to determine if a block of code was moved without permutation. 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---no-color)`--no-color`
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-blocks)`blocks` 
-    
-Blocks of moved text of at least 20 alphanumeric characters are detected greedily. The detected blocks are painted using either the `color.diff.`(`old`|`new`)`Moved` color. Adjacent blocks cannot be told apart. 
+Turn off colored diff. It is the same as `--color=never`.
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-zebra)`zebra` 
-    
-Blocks of moved text are detected as in `blocks` mode. The blocks are painted using either the `color.diff.`(`old`|`new`)`Moved` color or `color.diff.`(`old`|`new`)`MovedAlternative`. The change between the two colors indicates that a new block was detected. 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---color-movedmode)`--color-moved`[`=`_< mode>_]
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-dimmed-zebra)`dimmed-zebra` 
-    
-Similar to `zebra`, but additional dimming of uninteresting parts of moved code is performed. The bordering lines of two adjacent blocks are considered interesting, the rest is uninteresting. `dimmed_zebra` is a deprecated synonym. 
+Moved lines of code are colored differently. The _< mode>_ defaults to `no` if the option is not given and to `zebra` if the option with no mode is given. The mode must be one of:
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---no-color-moved)`--no-color-moved` 
-    
-Turn off move detection. This can be used to override configuration settings. It is the same as `--color-moved=no`. 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-no)`no`
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---color-moved-wsmode)`--color-moved-ws=`_< mode>_`,...` 
-    
-This configures how whitespace is ignored when performing the move detection for `--color-moved`. These modes can be given as a comma separated list: 
+Moved lines are not highlighted.
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-no-1)`no` 
-    
-Do not ignore whitespace when performing move detection. 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-default-1)`default`
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-ignore-space-at-eol)`ignore-space-at-eol` 
-    
-Ignore changes in whitespace at EOL. 
+Is a synonym for `zebra`. This may change to a more sensible mode in the future.
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-ignore-space-change)`ignore-space-change` 
-    
-Ignore changes in amount of whitespace. This ignores whitespace at line end, and considers all other sequences of one or more whitespace characters to be equivalent. 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-plain)`plain`
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-ignore-all-space)`ignore-all-space` 
-    
-Ignore whitespace when comparing lines. This ignores differences even if one line has whitespace where the other line has none. 
+Any line that is added in one location and was removed in another location will be colored with `color.diff.newMoved`. Similarly `color.diff.oldMoved` will be used for removed lines that are added somewhere else in the diff. This mode picks up any moved line, but it is not very useful in a review to determine if a block of code was moved without permutation.
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-allow-indentation-change)`allow-indentation-change` 
-    
-Initially ignore any whitespace in the move detection, then group the moved code blocks only into a block if the change in whitespace is the same per line. This is incompatible with the other modes. 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-blocks)`blocks`
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---no-color-moved-ws)`--no-color-moved-ws` 
-    
-Do not ignore whitespace when performing move detection. This can be used to override configuration settings. It is the same as `--color-moved-ws=no`. 
+Blocks of moved text of at least 20 alphanumeric characters are detected greedily. The detected blocks are painted using either the `color.diff.`(`old`|`new`)`Moved` color. Adjacent blocks cannot be told apart.
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---word-diffmode)`--word-diff`[`=`_< mode>_] 
-    
-By default, words are delimited by whitespace; see `--word-diff-regex` below. The _< mode>_ defaults to `plain`, and must be one of: 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-zebra)`zebra`
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-color)`color` 
-    
-Highlight changed words using only colors. Implies `--color`. 
+Blocks of moved text are detected as in `blocks` mode. The blocks are painted using either the `color.diff.`(`old`|`new`)`Moved` color or `color.diff.`(`old`|`new`)`MovedAlternative`. The change between the two colors indicates that a new block was detected.
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-plain-1)`plain` 
-    
-Show words as [`-removed-`] and `{`added`}`. Makes no attempts to escape the delimiters if they appear in the input, so the output may be ambiguous. 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-dimmed-zebra)`dimmed-zebra`
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-porcelain)`porcelain` 
-    
-Use a special line-based format intended for script consumption. Added/removed/unchanged runs are printed in the usual unified diff format, starting with a `+`/`-`/` ` character at the beginning of the line and extending to the end of the line. Newlines in the input are represented by a tilde `~` on a line of its own. 
+Similar to `zebra`, but additional dimming of uninteresting parts of moved code is performed. The bordering lines of two adjacent blocks are considered interesting, the rest is uninteresting. `dimmed_zebra` is a deprecated synonym.
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-none)`none` 
-    
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---no-color-moved)`--no-color-moved`
+
+Turn off move detection. This can be used to override configuration settings. It is the same as `--color-moved=no`.
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---color-moved-wsmode)`--color-moved-ws=`_< mode>_`,...`
+
+This configures how whitespace is ignored when performing the move detection for `--color-moved`. These modes can be given as a comma separated list:
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-no-1)`no`
+
+Do not ignore whitespace when performing move detection.
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-ignore-space-at-eol)`ignore-space-at-eol`
+
+Ignore changes in whitespace at EOL.
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-ignore-space-change)`ignore-space-change`
+
+Ignore changes in amount of whitespace. This ignores whitespace at line end, and considers all other sequences of one or more whitespace characters to be equivalent.
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-ignore-all-space)`ignore-all-space`
+
+Ignore whitespace when comparing lines. This ignores differences even if one line has whitespace where the other line has none.
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-allow-indentation-change)`allow-indentation-change`
+
+Initially ignore any whitespace in the move detection, then group the moved code blocks only into a block if the change in whitespace is the same per line. This is incompatible with the other modes.
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---no-color-moved-ws)`--no-color-moved-ws`
+
+Do not ignore whitespace when performing move detection. This can be used to override configuration settings. It is the same as `--color-moved-ws=no`.
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---word-diffmode)`--word-diff`[`=`_< mode>_]
+
+By default, words are delimited by whitespace; see `--word-diff-regex` below. The _< mode>_ defaults to `plain`, and must be one of:
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-color)`color`
+
+Highlight changed words using only colors. Implies `--color`.
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-plain-1)`plain`
+
+Show words as [`-removed-`] and `{`added`}`. Makes no attempts to escape the delimiters if they appear in the input, so the output may be ambiguous.
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-porcelain)`porcelain`
+
+Use a special line-based format intended for script consumption. Added/removed/unchanged runs are printed in the usual unified diff format, starting with a `+`/`-`/` ` character at the beginning of the line and extending to the end of the line. Newlines in the input are represented by a tilde `~` on a line of its own.
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-none)`none`
+
 Disable word diff again.
-Note that despite the name of the first mode, color is used to highlight the changed parts in all modes if enabled. 
+Note that despite the name of the first mode, color is used to highlight the changed parts in all modes if enabled.
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---word-diff-regexregex)`--word-diff-regex=`_< regex>_ 
-    
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---word-diff-regexregex)`--word-diff-regex=`_< regex>_
+
 Use _< regex>_ to decide what a word is, instead of considering runs of non-whitespace to be a word. Also implies `--word-diff` unless it was already enabled.
 Every non-overlapping match of the _< regex>_ is considered a word. Anything between these matches is considered whitespace and ignored(!) for the purposes of finding differences. You may want to append |[`^`[`:space:`]] to your regular expression to make sure that it matches all non-whitespace characters. A match that contains a newline is silently truncated(!) at the newline.
 For example, `--word-diff-regex=.` will treat each character as a word and, correspondingly, show differences character by character.
-The regex can also be set via a diff driver or configuration option, see [gitattributes[5]](https://git-scm.com/docs/gitattributes) or [git-config[1]](https://git-scm.com/docs/git-config). Giving it explicitly overrides any diff driver or configuration setting. Diff drivers override configuration settings. 
+The regex can also be set via a diff driver or configuration option, see [gitattributes[5]](https://git-scm.com/docs/gitattributes) or [git-config[1]](https://git-scm.com/docs/git-config). Giving it explicitly overrides any diff driver or configuration setting. Diff drivers override configuration settings.
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---color-wordsregex)`--color-words`[`=`_< regex>_] 
-    
-Equivalent to `--word-diff=color` plus (if a regex was specified) `--word-diff-regex=`_< regex>_. 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---color-wordsregex)`--color-words`[`=`_< regex>_]
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---no-renames)`--no-renames` 
-    
-Turn off rename detection, even when the configuration file gives the default to do so. 
+Equivalent to `--word-diff=color` plus (if a regex was specified) `--word-diff-regex=`_< regex>_.
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---rename-empty)`--rename-empty` 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---no-renames)`--no-renames`
 
+Turn off rename detection, even when the configuration file gives the default to do so.
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---no-rename-empty)`--no-rename-empty` 
-    
-Whether to use empty blobs as rename source. 
-
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---check)`--check` 
-    
-Warn if changes introduce conflict markers or whitespace errors. What are considered whitespace errors is controlled by `core.whitespace` configuration. By default, trailing whitespaces (including lines that consist solely of whitespaces) and a space character that is immediately followed by a tab character inside the initial indent of the line are considered whitespace errors. Exits with non-zero status if problems are found. Not compatible with `--exit-code`. 
-
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---ws-error-highlightkind)`--ws-error-highlight=`_< kind>_ 
-    
-Highlight whitespace errors in the `context`, `old` or `new` lines of the diff. Multiple values are separated by comma, `none` resets previous values, `default` reset the list to `new` and `all` is a shorthand for `old,new,context`. When this option is not given, and the configuration variable `diff.wsErrorHighlight` is not set, only whitespace errors in `new` lines are highlighted. The whitespace errors are colored with `color.diff.whitespace`. 
-
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---full-index)`--full-index` 
-    
-Instead of the first handful of characters, show the full pre- and post-image blob object names on the "index" line when generating patch format output. 
-
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---binary)`--binary` 
-    
-In addition to `--full-index`, output a binary diff that can be applied with `git-apply`. Implies `--patch`. 
-
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---abbrevn)`--abbrev`[`=`_< n>_] 
-    
-Instead of showing the full 40-byte hexadecimal object name in diff-raw format output and diff-tree header lines, show the shortest prefix that is at least _< n>_ hexdigits long that uniquely refers the object. In diff-patch output format, `--full-index` takes higher precedence, i.e. if `--full-index` is specified, full blob names will be shown regardless of `--abbrev`. Non default number of digits can be specified with `--abbrev=`_< n>_. 
-
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt--Bnm)`-B`[_< n>_][`/`_< m>_] 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---rename-empty)`--rename-empty`
 
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---break-rewritesnm)`--break-rewrites`[`=`[_< n>_][`/`_< m>_]] 
-    
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---no-rename-empty)`--no-rename-empty`
+
+Whether to use empty blobs as rename source.
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---check)`--check`
+
+Warn if changes introduce conflict markers or whitespace errors. What are considered whitespace errors is controlled by `core.whitespace` configuration. By default, trailing whitespaces (including lines that consist solely of whitespaces) and a space character that is immediately followed by a tab character inside the initial indent of the line are considered whitespace errors. Exits with non-zero status if problems are found. Not compatible with `--exit-code`.
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---ws-error-highlightkind)`--ws-error-highlight=`_< kind>_
+
+Highlight whitespace errors in the `context`, `old` or `new` lines of the diff. Multiple values are separated by comma, `none` resets previous values, `default` reset the list to `new` and `all` is a shorthand for `old,new,context`. When this option is not given, and the configuration variable `diff.wsErrorHighlight` is not set, only whitespace errors in `new` lines are highlighted. The whitespace errors are colored with `color.diff.whitespace`.
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---full-index)`--full-index`
+
+Instead of the first handful of characters, show the full pre- and post-image blob object names on the "index" line when generating patch format output.
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---binary)`--binary`
+
+In addition to `--full-index`, output a binary diff that can be applied with `git-apply`. Implies `--patch`.
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---abbrevn)`--abbrev`[`=`_< n>_]
+
+Instead of showing the full 40-byte hexadecimal object name in diff-raw format output and diff-tree header lines, show the shortest prefix that is at least _< n>_ hexdigits long that uniquely refers the object. In diff-patch output format, `--full-index` takes higher precedence, i.e. if `--full-index` is specified, full blob names will be shown regardless of `--abbrev`. Non default number of digits can be specified with `--abbrev=`_< n>_.
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt--Bnm)`-B`[_< n>_][`/`_< m>_]
+
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---break-rewritesnm)`--break-rewrites`[`=`[_< n>_][`/`_< m>_]]
+
 Break complete rewrite changes into pairs of delete and create. This serves two purposes:
 It affects the way a change that amounts to a total rewrite of a file not as a series of deletion and insertion mixed together with a very few lines that happen to match textually as the context, but as a single deletion of everything old followed by a single insertion of everything new, and the number _< m>_ controls this aspect of the `-B` option (defaults to 60%). `-B/70%` specifies that less than 30% of the original should remain in the result for Git to consider it a total rewrite (i.e. otherwise the resulting patch will be a series of deletion and insertion mixed together with context lines).
-When used with `-M`, a totally-rewritten file is also considered as the source of a rename (usually `-M` only considers a file that disappeared as the source of a rename), and the number _< n>_ controls this aspect of the `-B` option (defaults to 50%). `-B20%` specifies that a change with addition and deletion compared to 20% or more of the file’s size are eligible for being picked up as a possible source of a rename to another file. 
+When used with `-M`, a totally-rewritten file is also considered as the source of a rename (usually `-M` only considers a file that disappeared as the source of a rename), and the number _< n>_ controls this aspect of the `-B` option (defaults to 50%). `-B20%` specifies that a change with addition and deletion compared to 20% or more of the file’s size are eligible for being picked up as a possible source of a rename to another file.
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt--Mn)`-M`[_< n>_] 
-
-
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---find-renamesn)`--find-renames`[`=`_< n>_] 
-    
-Detect renames. If _< n>_ is specified, it is a threshold on the similarity index (i.e. amount of addition/deletions compared to the file’s size). For example, `-M90%` means Git should consider a delete/add pair to be a rename if more than 90% of the file hasn’t changed. Without a `%` sign, the number is to be read as a fraction, with a decimal point before it. I.e., `-M5` becomes 0.5, and is thus the same as `-M50%`. Similarly, `-M05` is the same as `-M5%`. To limit detection to exact renames, use `-M100%`. The default similarity index is 50%. 
-
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt--Cn)`-C`[_< n>_] 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt--Mn)`-M`[_< n>_]
 
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---find-copiesn)`--find-copies`[`=`_< n>_] 
-    
-Detect copies as well as renames. See also `--find-copies-harder`. If _< n>_ is specified, it has the same meaning as for `-M`_< n>_. 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---find-renamesn)`--find-renames`[`=`_< n>_]
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---find-copies-harder)`--find-copies-harder` 
-    
-For performance reasons, by default, `-C` option finds copies only if the original file of the copy was modified in the same changeset. This flag makes the command inspect unmodified files as candidates for the source of copy. This is a very expensive operation for large projects, so use it with caution. Giving more than one `-C` option has the same effect. 
+Detect renames. If _< n>_ is specified, it is a threshold on the similarity index (i.e. amount of addition/deletions compared to the file’s size). For example, `-M90%` means Git should consider a delete/add pair to be a rename if more than 90% of the file hasn’t changed. Without a `%` sign, the number is to be read as a fraction, with a decimal point before it. I.e., `-M5` becomes 0.5, and is thus the same as `-M50%`. Similarly, `-M05` is the same as `-M5%`. To limit detection to exact renames, use `-M100%`. The default similarity index is 50%.
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt--D)`-D` 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt--Cn)`-C`[_< n>_]
 
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---irreversible-delete)`--irreversible-delete` 
-    
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---find-copiesn)`--find-copies`[`=`_< n>_]
+
+Detect copies as well as renames. See also `--find-copies-harder`. If _< n>_ is specified, it has the same meaning as for `-M`_< n>_.
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---find-copies-harder)`--find-copies-harder`
+
+For performance reasons, by default, `-C` option finds copies only if the original file of the copy was modified in the same changeset. This flag makes the command inspect unmodified files as candidates for the source of copy. This is a very expensive operation for large projects, so use it with caution. Giving more than one `-C` option has the same effect.
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt--D)`-D`
+
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---irreversible-delete)`--irreversible-delete`
+
 Omit the preimage for deletes, i.e. print only the header but not the diff between the preimage and `/dev/null`. The resulting patch is not meant to be applied with `patch` or `git` `apply`; this is solely for people who want to just concentrate on reviewing the text after the change. In addition, the output obviously lacks enough information to apply such a patch in reverse, even manually, hence the name of the option.
-When used together with `-B`, omit also the preimage in the deletion part of a delete/create pair. 
+When used together with `-B`, omit also the preimage in the deletion part of a delete/create pair.
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt--lnum)`-l`_< num>_ 
-    
-The `-M` and `-C` options involve some preliminary steps that can detect subsets of renames/copies cheaply, followed by an exhaustive fallback portion that compares all remaining unpaired destinations to all relevant sources. (For renames, only remaining unpaired sources are relevant; for copies, all original sources are relevant.) For N sources and destinations, this exhaustive check is O(N^2). This option prevents the exhaustive portion of rename/copy detection from running if the number of source/destination files involved exceeds the specified number. Defaults to `diff.renameLimit`. Note that a value of 0 is treated as unlimited. 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt--lnum)`-l`_< num>_
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---diff-filterACDMRTUXB)`--diff-filter=`[(`A`|`C`|`D`|`M`|`R`|`T`|`U`|`X`|`B`)`...`[`*`]] 
-    
+The `-M` and `-C` options involve some preliminary steps that can detect subsets of renames/copies cheaply, followed by an exhaustive fallback portion that compares all remaining unpaired destinations to all relevant sources. (For renames, only remaining unpaired sources are relevant; for copies, all original sources are relevant.) For N sources and destinations, this exhaustive check is O(N^2). This option prevents the exhaustive portion of rename/copy detection from running if the number of source/destination files involved exceeds the specified number. Defaults to `diff.renameLimit`. Note that a value of 0 is treated as unlimited.
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---diff-filterACDMRTUXB)`--diff-filter=`[(`A`|`C`|`D`|`M`|`R`|`T`|`U`|`X`|`B`)`...`[`*`]]
+
 Select only files that are Added (`A`), Copied (`C`), Deleted (`D`), Modified (`M`), Renamed (`R`), have their type (i.e. regular file, symlink, submodule, …​) changed (`T`), are Unmerged (`U`), are Unknown (`X`), or have had their pairing Broken (`B`). Any combination of the filter characters (including none) can be used. When `*` (All-or-none) is added to the combination, all paths are selected if there is any file that matches other criteria in the comparison; if there is no file that matches other criteria, nothing is selected.
 Also, these upper-case letters can be downcased to exclude. E.g. `--diff-filter=ad` excludes added and deleted paths.
-Note that not all diffs can feature all types. For instance, copied and renamed entries cannot appear if detection for those types is disabled. 
+Note that not all diffs can feature all types. For instance, copied and renamed entries cannot appear if detection for those types is disabled.
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt--Sstring)`-S`_< string>_ 
-    
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt--Sstring)`-S`_< string>_
+
 Look for differences that change the number of occurrences of the specified _< string>_ (i.e. addition/deletion) in a file. Intended for the scripter’s use.
 It is useful when you’re looking for an exact block of code (like a struct), and want to know the history of that block since it first came into being: use the feature iteratively to feed the interesting block in the preimage back into `-S`, and keep going until you get the very first version of the block.
-Binary files are searched as well. 
+Binary files are searched as well.
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt--Gregex)`-G`_< regex>_ 
-    
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt--Gregex)`-G`_< regex>_
+
 Look for differences whose patch text contains added/removed lines that match _< regex>_.
 To illustrate the difference between `-S`_< regex>_ `--pickaxe-regex` and `-G`_< regex>_, consider a commit with the following diff in the same file:
 ```
@@ -643,23 +643,23 @@ To illustrate the difference between `-S`_< regex>_ `--pickaxe-regex` and `-G`_<
 
 While _git log -G"frotz\\(nitfol"_ will show this commit, _git log_ _-S"frotz\\(nitfol" --pickaxe-regex_ will not (because the number of occurrences of that string did not change).
 Unless `--text` is supplied patches of binary files without a textconv filter will be ignored.
-See the _pickaxe_ entry in [gitdiffcore[7]](https://git-scm.com/docs/gitdiffcore) for more information. 
+See the _pickaxe_ entry in [gitdiffcore[7]](https://git-scm.com/docs/gitdiffcore) for more information.
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---find-objectobject-id)`--find-object=`_< object-id>_ 
-    
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---find-objectobject-id)`--find-object=`_< object-id>_
+
 Look for differences that change the number of occurrences of the specified object. Similar to `-S`, just the argument is different in that it doesn’t search for a specific string but for a specific object id.
-The object can be a blob or a submodule commit. It implies the `-t` option in `git-log` to also find trees. 
+The object can be a blob or a submodule commit. It implies the `-t` option in `git-log` to also find trees.
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---pickaxe-all)`--pickaxe-all` 
-    
-When `-S` or `-G` finds a change, show all the changes in that changeset, not just the files that contain the change in _< string>_. 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---pickaxe-all)`--pickaxe-all`
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---pickaxe-regex)`--pickaxe-regex` 
-    
-Treat the _< string>_ given to `-S` as an extended POSIX regular expression to match. 
+When `-S` or `-G` finds a change, show all the changes in that changeset, not just the files that contain the change in _< string>_.
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt--Oorderfile)`-O`_< orderfile>_ 
-    
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---pickaxe-regex)`--pickaxe-regex`
+
+Treat the _< string>_ given to `-S` as an extended POSIX regular expression to match.
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt--Oorderfile)`-O`_< orderfile>_
+
 Control the order in which files appear in the output. This overrides the `diff.orderFile` configuration variable (see [git-config[1]](https://git-scm.com/docs/git-config)). To cancel `diff.orderFile`, use `-O/dev/null`.
 The output order is determined by the order of glob patterns in _< orderfile>_. All files with pathnames that match the first pattern are output first, all files with pathnames that match the second pattern (but not the first) are output next, and so on. All files with pathnames that do not match any pattern are output last, as if there was an implicit match-all pattern at the end of the file. If multiple pathnames have the same rank (they match the same pattern but no earlier patterns), their output order relative to each other is the normal order.
 _< orderfile>_ is parsed as follows:
@@ -668,130 +668,130 @@ _< orderfile>_ is parsed as follows:
   * Each other line contains a single pattern.
 
 
-Patterns have the same syntax and semantics as patterns used for `fnmatch`(3) without the `FNM_PATHNAME` flag, except a pathname also matches a pattern if removing any number of the final pathname components matches the pattern. For example, the pattern "`foo*bar`" matches "`fooasdfbar`" and "`foo/bar/baz/asdf`" but not "`foobarx`". 
+Patterns have the same syntax and semantics as patterns used for `fnmatch`(3) without the `FNM_PATHNAME` flag, except a pathname also matches a pattern if removing any number of the final pathname components matches the pattern. For example, the pattern "`foo*bar`" matches "`fooasdfbar`" and "`foo/bar/baz/asdf`" but not "`foobarx`".
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---skip-tofile)`--skip-to=`_< file>_ 
-
-
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---rotate-tofile)`--rotate-to=`_< file>_ 
-    
-Discard the files before the named _< file>_ from the output (i.e. _skip to_), or move them to the end of the output (i.e. _rotate to_). These options were invented primarily for the use of the `git` `difftool` command, and may not be very useful otherwise. 
-
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt--R)`-R` 
-    
-Swap two inputs; that is, show differences from index or on-disk file to tree contents. 
-
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---relativepath)`--relative`[`=`_< path>_] 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---skip-tofile)`--skip-to=`_< file>_
 
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---no-relative)`--no-relative` 
-    
-When run from a subdirectory of the project, it can be told to exclude changes outside the directory and show pathnames relative to it with this option. When you are not in a subdirectory (e.g. in a bare repository), you can name which subdirectory to make the output relative to by giving a _< path>_ as an argument. `--no-relative` can be used to countermand both `diff.relative` config option and previous `--relative`. 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---rotate-tofile)`--rotate-to=`_< file>_
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt--a)`-a` 
+Discard the files before the named _< file>_ from the output (i.e. _skip to_), or move them to the end of the output (i.e. _rotate to_). These options were invented primarily for the use of the `git` `difftool` command, and may not be very useful otherwise.
 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt--R)`-R`
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---text)`--text` 
-    
-Treat all files as text. 
+Swap two inputs; that is, show differences from index or on-disk file to tree contents.
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---ignore-cr-at-eol)`--ignore-cr-at-eol` 
-    
-Ignore carriage-return at the end of line when doing a comparison. 
-
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---ignore-space-at-eol)`--ignore-space-at-eol` 
-    
-Ignore changes in whitespace at EOL. 
-
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt--b)`-b` 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---relativepath)`--relative`[`=`_< path>_]
 
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---ignore-space-change)`--ignore-space-change` 
-    
-Ignore changes in amount of whitespace. This ignores whitespace at line end, and considers all other sequences of one or more whitespace characters to be equivalent. 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---no-relative)`--no-relative`
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt--w)`-w` 
+When run from a subdirectory of the project, it can be told to exclude changes outside the directory and show pathnames relative to it with this option. When you are not in a subdirectory (e.g. in a bare repository), you can name which subdirectory to make the output relative to by giving a _< path>_ as an argument. `--no-relative` can be used to countermand both `diff.relative` config option and previous `--relative`.
 
-
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---ignore-all-space)`--ignore-all-space` 
-    
-Ignore whitespace when comparing lines. This ignores differences even if one line has whitespace where the other line has none. 
-
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---ignore-blank-lines)`--ignore-blank-lines` 
-    
-Ignore changes whose lines are all blank. 
-
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt--Iregex)`-I`_< regex>_ 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt--a)`-a`
 
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---ignore-matching-linesregex)`--ignore-matching-lines=`_< regex>_ 
-    
-Ignore changes whose all lines match _< regex>_. This option may be specified more than once. 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---text)`--text`
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---inter-hunk-contextnumber)`--inter-hunk-context=`_< number>_ 
-    
-Show the context between diff hunks, up to the specified _< number>_ of lines, thereby fusing hunks that are close to each other. Defaults to `diff.interHunkContext` or 0 if the config option is unset. 
+Treat all files as text.
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt--W)`-W` 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---ignore-cr-at-eol)`--ignore-cr-at-eol`
 
+Ignore carriage-return at the end of line when doing a comparison.
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---function-context)`--function-context` 
-    
-Show whole function as context lines for each change. The function names are determined in the same way as `git` `diff` works out patch hunk headers (see "Defining a custom hunk-header" in [gitattributes[5]](https://git-scm.com/docs/gitattributes)). 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---ignore-space-at-eol)`--ignore-space-at-eol`
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---exit-code)`--exit-code` 
-    
-Make the program exit with codes similar to `diff`(1). That is, it exits with 1 if there were differences and 0 means no differences. 
+Ignore changes in whitespace at EOL.
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---quiet)`--quiet` 
-    
-Disable all output of the program. Implies `--exit-code`. Disables execution of external diff helpers whose exit code is not trusted, i.e. their respective configuration option `diff.trustExitCode` or `diff.`_< driver>_`.trustExitCode` or environment variable `GIT_EXTERNAL_DIFF_TRUST_EXIT_CODE` is false. 
-
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---ext-diff)`--ext-diff` 
-    
-Allow an external diff helper to be executed. If you set an external diff driver with [gitattributes[5]](https://git-scm.com/docs/gitattributes), you need to use this option with [git-log[1]](https://git-scm.com/docs/git-log) and friends. 
-
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---no-ext-diff)`--no-ext-diff` 
-    
-Disallow external diff drivers. 
-
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---textconv)`--textconv` 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt--b)`-b`
 
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---no-textconv)`--no-textconv` 
-    
-Allow (or disallow) external text conversion filters to be run when comparing binary files. See [gitattributes[5]](https://git-scm.com/docs/gitattributes) for details. Because textconv filters are typically a one-way conversion, the resulting diff is suitable for human consumption, but cannot be applied. For this reason, textconv filters are enabled by default only for [git-diff[1]](https://git-scm.com/docs/git-diff) and [git-log[1]](https://git-scm.com/docs/git-log), but not for [git-format-patch[1]](https://git-scm.com/docs/git-format-patch) or diff plumbing commands. 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---ignore-space-change)`--ignore-space-change`
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---ignore-submodulesnoneuntrackeddirtyall)`--ignore-submodules`[`=`(`none`|`untracked`|`dirty`|`all`)] 
-    
-Ignore changes to submodules in the diff generation. `all` is the default. Using `none` will consider the submodule modified when it either contains untracked or modified files or its `HEAD` differs from the commit recorded in the superproject and can be used to override any settings of the `ignore` option in [git-config[1]](https://git-scm.com/docs/git-config) or [gitmodules[5]](https://git-scm.com/docs/gitmodules). When `untracked` is used submodules are not considered dirty when they only contain untracked content (but they are still scanned for modified content). Using `dirty` ignores all changes to the work tree of submodules, only changes to the commits stored in the superproject are shown (this was the behavior until 1.7.0). Using `all` hides all changes to submodules. 
+Ignore changes in amount of whitespace. This ignores whitespace at line end, and considers all other sequences of one or more whitespace characters to be equivalent.
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---src-prefixprefix)`--src-prefix=`_< prefix>_ 
-    
-Show the given source _< prefix>_ instead of "a/". 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt--w)`-w`
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---dst-prefixprefix)`--dst-prefix=`_< prefix>_ 
-    
-Show the given destination _< prefix>_ instead of "b/". 
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---no-prefix)`--no-prefix` 
-    
-Do not show any source or destination prefix. 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---ignore-all-space)`--ignore-all-space`
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---default-prefix)`--default-prefix` 
-    
-Use the default source and destination prefixes ("a/" and "b/"). This overrides configuration variables such as `diff.noprefix`, `diff.srcPrefix`, `diff.dstPrefix`, and `diff.mnemonicPrefix` (see [git-config[1]](https://git-scm.com/docs/git-config)). 
+Ignore whitespace when comparing lines. This ignores differences even if one line has whitespace where the other line has none.
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---line-prefixprefix)`--line-prefix=`_< prefix>_ 
-    
-Prepend an additional _< prefix>_ to every line of output. 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---ignore-blank-lines)`--ignore-blank-lines`
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---ita-invisible-in-index)`--ita-invisible-in-index` 
-    
-By default entries added by `git` `add` `-N` appear as an existing empty file in `git` `diff` and a new file in `git` `diff` `--cached`. This option makes the entry appear as a new file in `git` `diff` and non-existent in `git` `diff` `--cached`. This option could be reverted with `--ita-visible-in-index`. Both options are experimental and could be removed in future. 
+Ignore changes whose lines are all blank.
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---max-depthdepth)--max-depth=<depth> 
-    
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt--Iregex)`-I`_< regex>_
+
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---ignore-matching-linesregex)`--ignore-matching-lines=`_< regex>_
+
+Ignore changes whose all lines match _< regex>_. This option may be specified more than once.
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---inter-hunk-contextnumber)`--inter-hunk-context=`_< number>_
+
+Show the context between diff hunks, up to the specified _< number>_ of lines, thereby fusing hunks that are close to each other. Defaults to `diff.interHunkContext` or 0 if the config option is unset.
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt--W)`-W`
+
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---function-context)`--function-context`
+
+Show whole function as context lines for each change. The function names are determined in the same way as `git` `diff` works out patch hunk headers (see "Defining a custom hunk-header" in [gitattributes[5]](https://git-scm.com/docs/gitattributes)).
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---exit-code)`--exit-code`
+
+Make the program exit with codes similar to `diff`(1). That is, it exits with 1 if there were differences and 0 means no differences.
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---quiet)`--quiet`
+
+Disable all output of the program. Implies `--exit-code`. Disables execution of external diff helpers whose exit code is not trusted, i.e. their respective configuration option `diff.trustExitCode` or `diff.`_< driver>_`.trustExitCode` or environment variable `GIT_EXTERNAL_DIFF_TRUST_EXIT_CODE` is false.
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---ext-diff)`--ext-diff`
+
+Allow an external diff helper to be executed. If you set an external diff driver with [gitattributes[5]](https://git-scm.com/docs/gitattributes), you need to use this option with [git-log[1]](https://git-scm.com/docs/git-log) and friends.
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---no-ext-diff)`--no-ext-diff`
+
+Disallow external diff drivers.
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---textconv)`--textconv`
+
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---no-textconv)`--no-textconv`
+
+Allow (or disallow) external text conversion filters to be run when comparing binary files. See [gitattributes[5]](https://git-scm.com/docs/gitattributes) for details. Because textconv filters are typically a one-way conversion, the resulting diff is suitable for human consumption, but cannot be applied. For this reason, textconv filters are enabled by default only for [git-diff[1]](https://git-scm.com/docs/git-diff) and [git-log[1]](https://git-scm.com/docs/git-log), but not for [git-format-patch[1]](https://git-scm.com/docs/git-format-patch) or diff plumbing commands.
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---ignore-submodulesnoneuntrackeddirtyall)`--ignore-submodules`[`=`(`none`|`untracked`|`dirty`|`all`)]
+
+Ignore changes to submodules in the diff generation. `all` is the default. Using `none` will consider the submodule modified when it either contains untracked or modified files or its `HEAD` differs from the commit recorded in the superproject and can be used to override any settings of the `ignore` option in [git-config[1]](https://git-scm.com/docs/git-config) or [gitmodules[5]](https://git-scm.com/docs/gitmodules). When `untracked` is used submodules are not considered dirty when they only contain untracked content (but they are still scanned for modified content). Using `dirty` ignores all changes to the work tree of submodules, only changes to the commits stored in the superproject are shown (this was the behavior until 1.7.0). Using `all` hides all changes to submodules.
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---src-prefixprefix)`--src-prefix=`_< prefix>_
+
+Show the given source _< prefix>_ instead of "a/".
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---dst-prefixprefix)`--dst-prefix=`_< prefix>_
+
+Show the given destination _< prefix>_ instead of "b/".
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---no-prefix)`--no-prefix`
+
+Do not show any source or destination prefix.
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---default-prefix)`--default-prefix`
+
+Use the default source and destination prefixes ("a/" and "b/"). This overrides configuration variables such as `diff.noprefix`, `diff.srcPrefix`, `diff.dstPrefix`, and `diff.mnemonicPrefix` (see [git-config[1]](https://git-scm.com/docs/git-config)).
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---line-prefixprefix)`--line-prefix=`_< prefix>_
+
+Prepend an additional _< prefix>_ to every line of output.
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---ita-invisible-in-index)`--ita-invisible-in-index`
+
+By default entries added by `git` `add` `-N` appear as an existing empty file in `git` `diff` and a new file in `git` `diff` `--cached`. This option makes the entry appear as a new file in `git` `diff` and non-existent in `git` `diff` `--cached`. This option could be reverted with `--ita-visible-in-index`. Both options are experimental and could be removed in future.
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---max-depthdepth)--max-depth=<depth>
+
 For each pathspec given on command line, descend at most _< depth>_ levels of directories. A value of `-1` means no limit. Cannot be combined with wildcards in the pathspec. Given a tree containing `foo/bar/baz`, the following list shows the matches generated by each set of options:
   * `--max-depth=0` `--` `foo`: `foo`
   * `--max-depth=1` `--` `foo`: `foo/bar`
@@ -802,50 +802,50 @@ For each pathspec given on command line, descend at most _< depth>_ levels of di
 
 If no pathspec is given, the depth is measured as if all top-level entries were specified. Note that this is different than measuring from the root, in that `--max-depth=0` would still return `foo`. This allows you to still limit depth while asking for a subset of the top-level entries.
 Note that this option is only supported for diffs between tree objects, not against the index or working tree.
-For more detailed explanation on these common options, see also [gitdiffcore[7]](https://git-scm.com/docs/gitdiffcore). 
+For more detailed explanation on these common options, see also [gitdiffcore[7]](https://git-scm.com/docs/gitdiffcore).
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt--1--base)-1 --base 
-
-
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt--2--ours)-2 --ours 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt--1--base)-1 --base
 
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt--3--theirs)-3 --theirs 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt--2--ours)-2 --ours
 
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt--0)-0 
-    
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt--3--theirs)-3 --theirs
+
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt--0)-0
+
 Diff against the "base" version, "our branch", or "their branch" respectively. With these options, diffs for merged entries are not shown.
-The default is to diff against our branch (-2) and the cleanly resolved paths. The option -0 can be given to omit diff output for unmerged entries and just show "Unmerged". 
+The default is to diff against our branch (-2) and the cleanly resolved paths. The option -0 can be given to omit diff output for unmerged entries and just show "Unmerged".
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt--c)-c 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt--c)-c
 
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---cc)--cc 
-    
-This compares stage 2 (our branch), stage 3 (their branch), and the working tree file and outputs a combined diff, similar to the way _diff-tree_ shows a merge commit with these flags. 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt---cc)--cc
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt--q)-q 
-    
+This compares stage 2 (our branch), stage 3 (their branch), and the working tree file and outputs a combined diff, similar to the way _diff-tree_ shows a merge commit with these flags.
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt--q)-q
+
 Remain silent even for nonexistent files
 ##  [](https://git-scm.com/docs/git-diff-files#_raw_output_format)Raw output format
 The raw output format from `git-diff-index`, `git-diff-tree`, `git-diff-files` and `git` `diff` `--raw` are very similar.
-These commands all compare two sets of things; what is compared differs: 
+These commands all compare two sets of things; what is compared differs:
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-git-diff-indextree-ish)`git-diff-index` _< tree-ish>_ 
-    
-compares the _< tree-ish>_ and the files on the filesystem. 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-git-diff-indextree-ish)`git-diff-index` _< tree-ish>_
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-git-diff-index--cachedtree-ish)`git-diff-index` `--cached` _< tree-ish>_ 
-    
-compares the _< tree-ish>_ and the index. 
+compares the _< tree-ish>_ and the files on the filesystem.
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-git-diff-tree-rtree-ish-1tree-ish-2pattern)`git-diff-tree` [`-r`] _< tree-ish-1>_ _< tree-ish-2>_ [_< pattern>_...] 
-    
-compares the trees named by the two arguments. 
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-git-diff-index--cachedtree-ish)`git-diff-index` `--cached` _< tree-ish>_
 
-[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-git-diff-filespattern)`git-diff-files` [_< pattern>_...] 
-    
+compares the _< tree-ish>_ and the index.
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-git-diff-tree-rtree-ish-1tree-ish-2pattern)`git-diff-tree` [`-r`] _< tree-ish-1>_ _< tree-ish-2>_ [_< pattern>_...]
+
+compares the trees named by the two arguments.
+
+[](https://git-scm.com/docs/git-diff-files#Documentation/git-diff-files.txt-git-diff-filespattern)`git-diff-files` [_< pattern>_...]
+
 compares the index and the files on the filesystem.
 The `git-diff-tree` command begins its output by printing the hash of what is being compared. After that, all the commands print one output line per changed file.
 An output line is formatted this way:
@@ -1087,6 +1087,6 @@ The extra `NUL` before the preimage path in renamed case is to allow scripts tha
 ##  [](https://git-scm.com/docs/git-diff-files#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### diff-files
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

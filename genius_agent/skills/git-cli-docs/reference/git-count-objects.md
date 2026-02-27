@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-count-objects#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-count-objects#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-count-objects#_description)
@@ -33,8 +33,8 @@ Localized versions of **git-count-objects** manual
   5. [українська мова ](https://git-scm.com/docs/git-count-objects/uk)
   6. [简体中文 ](https://git-scm.com/docs/git-count-objects/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-count-objects)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -197,13 +197,13 @@ _git count-objects_ [-v] [-H | --human-readable]
 
 ##  [](https://git-scm.com/docs/git-count-objects#_description)DESCRIPTION
 Counts the number of unpacked object files and disk space consumed by them, to help you decide when it is a good time to repack.
-##  [](https://git-scm.com/docs/git-count-objects#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-count-objects#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-count-objects#Documentation/git-count-objects.txt--v)-v 
+[](https://git-scm.com/docs/git-count-objects#Documentation/git-count-objects.txt--v)-v
 
 
-[](https://git-scm.com/docs/git-count-objects#Documentation/git-count-objects.txt---verbose)--verbose 
-    
+[](https://git-scm.com/docs/git-count-objects#Documentation/git-count-objects.txt---verbose)--verbose
+
 Provide more detailed reports:
 count: the number of loose objects
 size: disk space consumed by loose objects, in KiB (unless -H is specified)
@@ -213,17 +213,17 @@ size-pack: disk space consumed by the packs, in KiB (unless -H is specified)
 prune-packable: the number of loose objects that are also present in the packs. These objects could be pruned using `git` `prune-packed`.
 garbage: the number of files in the object database that are neither valid loose objects nor valid packs
 size-garbage: disk space consumed by garbage files, in KiB (unless -H is specified)
-alternate: absolute path of alternate object databases; may appear multiple times, one line per path. Note that if the path contains non-printable characters, it may be surrounded by double-quotes and contain C-style backslashed escape sequences. 
+alternate: absolute path of alternate object databases; may appear multiple times, one line per path. Note that if the path contains non-printable characters, it may be surrounded by double-quotes and contain C-style backslashed escape sequences.
 
-[](https://git-scm.com/docs/git-count-objects#Documentation/git-count-objects.txt--H)-H 
+[](https://git-scm.com/docs/git-count-objects#Documentation/git-count-objects.txt--H)-H
 
 
-[](https://git-scm.com/docs/git-count-objects#Documentation/git-count-objects.txt---human-readable)--human-readable 
-    
+[](https://git-scm.com/docs/git-count-objects#Documentation/git-count-objects.txt---human-readable)--human-readable
+
 Print sizes in human readable format
 ##  [](https://git-scm.com/docs/git-count-objects#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### count-objects
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-http-backend#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-http-backend#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-http-backend#_description)
@@ -35,8 +35,8 @@ Localized versions of **git-http-backend** manual
   4. [українська мова ](https://git-scm.com/docs/git-http-backend/uk)
   5. [简体中文 ](https://git-scm.com/docs/git-http-backend/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-http-backend)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -208,30 +208,30 @@ A simple CGI program to serve the contents of a Git repository to Git clients ac
 It verifies that the directory has the magic file "git-daemon-export-ok", and it will refuse to export any Git directory that hasn’t explicitly been marked for export this way (unless the `GIT_HTTP_EXPORT_ALL` environment variable is set).
 By default, only the `upload-pack` service is enabled, which serves _git fetch-pack_ and _git ls-remote_ clients, which are invoked from _git fetch_ , _git pull_ , and _git clone_. If the client is authenticated, the `receive-pack` service is enabled, which serves _git send-pack_ clients, which is invoked from _git push_.
 ##  [](https://git-scm.com/docs/git-http-backend#_services)SERVICES
-These services can be enabled/disabled using the per-repository configuration file: 
+These services can be enabled/disabled using the per-repository configuration file:
 
-[](https://git-scm.com/docs/git-http-backend#Documentation/git-http-backend.txt-httpgetanyfile)http.getanyfile 
-    
-This serves Git clients older than version 1.6.6 that are unable to use the upload pack service. When enabled, clients are able to read any file within the repository, including objects that are no longer reachable from a branch but are still present. It is enabled by default, but a repository can disable it by setting this configuration value to `false`. 
+[](https://git-scm.com/docs/git-http-backend#Documentation/git-http-backend.txt-httpgetanyfile)http.getanyfile
 
-[](https://git-scm.com/docs/git-http-backend#Documentation/git-http-backend.txt-httpuploadpack)http.uploadpack 
-    
-This serves _git fetch-pack_ and _git ls-remote_ clients. It is enabled by default, but a repository can disable it by setting this configuration value to `false`. 
+This serves Git clients older than version 1.6.6 that are unable to use the upload pack service. When enabled, clients are able to read any file within the repository, including objects that are no longer reachable from a branch but are still present. It is enabled by default, but a repository can disable it by setting this configuration value to `false`.
 
-[](https://git-scm.com/docs/git-http-backend#Documentation/git-http-backend.txt-httpreceivepack)http.receivepack 
-    
-This serves _git send-pack_ clients, allowing push. It is disabled by default for anonymous users, and enabled by default for users authenticated by the web server. It can be disabled by setting this item to `false`, or enabled for all users, including anonymous users, by setting it to `true`. 
+[](https://git-scm.com/docs/git-http-backend#Documentation/git-http-backend.txt-httpuploadpack)http.uploadpack
 
-[](https://git-scm.com/docs/git-http-backend#Documentation/git-http-backend.txt-httpuploadarchive)http.uploadarchive 
-    
+This serves _git fetch-pack_ and _git ls-remote_ clients. It is enabled by default, but a repository can disable it by setting this configuration value to `false`.
+
+[](https://git-scm.com/docs/git-http-backend#Documentation/git-http-backend.txt-httpreceivepack)http.receivepack
+
+This serves _git send-pack_ clients, allowing push. It is disabled by default for anonymous users, and enabled by default for users authenticated by the web server. It can be disabled by setting this item to `false`, or enabled for all users, including anonymous users, by setting it to `true`.
+
+[](https://git-scm.com/docs/git-http-backend#Documentation/git-http-backend.txt-httpuploadarchive)http.uploadarchive
+
 This serves _git archive_ clients for remote archive over HTTP/HTTPS protocols. It is disabled by default. It only works in protocol v2.
 ##  [](https://git-scm.com/docs/git-http-backend#_url_translation)URL TRANSLATION
 To determine the location of the repository on disk, _git http-backend_ concatenates the environment variables PATH_INFO, which is set automatically by the web server, and GIT_PROJECT_ROOT, which must be set manually in the web server configuration. If GIT_PROJECT_ROOT is not set, _git http-backend_ reads PATH_TRANSLATED, which is also set automatically by the web server.
 ##  [](https://git-scm.com/docs/git-http-backend#_examples)EXAMPLES
-All of the following examples map `http://$hostname/git/foo/bar.git` to `/var/www/git/foo/bar.git`. 
+All of the following examples map `http://$hostname/git/foo/bar.git` to `/var/www/git/foo/bar.git`.
 
-[](https://git-scm.com/docs/git-http-backend#Documentation/git-http-backend.txt-Apache2x)Apache 2.x 
-    
+[](https://git-scm.com/docs/git-http-backend#Documentation/git-http-backend.txt-Apache2x)Apache 2.x
+
 Ensure mod_cgi, mod_alias, and mod_env are enabled, set GIT_PROJECT_ROOT (or DocumentRoot) appropriately, and create a ScriptAlias to the CGI:
 ```
 SetEnv GIT_PROJECT_ROOT /var/www/git
@@ -311,8 +311,8 @@ ScriptAliasMatch ^/git/[^/]*(.*) /usr/libexec/git-core/git-http-backend/storage.
 ```
 
 
-[](https://git-scm.com/docs/git-http-backend#Documentation/git-http-backend.txt-AcceleratedstaticApache2x)Accelerated static Apache 2.x 
-    
+[](https://git-scm.com/docs/git-http-backend#Documentation/git-http-backend.txt-AcceleratedstaticApache2x)Accelerated static Apache 2.x
+
 Similar to the above, but Apache can be used to return static files that are stored on disk. On many systems this may be more efficient as Apache can ask the kernel to copy the file contents from the file system directly to the network:
 ```
 SetEnv GIT_PROJECT_ROOT /var/www/git
@@ -338,8 +338,8 @@ ScriptAlias /git/ /var/www/cgi-bin/gitweb.cgi/
 ```
 
 
-[](https://git-scm.com/docs/git-http-backend#Documentation/git-http-backend.txt-Lighttpd)Lighttpd 
-    
+[](https://git-scm.com/docs/git-http-backend#Documentation/git-http-backend.txt-Lighttpd)Lighttpd
+
 Ensure that `mod_cgi`, `mod_alias`, `mod_auth`, `mod_setenv` are loaded, then set `GIT_PROJECT_ROOT` appropriately and redirect all requests to the CGI:
 ```
 alias.url += ( "/git" => "/usr/lib/git-core/git-http-backend" )
@@ -399,6 +399,6 @@ All `CGI` environment variables are available to each of the hooks invoked by th
 ##  [](https://git-scm.com/docs/git-http-backend#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### http-backend
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

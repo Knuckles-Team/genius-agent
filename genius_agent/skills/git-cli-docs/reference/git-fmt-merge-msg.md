@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-fmt-merge-msg#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-fmt-merge-msg#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-fmt-merge-msg#_description)
@@ -36,8 +36,8 @@ Localized versions of **git-fmt-merge-msg** manual
   5. [українська мова ](https://git-scm.com/docs/git-fmt-merge-msg/uk)
   6. [简体中文 ](https://git-scm.com/docs/git-fmt-merge-msg/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-fmt-merge-msg)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -212,57 +212,57 @@ _git fmt-merge-msg_ [-m <message>] [--log[=<n>] | --no-log] -F <file>
 ##  [](https://git-scm.com/docs/git-fmt-merge-msg#_description)DESCRIPTION
 Takes the list of merged objects on stdin and produces a suitable commit message to be used for the merge commit, usually to be passed as the _< merge-message>_ argument of _git merge_.
 This command is intended mostly for internal use by scripts automatically invoking _git merge_.
-##  [](https://git-scm.com/docs/git-fmt-merge-msg#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-fmt-merge-msg#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-fmt-merge-msg#Documentation/git-fmt-merge-msg.txt---logn)--log[=<n>] 
-    
-In addition to branch names, populate the log message with one-line descriptions from the actual commits that are being merged. At most <n> commits from each merge parent will be used (20 if <n> is omitted). This overrides the `merge.log` configuration variable. 
+[](https://git-scm.com/docs/git-fmt-merge-msg#Documentation/git-fmt-merge-msg.txt---logn)--log[=<n>]
 
-[](https://git-scm.com/docs/git-fmt-merge-msg#Documentation/git-fmt-merge-msg.txt---no-log)--no-log 
-    
-Do not list one-line descriptions from the actual commits being merged. 
+In addition to branch names, populate the log message with one-line descriptions from the actual commits that are being merged. At most <n> commits from each merge parent will be used (20 if <n> is omitted). This overrides the `merge.log` configuration variable.
 
-[](https://git-scm.com/docs/git-fmt-merge-msg#Documentation/git-fmt-merge-msg.txt---summary)--summary 
+[](https://git-scm.com/docs/git-fmt-merge-msg#Documentation/git-fmt-merge-msg.txt---no-log)--no-log
 
+Do not list one-line descriptions from the actual commits being merged.
 
-[](https://git-scm.com/docs/git-fmt-merge-msg#Documentation/git-fmt-merge-msg.txt---no-summary)--no-summary 
-    
-Synonyms to --log and --no-log; these are deprecated and will be removed in the future. 
-
-[](https://git-scm.com/docs/git-fmt-merge-msg#Documentation/git-fmt-merge-msg.txt--mmessage)-m <message> 
+[](https://git-scm.com/docs/git-fmt-merge-msg#Documentation/git-fmt-merge-msg.txt---summary)--summary
 
 
-[](https://git-scm.com/docs/git-fmt-merge-msg#Documentation/git-fmt-merge-msg.txt---messagemessage)--message <message> 
-    
-Use <message> instead of the branch names for the first line of the log message. For use with `--log`. 
+[](https://git-scm.com/docs/git-fmt-merge-msg#Documentation/git-fmt-merge-msg.txt---no-summary)--no-summary
 
-[](https://git-scm.com/docs/git-fmt-merge-msg#Documentation/git-fmt-merge-msg.txt---into-namebranch)--into-name <branch> 
-    
-Prepare the merge message as if merging to the branch _< branch>_, instead of the name of the real branch to which the merge is made. 
+Synonyms to --log and --no-log; these are deprecated and will be removed in the future.
 
-[](https://git-scm.com/docs/git-fmt-merge-msg#Documentation/git-fmt-merge-msg.txt--Ffile)-F <file> 
+[](https://git-scm.com/docs/git-fmt-merge-msg#Documentation/git-fmt-merge-msg.txt--mmessage)-m <message>
 
 
-[](https://git-scm.com/docs/git-fmt-merge-msg#Documentation/git-fmt-merge-msg.txt---filefile)--file <file> 
-    
+[](https://git-scm.com/docs/git-fmt-merge-msg#Documentation/git-fmt-merge-msg.txt---messagemessage)--message <message>
+
+Use <message> instead of the branch names for the first line of the log message. For use with `--log`.
+
+[](https://git-scm.com/docs/git-fmt-merge-msg#Documentation/git-fmt-merge-msg.txt---into-namebranch)--into-name <branch>
+
+Prepare the merge message as if merging to the branch _< branch>_, instead of the name of the real branch to which the merge is made.
+
+[](https://git-scm.com/docs/git-fmt-merge-msg#Documentation/git-fmt-merge-msg.txt--Ffile)-F <file>
+
+
+[](https://git-scm.com/docs/git-fmt-merge-msg#Documentation/git-fmt-merge-msg.txt---filefile)--file <file>
+
 Take the list of merged objects from <file> instead of stdin.
-##  [](https://git-scm.com/docs/git-fmt-merge-msg#_configuration)CONFIGURATION 
+##  [](https://git-scm.com/docs/git-fmt-merge-msg#_configuration)CONFIGURATION
 
-[](https://git-scm.com/docs/git-fmt-merge-msg#Documentation/git-fmt-merge-msg.txt-mergebranchdesc)`merge.branchdesc` 
-    
-In addition to branch names, populate the log message with the branch description text associated with them. Defaults to false. 
+[](https://git-scm.com/docs/git-fmt-merge-msg#Documentation/git-fmt-merge-msg.txt-mergebranchdesc)`merge.branchdesc`
 
-[](https://git-scm.com/docs/git-fmt-merge-msg#Documentation/git-fmt-merge-msg.txt-mergelog)`merge.log` 
-    
-In addition to branch names, populate the log message with at most the specified number of one-line descriptions from the actual commits that are being merged. Defaults to false, and true is a synonym for 20. 
+In addition to branch names, populate the log message with the branch description text associated with them. Defaults to false.
 
-[](https://git-scm.com/docs/git-fmt-merge-msg#Documentation/git-fmt-merge-msg.txt-mergesuppressDest)`merge.suppressDest` 
-    
+[](https://git-scm.com/docs/git-fmt-merge-msg#Documentation/git-fmt-merge-msg.txt-mergelog)`merge.log`
+
+In addition to branch names, populate the log message with at most the specified number of one-line descriptions from the actual commits that are being merged. Defaults to false, and true is a synonym for 20.
+
+[](https://git-scm.com/docs/git-fmt-merge-msg#Documentation/git-fmt-merge-msg.txt-mergesuppressDest)`merge.suppressDest`
+
 By adding a glob that matches the names of integration branches to this multi-valued configuration variable, the default merge message computed for merges into these integration branches will omit "into _< branch-name>_" from its title.
-An element with an empty value can be used to clear the list of globs accumulated from previous configuration entries. When there is no `merge.suppressDest` variable defined, the default value of `master` is used for backward compatibility. 
+An element with an empty value can be used to clear the list of globs accumulated from previous configuration entries. When there is no `merge.suppressDest` variable defined, the default value of `master` is used for backward compatibility.
 
-[](https://git-scm.com/docs/git-fmt-merge-msg#Documentation/git-fmt-merge-msg.txt-mergesummary)merge.summary 
-    
+[](https://git-scm.com/docs/git-fmt-merge-msg#Documentation/git-fmt-merge-msg.txt-mergesummary)merge.summary
+
 Synonym to `merge.log`; this is deprecated and will be removed in the future.
 ##  [](https://git-scm.com/docs/git-fmt-merge-msg#_examples)EXAMPLES
 ```
@@ -276,6 +276,6 @@ Print a log message describing a merge of the "master" branch from the "origin" 
 ##  [](https://git-scm.com/docs/git-fmt-merge-msg#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### fmt-merge-msg
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

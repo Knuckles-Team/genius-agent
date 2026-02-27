@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-var#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-var#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-var#_description)
@@ -35,8 +35,8 @@ Localized versions of **git-var** manual
   4. [українська мова ](https://git-scm.com/docs/git-var/uk)
   5. [简体中文 ](https://git-scm.com/docs/git-var/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-var)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -207,10 +207,10 @@ git var (-l | _<variable>_)
 
 ##  [](https://git-scm.com/docs/git-var#_description)DESCRIPTION
 Prints a Git logical variable. Exits with code 1 if the variable has no value.
-##  [](https://git-scm.com/docs/git-var#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-var#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-var#Documentation/git-var.txt--l)`-l` 
-    
+[](https://git-scm.com/docs/git-var#Documentation/git-var.txt--l)`-l`
+
 Display the logical variables. In addition, all the variables of the Git configuration file .git/config are listed as well. (However, the configuration variables listing functionality is deprecated in favor of `git` `config` `-l`.)
 ##  [](https://git-scm.com/docs/git-var#_examples)EXAMPLES
 ```
@@ -218,50 +218,50 @@ $ git var GIT_AUTHOR_IDENT
 Eric W. Biederman <ebiederm@lnxi.com> 1121223278 -0600
 ```
 
-##  [](https://git-scm.com/docs/git-var#_variables)VARIABLES 
+##  [](https://git-scm.com/docs/git-var#_variables)VARIABLES
 
-[](https://git-scm.com/docs/git-var#Documentation/git-var.txt-GITAUTHORIDENT)`GIT_AUTHOR_IDENT` 
-    
-The author of a piece of code. 
+[](https://git-scm.com/docs/git-var#Documentation/git-var.txt-GITAUTHORIDENT)`GIT_AUTHOR_IDENT`
 
-[](https://git-scm.com/docs/git-var#Documentation/git-var.txt-GITCOMMITTERIDENT)`GIT_COMMITTER_IDENT` 
-    
-The person who put a piece of code into Git. 
+The author of a piece of code.
 
-[](https://git-scm.com/docs/git-var#Documentation/git-var.txt-GITEDITOR)`GIT_EDITOR` 
-    
-Text editor for use by Git commands. The value is meant to be interpreted by the shell when it is used. Examples: `~/bin/vi`, `$SOME_ENVIRONMENT_VARIABLE`, _"C:\Program Files\Vim\gvim.exe"_ _--nofork_. The order of preference is `$GIT_EDITOR`, then `core.editor` configuration value, then `$VISUAL`, then `$EDITOR`, and then the default chosen at compile time, which is usually _vi_. 
+[](https://git-scm.com/docs/git-var#Documentation/git-var.txt-GITCOMMITTERIDENT)`GIT_COMMITTER_IDENT`
 
-[](https://git-scm.com/docs/git-var#Documentation/git-var.txt-GITSEQUENCEEDITOR)`GIT_SEQUENCE_EDITOR` 
-    
-Text editor used to edit the _todo_ file while running `git` `rebase` `-i`. Like `GIT_EDITOR`, the value is meant to be interpreted by the shell when it is used. The order of preference is `$GIT_SEQUENCE_EDITOR`, then `sequence.editor` configuration value, and then the value of `git` `var` `GIT_EDITOR`. 
+The person who put a piece of code into Git.
 
-[](https://git-scm.com/docs/git-var#Documentation/git-var.txt-GITPAGER)`GIT_PAGER` 
-    
-Text viewer for use by Git commands (e.g., _less_). The value is meant to be interpreted by the shell. The order of preference is `$GIT_PAGER`, then the value of `core.pager` configuration, then `$PAGER`, and then the default chosen at compile time (usually `less`). 
+[](https://git-scm.com/docs/git-var#Documentation/git-var.txt-GITEDITOR)`GIT_EDITOR`
 
-[](https://git-scm.com/docs/git-var#Documentation/git-var.txt-GITDEFAULTBRANCH)`GIT_DEFAULT_BRANCH` 
-    
-The name of the first branch created in newly initialized repositories. 
+Text editor for use by Git commands. The value is meant to be interpreted by the shell when it is used. Examples: `~/bin/vi`, `$SOME_ENVIRONMENT_VARIABLE`, _"C:\Program Files\Vim\gvim.exe"_ _--nofork_. The order of preference is `$GIT_EDITOR`, then `core.editor` configuration value, then `$VISUAL`, then `$EDITOR`, and then the default chosen at compile time, which is usually _vi_.
 
-[](https://git-scm.com/docs/git-var#Documentation/git-var.txt-GITSHELLPATH)`GIT_SHELL_PATH` 
-    
-The path of the binary providing the POSIX shell for commands which use the shell. 
+[](https://git-scm.com/docs/git-var#Documentation/git-var.txt-GITSEQUENCEEDITOR)`GIT_SEQUENCE_EDITOR`
 
-[](https://git-scm.com/docs/git-var#Documentation/git-var.txt-GITATTRSYSTEM)`GIT_ATTR_SYSTEM` 
-    
-The path to the system [gitattributes[5]](https://git-scm.com/docs/gitattributes) file, if one is enabled. 
+Text editor used to edit the _todo_ file while running `git` `rebase` `-i`. Like `GIT_EDITOR`, the value is meant to be interpreted by the shell when it is used. The order of preference is `$GIT_SEQUENCE_EDITOR`, then `sequence.editor` configuration value, and then the value of `git` `var` `GIT_EDITOR`.
 
-[](https://git-scm.com/docs/git-var#Documentation/git-var.txt-GITATTRGLOBAL)`GIT_ATTR_GLOBAL` 
-    
-The path to the global (per-user) [gitattributes[5]](https://git-scm.com/docs/gitattributes) file. 
+[](https://git-scm.com/docs/git-var#Documentation/git-var.txt-GITPAGER)`GIT_PAGER`
 
-[](https://git-scm.com/docs/git-var#Documentation/git-var.txt-GITCONFIGSYSTEM)`GIT_CONFIG_SYSTEM` 
-    
-The path to the system configuration file, if one is enabled. 
+Text viewer for use by Git commands (e.g., _less_). The value is meant to be interpreted by the shell. The order of preference is `$GIT_PAGER`, then the value of `core.pager` configuration, then `$PAGER`, and then the default chosen at compile time (usually `less`).
 
-[](https://git-scm.com/docs/git-var#Documentation/git-var.txt-GITCONFIGGLOBAL)`GIT_CONFIG_GLOBAL` 
-    
+[](https://git-scm.com/docs/git-var#Documentation/git-var.txt-GITDEFAULTBRANCH)`GIT_DEFAULT_BRANCH`
+
+The name of the first branch created in newly initialized repositories.
+
+[](https://git-scm.com/docs/git-var#Documentation/git-var.txt-GITSHELLPATH)`GIT_SHELL_PATH`
+
+The path of the binary providing the POSIX shell for commands which use the shell.
+
+[](https://git-scm.com/docs/git-var#Documentation/git-var.txt-GITATTRSYSTEM)`GIT_ATTR_SYSTEM`
+
+The path to the system [gitattributes[5]](https://git-scm.com/docs/gitattributes) file, if one is enabled.
+
+[](https://git-scm.com/docs/git-var#Documentation/git-var.txt-GITATTRGLOBAL)`GIT_ATTR_GLOBAL`
+
+The path to the global (per-user) [gitattributes[5]](https://git-scm.com/docs/gitattributes) file.
+
+[](https://git-scm.com/docs/git-var#Documentation/git-var.txt-GITCONFIGSYSTEM)`GIT_CONFIG_SYSTEM`
+
+The path to the system configuration file, if one is enabled.
+
+[](https://git-scm.com/docs/git-var#Documentation/git-var.txt-GITCONFIGGLOBAL)`GIT_CONFIG_GLOBAL`
+
 The path to the global (per-user) configuration files, if any.
 Most path values contain only one value. However, some can contain multiple values, which are separated by newlines, and are listed in order from highest to lowest priority. Callers should be prepared for any such path value to contain multiple items.
 Note that paths are printed even if they do not exist, but not if they are disabled by other environment variables.
@@ -270,6 +270,6 @@ Note that paths are printed even if they do not exist, but not if they are disab
 ##  [](https://git-scm.com/docs/git-var#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### var
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

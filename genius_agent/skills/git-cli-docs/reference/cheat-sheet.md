@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [Getting Started](https://git-scm.com/cheat-sheet#getting-started)
     * [Prepare to Commit](https://git-scm.com/cheat-sheet#prepare-to-commit)
     * [Make Commits](https://git-scm.com/cheat-sheet#make-commits)
@@ -37,7 +37,7 @@
 
 
 * * *
-The entire **[Pro Git book](https://git-scm.com/book)** written by Scott Chacon and Ben Straub is available to [read online for free](https://git-scm.com/book). Dead tree versions are available on [Amazon.com](https://www.amazon.com/Pro-Git-Scott-Chacon/dp/1484200772?ie=UTF8&camp=1789&creative=9325&creativeASIN=1430218339&linkCode=as2&tag=git-sfconservancy-20). 
+The entire **[Pro Git book](https://git-scm.com/book)** written by Scott Chacon and Ben Straub is available to [read online for free](https://git-scm.com/book). Dead tree versions are available on [Amazon.com](https://www.amazon.com/Pro-Git-Scott-Chacon/dp/1484200772?ie=UTF8&camp=1789&creative=9325&creativeASIN=1430218339&linkCode=as2&tag=git-sfconservancy-20).
 [![](https://git-scm.com/images/pdf.png)](https://git-scm.com/cheat-sheet.pdf)
 # Git Cheat Sheet
 ## Getting Started
@@ -101,22 +101,22 @@ The entire **[Pro Git book](https://git-scm.com/book)** written by Scott Chacon 
 ### Show a summary of a diff:
 `git diff <commit> --stat` `git show <commit> --stat`
 ## Ways to refer to a commit
-Every time we say `<commit>`, you can use any of these:  
+Every time we say `<commit>`, you can use any of these:
 
 a branch
-    main 
+    main
 
 a tag
-    v0.1 
+    v0.1
 
 a commit ID
-    3e887ab 
+    3e887ab
 
 a remote branch
-    origin/main 
+    origin/main
 
 current commit
-    HEAD 
+    HEAD
 
 3 commits ago
     HEAD^^^ or HEAD~3
@@ -204,6 +204,6 @@ Then manually find the right commit ID in the reflog, then run:
 `~/.gitconfig`
 ### List of files to ignore:
 `.gitignore`
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

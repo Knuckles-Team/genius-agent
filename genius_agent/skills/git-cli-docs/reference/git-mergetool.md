@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-mergetool#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-mergetool#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-mergetool#_description)
@@ -36,8 +36,8 @@ Localized versions of **git-mergetool** manual
   5. [українська мова ](https://git-scm.com/docs/git-mergetool/uk)
   6. [简体中文 ](https://git-scm.com/docs/git-mergetool/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-mergetool)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -222,102 +222,102 @@ git mergetool [--tool=_<tool>_] [-y | --[no-]prompt] [_<file>_…​]
 ##  [](https://git-scm.com/docs/git-mergetool#_description)DESCRIPTION
 Use `git` `mergetool` to run one of several merge utilities to resolve merge conflicts. It is typically run after `git` `merge`.
 If one or more <file> parameters are given, the merge tool program will be run to resolve differences in each file (skipping those without conflicts). Specifying a directory will include all unresolved files in that path. If no _< file>_ names are specified, `git` `mergetool` will run the merge tool program on every file with merge conflicts.
-##  [](https://git-scm.com/docs/git-mergetool#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-mergetool#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-mergetool#Documentation/git-mergetool.txt--ttool)`-t` _< tool>_ 
+[](https://git-scm.com/docs/git-mergetool#Documentation/git-mergetool.txt--ttool)`-t` _< tool>_
 
 
-[](https://git-scm.com/docs/git-mergetool#Documentation/git-mergetool.txt---tooltool)`--tool=`_< tool>_ 
-    
+[](https://git-scm.com/docs/git-mergetool#Documentation/git-mergetool.txt---tooltool)`--tool=`_< tool>_
+
 Use the merge resolution program specified by _< tool>_. Valid values include `emerge`, `gvimdiff`, `kdiff3`, `meld`, `vimdiff`, and `tortoisemerge`. Run `git` `mergetool` `--tool-help` for the list of valid _< tool>_ settings.
 If a merge resolution program is not specified, `git` `mergetool` will use the configuration variable `merge.tool`. If the configuration variable `merge.tool` is not set, `git` `mergetool` will pick a suitable default.
 You can explicitly provide a full path to the tool by setting the configuration variable `mergetool.`_< tool>_`.path`. For example, you can configure the absolute path to kdiff3 by setting `mergetool.kdiff3.path`. Otherwise, `git` `mergetool` assumes the tool is available in `$PATH`.
 Instead of running one of the known merge tool programs, `git` `mergetool` can be customized to run an alternative program by specifying the command line to invoke in a configuration variable `mergetool.`_< tool>_`.cmd`.
 When `git` `mergetool` is invoked with this tool (either through the `-t` or `--tool` option or the `merge.tool` configuration variable), the configured command line will be invoked with `BASE` set to the name of a temporary file containing the common base for the merge, if available; `LOCAL` set to the name of a temporary file containing the contents of the file on the current branch; `REMOTE` set to the name of a temporary file containing the contents of the file to be merged, and `MERGED` set to the name of the file to which the merge tool should write the result of the merge resolution.
-If the custom merge tool correctly indicates the success of a merge resolution with its exit code, then the configuration variable `mergetool.`_< tool>_`.trustExitCode` can be set to `true`. Otherwise, `git` `mergetool` will prompt the user to indicate the success of the resolution after the custom tool has exited. 
+If the custom merge tool correctly indicates the success of a merge resolution with its exit code, then the configuration variable `mergetool.`_< tool>_`.trustExitCode` can be set to `true`. Otherwise, `git` `mergetool` will prompt the user to indicate the success of the resolution after the custom tool has exited.
 
-[](https://git-scm.com/docs/git-mergetool#Documentation/git-mergetool.txt---tool-help)`--tool-help` 
-    
-Print a list of merge tools that may be used with `--tool`. 
+[](https://git-scm.com/docs/git-mergetool#Documentation/git-mergetool.txt---tool-help)`--tool-help`
 
-[](https://git-scm.com/docs/git-mergetool#Documentation/git-mergetool.txt--y)`-y` 
+Print a list of merge tools that may be used with `--tool`.
 
-
-[](https://git-scm.com/docs/git-mergetool#Documentation/git-mergetool.txt---no-prompt)`--no-prompt` 
-    
-Don’t prompt before each invocation of the merge resolution program. This is the default if the merge resolution program is explicitly specified with the `--tool` option or with the `merge.tool` configuration variable. 
-
-[](https://git-scm.com/docs/git-mergetool#Documentation/git-mergetool.txt---prompt)`--prompt` 
-    
-Prompt before each invocation of the merge resolution program to give the user a chance to skip the path. 
-
-[](https://git-scm.com/docs/git-mergetool#Documentation/git-mergetool.txt--g)`-g` 
+[](https://git-scm.com/docs/git-mergetool#Documentation/git-mergetool.txt--y)`-y`
 
 
-[](https://git-scm.com/docs/git-mergetool#Documentation/git-mergetool.txt---gui)`--gui` 
-    
-When `git-mergetool` is invoked with the `-g` or `--gui` option, the default merge tool will be read from the configured `merge.guitool` variable instead of `merge.tool`. If `merge.guitool` is not set, we will fallback to the tool configured under `merge.tool`. This may be autoselected using the configuration variable `mergetool.guiDefault`. 
+[](https://git-scm.com/docs/git-mergetool#Documentation/git-mergetool.txt---no-prompt)`--no-prompt`
 
-[](https://git-scm.com/docs/git-mergetool#Documentation/git-mergetool.txt---no-gui)`--no-gui` 
-    
-This overrides a previous `-g` or `--gui` setting or `mergetool.guiDefault` configuration and reads the default merge tool from the configured `merge.tool` variable. 
+Don’t prompt before each invocation of the merge resolution program. This is the default if the merge resolution program is explicitly specified with the `--tool` option or with the `merge.tool` configuration variable.
 
-[](https://git-scm.com/docs/git-mergetool#Documentation/git-mergetool.txt--Oorderfile)`-O`_< orderfile>_ 
-    
+[](https://git-scm.com/docs/git-mergetool#Documentation/git-mergetool.txt---prompt)`--prompt`
+
+Prompt before each invocation of the merge resolution program to give the user a chance to skip the path.
+
+[](https://git-scm.com/docs/git-mergetool#Documentation/git-mergetool.txt--g)`-g`
+
+
+[](https://git-scm.com/docs/git-mergetool#Documentation/git-mergetool.txt---gui)`--gui`
+
+When `git-mergetool` is invoked with the `-g` or `--gui` option, the default merge tool will be read from the configured `merge.guitool` variable instead of `merge.tool`. If `merge.guitool` is not set, we will fallback to the tool configured under `merge.tool`. This may be autoselected using the configuration variable `mergetool.guiDefault`.
+
+[](https://git-scm.com/docs/git-mergetool#Documentation/git-mergetool.txt---no-gui)`--no-gui`
+
+This overrides a previous `-g` or `--gui` setting or `mergetool.guiDefault` configuration and reads the default merge tool from the configured `merge.tool` variable.
+
+[](https://git-scm.com/docs/git-mergetool#Documentation/git-mergetool.txt--Oorderfile)`-O`_< orderfile>_
+
 Process files in the order specified in the _< orderfile>_, which has one shell glob pattern per line. This overrides the `diff.orderFile` configuration variable (see [git-config[1]](https://git-scm.com/docs/git-config)). To cancel `diff.orderFile`, use `-O/dev/null`.
 ##  [](https://git-scm.com/docs/git-mergetool#_configuration)CONFIGURATION
-Everything below this line in this section is selectively included from the [git-config[1]](https://git-scm.com/docs/git-config) documentation. The content is the same as what’s found there: 
+Everything below this line in this section is selectively included from the [git-config[1]](https://git-scm.com/docs/git-config) documentation. The content is the same as what’s found there:
 
-[](https://git-scm.com/docs/git-mergetool#Documentation/git-mergetool.txt-mergetooltoolpath)`mergetool.`_< tool>_`.path` 
-    
-Override the path for the given tool. This is useful in case your tool is not in the `$PATH`. 
+[](https://git-scm.com/docs/git-mergetool#Documentation/git-mergetool.txt-mergetooltoolpath)`mergetool.`_< tool>_`.path`
 
-[](https://git-scm.com/docs/git-mergetool#Documentation/git-mergetool.txt-mergetooltoolcmd)`mergetool.`_< tool>_`.cmd` 
-    
-Specify the command to invoke the specified merge tool. The specified command is evaluated in shell with the following variables available: `BASE` is the name of a temporary file containing the common base of the files to be merged, if available; `LOCAL` is the name of a temporary file containing the contents of the file on the current branch; `REMOTE` is the name of a temporary file containing the contents of the file from the branch being merged; `MERGED` contains the name of the file to which the merge tool should write the results of a successful merge. 
+Override the path for the given tool. This is useful in case your tool is not in the `$PATH`.
 
-[](https://git-scm.com/docs/git-mergetool#Documentation/git-mergetool.txt-mergetooltoolhideResolved)`mergetool.`_< tool>_`.hideResolved` 
-    
-Allows the user to override the global `mergetool.hideResolved` value for a specific tool. See `mergetool.hideResolved` for the full description. 
+[](https://git-scm.com/docs/git-mergetool#Documentation/git-mergetool.txt-mergetooltoolcmd)`mergetool.`_< tool>_`.cmd`
 
-[](https://git-scm.com/docs/git-mergetool#Documentation/git-mergetool.txt-mergetooltooltrustExitCode)`mergetool.`_< tool>_`.trustExitCode` 
-    
-For a custom merge command, specify whether the exit code of the merge command can be used to determine whether the merge was successful. If this is not set to true then the merge target file timestamp is checked, and the merge is assumed to have been successful if the file has been updated; otherwise, the user is prompted to indicate the success of the merge. 
+Specify the command to invoke the specified merge tool. The specified command is evaluated in shell with the following variables available: `BASE` is the name of a temporary file containing the common base of the files to be merged, if available; `LOCAL` is the name of a temporary file containing the contents of the file on the current branch; `REMOTE` is the name of a temporary file containing the contents of the file from the branch being merged; `MERGED` contains the name of the file to which the merge tool should write the results of a successful merge.
 
-[](https://git-scm.com/docs/git-mergetool#Documentation/git-mergetool.txt-mergetoolmeldhasOutput)`mergetool.meld.hasOutput` 
-    
-Older versions of `meld` do not support the `--output` option. Git will attempt to detect whether `meld` supports `--output` by inspecting the output of `meld` `--help`. Configuring `mergetool.meld.hasOutput` will make Git skip these checks and use the configured value instead. Setting `mergetool.meld.hasOutput` to `true` tells Git to unconditionally use the `--output` option, and `false` avoids using `--output`. 
+[](https://git-scm.com/docs/git-mergetool#Documentation/git-mergetool.txt-mergetooltoolhideResolved)`mergetool.`_< tool>_`.hideResolved`
 
-[](https://git-scm.com/docs/git-mergetool#Documentation/git-mergetool.txt-mergetoolmelduseAutoMerge)`mergetool.meld.useAutoMerge` 
-    
-When the `--auto-merge` is given, meld will merge all non-conflicting parts automatically, highlight the conflicting parts, and wait for user decision. Setting `mergetool.meld.useAutoMerge` to `true` tells Git to unconditionally use the `--auto-merge` option with `meld`. Setting this value to `auto` makes git detect whether `--auto-merge` is supported and will only use `--auto-merge` when available. A value of `false` avoids using `--auto-merge` altogether, and is the default value. 
+Allows the user to override the global `mergetool.hideResolved` value for a specific tool. See `mergetool.hideResolved` for the full description.
 
-[](https://git-scm.com/docs/git-mergetool#Documentation/git-mergetool.txt-mergetoolvariantlayout)`mergetool.`_< variant>_`.layout` 
-    
-Configure the split window layout for vimdiff’s _< variant>_, which is any of `vimdiff`, `nvimdiff`, `gvimdiff`. Upon launching `git` `mergetool` with `--tool=`_< variant>_ (or without `--tool` if `merge.tool` is configured as _< variant>_), Git will consult `mergetool.`_< variant>_`.layout` to determine the tool’s layout. If the variant-specific configuration is not available, `vimdiff` ' s is used as fallback. If that too is not available, a default layout with 4 windows will be used. To configure the layout, see the _BACKEND SPECIFIC HINTS_ section. 
+[](https://git-scm.com/docs/git-mergetool#Documentation/git-mergetool.txt-mergetooltooltrustExitCode)`mergetool.`_< tool>_`.trustExitCode`
 
-[](https://git-scm.com/docs/git-mergetool#Documentation/git-mergetool.txt-mergetoolhideResolved)`mergetool.hideResolved` 
-    
-During a merge, Git will automatically resolve as many conflicts as possible and write the `$MERGED` file containing conflict markers around any conflicts that it cannot resolve; `$LOCAL` and `$REMOTE` normally are the versions of the file from before Git’s conflict resolution. This flag causes `$LOCAL` and `$REMOTE` to be overwritten so that only the unresolved conflicts are presented to the merge tool. Can be configured per-tool via the `mergetool.`_< tool>_`.hideResolved` configuration variable. Defaults to `false`. 
+For a custom merge command, specify whether the exit code of the merge command can be used to determine whether the merge was successful. If this is not set to true then the merge target file timestamp is checked, and the merge is assumed to have been successful if the file has been updated; otherwise, the user is prompted to indicate the success of the merge.
 
-[](https://git-scm.com/docs/git-mergetool#Documentation/git-mergetool.txt-mergetoolkeepBackup)`mergetool.keepBackup` 
-    
-After performing a merge, the original file with conflict markers can be saved as a file with a `.orig` extension. If this variable is set to `false` then this file is not preserved. Defaults to `true` (i.e. keep the backup files). 
+[](https://git-scm.com/docs/git-mergetool#Documentation/git-mergetool.txt-mergetoolmeldhasOutput)`mergetool.meld.hasOutput`
 
-[](https://git-scm.com/docs/git-mergetool#Documentation/git-mergetool.txt-mergetoolkeepTemporaries)`mergetool.keepTemporaries` 
-    
-When invoking a custom merge tool, Git uses a set of temporary files to pass to the tool. If the tool returns an error and this variable is set to `true`, then these temporary files will be preserved; otherwise, they will be removed after the tool has exited. Defaults to `false`. 
+Older versions of `meld` do not support the `--output` option. Git will attempt to detect whether `meld` supports `--output` by inspecting the output of `meld` `--help`. Configuring `mergetool.meld.hasOutput` will make Git skip these checks and use the configured value instead. Setting `mergetool.meld.hasOutput` to `true` tells Git to unconditionally use the `--output` option, and `false` avoids using `--output`.
 
-[](https://git-scm.com/docs/git-mergetool#Documentation/git-mergetool.txt-mergetoolwriteToTemp)`mergetool.writeToTemp` 
-    
-Git writes temporary `BASE`, `LOCAL`, and `REMOTE` versions of conflicting files in the worktree by default. Git will attempt to use a temporary directory for these files when set `true`. Defaults to `false`. 
+[](https://git-scm.com/docs/git-mergetool#Documentation/git-mergetool.txt-mergetoolmelduseAutoMerge)`mergetool.meld.useAutoMerge`
 
-[](https://git-scm.com/docs/git-mergetool#Documentation/git-mergetool.txt-mergetoolprompt)`mergetool.prompt` 
-    
-Prompt before each invocation of the merge resolution program. 
+When the `--auto-merge` is given, meld will merge all non-conflicting parts automatically, highlight the conflicting parts, and wait for user decision. Setting `mergetool.meld.useAutoMerge` to `true` tells Git to unconditionally use the `--auto-merge` option with `meld`. Setting this value to `auto` makes git detect whether `--auto-merge` is supported and will only use `--auto-merge` when available. A value of `false` avoids using `--auto-merge` altogether, and is the default value.
 
-[](https://git-scm.com/docs/git-mergetool#Documentation/git-mergetool.txt-mergetoolguiDefault)`mergetool.guiDefault` 
-    
+[](https://git-scm.com/docs/git-mergetool#Documentation/git-mergetool.txt-mergetoolvariantlayout)`mergetool.`_< variant>_`.layout`
+
+Configure the split window layout for vimdiff’s _< variant>_, which is any of `vimdiff`, `nvimdiff`, `gvimdiff`. Upon launching `git` `mergetool` with `--tool=`_< variant>_ (or without `--tool` if `merge.tool` is configured as _< variant>_), Git will consult `mergetool.`_< variant>_`.layout` to determine the tool’s layout. If the variant-specific configuration is not available, `vimdiff` ' s is used as fallback. If that too is not available, a default layout with 4 windows will be used. To configure the layout, see the _BACKEND SPECIFIC HINTS_ section.
+
+[](https://git-scm.com/docs/git-mergetool#Documentation/git-mergetool.txt-mergetoolhideResolved)`mergetool.hideResolved`
+
+During a merge, Git will automatically resolve as many conflicts as possible and write the `$MERGED` file containing conflict markers around any conflicts that it cannot resolve; `$LOCAL` and `$REMOTE` normally are the versions of the file from before Git’s conflict resolution. This flag causes `$LOCAL` and `$REMOTE` to be overwritten so that only the unresolved conflicts are presented to the merge tool. Can be configured per-tool via the `mergetool.`_< tool>_`.hideResolved` configuration variable. Defaults to `false`.
+
+[](https://git-scm.com/docs/git-mergetool#Documentation/git-mergetool.txt-mergetoolkeepBackup)`mergetool.keepBackup`
+
+After performing a merge, the original file with conflict markers can be saved as a file with a `.orig` extension. If this variable is set to `false` then this file is not preserved. Defaults to `true` (i.e. keep the backup files).
+
+[](https://git-scm.com/docs/git-mergetool#Documentation/git-mergetool.txt-mergetoolkeepTemporaries)`mergetool.keepTemporaries`
+
+When invoking a custom merge tool, Git uses a set of temporary files to pass to the tool. If the tool returns an error and this variable is set to `true`, then these temporary files will be preserved; otherwise, they will be removed after the tool has exited. Defaults to `false`.
+
+[](https://git-scm.com/docs/git-mergetool#Documentation/git-mergetool.txt-mergetoolwriteToTemp)`mergetool.writeToTemp`
+
+Git writes temporary `BASE`, `LOCAL`, and `REMOTE` versions of conflicting files in the worktree by default. Git will attempt to use a temporary directory for these files when set `true`. Defaults to `false`.
+
+[](https://git-scm.com/docs/git-mergetool#Documentation/git-mergetool.txt-mergetoolprompt)`mergetool.prompt`
+
+Prompt before each invocation of the merge resolution program.
+
+[](https://git-scm.com/docs/git-mergetool#Documentation/git-mergetool.txt-mergetoolguiDefault)`mergetool.guiDefault`
+
 Set `true` to use the `merge.guitool` by default (equivalent to specifying the `--gui` argument), or `auto` to select `merge.guitool` or `merge.tool` depending on the presence of a `DISPLAY` environment variable value. The default is `false`, where the `--gui` argument must be provided explicitly for the `merge.guitool` to be used.
 ##  [](https://git-scm.com/docs/git-mergetool#_temporary_files)TEMPORARY FILES
 `git` `mergetool` creates `*.orig` backup files while resolving merges. These are safe to remove once a file has been merged and its `git` `mergetool` session has completed.
@@ -477,6 +477,6 @@ Example: using `--tool=gvimdiff2` will open `gvim` with three columns (`LOCAL`, 
 ##  [](https://git-scm.com/docs/git-mergetool#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### mergetool
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

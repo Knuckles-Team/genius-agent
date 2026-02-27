@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-prune#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-prune#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-prune#_description)
@@ -36,8 +36,8 @@ Localized versions of **git-prune** manual
   5. [українська мова ](https://git-scm.com/docs/git-prune/uk)
   6. [简体中文 ](https://git-scm.com/docs/git-prune/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-prune)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -199,40 +199,40 @@ _git prune_ [-n] [-v] [--progress] [--expire <time>] [--] [<head>…​]
 ```
 
 ##  [](https://git-scm.com/docs/git-prune#_description)DESCRIPTION
-Note |  In most cases, users should run _git gc_ , which calls _git prune_. See the section "NOTES", below.   
----|---  
+Note |  In most cases, users should run _git gc_ , which calls _git prune_. See the section "NOTES", below.
+---|---
 This runs _git fsck --unreachable_ using all the refs available in `refs/`, optionally with an additional set of objects specified on the command line, and prunes all unpacked objects unreachable from any of these head objects from the object database. In addition, it prunes the unpacked objects that are also found in packs by running _git prune-packed_. It also removes entries from .git/shallow that are not reachable by any ref.
 Note that unreachable, packed objects will remain. If this is not desired, see [git-repack[1]](https://git-scm.com/docs/git-repack).
-##  [](https://git-scm.com/docs/git-prune#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-prune#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-prune#Documentation/git-prune.txt--n)-n 
-
-
-[](https://git-scm.com/docs/git-prune#Documentation/git-prune.txt---dry-run)--dry-run 
-    
-Do not remove anything; just report what it would remove. 
-
-[](https://git-scm.com/docs/git-prune#Documentation/git-prune.txt--v)-v 
+[](https://git-scm.com/docs/git-prune#Documentation/git-prune.txt--n)-n
 
 
-[](https://git-scm.com/docs/git-prune#Documentation/git-prune.txt---verbose)--verbose 
-    
-Report all removed objects. 
+[](https://git-scm.com/docs/git-prune#Documentation/git-prune.txt---dry-run)--dry-run
 
-[](https://git-scm.com/docs/git-prune#Documentation/git-prune.txt---progress)--progress 
-    
-Show progress. 
+Do not remove anything; just report what it would remove.
 
-[](https://git-scm.com/docs/git-prune#Documentation/git-prune.txt---expiretime)--expire <time> 
-    
-Only expire loose objects older than <time>. 
+[](https://git-scm.com/docs/git-prune#Documentation/git-prune.txt--v)-v
 
-[](https://git-scm.com/docs/git-prune#Documentation/git-prune.txt---)-- 
-    
-Do not interpret any more arguments as options. 
 
-[](https://git-scm.com/docs/git-prune#Documentation/git-prune.txt-head)<head>…​ 
-    
+[](https://git-scm.com/docs/git-prune#Documentation/git-prune.txt---verbose)--verbose
+
+Report all removed objects.
+
+[](https://git-scm.com/docs/git-prune#Documentation/git-prune.txt---progress)--progress
+
+Show progress.
+
+[](https://git-scm.com/docs/git-prune#Documentation/git-prune.txt---expiretime)--expire <time>
+
+Only expire loose objects older than <time>.
+
+[](https://git-scm.com/docs/git-prune#Documentation/git-prune.txt---)--
+
+Do not interpret any more arguments as options.
+
+[](https://git-scm.com/docs/git-prune#Documentation/git-prune.txt-head)<head>…​
+
 In addition to objects reachable from any of our references, keep objects reachable from listed <head>s.
 ##  [](https://git-scm.com/docs/git-prune#_examples)EXAMPLES
 To prune objects not used by your repository or another that borrows from your repository via its `.git/objects/info/alternates`:
@@ -248,6 +248,6 @@ For a description of which objects are considered for pruning, see _git fsck_ 's
 ##  [](https://git-scm.com/docs/git-prune#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### prune
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

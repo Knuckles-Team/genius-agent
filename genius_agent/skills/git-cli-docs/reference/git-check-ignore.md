@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-check-ignore#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-check-ignore#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-check-ignore#_description)
@@ -37,8 +37,8 @@ Localized versions of **git-check-ignore** manual
   6. [українська мова ](https://git-scm.com/docs/git-check-ignore/uk)
   7. [简体中文 ](https://git-scm.com/docs/git-check-ignore/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-check-ignore)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -216,40 +216,40 @@ _git check-ignore_ [<options>] --stdin
 ##  [](https://git-scm.com/docs/git-check-ignore#_description)DESCRIPTION
 For each pathname given via the command-line or from a file via `--stdin`, check whether the file is excluded by .gitignore (or other input files to the exclude mechanism) and output the path if it is excluded.
 By default, tracked files are not shown at all since they are not subject to exclude rules; but see ‘--no-index’.
-##  [](https://git-scm.com/docs/git-check-ignore#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-check-ignore#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-check-ignore#Documentation/git-check-ignore.txt--q)-q 
-
-
-[](https://git-scm.com/docs/git-check-ignore#Documentation/git-check-ignore.txt---quiet)--quiet 
-    
-Don’t output anything, just set exit status. This is only valid with a single pathname. 
-
-[](https://git-scm.com/docs/git-check-ignore#Documentation/git-check-ignore.txt--v)-v 
+[](https://git-scm.com/docs/git-check-ignore#Documentation/git-check-ignore.txt--q)-q
 
 
-[](https://git-scm.com/docs/git-check-ignore#Documentation/git-check-ignore.txt---verbose)--verbose 
-    
+[](https://git-scm.com/docs/git-check-ignore#Documentation/git-check-ignore.txt---quiet)--quiet
+
+Don’t output anything, just set exit status. This is only valid with a single pathname.
+
+[](https://git-scm.com/docs/git-check-ignore#Documentation/git-check-ignore.txt--v)-v
+
+
+[](https://git-scm.com/docs/git-check-ignore#Documentation/git-check-ignore.txt---verbose)--verbose
+
 Instead of printing the paths that are excluded, for each path that matches an exclude pattern, print the exclude pattern together with the path. (Matching an exclude pattern usually means the path is excluded, but if the pattern begins with "`!`" then it is a negated pattern and matching it means the path is NOT excluded.)
-For precedence rules within and between exclude sources, see [gitignore[5]](https://git-scm.com/docs/gitignore). 
+For precedence rules within and between exclude sources, see [gitignore[5]](https://git-scm.com/docs/gitignore).
 
-[](https://git-scm.com/docs/git-check-ignore#Documentation/git-check-ignore.txt---stdin)--stdin 
-    
-Read pathnames from the standard input, one per line, instead of from the command-line. 
+[](https://git-scm.com/docs/git-check-ignore#Documentation/git-check-ignore.txt---stdin)--stdin
 
-[](https://git-scm.com/docs/git-check-ignore#Documentation/git-check-ignore.txt--z)-z 
-    
-The output format is modified to be machine-parsable (see below). If `--stdin` is also given, input paths are separated with a NUL character instead of a linefeed character. 
+Read pathnames from the standard input, one per line, instead of from the command-line.
 
-[](https://git-scm.com/docs/git-check-ignore#Documentation/git-check-ignore.txt--n)-n 
+[](https://git-scm.com/docs/git-check-ignore#Documentation/git-check-ignore.txt--z)-z
+
+The output format is modified to be machine-parsable (see below). If `--stdin` is also given, input paths are separated with a NUL character instead of a linefeed character.
+
+[](https://git-scm.com/docs/git-check-ignore#Documentation/git-check-ignore.txt--n)-n
 
 
-[](https://git-scm.com/docs/git-check-ignore#Documentation/git-check-ignore.txt---non-matching)--non-matching 
-    
-Show given paths which don’t match any pattern. This only makes sense when `--verbose` is enabled, otherwise it would not be possible to distinguish between paths which match a pattern and those which don’t. 
+[](https://git-scm.com/docs/git-check-ignore#Documentation/git-check-ignore.txt---non-matching)--non-matching
 
-[](https://git-scm.com/docs/git-check-ignore#Documentation/git-check-ignore.txt---no-index)--no-index 
-    
+Show given paths which don’t match any pattern. This only makes sense when `--verbose` is enabled, otherwise it would not be possible to distinguish between paths which match a pattern and those which don’t.
+
+[](https://git-scm.com/docs/git-check-ignore#Documentation/git-check-ignore.txt---no-index)--no-index
+
 Don’t look in the index when undertaking the checks. This can be used to debug why a path became tracked by e.g. `git` `add` `.` and was not ignored by the rules as expected by the user or when developing patterns including negation to match a path previously added with `git` `add` `-f`.
 ##  [](https://git-scm.com/docs/git-check-ignore#_output)OUTPUT
 By default, any of the given pathnames which match an ignore pattern will be output, one per line. If no pattern matches a given path, nothing will be output for that path; this means that path will not be ignored.
@@ -260,24 +260,24 @@ If `-z` is specified, the pathnames in the output are delimited by the null char
 <source> <NULL> <linenum> <NULL> <pattern> <NULL> <pathname> <NULL>
 If `-n` or `--non-matching` are specified, non-matching pathnames will also be output, in which case all fields in each output record except for <pathname> will be empty. This can be useful when running non-interactively, so that files can be incrementally streamed to STDIN of a long-running check-ignore process, and for each of these files, STDOUT will indicate whether that file matched a pattern or not. (Without this option, it would be impossible to tell whether the absence of output for a given file meant that it didn’t match any pattern, or that the output hadn’t been generated yet.)
 Buffering happens as documented under the `GIT_FLUSH` option in [git[1]](https://git-scm.com/docs/git). The caller is responsible for avoiding deadlocks caused by overfilling an input buffer or reading from an empty output buffer.
-##  [](https://git-scm.com/docs/git-check-ignore#_exit_status)EXIT STATUS 
+##  [](https://git-scm.com/docs/git-check-ignore#_exit_status)EXIT STATUS
 
-[](https://git-scm.com/docs/git-check-ignore#Documentation/git-check-ignore.txt-0)0 
-    
-One or more of the provided paths is ignored. 
+[](https://git-scm.com/docs/git-check-ignore#Documentation/git-check-ignore.txt-0)0
 
-[](https://git-scm.com/docs/git-check-ignore#Documentation/git-check-ignore.txt-1)1 
-    
-None of the provided paths are ignored. 
+One or more of the provided paths is ignored.
 
-[](https://git-scm.com/docs/git-check-ignore#Documentation/git-check-ignore.txt-128)128 
-    
+[](https://git-scm.com/docs/git-check-ignore#Documentation/git-check-ignore.txt-1)1
+
+None of the provided paths are ignored.
+
+[](https://git-scm.com/docs/git-check-ignore#Documentation/git-check-ignore.txt-128)128
+
 A fatal error was encountered.
 ##  [](https://git-scm.com/docs/git-check-ignore#_see_also)SEE ALSO
 [gitignore[5]](https://git-scm.com/docs/gitignore) [git-config[1]](https://git-scm.com/docs/git-config) [git-ls-files[1]](https://git-scm.com/docs/git-ls-files)
 ##  [](https://git-scm.com/docs/git-check-ignore#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### check-ignore
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

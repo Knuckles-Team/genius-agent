@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-pack-redundant#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-pack-redundant#_synopsis)
     * [WARNING](https://git-scm.com/docs/git-pack-redundant#_warning)
@@ -34,8 +34,8 @@ Localized versions of **git-pack-redundant** manual
   4. [українська мова ](https://git-scm.com/docs/git-pack-redundant/uk)
   5. [简体中文 ](https://git-scm.com/docs/git-pack-redundant/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-pack-redundant)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -203,24 +203,24 @@ Running `pack-redundant` without the `--i-still-use-this` flag will fail in this
 This program computes which packs in your repository are redundant. The output is suitable for piping to `xargs` `rm` if you are in the root of the repository.
 _git pack-redundant_ accepts a list of objects on standard input. Any objects given will be ignored when checking which packs are required. This makes the following command useful when wanting to remove packs which contain unreachable objects.
 git fsck --full --unreachable | cut -d ' ' -f3 | \ git pack-redundant --all | xargs rm
-##  [](https://git-scm.com/docs/git-pack-redundant#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-pack-redundant#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-pack-redundant#Documentation/git-pack-redundant.txt---all)--all 
-    
-Processes all packs. Any filenames on the command line are ignored. 
+[](https://git-scm.com/docs/git-pack-redundant#Documentation/git-pack-redundant.txt---all)--all
 
-[](https://git-scm.com/docs/git-pack-redundant#Documentation/git-pack-redundant.txt---alt-odb)--alt-odb 
-    
-Don’t require objects present in packs from alternate object database (odb) directories to be present in local packs. 
+Processes all packs. Any filenames on the command line are ignored.
 
-[](https://git-scm.com/docs/git-pack-redundant#Documentation/git-pack-redundant.txt---verbose)--verbose 
-    
+[](https://git-scm.com/docs/git-pack-redundant#Documentation/git-pack-redundant.txt---alt-odb)--alt-odb
+
+Don’t require objects present in packs from alternate object database (odb) directories to be present in local packs.
+
+[](https://git-scm.com/docs/git-pack-redundant#Documentation/git-pack-redundant.txt---verbose)--verbose
+
 Outputs some statistics to stderr. Has a small performance penalty.
 ##  [](https://git-scm.com/docs/git-pack-redundant#_see_also)SEE ALSO
 [git-pack-objects[1]](https://git-scm.com/docs/git-pack-objects) [git-repack[1]](https://git-scm.com/docs/git-repack) [git-prune-packed[1]](https://git-scm.com/docs/git-prune-packed)
 ##  [](https://git-scm.com/docs/git-pack-redundant#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### pack-redundant
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

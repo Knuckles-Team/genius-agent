@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-read-tree#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-read-tree#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-read-tree#_description)
@@ -34,8 +34,8 @@ Localized versions of **git-read-tree** manual
   3. [українська мова ](https://git-scm.com/docs/git-read-tree/uk)
   4. [简体中文 ](https://git-scm.com/docs/git-read-tree/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-read-tree)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -224,41 +224,41 @@ _git read-tree_ [(-m [--trivial] [--aggressive] | --reset | --prefix=<prefix>)
 Reads the tree information given by <tree-ish> into the index, but does not actually **update** any of the files it "caches". (see: [git-checkout-index[1]](https://git-scm.com/docs/git-checkout-index))
 Optionally, it can merge a tree into the index, perform a fast-forward (i.e. 2-way) merge, or a 3-way merge, with the `-m` flag. When used with `-m`, the `-u` flag causes it to also update the files in the work tree with the result of the merge.
 Only trivial merges are done by _git read-tree_ itself. Only conflicting paths will be in an unmerged state when _git read-tree_ returns.
-##  [](https://git-scm.com/docs/git-read-tree#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-read-tree#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-read-tree#Documentation/git-read-tree.txt--m)-m 
-    
-Perform a merge, not just a read. The command will refuse to run if your index file has unmerged entries, indicating that you have not finished a previous merge you started. 
+[](https://git-scm.com/docs/git-read-tree#Documentation/git-read-tree.txt--m)-m
 
-[](https://git-scm.com/docs/git-read-tree#Documentation/git-read-tree.txt---reset)--reset 
-    
-Same as -m, except that unmerged entries are discarded instead of failing. When used with `-u`, updates leading to loss of working tree changes or untracked files or directories will not abort the operation. 
+Perform a merge, not just a read. The command will refuse to run if your index file has unmerged entries, indicating that you have not finished a previous merge you started.
 
-[](https://git-scm.com/docs/git-read-tree#Documentation/git-read-tree.txt--u)-u 
-    
-After a successful merge, update the files in the work tree with the result of the merge. 
+[](https://git-scm.com/docs/git-read-tree#Documentation/git-read-tree.txt---reset)--reset
 
-[](https://git-scm.com/docs/git-read-tree#Documentation/git-read-tree.txt--i)-i 
-    
-Usually a merge requires the index file as well as the files in the working tree to be up to date with the current head commit, in order not to lose local changes. This flag disables the check with the working tree and is meant to be used when creating a merge of trees that are not directly related to the current working tree status into a temporary index file. 
+Same as -m, except that unmerged entries are discarded instead of failing. When used with `-u`, updates leading to loss of working tree changes or untracked files or directories will not abort the operation.
 
-[](https://git-scm.com/docs/git-read-tree#Documentation/git-read-tree.txt--n)-n 
+[](https://git-scm.com/docs/git-read-tree#Documentation/git-read-tree.txt--u)-u
+
+After a successful merge, update the files in the work tree with the result of the merge.
+
+[](https://git-scm.com/docs/git-read-tree#Documentation/git-read-tree.txt--i)-i
+
+Usually a merge requires the index file as well as the files in the working tree to be up to date with the current head commit, in order not to lose local changes. This flag disables the check with the working tree and is meant to be used when creating a merge of trees that are not directly related to the current working tree status into a temporary index file.
+
+[](https://git-scm.com/docs/git-read-tree#Documentation/git-read-tree.txt--n)-n
 
 
-[](https://git-scm.com/docs/git-read-tree#Documentation/git-read-tree.txt---dry-run)--dry-run 
-    
-Check if the command would error out, without updating the index or the files in the working tree for real. 
+[](https://git-scm.com/docs/git-read-tree#Documentation/git-read-tree.txt---dry-run)--dry-run
 
-[](https://git-scm.com/docs/git-read-tree#Documentation/git-read-tree.txt--v)-v 
-    
-Show the progress of checking files out. 
+Check if the command would error out, without updating the index or the files in the working tree for real.
 
-[](https://git-scm.com/docs/git-read-tree#Documentation/git-read-tree.txt---trivial)--trivial 
-    
-Restrict three-way merge by _git read-tree_ to happen only if there is no file-level merging required, instead of resolving merge for trivial cases and leaving conflicting files unresolved in the index. 
+[](https://git-scm.com/docs/git-read-tree#Documentation/git-read-tree.txt--v)-v
 
-[](https://git-scm.com/docs/git-read-tree#Documentation/git-read-tree.txt---aggressive)--aggressive 
-    
+Show the progress of checking files out.
+
+[](https://git-scm.com/docs/git-read-tree#Documentation/git-read-tree.txt---trivial)--trivial
+
+Restrict three-way merge by _git read-tree_ to happen only if there is no file-level merging required, instead of resolving merge for trivial cases and leaving conflicting files unresolved in the index.
+
+[](https://git-scm.com/docs/git-read-tree#Documentation/git-read-tree.txt---aggressive)--aggressive
+
 Usually a three-way merge by _git read-tree_ resolves the merge for really trivial cases and leaves other cases unresolved in the index, so that porcelains can implement different merge policies. This flag makes the command resolve a few more cases internally:
   * when one side removes a path and the other side leaves the path unmodified. The resolution is to remove that path.
   * when both sides remove a path. The resolution is to remove that path.
@@ -266,38 +266,38 @@ Usually a three-way merge by _git read-tree_ resolves the merge for really trivi
 
 
 
-[](https://git-scm.com/docs/git-read-tree#Documentation/git-read-tree.txt---prefixprefix)--prefix=<prefix> 
-    
-Keep the current index contents, and read the contents of the named tree-ish under the directory at _< prefix>_. The command will refuse to overwrite entries that already existed in the original index file. 
+[](https://git-scm.com/docs/git-read-tree#Documentation/git-read-tree.txt---prefixprefix)--prefix=<prefix>
 
-[](https://git-scm.com/docs/git-read-tree#Documentation/git-read-tree.txt---index-outputfile)--index-output=<file> 
-    
-Instead of writing the results out to `$GIT_INDEX_FILE`, write the resulting index in the named file. While the command is operating, the original index file is locked with the same mechanism as usual. The file must allow to be rename(2)ed into from a temporary file that is created next to the usual index file; typically this means it needs to be on the same filesystem as the index file itself, and you need write permission to the directories the index file and index output file are located in. 
+Keep the current index contents, and read the contents of the named tree-ish under the directory at _< prefix>_. The command will refuse to overwrite entries that already existed in the original index file.
 
-[](https://git-scm.com/docs/git-read-tree#Documentation/git-read-tree.txt---recurse-submodules)--recurse-submodules 
+[](https://git-scm.com/docs/git-read-tree#Documentation/git-read-tree.txt---index-outputfile)--index-output=<file>
 
+Instead of writing the results out to `$GIT_INDEX_FILE`, write the resulting index in the named file. While the command is operating, the original index file is locked with the same mechanism as usual. The file must allow to be rename(2)ed into from a temporary file that is created next to the usual index file; typically this means it needs to be on the same filesystem as the index file itself, and you need write permission to the directories the index file and index output file are located in.
 
-[](https://git-scm.com/docs/git-read-tree#Documentation/git-read-tree.txt---no-recurse-submodules)--no-recurse-submodules 
-    
-Using --recurse-submodules will update the content of all active submodules according to the commit recorded in the superproject by calling read-tree recursively, also setting the submodules' HEAD to be detached at that commit. 
-
-[](https://git-scm.com/docs/git-read-tree#Documentation/git-read-tree.txt---no-sparse-checkout)--no-sparse-checkout 
-    
-Disable sparse checkout support even if `core.sparseCheckout` is true. 
-
-[](https://git-scm.com/docs/git-read-tree#Documentation/git-read-tree.txt---empty)--empty 
-    
-Instead of reading tree object(s) into the index, just empty it. 
-
-[](https://git-scm.com/docs/git-read-tree#Documentation/git-read-tree.txt--q)-q 
+[](https://git-scm.com/docs/git-read-tree#Documentation/git-read-tree.txt---recurse-submodules)--recurse-submodules
 
 
-[](https://git-scm.com/docs/git-read-tree#Documentation/git-read-tree.txt---quiet)--quiet 
-    
-Quiet, suppress feedback messages. 
+[](https://git-scm.com/docs/git-read-tree#Documentation/git-read-tree.txt---no-recurse-submodules)--no-recurse-submodules
 
-[](https://git-scm.com/docs/git-read-tree#Documentation/git-read-tree.txt-tree-ish)<tree-ish#> 
-    
+Using --recurse-submodules will update the content of all active submodules according to the commit recorded in the superproject by calling read-tree recursively, also setting the submodules' HEAD to be detached at that commit.
+
+[](https://git-scm.com/docs/git-read-tree#Documentation/git-read-tree.txt---no-sparse-checkout)--no-sparse-checkout
+
+Disable sparse checkout support even if `core.sparseCheckout` is true.
+
+[](https://git-scm.com/docs/git-read-tree#Documentation/git-read-tree.txt---empty)--empty
+
+Instead of reading tree object(s) into the index, just empty it.
+
+[](https://git-scm.com/docs/git-read-tree#Documentation/git-read-tree.txt--q)-q
+
+
+[](https://git-scm.com/docs/git-read-tree#Documentation/git-read-tree.txt---quiet)--quiet
+
+Quiet, suppress feedback messages.
+
+[](https://git-scm.com/docs/git-read-tree#Documentation/git-read-tree.txt-tree-ish)<tree-ish#>
+
 The id of the tree object(s) to be read/merged.
 ##  [](https://git-scm.com/docs/git-read-tree#_merging)MERGING
 If `-m` is specified, _git read-tree_ can perform 3 kinds of merge, a single tree merge if only 1 tree is given, a fast-forward merge with 2 trees, or a 3-way merge if 3 or more trees are provided.
@@ -430,6 +430,6 @@ Then you can disable sparse checkout. Sparse checkout support in _git read-tree_
 ##  [](https://git-scm.com/docs/git-read-tree#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### read-tree
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

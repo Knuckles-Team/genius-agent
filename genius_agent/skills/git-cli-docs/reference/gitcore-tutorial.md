@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/gitcore-tutorial#_name)
     * [SYNOPSIS](https://git-scm.com/docs/gitcore-tutorial#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/gitcore-tutorial#_description)
@@ -44,8 +44,8 @@
 Localized versions of **gitcore-tutorial** manual
   1. [English ](https://git-scm.com/docs/gitcore-tutorial)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/gitcore-tutorial)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -222,8 +222,8 @@ If you just need to use Git as a revision control system you may prefer to start
 However, an understanding of these low-level tools can be helpful if you want to understand Git’s internals.
 The core Git is often called "plumbing", with the prettier user interfaces on top of it called "porcelain". You may not want to use the plumbing directly very often, but it can be good to know what the plumbing does when the porcelain isn’t flushing.
 Back when this document was originally written, many porcelain commands were shell scripts. For simplicity, it still uses them as examples to illustrate how plumbing is fit together to form the porcelain commands. The source tree includes some of these scripts in contrib/examples/ for reference. Although these are not implemented as shell scripts anymore, the description of what the plumbing layer commands do is still valid.
-Note |  Deeper technical details are often marked as Notes, which you can skip on your first reading.   
----|---  
+Note |  Deeper technical details are often marked as Notes, which you can skip on your first reading.
+---|---
 ##  [](https://git-scm.com/docs/gitcore-tutorial#_creating_a_git_repository)Creating a Git repository
 Creating a new Git repository couldn’t be easier: all Git repositories start out empty, and the only thing you need to do is find yourself a subdirectory that you want to use as a working tree - either an empty one for a totally new project, or an existing working tree that you want to import into Git.
 For our first example, we’re going to start a totally new repository from scratch, with no pre-existing files, and we’ll call it _git-tutorial_. To start up, create a subdirectory for it, change into that subdirectory, and initialize the Git infrastructure with _git init_ :
@@ -248,10 +248,10 @@ Don’t worry about the fact that the file that the `HEAD` link points to doesn�
 In particular, the `refs` subdirectory will contain two other subdirectories, named `heads` and `tags` respectively. They do exactly what their names imply: they contain references to any number of different _heads_ of development (aka _branches_), and to any _tags_ that you have created to name specific versions in your repository.
 One note: the special `master` head is the default branch, which is why the `.git/HEAD` file was created points to it even if it doesn’t yet exist. Basically, the `HEAD` link is supposed to always point to the branch you are working on right now, and you always start out expecting to work on the `master` branch.
 However, this is only a convention, and you can name your branches anything you want, and don’t have to ever even _have_ a `master` branch. A number of the Git tools will assume that `.git/HEAD` is valid, though.
-Note |  An _object_ is identified by its 160-bit SHA-1 hash, aka _object name_ , and a reference to an object is always the 40-byte hex representation of that SHA-1 name. The files in the `refs` subdirectory are expected to contain these hex references (usually with a final _\n_ at the end), and you should thus expect to see a number of 41-byte files containing these references in these `refs` subdirectories when you actually start populating your tree.   
----|---  
-Note |  An advanced user may want to take a look at [gitrepository-layout[5]](https://git-scm.com/docs/gitrepository-layout) after finishing this tutorial.   
----|---  
+Note |  An _object_ is identified by its 160-bit SHA-1 hash, aka _object name_ , and a reference to an object is always the 40-byte hex representation of that SHA-1 name. The files in the `refs` subdirectory are expected to contain these hex references (usually with a final _\n_ at the end), and you should thus expect to see a number of 41-byte files containing these references in these `refs` subdirectories when you actually start populating your tree.
+---|---
+Note |  An advanced user may want to take a look at [gitrepository-layout[5]](https://git-scm.com/docs/gitrepository-layout) after finishing this tutorial.
+---|---
 You have now created your first Git repository. Of course, since it’s empty, that’s not very useful, so let’s start populating it with data.
 ##  [](https://git-scm.com/docs/gitcore-tutorial#_populating_a_git_repository)Populating a Git repository
 We’ll keep this simple and stupid, so we’ll start off with populating a few trivial files just to get a feel for it.
@@ -296,10 +296,10 @@ $ git cat-file blob 557db03
 ```
 
 which will print out "Hello World". The object `557db03` is nothing more than the contents of your file `hello`.
-Note |  Don’t confuse that object with the file `hello` itself. The object is literally just those specific **contents** of the file, and however much you later change the contents in file `hello`, the object we just looked at will never change. Objects are immutable.   
----|---  
-Note |  The second example demonstrates that you can abbreviate the object name to only the first several hexadecimal digits in most places.   
----|---  
+Note |  Don’t confuse that object with the file `hello` itself. The object is literally just those specific **contents** of the file, and however much you later change the contents in file `hello`, the object we just looked at will never change. Objects are immutable.
+---|---
+Note |  The second example demonstrates that you can abbreviate the object name to only the first several hexadecimal digits in most places.
+---|---
 Anyway, as we mentioned previously, you normally never actually take a look at the objects themselves, and typing long 40-character hex names is not something you’d normally want to do. The above digression was just to show that _git update-index_ did something magical, and actually saved away the contents of your files into the Git object database.
 Updating the index did something else too: it created a `.git/index` file. This is the index that describes your current working tree, and something you should be very aware of. Again, you normally never worry about the index file itself, but you should be aware of the fact that you have not actually really "checked in" your files into Git so far, you’ve only **told** Git about them.
 However, since Git knows about them, you can now start using some of the most basic Git commands to manipulate the files or look at their status.
@@ -382,8 +382,8 @@ $ git diff HEAD
 
 which ends up doing the above for you.
 In other words, _git diff-index_ normally compares a tree against the working tree, but when given the `--cached` flag, it is told to instead compare against just the index cache contents, and ignore the current working tree state entirely. Since we just wrote the index file to HEAD, doing `git` `diff-index` `--cached` `-p` `HEAD` should thus return an empty set of differences, and that’s exactly what it does.
-Note |  _git diff-index_ really always uses the index for its comparisons, and saying that it compares a tree against the working tree is thus not strictly accurate. In particular, the list of files to compare (the "meta-data") **always** comes from the index file, regardless of whether the `--cached` flag is used or not. The `--cached` flag really only determines whether the file **contents** to be compared come from the working tree or not. This is not hard to understand, as soon as you realize that Git simply never knows (or cares) about files that it is not told about explicitly. Git will never go **looking** for files to compare, it expects you to tell it what the files are, and that’s what the index is there for.  
----|---  
+Note |  _git diff-index_ really always uses the index for its comparisons, and saying that it compares a tree against the working tree is thus not strictly accurate. In particular, the list of files to compare (the "meta-data") **always** comes from the index file, regardless of whether the `--cached` flag is used or not. The `--cached` flag really only determines whether the file **contents** to be compared come from the working tree or not. This is not hard to understand, as soon as you realize that Git simply never knows (or cares) about files that it is not told about explicitly. Git will never go **looking** for files to compare, it expects you to tell it what the files are, and that’s what the index is there for.
+---|---
 However, our next step is to commit the **change** we did, and again, to understand what’s going on, keep in mind the difference between "working tree contents", "index file" and "committed tree". We have changes in the working tree that we want to commit, and we always have to work through the index file, so the first thing we need to do is to update the index cache:
 ```
 $ git update-index hello
@@ -437,8 +437,8 @@ diff-index  |    V
           | Directory |
           +-----------+
 ```
-  
----|---  
+
+---|---
 More interestingly, you can also give _git diff-tree_ the `--pretty` flag, which tells it to also show the commit message and author and date of the commit, and you can tell it to show a whole series of diffs. Alternatively, you can tell it to be "silent", and not show the diffs at all, but just show the actual commit message.
 In fact, together with the _git rev-list_ program (which generates a list of revisions), _git diff-tree_ ends up being a veritable fount of changes. You can emulate `git` `log`, `git` `log` `-p`, etc. with a trivial script that pipes the output of `git` `rev-list` to `git` `diff-tree` `--stdin`, which was exactly how early versions of `git` `log` were implemented.
 ##  [](https://git-scm.com/docs/gitcore-tutorial#_tagging_a_version)Tagging a version
@@ -463,8 +463,8 @@ which will sign the current `HEAD` (but you can also give it another argument th
 You normally only do signed tags for major releases or things like that, while the light-weight tags are useful for any marking you want to do — any time you decide that you want to remember a certain point, just create a private tag for it, and you have a nice symbolic name for the state at that point.
 ##  [](https://git-scm.com/docs/gitcore-tutorial#_copying_repositories)Copying repositories
 Git repositories are normally totally self-sufficient and relocatable. Unlike CVS, for example, there is no separate notion of "repository" and "working tree". A Git repository normally **is** the working tree, with the local Git information hidden in the `.git` subdirectory. There is nothing else. What you see is what you got.
-Note |  You can tell Git to split the Git internal information from the directory that it tracks, but we’ll ignore that for now: it’s not how normal projects work, and it’s really only meant for special uses. So the mental model of "the Git information is always tied directly to the working tree that it describes" may not be technically 100% accurate, but it’s a good model for all normal use.   
----|---  
+Note |  You can tell Git to split the Git internal information from the directory that it tracks, but we’ll ignore that for now: it’s not how normal projects work, and it’s really only meant for special uses. So the mental model of "the Git information is always tied directly to the working tree that it describes" may not be technically 100% accurate, but it’s a good model for all normal use.
+---|---
 This has two implications:
   * if you grow bored with the tutorial repository you created (or you’ve made a mistake and want to start all over), you can just do simple
 ```
@@ -535,8 +535,8 @@ will create a new branch based at the current `HEAD` position, and switch to it.
 Note |  If you make the decision to start your new branch at some other point in the history than the current `HEAD`, you can do so by just telling _git switch_ what the base of the checkout would be. In other words, if you have an earlier tag or branch, you’d just do ```
 $ git switch -c mybranch earlier-commit
 ```
-and it would create the new branch `mybranch` at the earlier commit, and check out the state at that time.  
----|---  
+and it would create the new branch `mybranch` at the earlier commit, and check out the state at that time.
+---|---
 You can always just jump back to your original `master` branch by doing
 ```
 $ git switch master
@@ -628,10 +628,10 @@ $ git show-branch --topo-order --more=1 master mybranch
 ```
 
 The first two lines indicate that it is showing the two branches with the titles of their top-of-the-tree commits, you are currently on `master` branch (notice the asterisk `*` character), and the first column for the later output lines is used to show commits contained in the `master` branch, and the second column for the `mybranch` branch. Three commits are shown along with their titles. All of them have non blank characters in the first column (`*` shows an ordinary commit on the current branch, `-` is a merge commit), which means they are now part of the `master` branch. Only the "Some work" commit has the plus `+` character in the second column, because `mybranch` has not been merged to incorporate these commits from the master branch. The string inside brackets before the commit log message is a short name you can use to name the commit. In the above example, _master_ and _mybranch_ are branch heads. _master^_ is the first parent of _master_ branch head. Please see [gitrevisions[7]](https://git-scm.com/docs/gitrevisions) if you want to see more complex cases.
-Note |  Without the _--more=1_ option, _git show-branch_ would not output the _[master^]_ commit, as _[mybranch]_ commit is a common ancestor of both _master_ and _mybranch_ tips. Please see [git-show-branch[1]](https://git-scm.com/docs/git-show-branch) for details.   
----|---  
-Note |  If there were more commits on the _master_ branch after the merge, the merge commit itself would not be shown by _git show-branch_ by default. You would need to provide `--sparse` option to make the merge commit visible in this case.   
----|---  
+Note |  Without the _--more=1_ option, _git show-branch_ would not output the _[master^]_ commit, as _[mybranch]_ commit is a common ancestor of both _master_ and _mybranch_ tips. Please see [git-show-branch[1]](https://git-scm.com/docs/git-show-branch) for details.
+---|---
+Note |  If there were more commits on the _master_ branch after the merge, the merge commit itself would not be shown by _git show-branch_ by default. You would need to provide `--sparse` option to make the merge commit visible in this case.
+---|---
 Now, let’s pretend you are the one who did all the work in `mybranch`, and the fruit of your hard work has finally been merged to the `master` branch. Let’s go back to `mybranch`, and run _git merge_ to get the "upstream changes" back to your branch.
 ```
 $ git switch mybranch
@@ -664,26 +664,26 @@ Fetching from a remote repository is done by, unsurprisingly, _git fetch_ :
 $ git fetch <remote-repository>
 ```
 
-One of the following transports can be used to name the repository to download from: 
+One of the following transports can be used to name the repository to download from:
 
-[](https://git-scm.com/docs/gitcore-tutorial#Documentation/gitcore-tutorial.txt-SSH)SSH 
-    
+[](https://git-scm.com/docs/gitcore-tutorial#Documentation/gitcore-tutorial.txt-SSH)SSH
+
 `remote.machine:/path/to/repo.git/` or
 `ssh://remote.machine/path/to/repo.git/`
-This transport can be used for both uploading and downloading, and requires you to have a log-in privilege over `ssh` to the remote machine. It finds out the set of objects the other side lacks by exchanging the head commits both ends have and transfers (close to) minimum set of objects. It is by far the most efficient way to exchange Git objects between repositories. 
+This transport can be used for both uploading and downloading, and requires you to have a log-in privilege over `ssh` to the remote machine. It finds out the set of objects the other side lacks by exchanging the head commits both ends have and transfers (close to) minimum set of objects. It is by far the most efficient way to exchange Git objects between repositories.
 
-[](https://git-scm.com/docs/gitcore-tutorial#Documentation/gitcore-tutorial.txt-Localdirectory)Local directory 
-    
+[](https://git-scm.com/docs/gitcore-tutorial#Documentation/gitcore-tutorial.txt-Localdirectory)Local directory
+
 `/path/to/repo.git/`
-This transport is the same as SSH transport but uses _sh_ to run both ends on the local machine instead of running other end on the remote machine via _ssh_. 
+This transport is the same as SSH transport but uses _sh_ to run both ends on the local machine instead of running other end on the remote machine via _ssh_.
 
-[](https://git-scm.com/docs/gitcore-tutorial#Documentation/gitcore-tutorial.txt-GitNative)Git Native 
-    
+[](https://git-scm.com/docs/gitcore-tutorial#Documentation/gitcore-tutorial.txt-GitNative)Git Native
+
 `git://remote.machine/path/to/repo.git/`
-This transport was designed for anonymous downloading. Like SSH transport, it finds out the set of objects the downstream side lacks and transfers (close to) minimum set of objects. 
+This transport was designed for anonymous downloading. Like SSH transport, it finds out the set of objects the downstream side lacks and transfers (close to) minimum set of objects.
 
-[](https://git-scm.com/docs/gitcore-tutorial#Documentation/gitcore-tutorial.txt-HTTPS)HTTP(S) 
-    
+[](https://git-scm.com/docs/gitcore-tutorial#Documentation/gitcore-tutorial.txt-HTTPS)HTTP(S)
+
 `http://remote.machine/path/to/repo.git/`
 Downloader from http and https URL first obtains the topmost commit object name from the remote site by looking at the specified refname under `repo.git/refs/` directory, and then tries to obtain the commit object by downloading from `repo.git/objects/xx/xxx...` using the object name of that commit object. Then it reads the commit object to find out its parent commits and the associate tree object; it repeats this process until it gets all the necessary objects. Because of this behavior, they are sometimes also called _commit walkers_.
 The _commit walkers_ are sometimes also called _dumb transports_ , because they do not require any Git aware smart server like Git Native transport does. Any stock HTTP server that does not even support directory index would suffice. But you must prepare your repository with _git update-server-info_ to help dumb transport downloaders.
@@ -694,8 +694,8 @@ $ git pull <remote-repository>
 ```
 
 and optionally give a branch-name for the remote end as a second argument.
-Note |  You could do without using any branches at all, by keeping as many local repositories as you would like to have branches, and merging between them with _git pull_ , just like you merge between branches. The advantage of this approach is that it lets you keep a set of files for each `branch` checked out and you may find it easier to switch back and forth if you juggle multiple lines of development simultaneously. Of course, you will pay the price of more disk usage to hold multiple working trees, but disk space is cheap these days.   
----|---  
+Note |  You could do without using any branches at all, by keeping as many local repositories as you would like to have branches, and merging between them with _git pull_ , just like you merge between branches. The advantage of this approach is that it lets you keep a set of files for each `branch` checked out and you may find it easier to switch back and forth if you juggle multiple lines of development simultaneously. Of course, you will pay the price of more disk usage to hold multiple working trees, but disk space is cheap these days.
+---|---
 It is likely that you will be pulling from the same remote repository from time to time. As a short hand, you can store the remote repository URL in the local repository’s config file like this:
 ```
 $ git config remote.linus.url https://git.kernel.org/pub/scm/git/git.git/
@@ -800,12 +800,12 @@ This is the state of the index file and the working file after _git merge_ retur
 ##  [](https://git-scm.com/docs/gitcore-tutorial#_publishing_your_work)Publishing your work
 So, we can use somebody else’s work from a remote repository, but how can **you** prepare a repository to let other people pull from it?
 You do your real work in your working tree that has your primary repository hanging under it as its `.git` subdirectory. You **could** make that repository accessible remotely and ask people to pull from it, but in practice that is not the way things are usually done. A recommended way is to have a public repository, make it reachable by other people, and when the changes you made in your primary working tree are in good shape, update the public repository from it. This is often called _pushing_.
-Note |  This public repository could further be mirrored, and that is how Git repositories at `kernel.org` are managed.   
----|---  
+Note |  This public repository could further be mirrored, and that is how Git repositories at `kernel.org` are managed.
+---|---
 Publishing the changes from your local (private) repository to your remote (public) repository requires a write privilege on the remote machine. You need to have an SSH account there to run a single command, _git-receive-pack_.
 First, you need to create an empty repository on the remote machine that will house your public repository. This empty repository will be populated and be kept up to date by pushing into it later. Obviously, this repository creation needs to be done only once.
-Note |  _git push_ uses a pair of commands, _git send-pack_ on your local machine, and _git-receive-pack_ on the remote machine. The communication between the two over the network internally uses an SSH connection.   
----|---  
+Note |  _git push_ uses a pair of commands, _git send-pack_ on your local machine, and _git-receive-pack_ on the remote machine. The communication between the two over the network internally uses an SSH connection.
+---|---
 Your private repository’s Git directory is usually `.git`, but your public repository is often named after the project name, i.e. _< project>_`.git`. Let’s create such a public repository for project `my-git`. After logging into the remote machine, create an empty directory:
 ```
 $ mkdir my-git.git
@@ -817,10 +817,10 @@ $ GIT_DIR=my-git.git git init
 ```
 
 Make sure this directory is available for others you want your changes to be pulled via the transport of your choice. Also you need to make sure that you have the _git-receive-pack_ program on the `$PATH`.
-Note |  Many installations of sshd do not invoke your shell as the login shell when you directly run programs; what this means is that if your login shell is _bash_ , only `.bashrc` is read and not `.bash_profile`. As a workaround, make sure `.bashrc` sets up `$PATH` so that you can run _git-receive-pack_ program.   
----|---  
-Note |  If you plan to publish this repository to be accessed over http, you should do `mv` `my-git.git/hooks/post-update.sample` `my-git.git/hooks/post-update` at this point. This makes sure that every time you push into this repository, `git` `update-server-info` is run.   
----|---  
+Note |  Many installations of sshd do not invoke your shell as the login shell when you directly run programs; what this means is that if your login shell is _bash_ , only `.bashrc` is read and not `.bash_profile`. As a workaround, make sure `.bashrc` sets up `$PATH` so that you can run _git-receive-pack_ program.
+---|---
+Note |  If you plan to publish this repository to be accessed over http, you should do `mv` `my-git.git/hooks/post-update.sample` `my-git.git/hooks/post-update` at this point. This makes sure that every time you push into this repository, `git` `update-server-info` is run.
+---|---
 Your "public repository" is now ready to accept your changes. Come back to the machine you have your private repository. From there, run this command:
 ```
 $ git push <public-host>:/path/to/my-git.git master
@@ -839,8 +839,8 @@ $ git repack
 ```
 
 will do it for you. If you followed the tutorial examples, you would have accumulated about 17 objects in _.git/objects/??/_ directories by now. _git repack_ tells you how many objects it packed, and stores the packed file in the `.git/objects/pack` directory.
-Note |  You will see two files, `pack-*.pack` and `pack-*.idx`, in `.git/objects/pack` directory. They are closely related to each other, and if you ever copy them by hand to a different repository for whatever reason, you should make sure you copy them together. The former holds all the data from the objects in the pack, and the latter holds the index for random access.   
----|---  
+Note |  You will see two files, `pack-*.pack` and `pack-*.idx`, in `.git/objects/pack` directory. They are closely related to each other, and if you ever copy them by hand to a different repository for whatever reason, you should make sure you copy them together. The former holds all the data from the objects in the pack, and the latter holds the index for random access.
+---|---
 If you are paranoid, running _git verify-pack_ command would detect if you have a corrupt pack, but do not worry too much. Our programs are always perfect ;-).
 Once you have packed objects, you do not need to leave the unpacked objects that are contained in the pack file anymore.
 ```
@@ -849,8 +849,8 @@ $ git prune-packed
 
 would remove them for you.
 You can try running `find` `.git/objects` `-type` `f` before and after you run `git` `prune-packed` if you are curious. Also `git` `count-objects` would tell you how many unpacked objects are in your repository and how much space they are consuming.
-Note |  `git` `pull` is slightly cumbersome for HTTP transport, as a packed repository may contain relatively few objects in a relatively large pack. If you expect many HTTP pulls from your public repository you might want to repack & prune often, or never.   
----|---  
+Note |  `git` `pull` is slightly cumbersome for HTTP transport, as a packed repository may contain relatively few objects in a relatively large pack. If you expect many HTTP pulls from your public repository you might want to repack & prune often, or never.
+---|---
 If you run `git` `repack` again at this point, it will say "Nothing new to pack.". Once you continue your development and accumulate the changes, running `git` `repack` again will create a new pack, that contains objects created since you packed your repository the last time. We recommend that you pack your project soon after the initial import (unless you are starting your project from scratch), and then run `git` `repack` every once in a while, depending on how active your project is.
 When a repository is synchronized via `git` `push` and `git` `pull` objects packed in the source repository are usually stored unpacked in the destination. While this allows you to use different packing strategies on both ends, it also means you may need to repack both repositories every once in a while.
 ##  [](https://git-scm.com/docs/gitcore-tutorial#_working_with_others)Working with Others
@@ -955,6 +955,6 @@ Note that you should not do Octopus just because you can. An octopus is a valid 
 ##  [](https://git-scm.com/docs/gitcore-tutorial#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### gitcore-tutorial
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

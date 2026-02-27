@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-verify-commit#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-verify-commit#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-verify-commit#_description)
@@ -33,8 +33,8 @@ Localized versions of **git-verify-commit** manual
   5. [українська мова ](https://git-scm.com/docs/git-verify-commit/uk)
   6. [简体中文 ](https://git-scm.com/docs/git-verify-commit/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-verify-commit)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -199,21 +199,21 @@ git verify-commit [-v | --verbose] [--raw] _<commit>_…​
 
 ##  [](https://git-scm.com/docs/git-verify-commit#_description)DESCRIPTION
 Validates the GPG signature created by `git` `commit` `-S` on the commit objects given on the command line.
-##  [](https://git-scm.com/docs/git-verify-commit#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-verify-commit#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-verify-commit#Documentation/git-verify-commit.txt---raw)`--raw` 
-    
-Print the raw gpg status output to standard error instead of the normal human-readable output. 
+[](https://git-scm.com/docs/git-verify-commit#Documentation/git-verify-commit.txt---raw)`--raw`
 
-[](https://git-scm.com/docs/git-verify-commit#Documentation/git-verify-commit.txt--v)`-v` 
+Print the raw gpg status output to standard error instead of the normal human-readable output.
+
+[](https://git-scm.com/docs/git-verify-commit#Documentation/git-verify-commit.txt--v)`-v`
 
 
-[](https://git-scm.com/docs/git-verify-commit#Documentation/git-verify-commit.txt---verbose)`--verbose` 
-    
+[](https://git-scm.com/docs/git-verify-commit#Documentation/git-verify-commit.txt---verbose)`--verbose`
+
 Print the contents of the commit object before validating it.
 ##  [](https://git-scm.com/docs/git-verify-commit#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### verify-commit
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

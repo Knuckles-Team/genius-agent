@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-push#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-push#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-push#_description)
@@ -42,8 +42,8 @@ Localized versions of **git-push** manual
   5. [українська мова ](https://git-scm.com/docs/git-push/uk)
   6. [简体中文 ](https://git-scm.com/docs/git-push/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-push)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -272,14 +272,14 @@ To decide which branches, tags, or other refs to push, Git uses (in order of pre
 
 `git` `push` may fail if you haven’t set an upstream for the current branch, depending on what `push.default` is set to. See the [UPSTREAM BRANCHES](https://git-scm.com/docs/git-push#UPSTREAM-BRANCHES) section below for more on how to set and use upstreams.
 You can make interesting things happen to a repository every time you push into it, by setting up _hooks_ there. See documentation for [git-receive-pack[1]](https://git-scm.com/docs/git-receive-pack).
-##  [](https://git-scm.com/docs/git-push#OPTIONS)OPTIONS 
+##  [](https://git-scm.com/docs/git-push#OPTIONS)OPTIONS
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-repository)_< repository>_ 
-    
-The "remote" repository that is the destination of a push operation. This parameter can be either a URL (see the section [GIT URLS](https://git-scm.com/docs/git-push#URLS) below) or the name of a remote (see the section [REMOTES](https://git-scm.com/docs/git-push#REMOTES) below). 
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-repository)_< repository>_
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-refspec)_< refspec>_... 
-    
+The "remote" repository that is the destination of a push operation. This parameter can be either a URL (see the section [GIT URLS](https://git-scm.com/docs/git-push#URLS) below) or the name of a remote (see the section [REMOTES](https://git-scm.com/docs/git-push#REMOTES) below).
+
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-refspec)_< refspec>_...
+
 Specify what destination ref to update with what source object.
 The format for a refspec is [`+`]_< src>_[`:`_< dst>_], for example `main`, `main:other`, or `HEAD^:refs/heads/main`.
 The _< src>_ is often the name of the local branch to push, but it can be any arbitrary "SHA-1 expression" (see [gitrevisions[7]](https://git-scm.com/docs/gitrevisions)).
@@ -297,109 +297,109 @@ You can write a refspec using the fully expanded form (for example `refs/heads/m
   * If the refspec can’t be expanded unambiguously, error out with an error indicating what was tried, and depending on the `advice.pushUnqualifiedRefname` configuration (see [git-config[1]](https://git-scm.com/docs/git-config)) suggest what refs/ namespace you may have wanted to push to.
 
 
-Not all updates are allowed: see PUSH RULES below for the details. 
+Not all updates are allowed: see PUSH RULES below for the details.
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---all)`--all` 
-
-
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---branches)`--branches` 
-    
-Push all branches (i.e. refs under `refs/heads/`); cannot be used with other <refspec>. 
-
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---prune)`--prune` 
-    
-Remove remote branches that don’t have a local counterpart. For example a remote branch `tmp` will be removed if a local branch with the same name doesn’t exist any more. This also respects refspecs, e.g. `git` `push` `--prune` `remote` `refs/heads/*:refs/tmp/*` would make sure that remote `refs/tmp/foo` will be removed if `refs/heads/foo` doesn’t exist. 
-
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---mirror)`--mirror` 
-    
-Instead of naming each ref to push, specifies that all refs under `refs/` (which includes but is not limited to `refs/heads/`, `refs/remotes/`, and `refs/tags/`) be mirrored to the remote repository. Newly created local refs will be pushed to the remote end, locally updated refs will be force updated on the remote end, and deleted refs will be removed from the remote end. This is the default if the configuration option `remote.`_< remote>_`.mirror` is set. 
-
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt--n)`-n` 
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---all)`--all`
 
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---dry-run)`--dry-run` 
-    
-Do everything except actually send the updates. 
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---branches)`--branches`
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---porcelain)`--porcelain` 
-    
-Produce machine-readable output. The output status line for each ref will be tab-separated and sent to stdout instead of stderr. The full symbolic names of the refs will be given. 
+Push all branches (i.e. refs under `refs/heads/`); cannot be used with other <refspec>.
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt--d)`-d` 
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---prune)`--prune`
 
+Remove remote branches that don’t have a local counterpart. For example a remote branch `tmp` will be removed if a local branch with the same name doesn’t exist any more. This also respects refspecs, e.g. `git` `push` `--prune` `remote` `refs/heads/*:refs/tmp/*` would make sure that remote `refs/tmp/foo` will be removed if `refs/heads/foo` doesn’t exist.
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---delete)`--delete` 
-    
-All listed refs are deleted from the remote repository. This is the same as prefixing all refs with a colon. 
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---mirror)`--mirror`
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---tags)`--tags` 
-    
-All refs under `refs/tags` are pushed, in addition to refspecs explicitly listed on the command line. 
+Instead of naming each ref to push, specifies that all refs under `refs/` (which includes but is not limited to `refs/heads/`, `refs/remotes/`, and `refs/tags/`) be mirrored to the remote repository. Newly created local refs will be pushed to the remote end, locally updated refs will be force updated on the remote end, and deleted refs will be removed from the remote end. This is the default if the configuration option `remote.`_< remote>_`.mirror` is set.
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---follow-tags)`--follow-tags` 
-    
-Push all the refs that would be pushed without this option, and also push annotated tags in `refs/tags` that are missing from the remote but are pointing at commit-ish that are reachable from the refs being pushed. This can also be specified with configuration variable `push.followTags`. For more information, see `push.followTags` in [git-config[1]](https://git-scm.com/docs/git-config). 
-
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---signed)`--signed` 
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt--n)`-n`
 
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---no-signed)`--no-signed` 
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---dry-run)`--dry-run`
+
+Do everything except actually send the updates.
+
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---porcelain)`--porcelain`
+
+Produce machine-readable output. The output status line for each ref will be tab-separated and sent to stdout instead of stderr. The full symbolic names of the refs will be given.
+
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt--d)`-d`
 
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---signedtruefalseif-asked)`--signed=`(`true`|`false`|`if-asked`) 
-    
-GPG-sign the push request to update refs on the receiving side, to allow it to be checked by the hooks and/or be logged. Possible values are: 
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---delete)`--delete`
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-false)`false` 
+All listed refs are deleted from the remote repository. This is the same as prefixing all refs with a colon.
 
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---tags)`--tags`
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---no-signed-1)`--no-signed` 
-    
-no signing will be attempted. 
+All refs under `refs/tags` are pushed, in addition to refspecs explicitly listed on the command line.
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-true)`true` 
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---follow-tags)`--follow-tags`
 
+Push all the refs that would be pushed without this option, and also push annotated tags in `refs/tags` that are missing from the remote but are pointing at commit-ish that are reachable from the refs being pushed. This can also be specified with configuration variable `push.followTags`. For more information, see `push.followTags` in [git-config[1]](https://git-scm.com/docs/git-config).
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---signed-1)`--signed` 
-    
-the push will fail if the server does not support signed pushes. 
-
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-if-asked)`if-asked` 
-    
-sign if and only if the server supports signed pushes. The push will also fail if the actual call to `gpg` `--sign` fails. See [git-receive-pack[1]](https://git-scm.com/docs/git-receive-pack) for the details on the receiving end. 
-
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---atomic)`--atomic` 
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---signed)`--signed`
 
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---no-atomic)`--no-atomic` 
-    
-Use an atomic transaction on the remote side if available. Either all refs are updated, or on error, no refs are updated. If the server does not support atomic pushes the push will fail. 
-
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt--ooption)`-o` _< option>_ 
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---no-signed)`--no-signed`
 
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---push-optionoption)`--push-option=`_< option>_ 
-    
-Transmit the given string to the server, which passes them to the pre-receive as well as the post-receive hook. The given string must not contain a _NUL_ or _LF_ character. When multiple `--push-option=`_< option>_ are given, they are all sent to the other side in the order listed on the command line. When no `--push-option=`_< option>_ is given from the command line, the values of configuration variable `push.pushOption` are used instead. 
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---signedtruefalseif-asked)`--signed=`(`true`|`false`|`if-asked`)
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---receive-packgit-receive-pack)`--receive-pack=`_< git-receive-pack>_ 
+GPG-sign the push request to update refs on the receiving side, to allow it to be checked by the hooks and/or be logged. Possible values are:
 
-
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---execgit-receive-pack)`--exec=`_< git-receive-pack>_ 
-    
-Path to the _git-receive-pack_ program on the remote end. Sometimes useful when pushing to a remote repository over ssh, and you do not have the program in a directory on the default `$PATH`. 
-
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---force-with-lease)`--force-with-lease` 
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-false)`false`
 
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---no-force-with-lease)`--no-force-with-lease` 
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---no-signed-1)`--no-signed`
+
+no signing will be attempted.
+
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-true)`true`
 
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---force-with-leaserefname)`--force-with-lease=`_< refname>_ 
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---signed-1)`--signed`
+
+the push will fail if the server does not support signed pushes.
+
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-if-asked)`if-asked`
+
+sign if and only if the server supports signed pushes. The push will also fail if the actual call to `gpg` `--sign` fails. See [git-receive-pack[1]](https://git-scm.com/docs/git-receive-pack) for the details on the receiving end.
+
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---atomic)`--atomic`
 
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---force-with-leaserefnameexpect)`--force-with-lease=`_< refname>_`:`_< expect>_ 
-    
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---no-atomic)`--no-atomic`
+
+Use an atomic transaction on the remote side if available. Either all refs are updated, or on error, no refs are updated. If the server does not support atomic pushes the push will fail.
+
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt--ooption)`-o` _< option>_
+
+
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---push-optionoption)`--push-option=`_< option>_
+
+Transmit the given string to the server, which passes them to the pre-receive as well as the post-receive hook. The given string must not contain a _NUL_ or _LF_ character. When multiple `--push-option=`_< option>_ are given, they are all sent to the other side in the order listed on the command line. When no `--push-option=`_< option>_ is given from the command line, the values of configuration variable `push.pushOption` are used instead.
+
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---receive-packgit-receive-pack)`--receive-pack=`_< git-receive-pack>_
+
+
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---execgit-receive-pack)`--exec=`_< git-receive-pack>_
+
+Path to the _git-receive-pack_ program on the remote end. Sometimes useful when pushing to a remote repository over ssh, and you do not have the program in a directory on the default `$PATH`.
+
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---force-with-lease)`--force-with-lease`
+
+
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---no-force-with-lease)`--no-force-with-lease`
+
+
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---force-with-leaserefname)`--force-with-lease=`_< refname>_
+
+
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---force-with-leaserefnameexpect)`--force-with-lease=`_< refname>_`:`_< expect>_
+
 Usually, `git` `push` refuses to update a remote ref that is not an ancestor of the local ref used to overwrite it.
 This option overrides this restriction if the current value of the remote ref is the expected value. `git` `push` fails otherwise.
 Imagine that you have to rebase what you have already published. You will have to bypass the "must fast-forward" rule in order to replace the history you originally published with the rebased history. If somebody else built on top of your original history while you are rebasing, the tip of the branch at the remote may advance with their commit, and blindly pushing with `--force` will lose their work.
@@ -431,106 +431,106 @@ git push --force-with-lease=master:base master:master
 ```
 
 I.e. create a `base` tag for versions of the upstream code that you’ve seen and are willing to overwrite, then rewrite history, and finally force push changes to `master` if the remote version is still at `base`, regardless of what your local `remotes/origin/master` has been updated to in the background.
-Alternatively, specifying `--force-if-includes` as an ancillary option along with `--force-with-lease`[`=`_< refname>_] (i.e., without saying what exact commit the ref on the remote side must be pointing at, or which refs on the remote side are being protected) at the time of "push" will verify if updates from the remote-tracking refs that may have been implicitly updated in the background are integrated locally before allowing a forced update. 
+Alternatively, specifying `--force-if-includes` as an ancillary option along with `--force-with-lease`[`=`_< refname>_] (i.e., without saying what exact commit the ref on the remote side must be pointing at, or which refs on the remote side are being protected) at the time of "push" will verify if updates from the remote-tracking refs that may have been implicitly updated in the background are integrated locally before allowing a forced update.
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt--f)`-f` 
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt--f)`-f`
 
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---force)`--force` 
-    
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---force)`--force`
+
 Usually, `git` `push` will refuse to update a branch that is not an ancestor of the commit being pushed.
 This flag disables that check, the other safety checks in PUSH RULES below, and the checks in `--force-with-lease`. It can cause the remote repository to lose commits; use it with care.
-Note that `--force` applies to all the refs that are pushed, hence using it with `push.default` set to `matching` or with multiple push destinations configured with `remote.`_< name>_`.push` may overwrite refs other than the current branch (including local refs that are strictly behind their remote counterpart). To force a push to only one branch, use a `+` in front of the refspec to push (e.g `git` `push` `origin` `+master` to force a push to the `master` branch). See the _< refspec>_... section above for details. 
+Note that `--force` applies to all the refs that are pushed, hence using it with `push.default` set to `matching` or with multiple push destinations configured with `remote.`_< name>_`.push` may overwrite refs other than the current branch (including local refs that are strictly behind their remote counterpart). To force a push to only one branch, use a `+` in front of the refspec to push (e.g `git` `push` `origin` `+master` to force a push to the `master` branch). See the _< refspec>_... section above for details.
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---force-if-includes)`--force-if-includes` 
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---force-if-includes)`--force-if-includes`
 
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---no-force-if-includes)`--no-force-if-includes` 
-    
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---no-force-if-includes)`--no-force-if-includes`
+
 Force an update only if the tip of the remote-tracking ref has been integrated locally.
 This option enables a check that verifies if the tip of the remote-tracking ref is reachable from one of the "reflog" entries of the local branch based in it for a rewrite. The check ensures that any updates from the remote have been incorporated locally by rejecting the forced update if that is not the case.
 If the option is passed without specifying `--force-with-lease`, or specified along with `--force-with-lease=`_< refname>_`:`_< expect>_, it is a "no-op".
-Specifying `--no-force-if-includes` disables this behavior. 
+Specifying `--no-force-if-includes` disables this behavior.
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---reporepository)`--repo=`_< repository>_ 
-    
-This option is equivalent to the _< repository>_ argument. If both are specified, the command-line argument takes precedence. 
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---reporepository)`--repo=`_< repository>_
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt--u)`-u` 
+This option is equivalent to the _< repository>_ argument. If both are specified, the command-line argument takes precedence.
 
-
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---set-upstream)`--set-upstream` 
-    
-For every branch that is up to date or successfully pushed, add upstream (tracking) reference, used by argument-less [git-pull[1]](https://git-scm.com/docs/git-pull) and other commands. For more information, see `branch.`_< name>_`.merge` in [git-config[1]](https://git-scm.com/docs/git-config). 
-
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---thin)`--thin` 
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt--u)`-u`
 
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---no-thin)`--no-thin` 
-    
-These options are passed to [git-send-pack[1]](https://git-scm.com/docs/git-send-pack). A thin transfer significantly reduces the amount of sent data when the sender and receiver share many of the same objects in common. The default is `--thin`. 
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---set-upstream)`--set-upstream`
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt--q)`-q` 
+For every branch that is up to date or successfully pushed, add upstream (tracking) reference, used by argument-less [git-pull[1]](https://git-scm.com/docs/git-pull) and other commands. For more information, see `branch.`_< name>_`.merge` in [git-config[1]](https://git-scm.com/docs/git-config).
 
-
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---quiet)`--quiet` 
-    
-Suppress all output, including the listing of updated refs, unless an error occurs. Progress is not reported to the standard error stream. 
-
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt--v)`-v` 
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---thin)`--thin`
 
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---verbose)`--verbose` 
-    
-Run verbosely. 
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---no-thin)`--no-thin`
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---progress)`--progress` 
-    
-Progress status is reported on the standard error stream by default when it is attached to a terminal, unless `-q` is specified. This flag forces progress status even if the standard error stream is not directed to a terminal. 
+These options are passed to [git-send-pack[1]](https://git-scm.com/docs/git-send-pack). A thin transfer significantly reduces the amount of sent data when the sender and receiver share many of the same objects in common. The default is `--thin`.
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---no-recurse-submodules)`--no-recurse-submodules` 
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt--q)`-q`
 
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---recurse-submodulescheckon-demandonlyno)`--recurse-submodules=`(`check`|`on-demand`|`only`|`no`) 
-    
-May be used to make sure all submodule commits used by the revisions to be pushed are available on a remote-tracking branch. Possible values are: 
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---quiet)`--quiet`
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-check)`check` 
-    
-Git will verify that all submodule commits that changed in the revisions to be pushed are available on at least one remote of the submodule. If any commits are missing the push will be aborted and exit with non-zero status. 
+Suppress all output, including the listing of updated refs, unless an error occurs. Progress is not reported to the standard error stream.
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-on-demand)`on-demand` 
-    
-all submodules that changed in the revisions to be pushed will be pushed. If `on-demand` was not able to push all necessary revisions it will also be aborted and exit with non-zero status. 
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt--v)`-v`
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-only)`only` 
-    
-all submodules will be pushed while the superproject is left unpushed. 
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-no)`no` 
-    
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---verbose)`--verbose`
+
+Run verbosely.
+
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---progress)`--progress`
+
+Progress status is reported on the standard error stream by default when it is attached to a terminal, unless `-q` is specified. This flag forces progress status even if the standard error stream is not directed to a terminal.
+
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---no-recurse-submodules)`--no-recurse-submodules`
+
+
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---recurse-submodulescheckon-demandonlyno)`--recurse-submodules=`(`check`|`on-demand`|`only`|`no`)
+
+May be used to make sure all submodule commits used by the revisions to be pushed are available on a remote-tracking branch. Possible values are:
+
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-check)`check`
+
+Git will verify that all submodule commits that changed in the revisions to be pushed are available on at least one remote of the submodule. If any commits are missing the push will be aborted and exit with non-zero status.
+
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-on-demand)`on-demand`
+
+all submodules that changed in the revisions to be pushed will be pushed. If `on-demand` was not able to push all necessary revisions it will also be aborted and exit with non-zero status.
+
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-only)`only`
+
+all submodules will be pushed while the superproject is left unpushed.
+
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-no)`no`
+
 override the `push.recurseSubmodules` configuration variable when no submodule recursion is required. Similar to using `--no-recurse-submodules`.
-When using `on-demand` or `only`, if a submodule has a `push.recurseSubmodules=`(`on-demand`|`only`) or `submodule.recurse` configuration, further recursion will occur. In this case, `only` is treated as `on-demand`. 
+When using `on-demand` or `only`, if a submodule has a `push.recurseSubmodules=`(`on-demand`|`only`) or `submodule.recurse` configuration, further recursion will occur. In this case, `only` is treated as `on-demand`.
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---verify)`--verify` 
-
-
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---no-verify)`--no-verify` 
-    
-Toggle the pre-push hook (see [githooks[5]](https://git-scm.com/docs/githooks)). The default is `--verify`, giving the hook a chance to prevent the push. With `--no-verify`, the hook is bypassed completely. 
-
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt--4)`-4` 
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---verify)`--verify`
 
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---ipv4)`--ipv4` 
-    
-Use IPv4 addresses only, ignoring IPv6 addresses. 
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---no-verify)`--no-verify`
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt--6)`-6` 
+Toggle the pre-push hook (see [githooks[5]](https://git-scm.com/docs/githooks)). The default is `--verify`, giving the hook a chance to prevent the push. With `--no-verify`, the hook is bypassed completely.
+
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt--4)`-4`
 
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---ipv6)`--ipv6` 
-    
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---ipv4)`--ipv4`
+
+Use IPv4 addresses only, ignoring IPv6 addresses.
+
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt--6)`-6`
+
+
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt---ipv6)`--ipv6`
+
 Use IPv6 addresses only, ignoring IPv4 addresses.
 ##  [](https://git-scm.com/docs/git-push#_git_urls)GIT URLS
 In general, URLs contain information about the transport protocol, the address of the remote server, and the path to the repository. Depending on the transport protocol, some of this information may be absent.
@@ -659,8 +659,8 @@ You can set an upstream branch explicitly with `git` `push` `--set-upstream` _< 
   * Checking out a remote-tracking branch with `git` `checkout` _< branch>_ will automatically create a local branch with that name and set the upstream to the remote branch.
 
 
-Note |  Upstream branches are sometimes referred to as "tracking information", as in "set the branch’s tracking information".   
----|---  
+Note |  Upstream branches are sometimes referred to as "tracking information", as in "set the branch’s tracking information".
+---|---
 ##  [](https://git-scm.com/docs/git-push#_output)OUTPUT
 The output of "git push" depends on the transport method used; this section describes the output when pushing over the Git protocol (either locally or via ssh).
 The status of the push is output in tabular form, with each line representing the status of a single ref. Each line is of the form:
@@ -673,63 +673,63 @@ If `--porcelain` is used, then each line of the output is of the form:
  <flag> \t <from>:<to> \t <summary> (<reason>)
 ```
 
-The status of up-to-date refs is shown only if `--porcelain` or `--verbose` option is used. 
+The status of up-to-date refs is shown only if `--porcelain` or `--verbose` option is used.
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-flag)_< flag>_ 
-    
-A single character indicating the status of the ref: 
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-flag)_< flag>_
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-space)(space) 
-    
-for a successfully pushed fast-forward; 
+A single character indicating the status of the ref:
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-)`+` 
-    
-for a successful forced update; 
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-space)(space)
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt--)`-` 
-    
-for a successfully deleted ref; 
+for a successfully pushed fast-forward;
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt--1)`*` 
-    
-for a successfully pushed new ref; 
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-)`+`
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt--1-1)`!` 
-    
-for a ref that was rejected or failed to push; and 
+for a successful forced update;
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt--1-1-1)`=` 
-    
-for a ref that was up to date and did not need pushing. 
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt--)`-`
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-summary)_< summary>_ 
-    
+for a successfully deleted ref;
+
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt--1)`*`
+
+for a successfully pushed new ref;
+
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt--1-1)`!`
+
+for a ref that was rejected or failed to push; and
+
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt--1-1-1)`=`
+
+for a ref that was up to date and did not need pushing.
+
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-summary)_< summary>_
+
 For a successfully pushed ref, the summary shows the old and new values of the ref in a form suitable for using as an argument to `git` `log` (this is _< old>_`..`_< new>_ in most cases, and _< old>_`...`_< new>_ for forced non-fast-forward updates).
-For a failed update, more details are given: 
+For a failed update, more details are given:
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-rejected)rejected 
-    
-Git did not try to send the ref at all, typically because it is not a fast-forward and you did not force the update. 
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-rejected)rejected
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-remoterejected)remote rejected 
-    
-The remote end refused the update. Usually caused by a hook on the remote side, or because the remote repository has one of the following safety options in effect: `receive.denyCurrentBranch` (for pushes to the checked out branch), `receive.denyNonFastForwards` (for forced non-fast-forward updates), `receive.denyDeletes` or `receive.denyDeleteCurrent`. See [git-config[1]](https://git-scm.com/docs/git-config). 
+Git did not try to send the ref at all, typically because it is not a fast-forward and you did not force the update.
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-remotefailure)remote failure 
-    
-The remote end did not report the successful update of the ref, perhaps because of a temporary error on the remote side, a break in the network connection, or other transient error. 
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-remoterejected)remote rejected
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-from)from 
-    
-The name of the local ref being pushed, minus its `refs/`_< type>_`/` prefix. In the case of deletion, the name of the local ref is omitted. 
+The remote end refused the update. Usually caused by a hook on the remote side, or because the remote repository has one of the following safety options in effect: `receive.denyCurrentBranch` (for pushes to the checked out branch), `receive.denyNonFastForwards` (for forced non-fast-forward updates), `receive.denyDeletes` or `receive.denyDeleteCurrent`. See [git-config[1]](https://git-scm.com/docs/git-config).
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-to)to 
-    
-The name of the remote ref being updated, minus its `refs/`_< type>_`/` prefix. 
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-remotefailure)remote failure
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-reason)reason 
-    
+The remote end did not report the successful update of the ref, perhaps because of a temporary error on the remote side, a break in the network connection, or other transient error.
+
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-from)from
+
+The name of the local ref being pushed, minus its `refs/`_< type>_`/` prefix. In the case of deletion, the name of the local ref is omitted.
+
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-to)to
+
+The name of the remote ref being updated, minus its `refs/`_< type>_`/` prefix.
+
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-reason)reason
+
 A human-readable explanation. In the case of successfully pushed refs, no explanation is needed. For a failed ref, the reason for failure is described.
 ##  [](https://git-scm.com/docs/git-push#_push_rules)PUSH RULES
 As a safety feature, the `git` `push` command only allows certain kinds of updates to prevent you from accidentally losing data on the remote.
@@ -775,51 +775,51 @@ Alternatively, you can rebase your change between X and B on top of A, with `git
 
 Again, updating A with this commit will fast-forward and your push will be accepted.
 There is another common situation where you may encounter non-fast-forward rejection when you try to push, and it is possible even when you are pushing into a repository nobody else pushes into. After you push commit A yourself (in the first picture in this section), replace it with `git` `commit` `--amend` to produce commit B, and you try to push it out, because forgot that you have pushed A out already. In such a case, and only if you are certain that nobody in the meantime fetched your earlier commit A (and started building on top of it), you can run `git` `push` `--force` to overwrite it. In other words, `git` `push` `--force` is a method reserved for a case where you do mean to lose history.
-##  [](https://git-scm.com/docs/git-push#_examples)EXAMPLES 
+##  [](https://git-scm.com/docs/git-push#_examples)EXAMPLES
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-gitpush)`git` `push` 
-    
-Works like `git` `push` _< remote>_, where <remote> is the current branch’s remote (or `origin`, if no remote is configured for the current branch). 
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-gitpush)`git` `push`
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-gitpushorigin)`git` `push` `origin` 
-    
+Works like `git` `push` _< remote>_, where <remote> is the current branch’s remote (or `origin`, if no remote is configured for the current branch).
+
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-gitpushorigin)`git` `push` `origin`
+
 Without additional configuration, pushes the current branch to the configured upstream (`branch.`_< name>_`.merge` configuration variable) if it has the same name as the current branch, and errors out without pushing otherwise.
 The default behavior of this command when no _< refspec>_ is given can be configured by setting the `push` option of the remote, or the `push.default` configuration variable.
-For example, to default to pushing only the current branch to `origin` use `git` `config` `remote.origin.push` `HEAD`. Any valid _< refspec>_ (like the ones in the examples below) can be configured as the default for `git` `push` `origin`. 
+For example, to default to pushing only the current branch to `origin` use `git` `config` `remote.origin.push` `HEAD`. Any valid _< refspec>_ (like the ones in the examples below) can be configured as the default for `git` `push` `origin`.
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-gitpushorigin-1)`git` `push` `origin` `:` 
-    
-Push "matching" branches to `origin`. See _< refspec>_ in the [OPTIONS](https://git-scm.com/docs/git-push#OPTIONS) section above for a description of "matching" branches. 
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-gitpushorigin-1)`git` `push` `origin` `:`
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-gitpushoriginmaster)`git` `push` `origin` `master` 
-    
-Find a ref that matches `master` in the source repository (most likely, it would find `refs/heads/master`), and update the same ref (e.g. `refs/heads/master`) in `origin` repository with it. If `master` did not exist remotely, it would be created. 
+Push "matching" branches to `origin`. See _< refspec>_ in the [OPTIONS](https://git-scm.com/docs/git-push#OPTIONS) section above for a description of "matching" branches.
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-gitpushoriginHEAD)`git` `push` `origin` `HEAD` 
-    
-A handy way to push the current branch to the same name on the remote. 
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-gitpushoriginmaster)`git` `push` `origin` `master`
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-gitpushmothershipmastersatellitemasterdevsatellitedev)`git` `push` `mothership` `master:satellite/master` `dev:satellite/dev` 
-    
+Find a ref that matches `master` in the source repository (most likely, it would find `refs/heads/master`), and update the same ref (e.g. `refs/heads/master`) in `origin` repository with it. If `master` did not exist remotely, it would be created.
+
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-gitpushoriginHEAD)`git` `push` `origin` `HEAD`
+
+A handy way to push the current branch to the same name on the remote.
+
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-gitpushmothershipmastersatellitemasterdevsatellitedev)`git` `push` `mothership` `master:satellite/master` `dev:satellite/dev`
+
 Use the source ref that matches `master` (e.g. `refs/heads/master`) to update the ref that matches `satellite/master` (most probably `refs/remotes/satellite/master`) in the `mothership` repository; do the same for `dev` and `satellite/dev`.
 See the section describing _< refspec>_... above for a discussion of the matching semantics.
 This is to emulate `git` `fetch` run on the `mothership` using `git` `push` that is run in the opposite direction in order to integrate the work done on `satellite`, and is often necessary when you can only make connection in one way (i.e. satellite can ssh into mothership but mothership cannot initiate connection to satellite because the latter is behind a firewall or does not run sshd).
-After running this `git` `push` on the `satellite` machine, you would ssh into the `mothership` and run `git` `merge` there to complete the emulation of `git` `pull` that were run on `mothership` to pull changes made on `satellite`. 
+After running this `git` `push` on the `satellite` machine, you would ssh into the `mothership` and run `git` `merge` there to complete the emulation of `git` `pull` that were run on `mothership` to pull changes made on `satellite`.
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-gitpushoriginHEADmaster)`git` `push` `origin` `HEAD:master` 
-    
-Push the current branch to the remote ref matching `master` in the `origin` repository. This form is convenient to push the current branch without thinking about its local name. 
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-gitpushoriginHEADmaster)`git` `push` `origin` `HEAD:master`
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-gitpushoriginmasterrefsheadsexperimental)`git` `push` `origin` `master:refs/heads/experimental` 
-    
-Create the branch `experimental` in the `origin` repository by copying the current `master` branch. This form is only needed to create a new branch or tag in the remote repository when the local name and the remote name are different; otherwise, the ref name on its own will work. 
+Push the current branch to the remote ref matching `master` in the `origin` repository. This form is convenient to push the current branch without thinking about its local name.
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-gitpushoriginexperimental)`git` `push` `origin` `:experimental` 
-    
-Find a ref that matches `experimental` in the `origin` repository (e.g. `refs/heads/experimental`), and delete it. 
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-gitpushoriginmasterrefsheadsexperimental)`git` `push` `origin` `master:refs/heads/experimental`
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-gitpushorigindevmaster)`git` `push` `origin` `+dev:master` 
-    
+Create the branch `experimental` in the `origin` repository by copying the current `master` branch. This form is only needed to create a new branch or tag in the remote repository when the local name and the remote name are different; otherwise, the ref name on its own will work.
+
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-gitpushoriginexperimental)`git` `push` `origin` `:experimental`
+
+Find a ref that matches `experimental` in the `origin` repository (e.g. `refs/heads/experimental`), and delete it.
+
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-gitpushorigindevmaster)`git` `push` `origin` `+dev:master`
+
 Update the origin repository’s master branch with the dev branch, allowing non-fast-forward updates. **This can leave unreferenced commits dangling in the origin repository.** Consider the following situation, where a fast-forward is not possible:
 ```
 	    o---o---o---A---B  origin/master
@@ -843,54 +843,54 @@ The known attack vectors are as follows:
 
 
 ##  [](https://git-scm.com/docs/git-push#CONFIGURATION)CONFIGURATION
-Everything below this line in this section is selectively included from the [git-config[1]](https://git-scm.com/docs/git-config) documentation. The content is the same as what’s found there: 
+Everything below this line in this section is selectively included from the [git-config[1]](https://git-scm.com/docs/git-config) documentation. The content is the same as what’s found there:
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-pushautoSetupRemote)`push.autoSetupRemote` 
-    
-If set to `true` assume `--set-upstream` on default push when no upstream tracking exists for the current branch; this option takes effect with `push.default` options `simple`, `upstream`, and `current`. It is useful if by default you want new branches to be pushed to the default remote (like the behavior of `push.default=current`) and you also want the upstream tracking to be set. Workflows most likely to benefit from this option are `simple` central workflows where all branches are expected to have the same name on the remote. 
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-pushautoSetupRemote)`push.autoSetupRemote`
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-pushdefault)`push.default` 
-    
-Defines the action `git` `push` should take if no refspec is given (whether from the command-line, config, or elsewhere). Different values are well-suited for specific workflows; for instance, in a purely central workflow (i.e. the fetch source is equal to the push destination), `upstream` is probably what you want. Possible values are: 
+If set to `true` assume `--set-upstream` on default push when no upstream tracking exists for the current branch; this option takes effect with `push.default` options `simple`, `upstream`, and `current`. It is useful if by default you want new branches to be pushed to the default remote (like the behavior of `push.default=current`) and you also want the upstream tracking to be set. Workflows most likely to benefit from this option are `simple` central workflows where all branches are expected to have the same name on the remote.
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-nothing)`nothing` 
-    
-do not push anything (error out) unless a refspec is given. This is primarily meant for people who want to avoid mistakes by always being explicit. 
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-pushdefault)`push.default`
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-current)`current` 
-    
-push the current branch to update a branch with the same name on the receiving end. Works in both central and non-central workflows. 
+Defines the action `git` `push` should take if no refspec is given (whether from the command-line, config, or elsewhere). Different values are well-suited for specific workflows; for instance, in a purely central workflow (i.e. the fetch source is equal to the push destination), `upstream` is probably what you want. Possible values are:
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-upstream)`upstream` 
-    
-push the current branch back to the branch whose changes are usually integrated into the current branch (which is called `@{upstream}`). This mode only makes sense if you are pushing to the same repository you would normally pull from (i.e. central workflow). 
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-nothing)`nothing`
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-tracking)`tracking` 
-    
-this is a deprecated synonym for `upstream`. 
+do not push anything (error out) unless a refspec is given. This is primarily meant for people who want to avoid mistakes by always being explicit.
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-simple)`simple` 
-    
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-current)`current`
+
+push the current branch to update a branch with the same name on the receiving end. Works in both central and non-central workflows.
+
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-upstream)`upstream`
+
+push the current branch back to the branch whose changes are usually integrated into the current branch (which is called `@{upstream}`). This mode only makes sense if you are pushing to the same repository you would normally pull from (i.e. central workflow).
+
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-tracking)`tracking`
+
+this is a deprecated synonym for `upstream`.
+
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-simple)`simple`
+
 push the current branch with the same name on the remote.
 If you are working on a centralized workflow (pushing to the same repository you pull from, which is typically `origin`), then you need to configure an upstream branch with the same name.
-This mode is the default since Git 2.0, and is the safest option suited for beginners. 
+This mode is the default since Git 2.0, and is the safest option suited for beginners.
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-matching)`matching` 
-    
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-matching)`matching`
+
 push all branches having the same name on both ends. This makes the repository you are pushing to remember the set of branches that will be pushed out (e.g. if you always push `maint` and `master` there and no other branches, the repository you push to will have these two branches, and your local `maint` and `master` will be pushed there).
 To use this mode effectively, you have to make sure _all_ the branches you would push out are ready to be pushed out before running `git` `push`, as the whole point of this mode is to allow you to push all of the branches in one go. If you usually finish work on only one branch and push out the result, while other branches are unfinished, this mode is not for you. Also this mode is not suitable for pushing into a shared central repository, as other people may add new branches there, or update the tip of existing branches outside your control.
-This used to be the default, but not since Git 2.0 (`simple` is the new default). 
+This used to be the default, but not since Git 2.0 (`simple` is the new default).
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-pushfollowTags)`push.followTags` 
-    
-If set to true, enable `--follow-tags` option by default. You may override this configuration at time of push by specifying `--no-follow-tags`. 
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-pushfollowTags)`push.followTags`
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-pushgpgSign)`push.gpgSign` 
-    
-May be set to a boolean value, or the string `if-asked`. A true value causes all pushes to be GPG signed, as if `--signed` is passed to [git-push[1]](https://git-scm.com/docs/git-push). The string `if-asked` causes pushes to be signed if the server supports it, as if `--signed=if-asked` is passed to `git` `push`. A false value may override a value from a lower-priority config file. An explicit command-line flag always overrides this config option. 
+If set to true, enable `--follow-tags` option by default. You may override this configuration at time of push by specifying `--no-follow-tags`.
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-pushpushOption)`push.pushOption` 
-    
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-pushgpgSign)`push.gpgSign`
+
+May be set to a boolean value, or the string `if-asked`. A true value causes all pushes to be GPG signed, as if `--signed` is passed to [git-push[1]](https://git-scm.com/docs/git-push). The string `if-asked` causes pushes to be signed if the server supports it, as if `--signed=if-asked` is passed to `git` `push`. A false value may override a value from a lower-priority config file. An explicit command-line flag always overrides this config option.
+
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-pushpushOption)`push.pushOption`
+
 When no `--push-option=`_< option>_ argument is given from the command line, `git` `push` behaves as if each _< option>_ of this variable is given as `--push-option=`_< option>_.
 This is a multi-valued variable, and an empty value can be used in a higher priority configuration file (e.g. `.git/config` in a repository) to clear the values inherited from a lower priority configuration files (e.g. `$HOME/.gitconfig`).
 ```
@@ -911,24 +911,24 @@ This will result in only b (a and c are cleared).
 ```
 
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-pushrecurseSubmodules)`push.recurseSubmodules` 
-    
-May be `check`, `on-demand`, `only`, or `no`, with the same behavior as that of `push` `--recurse-submodules`. If not set, `no` is used by default, unless `submodule.recurse` is set (in which case a `true` value means `on-demand`). 
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-pushrecurseSubmodules)`push.recurseSubmodules`
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-pushuseForceIfIncludes)`push.useForceIfIncludes` 
-    
-If set to `true`, it is equivalent to specifying `--force-if-includes` as an option to [git-push[1]](https://git-scm.com/docs/git-push) in the command line. Adding `--no-force-if-includes` at the time of push overrides this configuration setting. 
+May be `check`, `on-demand`, `only`, or `no`, with the same behavior as that of `push` `--recurse-submodules`. If not set, `no` is used by default, unless `submodule.recurse` is set (in which case a `true` value means `on-demand`).
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-pushnegotiate)`push.negotiate` 
-    
-If set to `true`, attempt to reduce the size of the packfile sent by rounds of negotiation in which the client and the server attempt to find commits in common. If `false`, Git will rely solely on the server’s ref advertisement to find commits in common. 
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-pushuseForceIfIncludes)`push.useForceIfIncludes`
 
-[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-pushuseBitmaps)`push.useBitmaps` 
-    
+If set to `true`, it is equivalent to specifying `--force-if-includes` as an option to [git-push[1]](https://git-scm.com/docs/git-push) in the command line. Adding `--no-force-if-includes` at the time of push overrides this configuration setting.
+
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-pushnegotiate)`push.negotiate`
+
+If set to `true`, attempt to reduce the size of the packfile sent by rounds of negotiation in which the client and the server attempt to find commits in common. If `false`, Git will rely solely on the server’s ref advertisement to find commits in common.
+
+[](https://git-scm.com/docs/git-push#Documentation/git-push.txt-pushuseBitmaps)`push.useBitmaps`
+
 If set to `false`, disable use of bitmaps for `git` `push` even if `pack.useBitmaps` is `true`, without preventing other git operations from using bitmaps. Default is `true`.
 ##  [](https://git-scm.com/docs/git-push#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### push
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

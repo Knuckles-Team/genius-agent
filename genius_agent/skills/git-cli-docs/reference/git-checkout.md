@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-checkout#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-checkout#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-checkout#_description)
@@ -37,8 +37,8 @@ Localized versions of **git-checkout** manual
   4. [українська мова ](https://git-scm.com/docs/git-checkout/uk)
   5. [简体中文 ](https://git-scm.com/docs/git-checkout/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-checkout)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -263,113 +263,113 @@ git checkout (-p|--patch) [_<tree-ish>_] [--] [_<pathspec>_…​]
   2. **Restore a different version of a file** , for example with `git` `checkout` _< commit>_ _< filename>_ or `git` `checkout` _< filename>_
 
 
-See ARGUMENT DISAMBIGUATION below for how Git decides which one to do. 
+See ARGUMENT DISAMBIGUATION below for how Git decides which one to do.
 
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt-gitcheckoutbranch)`git` `checkout` [_< branch>_] 
-    
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt-gitcheckoutbranch)`git` `checkout` [_< branch>_]
+
 Switch to _< branch>_. This sets the current branch to _< branch>_ and updates the files in your working directory. The checkout will fail if there are uncommitted changes to any files where _< branch>_ and your current commit have different content. Uncommitted changes will otherwise be kept.
 If _< branch>_ is not found but there does exist a tracking branch in exactly one remote (call it _< remote>_) with a matching name and `--no-guess` is not specified, treat as equivalent to
 ```
 $ git checkout -b <branch> --track <remote>/<branch>
 ```
 
-Running `git` `checkout` without specifying a branch has no effect except to print out the tracking information for the current branch. 
+Running `git` `checkout` without specifying a branch has no effect except to print out the tracking information for the current branch.
 
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt-gitcheckout-bnew-branchstart-point)`git` `checkout` `-b` _< new-branch>_ [_< start-point>_] 
-    
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt-gitcheckout-bnew-branchstart-point)`git` `checkout` `-b` _< new-branch>_ [_< start-point>_]
+
 Create a new branch named _< new-branch>_, start it at _< start-point>_ (defaults to the current commit), and check out the new branch. You can use the `--track` or `--no-track` options to set the branch’s upstream tracking information.
-This will fail if there’s an error checking out _< new-branch>_, for example if checking out the _< start-point>_ commit would overwrite your uncommitted changes. 
+This will fail if there’s an error checking out _< new-branch>_, for example if checking out the _< start-point>_ commit would overwrite your uncommitted changes.
 
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt-gitcheckout-Bbranchstart-point)`git` `checkout` `-B` _< branch>_ [_< start-point>_] 
-    
-The same as `-b`, except that if the branch already exists it resets _< branch>_ to the start point instead of failing. 
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt-gitcheckout-Bbranchstart-point)`git` `checkout` `-B` _< branch>_ [_< start-point>_]
 
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt-gitcheckout--detachbranch)`git` `checkout` `--detach` [_< branch>_] 
+The same as `-b`, except that if the branch already exists it resets _< branch>_ to the start point instead of failing.
+
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt-gitcheckout--detachbranch)`git` `checkout` `--detach` [_< branch>_]
 
 
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt-gitcheckout--detachcommit)`git` `checkout` [`--detach`] _< commit>_ 
-    
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt-gitcheckout--detachcommit)`git` `checkout` [`--detach`] _< commit>_
+
 The same as `git` `checkout` _< branch>_, except that instead of pointing `HEAD` at the branch, it points `HEAD` at the commit ID. See the "DETACHED HEAD" section below for more.
-Omitting _< branch>_ detaches `HEAD` at the tip of the current branch. 
+Omitting _< branch>_ detaches `HEAD` at the tip of the current branch.
 
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt-gitcheckouttree-ish--pathspec)`git` `checkout` _< tree-ish>_ [`--`] _< pathspec>_... 
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt-gitcheckouttree-ish--pathspec)`git` `checkout` _< tree-ish>_ [`--`] _< pathspec>_...
 
 
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt-gitcheckouttree-ish--pathspec-from-filefile--pathspec-file-nul)`git` `checkout` _< tree-ish>_ `--pathspec-from-file=`_< file>_ [`--pathspec-file-nul`] 
-    
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt-gitcheckouttree-ish--pathspec-from-filefile--pathspec-file-nul)`git` `checkout` _< tree-ish>_ `--pathspec-from-file=`_< file>_ [`--pathspec-file-nul`]
+
 Replace the specified files and/or directories with the version from the given commit or tree and add them to the index (also known as "staging area").
-For example, `git` `checkout` `main` `file.txt` will replace `file.txt` with the version from `main`. 
+For example, `git` `checkout` `main` `file.txt` will replace `file.txt` with the version from `main`.
 
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt-gitcheckout-f--ours--theirs-m--conflictstyle--pathspec)`git` `checkout` [`-f`|`--ours`|`--theirs`|`-m`|`--conflict=`_< style>_] [`--`] _< pathspec>_... 
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt-gitcheckout-f--ours--theirs-m--conflictstyle--pathspec)`git` `checkout` [`-f`|`--ours`|`--theirs`|`-m`|`--conflict=`_< style>_] [`--`] _< pathspec>_...
 
 
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt-gitcheckout-f--ours--theirs-m--conflictstyle--pathspec-from-filefile--pathspec-file-nul)`git` `checkout` [`-f`|`--ours`|`--theirs`|`-m`|`--conflict=`_< style>_] `--pathspec-from-file=`_< file>_ [`--pathspec-file-nul`] 
-    
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt-gitcheckout-f--ours--theirs-m--conflictstyle--pathspec-from-filefile--pathspec-file-nul)`git` `checkout` [`-f`|`--ours`|`--theirs`|`-m`|`--conflict=`_< style>_] `--pathspec-from-file=`_< file>_ [`--pathspec-file-nul`]
+
 Replace the specified files and/or directories with the version from the index.
 For example, if you check out a commit, edit `file.txt`, and then decide those changes were a mistake, `git` `checkout` `file.txt` will discard any unstaged changes to `file.txt`.
-This will fail if the file has a merge conflict and you haven’t yet run `git` `add` `file.txt` (or something equivalent) to mark it as resolved. You can use `-f` to ignore the unmerged files instead of failing, use `--ours` or `--theirs` to replace them with the version from a specific side of the merge, or use `-m` to replace them with the original conflicted merge result. 
+This will fail if the file has a merge conflict and you haven’t yet run `git` `add` `file.txt` (or something equivalent) to mark it as resolved. You can use `-f` to ignore the unmerged files instead of failing, use `--ours` or `--theirs` to replace them with the version from a specific side of the merge, or use `-m` to replace them with the original conflicted merge result.
 
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt-gitcheckout-p--patchtree-ish--pathspec)`git` `checkout` (`-p`|`--patch`) [_< tree-ish>_] [`--`] [_< pathspec>_...] 
-    
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt-gitcheckout-p--patchtree-ish--pathspec)`git` `checkout` (`-p`|`--patch`) [_< tree-ish>_] [`--`] [_< pathspec>_...]
+
 This is similar to the previous two modes, but lets you use the interactive interface to show the "diff" output and choose which hunks to use in the result. See below for the description of `--patch` option.
-##  [](https://git-scm.com/docs/git-checkout#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-checkout#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt--q)`-q` 
-
-
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---quiet)`--quiet` 
-    
-Quiet, suppress feedback messages. 
-
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---progress)`--progress` 
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt--q)`-q`
 
 
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---no-progress)`--no-progress` 
-    
-Progress status is reported on the standard error stream by default when it is attached to a terminal, unless `--quiet` is specified. This flag enables progress reporting even if not attached to a terminal, regardless of `--quiet`. 
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---quiet)`--quiet`
 
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt--f)`-f` 
+Quiet, suppress feedback messages.
+
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---progress)`--progress`
 
 
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---force)`--force` 
-    
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---no-progress)`--no-progress`
+
+Progress status is reported on the standard error stream by default when it is attached to a terminal, unless `--quiet` is specified. This flag enables progress reporting even if not attached to a terminal, regardless of `--quiet`.
+
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt--f)`-f`
+
+
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---force)`--force`
+
 When switching branches, proceed even if the index or the working tree differs from `HEAD`, and even if there are untracked files in the way. This is used to throw away local changes and any untracked files or directories that are in the way.
-When checking out paths from the index, do not fail upon unmerged entries; instead, unmerged entries are ignored. 
+When checking out paths from the index, do not fail upon unmerged entries; instead, unmerged entries are ignored.
 
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---ours)`--ours` 
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---ours)`--ours`
 
 
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---theirs)`--theirs` 
-    
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---theirs)`--theirs`
+
 When checking out paths from the index, check out stage #2 (`ours`) or #3 (`theirs`) for unmerged paths.
 Note that during `git` `rebase` and `git` `pull` `--rebase`, `ours` and `theirs` may appear swapped; `--ours` gives the version from the branch the changes are rebased onto, while `--theirs` gives the version from the branch that holds your work that is being rebased.
-This is because `rebase` is used in a workflow that treats the history at the remote as the shared canonical one, and treats the work done on the branch you are rebasing as the third-party work to be integrated, and you are temporarily assuming the role of the keeper of the canonical history during the rebase. As the keeper of the canonical history, you need to view the history from the remote as `ours` (i.e. "our shared canonical history"), while what you did on your side branch as `theirs` (i.e. "one contributor’s work on top of it"). 
+This is because `rebase` is used in a workflow that treats the history at the remote as the shared canonical one, and treats the work done on the branch you are rebasing as the third-party work to be integrated, and you are temporarily assuming the role of the keeper of the canonical history during the rebase. As the keeper of the canonical history, you need to view the history from the remote as `ours` (i.e. "our shared canonical history"), while what you did on your side branch as `theirs` (i.e. "one contributor’s work on top of it").
 
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt--bnew-branch)`-b` _< new-branch>_ 
-    
-Create a new branch named _< new-branch>_, start it at _< start-point>_, and check the resulting branch out; see [git-branch[1]](https://git-scm.com/docs/git-branch) for details. 
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt--bnew-branch)`-b` _< new-branch>_
 
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt--Bnew-branch)`-B` _< new-branch>_ 
-    
-The same as `-b`, except that if the branch already exists it resets _< branch>_ to the start point instead of failing. 
+Create a new branch named _< new-branch>_, start it at _< start-point>_, and check the resulting branch out; see [git-branch[1]](https://git-scm.com/docs/git-branch) for details.
 
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt--t)`-t` 
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt--Bnew-branch)`-B` _< new-branch>_
+
+The same as `-b`, except that if the branch already exists it resets _< branch>_ to the start point instead of failing.
+
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt--t)`-t`
 
 
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---trackdirectinherit)`--track`[`=`(`direct`|`inherit`)] 
-    
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---trackdirectinherit)`--track`[`=`(`direct`|`inherit`)]
+
 When creating a new branch, set up "upstream" configuration. See `--track` in [git-branch[1]](https://git-scm.com/docs/git-branch) for details. As a convenience, --track without -b implies branch creation.
-If no `-b` option is given, the name of the new branch will be derived from the remote-tracking branch, by looking at the local part of the refspec configured for the corresponding remote, and then stripping the initial part up to the "*". This would tell us to use `hack` as the local branch when branching off of `origin/hack` (or `remotes/origin/hack`, or even `refs/remotes/origin/hack`). If the given name has no slash, or the above guessing results in an empty name, the guessing is aborted. You can explicitly give a name with `-b` in such a case. 
+If no `-b` option is given, the name of the new branch will be derived from the remote-tracking branch, by looking at the local part of the refspec configured for the corresponding remote, and then stripping the initial part up to the "*". This would tell us to use `hack` as the local branch when branching off of `origin/hack` (or `remotes/origin/hack`, or even `refs/remotes/origin/hack`). If the given name has no slash, or the above guessing results in an empty name, the guessing is aborted. You can explicitly give a name with `-b` in such a case.
 
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---no-track)`--no-track` 
-    
-Do not set up "upstream" configuration, even if the `branch.autoSetupMerge` configuration variable is true. 
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---no-track)`--no-track`
 
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---guess)`--guess` 
+Do not set up "upstream" configuration, even if the `branch.autoSetupMerge` configuration variable is true.
+
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---guess)`--guess`
 
 
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---no-guess)`--no-guess` 
-    
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---no-guess)`--no-guess`
+
 If _< branch>_ is not found but there does exist a tracking branch in exactly one remote (call it _< remote>_) with a matching name, treat as equivalent to
 ```
 $ git checkout -b <branch> --track <remote>/<branch>
@@ -377,123 +377,123 @@ $ git checkout -b <branch> --track <remote>/<branch>
 
 If the branch exists in multiple remotes and one of them is named by the `checkout.defaultRemote` configuration variable, we’ll use that one for the purposes of disambiguation, even if the _< branch>_ isn’t unique across all remotes. Set it to e.g. `checkout.defaultRemote=origin` to always checkout remote branches from there if _< branch>_ is ambiguous but exists on the _origin_ remote. See also `checkout.defaultRemote` in [git-config[1]](https://git-scm.com/docs/git-config).
 `--guess` is the default behavior. Use `--no-guess` to disable it.
-The default behavior can be set via the `checkout.guess` configuration variable. 
+The default behavior can be set via the `checkout.guess` configuration variable.
 
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt--l)`-l` 
-    
-Create the new branch’s reflog; see [git-branch[1]](https://git-scm.com/docs/git-branch) for details. 
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt--l)`-l`
 
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt--d)`-d` 
+Create the new branch’s reflog; see [git-branch[1]](https://git-scm.com/docs/git-branch) for details.
+
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt--d)`-d`
 
 
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---detach)`--detach` 
-    
-Rather than checking out a branch to work on it, check out a commit for inspection and discardable experiments. This is the default behavior of `git` `checkout` _< commit>_ when _< commit>_ is not a branch name. See the "DETACHED HEAD" section below for details. 
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---detach)`--detach`
 
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---orphannew-branch)`--orphan` _< new-branch>_ 
-    
+Rather than checking out a branch to work on it, check out a commit for inspection and discardable experiments. This is the default behavior of `git` `checkout` _< commit>_ when _< commit>_ is not a branch name. See the "DETACHED HEAD" section below for details.
+
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---orphannew-branch)`--orphan` _< new-branch>_
+
 Create a new unborn branch, named _< new-branch>_, started from _< start-point>_ and switch to it. The first commit made on this new branch will have no parents and it will be the root of a new history totally disconnected from all the other branches and commits.
 The index and the working tree are adjusted as if you had previously run `git` `checkout` _< start-point>_. This allows you to start a new history that records a set of paths similar to _< start-point>_ by easily running `git` `commit` `-a` to make the root commit.
 This can be useful when you want to publish the tree from a commit without exposing its full history. You might want to do this to publish an open source branch of a project whose current tree is "clean", but whose full history contains proprietary or otherwise encumbered bits of code.
-If you want to start a disconnected history that records a set of paths that is totally different from the one of _< start-point>_, then you should clear the index and the working tree right after creating the orphan branch by running `git` `rm` `-rf` `.` from the top level of the working tree. Afterwards you will be ready to prepare your new files, repopulating the working tree, by copying them from elsewhere, extracting a tarball, etc. 
+If you want to start a disconnected history that records a set of paths that is totally different from the one of _< start-point>_, then you should clear the index and the working tree right after creating the orphan branch by running `git` `rm` `-rf` `.` from the top level of the working tree. Afterwards you will be ready to prepare your new files, repopulating the working tree, by copying them from elsewhere, extracting a tarball, etc.
 
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---ignore-skip-worktree-bits)`--ignore-skip-worktree-bits` 
-    
-In sparse checkout mode, `git` `checkout` `--` _< path>_... would update only entries matched by _< paths>_ and sparse patterns in `$GIT_DIR/info/sparse-checkout`. This option ignores the sparse patterns and adds back any files in _< path>_.... 
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---ignore-skip-worktree-bits)`--ignore-skip-worktree-bits`
 
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt--m)`-m` 
+In sparse checkout mode, `git` `checkout` `--` _< path>_... would update only entries matched by _< paths>_ and sparse patterns in `$GIT_DIR/info/sparse-checkout`. This option ignores the sparse patterns and adds back any files in _< path>_....
+
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt--m)`-m`
 
 
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---merge)`--merge` 
-    
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---merge)`--merge`
+
 When switching branches, if you have local modifications to one or more files that are different between the current branch and the branch to which you are switching, the command refuses to switch branches in order to preserve your modifications in context. However, with this option, a three-way merge between the current branch, your working tree contents, and the new branch is done, and you will be on the new branch.
 When a merge conflict happens, the index entries for conflicting paths are left unmerged, and you need to resolve the conflicts and mark the resolved paths with `git` `add` (or `git` `rm` if the merge should result in deletion of the path).
 When checking out paths from the index, this option lets you recreate the conflicted merge in the specified paths. This option cannot be used when checking out paths from a tree-ish.
-When switching branches with `--merge`, staged changes may be lost. 
+When switching branches with `--merge`, staged changes may be lost.
 
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---conflictstyle)`--conflict=`_< style>_ 
-    
-The same as `--merge` option above, but changes the way the conflicting hunks are presented, overriding the `merge.conflictStyle` configuration variable. Possible values are `merge` (default), `diff3`, and `zdiff3`. 
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---conflictstyle)`--conflict=`_< style>_
 
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt--p)`-p` 
+The same as `--merge` option above, but changes the way the conflicting hunks are presented, overriding the `merge.conflictStyle` configuration variable. Possible values are `merge` (default), `diff3`, and `zdiff3`.
+
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt--p)`-p`
 
 
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---patch)`--patch` 
-    
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---patch)`--patch`
+
 Interactively select hunks in the difference between the _< tree-ish>_ (or the index, if unspecified) and the working tree. The chosen hunks are then applied in reverse to the working tree (and if a _< tree-ish>_ was specified, the index).
 This means that you can use `git` `checkout` `-p` to selectively discard edits from your current working tree. See the "Interactive Mode" section of [git-add[1]](https://git-scm.com/docs/git-add) to learn how to operate the `--patch` mode.
-Note that this option uses the no overlay mode by default (see also `--overlay`), and currently doesn’t support overlay mode. 
+Note that this option uses the no overlay mode by default (see also `--overlay`), and currently doesn’t support overlay mode.
 
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt--Un)`-U`_< n>_ 
-
-
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---unifiedn)`--unified=`_< n>_ 
-    
-Generate diffs with _< n>_ lines of context. Defaults to `diff.context` or 3 if the config option is unset. 
-
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---inter-hunk-contextn)`--inter-hunk-context=`_< n>_ 
-    
-Show the context between diff hunks, up to the specified _< number>_ of lines, thereby fusing hunks that are close to each other. Defaults to `diff.interHunkContext` or 0 if the config option is unset. 
-
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---ignore-other-worktrees)`--ignore-other-worktrees` 
-    
-`git` `checkout` refuses when the wanted branch is already checked out or otherwise in use by another worktree. This option makes it check the branch out anyway. In other words, the branch can be in use by more than one worktree. 
-
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---overwrite-ignore)`--overwrite-ignore` 
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt--Un)`-U`_< n>_
 
 
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---no-overwrite-ignore)`--no-overwrite-ignore` 
-    
-Silently overwrite ignored files when switching branches. This is the default behavior. Use `--no-overwrite-ignore` to abort the operation when the new branch contains ignored files. 
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---unifiedn)`--unified=`_< n>_
 
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---recurse-submodules)`--recurse-submodules` 
+Generate diffs with _< n>_ lines of context. Defaults to `diff.context` or 3 if the config option is unset.
+
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---inter-hunk-contextn)`--inter-hunk-context=`_< n>_
+
+Show the context between diff hunks, up to the specified _< number>_ of lines, thereby fusing hunks that are close to each other. Defaults to `diff.interHunkContext` or 0 if the config option is unset.
+
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---ignore-other-worktrees)`--ignore-other-worktrees`
+
+`git` `checkout` refuses when the wanted branch is already checked out or otherwise in use by another worktree. This option makes it check the branch out anyway. In other words, the branch can be in use by more than one worktree.
+
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---overwrite-ignore)`--overwrite-ignore`
 
 
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---no-recurse-submodules)`--no-recurse-submodules` 
-    
-Using `--recurse-submodules` will update the content of all active submodules according to the commit recorded in the superproject. If local modifications in a submodule would be overwritten the checkout will fail unless `-f` is used. If nothing (or `--no-recurse-submodules`) is used, submodules working trees will not be updated. Just like [git-submodule[1]](https://git-scm.com/docs/git-submodule), this will detach `HEAD` of the submodule. 
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---no-overwrite-ignore)`--no-overwrite-ignore`
 
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---overlay)`--overlay` 
+Silently overwrite ignored files when switching branches. This is the default behavior. Use `--no-overwrite-ignore` to abort the operation when the new branch contains ignored files.
+
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---recurse-submodules)`--recurse-submodules`
 
 
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---no-overlay)`--no-overlay` 
-    
-In the default overlay mode, `git` `checkout` never removes files from the index or the working tree. When specifying `--no-overlay`, files that appear in the index and working tree, but not in _< tree-ish>_ are removed, to make them match _< tree-ish>_ exactly. 
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---no-recurse-submodules)`--no-recurse-submodules`
 
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---pathspec-from-filefile)`--pathspec-from-file=`_< file>_ 
-    
-Pathspec is passed in _< file>_ instead of commandline args. If _< file>_ is exactly `-` then standard input is used. Pathspec elements are separated by _LF_ or _CR_ /_LF_. Pathspec elements can be quoted as explained for the configuration variable `core.quotePath` (see [git-config[1]](https://git-scm.com/docs/git-config)). See also `--pathspec-file-nul` and global `--literal-pathspecs`. 
+Using `--recurse-submodules` will update the content of all active submodules according to the commit recorded in the superproject. If local modifications in a submodule would be overwritten the checkout will fail unless `-f` is used. If nothing (or `--no-recurse-submodules`) is used, submodules working trees will not be updated. Just like [git-submodule[1]](https://git-scm.com/docs/git-submodule), this will detach `HEAD` of the submodule.
 
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---pathspec-file-nul)`--pathspec-file-nul` 
-    
-Only meaningful with `--pathspec-from-file`. Pathspec elements are separated with _NUL_ character and all other characters are taken literally (including newlines and quotes). 
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---overlay)`--overlay`
 
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt-branch)_< branch>_ 
-    
+
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---no-overlay)`--no-overlay`
+
+In the default overlay mode, `git` `checkout` never removes files from the index or the working tree. When specifying `--no-overlay`, files that appear in the index and working tree, but not in _< tree-ish>_ are removed, to make them match _< tree-ish>_ exactly.
+
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---pathspec-from-filefile)`--pathspec-from-file=`_< file>_
+
+Pathspec is passed in _< file>_ instead of commandline args. If _< file>_ is exactly `-` then standard input is used. Pathspec elements are separated by _LF_ or _CR_ /_LF_. Pathspec elements can be quoted as explained for the configuration variable `core.quotePath` (see [git-config[1]](https://git-scm.com/docs/git-config)). See also `--pathspec-file-nul` and global `--literal-pathspecs`.
+
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---pathspec-file-nul)`--pathspec-file-nul`
+
+Only meaningful with `--pathspec-from-file`. Pathspec elements are separated with _NUL_ character and all other characters are taken literally (including newlines and quotes).
+
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt-branch)_< branch>_
+
 Branch to checkout; if it refers to a branch (i.e., a name that, when prepended with "refs/heads/", is a valid ref), then that branch is checked out. Otherwise, if it refers to a valid commit, your `HEAD` becomes "detached" and you are no longer on any branch (see below for details).
 You can use the `@{-N}` syntax to refer to the N-th last branch/commit checked out using "git checkout" operation. You may also specify `-` which is synonymous to `@{-1}`.
-As a special case, you may use _< rev-a>_`...`_< rev-b>_ as a shortcut for the merge base of _< rev-a>_ and _< rev-b>_ if there is exactly one merge base. You can leave out at most one of _< rev-a>_ and _< rev-b>_, in which case it defaults to `HEAD`. 
+As a special case, you may use _< rev-a>_`...`_< rev-b>_ as a shortcut for the merge base of _< rev-a>_ and _< rev-b>_ if there is exactly one merge base. You can leave out at most one of _< rev-a>_ and _< rev-b>_, in which case it defaults to `HEAD`.
 
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt-new-branch)_< new-branch>_ 
-    
-Name for the new branch. 
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt-new-branch)_< new-branch>_
 
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt-start-point)_< start-point>_ 
-    
+Name for the new branch.
+
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt-start-point)_< start-point>_
+
 The name of a commit at which to start the new branch; see [git-branch[1]](https://git-scm.com/docs/git-branch) for details. Defaults to `HEAD`.
-As a special case, you may use _< rev-a>_`...`_< rev-b>_ as a shortcut for the merge base of _< rev-a>_ and _< rev-b>_ if there is exactly one merge base. You can leave out at most one of _< rev-a>_ and _< rev-b>_, in which case it defaults to `HEAD`. 
+As a special case, you may use _< rev-a>_`...`_< rev-b>_ as a shortcut for the merge base of _< rev-a>_ and _< rev-b>_ if there is exactly one merge base. You can leave out at most one of _< rev-a>_ and _< rev-b>_, in which case it defaults to `HEAD`.
 
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt-tree-ish)_< tree-ish>_ 
-    
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt-tree-ish)_< tree-ish>_
+
 Tree to checkout from (when paths are given). If not specified, the index will be used.
-As a special case, you may use _< rev-a>_`...`_< rev-b>_ as a shortcut for the merge base of _< rev-a>_ and _< rev-b>_ if there is exactly one merge base. You can leave out at most one of _< rev-a>_ and _< rev-b>_, in which case it defaults to `HEAD`. 
+As a special case, you may use _< rev-a>_`...`_< rev-b>_ as a shortcut for the merge base of _< rev-a>_ and _< rev-b>_ if there is exactly one merge base. You can leave out at most one of _< rev-a>_ and _< rev-b>_, in which case it defaults to `HEAD`.
 
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---)`--` 
-    
-Do not interpret any more arguments as options. 
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---)`--`
 
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt-pathspec)_< pathspec>_... 
-    
+Do not interpret any more arguments as options.
+
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt-pathspec)_< pathspec>_...
+
 Limits the paths affected by the operation.
 For more details, see the _pathspec_ entry in [gitglossary[7]](https://git-scm.com/docs/gitglossary).
 ##  [](https://git-scm.com/docs/git-checkout#_detached_head)DETACHED HEAD
@@ -664,31 +664,31 @@ $ git add frotz
 ```
 
 ##  [](https://git-scm.com/docs/git-checkout#_configuration)CONFIGURATION
-Everything below this line in this section is selectively included from the [git-config[1]](https://git-scm.com/docs/git-config) documentation. The content is the same as what’s found there: 
+Everything below this line in this section is selectively included from the [git-config[1]](https://git-scm.com/docs/git-config) documentation. The content is the same as what’s found there:
 
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt-checkoutdefaultRemote)`checkout.defaultRemote` 
-    
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt-checkoutdefaultRemote)`checkout.defaultRemote`
+
 When you run `git` `checkout` _< something>_ or `git` `switch` _< something>_ and only have one remote, it may implicitly fall back on checking out and tracking e.g. `origin/`_< something>_. This stops working as soon as you have more than one remote with a _< something>_ reference. This setting allows for setting the name of a preferred remote that should always win when it comes to disambiguation. The typical use-case is to set this to `origin`.
-Currently this is used by [git-switch[1]](https://git-scm.com/docs/git-switch) and [git-checkout[1]](https://git-scm.com/docs/git-checkout) when `git` `checkout` _< something>_ or `git` `switch` _< something>_ will checkout the _< something>_ branch on another remote, and by [git-worktree[1]](https://git-scm.com/docs/git-worktree) when `git` `worktree` `add` refers to a remote branch. This setting might be used for other checkout-like commands or functionality in the future. 
+Currently this is used by [git-switch[1]](https://git-scm.com/docs/git-switch) and [git-checkout[1]](https://git-scm.com/docs/git-checkout) when `git` `checkout` _< something>_ or `git` `switch` _< something>_ will checkout the _< something>_ branch on another remote, and by [git-worktree[1]](https://git-scm.com/docs/git-worktree) when `git` `worktree` `add` refers to a remote branch. This setting might be used for other checkout-like commands or functionality in the future.
 
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt-checkoutguess)`checkout.guess` 
-    
-Provides the default value for the `--guess` or `--no-guess` option in `git` `checkout` and `git` `switch`. See [git-switch[1]](https://git-scm.com/docs/git-switch) and [git-checkout[1]](https://git-scm.com/docs/git-checkout). 
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt-checkoutguess)`checkout.guess`
 
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt-checkoutworkers)`checkout.workers` 
-    
+Provides the default value for the `--guess` or `--no-guess` option in `git` `checkout` and `git` `switch`. See [git-switch[1]](https://git-scm.com/docs/git-switch) and [git-checkout[1]](https://git-scm.com/docs/git-checkout).
+
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt-checkoutworkers)`checkout.workers`
+
 The number of parallel workers to use when updating the working tree. The default is one, i.e. sequential execution. If set to a value less than one, Git will use as many workers as the number of logical cores available. This setting and `checkout.thresholdForParallelism` affect all commands that perform checkout. E.g. checkout, clone, reset, sparse-checkout, etc.
-Note |  Parallel checkout usually delivers better performance for repositories located on SSDs or over NFS. For repositories on spinning disks and/or machines with a small number of cores, the default sequential checkout often performs better. The size and compression level of a repository might also influence how well the parallel version performs.   
----|--- 
+Note |  Parallel checkout usually delivers better performance for repositories located on SSDs or over NFS. For repositories on spinning disks and/or machines with a small number of cores, the default sequential checkout often performs better. The size and compression level of a repository might also influence how well the parallel version performs.
+---|---
 
-[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt-checkoutthresholdForParallelism)`checkout.thresholdForParallelism` 
-      
+[](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt-checkoutthresholdForParallelism)`checkout.thresholdForParallelism`
+
 When running parallel checkout with a small number of files, the cost of subprocess spawning and inter-process communication might outweigh the parallelization gains. This setting allows you to define the minimum number of files for which parallel checkout should be attempted. The default is 100.
 ##  [](https://git-scm.com/docs/git-checkout#_see_also)SEE ALSO
 [git-switch[1]](https://git-scm.com/docs/git-switch), [git-restore[1]](https://git-scm.com/docs/git-restore)
 ##  [](https://git-scm.com/docs/git-checkout#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### checkout
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

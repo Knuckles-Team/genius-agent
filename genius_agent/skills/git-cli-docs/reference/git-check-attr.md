@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-check-attr#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-check-attr#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-check-attr#_description)
@@ -37,8 +37,8 @@ Localized versions of **git-check-attr** manual
   6. [українська мова ](https://git-scm.com/docs/git-check-attr/uk)
   7. [简体中文 ](https://git-scm.com/docs/git-check-attr/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-check-attr)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -210,54 +210,54 @@ _git check-attr_ --stdin [-z] [--source <tree-ish>] [-a | --all | <attr>…​]
 
 ##  [](https://git-scm.com/docs/git-check-attr#_description)DESCRIPTION
 For every pathname, this command will list if each attribute is _unspecified_ , _set_ , or _unset_ as a gitattribute on that pathname.
-##  [](https://git-scm.com/docs/git-check-attr#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-check-attr#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-check-attr#Documentation/git-check-attr.txt--a)-a 
+[](https://git-scm.com/docs/git-check-attr#Documentation/git-check-attr.txt--a)-a
 
 
-[](https://git-scm.com/docs/git-check-attr#Documentation/git-check-attr.txt---all)--all 
-    
-List all attributes that are associated with the specified paths. If this option is used, then _unspecified_ attributes will not be included in the output. 
+[](https://git-scm.com/docs/git-check-attr#Documentation/git-check-attr.txt---all)--all
 
-[](https://git-scm.com/docs/git-check-attr#Documentation/git-check-attr.txt---cached)--cached 
-    
-Consider `.gitattributes` in the index only, ignoring the working tree. 
+List all attributes that are associated with the specified paths. If this option is used, then _unspecified_ attributes will not be included in the output.
 
-[](https://git-scm.com/docs/git-check-attr#Documentation/git-check-attr.txt---stdin)--stdin 
-    
-Read pathnames from the standard input, one per line, instead of from the command line. 
+[](https://git-scm.com/docs/git-check-attr#Documentation/git-check-attr.txt---cached)--cached
 
-[](https://git-scm.com/docs/git-check-attr#Documentation/git-check-attr.txt--z)-z 
-    
-The output format is modified to be machine-parsable. If `--stdin` is also given, input paths are separated with a NUL character instead of a linefeed character. 
+Consider `.gitattributes` in the index only, ignoring the working tree.
 
-[](https://git-scm.com/docs/git-check-attr#Documentation/git-check-attr.txt---sourcetree-ish)--source=<tree-ish> 
-    
-Check attributes against the specified tree-ish. It is common to specify the source tree by naming a commit, branch, or tag associated with it. 
+[](https://git-scm.com/docs/git-check-attr#Documentation/git-check-attr.txt---stdin)--stdin
 
-[](https://git-scm.com/docs/git-check-attr#Documentation/git-check-attr.txt---)-- 
-    
+Read pathnames from the standard input, one per line, instead of from the command line.
+
+[](https://git-scm.com/docs/git-check-attr#Documentation/git-check-attr.txt--z)-z
+
+The output format is modified to be machine-parsable. If `--stdin` is also given, input paths are separated with a NUL character instead of a linefeed character.
+
+[](https://git-scm.com/docs/git-check-attr#Documentation/git-check-attr.txt---sourcetree-ish)--source=<tree-ish>
+
+Check attributes against the specified tree-ish. It is common to specify the source tree by naming a commit, branch, or tag associated with it.
+
+[](https://git-scm.com/docs/git-check-attr#Documentation/git-check-attr.txt---)--
+
 Interpret all preceding arguments as attributes and all following arguments as path names.
 If none of `--stdin`, `--all`, or `--` is used, the first argument will be treated as an attribute and the rest of the arguments as pathnames.
 ##  [](https://git-scm.com/docs/git-check-attr#_output)OUTPUT
 The output is of the form: <path> COLON SP <attribute> COLON SP <info> LF
 unless `-z` is in effect, in which case NUL is used as delimiter: <path> NUL <attribute> NUL <info> NUL
-<path> is the path of a file being queried, <attribute> is an attribute being queried, and <info> can be either: 
+<path> is the path of a file being queried, <attribute> is an attribute being queried, and <info> can be either:
 
-[](https://git-scm.com/docs/git-check-attr#Documentation/git-check-attr.txt-unspecified)_unspecified_ 
-    
-when the attribute is not defined for the path. 
+[](https://git-scm.com/docs/git-check-attr#Documentation/git-check-attr.txt-unspecified)_unspecified_
 
-[](https://git-scm.com/docs/git-check-attr#Documentation/git-check-attr.txt-unset)_unset_ 
-    
-when the attribute is defined as false. 
+when the attribute is not defined for the path.
 
-[](https://git-scm.com/docs/git-check-attr#Documentation/git-check-attr.txt-set)_set_ 
-    
-when the attribute is defined as true. 
+[](https://git-scm.com/docs/git-check-attr#Documentation/git-check-attr.txt-unset)_unset_
 
-[](https://git-scm.com/docs/git-check-attr#Documentation/git-check-attr.txt-value)<value> 
-    
+when the attribute is defined as false.
+
+[](https://git-scm.com/docs/git-check-attr#Documentation/git-check-attr.txt-set)_set_
+
+when the attribute is defined as true.
+
+[](https://git-scm.com/docs/git-check-attr#Documentation/git-check-attr.txt-value)<value>
+
 when a value has been assigned to the attribute.
 Buffering happens as documented under the `GIT_FLUSH` option in [git[1]](https://git-scm.com/docs/git). The caller is responsible for avoiding deadlocks caused by overfilling an input buffer or reading from an empty output buffer.
 ##  [](https://git-scm.com/docs/git-check-attr#_examples)EXAMPLES
@@ -309,6 +309,6 @@ README: caveat: unspecified
 ##  [](https://git-scm.com/docs/git-check-attr#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### check-attr
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-am#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-am#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-am#_description)
@@ -38,8 +38,8 @@ Localized versions of **git-am** manual
   6. [українська мова ](https://git-scm.com/docs/git-am/uk)
   7. [简体中文 ](https://git-scm.com/docs/git-am/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-am)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -252,218 +252,218 @@ _git am_ (--continue | --skip | --abort | --quit | --retry | --show-current-patc
 
 ##  [](https://git-scm.com/docs/git-am#_description)DESCRIPTION
 Splits mail messages in a mailbox into commit log messages, authorship information, and patches, and applies them to the current branch. You could think of it as a reverse operation of [git-format-patch[1]](https://git-scm.com/docs/git-format-patch) run on a branch with a straight history without merges.
-##  [](https://git-scm.com/docs/git-am#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-am#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt-mboxMaildir)(<mbox>|<Maildir>)…​ 
-    
-The list of mailbox files to read patches from. If you do not supply this argument, the command reads from the standard input. If you supply directories, they will be treated as Maildirs. 
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt-mboxMaildir)(<mbox>|<Maildir>)…​
 
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt--s)-s 
+The list of mailbox files to read patches from. If you do not supply this argument, the command reads from the standard input. If you supply directories, they will be treated as Maildirs.
 
-
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---signoff)--signoff 
-    
-Add a `Signed-off-by` trailer to the commit message, using the committer identity of yourself. See the signoff option in [git-commit[1]](https://git-scm.com/docs/git-commit) for more information. 
-
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt--k)-k 
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt--s)-s
 
 
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---keep)--keep 
-    
-Pass `-k` flag to _git mailinfo_ (see [git-mailinfo[1]](https://git-scm.com/docs/git-mailinfo)). 
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---signoff)--signoff
 
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---keep-non-patch)--keep-non-patch 
-    
-Pass `-b` flag to _git mailinfo_ (see [git-mailinfo[1]](https://git-scm.com/docs/git-mailinfo)). 
+Add a `Signed-off-by` trailer to the commit message, using the committer identity of yourself. See the signoff option in [git-commit[1]](https://git-scm.com/docs/git-commit) for more information.
 
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---keep-cr)--keep-cr 
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt--k)-k
 
 
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---no-keep-cr)--no-keep-cr 
-    
-With `--keep-cr`, call _git mailsplit_ (see [git-mailsplit[1]](https://git-scm.com/docs/git-mailsplit)) with the same option, to prevent it from stripping CR at the end of lines. `am.keepcr` configuration variable can be used to specify the default behaviour. `--no-keep-cr` is useful to override `am.keepcr`. 
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---keep)--keep
 
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt--c)-c 
+Pass `-k` flag to _git mailinfo_ (see [git-mailinfo[1]](https://git-scm.com/docs/git-mailinfo)).
 
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---keep-non-patch)--keep-non-patch
 
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---scissors)--scissors 
-    
-Remove everything in body before a scissors line (see [git-mailinfo[1]](https://git-scm.com/docs/git-mailinfo)). Can be activated by default using the `mailinfo.scissors` configuration variable. 
+Pass `-b` flag to _git mailinfo_ (see [git-mailinfo[1]](https://git-scm.com/docs/git-mailinfo)).
 
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---no-scissors)--no-scissors 
-    
-Ignore scissors lines (see [git-mailinfo[1]](https://git-scm.com/docs/git-mailinfo)). 
-
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---quoted-craction)--quoted-cr=<action> 
-    
-This flag will be passed down to _git mailinfo_ (see [git-mailinfo[1]](https://git-scm.com/docs/git-mailinfo)). 
-
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---emptydropkeepstop)--empty=(drop|keep|stop) 
-    
-How to handle an e-mail message lacking a patch: 
-
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt-drop)`drop` 
-    
-The e-mail message will be skipped. 
-
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt-keep)`keep` 
-    
-An empty commit will be created, with the contents of the e-mail message as its log. 
-
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt-stop)`stop` 
-    
-The command will fail, stopping in the middle of the current `am` session. This is the default behavior. 
-
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt--m)-m 
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---keep-cr)--keep-cr
 
 
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---message-id)--message-id 
-    
-Pass the `-m` flag to _git mailinfo_ (see [git-mailinfo[1]](https://git-scm.com/docs/git-mailinfo)), so that the Message-ID header is added to the commit message. The `am.messageid` configuration variable can be used to specify the default behaviour. 
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---no-keep-cr)--no-keep-cr
 
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---no-message-id)--no-message-id 
-    
-Do not add the Message-ID header to the commit message. `no-message-id` is useful to override `am.messageid`. 
+With `--keep-cr`, call _git mailsplit_ (see [git-mailsplit[1]](https://git-scm.com/docs/git-mailsplit)) with the same option, to prevent it from stripping CR at the end of lines. `am.keepcr` configuration variable can be used to specify the default behaviour. `--no-keep-cr` is useful to override `am.keepcr`.
 
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt--q)-q 
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt--c)-c
 
 
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---quiet)--quiet 
-    
-Be quiet. Only print error messages. 
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---scissors)--scissors
 
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt--u)-u 
+Remove everything in body before a scissors line (see [git-mailinfo[1]](https://git-scm.com/docs/git-mailinfo)). Can be activated by default using the `mailinfo.scissors` configuration variable.
+
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---no-scissors)--no-scissors
+
+Ignore scissors lines (see [git-mailinfo[1]](https://git-scm.com/docs/git-mailinfo)).
+
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---quoted-craction)--quoted-cr=<action>
+
+This flag will be passed down to _git mailinfo_ (see [git-mailinfo[1]](https://git-scm.com/docs/git-mailinfo)).
+
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---emptydropkeepstop)--empty=(drop|keep|stop)
+
+How to handle an e-mail message lacking a patch:
+
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt-drop)`drop`
+
+The e-mail message will be skipped.
+
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt-keep)`keep`
+
+An empty commit will be created, with the contents of the e-mail message as its log.
+
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt-stop)`stop`
+
+The command will fail, stopping in the middle of the current `am` session. This is the default behavior.
+
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt--m)-m
 
 
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---utf8)--utf8 
-    
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---message-id)--message-id
+
+Pass the `-m` flag to _git mailinfo_ (see [git-mailinfo[1]](https://git-scm.com/docs/git-mailinfo)), so that the Message-ID header is added to the commit message. The `am.messageid` configuration variable can be used to specify the default behaviour.
+
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---no-message-id)--no-message-id
+
+Do not add the Message-ID header to the commit message. `no-message-id` is useful to override `am.messageid`.
+
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt--q)-q
+
+
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---quiet)--quiet
+
+Be quiet. Only print error messages.
+
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt--u)-u
+
+
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---utf8)--utf8
+
 Pass `-u` flag to _git mailinfo_ (see [git-mailinfo[1]](https://git-scm.com/docs/git-mailinfo)). The proposed commit log message taken from the e-mail is re-coded into UTF-8 encoding (configuration variable `i18n.commitEncoding` can be used to specify the project’s preferred encoding if it is not UTF-8).
-This was optional in prior versions of git, but now it is the default. You can use `--no-utf8` to override this. 
+This was optional in prior versions of git, but now it is the default. You can use `--no-utf8` to override this.
 
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---no-utf8)--no-utf8 
-    
-Pass `-n` flag to _git mailinfo_ (see [git-mailinfo[1]](https://git-scm.com/docs/git-mailinfo)). 
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---no-utf8)--no-utf8
 
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt--3)-3 
+Pass `-n` flag to _git mailinfo_ (see [git-mailinfo[1]](https://git-scm.com/docs/git-mailinfo)).
 
-
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---3way)--3way 
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt--3)-3
 
 
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---no-3way)--no-3way 
-    
-When the patch does not apply cleanly, fall back on 3-way merge if the patch records the identity of blobs it is supposed to apply to and we have those blobs available locally. `--no-3way` can be used to override am.threeWay configuration variable. For more information, see am.threeWay in [git-config[1]](https://git-scm.com/docs/git-config). 
-
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---rerere-autoupdate)`--rerere-autoupdate` 
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---3way)--3way
 
 
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---no-rerere-autoupdate)`--no-rerere-autoupdate` 
-    
-After the rerere mechanism reuses a recorded resolution on the current conflict to update the files in the working tree, allow it to also update the index with the result of resolution. `--no-rerere-autoupdate` is a good way to double-check what `rerere` did and catch potential mismerges, before committing the result to the index with a separate `git` `add`. 
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---no-3way)--no-3way
 
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---ignore-space-change)--ignore-space-change 
+When the patch does not apply cleanly, fall back on 3-way merge if the patch records the identity of blobs it is supposed to apply to and we have those blobs available locally. `--no-3way` can be used to override am.threeWay configuration variable. For more information, see am.threeWay in [git-config[1]](https://git-scm.com/docs/git-config).
 
-
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---ignore-whitespace)--ignore-whitespace 
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---rerere-autoupdate)`--rerere-autoupdate`
 
 
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---whitespaceaction)--whitespace=<action> 
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---no-rerere-autoupdate)`--no-rerere-autoupdate`
+
+After the rerere mechanism reuses a recorded resolution on the current conflict to update the files in the working tree, allow it to also update the index with the result of resolution. `--no-rerere-autoupdate` is a good way to double-check what `rerere` did and catch potential mismerges, before committing the result to the index with a separate `git` `add`.
+
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---ignore-space-change)--ignore-space-change
 
 
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt--Cn)-C<n> 
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---ignore-whitespace)--ignore-whitespace
 
 
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt--pn)-p<n> 
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---whitespaceaction)--whitespace=<action>
 
 
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---directorydir)--directory=<dir> 
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt--Cn)-C<n>
 
 
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---excludepath)--exclude=<path> 
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt--pn)-p<n>
 
 
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---includepath)--include=<path> 
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---directorydir)--directory=<dir>
 
 
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---reject)--reject 
-    
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---excludepath)--exclude=<path>
+
+
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---includepath)--include=<path>
+
+
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---reject)--reject
+
 These flags are passed to the _git apply_ (see [git-apply[1]](https://git-scm.com/docs/git-apply)) program that applies the patch.
-Valid <action> for the `--whitespace` option are: `nowarn`, `warn`, `fix`, `error`, and `error-all`. 
+Valid <action> for the `--whitespace` option are: `nowarn`, `warn`, `fix`, `error`, and `error-all`.
 
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---patch-format)--patch-format 
-    
-By default the command will try to detect the patch format automatically. This option allows the user to bypass the automatic detection and specify the patch format that the patch(es) should be interpreted as. Valid formats are mbox, mboxrd, stgit, stgit-series, and hg. 
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---patch-format)--patch-format
 
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt--i)-i 
+By default the command will try to detect the patch format automatically. This option allows the user to bypass the automatic detection and specify the patch format that the patch(es) should be interpreted as. Valid formats are mbox, mboxrd, stgit, stgit-series, and hg.
 
-
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---interactive)--interactive 
-    
-Run interactively. 
-
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt--n)-n 
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt--i)-i
 
 
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---no-verify)--no-verify 
-    
-By default, the pre-applypatch and applypatch-msg hooks are run. When any of `--no-verify` or `-n` is given, these are bypassed. See also [githooks[5]](https://git-scm.com/docs/githooks). 
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---interactive)--interactive
 
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---committer-date-is-author-date)--committer-date-is-author-date 
-    
+Run interactively.
+
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt--n)-n
+
+
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---no-verify)--no-verify
+
+By default, the pre-applypatch and applypatch-msg hooks are run. When any of `--no-verify` or `-n` is given, these are bypassed. See also [githooks[5]](https://git-scm.com/docs/githooks).
+
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---committer-date-is-author-date)--committer-date-is-author-date
+
 By default the command records the date from the e-mail message as the commit author date, and uses the time of commit creation as the committer date. This allows the user to lie about the committer date by using the same value as the author date.
-Warning |  The history walking machinery assumes that commits have non-decreasing commit timestamps. You should consider if you really need to use this option. Then you should only use this option to override the committer date when applying commits on top of a base which commit is older (in terms of the commit date) than the oldest patch you are applying.   
----|--- 
+Warning |  The history walking machinery assumes that commits have non-decreasing commit timestamps. You should consider if you really need to use this option. Then you should only use this option to override the committer date when applying commits on top of a base which commit is older (in terms of the commit date) than the oldest patch you are applying.
+---|---
 
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---ignore-date)--ignore-date 
-      
-By default the command records the date from the e-mail message as the commit author date, and uses the time of commit creation as the committer date. This allows the user to lie about the author date by using the same value as the committer date. 
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---ignore-date)--ignore-date
 
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---skip)--skip 
-    
-Skip the current patch. This is only meaningful when restarting an aborted patch. 
+By default the command records the date from the e-mail message as the commit author date, and uses the time of commit creation as the committer date. This allows the user to lie about the author date by using the same value as the committer date.
 
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt--Skeyid)-S[<keyid>] 
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---skip)--skip
 
+Skip the current patch. This is only meaningful when restarting an aborted patch.
 
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---gpg-signkeyid)--gpg-sign[=<keyid>] 
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt--Skeyid)-S[<keyid>]
 
 
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---no-gpg-sign)--no-gpg-sign 
-    
-GPG-sign commits. The `keyid` argument is optional and defaults to the committer identity; if specified, it must be stuck to the option without a space. `--no-gpg-sign` is useful to countermand both `commit.gpgSign` configuration variable, and earlier `--gpg-sign`. 
-
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---continue)--continue 
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---gpg-signkeyid)--gpg-sign[=<keyid>]
 
 
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt--r)-r 
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---no-gpg-sign)--no-gpg-sign
+
+GPG-sign commits. The `keyid` argument is optional and defaults to the committer identity; if specified, it must be stuck to the option without a space. `--no-gpg-sign` is useful to countermand both `commit.gpgSign` configuration variable, and earlier `--gpg-sign`.
+
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---continue)--continue
 
 
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---resolved)--resolved 
-    
-After a patch failure (e.g. attempting to apply conflicting patch), the user has applied it by hand and the index file stores the result of the application. Make a commit using the authorship and commit log extracted from the e-mail message and the current index file, and continue. 
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt--r)-r
 
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---resolvemsgmsg)--resolvemsg=<msg> 
-    
-When a patch failure occurs, <msg> will be printed to the screen before exiting. This overrides the standard message informing you to use `--continue` or `--skip` to handle the failure. This is solely for internal use between _git rebase_ and _git am_. 
 
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---abort)--abort 
-    
-Restore the original branch and abort the patching operation. Revert the contents of files involved in the am operation to their pre-am state. 
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---resolved)--resolved
 
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---quit)--quit 
-    
-Abort the patching operation but keep HEAD and the index untouched. 
+After a patch failure (e.g. attempting to apply conflicting patch), the user has applied it by hand and the index file stores the result of the application. Make a commit using the authorship and commit log extracted from the e-mail message and the current index file, and continue.
 
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---retry)--retry 
-    
-Try to apply the last conflicting patch again. This is generally only useful for passing extra options to the retry attempt (e.g., `--3way`), since otherwise you’ll just see the same failure again. 
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---resolvemsgmsg)--resolvemsg=<msg>
 
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---show-current-patchdiffraw)--show-current-patch[=(diff|raw)] 
-    
-Show the message at which `git` `am` has stopped due to conflicts. If `raw` is specified, show the raw contents of the e-mail message; if `diff`, show the diff portion only. Defaults to `raw`. 
+When a patch failure occurs, <msg> will be printed to the screen before exiting. This overrides the standard message informing you to use `--continue` or `--skip` to handle the failure. This is solely for internal use between _git rebase_ and _git am_.
 
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---allow-empty)--allow-empty 
-    
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---abort)--abort
+
+Restore the original branch and abort the patching operation. Revert the contents of files involved in the am operation to their pre-am state.
+
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---quit)--quit
+
+Abort the patching operation but keep HEAD and the index untouched.
+
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---retry)--retry
+
+Try to apply the last conflicting patch again. This is generally only useful for passing extra options to the retry attempt (e.g., `--3way`), since otherwise you’ll just see the same failure again.
+
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---show-current-patchdiffraw)--show-current-patch[=(diff|raw)]
+
+Show the message at which `git` `am` has stopped due to conflicts. If `raw` is specified, show the raw contents of the e-mail message; if `diff`, show the diff portion only. Defaults to `raw`.
+
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt---allow-empty)--allow-empty
+
 After a patch failure on an input e-mail message lacking a patch, create an empty commit with the contents of the e-mail message as its log message.
 ##  [](https://git-scm.com/docs/git-am#_discussion)DISCUSSION
 The commit author name is taken from the "From: " line of the message, and commit author date is taken from the "Date: " line of the message. The "Subject: " line is used as the title of the commit, after stripping common prefix "[PATCH <anything>]". The "Subject: " line is supposed to concisely describe what the commit is about in one line of text.
@@ -486,20 +486,20 @@ Before any patches are applied, ORIG_HEAD is set to the tip of the current branc
 ##  [](https://git-scm.com/docs/git-am#_hooks)HOOKS
 This command can run `applypatch-msg`, `pre-applypatch`, and `post-applypatch` hooks. See [githooks[5]](https://git-scm.com/docs/githooks) for more information.
 ##  [](https://git-scm.com/docs/git-am#_configuration)CONFIGURATION
-Everything below this line in this section is selectively included from the [git-config[1]](https://git-scm.com/docs/git-config) documentation. The content is the same as what’s found there: 
+Everything below this line in this section is selectively included from the [git-config[1]](https://git-scm.com/docs/git-config) documentation. The content is the same as what’s found there:
 
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt-amkeepcr)am.keepcr 
-    
-If true, git-am will call git-mailsplit for patches in mbox format with parameter `--keep-cr`. In this case git-mailsplit will not remove _\r_ from lines ending with _\r\n_. Can be overridden by giving `--no-keep-cr` from the command line. See [git-am[1]](https://git-scm.com/docs/git-am), [git-mailsplit[1]](https://git-scm.com/docs/git-mailsplit). 
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt-amkeepcr)am.keepcr
 
-[](https://git-scm.com/docs/git-am#Documentation/git-am.txt-amthreeWay)am.threeWay 
-    
+If true, git-am will call git-mailsplit for patches in mbox format with parameter `--keep-cr`. In this case git-mailsplit will not remove _\r_ from lines ending with _\r\n_. Can be overridden by giving `--no-keep-cr` from the command line. See [git-am[1]](https://git-scm.com/docs/git-am), [git-mailsplit[1]](https://git-scm.com/docs/git-mailsplit).
+
+[](https://git-scm.com/docs/git-am#Documentation/git-am.txt-amthreeWay)am.threeWay
+
 By default, `git` `am` will fail if the patch does not apply cleanly. When set to true, this setting tells `git` `am` to fall back on 3-way merge if the patch records the identity of blobs it is supposed to apply to and we have those blobs available locally (equivalent to giving the `--3way` option from the command line). Defaults to `false`. See [git-am[1]](https://git-scm.com/docs/git-am).
 ##  [](https://git-scm.com/docs/git-am#_see_also)SEE ALSO
 [git-apply[1]](https://git-scm.com/docs/git-apply), [git-format-patch[1]](https://git-scm.com/docs/git-format-patch).
 ##  [](https://git-scm.com/docs/git-am#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### am
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

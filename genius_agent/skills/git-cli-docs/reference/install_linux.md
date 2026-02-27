@@ -17,20 +17,20 @@
 
 
 * * *
-The entire **[Pro Git book](https://git-scm.com/book)** written by Scott Chacon and Ben Straub is available to [read online for free](https://git-scm.com/book). Dead tree versions are available on [Amazon.com](https://www.amazon.com/Pro-Git-Scott-Chacon/dp/1484200772?ie=UTF8&camp=1789&creative=9325&creativeASIN=1430218339&linkCode=as2&tag=git-sfconservancy-20). 
+The entire **[Pro Git book](https://git-scm.com/book)** written by Scott Chacon and Ben Straub is available to [read online for free](https://git-scm.com/book). Dead tree versions are available on [Amazon.com](https://www.amazon.com/Pro-Git-Scott-Chacon/dp/1484200772?ie=UTF8&camp=1789&creative=9325&creativeASIN=1430218339&linkCode=as2&tag=git-sfconservancy-20).
 # Install
-Latest version: 2.53.0 ([Release Notes](https://gitlab.com/git-scm/git/-/blob/HEAD/Documentation/RelNotes/2.53.0.adoc)) 
+Latest version: 2.53.0 ([Release Notes](https://gitlab.com/git-scm/git/-/blob/HEAD/Documentation/RelNotes/2.53.0.adoc))
 [ Windows ](https://git-scm.com/install/windows) [ macOS ](https://git-scm.com/install/mac) [ Linux ](https://git-scm.com/install/linux) [ Build from Source ](https://git-scm.com/install/source)
-It is easiest to install Git on Linux with your distribution's package manager. 
+It is easiest to install Git on Linux with your distribution's package manager.
 ### Debian/Ubuntu
 For the latest stable version for your release of Debian/Ubuntu
 `# apt-get install git`
 For Ubuntu, this PPA provides the latest stable upstream Git version
-`# add-apt-repository ppa:git-core/ppa`  
+`# add-apt-repository ppa:git-core/ppa`
 `# apt update; apt install git`
 ### Fedora
-`# yum install git` (up to Fedora 21)  
-`# dnf install git` (Fedora 22 and later) 
+`# yum install git` (up to Fedora 21)
+`# dnf install git` (Fedora 22 and later)
 ### Gentoo
 `# emerge --ask --verbose dev-vcs/git`
 ### Arch Linux
@@ -55,6 +55,6 @@ For Ubuntu, this PPA provides the latest stable upstream Git version
 RHEL and derivatives typically ship older versions of git. You can [download a tarball](https://www.kernel.org/pub/software/scm/git/) and build from source, or use a 3rd-party repository such as [the IUS Community Project](https://ius.io/) to obtain a more recent version of git.
 ### Slitaz
 `$ tazpkg get-install git`
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

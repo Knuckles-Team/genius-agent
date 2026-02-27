@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-repack#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-repack#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-repack#_description)
@@ -34,8 +34,8 @@ Localized versions of **git-repack** manual
   4. [українська мова ](https://git-scm.com/docs/git-repack/uk)
   5. [简体中文 ](https://git-scm.com/docs/git-repack/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-repack)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -237,150 +237,150 @@ _git repack_ [-a] [-A] [-d] [-f] [-F] [-l] [-n] [-q] [-b] [-m]
 This command is used to combine all objects that do not currently reside in a "pack", into a pack. It can also be used to re-organize existing packs into a single, more efficient pack.
 A pack is a collection of objects, individually compressed, with delta compression applied, stored in a single file, with an associated index file.
 Packs are used to reduce the load on mirror systems, backup engines, disk storage, etc.
-##  [](https://git-scm.com/docs/git-repack#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-repack#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt--a)-a 
-    
+[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt--a)-a
+
 Instead of incrementally packing the unpacked objects, pack everything referenced into a single pack. Especially useful when packing a repository that is used for private development. Use with `-d`. This will clean up the objects that `git` `prune` leaves behind, but `git` `fsck` `--full` `--dangling` shows as dangling.
 Note that users fetching over dumb protocols will have to fetch the whole new pack in order to get any contained object, no matter how many other objects in that pack they already have locally.
-Promisor packfiles are repacked separately: if there are packfiles that have an associated ".promisor" file, these packfiles will be repacked into another separate pack, and an empty ".promisor" file corresponding to the new separate pack will be written. 
+Promisor packfiles are repacked separately: if there are packfiles that have an associated ".promisor" file, these packfiles will be repacked into another separate pack, and an empty ".promisor" file corresponding to the new separate pack will be written.
 
-[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt--A)-A 
-    
-Same as `-a`, unless `-d` is used. Then any unreachable objects in a previous pack become loose, unpacked objects, instead of being left in the old pack. Unreachable objects are never intentionally added to a pack, even when repacking. This option prevents unreachable objects from being immediately deleted by way of being left in the old pack and then removed. Instead, the loose unreachable objects will be pruned according to normal expiry rules with the next _git gc_ invocation. See [git-gc[1]](https://git-scm.com/docs/git-gc). 
+[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt--A)-A
 
-[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt--d)-d 
-    
-After packing, if the newly created packs make some existing packs redundant, remove the redundant packs. Also run _git prune-packed_ to remove redundant loose object files. 
+Same as `-a`, unless `-d` is used. Then any unreachable objects in a previous pack become loose, unpacked objects, instead of being left in the old pack. Unreachable objects are never intentionally added to a pack, even when repacking. This option prevents unreachable objects from being immediately deleted by way of being left in the old pack and then removed. Instead, the loose unreachable objects will be pruned according to normal expiry rules with the next _git gc_ invocation. See [git-gc[1]](https://git-scm.com/docs/git-gc).
 
-[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt---cruft)--cruft 
-    
-Same as `-a`, unless `-d` is used. Then any unreachable objects are packed into a separate cruft pack. Unreachable objects can be pruned using the normal expiry rules with the next `git` `gc` invocation (see [git-gc[1]](https://git-scm.com/docs/git-gc)). Incompatible with `-k`. 
+[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt--d)-d
 
-[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt---cruft-expirationapproxidate)--cruft-expiration=<approxidate> 
-    
-Expire unreachable objects older than _< approxidate>_ immediately instead of waiting for the next `git` `gc` invocation. Only useful with `--cruft` `-d`. 
+After packing, if the newly created packs make some existing packs redundant, remove the redundant packs. Also run _git prune-packed_ to remove redundant loose object files.
 
-[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt---max-cruft-sizen)--max-cruft-size=<n> 
-    
-Override `--max-pack-size` for cruft packs. Inherits the value of `--max-pack-size` (if any) by default. See the documentation for `--max-pack-size` for more details. 
+[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt---cruft)--cruft
 
-[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt---combine-cruft-below-sizen)--combine-cruft-below-size=<n> 
-    
-When generating cruft packs without pruning, only repack existing cruft packs whose size is strictly less than _< n>_ bytes, which can optionally be suffixed with "k", "m", or "g". Cruft packs whose size is greater than or equal to _< n>_ are left as-is and not repacked. Useful when you want to avoid repacking large cruft pack(s) in repositories that have many and/or large unreachable objects. 
+Same as `-a`, unless `-d` is used. Then any unreachable objects are packed into a separate cruft pack. Unreachable objects can be pruned using the normal expiry rules with the next `git` `gc` invocation (see [git-gc[1]](https://git-scm.com/docs/git-gc)). Incompatible with `-k`.
 
-[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt---expire-todir)--expire-to=<dir> 
-    
-Write a cruft pack containing pruned objects (if any) to the directory _< dir>_. This option is useful for keeping a copy of any pruned objects in a separate directory as a backup. Only useful with `--cruft` `-d`. 
+[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt---cruft-expirationapproxidate)--cruft-expiration=<approxidate>
 
-[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt--l)-l 
-    
-Pass the `--local` option to _git pack-objects_. See [git-pack-objects[1]](https://git-scm.com/docs/git-pack-objects). 
+Expire unreachable objects older than _< approxidate>_ immediately instead of waiting for the next `git` `gc` invocation. Only useful with `--cruft` `-d`.
 
-[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt--f)-f 
-    
-Pass the `--no-reuse-delta` option to `git-pack-objects`, see [git-pack-objects[1]](https://git-scm.com/docs/git-pack-objects). 
+[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt---max-cruft-sizen)--max-cruft-size=<n>
 
-[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt--F)-F 
-    
-Pass the `--no-reuse-object` option to `git-pack-objects`, see [git-pack-objects[1]](https://git-scm.com/docs/git-pack-objects). 
+Override `--max-pack-size` for cruft packs. Inherits the value of `--max-pack-size` (if any) by default. See the documentation for `--max-pack-size` for more details.
 
-[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt--q)-q 
+[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt---combine-cruft-below-sizen)--combine-cruft-below-size=<n>
 
+When generating cruft packs without pruning, only repack existing cruft packs whose size is strictly less than _< n>_ bytes, which can optionally be suffixed with "k", "m", or "g". Cruft packs whose size is greater than or equal to _< n>_ are left as-is and not repacked. Useful when you want to avoid repacking large cruft pack(s) in repositories that have many and/or large unreachable objects.
 
-[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt---quiet)--quiet 
-    
-Show no progress over the standard error stream and pass the `-q` option to _git pack-objects_. See [git-pack-objects[1]](https://git-scm.com/docs/git-pack-objects). 
+[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt---expire-todir)--expire-to=<dir>
 
-[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt--n)-n 
-    
-Do not update the server information with _git update-server-info_. This option skips updating local catalog files needed to publish this repository (or a direct copy of it) over HTTP or FTP. See [git-update-server-info[1]](https://git-scm.com/docs/git-update-server-info). 
+Write a cruft pack containing pruned objects (if any) to the directory _< dir>_. This option is useful for keeping a copy of any pruned objects in a separate directory as a backup. Only useful with `--cruft` `-d`.
 
-[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt---windown)--window=<n> 
+[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt--l)-l
+
+Pass the `--local` option to _git pack-objects_. See [git-pack-objects[1]](https://git-scm.com/docs/git-pack-objects).
+
+[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt--f)-f
+
+Pass the `--no-reuse-delta` option to `git-pack-objects`, see [git-pack-objects[1]](https://git-scm.com/docs/git-pack-objects).
+
+[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt--F)-F
+
+Pass the `--no-reuse-object` option to `git-pack-objects`, see [git-pack-objects[1]](https://git-scm.com/docs/git-pack-objects).
+
+[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt--q)-q
 
 
-[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt---depthn)--depth=<n> 
-    
+[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt---quiet)--quiet
+
+Show no progress over the standard error stream and pass the `-q` option to _git pack-objects_. See [git-pack-objects[1]](https://git-scm.com/docs/git-pack-objects).
+
+[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt--n)-n
+
+Do not update the server information with _git update-server-info_. This option skips updating local catalog files needed to publish this repository (or a direct copy of it) over HTTP or FTP. See [git-update-server-info[1]](https://git-scm.com/docs/git-update-server-info).
+
+[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt---windown)--window=<n>
+
+
+[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt---depthn)--depth=<n>
+
 These two options affect how the objects contained in the pack are stored using delta compression. The objects are first internally sorted by type, size and optionally names and compared against the other objects within `--window` to see if using delta compression saves space. `--depth` limits the maximum delta depth; making it too deep affects the performance on the unpacker side, because delta data needs to be applied that many times to get to the necessary object.
-The default value for --window is 10 and --depth is 50. The maximum depth is 4095. 
+The default value for --window is 10 and --depth is 50. The maximum depth is 4095.
 
-[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt---threadsn)--threads=<n> 
-    
-This option is passed through to `git` `pack-objects`. 
+[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt---threadsn)--threads=<n>
 
-[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt---window-memoryn)--window-memory=<n> 
-    
-This option provides an additional limit on top of `--window`; the window size will dynamically scale down so as to not take up more than _< n>_ bytes in memory. This is useful in repositories with a mix of large and small objects to not run out of memory with a large window, but still be able to take advantage of the large window for the smaller objects. The size can be suffixed with "k", "m", or "g". `--window-memory=0` makes memory usage unlimited. The default is taken from the `pack.windowMemory` configuration variable. Note that the actual memory usage will be the limit multiplied by the number of threads used by [git-pack-objects[1]](https://git-scm.com/docs/git-pack-objects). 
+This option is passed through to `git` `pack-objects`.
 
-[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt---max-pack-sizen)--max-pack-size=<n> 
-    
-Maximum size of each output pack file. The size can be suffixed with "k", "m", or "g". The minimum size allowed is limited to 1 MiB. If specified, multiple packfiles may be created, which also prevents the creation of a bitmap index. The default is unlimited, unless the config variable `pack.packSizeLimit` is set. Note that this option may result in a larger and slower repository; see the discussion in `pack.packSizeLimit`. 
+[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt---window-memoryn)--window-memory=<n>
 
-[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt---filterfilter-spec)--filter=<filter-spec> 
-    
-Remove objects matching the filter specification from the resulting packfile and put them into a separate packfile. Note that objects used in the working directory are not filtered out. So for the split to fully work, it’s best to perform it in a bare repo and to use the `-a` and `-d` options along with this option. Also `--no-write-bitmap-index` (or the `repack.writebitmaps` config option set to `false`) should be used otherwise writing bitmap index will fail, as it supposes a single packfile containing all the objects. See [git-rev-list[1]](https://git-scm.com/docs/git-rev-list) for valid _< filter-spec>_ forms. 
+This option provides an additional limit on top of `--window`; the window size will dynamically scale down so as to not take up more than _< n>_ bytes in memory. This is useful in repositories with a mix of large and small objects to not run out of memory with a large window, but still be able to take advantage of the large window for the smaller objects. The size can be suffixed with "k", "m", or "g". `--window-memory=0` makes memory usage unlimited. The default is taken from the `pack.windowMemory` configuration variable. Note that the actual memory usage will be the limit multiplied by the number of threads used by [git-pack-objects[1]](https://git-scm.com/docs/git-pack-objects).
 
-[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt---filter-todir)--filter-to=<dir> 
-    
-Write the pack containing filtered out objects to the directory _< dir>_. Only useful with `--filter`. This can be used for putting the pack on a separate object directory that is accessed through the Git alternates mechanism. **WARNING:** If the packfile containing the filtered out objects is not accessible, the repo can become corrupt as it might not be possible to access the objects in that packfile. See the `objects` and `objects/info/alternates` sections of [gitrepository-layout[5]](https://git-scm.com/docs/gitrepository-layout). 
+[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt---max-pack-sizen)--max-pack-size=<n>
 
-[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt--b)-b 
+Maximum size of each output pack file. The size can be suffixed with "k", "m", or "g". The minimum size allowed is limited to 1 MiB. If specified, multiple packfiles may be created, which also prevents the creation of a bitmap index. The default is unlimited, unless the config variable `pack.packSizeLimit` is set. Note that this option may result in a larger and slower repository; see the discussion in `pack.packSizeLimit`.
 
+[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt---filterfilter-spec)--filter=<filter-spec>
 
-[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt---write-bitmap-index)--write-bitmap-index 
-    
-Write a reachability bitmap index as part of the repack. This only makes sense when used with `-a`, `-A` or `-m`, as the bitmaps must be able to refer to all reachable objects. This option overrides the setting of `repack.writeBitmaps`. This option has no effect if multiple packfiles are created, unless writing a MIDX (in which case a multi-pack bitmap is created). 
+Remove objects matching the filter specification from the resulting packfile and put them into a separate packfile. Note that objects used in the working directory are not filtered out. So for the split to fully work, it’s best to perform it in a bare repo and to use the `-a` and `-d` options along with this option. Also `--no-write-bitmap-index` (or the `repack.writebitmaps` config option set to `false`) should be used otherwise writing bitmap index will fail, as it supposes a single packfile containing all the objects. See [git-rev-list[1]](https://git-scm.com/docs/git-rev-list) for valid _< filter-spec>_ forms.
 
-[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt---pack-kept-objects)--pack-kept-objects 
-    
-Include objects in `.keep` files when repacking. Note that we still do not delete `.keep` packs after `pack-objects` finishes. This means that we may duplicate objects, but this makes the option safe to use when there are concurrent pushes or fetches. This option is generally only useful if you are writing bitmaps with `-b` or `repack.writeBitmaps`, as it ensures that the bitmapped packfile has the necessary objects. 
+[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt---filter-todir)--filter-to=<dir>
 
-[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt---keep-packpack-name)--keep-pack=<pack-name> 
-    
-Exclude the given pack from repacking. This is the equivalent of having `.keep` file on the pack. _< pack-name>_ is the pack file name without leading directory (e.g. `pack-123.pack`). The option can be specified multiple times to keep multiple packs. 
+Write the pack containing filtered out objects to the directory _< dir>_. Only useful with `--filter`. This can be used for putting the pack on a separate object directory that is accessed through the Git alternates mechanism. **WARNING:** If the packfile containing the filtered out objects is not accessible, the repo can become corrupt as it might not be possible to access the objects in that packfile. See the `objects` and `objects/info/alternates` sections of [gitrepository-layout[5]](https://git-scm.com/docs/gitrepository-layout).
 
-[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt---unpack-unreachablewhen)--unpack-unreachable=<when> 
-    
-When loosening unreachable objects, do not bother loosening any objects older than _< when>_. This can be used to optimize out the write of any objects that would be immediately pruned by a follow-up `git` `prune`. 
-
-[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt--k)-k 
+[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt--b)-b
 
 
-[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt---keep-unreachable)--keep-unreachable 
-    
-When used with `-ad`, any unreachable objects from existing packs will be appended to the end of the packfile instead of being removed. In addition, any unreachable loose objects will be packed (and their loose counterparts removed). 
+[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt---write-bitmap-index)--write-bitmap-index
 
-[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt--i)-i 
+Write a reachability bitmap index as part of the repack. This only makes sense when used with `-a`, `-A` or `-m`, as the bitmaps must be able to refer to all reachable objects. This option overrides the setting of `repack.writeBitmaps`. This option has no effect if multiple packfiles are created, unless writing a MIDX (in which case a multi-pack bitmap is created).
+
+[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt---pack-kept-objects)--pack-kept-objects
+
+Include objects in `.keep` files when repacking. Note that we still do not delete `.keep` packs after `pack-objects` finishes. This means that we may duplicate objects, but this makes the option safe to use when there are concurrent pushes or fetches. This option is generally only useful if you are writing bitmaps with `-b` or `repack.writeBitmaps`, as it ensures that the bitmapped packfile has the necessary objects.
+
+[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt---keep-packpack-name)--keep-pack=<pack-name>
+
+Exclude the given pack from repacking. This is the equivalent of having `.keep` file on the pack. _< pack-name>_ is the pack file name without leading directory (e.g. `pack-123.pack`). The option can be specified multiple times to keep multiple packs.
+
+[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt---unpack-unreachablewhen)--unpack-unreachable=<when>
+
+When loosening unreachable objects, do not bother loosening any objects older than _< when>_. This can be used to optimize out the write of any objects that would be immediately pruned by a follow-up `git` `prune`.
+
+[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt--k)-k
 
 
-[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt---delta-islands)--delta-islands 
-    
-Pass the `--delta-islands` option to `git-pack-objects`, see [git-pack-objects[1]](https://git-scm.com/docs/git-pack-objects). 
+[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt---keep-unreachable)--keep-unreachable
 
-[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt--gfactor)-g<factor> 
+When used with `-ad`, any unreachable objects from existing packs will be appended to the end of the packfile instead of being removed. In addition, any unreachable loose objects will be packed (and their loose counterparts removed).
+
+[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt--i)-i
 
 
-[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt---geometricfactor)--geometric=<factor> 
-    
+[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt---delta-islands)--delta-islands
+
+Pass the `--delta-islands` option to `git-pack-objects`, see [git-pack-objects[1]](https://git-scm.com/docs/git-pack-objects).
+
+[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt--gfactor)-g<factor>
+
+
+[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt---geometricfactor)--geometric=<factor>
+
 Arrange resulting pack structure so that each successive pack contains at least _< factor>_ times the number of objects as the next-largest pack.
 `git` `repack` ensures this by determining a "cut" of packfiles that need to be repacked into one in order to ensure a geometric progression. It picks the smallest set of packfiles such that as many of the larger packfiles (by count of objects contained in that pack) may be left intact.
 Unlike other repack modes, the set of objects to pack is determined uniquely by the set of packs being "rolled-up"; in other words, the packs determined to need to be combined in order to restore a geometric progression.
 Loose objects are implicitly included in this "roll-up", without respect to their reachability. This is subject to change in the future.
-When writing a multi-pack bitmap, `git` `repack` selects the largest resulting pack as the preferred pack for object selection by the MIDX (see [git-multi-pack-index[1]](https://git-scm.com/docs/git-multi-pack-index)). 
+When writing a multi-pack bitmap, `git` `repack` selects the largest resulting pack as the preferred pack for object selection by the MIDX (see [git-multi-pack-index[1]](https://git-scm.com/docs/git-multi-pack-index)).
 
-[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt--m)-m 
+[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt--m)-m
 
 
-[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt---write-midx)--write-midx 
-    
-Write a multi-pack index (see [git-multi-pack-index[1]](https://git-scm.com/docs/git-multi-pack-index)) containing the non-redundant packs. 
+[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt---write-midx)--write-midx
 
-[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt---name-hash-versionn)--name-hash-version=<n> 
-    
-Provide this argument to the underlying `git` `pack-objects` process. See [git-pack-objects[1]](https://git-scm.com/docs/git-pack-objects) for full details. 
+Write a multi-pack index (see [git-multi-pack-index[1]](https://git-scm.com/docs/git-multi-pack-index)) containing the non-redundant packs.
 
-[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt---path-walk)--path-walk 
-    
+[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt---name-hash-versionn)--name-hash-version=<n>
+
+Provide this argument to the underlying `git` `pack-objects` process. See [git-pack-objects[1]](https://git-scm.com/docs/git-pack-objects) for full details.
+
+[](https://git-scm.com/docs/git-repack#Documentation/git-repack.txt---path-walk)--path-walk
+
 Pass the `--path-walk` option to the underlying `git` `pack-objects` process. See [git-pack-objects[1]](https://git-scm.com/docs/git-pack-objects) for full details.
 ##  [](https://git-scm.com/docs/git-repack#_configuration)CONFIGURATION
 Various configuration variables affect packing, see [git-config[1]](https://git-scm.com/docs/git-config) (search for "pack" and "delta").
@@ -391,6 +391,6 @@ Delta compression is not used on objects larger than the `core.bigFileThreshold`
 ##  [](https://git-scm.com/docs/git-repack#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### repack
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

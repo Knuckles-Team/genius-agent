@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-credential#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-credential#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-credential#_description)
@@ -35,8 +35,8 @@ Localized versions of **git-credential** manual
   5. [українська мова ](https://git-scm.com/docs/git-credential/uk)
   6. [简体中文 ](https://git-scm.com/docs/git-credential/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-credential)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -249,75 +249,75 @@ The credential is split into a set of named attributes, with one attribute per l
 The key may contain any bytes except `=`, newline, or NUL. The value may contain any bytes except newline or NUL. A line, including the trailing newline, may not exceed 65535 bytes in order to allow implementations to parse efficiently.
 Attributes with keys that end with C-style array brackets [] can have multiple values. Each instance of a multi-valued attribute forms an ordered list of values - the order of the repeated attributes defines the order of the values. An empty multi-valued attribute (_key[]=\n_) acts to clear any previous entries and reset the list.
 In all cases, all bytes are treated as-is (i.e., there is no quoting, and one cannot transmit a value with newline or NUL in it). The list of attributes is terminated by a blank line or end-of-file.
-Git understands the following attributes: 
+Git understands the following attributes:
 
-[](https://git-scm.com/docs/git-credential#Documentation/git-credential.txt-protocol)`protocol` 
-    
-The protocol over which the credential will be used (e.g., `https`). 
+[](https://git-scm.com/docs/git-credential#Documentation/git-credential.txt-protocol)`protocol`
 
-[](https://git-scm.com/docs/git-credential#Documentation/git-credential.txt-host)`host` 
-    
-The remote hostname for a network credential. This includes the port number if one was specified (e.g., "example.com:8088"). 
+The protocol over which the credential will be used (e.g., `https`).
 
-[](https://git-scm.com/docs/git-credential#Documentation/git-credential.txt-path)`path` 
-    
-The path with which the credential will be used. E.g., for accessing a remote https repository, this will be the repository’s path on the server. 
+[](https://git-scm.com/docs/git-credential#Documentation/git-credential.txt-host)`host`
 
-[](https://git-scm.com/docs/git-credential#Documentation/git-credential.txt-username)`username` 
-    
-The credential’s username, if we already have one (e.g., from a URL, the configuration, the user, or from a previously run helper). 
+The remote hostname for a network credential. This includes the port number if one was specified (e.g., "example.com:8088").
 
-[](https://git-scm.com/docs/git-credential#Documentation/git-credential.txt-password)`password` 
-    
-The credential’s password, if we are asking it to be stored. 
+[](https://git-scm.com/docs/git-credential#Documentation/git-credential.txt-path)`path`
 
-[](https://git-scm.com/docs/git-credential#Documentation/git-credential.txt-passwordexpiryutc)`password_expiry_utc` 
-    
-Generated passwords such as an OAuth access token may have an expiry date. When reading credentials from helpers, `git` `credential` `fill` ignores expired passwords. Represented as Unix time UTC, seconds since 1970. 
+The path with which the credential will be used. E.g., for accessing a remote https repository, this will be the repository’s path on the server.
 
-[](https://git-scm.com/docs/git-credential#Documentation/git-credential.txt-oauthrefreshtoken)`oauth_refresh_token` 
-    
-An OAuth refresh token may accompany a password that is an OAuth access token. Helpers must treat this attribute as confidential like the password attribute. Git itself has no special behaviour for this attribute. 
+[](https://git-scm.com/docs/git-credential#Documentation/git-credential.txt-username)`username`
 
-[](https://git-scm.com/docs/git-credential#Documentation/git-credential.txt-url)`url` 
-    
+The credential’s username, if we already have one (e.g., from a URL, the configuration, the user, or from a previously run helper).
+
+[](https://git-scm.com/docs/git-credential#Documentation/git-credential.txt-password)`password`
+
+The credential’s password, if we are asking it to be stored.
+
+[](https://git-scm.com/docs/git-credential#Documentation/git-credential.txt-passwordexpiryutc)`password_expiry_utc`
+
+Generated passwords such as an OAuth access token may have an expiry date. When reading credentials from helpers, `git` `credential` `fill` ignores expired passwords. Represented as Unix time UTC, seconds since 1970.
+
+[](https://git-scm.com/docs/git-credential#Documentation/git-credential.txt-oauthrefreshtoken)`oauth_refresh_token`
+
+An OAuth refresh token may accompany a password that is an OAuth access token. Helpers must treat this attribute as confidential like the password attribute. Git itself has no special behaviour for this attribute.
+
+[](https://git-scm.com/docs/git-credential#Documentation/git-credential.txt-url)`url`
+
 When this special attribute is read by `git` `credential`, the value is parsed as a URL and treated as if its constituent parts were read (e.g., `url=https://example.com` would behave as if `protocol=https` and `host=example.com` had been provided). This can help callers avoid parsing URLs themselves.
 Note that specifying a protocol is mandatory and if the URL doesn’t specify a hostname (e.g., "cert:///path/to/file") the credential will contain a hostname attribute whose value is an empty string.
-Components which are missing from the URL (e.g., there is no username in the example above) will be left unset. 
+Components which are missing from the URL (e.g., there is no username in the example above) will be left unset.
 
-[](https://git-scm.com/docs/git-credential#Documentation/git-credential.txt-authtype)`authtype` 
-    
+[](https://git-scm.com/docs/git-credential#Documentation/git-credential.txt-authtype)`authtype`
+
 This indicates that the authentication scheme in question should be used. Common values for HTTP and HTTPS include `basic`, `bearer`, and `digest`, although the latter is insecure and should not be used. If `credential` is used, this may be set to an arbitrary string suitable for the protocol in question (usually HTTP).
-This value should not be sent unless the appropriate capability (see below) is provided on input. 
+This value should not be sent unless the appropriate capability (see below) is provided on input.
 
-[](https://git-scm.com/docs/git-credential#Documentation/git-credential.txt-credential)`credential` 
-    
+[](https://git-scm.com/docs/git-credential#Documentation/git-credential.txt-credential)`credential`
+
 The pre-encoded credential, suitable for the protocol in question (usually HTTP). If this key is sent, `authtype` is mandatory, and `username` and `password` are not used. For HTTP, Git concatenates the `authtype` value and this value with a single space to determine the `Authorization` header.
-This value should not be sent unless the appropriate capability (see below) is provided on input. 
+This value should not be sent unless the appropriate capability (see below) is provided on input.
 
-[](https://git-scm.com/docs/git-credential#Documentation/git-credential.txt-ephemeral)`ephemeral` 
-    
+[](https://git-scm.com/docs/git-credential#Documentation/git-credential.txt-ephemeral)`ephemeral`
+
 This boolean value indicates, if true, that the value in the `credential` field should not be saved by the credential helper because its usefulness is limited in time. For example, an HTTP Digest `credential` value is computed using a nonce and reusing it will not result in successful authentication. This may also be used for situations with short duration (e.g., 24-hour) credentials. The default value is false.
 The credential helper will still be invoked with `store` or `erase` so that it can determine whether the operation was successful.
-This value should not be sent unless the appropriate capability (see below) is provided on input. 
+This value should not be sent unless the appropriate capability (see below) is provided on input.
 
-[](https://git-scm.com/docs/git-credential#Documentation/git-credential.txt-state)`state`[] 
-    
+[](https://git-scm.com/docs/git-credential#Documentation/git-credential.txt-state)`state`[]
+
 This value provides an opaque state that will be passed back to this helper if it is called again. Each different credential helper may specify this once. The value should include a prefix unique to the credential helper and should ignore values that don’t match its prefix.
-This value should not be sent unless the appropriate capability (see below) is provided on input. 
+This value should not be sent unless the appropriate capability (see below) is provided on input.
 
-[](https://git-scm.com/docs/git-credential#Documentation/git-credential.txt-continue)`continue` 
-    
+[](https://git-scm.com/docs/git-credential#Documentation/git-credential.txt-continue)`continue`
+
 This is a boolean value, which, if enabled, indicates that this authentication is a non-final part of a multistage authentication step. This is common in protocols such as NTLM and Kerberos, where two rounds of client authentication are required, and setting this flag allows the credential helper to implement the multistage authentication step. This flag should only be sent if a further stage is required; that is, if another round of authentication is expected.
-This value should not be sent unless the appropriate capability (see below) is provided on input. This attribute is _one-way_ from a credential helper to pass information to Git (or other programs invoking `git` `credential`). 
+This value should not be sent unless the appropriate capability (see below) is provided on input. This attribute is _one-way_ from a credential helper to pass information to Git (or other programs invoking `git` `credential`).
 
-[](https://git-scm.com/docs/git-credential#Documentation/git-credential.txt-wwwauth)`wwwauth`[] 
-    
+[](https://git-scm.com/docs/git-credential#Documentation/git-credential.txt-wwwauth)`wwwauth`[]
+
 When an HTTP response is received by Git that includes one or more _WWW-Authenticate_ authentication headers, these will be passed by Git to credential helpers.
-Each _WWW-Authenticate_ header value is passed as a multi-valued attribute _wwwauth[]_ , where the order of the attributes is the same as they appear in the HTTP response. This attribute is _one-way_ from Git to pass additional information to credential helpers. 
+Each _WWW-Authenticate_ header value is passed as a multi-valued attribute _wwwauth[]_ , where the order of the attributes is the same as they appear in the HTTP response. This attribute is _one-way_ from Git to pass additional information to credential helpers.
 
-[](https://git-scm.com/docs/git-credential#Documentation/git-credential.txt-capability)`capability`[] 
-    
+[](https://git-scm.com/docs/git-credential#Documentation/git-credential.txt-capability)`capability`[]
+
 This signals that Git, or the helper, as appropriate, supports the capability in question. This can be used to provide better, more specific data as part of the protocol. A `capability`[] directive must precede any value depending on it and these directives _should_ be the first item announced in the protocol.
 There are two currently supported capabilities. The first is `authtype`, which indicates that the `authtype`, `credential`, and `ephemeral` values are understood. The second is `state`, which indicates that the `state`[] and `continue` values are understood.
 It is not obligatory to use the additional features just because the capability is supported, but they should not be provided without the capability.
@@ -329,6 +329,6 @@ The intention of this format is to differentiate it from the credential output i
 ##  [](https://git-scm.com/docs/git-credential#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### credential
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

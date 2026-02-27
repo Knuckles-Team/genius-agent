@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-ls-remote#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-ls-remote#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-ls-remote#_description)
@@ -36,8 +36,8 @@ Localized versions of **git-ls-remote** manual
   5. [українська мова ](https://git-scm.com/docs/git-ls-remote/uk)
   6. [简体中文 ](https://git-scm.com/docs/git-ls-remote/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-ls-remote)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -218,65 +218,65 @@ _git ls-remote_ [--branches] [--tags] [--refs] [--upload-pack=<exec>]
 
 ##  [](https://git-scm.com/docs/git-ls-remote#_description)DESCRIPTION
 Displays references available in a remote repository along with the associated commit IDs.
-##  [](https://git-scm.com/docs/git-ls-remote#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-ls-remote#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-ls-remote#Documentation/git-ls-remote.txt--b)-b 
-
-
-[](https://git-scm.com/docs/git-ls-remote#Documentation/git-ls-remote.txt---branches)--branches 
+[](https://git-scm.com/docs/git-ls-remote#Documentation/git-ls-remote.txt--b)-b
 
 
-[](https://git-scm.com/docs/git-ls-remote#Documentation/git-ls-remote.txt--t)-t 
+[](https://git-scm.com/docs/git-ls-remote#Documentation/git-ls-remote.txt---branches)--branches
 
 
-[](https://git-scm.com/docs/git-ls-remote#Documentation/git-ls-remote.txt---tags)--tags 
-    
-Limit to only local branches and local tags, respectively. These options are _not_ mutually exclusive; when given both, references stored in refs/heads and refs/tags are displayed. Note that `--heads` and `-h` are deprecated synonyms for `--branches` and `-b` and may be removed in the future. Also note that `git` `ls-remote` `-h` used without anything else on the command line gives help, consistent with other git subcommands. 
-
-[](https://git-scm.com/docs/git-ls-remote#Documentation/git-ls-remote.txt---refs)--refs 
-    
-Do not show peeled tags or pseudorefs like `HEAD` in the output. 
-
-[](https://git-scm.com/docs/git-ls-remote#Documentation/git-ls-remote.txt--q)-q 
+[](https://git-scm.com/docs/git-ls-remote#Documentation/git-ls-remote.txt--t)-t
 
 
-[](https://git-scm.com/docs/git-ls-remote#Documentation/git-ls-remote.txt---quiet)--quiet 
-    
-Do not print remote URL to stderr. 
+[](https://git-scm.com/docs/git-ls-remote#Documentation/git-ls-remote.txt---tags)--tags
 
-[](https://git-scm.com/docs/git-ls-remote#Documentation/git-ls-remote.txt---upload-packexec)--upload-pack=<exec> 
-    
-Specify the full path of _git-upload-pack_ on the remote host. This allows listing references from repositories accessed via SSH and where the SSH daemon does not use the PATH configured by the user. 
+Limit to only local branches and local tags, respectively. These options are _not_ mutually exclusive; when given both, references stored in refs/heads and refs/tags are displayed. Note that `--heads` and `-h` are deprecated synonyms for `--branches` and `-b` and may be removed in the future. Also note that `git` `ls-remote` `-h` used without anything else on the command line gives help, consistent with other git subcommands.
 
-[](https://git-scm.com/docs/git-ls-remote#Documentation/git-ls-remote.txt---exit-code)--exit-code 
-    
-Exit with status "2" when no matching refs are found in the remote repository. Usually the command exits with status "0" to indicate it successfully talked with the remote repository, whether it found any matching refs. 
+[](https://git-scm.com/docs/git-ls-remote#Documentation/git-ls-remote.txt---refs)--refs
 
-[](https://git-scm.com/docs/git-ls-remote#Documentation/git-ls-remote.txt---get-url)--get-url 
-    
-Expand the URL of the given remote repository taking into account any "url.<base>.insteadOf" config setting (See [git-config[1]](https://git-scm.com/docs/git-config)) and exit without talking to the remote. 
+Do not show peeled tags or pseudorefs like `HEAD` in the output.
 
-[](https://git-scm.com/docs/git-ls-remote#Documentation/git-ls-remote.txt---symref)--symref 
-    
-In addition to the object pointed by it, show the underlying ref pointed by it when showing a symbolic ref. Currently, upload-pack only shows the symref HEAD, so it will be the only one shown by ls-remote. 
-
-[](https://git-scm.com/docs/git-ls-remote#Documentation/git-ls-remote.txt---sortkey)--sort=<key> 
-    
-Sort based on the key given. Prefix `-` to sort in descending order of the value. Supports "version:refname" or "v:refname" (tag names are treated as versions). The "version:refname" sort order can also be affected by the "versionsort.suffix" configuration variable. See [git-for-each-ref[1]](https://git-scm.com/docs/git-for-each-ref) for more sort options, but be aware keys like `committerdate` that require access to the objects themselves will not work for refs whose objects have not yet been fetched from the remote, and will give a `missing` `object` error. 
-
-[](https://git-scm.com/docs/git-ls-remote#Documentation/git-ls-remote.txt--ooption)-o <option> 
+[](https://git-scm.com/docs/git-ls-remote#Documentation/git-ls-remote.txt--q)-q
 
 
-[](https://git-scm.com/docs/git-ls-remote#Documentation/git-ls-remote.txt---server-optionoption)--server-option=<option> 
-    
-Transmit the given string to the server when communicating using protocol version 2. The given string must not contain a NUL or LF character. When multiple `--server-option=`_< option>_ are given, they are all sent to the other side in the order listed on the command line. When no `--server-option=`_< option>_ is given from the command line, the values of configuration variable `remote.`_< name>_`.serverOption` are used instead. 
+[](https://git-scm.com/docs/git-ls-remote#Documentation/git-ls-remote.txt---quiet)--quiet
 
-[](https://git-scm.com/docs/git-ls-remote#Documentation/git-ls-remote.txt-repository)<repository> 
-    
-The "remote" repository to query. This parameter can be either a URL or the name of a remote (see the GIT URLS and REMOTES sections of [git-fetch[1]](https://git-scm.com/docs/git-fetch)). 
+Do not print remote URL to stderr.
 
-[](https://git-scm.com/docs/git-ls-remote#Documentation/git-ls-remote.txt-patterns)<patterns>…​ 
-    
+[](https://git-scm.com/docs/git-ls-remote#Documentation/git-ls-remote.txt---upload-packexec)--upload-pack=<exec>
+
+Specify the full path of _git-upload-pack_ on the remote host. This allows listing references from repositories accessed via SSH and where the SSH daemon does not use the PATH configured by the user.
+
+[](https://git-scm.com/docs/git-ls-remote#Documentation/git-ls-remote.txt---exit-code)--exit-code
+
+Exit with status "2" when no matching refs are found in the remote repository. Usually the command exits with status "0" to indicate it successfully talked with the remote repository, whether it found any matching refs.
+
+[](https://git-scm.com/docs/git-ls-remote#Documentation/git-ls-remote.txt---get-url)--get-url
+
+Expand the URL of the given remote repository taking into account any "url.<base>.insteadOf" config setting (See [git-config[1]](https://git-scm.com/docs/git-config)) and exit without talking to the remote.
+
+[](https://git-scm.com/docs/git-ls-remote#Documentation/git-ls-remote.txt---symref)--symref
+
+In addition to the object pointed by it, show the underlying ref pointed by it when showing a symbolic ref. Currently, upload-pack only shows the symref HEAD, so it will be the only one shown by ls-remote.
+
+[](https://git-scm.com/docs/git-ls-remote#Documentation/git-ls-remote.txt---sortkey)--sort=<key>
+
+Sort based on the key given. Prefix `-` to sort in descending order of the value. Supports "version:refname" or "v:refname" (tag names are treated as versions). The "version:refname" sort order can also be affected by the "versionsort.suffix" configuration variable. See [git-for-each-ref[1]](https://git-scm.com/docs/git-for-each-ref) for more sort options, but be aware keys like `committerdate` that require access to the objects themselves will not work for refs whose objects have not yet been fetched from the remote, and will give a `missing` `object` error.
+
+[](https://git-scm.com/docs/git-ls-remote#Documentation/git-ls-remote.txt--ooption)-o <option>
+
+
+[](https://git-scm.com/docs/git-ls-remote#Documentation/git-ls-remote.txt---server-optionoption)--server-option=<option>
+
+Transmit the given string to the server when communicating using protocol version 2. The given string must not contain a NUL or LF character. When multiple `--server-option=`_< option>_ are given, they are all sent to the other side in the order listed on the command line. When no `--server-option=`_< option>_ is given from the command line, the values of configuration variable `remote.`_< name>_`.serverOption` are used instead.
+
+[](https://git-scm.com/docs/git-ls-remote#Documentation/git-ls-remote.txt-repository)<repository>
+
+The "remote" repository to query. This parameter can be either a URL or the name of a remote (see the GIT URLS and REMOTES sections of [git-fetch[1]](https://git-scm.com/docs/git-fetch)).
+
+[](https://git-scm.com/docs/git-ls-remote#Documentation/git-ls-remote.txt-patterns)<patterns>…​
+
 When unspecified, all references, after filtering done with --heads and --tags, are shown. When <patterns>…​ are specified, only references matching one or more of the given patterns are displayed. Each pattern is interpreted as a glob (see `glob` in [gitglossary[7]](https://git-scm.com/docs/gitglossary)) which is matched against the "tail" of a ref, starting either from the start of the ref (so a full name like `refs/heads/foo` matches) or from a slash separator (so `bar` matches `refs/heads/bar` but not `refs/heads/foobar`).
 ##  [](https://git-scm.com/docs/git-ls-remote#_output)OUTPUT
 The output is in the format:
@@ -319,6 +319,6 @@ d4ca2e3147b409459955613c152220f4db848ee1	refs/tags/v2.40.0
 ##  [](https://git-scm.com/docs/git-ls-remote#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### ls-remote
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

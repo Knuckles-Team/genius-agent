@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-cat-file#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-cat-file#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-cat-file#_description)
@@ -36,8 +36,8 @@ Localized versions of **git-cat-file** manual
   5. [українська мова ](https://git-scm.com/docs/git-cat-file/uk)
   6. [简体中文 ](https://git-scm.com/docs/git-cat-file/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-cat-file)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -241,127 +241,127 @@ Output the contents or other properties such as size, type or delta information 
 This command can operate in two modes, depending on whether an option from the `--batch` family is specified.
 In non-batch mode, the command provides information on an object named on the command line.
 In batch mode, arguments are read from standard input.
-##  [](https://git-scm.com/docs/git-cat-file#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-cat-file#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt-object)<object> 
-    
-The name of the object to show. For a more complete list of ways to spell object names, see the "SPECIFYING REVISIONS" section in [gitrevisions[7]](https://git-scm.com/docs/gitrevisions). 
+[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt-object)<object>
 
-[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt--t)-t 
-    
-Instead of the content, show the object type identified by _< object>_. 
+The name of the object to show. For a more complete list of ways to spell object names, see the "SPECIFYING REVISIONS" section in [gitrevisions[7]](https://git-scm.com/docs/gitrevisions).
 
-[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt--s)-s 
-    
-Instead of the content, show the object size identified by _< object>_. If used with `--use-mailmap` option, will show the size of updated object after replacing idents using the mailmap mechanism. 
+[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt--t)-t
 
-[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt--e)-e 
-    
-Exit with zero status if _< object>_ exists and is a valid object. If _< object>_ is of an invalid format, exit with non-zero status and emit an error on stderr. 
+Instead of the content, show the object type identified by _< object>_.
 
-[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt--p)-p 
-    
-Pretty-print the contents of _< object>_ based on its type. 
+[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt--s)-s
 
-[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt-type)<type> 
-    
-Typically this matches the real type of _< object>_ but asking for a type that can trivially be dereferenced from the given _< object>_ is also permitted. An example is to ask for a "tree" with _< object>_ being a commit object that contains it, or to ask for a "blob" with _< object>_ being a tag object that points at it. 
+Instead of the content, show the object size identified by _< object>_. If used with `--use-mailmap` option, will show the size of updated object after replacing idents using the mailmap mechanism.
 
-[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt---mailmap)--mailmap 
+[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt--e)-e
 
+Exit with zero status if _< object>_ exists and is a valid object. If _< object>_ is of an invalid format, exit with non-zero status and emit an error on stderr.
 
-[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt---no-mailmap)--no-mailmap 
+[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt--p)-p
+
+Pretty-print the contents of _< object>_ based on its type.
+
+[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt-type)<type>
+
+Typically this matches the real type of _< object>_ but asking for a type that can trivially be dereferenced from the given _< object>_ is also permitted. An example is to ask for a "tree" with _< object>_ being a commit object that contains it, or to ask for a "blob" with _< object>_ being a tag object that points at it.
+
+[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt---mailmap)--mailmap
 
 
-[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt---use-mailmap)--use-mailmap 
+[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt---no-mailmap)--no-mailmap
 
 
-[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt---no-use-mailmap)--no-use-mailmap 
-    
-Use mailmap file to map author, committer and tagger names and email addresses to canonical real names and email addresses. See [git-shortlog[1]](https://git-scm.com/docs/git-shortlog). 
-
-[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt---textconv)--textconv 
-    
-Show the content as transformed by a textconv filter. In this case, _< object>_ has to be of the form _< tree-ish>_`:`_< path>_, or `:`_< path>_ in order to apply the filter to the content recorded in the index at _< path>_. 
-
-[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt---filters)--filters 
-    
-Show the content as converted by the filters configured in the current working tree for the given _< path>_ (i.e. smudge filters, end-of-line conversion, etc). In this case, _< object>_ has to be of the form _< tree-ish>_`:`_< path>_, or `:`_< path>_. 
-
-[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt---filterfilter-spec)--filter=<filter-spec> 
+[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt---use-mailmap)--use-mailmap
 
 
-[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt---no-filter)--no-filter 
-    
+[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt---no-use-mailmap)--no-use-mailmap
+
+Use mailmap file to map author, committer and tagger names and email addresses to canonical real names and email addresses. See [git-shortlog[1]](https://git-scm.com/docs/git-shortlog).
+
+[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt---textconv)--textconv
+
+Show the content as transformed by a textconv filter. In this case, _< object>_ has to be of the form _< tree-ish>_`:`_< path>_, or `:`_< path>_ in order to apply the filter to the content recorded in the index at _< path>_.
+
+[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt---filters)--filters
+
+Show the content as converted by the filters configured in the current working tree for the given _< path>_ (i.e. smudge filters, end-of-line conversion, etc). In this case, _< object>_ has to be of the form _< tree-ish>_`:`_< path>_, or `:`_< path>_.
+
+[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt---filterfilter-spec)--filter=<filter-spec>
+
+
+[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt---no-filter)--no-filter
+
 Omit objects from the list of printed objects. This can only be used in combination with one of the batched modes. Excluded objects that have been explicitly requested via any of the batch modes that read objects via standard input (`--batch`, `--batch-check`) will be reported as "filtered". Excluded objects in `--batch-all-objects` mode will not be printed at all. The _< filter-spec>_ may be one of the following:
 The form _--filter=blob:none_ omits all blobs.
 The form _--filter=blob:limit= <n>[kmg]_ omits blobs of size at least n bytes or units. n may be zero. The suffixes k, m, and g can be used to name units in KiB, MiB, or GiB. For example, _blob:limit=1k_ is the same as _blob:limit=1024_.
-The form _--filter=object:type=(tag|commit|tree|blob)_ omits all objects which are not of the requested type. 
+The form _--filter=object:type=(tag|commit|tree|blob)_ omits all objects which are not of the requested type.
 
-[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt---pathpath)--path=<path> 
-    
-For use with `--textconv` or `--filters`, to allow specifying an object name and a path separately, e.g. when it is difficult to figure out the revision from which the blob came. 
+[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt---pathpath)--path=<path>
 
-[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt---batch)--batch 
+For use with `--textconv` or `--filters`, to allow specifying an object name and a path separately, e.g. when it is difficult to figure out the revision from which the blob came.
+
+[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt---batch)--batch
 
 
-[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt---batchformat)--batch=<format> 
-    
+[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt---batchformat)--batch=<format>
+
 Print object information and contents for each object provided on stdin. May not be combined with any other options or arguments except `--textconv`, `--filters`, or `--use-mailmap`.
   * When used with `--textconv` or `--filters`, the input lines must specify the path, separated by whitespace. See the section `BATCH` `OUTPUT` below for details.
   * When used with `--use-mailmap`, for commit and tag objects, the contents part of the output shows the identities replaced using the mailmap mechanism, while the information part of the output shows the size of the object as if it actually recorded the replacement identities.
 
 
 
-[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt---batch-check)--batch-check 
+[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt---batch-check)--batch-check
 
 
-[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt---batch-checkformat)--batch-check=<format> 
-    
+[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt---batch-checkformat)--batch-check=<format>
+
 Print object information for each object provided on stdin. May not be combined with any other options or arguments except `--textconv`, `--filters` or `--use-mailmap`.
   * When used with `--textconv` or `--filters`, the input lines must specify the path, separated by whitespace. See the section `BATCH` `OUTPUT` below for details.
   * When used with `--use-mailmap`, for commit and tag objects, the printed object information shows the size of the object as if the identities recorded in it were replaced by the mailmap mechanism.
 
 
 
-[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt---batch-command)--batch-command 
+[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt---batch-command)--batch-command
 
 
-[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt---batch-commandformat)--batch-command=<format> 
-    
+[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt---batch-commandformat)--batch-command=<format>
+
 Enter a command mode that reads commands and arguments from stdin. May only be combined with `--buffer`, `--textconv`, `--use-mailmap` or `--filters`.
   * When used with `--textconv` or `--filters`, the input lines must specify the path, separated by whitespace. See the section `BATCH` `OUTPUT` below for details.
   * When used with `--use-mailmap`, for commit and tag objects, the `contents` command shows the identities replaced using the mailmap mechanism, while the `info` command shows the size of the object as if it actually recorded the replacement identities.
 
 
-`--batch-command` recognizes the following commands: 
+`--batch-command` recognizes the following commands:
 
-[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt-contentsobject)contents <object> 
-    
-Print object contents for object reference _< object>_. This corresponds to the output of `--batch`. 
+[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt-contentsobject)contents <object>
 
-[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt-infoobject)info <object> 
-    
-Print object info for object reference _< object>_. This corresponds to the output of `--batch-check`. 
+Print object contents for object reference _< object>_. This corresponds to the output of `--batch`.
 
-[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt-flush)flush 
-    
-Used with `--buffer` to execute all preceding commands that were issued since the beginning or since the last flush was issued. When `--buffer` is used, no output will come until a `flush` is issued. When `--buffer` is not used, commands are flushed each time without issuing `flush`. 
+[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt-infoobject)info <object>
 
-[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt---batch-all-objects)--batch-all-objects 
-    
-Instead of reading a list of objects on stdin, perform the requested batch operation on all objects in the repository and any alternate object stores (not just reachable objects). Requires `--batch` or `--batch-check` be specified. By default, the objects are visited in order sorted by their hashes; see also `--unordered` below. Objects are presented as-is, without respecting the "replace" mechanism of [git-replace[1]](https://git-scm.com/docs/git-replace). 
+Print object info for object reference _< object>_. This corresponds to the output of `--batch-check`.
 
-[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt---buffer)--buffer 
-    
-Normally batch output is flushed after each object is output, so that a process can interactively read and write from `cat-file`. With this option, the output uses normal stdio buffering; this is much more efficient when invoking `--batch-check` or `--batch-command` on a large number of objects. 
+[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt-flush)flush
 
-[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt---unordered)--unordered 
-    
-When `--batch-all-objects` is in use, visit objects in an order which may be more efficient for accessing the object contents than hash order. The exact details of the order are unspecified, but if you do not require a specific order, this should generally result in faster output, especially with `--batch`. Note that `cat-file` will still show each object only once, even if it is stored multiple times in the repository. 
+Used with `--buffer` to execute all preceding commands that were issued since the beginning or since the last flush was issued. When `--buffer` is used, no output will come until a `flush` is issued. When `--buffer` is not used, commands are flushed each time without issuing `flush`.
 
-[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt---follow-symlinks)--follow-symlinks 
-    
+[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt---batch-all-objects)--batch-all-objects
+
+Instead of reading a list of objects on stdin, perform the requested batch operation on all objects in the repository and any alternate object stores (not just reachable objects). Requires `--batch` or `--batch-check` be specified. By default, the objects are visited in order sorted by their hashes; see also `--unordered` below. Objects are presented as-is, without respecting the "replace" mechanism of [git-replace[1]](https://git-scm.com/docs/git-replace).
+
+[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt---buffer)--buffer
+
+Normally batch output is flushed after each object is output, so that a process can interactively read and write from `cat-file`. With this option, the output uses normal stdio buffering; this is much more efficient when invoking `--batch-check` or `--batch-command` on a large number of objects.
+
+[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt---unordered)--unordered
+
+When `--batch-all-objects` is in use, visit objects in an order which may be more efficient for accessing the object contents than hash order. The exact details of the order are unspecified, but if you do not require a specific order, this should generally result in faster output, especially with `--batch`. Note that `cat-file` will still show each object only once, even if it is stored multiple times in the repository.
+
+[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt---follow-symlinks)--follow-symlinks
+
 With `--batch` or `--batch-check`, follow symlinks inside the repository when requesting objects with extended SHA-1 expressions of the form tree-ish:path-in-tree. Instead of providing output about the link itself, provide output about the linked-to object. If a symlink points outside the tree-ish (e.g. a link to `/foo` or a root-level link to `../foo`), the portion of the link which is outside the tree will be printed.
 This option does not (currently) work correctly when an object in the index is specified (e.g. `:link` instead of `HEAD:link`) rather than one in the tree.
 This option cannot (currently) be used unless `--batch` or `--batch-check` is used.
@@ -397,12 +397,12 @@ symlink 11
 ```
 
 
-[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt--Z)-Z 
-    
-Only meaningful with `--batch`, `--batch-check`, or `--batch-command`; input and output is NUL-delimited instead of newline-delimited. 
+[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt--Z)-Z
 
-[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt--z)-z 
-    
+Only meaningful with `--batch`, `--batch-check`, or `--batch-command`; input and output is NUL-delimited instead of newline-delimited.
+
+[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt--z)-z
+
 Only meaningful with `--batch`, `--batch-check`, or `--batch-command`; input is NUL-delimited instead of newline-delimited. This option is deprecated in favor of `-Z` as the output can otherwise be ambiguous.
 ##  [](https://git-scm.com/docs/git-cat-file#_output)OUTPUT
 If `-t` is specified, one of the _< type>_.
@@ -413,34 +413,34 @@ If _< type>_ is specified, the raw (though uncompressed) contents of the _< obje
 ##  [](https://git-scm.com/docs/git-cat-file#_batch_output)BATCH OUTPUT
 If `--batch` or `--batch-check` is given, `cat-file` will read objects from stdin, one per line, and print information about them in the same order as they have been read. By default, the whole line is considered as an object, as if it were fed to [git-rev-parse[1]](https://git-scm.com/docs/git-rev-parse).
 When `--batch-command` is given, `cat-file` will read commands from stdin, one per line, and print information based on the command given. With `--batch-command`, the `info` command followed by an object will print information about the object the same way `--batch-check` would, and the `contents` command followed by an object prints contents in the same way `--batch` would.
-You can specify the information shown for each object by using a custom _< format>_. The _< format>_ is copied literally to stdout for each object, with placeholders of the form `%`(`atom`) expanded, followed by a newline. The available atoms are: 
+You can specify the information shown for each object by using a custom _< format>_. The _< format>_ is copied literally to stdout for each object, with placeholders of the form `%`(`atom`) expanded, followed by a newline. The available atoms are:
 
-[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt-objectname)`objectname` 
-    
-The full hex representation of the object name. 
+[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt-objectname)`objectname`
 
-[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt-objecttype)`objecttype` 
-    
-The type of the object (the same as `cat-file` `-t` reports). 
+The full hex representation of the object name.
 
-[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt-objectmode)`objectmode` 
-    
-If the specified object has mode information (such as a tree or index entry), the mode expressed as an octal integer. Otherwise, empty string. 
+[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt-objecttype)`objecttype`
 
-[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt-objectsize)`objectsize` 
-    
-The size, in bytes, of the object (the same as `cat-file` `-s` reports). 
+The type of the object (the same as `cat-file` `-t` reports).
 
-[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt-objectsizedisk)`objectsize:disk` 
-    
-The size, in bytes, that the object takes up on disk. See the note about on-disk sizes in the `CAVEATS` section below. 
+[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt-objectmode)`objectmode`
 
-[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt-deltabase)`deltabase` 
-    
-If the object is stored as a delta on-disk, this expands to the full hex representation of the delta base object name. Otherwise, expands to the null OID (all zeroes). See `CAVEATS` below. 
+If the specified object has mode information (such as a tree or index entry), the mode expressed as an octal integer. Otherwise, empty string.
 
-[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt-rest)`rest` 
-    
+[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt-objectsize)`objectsize`
+
+The size, in bytes, of the object (the same as `cat-file` `-s` reports).
+
+[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt-objectsizedisk)`objectsize:disk`
+
+The size, in bytes, that the object takes up on disk. See the note about on-disk sizes in the `CAVEATS` section below.
+
+[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt-deltabase)`deltabase`
+
+If the object is stored as a delta on-disk, this expands to the full hex representation of the delta base object name. Otherwise, expands to the null OID (all zeroes). See `CAVEATS` below.
+
+[](https://git-scm.com/docs/git-cat-file#Documentation/git-cat-file.txt-rest)`rest`
+
 If this atom is used in the output string, input lines are split at the first whitespace boundary. All characters before that whitespace are considered to be the object name; characters after that first run of whitespace (i.e., the "rest" of the line) are output in place of the `%`(`rest`) atom.
 If no format is specified, the default format is `%`(`objectname`) `%`(`objecttype`) `%`(`objectsize`).
 If `--batch` is specified, or if `--batch-command` is used with the `contents` command, the object information is followed by the object contents (consisting of `%`(`objectsize`) bytes), followed by a newline.
@@ -513,6 +513,6 @@ Note also that multiple copies of an object may be present in the object databas
 ##  [](https://git-scm.com/docs/git-cat-file#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### cat-file
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

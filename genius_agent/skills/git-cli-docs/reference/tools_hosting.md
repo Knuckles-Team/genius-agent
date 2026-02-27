@@ -17,7 +17,7 @@
 
 
 * * *
-The entire **[Pro Git book](https://git-scm.com/book)** written by Scott Chacon and Ben Straub is available to [read online for free](https://git-scm.com/book). Dead tree versions are available on [Amazon.com](https://www.amazon.com/Pro-Git-Scott-Chacon/dp/1484200772?ie=UTF8&camp=1789&creative=9325&creativeASIN=1430218339&linkCode=as2&tag=git-sfconservancy-20). 
+The entire **[Pro Git book](https://git-scm.com/book)** written by Scott Chacon and Ben Straub is available to [read online for free](https://git-scm.com/book). Dead tree versions are available on [Amazon.com](https://www.amazon.com/Pro-Git-Scott-Chacon/dp/1484200772?ie=UTF8&camp=1789&creative=9325&creativeASIN=1430218339&linkCode=as2&tag=git-sfconservancy-20).
 # Git Hosting
   * [ ](https://forgejo.org)
   * [ ](https://sourcehut.org)
@@ -31,6 +31,6 @@ The entire **[Pro Git book](https://git-scm.com/book)** written by Scott Chacon 
   * [ ](https://azure.microsoft.com/en-us/products/devops/repos/)
 
 
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-worktree#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-worktree#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-worktree#_description)
@@ -40,8 +40,8 @@ Localized versions of **git-worktree** manual
   4. [українська мова ](https://git-scm.com/docs/git-worktree/uk)
   5. [简体中文 ](https://git-scm.com/docs/git-worktree/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-worktree)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -257,10 +257,10 @@ This new worktree is called a "linked worktree" as opposed to the "main worktree
 In its simplest form, `git` `worktree` `add` _< path>_ automatically creates a new branch whose name is the final component of _< path>_, which is convenient if you plan to work on a new topic. For instance, `git` `worktree` `add` `../hotfix` creates new branch `hotfix` and checks it out at path `../hotfix`. To instead work on an existing branch in a new worktree, use `git` `worktree` `add` _< path>_ _< branch>_. On the other hand, if you just plan to make some experimental changes or do testing without disturbing existing development, it is often convenient to create a _throwaway_ worktree not associated with any branch. For instance, `git` `worktree` `add` `-d` _< path>_ creates a new worktree with a detached `HEAD` at the same commit as the current branch.
 If a working tree is deleted without using `git` `worktree` `remove`, then its associated administrative files, which reside in the repository (see "DETAILS" below), will eventually be removed automatically (see `gc.worktreePruneExpire` in [git-config[1]](https://git-scm.com/docs/git-config)), or you can run `git` `worktree` `prune` in the main or any linked worktree to clean up any stale administrative files.
 If the working tree for a linked worktree is stored on a portable device or network share which is not always mounted, you can prevent its administrative files from being pruned by issuing the `git` `worktree` `lock` command, optionally specifying `--reason` to explain why the worktree is locked.
-##  [](https://git-scm.com/docs/git-worktree#_commands)COMMANDS 
+##  [](https://git-scm.com/docs/git-worktree#_commands)COMMANDS
 
-[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt-addpathcommit-ish)`add` _< path>_ [_< commit-ish>_] 
-    
+[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt-addpathcommit-ish)`add` _< path>_ [_< commit-ish>_]
+
 Create a worktree at _< path>_ and checkout _< commit-ish>_ into it. The new worktree is linked to the current repository, sharing everything except per-worktree files such as `HEAD`, `index`, etc. As a convenience, _< commit-ish>_ may be a bare "`-`", which is synonymous with `@{-1}`.
 If _< commit-ish>_ is a branch name (call it _< branch>_) and is not found, and neither `-b` nor `-B` nor `--detach` are used, but there does exist a tracking branch in exactly one remote (call it _< remote>_) with a matching name, treat as equivalent to:
 ```
@@ -269,142 +269,142 @@ $ git worktree add --track -b <branch> <path> <remote>/<branch>
 
 If the branch exists in multiple remotes and one of them is named by the `checkout.defaultRemote` configuration variable, we’ll use that one for the purposes of disambiguation, even if the _< branch>_ isn’t unique across all remotes. Set it to e.g. `checkout.defaultRemote=origin` to always checkout remote branches from there if _< branch>_ is ambiguous but exists on the `origin` remote. See also `checkout.defaultRemote` in [git-config[1]](https://git-scm.com/docs/git-config).
 If _< commit-ish>_ is omitted and neither `-b` nor `-B` nor `--detach` used, then, as a convenience, the new worktree is associated with a branch (call it _< branch>_) named after `$`(`basename` _< path>_). If _< branch>_ doesn’t exist, a new branch based on `HEAD` is automatically created as if `-b` _< branch>_ was given. If _< branch>_ does exist, it will be checked out in the new worktree, if it’s not checked out anywhere else, otherwise the command will refuse to create the worktree (unless `--force` is used).
-If _< commit-ish>_ is omitted, neither `--detach`, or `--orphan` is used, and there are no valid local branches (or remote branches if `--guess-remote` is specified) then, as a convenience, the new worktree is associated with a new unborn branch named _< branch>_ (after `$`(`basename` _< path>_) if neither `-b` or `-B` is used) as if `--orphan` was passed to the command. In the event the repository has a remote and `--guess-remote` is used, but no remote or local branches exist, then the command fails with a warning reminding the user to fetch from their remote first (or override by using `-f`/`--force`). 
+If _< commit-ish>_ is omitted, neither `--detach`, or `--orphan` is used, and there are no valid local branches (or remote branches if `--guess-remote` is specified) then, as a convenience, the new worktree is associated with a new unborn branch named _< branch>_ (after `$`(`basename` _< path>_) if neither `-b` or `-B` is used) as if `--orphan` was passed to the command. In the event the repository has a remote and `--guess-remote` is used, but no remote or local branches exist, then the command fails with a warning reminding the user to fetch from their remote first (or override by using `-f`/`--force`).
 
-[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt-list)`list` 
-    
-List details of each worktree. The main worktree is listed first, followed by each of the linked worktrees. The output details include whether the worktree is bare, the revision currently checked out, the branch currently checked out (or "detached HEAD" if none), "locked" if the worktree is locked, "prunable" if the worktree can be pruned by the `prune` command. 
+[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt-list)`list`
 
-[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt-lock)`lock` 
-    
-If a worktree is on a portable device or network share which is not always mounted, lock it to prevent its administrative files from being pruned automatically. This also prevents it from being moved or deleted. Optionally, specify a reason for the lock with `--reason`. 
+List details of each worktree. The main worktree is listed first, followed by each of the linked worktrees. The output details include whether the worktree is bare, the revision currently checked out, the branch currently checked out (or "detached HEAD" if none), "locked" if the worktree is locked, "prunable" if the worktree can be pruned by the `prune` command.
 
-[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt-move)`move` 
-    
-Move a worktree to a new location. Note that the main worktree or linked worktrees containing submodules cannot be moved with this command. (The `git` `worktree` `repair` command, however, can reestablish the connection with linked worktrees if you move the main worktree manually.) 
+[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt-lock)`lock`
 
-[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt-prune)`prune` 
-    
-Prune worktree information in `$GIT_DIR/worktrees`. 
+If a worktree is on a portable device or network share which is not always mounted, lock it to prevent its administrative files from being pruned automatically. This also prevents it from being moved or deleted. Optionally, specify a reason for the lock with `--reason`.
 
-[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt-remove)`remove` 
-    
-Remove a worktree. Only clean worktrees (no untracked files and no modification in tracked files) can be removed. Unclean worktrees or ones with submodules can be removed with `--force`. The main worktree cannot be removed. 
+[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt-move)`move`
 
-[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt-repairpath)`repair` [_< path>_...] 
-    
+Move a worktree to a new location. Note that the main worktree or linked worktrees containing submodules cannot be moved with this command. (The `git` `worktree` `repair` command, however, can reestablish the connection with linked worktrees if you move the main worktree manually.)
+
+[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt-prune)`prune`
+
+Prune worktree information in `$GIT_DIR/worktrees`.
+
+[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt-remove)`remove`
+
+Remove a worktree. Only clean worktrees (no untracked files and no modification in tracked files) can be removed. Unclean worktrees or ones with submodules can be removed with `--force`. The main worktree cannot be removed.
+
+[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt-repairpath)`repair` [_< path>_...]
+
 Repair worktree administrative files, if possible, if they have become corrupted or outdated due to external factors.
 For instance, if the main worktree (or bare repository) is moved, linked worktrees will be unable to locate it. Running `repair` in the main worktree will reestablish the connection from linked worktrees back to the main worktree.
 Similarly, if the working tree for a linked worktree is moved without using `git` `worktree` `move`, the main worktree (or bare repository) will be unable to locate it. Running `repair` within the recently-moved worktree will reestablish the connection. If multiple linked worktrees are moved, running `repair` from any worktree with each tree’s new _< path>_ as an argument, will reestablish the connection to all the specified paths.
-If both the main worktree and linked worktrees have been moved or copied manually, then running `repair` in the main worktree and specifying the new _< path>_ of each linked worktree will reestablish all connections in both directions. 
+If both the main worktree and linked worktrees have been moved or copied manually, then running `repair` in the main worktree and specifying the new _< path>_ of each linked worktree will reestablish all connections in both directions.
 
-[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt-unlock)`unlock` 
-    
+[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt-unlock)`unlock`
+
 Unlock a worktree, allowing it to be pruned, moved or deleted.
-##  [](https://git-scm.com/docs/git-worktree#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-worktree#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt--f)`-f` 
+[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt--f)`-f`
 
 
-[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt---force)`--force` 
-    
+[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt---force)`--force`
+
 By default, `add` refuses to create a new worktree when _< commit-ish>_ is a branch name and is already checked out by another worktree, or if _< path>_ is already assigned to some worktree but is missing (for instance, if _< path>_ was deleted manually). This option overrides these safeguards. To add a missing but locked worktree path, specify `--force` twice.
 `move` refuses to move a locked worktree unless `--force` is specified twice. If the destination is already assigned to some other worktree but is missing (for instance, if _< new-path>_ was deleted manually), then `--force` allows the move to proceed; use `--force` twice if the destination is locked.
-`remove` refuses to remove an unclean worktree unless `--force` is used. To remove a locked worktree, specify `--force` twice. 
+`remove` refuses to remove an unclean worktree unless `--force` is used. To remove a locked worktree, specify `--force` twice.
 
-[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt--bnew-branch)`-b` _< new-branch>_ 
-
-
-[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt--Bnew-branch)`-B` _< new-branch>_ 
-    
-With `add`, create a new branch named _< new-branch>_ starting at _< commit-ish>_, and check out _< new-branch>_ into the new worktree. If _< commit-ish>_ is omitted, it defaults to `HEAD`. By default, `-b` refuses to create a new branch if it already exists. `-B` overrides this safeguard, resetting _< new-branch>_ to _< commit-ish>_. 
-
-[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt--d)`-d` 
+[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt--bnew-branch)`-b` _< new-branch>_
 
 
-[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt---detach)`--detach` 
-    
-With `add`, detach `HEAD` in the new worktree. See "DETACHED HEAD" in [git-checkout[1]](https://git-scm.com/docs/git-checkout). 
+[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt--Bnew-branch)`-B` _< new-branch>_
 
-[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt---checkout)`--checkout` 
+With `add`, create a new branch named _< new-branch>_ starting at _< commit-ish>_, and check out _< new-branch>_ into the new worktree. If _< commit-ish>_ is omitted, it defaults to `HEAD`. By default, `-b` refuses to create a new branch if it already exists. `-B` overrides this safeguard, resetting _< new-branch>_ to _< commit-ish>_.
 
-
-[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt---no-checkout)`--no-checkout` 
-    
-By default, `add` checks out _< commit-ish>_, however, `--no-checkout` can be used to suppress checkout in order to make customizations, such as configuring sparse-checkout. See "Sparse checkout" in [git-read-tree[1]](https://git-scm.com/docs/git-read-tree). 
-
-[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt---guess-remote)`--guess-remote` 
+[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt--d)`-d`
 
 
-[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt---no-guess-remote)`--no-guess-remote` 
-    
+[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt---detach)`--detach`
+
+With `add`, detach `HEAD` in the new worktree. See "DETACHED HEAD" in [git-checkout[1]](https://git-scm.com/docs/git-checkout).
+
+[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt---checkout)`--checkout`
+
+
+[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt---no-checkout)`--no-checkout`
+
+By default, `add` checks out _< commit-ish>_, however, `--no-checkout` can be used to suppress checkout in order to make customizations, such as configuring sparse-checkout. See "Sparse checkout" in [git-read-tree[1]](https://git-scm.com/docs/git-read-tree).
+
+[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt---guess-remote)`--guess-remote`
+
+
+[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt---no-guess-remote)`--no-guess-remote`
+
 With `worktree` `add` _< path>_, without _< commit-ish>_, instead of creating a new branch from `HEAD`, if there exists a tracking branch in exactly one remote matching the basename of _< path>_, base the new branch on the remote-tracking branch, and mark the remote-tracking branch as "upstream" from the new branch.
-This can also be set up as the default behaviour by using the `worktree.guessRemote` config option. 
+This can also be set up as the default behaviour by using the `worktree.guessRemote` config option.
 
-[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt---relative-paths)`--relative-paths` 
+[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt---relative-paths)`--relative-paths`
 
 
-[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt---no-relative-paths)`--no-relative-paths` 
-    
+[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt---no-relative-paths)`--no-relative-paths`
+
 Link worktrees using relative paths or absolute paths (default). Overrides the `worktree.useRelativePaths` config option, see [git-config[1]](https://git-scm.com/docs/git-config).
-With `repair`, the linking files will be updated if there’s an absolute/relative mismatch, even if the links are correct. 
+With `repair`, the linking files will be updated if there’s an absolute/relative mismatch, even if the links are correct.
 
-[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt---track)`--track` 
-
-
-[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt---no-track)`--no-track` 
-    
-When creating a new branch, if _< commit-ish>_ is a branch, mark it as "upstream" from the new branch. This is the default if _< commit-ish>_ is a remote-tracking branch. See `--track` in [git-branch[1]](https://git-scm.com/docs/git-branch) for details. 
-
-[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt---lock)`--lock` 
-    
-Keep the worktree locked after creation. This is the equivalent of `git` `worktree` `lock` after `git` `worktree` `add`, but without a race condition. 
-
-[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt--n)`-n` 
+[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt---track)`--track`
 
 
-[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt---dry-run)`--dry-run` 
-    
-With `prune`, do not remove anything; just report what it would remove. 
+[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt---no-track)`--no-track`
 
-[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt---orphan)`--orphan` 
-    
-With `add`, make the new worktree and index empty, associating the worktree with a new unborn branch named _< new-branch>_. 
+When creating a new branch, if _< commit-ish>_ is a branch, mark it as "upstream" from the new branch. This is the default if _< commit-ish>_ is a remote-tracking branch. See `--track` in [git-branch[1]](https://git-scm.com/docs/git-branch) for details.
 
-[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt---porcelain)`--porcelain` 
-    
-With `list`, output in an easy-to-parse format for scripts. This format will remain stable across Git versions and regardless of user configuration. It is recommended to combine this with `-z`. See below for details. 
+[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt---lock)`--lock`
 
-[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt--z)`-z` 
-    
-Terminate each line with a _NUL_ rather than a newline when `--porcelain` is specified with `list`. This makes it possible to parse the output when a worktree path contains a newline character. 
+Keep the worktree locked after creation. This is the equivalent of `git` `worktree` `lock` after `git` `worktree` `add`, but without a race condition.
 
-[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt--q)`-q` 
+[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt--n)`-n`
 
 
-[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt---quiet)`--quiet` 
-    
-With `add`, suppress feedback messages. 
+[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt---dry-run)`--dry-run`
 
-[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt--v)`-v` 
+With `prune`, do not remove anything; just report what it would remove.
+
+[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt---orphan)`--orphan`
+
+With `add`, make the new worktree and index empty, associating the worktree with a new unborn branch named _< new-branch>_.
+
+[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt---porcelain)`--porcelain`
+
+With `list`, output in an easy-to-parse format for scripts. This format will remain stable across Git versions and regardless of user configuration. It is recommended to combine this with `-z`. See below for details.
+
+[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt--z)`-z`
+
+Terminate each line with a _NUL_ rather than a newline when `--porcelain` is specified with `list`. This makes it possible to parse the output when a worktree path contains a newline character.
+
+[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt--q)`-q`
 
 
-[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt---verbose)`--verbose` 
-    
+[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt---quiet)`--quiet`
+
+With `add`, suppress feedback messages.
+
+[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt--v)`-v`
+
+
+[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt---verbose)`--verbose`
+
 With `prune`, report all removals.
-With `list`, output additional information about worktrees (see below). 
+With `list`, output additional information about worktrees (see below).
 
-[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt---expiretime)`--expire` _< time>_ 
-    
+[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt---expiretime)`--expire` _< time>_
+
 With `prune`, only expire unused worktrees older than _< time>_.
-With `list`, annotate missing worktrees as prunable if they are older than _< time>_. 
+With `list`, annotate missing worktrees as prunable if they are older than _< time>_.
 
-[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt---reasonstring)`--reason` _< string>_ 
-    
-With `lock` or with `add` `--lock`, an explanation why the worktree is locked. 
+[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt---reasonstring)`--reason` _< string>_
 
-[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt-worktree)_< worktree>_ 
-    
+With `lock` or with `add` `--lock`, an explanation why the worktree is locked.
+
+[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt-worktree)_< worktree>_
+
 Worktrees can be identified by path, either relative or absolute.
 If the last path components in the worktree’s path is unique among worktrees, it can be used to identify a worktree. For example if you only have two worktrees, at `/abc/def/ghi` and `/abc/def/ggg`, then `ghi` or `def/ghi` is enough to point to the former worktree.
 ##  [](https://git-scm.com/docs/git-worktree#_refs)REFS
@@ -520,14 +520,14 @@ $ git worktree remove ../temp
 ```
 
 ##  [](https://git-scm.com/docs/git-worktree#_configuration)CONFIGURATION
-Everything below this line in this section is selectively included from the [git-config[1]](https://git-scm.com/docs/git-config) documentation. The content is the same as what’s found there: 
+Everything below this line in this section is selectively included from the [git-config[1]](https://git-scm.com/docs/git-config) documentation. The content is the same as what’s found there:
 
-[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt-worktreeguessRemote)`worktree.guessRemote` 
-    
-If no branch is specified and neither `-b` nor `-B` nor `--detach` is used, then `git` `worktree` `add` defaults to creating a new branch from HEAD. If `worktree.guessRemote` is set to true, `worktree` `add` tries to find a remote-tracking branch whose name uniquely matches the new branch name. If such a branch exists, it is checked out and set as "upstream" for the new branch. If no such match can be found, it falls back to creating a new branch from the current `HEAD`. 
+[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt-worktreeguessRemote)`worktree.guessRemote`
 
-[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt-worktreeuseRelativePaths)`worktree.useRelativePaths` 
-    
+If no branch is specified and neither `-b` nor `-B` nor `--detach` is used, then `git` `worktree` `add` defaults to creating a new branch from HEAD. If `worktree.guessRemote` is set to true, `worktree` `add` tries to find a remote-tracking branch whose name uniquely matches the new branch name. If such a branch exists, it is checked out and set as "upstream" for the new branch. If no such match can be found, it falls back to creating a new branch from the current `HEAD`.
+
+[](https://git-scm.com/docs/git-worktree#Documentation/git-worktree.txt-worktreeuseRelativePaths)`worktree.useRelativePaths`
+
 Link worktrees using relative paths (when "`true`") or absolute paths (when "`false`"). This is particularly useful for setups where the repository and worktrees may be moved between different locations or environments. Defaults to "`false`".
 Note that setting `worktree.useRelativePaths` to "`true`" implies enabling the `extensions.relativeWorktrees` config (see [git-config[1]](https://git-scm.com/docs/git-config)), thus making it incompatible with older versions of Git.
 ##  [](https://git-scm.com/docs/git-worktree#_bugs)BUGS
@@ -535,6 +535,6 @@ Multiple checkout in general is still experimental, and the support for submodul
 ##  [](https://git-scm.com/docs/git-worktree#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### worktree
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

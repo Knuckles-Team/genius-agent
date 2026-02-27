@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-commit-graph#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-commit-graph#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-commit-graph#_description)
@@ -32,8 +32,8 @@
 Localized versions of **git-commit-graph** manual
   1. [English ](https://git-scm.com/docs/git-commit-graph)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-commit-graph)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -224,22 +224,22 @@ _git commit-graph write_ [--object-dir <dir>] [--append]
 
 ##  [](https://git-scm.com/docs/git-commit-graph#_description)DESCRIPTION
 Manage the serialized commit-graph file.
-##  [](https://git-scm.com/docs/git-commit-graph#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-commit-graph#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-commit-graph#Documentation/git-commit-graph.txt---object-dir)--object-dir 
-    
-Use given directory for the location of packfiles and commit-graph file. This parameter exists to specify the location of an alternate that only has the objects directory, not a full `.git` directory. The commit-graph file is expected to be in the _< dir>_`/info` directory and the packfiles are expected to be in _< dir>_`/pack`. If the directory could not be made into an absolute path, or does not match any known object directory, `git` `commit-graph` ... will exit with non-zero status. 
+[](https://git-scm.com/docs/git-commit-graph#Documentation/git-commit-graph.txt---object-dir)--object-dir
 
-[](https://git-scm.com/docs/git-commit-graph#Documentation/git-commit-graph.txt---progress)--progress 
+Use given directory for the location of packfiles and commit-graph file. This parameter exists to specify the location of an alternate that only has the objects directory, not a full `.git` directory. The commit-graph file is expected to be in the _< dir>_`/info` directory and the packfiles are expected to be in _< dir>_`/pack`. If the directory could not be made into an absolute path, or does not match any known object directory, `git` `commit-graph` ... will exit with non-zero status.
+
+[](https://git-scm.com/docs/git-commit-graph#Documentation/git-commit-graph.txt---progress)--progress
 
 
-[](https://git-scm.com/docs/git-commit-graph#Documentation/git-commit-graph.txt---no-progress)--no-progress 
-    
+[](https://git-scm.com/docs/git-commit-graph#Documentation/git-commit-graph.txt---no-progress)--no-progress
+
 Turn progress on/off explicitly. If neither is specified, progress is shown if standard error is connected to a terminal.
-##  [](https://git-scm.com/docs/git-commit-graph#_commands)COMMANDS 
+##  [](https://git-scm.com/docs/git-commit-graph#_commands)COMMANDS
 
-[](https://git-scm.com/docs/git-commit-graph#Documentation/git-commit-graph.txt-write)_write_ 
-    
+[](https://git-scm.com/docs/git-commit-graph#Documentation/git-commit-graph.txt-write)_write_
+
 Write a commit-graph file based on the commits found in packfiles. If the config option `core.commitGraph` is disabled, then this command will output a warning, then return success without writing a commit-graph file.
 With the `--stdin-packs` option, generate the new commit graph by walking objects only in the specified pack-indexes. (Cannot be combined with `--stdin-commits` or `--reachable`.)
 With the `--stdin-commits` option, generate the new commit graph by walking commits starting at the commits specified in stdin as a list of OIDs in hex, one OID per line. OIDs that resolve to non-commits (either directly, or by peeling tags) are silently ignored. OIDs that are malformed, or do not exist generate an error. (Cannot be combined with `--stdin-packs` or `--reachable`.)
@@ -255,8 +255,8 @@ Finally, if `--expire-time=`_< datetime>_ is not specified, let `datetime` be th
 
 
 
-[](https://git-scm.com/docs/git-commit-graph#Documentation/git-commit-graph.txt-verify)_verify_ 
-    
+[](https://git-scm.com/docs/git-commit-graph#Documentation/git-commit-graph.txt-verify)_verify_
+
 Read the commit-graph file and verify its contents against the object database. Used to check for corrupted data.
 With the `--shallow` option, only check the tip commit-graph file in a chain of split commit-graphs.
 ##  [](https://git-scm.com/docs/git-commit-graph#_examples)EXAMPLES
@@ -283,26 +283,26 @@ $ git rev-parse HEAD | git commit-graph write --stdin-commits --append
 
 
 ##  [](https://git-scm.com/docs/git-commit-graph#_configuration)CONFIGURATION
-Everything below this line in this section is selectively included from the [git-config[1]](https://git-scm.com/docs/git-config) documentation. The content is the same as what’s found there: 
+Everything below this line in this section is selectively included from the [git-config[1]](https://git-scm.com/docs/git-config) documentation. The content is the same as what’s found there:
 
-[](https://git-scm.com/docs/git-commit-graph#Documentation/git-commit-graph.txt-commitGraphgenerationVersion)commitGraph.generationVersion 
-    
-Specifies the type of generation number version to use when writing or reading the commit-graph file. If version 1 is specified, then the corrected commit dates will not be written or read. Defaults to 2. 
+[](https://git-scm.com/docs/git-commit-graph#Documentation/git-commit-graph.txt-commitGraphgenerationVersion)commitGraph.generationVersion
 
-[](https://git-scm.com/docs/git-commit-graph#Documentation/git-commit-graph.txt-commitGraphmaxNewFilters)commitGraph.maxNewFilters 
-    
-Specifies the default value for the `--max-new-filters` option of `git` `commit-graph` `write` (c.f., [git-commit-graph[1]](https://git-scm.com/docs/git-commit-graph)). 
+Specifies the type of generation number version to use when writing or reading the commit-graph file. If version 1 is specified, then the corrected commit dates will not be written or read. Defaults to 2.
 
-[](https://git-scm.com/docs/git-commit-graph#Documentation/git-commit-graph.txt-commitGraphchangedPaths)commitGraph.changedPaths 
-    
-If true, then `git` `commit-graph` `write` will compute and write changed-path Bloom filters by default, equivalent to passing `--changed-paths`. If false or unset, changed-paths Bloom filters will be written during `git` `commit-graph` `write` only if the filters already exist in the current commit-graph file. This matches the default behavior of `git` `commit-graph` `write` without any `--`[`no-`]`changed-paths` option. To rewrite a commit-graph file without any filters, use the `--no-changed-paths` option. Command-line option `--`[`no-`]`changed-paths` always takes precedence over this configuration. Defaults to unset. 
+[](https://git-scm.com/docs/git-commit-graph#Documentation/git-commit-graph.txt-commitGraphmaxNewFilters)commitGraph.maxNewFilters
 
-[](https://git-scm.com/docs/git-commit-graph#Documentation/git-commit-graph.txt-commitGraphreadChangedPaths)commitGraph.readChangedPaths 
-    
-Deprecated. Equivalent to commitGraph.changedPathsVersion=-1 if true, and commitGraph.changedPathsVersion=0 if false. (If commitGraph.changedPathVersion is also set, commitGraph.changedPathsVersion takes precedence.) 
+Specifies the default value for the `--max-new-filters` option of `git` `commit-graph` `write` (c.f., [git-commit-graph[1]](https://git-scm.com/docs/git-commit-graph)).
 
-[](https://git-scm.com/docs/git-commit-graph#Documentation/git-commit-graph.txt-commitGraphchangedPathsVersion)commitGraph.changedPathsVersion 
-    
+[](https://git-scm.com/docs/git-commit-graph#Documentation/git-commit-graph.txt-commitGraphchangedPaths)commitGraph.changedPaths
+
+If true, then `git` `commit-graph` `write` will compute and write changed-path Bloom filters by default, equivalent to passing `--changed-paths`. If false or unset, changed-paths Bloom filters will be written during `git` `commit-graph` `write` only if the filters already exist in the current commit-graph file. This matches the default behavior of `git` `commit-graph` `write` without any `--`[`no-`]`changed-paths` option. To rewrite a commit-graph file without any filters, use the `--no-changed-paths` option. Command-line option `--`[`no-`]`changed-paths` always takes precedence over this configuration. Defaults to unset.
+
+[](https://git-scm.com/docs/git-commit-graph#Documentation/git-commit-graph.txt-commitGraphreadChangedPaths)commitGraph.readChangedPaths
+
+Deprecated. Equivalent to commitGraph.changedPathsVersion=-1 if true, and commitGraph.changedPathsVersion=0 if false. (If commitGraph.changedPathVersion is also set, commitGraph.changedPathsVersion takes precedence.)
+
+[](https://git-scm.com/docs/git-commit-graph#Documentation/git-commit-graph.txt-commitGraphchangedPathsVersion)commitGraph.changedPathsVersion
+
 Specifies the version of the changed-path Bloom filters that Git will read and write. May be -1, 0, 1, or 2. Note that values greater than 1 may be incompatible with older versions of Git which do not yet understand those versions. Use caution when operating in a mixed-version environment.
 Defaults to -1.
 If -1, Git will use the version of the changed-path Bloom filters in the repository, defaulting to 1 if there are none.
@@ -315,6 +315,6 @@ see [gitformat-commit-graph[5]](https://git-scm.com/docs/gitformat-commit-graph)
 ##  [](https://git-scm.com/docs/git-commit-graph#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### commit-graph
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

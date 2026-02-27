@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-shortlog#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-shortlog#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-shortlog#_description)
@@ -34,8 +34,8 @@ Localized versions of **git-shortlog** manual
   5. [українська мова ](https://git-scm.com/docs/git-shortlog/uk)
   6. [简体中文 ](https://git-scm.com/docs/git-shortlog/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-shortlog)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -248,40 +248,40 @@ git log --pretty=short | _git shortlog_ [<options>]
 Summarizes _git log_ output in a format suitable for inclusion in release announcements. Each commit will be grouped by author and title.
 Additionally, "[PATCH]" will be stripped from the commit description.
 If no revisions are passed on the command line and either standard input is not a terminal or there is no current branch, _git shortlog_ will output a summary of the log read from standard input, without reference to the current repository.
-##  [](https://git-scm.com/docs/git-shortlog#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-shortlog#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt--n)-n 
-
-
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---numbered)--numbered 
-    
-Sort output according to the number of commits per author instead of author alphabetic order. 
-
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt--s)-s 
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt--n)-n
 
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---summary)--summary 
-    
-Suppress commit description and provide a commit count summary only. 
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---numbered)--numbered
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt--e)-e 
+Sort output according to the number of commits per author instead of author alphabetic order.
+
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt--s)-s
 
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---email)--email 
-    
-Show the email address of each author. 
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---summary)--summary
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---formatformat)--format[=<format>] 
-    
+Suppress commit description and provide a commit count summary only.
+
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt--e)-e
+
+
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---email)--email
+
+Show the email address of each author.
+
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---formatformat)--format[=<format>]
+
 Instead of the commit subject, use some other information to describe each commit. _< format>_ can be any string accepted by the `--format` option of _git log_ , such as _* [%h] %s_. (See the "PRETTY FORMATS" section of [git-log[1]](https://git-scm.com/docs/git-log).)
-Each pretty-printed commit will be rewrapped before it is shown. 
+Each pretty-printed commit will be rewrapped before it is shown.
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---dateformat)--date=<format> 
-    
-Show dates formatted according to the given date string. (See the `--date` option in the "Commit Formatting" section of [git-log[1]](https://git-scm.com/docs/git-log)). Useful with `--group=format:`_< format>_. 
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---dateformat)--date=<format>
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---grouptype)--group=<type> 
-    
+Show dates formatted according to the given date string. (See the `--date` option in the "Commit Formatting" section of [git-log[1]](https://git-scm.com/docs/git-log)). Useful with `--group=format:`_< format>_.
+
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---grouptype)--group=<type>
+
 Group commits based on _< type>_. If no `--group` option is specified, the default is `author`. _< type>_ is one of:
   * `author`, commits are grouped by author
   * `committer`, commits are grouped by committer (the same as `-c`)
@@ -291,239 +291,239 @@ Note that commits that do not include the trailer will not be counted. Likewise,
 Shortlog will attempt to parse each trailer value as a `name` _< email>_ identity. If successful, the mailmap is applied and the email is omitted unless the `--email` option is specified. If the value cannot be parsed as an identity, it will be taken literally and completely.
 
 
-If `--group` is specified multiple times, commits are counted under each value (but again, only once per unique value in that commit). For example, `git` `shortlog` `--group=author` `--group=trailer:co-authored-by` counts both authors and co-authors. 
+If `--group` is specified multiple times, commits are counted under each value (but again, only once per unique value in that commit). For example, `git` `shortlog` `--group=author` `--group=trailer:co-authored-by` counts both authors and co-authors.
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt--c)-c 
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt--c)-c
 
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---committer)--committer 
-    
-This is an alias for `--group=committer`. 
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---committer)--committer
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt--wwidthindent1indent2)-w[<width>[,<indent1>[,<indent2>]]] 
-    
+This is an alias for `--group=committer`.
+
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt--wwidthindent1indent2)-w[<width>[,<indent1>[,<indent2>]]]
+
 Linewrap the output by wrapping each line at `width`. The first line of each entry is indented by `indent1` spaces, and the second and subsequent lines are indented by `indent2` spaces. `width`, `indent1`, and `indent2` default to 76, 6 and 9 respectively.
-If width is `0` (zero) then indent the lines of the output without wrapping them. 
+If width is `0` (zero) then indent the lines of the output without wrapping them.
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt-revision-range)<revision-range> 
-    
-Show only commits in the specified revision range. When no <revision-range> is specified, it defaults to `HEAD` (i.e. the whole history leading to the current commit). `origin..HEAD` specifies all the commits reachable from the current commit (i.e. `HEAD`), but not from `origin`. For a complete list of ways to spell <revision-range>, see the "Specifying Ranges" section of [gitrevisions[7]](https://git-scm.com/docs/gitrevisions). 
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt-revision-range)<revision-range>
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---path)[--] <path>…​ 
-    
+Show only commits in the specified revision range. When no <revision-range> is specified, it defaults to `HEAD` (i.e. the whole history leading to the current commit). `origin..HEAD` specifies all the commits reachable from the current commit (i.e. `HEAD`), but not from `origin`. For a complete list of ways to spell <revision-range>, see the "Specifying Ranges" section of [gitrevisions[7]](https://git-scm.com/docs/gitrevisions).
+
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---path)[--] <path>…​
+
 Consider only commits that are enough to explain how the files that match the specified paths came to be.
 Paths may need to be prefixed with `--` to separate them from options or the revision range, when confusion arises.
 ###  [](https://git-scm.com/docs/git-shortlog#_commit_limiting)Commit Limiting
 Besides specifying a range of commits that should be listed using the special notations explained in the description, additional commit limiting may be applied.
 Using more options generally further limits the output (e.g. `--since=`_< date1>_ limits to commits newer than _< date1>_, and using it with `--grep=`_< pattern>_ further limits to commits whose log message has a line that matches _< pattern>_), unless otherwise noted.
-Note that these are applied before commit ordering and formatting options, such as `--reverse`. 
+Note that these are applied before commit ordering and formatting options, such as `--reverse`.
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt--number)`-`_< number>_ 
-
-
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt--nnumber)`-n` _< number>_ 
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt--number)`-`_< number>_
 
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---max-countnumber)`--max-count=`_< number>_ 
-    
-Limit the output to _< number>_ commits. 
-
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---skipnumber)`--skip=`_< number>_ 
-    
-Skip _< number>_ commits before starting to show the commit output. 
-
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---sincedate)`--since=`_< date>_ 
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt--nnumber)`-n` _< number>_
 
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---afterdate)`--after=`_< date>_ 
-    
-Show commits more recent than _< date>_. 
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---max-countnumber)`--max-count=`_< number>_
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---since-as-filterdate)`--since-as-filter=`_< date>_ 
-    
-Show all commits more recent than _< date>_. This visits all commits in the range, rather than stopping at the first commit which is older than _< date>_. 
+Limit the output to _< number>_ commits.
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---untildate)`--until=`_< date>_ 
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---skipnumber)`--skip=`_< number>_
 
+Skip _< number>_ commits before starting to show the commit output.
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---beforedate)`--before=`_< date>_ 
-    
-Show commits older than _< date>_. 
-
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---authorpattern)`--author=`_< pattern>_ 
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---sincedate)`--since=`_< date>_
 
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---committerpattern)`--committer=`_< pattern>_ 
-    
-Limit the commits output to ones with author/committer header lines that match the _< pattern>_ regular expression. With more than one `--author=`_< pattern>_, commits whose author matches any of the _< pattern>_ are chosen (similarly for multiple `--committer=`_< pattern>_). 
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---afterdate)`--after=`_< date>_
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---grep-reflogpattern)`--grep-reflog=`_< pattern>_ 
-    
-Limit the commits output to ones with reflog entries that match the _< pattern>_ regular expression. With more than one `--grep-reflog`, commits whose reflog message matches any of the given patterns are chosen. It is an error to use this option unless `--walk-reflogs` is in use. 
+Show commits more recent than _< date>_.
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---greppattern)`--grep=`_< pattern>_ 
-    
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---since-as-filterdate)`--since-as-filter=`_< date>_
+
+Show all commits more recent than _< date>_. This visits all commits in the range, rather than stopping at the first commit which is older than _< date>_.
+
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---untildate)`--until=`_< date>_
+
+
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---beforedate)`--before=`_< date>_
+
+Show commits older than _< date>_.
+
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---authorpattern)`--author=`_< pattern>_
+
+
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---committerpattern)`--committer=`_< pattern>_
+
+Limit the commits output to ones with author/committer header lines that match the _< pattern>_ regular expression. With more than one `--author=`_< pattern>_, commits whose author matches any of the _< pattern>_ are chosen (similarly for multiple `--committer=`_< pattern>_).
+
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---grep-reflogpattern)`--grep-reflog=`_< pattern>_
+
+Limit the commits output to ones with reflog entries that match the _< pattern>_ regular expression. With more than one `--grep-reflog`, commits whose reflog message matches any of the given patterns are chosen. It is an error to use this option unless `--walk-reflogs` is in use.
+
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---greppattern)`--grep=`_< pattern>_
+
 Limit the commits output to ones with a log message that matches the _< pattern>_ regular expression. With more than one `--grep=`_< pattern>_, commits whose message matches any of the _< pattern>_ are chosen (but see `--all-match`).
-When `--notes` is in effect, the message from the notes is matched as if it were part of the log message. 
+When `--notes` is in effect, the message from the notes is matched as if it were part of the log message.
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---all-match)`--all-match` 
-    
-Limit the commits output to ones that match all given `--grep`, instead of ones that match at least one. 
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---all-match)`--all-match`
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---invert-grep)`--invert-grep` 
-    
-Limit the commits output to ones with a log message that do not match the _< pattern>_ specified with `--grep=`_< pattern>_. 
+Limit the commits output to ones that match all given `--grep`, instead of ones that match at least one.
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt--i)`-i` 
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---invert-grep)`--invert-grep`
 
+Limit the commits output to ones with a log message that do not match the _< pattern>_ specified with `--grep=`_< pattern>_.
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---regexp-ignore-case)`--regexp-ignore-case` 
-    
-Match the regular expression limiting patterns without regard to letter case. 
-
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---basic-regexp)`--basic-regexp` 
-    
-Consider the limiting patterns to be basic regular expressions; this is the default. 
-
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt--E)`-E` 
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt--i)`-i`
 
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---extended-regexp)`--extended-regexp` 
-    
-Consider the limiting patterns to be extended regular expressions instead of the default basic regular expressions. 
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---regexp-ignore-case)`--regexp-ignore-case`
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt--F)`-F` 
+Match the regular expression limiting patterns without regard to letter case.
 
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---basic-regexp)`--basic-regexp`
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---fixed-strings)`--fixed-strings` 
-    
-Consider the limiting patterns to be fixed strings (don’t interpret pattern as a regular expression). 
+Consider the limiting patterns to be basic regular expressions; this is the default.
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt--P)`-P` 
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt--E)`-E`
 
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---perl-regexp)`--perl-regexp` 
-    
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---extended-regexp)`--extended-regexp`
+
+Consider the limiting patterns to be extended regular expressions instead of the default basic regular expressions.
+
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt--F)`-F`
+
+
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---fixed-strings)`--fixed-strings`
+
+Consider the limiting patterns to be fixed strings (don’t interpret pattern as a regular expression).
+
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt--P)`-P`
+
+
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---perl-regexp)`--perl-regexp`
+
 Consider the limiting patterns to be Perl-compatible regular expressions.
-Support for these types of regular expressions is an optional compile-time dependency. If Git wasn’t compiled with support for them providing this option will cause it to die. 
+Support for these types of regular expressions is an optional compile-time dependency. If Git wasn’t compiled with support for them providing this option will cause it to die.
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---remove-empty)`--remove-empty` 
-    
-Stop when a given path disappears from the tree. 
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---remove-empty)`--remove-empty`
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---merges)`--merges` 
-    
-Print only merge commits. This is exactly the same as `--min-parents=2`. 
+Stop when a given path disappears from the tree.
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---no-merges)`--no-merges` 
-    
-Do not print commits with more than one parent. This is exactly the same as `--max-parents=1`. 
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---merges)`--merges`
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---min-parentsnumber)`--min-parents=`_< number>_ 
+Print only merge commits. This is exactly the same as `--min-parents=2`.
 
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---no-merges)`--no-merges`
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---max-parentsnumber)`--max-parents=`_< number>_ 
+Do not print commits with more than one parent. This is exactly the same as `--max-parents=1`.
+
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---min-parentsnumber)`--min-parents=`_< number>_
 
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---no-min-parents)`--no-min-parents` 
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---max-parentsnumber)`--max-parents=`_< number>_
 
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---no-max-parents)`--no-max-parents` 
-    
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---no-min-parents)`--no-min-parents`
+
+
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---no-max-parents)`--no-max-parents`
+
 Show only commits which have at least (or at most) that many parent commits. In particular, `--max-parents=1` is the same as `--no-merges`, `--min-parents=2` is the same as `--merges`. `--max-parents=0` gives all root commits and `--min-parents=3` all octopus merges.
-`--no-min-parents` and `--no-max-parents` reset these limits (to no limit) again. Equivalent forms are `--min-parents=0` (any commit has 0 or more parents) and `--max-parents=-1` (negative numbers denote no upper limit). 
+`--no-min-parents` and `--no-max-parents` reset these limits (to no limit) again. Equivalent forms are `--min-parents=0` (any commit has 0 or more parents) and `--max-parents=-1` (negative numbers denote no upper limit).
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---first-parent)`--first-parent` 
-    
-When finding commits to include, follow only the first parent commit upon seeing a merge commit. This option can give a better overview when viewing the evolution of a particular topic branch, because merges into a topic branch tend to be only about adjusting to updated upstream from time to time, and this option allows you to ignore the individual commits brought in to your history by such a merge. 
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---first-parent)`--first-parent`
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---exclude-first-parent-only)`--exclude-first-parent-only` 
-    
-When finding commits to exclude (with a _^_), follow only the first parent commit upon seeing a merge commit. This can be used to find the set of changes in a topic branch from the point where it diverged from the remote branch, given that arbitrary merges can be valid topic branch changes. 
+When finding commits to include, follow only the first parent commit upon seeing a merge commit. This option can give a better overview when viewing the evolution of a particular topic branch, because merges into a topic branch tend to be only about adjusting to updated upstream from time to time, and this option allows you to ignore the individual commits brought in to your history by such a merge.
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---not)`--not` 
-    
-Reverses the meaning of the _^_ prefix (or lack thereof) for all following revision specifiers, up to the next `--not`. When used on the command line before --stdin, the revisions passed through stdin will not be affected by it. Conversely, when passed via standard input, the revisions passed on the command line will not be affected by it. 
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---exclude-first-parent-only)`--exclude-first-parent-only`
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---all)`--all` 
-    
-Pretend as if all the refs in `refs/`, along with `HEAD`, are listed on the command line as _< commit>_. 
+When finding commits to exclude (with a _^_), follow only the first parent commit upon seeing a merge commit. This can be used to find the set of changes in a topic branch from the point where it diverged from the remote branch, given that arbitrary merges can be valid topic branch changes.
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---branchespattern)`--branches`[`=`_< pattern>_] 
-    
-Pretend as if all the refs in `refs/heads` are listed on the command line as _< commit>_. If _< pattern>_ is given, limit branches to ones matching given shell glob. If _< pattern>_ lacks _?_ , _*_ , or _[_ , _/*_ at the end is implied. 
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---not)`--not`
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---tagspattern)`--tags`[`=`_< pattern>_] 
-    
-Pretend as if all the refs in `refs/tags` are listed on the command line as _< commit>_. If _< pattern>_ is given, limit tags to ones matching given shell glob. If pattern lacks _?_ , _*_ , or _[_ , _/*_ at the end is implied. 
+Reverses the meaning of the _^_ prefix (or lack thereof) for all following revision specifiers, up to the next `--not`. When used on the command line before --stdin, the revisions passed through stdin will not be affected by it. Conversely, when passed via standard input, the revisions passed on the command line will not be affected by it.
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---remotespattern)`--remotes`[`=`_< pattern>_] 
-    
-Pretend as if all the refs in `refs/remotes` are listed on the command line as _< commit>_. If _< pattern>_ is given, limit remote-tracking branches to ones matching given shell glob. If pattern lacks _?_ , _*_ , or _[_ , _/*_ at the end is implied. 
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---all)`--all`
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---globglob-pattern)`--glob=`_< glob-pattern>_ 
-    
-Pretend as if all the refs matching shell glob _< glob-pattern>_ are listed on the command line as _< commit>_. Leading _refs/_ , is automatically prepended if missing. If pattern lacks _?_ , _*_ , or _[_ , _/*_ at the end is implied. 
+Pretend as if all the refs in `refs/`, along with `HEAD`, are listed on the command line as _< commit>_.
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---excludeglob-pattern)`--exclude=`_< glob-pattern>_ 
-    
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---branchespattern)`--branches`[`=`_< pattern>_]
+
+Pretend as if all the refs in `refs/heads` are listed on the command line as _< commit>_. If _< pattern>_ is given, limit branches to ones matching given shell glob. If _< pattern>_ lacks _?_ , _*_ , or _[_ , _/*_ at the end is implied.
+
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---tagspattern)`--tags`[`=`_< pattern>_]
+
+Pretend as if all the refs in `refs/tags` are listed on the command line as _< commit>_. If _< pattern>_ is given, limit tags to ones matching given shell glob. If pattern lacks _?_ , _*_ , or _[_ , _/*_ at the end is implied.
+
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---remotespattern)`--remotes`[`=`_< pattern>_]
+
+Pretend as if all the refs in `refs/remotes` are listed on the command line as _< commit>_. If _< pattern>_ is given, limit remote-tracking branches to ones matching given shell glob. If pattern lacks _?_ , _*_ , or _[_ , _/*_ at the end is implied.
+
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---globglob-pattern)`--glob=`_< glob-pattern>_
+
+Pretend as if all the refs matching shell glob _< glob-pattern>_ are listed on the command line as _< commit>_. Leading _refs/_ , is automatically prepended if missing. If pattern lacks _?_ , _*_ , or _[_ , _/*_ at the end is implied.
+
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---excludeglob-pattern)`--exclude=`_< glob-pattern>_
+
 Do not include refs matching _< glob-pattern>_ that the next `--all`, `--branches`, `--tags`, `--remotes`, or `--glob` would otherwise consider. Repetitions of this option accumulate exclusion patterns up to the next `--all`, `--branches`, `--tags`, `--remotes`, or `--glob` option (other options or arguments do not clear accumulated patterns).
-The patterns given should not begin with `refs/heads`, `refs/tags`, or `refs/remotes` when applied to `--branches`, `--tags`, or `--remotes`, respectively, and they must begin with `refs/` when applied to `--glob` or `--all`. If a trailing _/*_ is intended, it must be given explicitly. 
+The patterns given should not begin with `refs/heads`, `refs/tags`, or `refs/remotes` when applied to `--branches`, `--tags`, or `--remotes`, respectively, and they must begin with `refs/` when applied to `--glob` or `--all`. If a trailing _/*_ is intended, it must be given explicitly.
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---exclude-hiddenfetchreceiveuploadpack)`--exclude-hidden=`(`fetch`|`receive`|`uploadpack`) 
-    
-Do not include refs that would be hidden by `git-fetch`, `git-receive-pack` or `git-upload-pack` by consulting the appropriate `fetch.hideRefs`, `receive.hideRefs` or `uploadpack.hideRefs` configuration along with `transfer.hideRefs` (see [git-config[1]](https://git-scm.com/docs/git-config)). This option affects the next pseudo-ref option `--all` or `--glob` and is cleared after processing them. 
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---exclude-hiddenfetchreceiveuploadpack)`--exclude-hidden=`(`fetch`|`receive`|`uploadpack`)
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---reflog)`--reflog` 
-    
-Pretend as if all objects mentioned by reflogs are listed on the command line as _< commit>_. 
+Do not include refs that would be hidden by `git-fetch`, `git-receive-pack` or `git-upload-pack` by consulting the appropriate `fetch.hideRefs`, `receive.hideRefs` or `uploadpack.hideRefs` configuration along with `transfer.hideRefs` (see [git-config[1]](https://git-scm.com/docs/git-config)). This option affects the next pseudo-ref option `--all` or `--glob` and is cleared after processing them.
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---alternate-refs)`--alternate-refs` 
-    
-Pretend as if all objects mentioned as ref tips of alternate repositories were listed on the command line. An alternate repository is any repository whose object directory is specified in `objects/info/alternates`. The set of included objects may be modified by `core.alternateRefsCommand`, etc. See [git-config[1]](https://git-scm.com/docs/git-config). 
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---reflog)`--reflog`
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---single-worktree)`--single-worktree` 
-    
-By default, all working trees will be examined by the following options when there are more than one (see [git-worktree[1]](https://git-scm.com/docs/git-worktree)): `--all`, `--reflog` and `--indexed-objects`. This option forces them to examine the current working tree only. 
+Pretend as if all objects mentioned by reflogs are listed on the command line as _< commit>_.
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---ignore-missing)`--ignore-missing` 
-    
-Upon seeing an invalid object name in the input, pretend as if the bad input was not given. 
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---alternate-refs)`--alternate-refs`
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---bisect)`--bisect` 
-    
-Pretend as if the bad bisection ref `refs/bisect/bad` was listed and as if it was followed by `--not` and the good bisection refs `refs/bisect/good-*` on the command line. 
+Pretend as if all objects mentioned as ref tips of alternate repositories were listed on the command line. An alternate repository is any repository whose object directory is specified in `objects/info/alternates`. The set of included objects may be modified by `core.alternateRefsCommand`, etc. See [git-config[1]](https://git-scm.com/docs/git-config).
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---stdin)`--stdin` 
-    
-In addition to getting arguments from the command line, read them from standard input as well. This accepts commits and pseudo-options like `--all` and `--glob=`. When a `--` separator is seen, the following input is treated as paths and used to limit the result. Flags like `--not` which are read via standard input are only respected for arguments passed in the same way and will not influence any subsequent command line arguments. 
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---single-worktree)`--single-worktree`
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---cherry-mark)`--cherry-mark` 
-    
-Like `--cherry-pick` (see below) but mark equivalent commits with `=` rather than omitting them, and inequivalent ones with `+`. 
+By default, all working trees will be examined by the following options when there are more than one (see [git-worktree[1]](https://git-scm.com/docs/git-worktree)): `--all`, `--reflog` and `--indexed-objects`. This option forces them to examine the current working tree only.
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---cherry-pick)`--cherry-pick` 
-    
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---ignore-missing)`--ignore-missing`
+
+Upon seeing an invalid object name in the input, pretend as if the bad input was not given.
+
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---bisect)`--bisect`
+
+Pretend as if the bad bisection ref `refs/bisect/bad` was listed and as if it was followed by `--not` and the good bisection refs `refs/bisect/good-*` on the command line.
+
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---stdin)`--stdin`
+
+In addition to getting arguments from the command line, read them from standard input as well. This accepts commits and pseudo-options like `--all` and `--glob=`. When a `--` separator is seen, the following input is treated as paths and used to limit the result. Flags like `--not` which are read via standard input are only respected for arguments passed in the same way and will not influence any subsequent command line arguments.
+
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---cherry-mark)`--cherry-mark`
+
+Like `--cherry-pick` (see below) but mark equivalent commits with `=` rather than omitting them, and inequivalent ones with `+`.
+
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---cherry-pick)`--cherry-pick`
+
 Omit any commit that introduces the same change as another commit on the “other side” when the set of commits are limited with symmetric difference.
-For example, if you have two branches, `A` and `B`, a usual way to list all commits on only one side of them is with `--left-right` (see the example below in the description of the `--left-right` option). However, it shows the commits that were cherry-picked from the other branch (for example, “3rd on b” may be cherry-picked from branch A). With this option, such pairs of commits are excluded from the output. 
+For example, if you have two branches, `A` and `B`, a usual way to list all commits on only one side of them is with `--left-right` (see the example below in the description of the `--left-right` option). However, it shows the commits that were cherry-picked from the other branch (for example, “3rd on b” may be cherry-picked from branch A). With this option, such pairs of commits are excluded from the output.
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---left-only)`--left-only` 
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---left-only)`--left-only`
 
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---right-only)`--right-only` 
-    
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---right-only)`--right-only`
+
 List only commits on the respective side of a symmetric difference, i.e. only those which would be marked _<_ resp. _>_ by `--left-right`.
-For example, `--cherry-pick` `--right-only` `A...B` omits those commits from `B` which are in `A` or are patch-equivalent to a commit in `A`. In other words, this lists the `+` commits from `git` `cherry` `A` `B`. More precisely, `--cherry-pick` `--right-only` `--no-merges` gives the exact list. 
+For example, `--cherry-pick` `--right-only` `A...B` omits those commits from `B` which are in `A` or are patch-equivalent to a commit in `A`. In other words, this lists the `+` commits from `git` `cherry` `A` `B`. More precisely, `--cherry-pick` `--right-only` `--no-merges` gives the exact list.
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---cherry)`--cherry` 
-    
-A synonym for `--right-only` `--cherry-mark` `--no-merges`; useful to limit the output to the commits on our side and mark those that have been applied to the other side of a forked history with `git` `log` `--cherry` `upstream...mybranch`, similar to `git` `cherry` `upstream` `mybranch`. 
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---cherry)`--cherry`
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt--g)`-g` 
+A synonym for `--right-only` `--cherry-mark` `--no-merges`; useful to limit the output to the commits on our side and mark those that have been applied to the other side of a forked history with `git` `log` `--cherry` `upstream...mybranch`, similar to `git` `cherry` `upstream` `mybranch`.
+
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt--g)`-g`
 
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---walk-reflogs)`--walk-reflogs` 
-    
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---walk-reflogs)`--walk-reflogs`
+
 Instead of walking the commit ancestry chain, walk reflog entries from the most recent one to older ones. When this option is used you cannot specify commits to exclude (that is, `^`_< commit>_, _< commit1>_`..`_< commit2>_, and _< commit1>_`...`_< commit2>_ notations cannot be used).
 With `--pretty` format other than `oneline` and `reference` (for obvious reasons), this causes the output to have two extra lines of information taken from the reflog. The reflog designator in the output may be shown as `ref@{`_< Nth>_`}` (where _< Nth>_ is the reverse-chronological index in the reflog) or as `ref@{`_< timestamp>_`}` (with the _< timestamp>_ for that entry), depending on a few rules:
   1. If the starting point is specified as `ref@{`_< Nth>_`}`, show the index format.
@@ -533,55 +533,55 @@ With `--pretty` format other than `oneline` and `reference` (for obvious reasons
 
 
 Under `--pretty=oneline`, the commit message is prefixed with this information on the same line. This option cannot be combined with `--reverse`. See also [git-reflog[1]](https://git-scm.com/docs/git-reflog).
-Under `--pretty=reference`, this information will not be shown at all. 
+Under `--pretty=reference`, this information will not be shown at all.
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---merge)`--merge` 
-    
-Show commits touching conflicted paths in the range `HEAD...`_< other>_, where _< other>_ is the first existing pseudoref in `MERGE_HEAD`, `CHERRY_PICK_HEAD`, `REVERT_HEAD` or `REBASE_HEAD`. Only works when the index has unmerged entries. This option can be used to show relevant commits when resolving conflicts from a 3-way merge. 
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---merge)`--merge`
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---boundary)`--boundary` 
-    
+Show commits touching conflicted paths in the range `HEAD...`_< other>_, where _< other>_ is the first existing pseudoref in `MERGE_HEAD`, `CHERRY_PICK_HEAD`, `REVERT_HEAD` or `REBASE_HEAD`. Only works when the index has unmerged entries. This option can be used to show relevant commits when resolving conflicts from a 3-way merge.
+
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---boundary)`--boundary`
+
 Output excluded boundary commits. Boundary commits are prefixed with `-`.
 ###  [](https://git-scm.com/docs/git-shortlog#_history_simplification)History Simplification
 Sometimes you are only interested in parts of the history, for example the commits modifying a particular <path>. But there are two parts of _History Simplification_ , one part is selecting the commits and the other is how to do it, as there are various strategies to simplify the history.
-The following options select the commits to be shown: 
+The following options select the commits to be shown:
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt-paths)_< paths>_ 
-    
-Commits modifying the given <paths> are selected. 
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt-paths)_< paths>_
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---simplify-by-decoration)`--simplify-by-decoration` 
-    
+Commits modifying the given <paths> are selected.
+
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---simplify-by-decoration)`--simplify-by-decoration`
+
 Commits that are referred by some branch or tag are selected.
 Note that extra commits can be shown to give a meaningful history.
-The following options affect the way the simplification is performed: 
+The following options affect the way the simplification is performed:
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt-Defaultmode)`Default` `mode` 
-    
-Simplifies the history to the simplest history explaining the final state of the tree. Simplest because it prunes some side branches if the end result is the same (i.e. merging branches with the same content) 
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt-Defaultmode)`Default` `mode`
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---show-pulls)`--show-pulls` 
-    
-Include all commits from the default mode, but also any merge commits that are not TREESAME to the first parent but are TREESAME to a later parent. This mode is helpful for showing the merge commits that "first introduced" a change to a branch. 
+Simplifies the history to the simplest history explaining the final state of the tree. Simplest because it prunes some side branches if the end result is the same (i.e. merging branches with the same content)
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---full-history)`--full-history` 
-    
-Same as the default mode, but does not prune some history. 
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---show-pulls)`--show-pulls`
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---dense)`--dense` 
-    
-Only the selected commits are shown, plus some to have a meaningful history. 
+Include all commits from the default mode, but also any merge commits that are not TREESAME to the first parent but are TREESAME to a later parent. This mode is helpful for showing the merge commits that "first introduced" a change to a branch.
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---sparse)`--sparse` 
-    
-All commits in the simplified history are shown. 
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---full-history)`--full-history`
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---simplify-merges)`--simplify-merges` 
-    
-Additional option to `--full-history` to remove some needless merges from the resulting history, as there are no selected commits contributing to this merge. 
+Same as the default mode, but does not prune some history.
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---ancestry-pathcommit)`--ancestry-path`[`=`_< commit>_] 
-    
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---dense)`--dense`
+
+Only the selected commits are shown, plus some to have a meaningful history.
+
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---sparse)`--sparse`
+
+All commits in the simplified history are shown.
+
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---simplify-merges)`--simplify-merges`
+
+Additional option to `--full-history` to remove some needless merges from the resulting history, as there are no selected commits contributing to this merge.
+
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---ancestry-pathcommit)`--ancestry-path`[`=`_< commit>_]
+
 When given a range of commits to display (e.g. _< commit1>_`..`_< commit2>_ or _< commit2>_ `^`_< commit1>_), and a commit _< commit>_ in that range, only display commits in that range that are ancestors of _< commit>_, descendants of _< commit>_, or _< commit>_ itself. If no commit is specified, use _< commit1>_ (the excluded part of the range) as _< commit>_. Can be passed multiple times; if so, a commit is included if it is any of the commits given or if it is an ancestor or descendant of one of them.
 A more detailed explanation follows.
 Suppose you specified `foo` as the _< paths>_. We shall call commits that modify `foo` !TREESAME, and the rest TREESAME. (In a diff filtered for `foo`, they look different and equal, respectively.)
@@ -604,10 +604,10 @@ The horizontal line of history A---Q is taken to be the first parent of each mer
   * `X` is an independent root commit that added a new file `side`, and `Y` modified it. `Y` is TREESAME to `X`. Its merge `Q` added `side` to `P`, and `Q` is TREESAME to `P`, but not to `Y`.
 
 
-`rev-list` walks backwards through history, including or excluding commits based on whether `--full-history` and/or parent rewriting (via `--parents` or `--children`) are used. The following settings are available. 
+`rev-list` walks backwards through history, including or excluding commits based on whether `--full-history` and/or parent rewriting (via `--parents` or `--children`) are used. The following settings are available.
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt-Defaultmode-1)Default mode 
-    
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt-Defaultmode-1)Default mode
+
 Commits are included if they are not TREESAME to any parent (though this can be changed, see `--sparse` below). If the commit was a merge, and it was TREESAME to one parent, follow only that parent. (Even if there are several TREESAME parents, follow only one of them.) Otherwise, follow all parents.
 This results in:
 ```
@@ -617,20 +617,20 @@ This results in:
 ```
 
 Note how the rule to only follow the TREESAME parent, if one is available, removed `B` from consideration entirely. `C` was considered via `N`, but is TREESAME. Root commits are compared to an empty tree, so `I` is !TREESAME.
-Parent/child relations are only visible with `--parents`, but that does not affect the commits selected in default mode, so we have shown the parent lines. 
+Parent/child relations are only visible with `--parents`, but that does not affect the commits selected in default mode, so we have shown the parent lines.
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---full-historywithoutparentrewriting)`--full-history` without parent rewriting 
-    
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---full-historywithoutparentrewriting)`--full-history` without parent rewriting
+
 This mode differs from the default in one point: always follow all parents of a merge, even if it is TREESAME to one of them. Even if more than one side of the merge has commits that are included, this does not imply that the merge itself is! In the example, we get
 ```
 	I  A  B  N  D  O  P  Q
 ```
 
 `M` was excluded because it is TREESAME to both parents. `E`, `C` and `B` were all walked, but only `B` was !TREESAME, so the others do not appear.
-Note that without parent rewriting, it is not really possible to talk about the parent/child relationships between the commits, so we show them disconnected. 
+Note that without parent rewriting, it is not really possible to talk about the parent/child relationships between the commits, so we show them disconnected.
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---full-historywithparentrewriting)`--full-history` with parent rewriting 
-    
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---full-historywithparentrewriting)`--full-history` with parent rewriting
+
 Ordinary commits are only included if they are !TREESAME (though this can be changed, see `--sparse` below).
 Merges are always included. However, their parent list is rewritten: Along each parent, prune away commits that are not included themselves. This results in
 ```
@@ -642,19 +642,19 @@ Merges are always included. However, their parent list is rewritten: Along each 
 ```
 
 Compare to `--full-history` without rewriting above. Note that `E` was pruned away because it is TREESAME, but the parent list of P was rewritten to contain `E`'s parent `I`. The same happened for `C` and `N`, and `X`, `Y` and `Q`.
-In addition to the above settings, you can change whether TREESAME affects inclusion: 
+In addition to the above settings, you can change whether TREESAME affects inclusion:
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---dense-1)`--dense` 
-    
-Commits that are walked are included if they are not TREESAME to any parent. 
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---dense-1)`--dense`
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---sparse-1)`--sparse` 
-    
+Commits that are walked are included if they are not TREESAME to any parent.
+
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---sparse-1)`--sparse`
+
 All commits that are walked are included.
-Note that without `--full-history`, this still simplifies merges: if one of the parents is TREESAME, we follow only that one, so the other sides of the merge are never walked. 
+Note that without `--full-history`, this still simplifies merges: if one of the parents is TREESAME, we follow only that one, so the other sides of the merge are never walked.
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---simplify-merges-1)`--simplify-merges` 
-    
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---simplify-merges-1)`--simplify-merges`
+
 First, build a history graph in the same way that `--full-history` with parent rewriting does (see above).
 Then simplify each commit `C` to its replacement `C'` in the final history according to the following rules:
   * Set `C'` to `C`.
@@ -677,10 +677,10 @@ Note the major differences in `N`, `P`, and `Q` over `--full-history`:
   * `Q`'s parent list had `Y` simplified to `X`. `X` was then removed, because it was a TREESAME root. `Q` was then removed completely, because it had one parent and is TREESAME.
 
 
-There is another simplification mode available: 
+There is another simplification mode available:
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---ancestry-pathcommit-1)`--ancestry-path`[`=`_< commit>_] 
-    
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---ancestry-pathcommit-1)`--ancestry-path`[`=`_< commit>_]
+
 Limit the displayed commits to those which are an ancestor of _< commit>_, or which are a descendant of _< commit>_, or are _< commit>_ itself.
 As an example use case, consider the following commit history:
 ```
@@ -756,10 +756,10 @@ When using the `--simplify-merges` option, the commits `O` and `P` disappear fro
 
 In this view, we see all of the important single-parent changes from `A`, `B`, and `X`. We also see the carefully-resolved merge `M` and the not-so-carefully-resolved merge `R`. This is usually enough information to determine why the commits `A` and `B` "disappeared" from history in the default view. However, there are a few issues with this approach.
 The first issue is performance. Unlike any previous option, the `--simplify-merges` option requires walking the entire commit history before returning a single result. This can make the option difficult to use for very large repositories.
-The second issue is one of auditing. When many contributors are working on the same repository, it is important which merge commits introduced a change into an important branch. The problematic merge `R` above is not likely to be the merge commit that was used to merge into an important branch. Instead, the merge `N` was used to merge `R` and `X` into the important branch. This commit may have information about why the change `X` came to override the changes from `A` and `B` in its commit message. 
+The second issue is one of auditing. When many contributors are working on the same repository, it is important which merge commits introduced a change into an important branch. The problematic merge `R` above is not likely to be the merge commit that was used to merge into an important branch. Instead, the merge `N` was used to merge `R` and `X` into the important branch. This commit may have information about why the change `X` came to override the changes from `A` and `B` in its commit message.
 
-[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---show-pulls-1)`--show-pulls` 
-    
+[](https://git-scm.com/docs/git-shortlog#Documentation/git-shortlog.txt---show-pulls-1)`--show-pulls`
+
 In addition to the commits shown in the default history, show each merge commit that is not TREESAME to its first parent but is TREESAME to a later parent.
 When a merge commit is included by `--show-pulls`, the merge is treated as if it "pulled" the change from another branch. When using `--show-pulls` on this example (and no other options) the resulting graph is:
 ```
@@ -785,6 +785,6 @@ Note that if `git` `shortlog` is run outside of a repository (to process log con
 ##  [](https://git-scm.com/docs/git-shortlog#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### shortlog
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

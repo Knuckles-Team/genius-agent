@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-show-ref#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-show-ref#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-show-ref#_description)
@@ -36,8 +36,8 @@ Localized versions of **git-show-ref** manual
   4. [українська мова ](https://git-scm.com/docs/git-show-ref/uk)
   5. [简体中文 ](https://git-scm.com/docs/git-show-ref/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-show-ref)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -221,58 +221,58 @@ By default, shows the tags, heads, and remote refs.
 The `--exclude-existing` form is a filter that does the inverse. It reads refs from stdin, one ref per line, and shows those that don’t exist in the local repository.
 The `--exists` form can be used to check for the existence of a single references. This form does not verify whether the reference resolves to an actual object.
 Use of this utility is encouraged in favor of directly accessing files under the `.git` directory.
-##  [](https://git-scm.com/docs/git-show-ref#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-show-ref#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-show-ref#Documentation/git-show-ref.txt---head)--head 
-    
-Show the HEAD reference, even if it would normally be filtered out. 
+[](https://git-scm.com/docs/git-show-ref#Documentation/git-show-ref.txt---head)--head
 
-[](https://git-scm.com/docs/git-show-ref#Documentation/git-show-ref.txt---branches)--branches 
+Show the HEAD reference, even if it would normally be filtered out.
 
-
-[](https://git-scm.com/docs/git-show-ref#Documentation/git-show-ref.txt---tags)--tags 
-    
-Limit to local branches and local tags, respectively. These options are not mutually exclusive; when given both, references stored in "refs/heads" and "refs/tags" are displayed. Note that `--heads` is a deprecated synonym for `--branches` and may be removed in the future. 
-
-[](https://git-scm.com/docs/git-show-ref#Documentation/git-show-ref.txt--d)-d 
+[](https://git-scm.com/docs/git-show-ref#Documentation/git-show-ref.txt---branches)--branches
 
 
-[](https://git-scm.com/docs/git-show-ref#Documentation/git-show-ref.txt---dereference)--dereference 
-    
-Dereference tags into object IDs as well. They will be shown with `^{}` appended. 
+[](https://git-scm.com/docs/git-show-ref#Documentation/git-show-ref.txt---tags)--tags
 
-[](https://git-scm.com/docs/git-show-ref#Documentation/git-show-ref.txt--s)-s 
+Limit to local branches and local tags, respectively. These options are not mutually exclusive; when given both, references stored in "refs/heads" and "refs/tags" are displayed. Note that `--heads` is a deprecated synonym for `--branches` and may be removed in the future.
 
-
-[](https://git-scm.com/docs/git-show-ref#Documentation/git-show-ref.txt---hashn)--hash[=<n>] 
-    
-Only show the OID, not the reference name. When combined with `--dereference`, the dereferenced tag will still be shown after the OID. 
-
-[](https://git-scm.com/docs/git-show-ref#Documentation/git-show-ref.txt---verify)--verify 
-    
-Enable stricter reference checking by requiring an exact ref path. Aside from returning an error code of 1, it will also print an error message if `--quiet` was not specified. 
-
-[](https://git-scm.com/docs/git-show-ref#Documentation/git-show-ref.txt---exists)--exists 
-    
-Check whether the given reference exists. Returns an exit code of 0 if it does, 2 if it is missing, and 1 in case looking up the reference failed with an error other than the reference being missing. 
-
-[](https://git-scm.com/docs/git-show-ref#Documentation/git-show-ref.txt---abbrevn)--abbrev[=<n>] 
-    
-Abbreviate the object name. When using `--hash`, you do not have to say `--hash` `--abbrev`; `--hash=n` would do. 
-
-[](https://git-scm.com/docs/git-show-ref#Documentation/git-show-ref.txt--q)-q 
+[](https://git-scm.com/docs/git-show-ref#Documentation/git-show-ref.txt--d)-d
 
 
-[](https://git-scm.com/docs/git-show-ref#Documentation/git-show-ref.txt---quiet)--quiet 
-    
-Do not print any results to stdout. Can be used with `--verify` to silently check if a reference exists. 
+[](https://git-scm.com/docs/git-show-ref#Documentation/git-show-ref.txt---dereference)--dereference
 
-[](https://git-scm.com/docs/git-show-ref#Documentation/git-show-ref.txt---exclude-existingpattern)--exclude-existing[=<pattern>] 
-    
-Make `git` `show-ref` act as a filter that reads refs from stdin of the form _^(?: <anything>\s)?<refname>(?:\^{})?$_ and performs the following actions on each: (1) strip `^{}` at the end of line if any; (2) ignore if pattern is provided and does not head-match refname; (3) warn if refname is not a well-formed refname and skip; (4) ignore if refname is a ref that exists in the local repository; (5) otherwise output the line. 
+Dereference tags into object IDs as well. They will be shown with `^{}` appended.
 
-[](https://git-scm.com/docs/git-show-ref#Documentation/git-show-ref.txt-pattern)<pattern>…​ 
-    
+[](https://git-scm.com/docs/git-show-ref#Documentation/git-show-ref.txt--s)-s
+
+
+[](https://git-scm.com/docs/git-show-ref#Documentation/git-show-ref.txt---hashn)--hash[=<n>]
+
+Only show the OID, not the reference name. When combined with `--dereference`, the dereferenced tag will still be shown after the OID.
+
+[](https://git-scm.com/docs/git-show-ref#Documentation/git-show-ref.txt---verify)--verify
+
+Enable stricter reference checking by requiring an exact ref path. Aside from returning an error code of 1, it will also print an error message if `--quiet` was not specified.
+
+[](https://git-scm.com/docs/git-show-ref#Documentation/git-show-ref.txt---exists)--exists
+
+Check whether the given reference exists. Returns an exit code of 0 if it does, 2 if it is missing, and 1 in case looking up the reference failed with an error other than the reference being missing.
+
+[](https://git-scm.com/docs/git-show-ref#Documentation/git-show-ref.txt---abbrevn)--abbrev[=<n>]
+
+Abbreviate the object name. When using `--hash`, you do not have to say `--hash` `--abbrev`; `--hash=n` would do.
+
+[](https://git-scm.com/docs/git-show-ref#Documentation/git-show-ref.txt--q)-q
+
+
+[](https://git-scm.com/docs/git-show-ref#Documentation/git-show-ref.txt---quiet)--quiet
+
+Do not print any results to stdout. Can be used with `--verify` to silently check if a reference exists.
+
+[](https://git-scm.com/docs/git-show-ref#Documentation/git-show-ref.txt---exclude-existingpattern)--exclude-existing[=<pattern>]
+
+Make `git` `show-ref` act as a filter that reads refs from stdin of the form _^(?: <anything>\s)?<refname>(?:\^{})?$_ and performs the following actions on each: (1) strip `^{}` at the end of line if any; (2) ignore if pattern is provided and does not head-match refname; (3) warn if refname is not a well-formed refname and skip; (4) ignore if refname is a ref that exists in the local repository; (5) otherwise output the line.
+
+[](https://git-scm.com/docs/git-show-ref#Documentation/git-show-ref.txt-pattern)<pattern>…​
+
 Show references matching one or more patterns. Patterns are matched from the end of the full name, and only complete parts are matched, e.g. _master_ matches _refs/heads/master_ , _refs/remotes/origin/master_ , _refs/tags/jedi/master_ but not _refs/heads/mymaster_ or _refs/remotes/master/jedi_.
 ##  [](https://git-scm.com/docs/git-show-ref#_output)OUTPUT
 The output is in the format:
@@ -342,6 +342,6 @@ to get a listing of all tags together with what they dereference.
 ##  [](https://git-scm.com/docs/git-show-ref#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### show-ref
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

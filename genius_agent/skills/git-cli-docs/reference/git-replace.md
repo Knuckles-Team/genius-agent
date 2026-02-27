@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-replace#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-replace#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-replace#_description)
@@ -36,8 +36,8 @@ Localized versions of **git-replace** manual
   4. [українська мова ](https://git-scm.com/docs/git-replace/uk)
   5. [简体中文 ](https://git-scm.com/docs/git-replace/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-replace)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -228,47 +228,47 @@ $ git cat-file commit foo
 
 shows information about commit _bar_.
 The `GIT_NO_REPLACE_OBJECTS` environment variable can be set to achieve the same effect as the `--no-replace-objects` option.
-##  [](https://git-scm.com/docs/git-replace#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-replace#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-replace#Documentation/git-replace.txt--f)-f 
-
-
-[](https://git-scm.com/docs/git-replace#Documentation/git-replace.txt---force)--force 
-    
-If an existing replace ref for the same object exists, it will be overwritten (instead of failing). 
-
-[](https://git-scm.com/docs/git-replace#Documentation/git-replace.txt--d)-d 
+[](https://git-scm.com/docs/git-replace#Documentation/git-replace.txt--f)-f
 
 
-[](https://git-scm.com/docs/git-replace#Documentation/git-replace.txt---delete)--delete 
-    
-Delete existing replace refs for the given objects. 
+[](https://git-scm.com/docs/git-replace#Documentation/git-replace.txt---force)--force
 
-[](https://git-scm.com/docs/git-replace#Documentation/git-replace.txt---editobject)--edit <object> 
-    
-Edit an object’s content interactively. The existing content for <object> is pretty-printed into a temporary file, an editor is launched on the file, and the result is parsed to create a new object of the same type as <object>. A replacement ref is then created to replace <object> with the newly created object. See [git-var[1]](https://git-scm.com/docs/git-var) for details about how the editor will be chosen. 
+If an existing replace ref for the same object exists, it will be overwritten (instead of failing).
 
-[](https://git-scm.com/docs/git-replace#Documentation/git-replace.txt---raw)--raw 
-    
-When editing, provide the raw object contents rather than pretty-printed ones. Currently this only affects trees, which will be shown in their binary form. This is harder to work with, but can help when repairing a tree that is so corrupted it cannot be pretty-printed. Note that you may need to configure your editor to cleanly read and write binary data. 
-
-[](https://git-scm.com/docs/git-replace#Documentation/git-replace.txt---graftcommitparent)--graft <commit> [<parent>…​] 
-    
-Create a graft commit. A new commit is created with the same content as <commit> except that its parents will be [<parent>…​] instead of <commit>'s parents. A replacement ref is then created to replace <commit> with the newly created commit. Use `--convert-graft-file` to convert a `$GIT_DIR/info/grafts` file and use replace refs instead. 
-
-[](https://git-scm.com/docs/git-replace#Documentation/git-replace.txt---convert-graft-file)--convert-graft-file 
-    
-Creates graft commits for all entries in `$GIT_DIR/info/grafts` and deletes that file upon success. The purpose is to help users with transitioning off of the now-deprecated graft file. 
-
-[](https://git-scm.com/docs/git-replace#Documentation/git-replace.txt--lpattern)-l <pattern> 
+[](https://git-scm.com/docs/git-replace#Documentation/git-replace.txt--d)-d
 
 
-[](https://git-scm.com/docs/git-replace#Documentation/git-replace.txt---listpattern)--list <pattern> 
-    
-List replace refs for objects that match the given pattern (or all if no pattern is given). Typing "git replace" without arguments, also lists all replace refs. 
+[](https://git-scm.com/docs/git-replace#Documentation/git-replace.txt---delete)--delete
 
-[](https://git-scm.com/docs/git-replace#Documentation/git-replace.txt---formatformat)--format=<format> 
-    
+Delete existing replace refs for the given objects.
+
+[](https://git-scm.com/docs/git-replace#Documentation/git-replace.txt---editobject)--edit <object>
+
+Edit an object’s content interactively. The existing content for <object> is pretty-printed into a temporary file, an editor is launched on the file, and the result is parsed to create a new object of the same type as <object>. A replacement ref is then created to replace <object> with the newly created object. See [git-var[1]](https://git-scm.com/docs/git-var) for details about how the editor will be chosen.
+
+[](https://git-scm.com/docs/git-replace#Documentation/git-replace.txt---raw)--raw
+
+When editing, provide the raw object contents rather than pretty-printed ones. Currently this only affects trees, which will be shown in their binary form. This is harder to work with, but can help when repairing a tree that is so corrupted it cannot be pretty-printed. Note that you may need to configure your editor to cleanly read and write binary data.
+
+[](https://git-scm.com/docs/git-replace#Documentation/git-replace.txt---graftcommitparent)--graft <commit> [<parent>…​]
+
+Create a graft commit. A new commit is created with the same content as <commit> except that its parents will be [<parent>…​] instead of <commit>'s parents. A replacement ref is then created to replace <commit> with the newly created commit. Use `--convert-graft-file` to convert a `$GIT_DIR/info/grafts` file and use replace refs instead.
+
+[](https://git-scm.com/docs/git-replace#Documentation/git-replace.txt---convert-graft-file)--convert-graft-file
+
+Creates graft commits for all entries in `$GIT_DIR/info/grafts` and deletes that file upon success. The purpose is to help users with transitioning off of the now-deprecated graft file.
+
+[](https://git-scm.com/docs/git-replace#Documentation/git-replace.txt--lpattern)-l <pattern>
+
+
+[](https://git-scm.com/docs/git-replace#Documentation/git-replace.txt---listpattern)--list <pattern>
+
+List replace refs for objects that match the given pattern (or all if no pattern is given). Typing "git replace" without arguments, also lists all replace refs.
+
+[](https://git-scm.com/docs/git-replace#Documentation/git-replace.txt---formatformat)--format=<format>
+
 When listing, use the specified <format>, which can be one of _short_ , _medium_ and _long_. When omitted, the format defaults to _short_.
 ##  [](https://git-scm.com/docs/git-replace#_formats)FORMATS
 The following formats are available:
@@ -288,6 +288,6 @@ There may be other problems when using _git rev-list_ related to pending objects
 ##  [](https://git-scm.com/docs/git-replace#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### replace
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

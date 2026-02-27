@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-stripspace#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-stripspace#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-stripspace#_description)
@@ -34,8 +34,8 @@ Localized versions of **git-stripspace** manual
   5. [українська мова ](https://git-scm.com/docs/git-stripspace/uk)
   6. [简体中文 ](https://git-scm.com/docs/git-stripspace/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-stripspace)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -211,20 +211,20 @@ With no arguments, this will:
 
 In the case where the input consists entirely of whitespace characters, no output will be produced.
 **NOTE** : This is intended for cleaning metadata. Prefer the `--whitespace=fix` mode of [git-apply[1]](https://git-scm.com/docs/git-apply) for correcting whitespace of patches or files in the repository.
-##  [](https://git-scm.com/docs/git-stripspace#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-stripspace#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-stripspace#Documentation/git-stripspace.txt--s)-s 
-
-
-[](https://git-scm.com/docs/git-stripspace#Documentation/git-stripspace.txt---strip-comments)--strip-comments 
-    
-Skip and remove all lines starting with a comment character (`core.commentChar`, default `#`). 
-
-[](https://git-scm.com/docs/git-stripspace#Documentation/git-stripspace.txt--c)-c 
+[](https://git-scm.com/docs/git-stripspace#Documentation/git-stripspace.txt--s)-s
 
 
-[](https://git-scm.com/docs/git-stripspace#Documentation/git-stripspace.txt---comment-lines)--comment-lines 
-    
+[](https://git-scm.com/docs/git-stripspace#Documentation/git-stripspace.txt---strip-comments)--strip-comments
+
+Skip and remove all lines starting with a comment character (`core.commentChar`, default `#`).
+
+[](https://git-scm.com/docs/git-stripspace#Documentation/git-stripspace.txt--c)-c
+
+
+[](https://git-scm.com/docs/git-stripspace#Documentation/git-stripspace.txt---comment-lines)--comment-lines
+
 Prepend the comment character and a blank space to each line. Lines will automatically be terminated with a newline. On empty lines, only the comment character will be prepended.
 ##  [](https://git-scm.com/docs/git-stripspace#_examples)EXAMPLES
 Given the following noisy input with _$_ indicating the end of a line:
@@ -268,6 +268,6 @@ Use _git stripspace --strip-comments_ to obtain:
 ##  [](https://git-scm.com/docs/git-stripspace#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### stripspace
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

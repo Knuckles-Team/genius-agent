@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-for-each-ref#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-for-each-ref#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-for-each-ref#_description)
@@ -36,8 +36,8 @@ Localized versions of **git-for-each-ref** manual
   3. [українська мова ](https://git-scm.com/docs/git-for-each-ref/uk)
   4. [简体中文 ](https://git-scm.com/docs/git-for-each-ref/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-for-each-ref)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -244,210 +244,210 @@ git for-each-ref [--count=_<count>_] [--shell|--perl|--python|--tcl]
 
 ##  [](https://git-scm.com/docs/git-for-each-ref#_description)DESCRIPTION
 Iterate over all refs that match _< pattern>_ and show them according to the given _< format>_, after sorting them according to the given set of _< key>_. If _< count>_ is given, stop after showing that many refs. The interpolated values in _< format>_ can optionally be quoted as string literals in the specified host language allowing their direct evaluation in that language.
-##  [](https://git-scm.com/docs/git-for-each-ref#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-for-each-ref#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-pattern)_< pattern>_... 
-    
-If one or more _< pattern>_ parameters are given, only refs are shown that match against at least one pattern, either using `fnmatch`(3) or literally, in the latter case matching completely or from the beginning up to a slash. 
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-pattern)_< pattern>_...
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt---stdin)`--stdin` 
-    
-The list of patterns is read from standard input instead of from the argument list. 
+If one or more _< pattern>_ parameters are given, only refs are shown that match against at least one pattern, either using `fnmatch`(3) or literally, in the latter case matching completely or from the beginning up to a slash.
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt---countcount)`--count=`_< count>_ 
-    
-Stop after showing _< count>_ refs. 
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt---stdin)`--stdin`
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt---sortkey)`--sort=`_< key>_ 
-    
-Sort on the field name _< key>_. Prefix `-` to sort in descending order of the value. When unspecified, `refname` is used. You may use the `--sort=`_< key>_ option multiple times, in which case the last key becomes the primary key. 
+The list of patterns is read from standard input instead of from the argument list.
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt---formatformat)`--format`[`=`_< format>_] 
-    
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt---countcount)`--count=`_< count>_
+
+Stop after showing _< count>_ refs.
+
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt---sortkey)`--sort=`_< key>_
+
+Sort on the field name _< key>_. Prefix `-` to sort in descending order of the value. When unspecified, `refname` is used. You may use the `--sort=`_< key>_ option multiple times, in which case the last key becomes the primary key.
+
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt---formatformat)`--format`[`=`_< format>_]
+
 A string that interpolates `%`(`fieldname`) from a ref being shown and the object it points at. In addition, the string literal `%%` renders as `%` and `%xx` - where `xx` are hex digits - renders as the character with hex code `xx`. For example, `%00` interpolates to _\0_ (_NUL_), `%09` to _\t_ (_TAB_), and `%0a` to _\n_ (_LF_).
-When unspecified, _< format>_ defaults to `%`(`objectname`) `SPC` `%`(`objecttype`) `TAB` `%`(`refname`). 
+When unspecified, _< format>_ defaults to `%`(`objectname`) `SPC` `%`(`objecttype`) `TAB` `%`(`refname`).
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt---colorwhen)`--color`[`=`_< when>_] 
-    
-Respect any colors specified in the `--format` option. The _< when__ field must be one of `always`, `never`, or `auto` (if _< when>_ is absent, behave as if `always` was given). 
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt---colorwhen)`--color`[`=`_< when>_]
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt---shell)`--shell` 
+Respect any colors specified in the `--format` option. The _< when__ field must be one of `always`, `never`, or `auto` (if _< when>_ is absent, behave as if `always` was given).
 
-
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt---perl)`--perl` 
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt---shell)`--shell`
 
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt---python)`--python` 
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt---perl)`--perl`
 
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt---tcl)`--tcl` 
-    
-If given, strings that substitute `%`(`fieldname`) placeholders are quoted as string literals suitable for the specified host language. This is meant to produce a scriptlet that can directly be "eval"ed. 
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt---python)`--python`
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt---points-atobject)`--points-at=`_< object>_ 
-    
-Only list refs which points at the given object. 
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt---mergedobject)`--merged`[`=`_< object>_] 
-    
-Only list refs whose tips are reachable from the specified commit (`HEAD` if not specified). 
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt---tcl)`--tcl`
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt---no-mergedobject)`--no-merged`[`=`_< object>_] 
-    
-Only list refs whose tips are not reachable from _< object>_(`HEAD` if not specified). 
+If given, strings that substitute `%`(`fieldname`) placeholders are quoted as string literals suitable for the specified host language. This is meant to produce a scriptlet that can directly be "eval"ed.
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt---containsobject)`--contains`[`=`_< object>_] 
-    
-Only list refs which contain _< object>_(`HEAD` if not specified). 
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt---points-atobject)`--points-at=`_< object>_
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt---no-containsobject)`--no-contains`[`=`_< object>_] 
-    
-Only list refs which don’t contain _< object>_ (`HEAD` if not specified). 
+Only list refs which points at the given object.
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt---ignore-case)`--ignore-case` 
-    
-Sorting and filtering refs are case insensitive. 
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt---mergedobject)`--merged`[`=`_< object>_]
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt---omit-empty)`--omit-empty` 
-    
-Do not print a newline after formatted refs where the format expands to the empty string. 
+Only list refs whose tips are reachable from the specified commit (`HEAD` if not specified).
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt---excludeexcluded-pattern)`--exclude=`_< excluded-pattern>_ 
-    
-If one or more `--exclude` options are given, only refs which do not match any _< excluded-pattern>_ parameters are shown. Matching is done using the same rules as _< pattern>_ above. 
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt---no-mergedobject)`--no-merged`[`=`_< object>_]
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt---include-root-refs)`--include-root-refs` 
-    
-List root refs (`HEAD` and pseudorefs) apart from regular refs. 
+Only list refs whose tips are not reachable from _< object>_(`HEAD` if not specified).
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt---start-aftermarker)`--start-after=`_< marker>_ 
-    
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt---containsobject)`--contains`[`=`_< object>_]
+
+Only list refs which contain _< object>_(`HEAD` if not specified).
+
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt---no-containsobject)`--no-contains`[`=`_< object>_]
+
+Only list refs which don’t contain _< object>_ (`HEAD` if not specified).
+
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt---ignore-case)`--ignore-case`
+
+Sorting and filtering refs are case insensitive.
+
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt---omit-empty)`--omit-empty`
+
+Do not print a newline after formatted refs where the format expands to the empty string.
+
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt---excludeexcluded-pattern)`--exclude=`_< excluded-pattern>_
+
+If one or more `--exclude` options are given, only refs which do not match any _< excluded-pattern>_ parameters are shown. Matching is done using the same rules as _< pattern>_ above.
+
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt---include-root-refs)`--include-root-refs`
+
+List root refs (`HEAD` and pseudorefs) apart from regular refs.
+
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt---start-aftermarker)`--start-after=`_< marker>_
+
 Allows paginating the output by skipping references up to and including the specified marker. When paging, it should be noted that references may be deleted, modified or added between invocations. Output will only yield those references which follow the marker lexicographically. Output begins from the first reference that would come after the marker alphabetically. Cannot be used with `--sort=`_< key>_ or `--stdin` options, or the _< pattern>_ argument(s) to limit the refs.
 ##  [](https://git-scm.com/docs/git-for-each-ref#_field_names)FIELD NAMES
 Various values from structured fields in referenced objects can be used to interpolate into the resulting output, or as sort keys.
-For all objects, the following names can be used: 
+For all objects, the following names can be used:
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-refname)`refname` 
-    
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-refname)`refname`
+
 The name of the ref (the part after `$GIT_DIR/`). For a non-ambiguous short name of the ref append `:short`. The option `core.warnAmbiguousRefs` is used to select the strict abbreviation mode. If `lstrip=`_< n>_ (`rstrip=`_< n>_) is appended, strip _< n>_ slash-separated path components from the front (back) of the refname (e.g. `%`(`refname:lstrip=2`) turns `refs/tags/foo` into `foo` and `%`(`refname:rstrip=2`) turns `refs/tags/foo` into `refs`). If _< n>_ is a negative number, strip as many path components as necessary from the specified end to leave `-`_< n>_ path components (e.g. `%`(`refname:lstrip=-2`) turns `refs/tags/foo` into `tags/foo` and `%`(`refname:rstrip=-1`) turns `refs/tags/foo` into `refs`). When the ref does not have enough components, the result becomes an empty string if stripping with positive _< n>_, or it becomes the full refname if stripping with negative _< N>_. Neither is an error.
-`strip` can be used as a synonym to `lstrip`. 
+`strip` can be used as a synonym to `lstrip`.
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-objecttype)`objecttype` 
-    
-The type of the object (`blob`, `tree`, `commit`, `tag`). 
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-objecttype)`objecttype`
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-objectsize)`objectsize` 
-    
-The size of the object (the same as _git cat-file -s_ reports). Append `:disk` to get the size, in bytes, that the object takes up on disk. See the note about on-disk sizes in the _CAVEATS_ section below. 
+The type of the object (`blob`, `tree`, `commit`, `tag`).
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-objectname)`objectname` 
-    
-The object name (aka SHA-1). For a non-ambiguous abbreviation of the object name append `:short`. For an abbreviation of the object name with desired length append `:short=`_< length>_, where the minimum length is `MINIMUM_ABBREV`. The length may be exceeded to ensure unique object names. 
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-objectsize)`objectsize`
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-deltabase)`deltabase` 
-    
-This expands to the object name of the delta base for the given object, if it is stored as a delta. Otherwise it expands to the null object name (all zeroes). 
+The size of the object (the same as _git cat-file -s_ reports). Append `:disk` to get the size, in bytes, that the object takes up on disk. See the note about on-disk sizes in the _CAVEATS_ section below.
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-upstream)`upstream` 
-    
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-objectname)`objectname`
+
+The object name (aka SHA-1). For a non-ambiguous abbreviation of the object name append `:short`. For an abbreviation of the object name with desired length append `:short=`_< length>_, where the minimum length is `MINIMUM_ABBREV`. The length may be exceeded to ensure unique object names.
+
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-deltabase)`deltabase`
+
+This expands to the object name of the delta base for the given object, if it is stored as a delta. Otherwise it expands to the null object name (all zeroes).
+
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-upstream)`upstream`
+
 The name of a local ref which can be considered “upstream” from the displayed ref. Respects `:short`, `:lstrip` and `:rstrip` in the same way as `refname` above. Additionally respects `:track` to show "[ahead N, behind M]" and `:trackshort` to show the terse version: ">" (ahead), "<" (behind), "<>" (ahead and behind), or "=" (in sync). `:track` also prints "[gone]" whenever unknown upstream ref is encountered. Append `:track,nobracket` to show tracking information without brackets (i.e "ahead N, behind M").
 For any remote-tracking branch `%`(`upstream`), `%`(`upstream:remotename`) and `%`(`upstream:remoteref`) refer to the name of the remote and the name of the tracked remote ref, respectively. In other words, the remote-tracking branch can be updated explicitly and individually by using the refspec `%`(`upstream:remoteref`)`:%`(`upstream`) to fetch from `%`(`upstream:remotename`).
-Has no effect if the ref does not have tracking information associated with it. All the options apart from `nobracket` are mutually exclusive, but if used together the last option is selected. 
+Has no effect if the ref does not have tracking information associated with it. All the options apart from `nobracket` are mutually exclusive, but if used together the last option is selected.
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-push)`push` 
-    
-The name of a local ref which represents the `@{push}` location for the displayed ref. Respects `:short`, `:lstrip`, `:rstrip`, `:track`, `:trackshort`, `:remotename`, and `:remoteref` options as `upstream` does. Produces an empty string if no `@{push}` ref is configured. 
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-push)`push`
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-HEAD)`HEAD` 
-    
-`*` if `HEAD` matches current ref (the checked out branch), ' ' otherwise. 
+The name of a local ref which represents the `@{push}` location for the displayed ref. Respects `:short`, `:lstrip`, `:rstrip`, `:track`, `:trackshort`, `:remotename`, and `:remoteref` options as `upstream` does. Produces an empty string if no `@{push}` ref is configured.
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-color)`color` 
-    
-Change output color. Followed by `:`_< colorname>_, where color names are described under Values in the "CONFIGURATION FILE" section of [git-config[1]](https://git-scm.com/docs/git-config). For example, `%`(`color:bold` `red`). 
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-HEAD)`HEAD`
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-align)`align` 
-    
-Left-, middle-, or right-align the content between `%`(`align:...`) and `%`(`end`). The "`align:`" is followed by `width=`_< width>_ and `position=`_< position>_ in any order separated by a comma, where the _< position>_ is either `left`, `right` or `middle`, default being `left` and _< width>_ is the total length of the content with alignment. For brevity, the "width=" and/or "position=" prefixes may be omitted, and bare _< width>_ and _< position>_ used instead. For instance, `%`(`align:`_< width>_`,`_< position>_). If the contents length is more than the width then no alignment is performed. If used with `--quote` everything in between `%`(`align:...`) and `%`(`end`) is quoted, but if nested then only the topmost level performs quoting. 
+`*` if `HEAD` matches current ref (the checked out branch), ' ' otherwise.
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-if)`if` 
-    
-Used as `%`(`if`)`...%`(`then`)`...%`(`end`) or `%`(`if`)`...%`(`then`)`...%`(`else`)`...%`(`end`). If there is an atom with value or string literal after the `%`(`if`) then everything after the `%`(`then`) is printed, else if the `%`(`else`) atom is used, then everything after %(else) is printed. We ignore space when evaluating the string before `%`(`then`), this is useful when we use the `%`(`HEAD`) atom which prints either "`*`" or " " and we want to apply the _if_ condition only on the `HEAD` ref. Append "`:equals=`_< string>_" or "`:notequals=`_< string>_" to compare the value between the `%`(`if:...`) and `%`(`then`) atoms with the given string. 
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-color)`color`
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-symref)`symref` 
-    
-The ref which the given symbolic ref refers to. If not a symbolic ref, nothing is printed. Respects the `:short`, `:lstrip` and `:rstrip` options in the same way as `refname` above. 
+Change output color. Followed by `:`_< colorname>_, where color names are described under Values in the "CONFIGURATION FILE" section of [git-config[1]](https://git-scm.com/docs/git-config). For example, `%`(`color:bold` `red`).
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-signature)`signature` 
-    
-The GPG signature of a commit. 
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-align)`align`
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-signaturegrade)`signature:grade` 
-    
-Show 
+Left-, middle-, or right-align the content between `%`(`align:...`) and `%`(`end`). The "`align:`" is followed by `width=`_< width>_ and `position=`_< position>_ in any order separated by a comma, where the _< position>_ is either `left`, `right` or `middle`, default being `left` and _< width>_ is the total length of the content with alignment. For brevity, the "width=" and/or "position=" prefixes may be omitted, and bare _< width>_ and _< position>_ used instead. For instance, `%`(`align:`_< width>_`,`_< position>_). If the contents length is more than the width then no alignment is performed. If used with `--quote` everything in between `%`(`align:...`) and `%`(`end`) is quoted, but if nested then only the topmost level performs quoting.
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-G)`G` 
-    
-for a good (valid) signature 
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-if)`if`
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-B)`B` 
-    
-for a bad signature 
+Used as `%`(`if`)`...%`(`then`)`...%`(`end`) or `%`(`if`)`...%`(`then`)`...%`(`else`)`...%`(`end`). If there is an atom with value or string literal after the `%`(`if`) then everything after the `%`(`then`) is printed, else if the `%`(`else`) atom is used, then everything after %(else) is printed. We ignore space when evaluating the string before `%`(`then`), this is useful when we use the `%`(`HEAD`) atom which prints either "`*`" or " " and we want to apply the _if_ condition only on the `HEAD` ref. Append "`:equals=`_< string>_" or "`:notequals=`_< string>_" to compare the value between the `%`(`if:...`) and `%`(`then`) atoms with the given string.
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-U)`U` 
-    
-for a good signature with unknown validity 
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-symref)`symref`
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-X)`X` 
-    
-for a good signature that has expired 
+The ref which the given symbolic ref refers to. If not a symbolic ref, nothing is printed. Respects the `:short`, `:lstrip` and `:rstrip` options in the same way as `refname` above.
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-Y)`Y` 
-    
-for a good signature made by an expired key 
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-signature)`signature`
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-R)`R` 
-    
-for a good signature made by a revoked key 
+The GPG signature of a commit.
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-E)`E` 
-    
-if the signature cannot be checked (e.g. missing key) 
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-signaturegrade)`signature:grade`
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-N)`N` 
-    
-for no signature. 
+Show
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-signaturesigner)`signature:signer` 
-    
-The signer of the GPG signature of a commit. 
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-G)`G`
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-signaturekey)`signature:key` 
-    
-The key of the GPG signature of a commit. 
+for a good (valid) signature
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-signaturefingerprint)`signature:fingerprint` 
-    
-The fingerprint of the GPG signature of a commit. 
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-B)`B`
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-signatureprimarykeyfingerprint)`signature:primarykeyfingerprint` 
-    
-The primary key fingerprint of the GPG signature of a commit. 
+for a bad signature
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-signaturetrustlevel)`signature:trustlevel` 
-    
-The trust level of the GPG signature of a commit. Possible outputs are `ultimate`, `fully`, `marginal`, `never` and `undefined`. 
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-U)`U`
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-worktreepath)`worktreepath` 
-    
-The absolute path to the worktree in which the ref is checked out, if it is checked out in any linked worktree. Empty string otherwise. 
+for a good signature with unknown validity
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-ahead-behindcommit-ish)`ahead-behind:`_< commit-ish>_ 
-    
-Two integers, separated by a space, demonstrating the number of commits ahead and behind, respectively, when comparing the output ref to the _< committish>_ specified in the format. 
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-X)`X`
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-is-basecommit-ish)`is-base:`_< commit-ish>_ 
-    
+for a good signature that has expired
+
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-Y)`Y`
+
+for a good signature made by an expired key
+
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-R)`R`
+
+for a good signature made by a revoked key
+
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-E)`E`
+
+if the signature cannot be checked (e.g. missing key)
+
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-N)`N`
+
+for no signature.
+
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-signaturesigner)`signature:signer`
+
+The signer of the GPG signature of a commit.
+
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-signaturekey)`signature:key`
+
+The key of the GPG signature of a commit.
+
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-signaturefingerprint)`signature:fingerprint`
+
+The fingerprint of the GPG signature of a commit.
+
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-signatureprimarykeyfingerprint)`signature:primarykeyfingerprint`
+
+The primary key fingerprint of the GPG signature of a commit.
+
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-signaturetrustlevel)`signature:trustlevel`
+
+The trust level of the GPG signature of a commit. Possible outputs are `ultimate`, `fully`, `marginal`, `never` and `undefined`.
+
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-worktreepath)`worktreepath`
+
+The absolute path to the worktree in which the ref is checked out, if it is checked out in any linked worktree. Empty string otherwise.
+
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-ahead-behindcommit-ish)`ahead-behind:`_< commit-ish>_
+
+Two integers, separated by a space, demonstrating the number of commits ahead and behind, respectively, when comparing the output ref to the _< committish>_ specified in the format.
+
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-is-basecommit-ish)`is-base:`_< commit-ish>_
+
 In at most one row, (_< commit-ish>_) will appear to indicate the ref that is most likely the ref used as a starting point for the branch that produced _< commit-ish>_. This choice is made using a heuristic: choose the ref that minimizes the number of commits in the first-parent history of _< commit-ish>_ and not in the first-parent history of the ref.
 For example, consider the following figure of first-parent histories of several refs:
 ```
@@ -471,57 +471,57 @@ refs/heads/C:
 ```
 
 This is because the first-parent history of `D` has its earliest intersection with the first-parent histories of the filtered refs at a common first-parent ancestor of `B` and `C` and ties are broken by the earliest ref in the sorted order.
-Note that this token will not appear if the first-parent history of _< commit-ish>_ does not intersect the first-parent histories of the filtered refs. 
+Note that this token will not appear if the first-parent history of _< commit-ish>_ does not intersect the first-parent histories of the filtered refs.
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-describeoption)`describe`[`:`_< option>_`,...`] 
-    
-A human-readable name, like [git-describe[1]](https://git-scm.com/docs/git-describe); empty string for undescribable commits. The `describe` string may be followed by a colon and one or more comma-separated options. 
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-describeoption)`describe`[`:`_< option>_`,...`]
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-tagsbool-value)`tags=`_< bool-value>_ 
-    
-Instead of only considering annotated tags, consider lightweight tags as well; see the corresponding option in [git-describe[1]](https://git-scm.com/docs/git-describe) for details. 
+A human-readable name, like [git-describe[1]](https://git-scm.com/docs/git-describe); empty string for undescribable commits. The `describe` string may be followed by a colon and one or more comma-separated options.
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-abbrevnumber)`abbrev=`_< number>_ 
-    
-Use at least _< number>_ hexadecimal digits; see the corresponding option in [git-describe[1]](https://git-scm.com/docs/git-describe) for details. 
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-tagsbool-value)`tags=`_< bool-value>_
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-matchpattern)`match=`_< pattern>_ 
-    
-Only consider tags matching the `glob`(7) _< pattern>_, excluding the `refs/tags/` prefix; see the corresponding option in [git-describe[1]](https://git-scm.com/docs/git-describe) for details. 
+Instead of only considering annotated tags, consider lightweight tags as well; see the corresponding option in [git-describe[1]](https://git-scm.com/docs/git-describe) for details.
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-excludepattern)`exclude=`_< pattern>_ 
-    
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-abbrevnumber)`abbrev=`_< number>_
+
+Use at least _< number>_ hexadecimal digits; see the corresponding option in [git-describe[1]](https://git-scm.com/docs/git-describe) for details.
+
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-matchpattern)`match=`_< pattern>_
+
+Only consider tags matching the `glob`(7) _< pattern>_, excluding the `refs/tags/` prefix; see the corresponding option in [git-describe[1]](https://git-scm.com/docs/git-describe) for details.
+
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-excludepattern)`exclude=`_< pattern>_
+
 Do not consider tags matching the `glob`(7) _< pattern>_, excluding the `refs/tags/` prefix; see the corresponding option in [git-describe[1]](https://git-scm.com/docs/git-describe) for details.
 In addition to the above, for commit and tag objects, the header field names (`tree`, `parent`, `object`, `type`, and `tag`) can be used to specify the value in the header field. Fields `tree` and `parent` can also be used with modifier `:short` and `:short=`_< length>_ just like `objectname`.
 For commit and tag objects, the special `creatordate` and `creator` fields will correspond to the appropriate date or name-email-date tuple from the `committer` or `tagger` fields depending on the object type. These are intended for working on a mix of annotated and lightweight tags.
 For tag objects, a `fieldname` prefixed with an asterisk (`*`) expands to the `fieldname` value of the peeled object, rather than that of the tag object itself.
 Fields that have name-email-date tuple as its value (`author`, `committer`, and `tagger`) can be suffixed with `name`, `email`, and `date` to extract the named component. For email fields (`authoremail`, `committeremail` and `taggeremail`), `:trim` can be appended to get the email without angle brackets, and `:localpart` to get the part before the `@` symbol out of the trimmed email. In addition to these, the `:mailmap` option and the corresponding `:mailmap,trim` and `:mailmap,localpart` can be used (order does not matter) to get values of the name and email according to the .mailmap file or according to the file set in the mailmap.file or mailmap.blob configuration variable (see [gitmailmap[5]](https://git-scm.com/docs/gitmailmap)).
-The raw data in an object is `raw`. 
+The raw data in an object is `raw`.
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-rawsize)`raw:size` 
-    
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-rawsize)`raw:size`
+
 The raw data size of the object.
 Note that `--format=%`(`raw`) can not be used with `--python`, `--shell`, `--tcl`, because such language may not support arbitrary binary data in their string variable type.
-The message in a commit or a tag object is `contents`, from which `contents:`_< part>_ can be used to extract various parts out of: 
+The message in a commit or a tag object is `contents`, from which `contents:`_< part>_ can be used to extract various parts out of:
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-contentssize)`contents:size` 
-    
-The size in bytes of the commit or tag message. 
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-contentssize)`contents:size`
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-contentssubject)`contents:subject` 
-    
-The first paragraph of the message, which typically is a single line, is taken as the "subject" of the commit or the tag message. Instead of `contents:subject`, field `subject` can also be used to obtain same results. `:sanitize` can be appended to `subject` for subject line suitable for filename. 
+The size in bytes of the commit or tag message.
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-contentsbody)`contents:body` 
-    
-The remainder of the commit or the tag message that follows the "subject". 
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-contentssubject)`contents:subject`
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-contentssignature)`contents:signature` 
-    
-The optional GPG signature of the tag. 
+The first paragraph of the message, which typically is a single line, is taken as the "subject" of the commit or the tag message. Instead of `contents:subject`, field `subject` can also be used to obtain same results. `:sanitize` can be appended to `subject` for subject line suitable for filename.
 
-[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-contentslinesn)`contents:lines=`_< n>_ 
-    
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-contentsbody)`contents:body`
+
+The remainder of the commit or the tag message that follows the "subject".
+
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-contentssignature)`contents:signature`
+
+The optional GPG signature of the tag.
+
+[](https://git-scm.com/docs/git-for-each-ref#Documentation/git-for-each-ref.txt-contentslinesn)`contents:lines=`_< n>_
+
 The first _< n>_ lines of the message.
 Additionally, the trailers as interpreted by [git-interpret-trailers[1]](https://git-scm.com/docs/git-interpret-trailers) are obtained as `trailers`[`:`_< option>_`,...`] (or by using the historical alias `contents:trailers`[`:`_< option>_`,...`]). For valid _< option>_ values see `trailers` section of [git-log[1]](https://git-scm.com/docs/git-log).
 For sorting purposes, fields with numeric values sort in numeric order (`objectsize`, `authordate`, `committerdate`, `creatordate`, `taggerdate`). All other fields are used to sort in their byte-value order.
@@ -629,6 +629,6 @@ When combining multiple `--merged` and `--no-merged` filters, only references th
 ##  [](https://git-scm.com/docs/git-for-each-ref#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### for-each-ref
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-merge-tree#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-merge-tree#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-merge-tree#NEWMERGE)
@@ -39,8 +39,8 @@ Localized versions of **git-merge-tree** manual
   5. [українська мова ](https://git-scm.com/docs/git-merge-tree/uk)
   6. [简体中文 ](https://git-scm.com/docs/git-merge-tree/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-merge-tree)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -232,46 +232,46 @@ The performed merge will use the same features as the "real" [git-merge[1]](http
 
 
 After the merge completes, a new toplevel tree object is created. See `OUTPUT` below for details.
-##  [](https://git-scm.com/docs/git-merge-tree#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-merge-tree#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-merge-tree#Documentation/git-merge-tree.txt---stdin)--stdin 
-    
-Read the commits to merge from the standard input rather than the command-line. See [INPUT FORMAT](https://git-scm.com/docs/git-merge-tree#INPUT) below for more information. Implies `-z`. 
+[](https://git-scm.com/docs/git-merge-tree#Documentation/git-merge-tree.txt---stdin)--stdin
 
-[](https://git-scm.com/docs/git-merge-tree#Documentation/git-merge-tree.txt--z)-z 
-    
-Do not quote filenames in the <Conflicted file info> section, and end each filename with a NUL character rather than newline. Also begin the messages section with a NUL character instead of a newline. See [OUTPUT](https://git-scm.com/docs/git-merge-tree#OUTPUT) below for more information. 
+Read the commits to merge from the standard input rather than the command-line. See [INPUT FORMAT](https://git-scm.com/docs/git-merge-tree#INPUT) below for more information. Implies `-z`.
 
-[](https://git-scm.com/docs/git-merge-tree#Documentation/git-merge-tree.txt---name-only)--name-only 
-    
-In the Conflicted file info section, instead of writing a list of (mode, oid, stage, path) tuples to output for conflicted files, just provide a list of filenames with conflicts (and do not list filenames multiple times if they have multiple conflicting stages). 
+[](https://git-scm.com/docs/git-merge-tree#Documentation/git-merge-tree.txt--z)-z
 
-[](https://git-scm.com/docs/git-merge-tree#Documentation/git-merge-tree.txt---messages)--messages 
+Do not quote filenames in the <Conflicted file info> section, and end each filename with a NUL character rather than newline. Also begin the messages section with a NUL character instead of a newline. See [OUTPUT](https://git-scm.com/docs/git-merge-tree#OUTPUT) below for more information.
+
+[](https://git-scm.com/docs/git-merge-tree#Documentation/git-merge-tree.txt---name-only)--name-only
+
+In the Conflicted file info section, instead of writing a list of (mode, oid, stage, path) tuples to output for conflicted files, just provide a list of filenames with conflicts (and do not list filenames multiple times if they have multiple conflicting stages).
+
+[](https://git-scm.com/docs/git-merge-tree#Documentation/git-merge-tree.txt---messages)--messages
 
 
-[](https://git-scm.com/docs/git-merge-tree#Documentation/git-merge-tree.txt---no-messages)--no-messages 
-    
-Write any informational messages such as "Auto-merging <path>" or CONFLICT notices to the end of stdout. If unspecified, the default is to include these messages if there are merge conflicts, and to omit them otherwise. 
+[](https://git-scm.com/docs/git-merge-tree#Documentation/git-merge-tree.txt---no-messages)--no-messages
 
-[](https://git-scm.com/docs/git-merge-tree#Documentation/git-merge-tree.txt---quiet)--quiet 
-    
-Disable all output from the program. Useful when you are only interested in the exit status. Allows merge-tree to exit early when it finds a conflict, and allows it to avoid writing most objects created by merges. 
+Write any informational messages such as "Auto-merging <path>" or CONFLICT notices to the end of stdout. If unspecified, the default is to include these messages if there are merge conflicts, and to omit them otherwise.
 
-[](https://git-scm.com/docs/git-merge-tree#Documentation/git-merge-tree.txt---allow-unrelated-histories)--allow-unrelated-histories 
-    
-merge-tree will by default error out if the two branches specified share no common history. This flag can be given to override that check and make the merge proceed anyway. 
+[](https://git-scm.com/docs/git-merge-tree#Documentation/git-merge-tree.txt---quiet)--quiet
 
-[](https://git-scm.com/docs/git-merge-tree#Documentation/git-merge-tree.txt---merge-basetree-ish)--merge-base=<tree-ish> 
-    
+Disable all output from the program. Useful when you are only interested in the exit status. Allows merge-tree to exit early when it finds a conflict, and allows it to avoid writing most objects created by merges.
+
+[](https://git-scm.com/docs/git-merge-tree#Documentation/git-merge-tree.txt---allow-unrelated-histories)--allow-unrelated-histories
+
+merge-tree will by default error out if the two branches specified share no common history. This flag can be given to override that check and make the merge proceed anyway.
+
+[](https://git-scm.com/docs/git-merge-tree#Documentation/git-merge-tree.txt---merge-basetree-ish)--merge-base=<tree-ish>
+
 Instead of finding the merge-bases for <branch1> and <branch2>, specify a merge-base for the merge. This option is incompatible with `--stdin`.
 Specifying multiple bases is currently not supported, which means that when merging two branches with more than one merge-base, using this option may cause merge results to differ from what `git` `merge` would compute. This can include potentially losing some changes made on one side of the history in the resulting merge.
-With this option, since the merge-base is provided directly, <branch1> and <branch2> do not need to specify commits; trees are enough. 
+With this option, since the merge-base is provided directly, <branch1> and <branch2> do not need to specify commits; trees are enough.
 
-[](https://git-scm.com/docs/git-merge-tree#Documentation/git-merge-tree.txt--Xoption)-X<option> 
+[](https://git-scm.com/docs/git-merge-tree#Documentation/git-merge-tree.txt--Xoption)-X<option>
 
 
-[](https://git-scm.com/docs/git-merge-tree#Documentation/git-merge-tree.txt---strategy-optionoption)--strategy-option=<option> 
-    
+[](https://git-scm.com/docs/git-merge-tree#Documentation/git-merge-tree.txt---strategy-optionoption)--strategy-option=<option>
+
 Pass the merge strategy-specific option through to the merge strategy. See [git-merge[1]](https://git-scm.com/docs/git-merge) for details.
 ##  [](https://git-scm.com/docs/git-merge-tree#OUTPUT)OUTPUT
 For a successful merge, the output from git-merge-tree is simply one line:
@@ -390,6 +390,6 @@ This form not only has limited applicability (a trivial merge cannot handle cont
 ##  [](https://git-scm.com/docs/git-merge-tree#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### merge-tree
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-maintenance#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-maintenance#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-maintenance#_description)
@@ -36,8 +36,8 @@
 Localized versions of **git-maintenance** manual
   1. [English ](https://git-scm.com/docs/git-maintenance)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-maintenance)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -225,22 +225,22 @@ _git maintenance_ is-needed [<options>]
 Run tasks to optimize Git repository data, speeding up other Git commands and reducing storage requirements for the repository.
 Git commands that add repository data, such as `git` `add` or `git` `fetch`, are optimized for a responsive user experience. These commands do not take time to optimize the Git data, since such optimizations scale with the full size of the repository while these user commands each perform a relatively small action.
 The `git` `maintenance` command provides flexibility for how to optimize the Git repository.
-##  [](https://git-scm.com/docs/git-maintenance#_subcommands)SUBCOMMANDS 
+##  [](https://git-scm.com/docs/git-maintenance#_subcommands)SUBCOMMANDS
 
-[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-run)run 
-    
-Run one or more maintenance tasks. If one or more `--task` options are specified, then those tasks are run in that order. Otherwise, the tasks are determined by which `maintenance.`_< task>_`.enabled` config options are true. By default, only `maintenance.gc.enabled` is true. 
+[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-run)run
 
-[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-start)start 
-    
-Start running maintenance on the current repository. This performs the same config updates as the `register` subcommand, then updates the background scheduler to run `git` `maintenance` `run` `--scheduled` on an hourly basis. 
+Run one or more maintenance tasks. If one or more `--task` options are specified, then those tasks are run in that order. Otherwise, the tasks are determined by which `maintenance.`_< task>_`.enabled` config options are true. By default, only `maintenance.gc.enabled` is true.
 
-[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-stop)stop 
-    
-Halt the background maintenance schedule. The current repository is not removed from the list of maintained repositories, in case the background maintenance is restarted later. 
+[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-start)start
 
-[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-register)register 
-    
+Start running maintenance on the current repository. This performs the same config updates as the `register` subcommand, then updates the background scheduler to run `git` `maintenance` `run` `--scheduled` on an hourly basis.
+
+[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-stop)stop
+
+Halt the background maintenance schedule. The current repository is not removed from the list of maintained repositories, in case the background maintenance is restarted later.
+
+[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-register)register
+
 Initialize Git config values so any scheduled maintenance will start running on this repository. This adds the repository to the `maintenance.repo` config variable in the current user’s global config, or the config specified by --config-file option, and enables some recommended configuration values for `maintenance.`_< task>_`.schedule`. The tasks that are enabled are safe for running in the background without disrupting foreground processes.
 The `register` subcommand will also set the `maintenance.strategy` config value to `incremental`, if this value is not previously set. The `incremental` strategy uses the following schedule for each maintenance task:
   * `gc`: disabled.
@@ -250,78 +250,78 @@ The `register` subcommand will also set the `maintenance.strategy` config value 
   * `incremental-repack`: daily.
 
 
-`git` `maintenance` `register` will also disable foreground maintenance by setting `maintenance.auto` `=` `false` in the current repository. This config setting will remain after a `git` `maintenance` `unregister` command. 
+`git` `maintenance` `register` will also disable foreground maintenance by setting `maintenance.auto` `=` `false` in the current repository. This config setting will remain after a `git` `maintenance` `unregister` command.
 
-[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-unregister)unregister 
-    
+[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-unregister)unregister
+
 Remove the current repository from background maintenance. This only removes the repository from the configured list. It does not stop the background maintenance processes from running.
-The `unregister` subcommand will report an error if the current repository is not already registered. Use the `--force` option to return success even when the current repository is not registered. 
+The `unregister` subcommand will report an error if the current repository is not already registered. Use the `--force` option to return success even when the current repository is not registered.
 
-[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-is-needed)is-needed 
-    
+[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-is-needed)is-needed
+
 Check whether maintenance needs to be run without actually running it. Exits with a 0 status code if maintenance needs to be run, 1 otherwise. Ideally used with the _--auto_ flag.
 If one or more `--task` options are specified, then those tasks are checked in that order. Otherwise, the tasks are determined by which `maintenance.`_< task>_`.enabled` config options are true. By default, only `maintenance.gc.enabled` is true.
-##  [](https://git-scm.com/docs/git-maintenance#_tasks)TASKS 
+##  [](https://git-scm.com/docs/git-maintenance#_tasks)TASKS
 
-[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-commit-graph)commit-graph 
-    
-The `commit-graph` job updates the `commit-graph` files incrementally, then verifies that the written data is correct. The incremental write is safe to run alongside concurrent Git processes since it will not expire `.graph` files that were in the previous `commit-graph-chain` file. They will be deleted by a later run based on the expiration delay. 
+[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-commit-graph)commit-graph
 
-[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-prefetch)prefetch 
-    
+The `commit-graph` job updates the `commit-graph` files incrementally, then verifies that the written data is correct. The incremental write is safe to run alongside concurrent Git processes since it will not expire `.graph` files that were in the previous `commit-graph-chain` file. They will be deleted by a later run based on the expiration delay.
+
+[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-prefetch)prefetch
+
 The `prefetch` task updates the object directory with the latest objects from all registered remotes. For each remote, a `git` `fetch` command is run. The configured refspec is modified to place all requested refs within `refs/prefetch/`. Also, tags are not updated.
 This is done to avoid disrupting the remote-tracking branches. The end users expect these refs to stay unmoved unless they initiate a fetch. However, with the prefetch task, the objects necessary to complete a later real fetch would already be obtained, making the real fetch faster. In the ideal case, it will just become an update to a bunch of remote-tracking branches without any object transfer.
-The `remote.`_< name>_`.skipFetchAll` configuration can be used to exclude a particular remote from getting prefetched. 
+The `remote.`_< name>_`.skipFetchAll` configuration can be used to exclude a particular remote from getting prefetched.
 
-[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-gc)gc 
-    
-Clean up unnecessary files and optimize the local repository. "GC" stands for "garbage collection," but this task performs many smaller tasks. This task can be expensive for large repositories, as it repacks all Git objects into a single pack-file. It can also be disruptive in some situations, as it deletes stale data. See [git-gc[1]](https://git-scm.com/docs/git-gc) for more details on garbage collection in Git. 
+[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-gc)gc
 
-[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-loose-objects)loose-objects 
-    
+Clean up unnecessary files and optimize the local repository. "GC" stands for "garbage collection," but this task performs many smaller tasks. This task can be expensive for large repositories, as it repacks all Git objects into a single pack-file. It can also be disruptive in some situations, as it deletes stale data. See [git-gc[1]](https://git-scm.com/docs/git-gc) for more details on garbage collection in Git.
+
+[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-loose-objects)loose-objects
+
 The `loose-objects` job cleans up loose objects and places them into pack-files. In order to prevent race conditions with concurrent Git commands, it follows a two-step process. First, it deletes any loose objects that already exist in a pack-file; concurrent Git processes will examine the pack-file for the object data instead of the loose object. Second, it creates a new pack-file (starting with "loose-") containing a batch of loose objects.
 The batch size defaults to fifty thousand objects to prevent the job from taking too long on a repository with many loose objects. Use the `maintenance.loose-objects.batchSize` config option to adjust this size, including a value of `0` to remove the limit.
-The `gc` task writes unreachable objects as loose objects to be cleaned up by a later step only if they are not re-added to a pack-file; for this reason it is not advisable to enable both the `loose-objects` and `gc` tasks at the same time. 
+The `gc` task writes unreachable objects as loose objects to be cleaned up by a later step only if they are not re-added to a pack-file; for this reason it is not advisable to enable both the `loose-objects` and `gc` tasks at the same time.
 
-[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-incremental-repack)incremental-repack 
-    
-The `incremental-repack` job repacks the object directory using the `multi-pack-index` feature. In order to prevent race conditions with concurrent Git commands, it follows a two-step process. First, it calls `git` `multi-pack-index` `expire` to delete pack-files unreferenced by the `multi-pack-index` file. Second, it calls `git` `multi-pack-index` `repack` to select several small pack-files and repack them into a bigger one, and then update the `multi-pack-index` entries that refer to the small pack-files to refer to the new pack-file. This prepares those small pack-files for deletion upon the next run of `git` `multi-pack-index` `expire`. The selection of the small pack-files is such that the expected size of the big pack-file is at least the batch size; see the `--batch-size` option for the `repack` subcommand in [git-multi-pack-index[1]](https://git-scm.com/docs/git-multi-pack-index). The default batch-size is zero, which is a special case that attempts to repack all pack-files into a single pack-file. 
+[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-incremental-repack)incremental-repack
 
-[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-pack-refs)pack-refs 
-    
-The `pack-refs` task collects the loose reference files and collects them into a single file. This speeds up operations that need to iterate across many references. See [git-pack-refs[1]](https://git-scm.com/docs/git-pack-refs) for more information. 
+The `incremental-repack` job repacks the object directory using the `multi-pack-index` feature. In order to prevent race conditions with concurrent Git commands, it follows a two-step process. First, it calls `git` `multi-pack-index` `expire` to delete pack-files unreferenced by the `multi-pack-index` file. Second, it calls `git` `multi-pack-index` `repack` to select several small pack-files and repack them into a bigger one, and then update the `multi-pack-index` entries that refer to the small pack-files to refer to the new pack-file. This prepares those small pack-files for deletion upon the next run of `git` `multi-pack-index` `expire`. The selection of the small pack-files is such that the expected size of the big pack-file is at least the batch size; see the `--batch-size` option for the `repack` subcommand in [git-multi-pack-index[1]](https://git-scm.com/docs/git-multi-pack-index). The default batch-size is zero, which is a special case that attempts to repack all pack-files into a single pack-file.
 
-[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-reflog-expire)reflog-expire 
-    
-The `reflog-expire` task deletes any entries in the reflog older than the expiry threshold. See [git-reflog[1]](https://git-scm.com/docs/git-reflog) for more information. 
+[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-pack-refs)pack-refs
 
-[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-rerere-gc)rerere-gc 
-    
-The `rerere-gc` task invokes garbage collection for stale entries in the rerere cache. See [git-rerere[1]](https://git-scm.com/docs/git-rerere) for more information. 
+The `pack-refs` task collects the loose reference files and collects them into a single file. This speeds up operations that need to iterate across many references. See [git-pack-refs[1]](https://git-scm.com/docs/git-pack-refs) for more information.
 
-[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-worktree-prune)worktree-prune 
-    
+[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-reflog-expire)reflog-expire
+
+The `reflog-expire` task deletes any entries in the reflog older than the expiry threshold. See [git-reflog[1]](https://git-scm.com/docs/git-reflog) for more information.
+
+[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-rerere-gc)rerere-gc
+
+The `rerere-gc` task invokes garbage collection for stale entries in the rerere cache. See [git-rerere[1]](https://git-scm.com/docs/git-rerere) for more information.
+
+[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-worktree-prune)worktree-prune
+
 The `worktree-prune` task deletes stale or broken worktrees. See [git-worktree[1]](https://git-scm.com/docs/git-worktree) for more information.
-##  [](https://git-scm.com/docs/git-maintenance#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-maintenance#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt---auto)--auto 
-    
-When combined with the `run` subcommand, run maintenance tasks only if certain thresholds are met. For example, the `gc` task runs when the number of loose objects exceeds the number stored in the `gc.auto` config setting, or when the number of pack-files exceeds the `gc.autoPackLimit` config setting. Not compatible with the `--schedule` option. When combined with the `is-needed` subcommand, check if the required thresholds are met without actually running maintenance. 
+[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt---auto)--auto
 
-[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt---schedule)--schedule 
-    
-When combined with the `run` subcommand, run maintenance tasks only if certain time conditions are met, as specified by the `maintenance.`_< task>_`.schedule` config value for each _< task>_. This config value specifies a number of seconds since the last time that task ran, according to the `maintenance.`_< task>_`.lastRun` config value. The tasks that are tested are those provided by the `--task=`_< task>_ option(s) or those with `maintenance.`_< task>_`.enabled` set to true. 
+When combined with the `run` subcommand, run maintenance tasks only if certain thresholds are met. For example, the `gc` task runs when the number of loose objects exceeds the number stored in the `gc.auto` config setting, or when the number of pack-files exceeds the `gc.autoPackLimit` config setting. Not compatible with the `--schedule` option. When combined with the `is-needed` subcommand, check if the required thresholds are met without actually running maintenance.
 
-[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt---quiet)--quiet 
-    
-Do not report progress or other information over `stderr`. 
+[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt---schedule)--schedule
 
-[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt---tasktask)--task=<task> 
-    
-If this option is specified one or more times, then only run the specified tasks in the specified order. If no `--task=`_< task>_ arguments are specified, then only the tasks with `maintenance.`_< task>_`.enabled` configured as `true` are considered. See the _TASKS_ section for the list of accepted _< task>_ values. 
+When combined with the `run` subcommand, run maintenance tasks only if certain time conditions are met, as specified by the `maintenance.`_< task>_`.schedule` config value for each _< task>_. This config value specifies a number of seconds since the last time that task ran, according to the `maintenance.`_< task>_`.lastRun` config value. The tasks that are tested are those provided by the `--task=`_< task>_ option(s) or those with `maintenance.`_< task>_`.enabled` set to true.
 
-[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt---schedulerautocrontabsystemd-timerlaunchctlschtasks)--scheduler=auto|crontab|systemd-timer|launchctl|schtasks 
-    
+[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt---quiet)--quiet
+
+Do not report progress or other information over `stderr`.
+
+[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt---tasktask)--task=<task>
+
+If this option is specified one or more times, then only run the specified tasks in the specified order. If no `--task=`_< task>_ arguments are specified, then only the tasks with `maintenance.`_< task>_`.enabled` configured as `true` are considered. See the _TASKS_ section for the list of accepted _< task>_ values.
+
+[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt---schedulerautocrontabsystemd-timerlaunchctlschtasks)--scheduler=auto|crontab|systemd-timer|launchctl|schtasks
+
 When combined with the `start` subcommand, specify the scheduler for running the hourly, daily and weekly executions of `git` `maintenance` `run`. Possible values for _< scheduler>_ are `auto`, `crontab` (POSIX), `systemd-timer` (Linux), `launchctl` (macOS), and `schtasks` (Windows). When `auto` is specified, the appropriate platform-specific scheduler is used; on Linux, `systemd-timer` is used if available, otherwise `crontab`. Default is `auto`.
 ##  [](https://git-scm.com/docs/git-maintenance#_troubleshooting)TROUBLESHOOTING
 The `git` `maintenance` command is designed to simplify the repository maintenance patterns while minimizing user wait time during Git commands. A variety of configuration options are available to allow customizing this process. The default maintenance options focus on operations that complete quickly, even on large repositories.
@@ -393,19 +393,19 @@ Windows does not support `cron` and instead has its own system for scheduling ba
 Note that since Git is a console application, these background tasks create a console window visible to the current user. This can be changed manually by selecting the "Run whether user is logged in or not" option in Task Scheduler. This change requires a password input, which is why `git` `maintenance` `start` does not select it by default.
 If you want to customize the background tasks, please rename the tasks so future calls to `git` `maintenance` (`start`|`stop`) do not overwrite your custom tasks.
 ##  [](https://git-scm.com/docs/git-maintenance#_configuration)CONFIGURATION
-Everything below this line in this section is selectively included from the [git-config[1]](https://git-scm.com/docs/git-config) documentation. The content is the same as what’s found there: 
+Everything below this line in this section is selectively included from the [git-config[1]](https://git-scm.com/docs/git-config) documentation. The content is the same as what’s found there:
 
-[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-maintenanceauto)maintenance.auto 
-    
-This boolean config option controls whether some commands run `git` `maintenance` `run` `--auto` after doing their normal work. Defaults to true. 
+[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-maintenanceauto)maintenance.auto
 
-[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-maintenanceautoDetach)maintenance.autoDetach 
-    
+This boolean config option controls whether some commands run `git` `maintenance` `run` `--auto` after doing their normal work. Defaults to true.
+
+[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-maintenanceautoDetach)maintenance.autoDetach
+
 Many Git commands trigger automatic maintenance after they have written data into the repository. This boolean config option controls whether this automatic maintenance shall happen in the foreground or whether the maintenance process shall detach and continue to run in the background.
-If unset, the value of `gc.autoDetach` is used as a fallback. Defaults to true if both are unset, meaning that the maintenance process will detach. 
+If unset, the value of `gc.autoDetach` is used as a fallback. Defaults to true if both are unset, meaning that the maintenance process will detach.
 
-[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-maintenancestrategy)maintenance.strategy 
-    
+[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-maintenancestrategy)maintenance.strategy
+
 This string config option provides a way to specify one of a few recommended strategies for repository maintenance. This affects which tasks are run during `git` `maintenance` `run`, provided no `--task=`_< task>_ arguments are provided. This setting impacts manual maintenance, auto-maintenance as well as scheduled maintenance. The tasks that run may be different depending on the maintenance type.
 The maintenance strategy can be further tweaked by setting `maintenance.`_< task>_`.enabled` and `maintenance.`_< task>_`.schedule`. If set, these values are used instead of the defaults provided by `maintenance.strategy`.
 The possible strategies are:
@@ -417,52 +417,52 @@ This repacking strategy is a full replacement for the `gc` strategy and is recom
 
 
 
-[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-maintenancetaskenabled)maintenance.<task>.enabled 
-    
-This boolean config option controls whether the maintenance task with name _< task>_ is run when no `--task` option is specified to `git` `maintenance` `run`. These config values are ignored if a `--task` option exists. By default, only `maintenance.gc.enabled` is true. 
+[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-maintenancetaskenabled)maintenance.<task>.enabled
 
-[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-maintenancetaskschedule)maintenance.<task>.schedule 
-    
-This config option controls whether or not the given _< task>_ runs during a `git` `maintenance` `run` `--schedule=`_< frequency>_ command. The value must be one of "hourly", "daily", or "weekly". 
+This boolean config option controls whether the maintenance task with name _< task>_ is run when no `--task` option is specified to `git` `maintenance` `run`. These config values are ignored if a `--task` option exists. By default, only `maintenance.gc.enabled` is true.
 
-[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-maintenancecommit-graphauto)maintenance.commit-graph.auto 
-    
-This integer config option controls how often the `commit-graph` task should be run as part of `git` `maintenance` `run` `--auto`. If zero, then the `commit-graph` task will not run with the `--auto` option. A negative value will force the task to run every time. Otherwise, a positive value implies the command should run when the number of reachable commits that are not in the commit-graph file is at least the value of `maintenance.commit-graph.auto`. The default value is 100. 
+[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-maintenancetaskschedule)maintenance.<task>.schedule
 
-[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-maintenanceloose-objectsauto)maintenance.loose-objects.auto 
-    
-This integer config option controls how often the `loose-objects` task should be run as part of `git` `maintenance` `run` `--auto`. If zero, then the `loose-objects` task will not run with the `--auto` option. A negative value will force the task to run every time. Otherwise, a positive value implies the command should run when the number of loose objects is at least the value of `maintenance.loose-objects.auto`. The default value is 100. 
+This config option controls whether or not the given _< task>_ runs during a `git` `maintenance` `run` `--schedule=`_< frequency>_ command. The value must be one of "hourly", "daily", or "weekly".
 
-[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-maintenanceloose-objectsbatchSize)maintenance.loose-objects.batchSize 
-    
-This integer config option controls the maximum number of loose objects written into a packfile during the `loose-objects` task. The default is fifty thousand. Use value `0` to indicate no limit. 
+[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-maintenancecommit-graphauto)maintenance.commit-graph.auto
 
-[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-maintenanceincremental-repackauto)maintenance.incremental-repack.auto 
-    
-This integer config option controls how often the `incremental-repack` task should be run as part of `git` `maintenance` `run` `--auto`. If zero, then the `incremental-repack` task will not run with the `--auto` option. A negative value will force the task to run every time. Otherwise, a positive value implies the command should run when the number of pack-files not in the multi-pack-index is at least the value of `maintenance.incremental-repack.auto`. The default value is 10. 
+This integer config option controls how often the `commit-graph` task should be run as part of `git` `maintenance` `run` `--auto`. If zero, then the `commit-graph` task will not run with the `--auto` option. A negative value will force the task to run every time. Otherwise, a positive value implies the command should run when the number of reachable commits that are not in the commit-graph file is at least the value of `maintenance.commit-graph.auto`. The default value is 100.
 
-[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-maintenancegeometric-repackauto)maintenance.geometric-repack.auto 
-    
-This integer config option controls how often the `geometric-repack` task should be run as part of `git` `maintenance` `run` `--auto`. If zero, then the `geometric-repack` task will not run with the `--auto` option. A negative value will force the task to run every time. Otherwise, a positive value implies the command should run either when there are packfiles that need to be merged together to retain the geometric progression, or when there are at least this many loose objects that would be written into a new packfile. The default value is 100. 
+[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-maintenanceloose-objectsauto)maintenance.loose-objects.auto
 
-[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-maintenancegeometric-repacksplitFactor)maintenance.geometric-repack.splitFactor 
-    
-This integer config option controls the factor used for the geometric sequence. See the `--geometric=` option in [git-repack[1]](https://git-scm.com/docs/git-repack) for more details. Defaults to `2`. 
+This integer config option controls how often the `loose-objects` task should be run as part of `git` `maintenance` `run` `--auto`. If zero, then the `loose-objects` task will not run with the `--auto` option. A negative value will force the task to run every time. Otherwise, a positive value implies the command should run when the number of loose objects is at least the value of `maintenance.loose-objects.auto`. The default value is 100.
 
-[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-maintenancereflog-expireauto)maintenance.reflog-expire.auto 
-    
-This integer config option controls how often the `reflog-expire` task should be run as part of `git` `maintenance` `run` `--auto`. If zero, then the `reflog-expire` task will not run with the `--auto` option. A negative value will force the task to run every time. Otherwise, a positive value implies the command should run when the number of expired reflog entries in the "HEAD" reflog is at least the value of `maintenance.loose-objects.auto`. The default value is 100. 
+[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-maintenanceloose-objectsbatchSize)maintenance.loose-objects.batchSize
 
-[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-maintenancererere-gcauto)maintenance.rerere-gc.auto 
-    
-This integer config option controls how often the `rerere-gc` task should be run as part of `git` `maintenance` `run` `--auto`. If zero, then the `rerere-gc` task will not run with the `--auto` option. A negative value will force the task to run every time. Otherwise, any positive value implies the command will run when the "rr-cache" directory exists and has at least one entry, regardless of whether it is stale or not. This heuristic may be refined in the future. The default value is 1. 
+This integer config option controls the maximum number of loose objects written into a packfile during the `loose-objects` task. The default is fifty thousand. Use value `0` to indicate no limit.
 
-[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-maintenanceworktree-pruneauto)maintenance.worktree-prune.auto 
-    
+[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-maintenanceincremental-repackauto)maintenance.incremental-repack.auto
+
+This integer config option controls how often the `incremental-repack` task should be run as part of `git` `maintenance` `run` `--auto`. If zero, then the `incremental-repack` task will not run with the `--auto` option. A negative value will force the task to run every time. Otherwise, a positive value implies the command should run when the number of pack-files not in the multi-pack-index is at least the value of `maintenance.incremental-repack.auto`. The default value is 10.
+
+[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-maintenancegeometric-repackauto)maintenance.geometric-repack.auto
+
+This integer config option controls how often the `geometric-repack` task should be run as part of `git` `maintenance` `run` `--auto`. If zero, then the `geometric-repack` task will not run with the `--auto` option. A negative value will force the task to run every time. Otherwise, a positive value implies the command should run either when there are packfiles that need to be merged together to retain the geometric progression, or when there are at least this many loose objects that would be written into a new packfile. The default value is 100.
+
+[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-maintenancegeometric-repacksplitFactor)maintenance.geometric-repack.splitFactor
+
+This integer config option controls the factor used for the geometric sequence. See the `--geometric=` option in [git-repack[1]](https://git-scm.com/docs/git-repack) for more details. Defaults to `2`.
+
+[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-maintenancereflog-expireauto)maintenance.reflog-expire.auto
+
+This integer config option controls how often the `reflog-expire` task should be run as part of `git` `maintenance` `run` `--auto`. If zero, then the `reflog-expire` task will not run with the `--auto` option. A negative value will force the task to run every time. Otherwise, a positive value implies the command should run when the number of expired reflog entries in the "HEAD" reflog is at least the value of `maintenance.loose-objects.auto`. The default value is 100.
+
+[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-maintenancererere-gcauto)maintenance.rerere-gc.auto
+
+This integer config option controls how often the `rerere-gc` task should be run as part of `git` `maintenance` `run` `--auto`. If zero, then the `rerere-gc` task will not run with the `--auto` option. A negative value will force the task to run every time. Otherwise, any positive value implies the command will run when the "rr-cache" directory exists and has at least one entry, regardless of whether it is stale or not. This heuristic may be refined in the future. The default value is 1.
+
+[](https://git-scm.com/docs/git-maintenance#Documentation/git-maintenance.txt-maintenanceworktree-pruneauto)maintenance.worktree-prune.auto
+
 This integer config option controls how often the `worktree-prune` task should be run as part of `git` `maintenance` `run` `--auto`. If zero, then the `worktree-prune` task will not run with the `--auto` option. A negative value will force the task to run every time. Otherwise, a positive value implies the command should run when the number of prunable worktrees exceeds the value. The default value is 1.
 ##  [](https://git-scm.com/docs/git-maintenance#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### maintenance
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

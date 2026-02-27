@@ -17,52 +17,52 @@
 
 
 * * *
-This book is available in [English](https://git-scm.com/book/en). 
-Full translation available in 
-[azərbaycan dili](https://git-scm.com/book/az),  
----  
-[български език](https://git-scm.com/book/bg),  
-[Deutsch](https://git-scm.com/book/de),  
-[Español](https://git-scm.com/book/es),  
-[فارسی](https://git-scm.com/book/fa),  
-[Français](https://git-scm.com/book/fr),  
-[Ελληνικά](https://git-scm.com/book/gr),  
-[日本語](https://git-scm.com/book/ja),  
-[한국어](https://git-scm.com/book/ko),  
-[Nederlands](https://git-scm.com/book/nl),  
-[Русский](https://git-scm.com/book/ru),  
-[Slovenščina](https://git-scm.com/book/sl),  
-[Tagalog](https://git-scm.com/book/tl),  
-[Українська](https://git-scm.com/book/uk),  
-[简体中文](https://git-scm.com/book/zh),  
-Partial translations available in 
-[Čeština](https://git-scm.com/book/cs),  
----  
-[Македонски](https://git-scm.com/book/mk),  
-[Polski](https://git-scm.com/book/pl),  
-[Српски](https://git-scm.com/book/sr),  
-[Ўзбекча](https://git-scm.com/book/uz),  
-[繁體中文](https://git-scm.com/book/zh-tw),  
-Translations started for 
-[Беларуская](https://git-scm.com/book/be),  
----  
-[Indonesian](https://git-scm.com/book/id),  
-[Italiano](https://git-scm.com/book/it),  
-[Bahasa Melayu](https://git-scm.com/book/ms),  
-[Português (Brasil)](https://git-scm.com/book/pt-br),  
-[Português (Portugal)](https://git-scm.com/book/pt-pt),  
-[Svenska](https://git-scm.com/book/sv),  
-[Türkçe](https://git-scm.com/book/tr).  
+This book is available in [English](https://git-scm.com/book/en).
+Full translation available in
+[azərbaycan dili](https://git-scm.com/book/az),
+---
+[български език](https://git-scm.com/book/bg),
+[Deutsch](https://git-scm.com/book/de),
+[Español](https://git-scm.com/book/es),
+[فارسی](https://git-scm.com/book/fa),
+[Français](https://git-scm.com/book/fr),
+[Ελληνικά](https://git-scm.com/book/gr),
+[日本語](https://git-scm.com/book/ja),
+[한국어](https://git-scm.com/book/ko),
+[Nederlands](https://git-scm.com/book/nl),
+[Русский](https://git-scm.com/book/ru),
+[Slovenščina](https://git-scm.com/book/sl),
+[Tagalog](https://git-scm.com/book/tl),
+[Українська](https://git-scm.com/book/uk),
+[简体中文](https://git-scm.com/book/zh),
+Partial translations available in
+[Čeština](https://git-scm.com/book/cs),
+---
+[Македонски](https://git-scm.com/book/mk),
+[Polski](https://git-scm.com/book/pl),
+[Српски](https://git-scm.com/book/sr),
+[Ўзбекча](https://git-scm.com/book/uz),
+[繁體中文](https://git-scm.com/book/zh-tw),
+Translations started for
+[Беларуская](https://git-scm.com/book/be),
+---
+[Indonesian](https://git-scm.com/book/id),
+[Italiano](https://git-scm.com/book/it),
+[Bahasa Melayu](https://git-scm.com/book/ms),
+[Português (Brasil)](https://git-scm.com/book/pt-br),
+[Português (Portugal)](https://git-scm.com/book/pt-pt),
+[Svenska](https://git-scm.com/book/sv),
+[Türkçe](https://git-scm.com/book/tr).
 * * *
-The source of this book is [hosted on GitHub.](https://github.com/progit/progit2)  
-Patches, suggestions and comments are welcome. 
+The source of this book is [hosted on GitHub.](https://github.com/progit/progit2)
+Patches, suggestions and comments are welcome.
 # Book
 ![](https://git-scm.com/images/progit2.png)
 2nd Edition (2014)
 ## Download Ebook
 [![](https://git-scm.com/images/pdf.png)](https://github.com/progit/progit2/releases/download/2.1.449/progit.pdf) [![](https://git-scm.com/images/epub.png)](https://github.com/progit/progit2/releases/download/2.1.449/progit.epub)
-The entire Pro Git book, written by Scott Chacon and Ben Straub and published by Apress, is available here. All content is licensed under the [Creative Commons Attribution Non Commercial Share Alike 3.0 license](https://creativecommons.org/licenses/by-nc-sa/3.0/). Print versions of the book are available on [Amazon.com](https://www.amazon.com/Pro-Git-Scott-Chacon/dp/1484200772?ie=UTF8&camp=1789&creative=9325&creativeASIN=1430218339&linkCode=as2&tag=git-sfconservancy-20). 
-The version found here has been updated with corrections and additions from [hundreds of contributors](https://github.com/progit/progit2/graphs/contributors). If you see an error or have a suggestion, patches and issues are welcome in its [GitHub repository](https://github.com/progit/progit2). 
+The entire Pro Git book, written by Scott Chacon and Ben Straub and published by Apress, is available here. All content is licensed under the [Creative Commons Attribution Non Commercial Share Alike 3.0 license](https://creativecommons.org/licenses/by-nc-sa/3.0/). Print versions of the book are available on [Amazon.com](https://www.amazon.com/Pro-Git-Scott-Chacon/dp/1484200772?ie=UTF8&camp=1789&creative=9325&creativeASIN=1430218339&linkCode=as2&tag=git-sfconservancy-20).
+The version found here has been updated with corrections and additions from [hundreds of contributors](https://github.com/progit/progit2/graphs/contributors). If you see an error or have a suggestion, patches and issues are welcome in its [GitHub repository](https://github.com/progit/progit2).
   1. ## 1. [Getting Started](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control)
     1. 1.1 [About Version Control](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control)
     2. 1.2 [A Short History of Git](https://git-scm.com/book/en/v2/Getting-Started-A-Short-History-of-Git)
@@ -179,6 +179,6 @@ The version found here has been updated with corrections and additions from [hun
     12. A3.12 [Plumbing Commands](https://git-scm.com/book/en/v2/Appendix-C:-Git-Commands-Plumbing-Commands)
 
 
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

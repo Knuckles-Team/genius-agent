@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-p4#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-p4#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-p4#_description)
@@ -40,8 +40,8 @@ Localized versions of **git-p4** manual
   3. [українська мова ](https://git-scm.com/docs/git-p4/uk)
   4. [简体中文 ](https://git-scm.com/docs/git-p4/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-p4)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -345,23 +345,23 @@ $ git p4 unshelve 12345
 
 ##  [](https://git-scm.com/docs/git-p4#_options)OPTIONS
 ###  [](https://git-scm.com/docs/git-p4#_general_options)General options
-All commands except clone accept these options. 
+All commands except clone accept these options.
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---git-dirdir)--git-dir <dir> 
-    
-Set the `GIT_DIR` environment variable. See [git[1]](https://git-scm.com/docs/git). 
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---git-dirdir)--git-dir <dir>
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt--v)-v 
+Set the `GIT_DIR` environment variable. See [git[1]](https://git-scm.com/docs/git).
+
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt--v)-v
 
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---verbose)--verbose 
-    
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---verbose)--verbose
+
 Provide more progress information.
 ###  [](https://git-scm.com/docs/git-p4#_sync_options)Sync options
-These options can be used in the initial _clone_ as well as in subsequent _sync_ operations. 
+These options can be used in the initial _clone_ as well as in subsequent _sync_ operations.
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---branchref)--branch <ref> 
-    
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---branchref)--branch <ref>
+
 Import changes into <ref> instead of refs/remotes/p4/master. If <ref> starts with refs/, it is used as is. Otherwise, if it does not start with p4/, that prefix is added.
 By default a <ref> not starting with refs/ is treated as the name of a remote-tracking branch (under refs/remotes/). This behavior can be modified using the --import-local option.
 The default <ref> is "master".
@@ -372,115 +372,115 @@ This example imports a new remote "p4/proj2" into an existing Git repository:
 ```
 
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---detect-branches)--detect-branches 
-    
-Use the branch detection algorithm to find new paths in p4. It is documented below in "BRANCH DETECTION". 
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---detect-branches)--detect-branches
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---changesfilefile)--changesfile <file> 
-    
-Import exactly the p4 change numbers listed in _file_ , one per line. Normally, _git p4_ inspects the current p4 repository state and detects the changes it should import. 
+Use the branch detection algorithm to find new paths in p4. It is documented below in "BRANCH DETECTION".
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---silent)--silent 
-    
-Do not print any progress information. 
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---changesfilefile)--changesfile <file>
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---detect-labels)--detect-labels 
-    
-Query p4 for labels associated with the depot paths, and add them as tags in Git. Limited usefulness as only imports labels associated with new changelists. Deprecated. 
+Import exactly the p4 change numbers listed in _file_ , one per line. Normally, _git p4_ inspects the current p4 repository state and detects the changes it should import.
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---import-labels)--import-labels 
-    
-Import labels from p4 into Git. 
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---silent)--silent
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---import-local)--import-local 
-    
-By default, p4 branches are stored in _refs/remotes/p4/_ , where they will be treated as remote-tracking branches by [git-branch[1]](https://git-scm.com/docs/git-branch) and other commands. This option instead puts p4 branches in _refs/heads/p4/_. Note that future sync operations must specify `--import-local` as well so that they can find the p4 branches in refs/heads. 
+Do not print any progress information.
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---max-changesn)--max-changes <n> 
-    
-Import at most _n_ changes, rather than the entire range of changes included in the given revision specifier. A typical usage would be use _@all_ as the revision specifier, but then to use _--max-changes 1000_ to import only the last 1000 revisions rather than the entire revision history. 
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---detect-labels)--detect-labels
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---changes-block-sizen)--changes-block-size <n> 
-    
-The internal block size to use when converting a revision specifier such as _@all_ into a list of specific change numbers. Instead of using a single call to _p4 changes_ to find the full list of changes for the conversion, there are a sequence of calls to _p4 changes -m_ , each of which requests one block of changes of the given size. The default block size is 500, which should usually be suitable. 
+Query p4 for labels associated with the depot paths, and add them as tags in Git. Limited usefulness as only imports labels associated with new changelists. Deprecated.
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---keep-path)--keep-path 
-    
-The mapping of file names from the p4 depot path to Git, by default, involves removing the entire depot path. With this option, the full p4 depot path is retained in Git. For example, path _//depot/main/foo/bar.c_ , when imported from _//depot/main/_ , becomes _foo/bar.c_. With `--keep-path`, the Git path is instead _depot/main/foo/bar.c_. 
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---import-labels)--import-labels
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---use-client-spec)--use-client-spec 
-    
-Use a client spec to find the list of interesting files in p4. See the "CLIENT SPEC" section below. 
+Import labels from p4 into Git.
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt--path)-/ <path> 
-    
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---import-local)--import-local
+
+By default, p4 branches are stored in _refs/remotes/p4/_ , where they will be treated as remote-tracking branches by [git-branch[1]](https://git-scm.com/docs/git-branch) and other commands. This option instead puts p4 branches in _refs/heads/p4/_. Note that future sync operations must specify `--import-local` as well so that they can find the p4 branches in refs/heads.
+
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---max-changesn)--max-changes <n>
+
+Import at most _n_ changes, rather than the entire range of changes included in the given revision specifier. A typical usage would be use _@all_ as the revision specifier, but then to use _--max-changes 1000_ to import only the last 1000 revisions rather than the entire revision history.
+
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---changes-block-sizen)--changes-block-size <n>
+
+The internal block size to use when converting a revision specifier such as _@all_ into a list of specific change numbers. Instead of using a single call to _p4 changes_ to find the full list of changes for the conversion, there are a sequence of calls to _p4 changes -m_ , each of which requests one block of changes of the given size. The default block size is 500, which should usually be suitable.
+
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---keep-path)--keep-path
+
+The mapping of file names from the p4 depot path to Git, by default, involves removing the entire depot path. With this option, the full p4 depot path is retained in Git. For example, path _//depot/main/foo/bar.c_ , when imported from _//depot/main/_ , becomes _foo/bar.c_. With `--keep-path`, the Git path is instead _depot/main/foo/bar.c_.
+
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---use-client-spec)--use-client-spec
+
+Use a client spec to find the list of interesting files in p4. See the "CLIENT SPEC" section below.
+
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt--path)-/ <path>
+
 Exclude selected depot paths when cloning or syncing.
 ###  [](https://git-scm.com/docs/git-p4#_clone_options)Clone options
-These options can be used in an initial _clone_ , along with the _sync_ options described above. 
+These options can be used in an initial _clone_ , along with the _sync_ options described above.
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---destinationdirectory)--destination <directory> 
-    
-Where to create the Git repository. If not provided, the last component in the p4 depot path is used to create a new directory. 
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---destinationdirectory)--destination <directory>
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---bare)--bare 
-    
+Where to create the Git repository. If not provided, the last component in the p4 depot path is used to create a new directory.
+
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---bare)--bare
+
 Perform a bare clone. See [git-clone[1]](https://git-scm.com/docs/git-clone).
 ###  [](https://git-scm.com/docs/git-p4#_submit_options)Submit options
-These options can be used to modify _git p4 submit_ behavior. 
+These options can be used to modify _git p4 submit_ behavior.
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---origincommit)--origin <commit> 
-    
-Upstream location from which commits are identified to submit to p4. By default, this is the most recent p4 commit reachable from `HEAD`. 
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---origincommit)--origin <commit>
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt--M)-M 
-    
-Detect renames. See [git-diff[1]](https://git-scm.com/docs/git-diff). Renames will be represented in p4 using explicit _move_ operations. There is no corresponding option to detect copies, but there are variables for both moves and copies. 
+Upstream location from which commits are identified to submit to p4. By default, this is the most recent p4 commit reachable from `HEAD`.
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---preserve-user)--preserve-user 
-    
-Re-author p4 changes before submitting to p4. This option requires p4 admin privileges. 
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt--M)-M
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---export-labels)--export-labels 
-    
-Export tags from Git as p4 labels. Tags found in Git are applied to the perforce working directory. 
+Detect renames. See [git-diff[1]](https://git-scm.com/docs/git-diff). Renames will be represented in p4 using explicit _move_ operations. There is no corresponding option to detect copies, but there are variables for both moves and copies.
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt--n)-n 
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---preserve-user)--preserve-user
+
+Re-author p4 changes before submitting to p4. This option requires p4 admin privileges.
+
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---export-labels)--export-labels
+
+Export tags from Git as p4 labels. Tags found in Git are applied to the perforce working directory.
+
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt--n)-n
 
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---dry-run)--dry-run 
-    
-Show just what commits would be submitted to p4; do not change state in Git or p4. 
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---dry-run)--dry-run
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---prepare-p4-only)--prepare-p4-only 
-    
-Apply a commit to the p4 workspace, opening, adding and deleting files in p4 as for a normal submit operation. Do not issue the final "p4 submit", but instead print a message about how to submit manually or revert. This option always stops after the first (oldest) commit. Git tags are not exported to p4. 
+Show just what commits would be submitted to p4; do not change state in Git or p4.
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---shelve)--shelve 
-    
-Instead of submitting create a series of shelved changelists. After creating each shelve, the relevant files are reverted/deleted. If you have multiple commits pending multiple shelves will be created. 
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---prepare-p4-only)--prepare-p4-only
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---update-shelveCHANGELIST)--update-shelve CHANGELIST 
-    
-Update an existing shelved changelist with this commit. Implies --shelve. Repeat for multiple shelved changelists. 
+Apply a commit to the p4 workspace, opening, adding and deleting files in p4 as for a normal submit operation. Do not issue the final "p4 submit", but instead print a message about how to submit manually or revert. This option always stops after the first (oldest) commit. Git tags are not exported to p4.
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---conflictaskskipquit)--conflict=(ask|skip|quit) 
-    
-Conflicts can occur when applying a commit to p4. When this happens, the default behavior ("ask") is to prompt whether to skip this commit and continue, or quit. This option can be used to bypass the prompt, causing conflicting commits to be automatically skipped, or to quit trying to apply commits, without prompting. 
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---shelve)--shelve
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---branchbranch)--branch <branch> 
-    
-After submitting, sync this named branch instead of the default p4/master. See the "Sync options" section above for more information. 
+Instead of submitting create a series of shelved changelists. After creating each shelve, the relevant files are reverted/deleted. If you have multiple commits pending multiple shelves will be created.
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---commitsha1sha1sha1)--commit (<sha1>|<sha1>..<sha1>) 
-    
-Submit only the specified commit or range of commits, instead of the full list of changes that are in the current Git branch. 
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---update-shelveCHANGELIST)--update-shelve CHANGELIST
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---disable-rebase)--disable-rebase 
-    
-Disable the automatic rebase after all commits have been successfully submitted. Can also be set with git-p4.disableRebase. 
+Update an existing shelved changelist with this commit. Implies --shelve. Repeat for multiple shelved changelists.
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---disable-p4sync)--disable-p4sync 
-    
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---conflictaskskipquit)--conflict=(ask|skip|quit)
+
+Conflicts can occur when applying a commit to p4. When this happens, the default behavior ("ask") is to prompt whether to skip this commit and continue, or quit. This option can be used to bypass the prompt, causing conflicting commits to be automatically skipped, or to quit trying to apply commits, without prompting.
+
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---branchbranch)--branch <branch>
+
+After submitting, sync this named branch instead of the default p4/master. See the "Sync options" section above for more information.
+
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---commitsha1sha1sha1)--commit (<sha1>|<sha1>..<sha1>)
+
+Submit only the specified commit or range of commits, instead of the full list of changes that are in the current Git branch.
+
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---disable-rebase)--disable-rebase
+
+Disable the automatic rebase after all commits have been successfully submitted. Can also be set with git-p4.disableRebase.
+
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---disable-p4sync)--disable-p4sync
+
 Disable the automatic sync of p4/master from Perforce after commits have been submitted. Implies --disable-rebase. Can also be set with git-p4.disableP4Sync. Sync with origin/master still goes ahead if possible.
 ##  [](https://git-scm.com/docs/git-p4#_hooks_for_submit)Hooks for submit
 ###  [](https://git-scm.com/docs/git-p4#_p4_pre_submit)p4-pre-submit
@@ -495,33 +495,33 @@ The hook is allowed to edit the changelist file and can be used to normalize the
 ###  [](https://git-scm.com/docs/git-p4#_p4_post_changelist)p4-post-changelist
 The `p4-post-changelist` hook is invoked after the submit has successfully occurred in P4. It takes no parameters and is meant primarily for notification and cannot affect the outcome of the git p4 submit action.
 ###  [](https://git-scm.com/docs/git-p4#_rebase_options)Rebase options
-These options can be used to modify _git p4 rebase_ behavior. 
+These options can be used to modify _git p4 rebase_ behavior.
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---import-labels-1)--import-labels 
-    
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---import-labels-1)--import-labels
+
 Import p4 labels.
-###  [](https://git-scm.com/docs/git-p4#_unshelve_options)Unshelve options 
+###  [](https://git-scm.com/docs/git-p4#_unshelve_options)Unshelve options
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---origin)--origin 
-    
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt---origin)--origin
+
 Sets the git refspec against which the shelved P4 changelist is compared. Defaults to p4/master.
 ##  [](https://git-scm.com/docs/git-p4#_depot_path_syntax)DEPOT PATH SYNTAX
-The p4 depot path argument to _git p4 sync_ and _git p4 clone_ can be one or more space-separated p4 depot paths, with an optional p4 revision specifier on the end: 
+The p4 depot path argument to _git p4 sync_ and _git p4 clone_ can be one or more space-separated p4 depot paths, with an optional p4 revision specifier on the end:
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-depotmyproject)"//depot/my/project" 
-    
-Import one commit with all files in the _#head_ change under that tree. 
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-depotmyproject)"//depot/my/project"
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-depotmyprojectall)"//depot/my/project@all" 
-    
-Import one commit for each change in the history of that depot path. 
+Import one commit with all files in the _#head_ change under that tree.
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-depotmyproject16)"//depot/my/project@1,6" 
-    
-Import only changes 1 through 6. 
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-depotmyprojectall)"//depot/my/project@all"
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-depotproj1alldepotproj2all)"//depot/proj1@all //depot/proj2@all" 
-    
+Import one commit for each change in the history of that depot path.
+
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-depotmyproject16)"//depot/my/project@1,6"
+
+Import only changes 1 through 6.
+
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-depotproj1alldepotproj2all)"//depot/proj1@all //depot/proj2@all"
+
 Import all changes from both named depot paths into a single repository. Only files below these directories are included. There is not a subdirectory in Git for each "proj1" and "proj2". You must use the `--destination` option when specifying more than one depot path. The revision specifier must be specified identically on each depot path. If there are files in the depot paths with the same name, the path with the most recently updated version of the file is the one that appears in Git.
 See _p4 help revisions_ for the full syntax of p4 revision specifiers.
 ##  [](https://git-scm.com/docs/git-p4#_client_spec)CLIENT SPEC
@@ -561,43 +561,43 @@ git p4 clone --detect-branches //depot@all .
 The fast-import mechanism used by _git p4_ creates one pack file for each invocation of _git p4 sync_. Normally, Git garbage compression ([git-gc[1]](https://git-scm.com/docs/git-gc)) automatically compresses these to fewer pack files, but explicit invocation of _git repack -adf_ may improve performance.
 ##  [](https://git-scm.com/docs/git-p4#_configuration_variables)CONFIGURATION VARIABLES
 The following config settings can be used to modify _git p4_ behavior. They all are in the _git-p4_ section.
-###  [](https://git-scm.com/docs/git-p4#_general_variables)General variables 
+###  [](https://git-scm.com/docs/git-p4#_general_variables)General variables
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4user)git-p4.user 
-    
-User specified as an option to all p4 commands, with _-u <user>_. The environment variable `P4USER` can be used instead. 
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4user)git-p4.user
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4password)git-p4.password 
-    
-Password specified as an option to all p4 commands, with _-P <password>_. The environment variable `P4PASS` can be used instead. 
+User specified as an option to all p4 commands, with _-u <user>_. The environment variable `P4USER` can be used instead.
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4port)git-p4.port 
-    
-Port specified as an option to all p4 commands, with _-p <port>_. The environment variable `P4PORT` can be used instead. 
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4password)git-p4.password
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4host)git-p4.host 
-    
-Host specified as an option to all p4 commands, with _-h <host>_. The environment variable `P4HOST` can be used instead. 
+Password specified as an option to all p4 commands, with _-P <password>_. The environment variable `P4PASS` can be used instead.
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4client)git-p4.client 
-    
-Client specified as an option to all p4 commands, with _-c <client>_, including the client spec. 
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4port)git-p4.port
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4retries)git-p4.retries 
-    
+Port specified as an option to all p4 commands, with _-p <port>_. The environment variable `P4PORT` can be used instead.
+
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4host)git-p4.host
+
+Host specified as an option to all p4 commands, with _-h <host>_. The environment variable `P4HOST` can be used instead.
+
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4client)git-p4.client
+
+Client specified as an option to all p4 commands, with _-c <client>_, including the client spec.
+
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4retries)git-p4.retries
+
 Specifies the number of times to retry a p4 command (notably, _p4 sync_) if the network times out. The default value is 3. Set the value to 0 to disable retries or if your p4 version does not support retries (pre 2012.2).
-###  [](https://git-scm.com/docs/git-p4#_clone_and_sync_variables)Clone and sync variables 
+###  [](https://git-scm.com/docs/git-p4#_clone_and_sync_variables)Clone and sync variables
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4syncFromOrigin)git-p4.syncFromOrigin 
-    
-Because importing commits from other Git repositories is much faster than importing them from p4, a mechanism exists to find p4 changes first in Git remotes. If branches exist under _refs/remote/origin/p4_ , those will be fetched and used when syncing from p4. This variable can be set to _false_ to disable this behavior. 
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4syncFromOrigin)git-p4.syncFromOrigin
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4branchUser)git-p4.branchUser 
-    
-One phase in branch detection involves looking at p4 branches to find new ones to import. By default, all branches are inspected. This option limits the search to just those owned by the single user named in the variable. 
+Because importing commits from other Git repositories is much faster than importing them from p4, a mechanism exists to find p4 changes first in Git remotes. If branches exist under _refs/remote/origin/p4_ , those will be fetched and used when syncing from p4. This variable can be set to _false_ to disable this behavior.
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4branchList)git-p4.branchList 
-    
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4branchUser)git-p4.branchUser
+
+One phase in branch detection involves looking at p4 branches to find new ones to import. By default, all branches are inspected. This option limits the search to just those owned by the single user named in the variable.
+
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4branchList)git-p4.branchList
+
 List of branches to be imported when branch detection is enabled. Each entry should be a pair of branch names separated by a colon (:). This example declares that both branchA and branchB were created from main:
 ```
 git config       git-p4.branchList main:branchA
@@ -605,130 +605,130 @@ git config --add git-p4.branchList main:branchB
 ```
 
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4ignoredP4Labels)git-p4.ignoredP4Labels 
-    
-List of p4 labels to ignore. This is built automatically as unimportable labels are discovered. 
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4ignoredP4Labels)git-p4.ignoredP4Labels
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4importLabels)git-p4.importLabels 
-    
-Import p4 labels into git, as per --import-labels. 
+List of p4 labels to ignore. This is built automatically as unimportable labels are discovered.
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4labelImportRegexp)git-p4.labelImportRegexp 
-    
-Only p4 labels matching this regular expression will be imported. The default value is _[a-zA-Z0-9_\\-.]+$_. 
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4importLabels)git-p4.importLabels
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4useClientSpec)git-p4.useClientSpec 
-    
-Specify that the p4 client spec should be used to identify p4 depot paths of interest. This is equivalent to specifying the option `--use-client-spec`. See the "CLIENT SPEC" section above. This variable is a boolean, not the name of a p4 client. 
+Import p4 labels into git, as per --import-labels.
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4pathEncoding)git-p4.pathEncoding 
-    
-Perforce keeps the encoding of a path as given by the originating OS. Git expects paths encoded as UTF-8. Use this config to tell git-p4 what encoding Perforce had used for the paths. This encoding is used to transcode the paths to UTF-8. As an example, Perforce on Windows often uses "cp1252" to encode path names. If this option is passed into a p4 clone request, it is persisted in the resulting new git repo. 
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4labelImportRegexp)git-p4.labelImportRegexp
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4metadataDecodingStrategy)git-p4.metadataDecodingStrategy 
-    
-Perforce keeps the encoding of a changelist descriptions and user full names as stored by the client on a given OS. The p4v client uses the OS-local encoding, and so different users can end up storing different changelist descriptions or user full names in different encodings, in the same depot. Git tolerates inconsistent/incorrect encodings in commit messages and author names, but expects them to be specified in utf-8. git-p4 can use three different decoding strategies in handling the encoding uncertainty in Perforce: _passthrough_ simply passes the original bytes through from Perforce to git, creating usable but incorrectly-encoded data when the Perforce data is encoded as anything other than utf-8. _strict_ expects the Perforce data to be encoded as utf-8, and fails to import when this is not true. _fallback_ attempts to interpret the data as utf-8, and otherwise falls back to using a secondary encoding - by default the common windows encoding _cp-1252_ - with upper-range bytes escaped if decoding with the fallback encoding also fails. Under python2 the default strategy is _passthrough_ for historical reasons, and under python3 the default is _fallback_. When _strict_ is selected and decoding fails, the error message will propose changing this config parameter as a workaround. If this option is passed into a p4 clone request, it is persisted into the resulting new git repo. 
+Only p4 labels matching this regular expression will be imported. The default value is _[a-zA-Z0-9_\\-.]+$_.
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4metadataFallbackEncoding)git-p4.metadataFallbackEncoding 
-    
-Specify the fallback encoding to use when decoding Perforce author names and changelists descriptions using the _fallback_ strategy (see git-p4.metadataDecodingStrategy). The fallback encoding will only be used when decoding as utf-8 fails. This option defaults to cp1252, a common windows encoding. If this option is passed into a p4 clone request, it is persisted into the resulting new git repo. 
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4useClientSpec)git-p4.useClientSpec
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4largeFileSystem)git-p4.largeFileSystem 
-    
+Specify that the p4 client spec should be used to identify p4 depot paths of interest. This is equivalent to specifying the option `--use-client-spec`. See the "CLIENT SPEC" section above. This variable is a boolean, not the name of a p4 client.
+
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4pathEncoding)git-p4.pathEncoding
+
+Perforce keeps the encoding of a path as given by the originating OS. Git expects paths encoded as UTF-8. Use this config to tell git-p4 what encoding Perforce had used for the paths. This encoding is used to transcode the paths to UTF-8. As an example, Perforce on Windows often uses "cp1252" to encode path names. If this option is passed into a p4 clone request, it is persisted in the resulting new git repo.
+
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4metadataDecodingStrategy)git-p4.metadataDecodingStrategy
+
+Perforce keeps the encoding of a changelist descriptions and user full names as stored by the client on a given OS. The p4v client uses the OS-local encoding, and so different users can end up storing different changelist descriptions or user full names in different encodings, in the same depot. Git tolerates inconsistent/incorrect encodings in commit messages and author names, but expects them to be specified in utf-8. git-p4 can use three different decoding strategies in handling the encoding uncertainty in Perforce: _passthrough_ simply passes the original bytes through from Perforce to git, creating usable but incorrectly-encoded data when the Perforce data is encoded as anything other than utf-8. _strict_ expects the Perforce data to be encoded as utf-8, and fails to import when this is not true. _fallback_ attempts to interpret the data as utf-8, and otherwise falls back to using a secondary encoding - by default the common windows encoding _cp-1252_ - with upper-range bytes escaped if decoding with the fallback encoding also fails. Under python2 the default strategy is _passthrough_ for historical reasons, and under python3 the default is _fallback_. When _strict_ is selected and decoding fails, the error message will propose changing this config parameter as a workaround. If this option is passed into a p4 clone request, it is persisted into the resulting new git repo.
+
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4metadataFallbackEncoding)git-p4.metadataFallbackEncoding
+
+Specify the fallback encoding to use when decoding Perforce author names and changelists descriptions using the _fallback_ strategy (see git-p4.metadataDecodingStrategy). The fallback encoding will only be used when decoding as utf-8 fails. This option defaults to cp1252, a common windows encoding. If this option is passed into a p4 clone request, it is persisted into the resulting new git repo.
+
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4largeFileSystem)git-p4.largeFileSystem
+
 Specify the system that is used for large (binary) files. Please note that large file systems do not support the _git p4 submit_ command. Only Git LFS is implemented right now (see <https://git-lfs.github.com/> for more information). Download and install the Git LFS command line extension to use this option and configure it like this:
 ```
 git config       git-p4.largeFileSystem GitLFS
 ```
 
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4largeFileExtensions)git-p4.largeFileExtensions 
-    
-All files matching a file extension in the list will be processed by the large file system. Do not prefix the extensions with _._. 
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4largeFileExtensions)git-p4.largeFileExtensions
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4largeFileThreshold)git-p4.largeFileThreshold 
-    
-All files with an uncompressed size exceeding the threshold will be processed by the large file system. By default the threshold is defined in bytes. Add the suffix k, m, or g to change the unit. 
+All files matching a file extension in the list will be processed by the large file system. Do not prefix the extensions with _._.
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4largeFileCompressedThreshold)git-p4.largeFileCompressedThreshold 
-    
-All files with a compressed size exceeding the threshold will be processed by the large file system. This option might slow down your clone/sync process. By default the threshold is defined in bytes. Add the suffix k, m, or g to change the unit. 
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4largeFileThreshold)git-p4.largeFileThreshold
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4largeFilePush)git-p4.largeFilePush 
-    
-Boolean variable which defines if large files are automatically pushed to a server. 
+All files with an uncompressed size exceeding the threshold will be processed by the large file system. By default the threshold is defined in bytes. Add the suffix k, m, or g to change the unit.
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4keepEmptyCommits)git-p4.keepEmptyCommits 
-    
-A changelist that contains only excluded files will be imported as an empty commit if this boolean option is set to true. 
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4largeFileCompressedThreshold)git-p4.largeFileCompressedThreshold
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4mapUser)git-p4.mapUser 
-    
+All files with a compressed size exceeding the threshold will be processed by the large file system. This option might slow down your clone/sync process. By default the threshold is defined in bytes. Add the suffix k, m, or g to change the unit.
+
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4largeFilePush)git-p4.largeFilePush
+
+Boolean variable which defines if large files are automatically pushed to a server.
+
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4keepEmptyCommits)git-p4.keepEmptyCommits
+
+A changelist that contains only excluded files will be imported as an empty commit if this boolean option is set to true.
+
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4mapUser)git-p4.mapUser
+
 Map a P4 user to a name and email address in Git. Use a string with the following format to create a mapping:
 ```
 git config --add git-p4.mapUser "p4user = First Last <mail@address.com>"
 ```
 
 A mapping will override any user information from P4. Mappings for multiple P4 user can be defined.
-###  [](https://git-scm.com/docs/git-p4#_submit_variables)Submit variables 
+###  [](https://git-scm.com/docs/git-p4#_submit_variables)Submit variables
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4detectRenames)git-p4.detectRenames 
-    
-Detect renames. See [git-diff[1]](https://git-scm.com/docs/git-diff). This can be true, false, or a score as expected by _git diff -M_. 
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4detectRenames)git-p4.detectRenames
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4detectCopies)git-p4.detectCopies 
-    
-Detect copies. See [git-diff[1]](https://git-scm.com/docs/git-diff). This can be true, false, or a score as expected by _git diff -C_. 
+Detect renames. See [git-diff[1]](https://git-scm.com/docs/git-diff). This can be true, false, or a score as expected by _git diff -M_.
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4detectCopiesHarder)git-p4.detectCopiesHarder 
-    
-Detect copies harder. See [git-diff[1]](https://git-scm.com/docs/git-diff). A boolean. 
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4detectCopies)git-p4.detectCopies
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4preserveUser)git-p4.preserveUser 
-    
-On submit, re-author changes to reflect the Git author, regardless of who invokes _git p4 submit_. 
+Detect copies. See [git-diff[1]](https://git-scm.com/docs/git-diff). This can be true, false, or a score as expected by _git diff -C_.
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4allowMissingP4Users)git-p4.allowMissingP4Users 
-    
-When _preserveUser_ is true, _git p4_ normally dies if it cannot find an author in the p4 user map. This setting submits the change regardless. 
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4detectCopiesHarder)git-p4.detectCopiesHarder
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4skipSubmitEdit)git-p4.skipSubmitEdit 
-    
-The submit process invokes the editor before each p4 change is submitted. If this setting is true, though, the editing step is skipped. 
+Detect copies harder. See [git-diff[1]](https://git-scm.com/docs/git-diff). A boolean.
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4skipSubmitEditCheck)git-p4.skipSubmitEditCheck 
-    
-After editing the p4 change message, _git p4_ makes sure that the description really was changed by looking at the file modification time. This option disables that test. 
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4preserveUser)git-p4.preserveUser
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4allowSubmit)git-p4.allowSubmit 
-    
-By default, any branch can be used as the source for a _git p4 submit_ operation. This configuration variable, if set, permits only the named branches to be used as submit sources. Branch names must be the short names (no "refs/heads/"), and should be separated by commas (","), with no spaces. 
+On submit, re-author changes to reflect the Git author, regardless of who invokes _git p4 submit_.
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4skipUserNameCheck)git-p4.skipUserNameCheck 
-    
-If the user running _git p4 submit_ does not exist in the p4 user map, _git p4_ exits. This option can be used to force submission regardless. 
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4allowMissingP4Users)git-p4.allowMissingP4Users
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4attemptRCSCleanup)git-p4.attemptRCSCleanup 
-    
-If enabled, _git p4 submit_ will attempt to cleanup RCS keywords ($Header$, etc). These would otherwise cause merge conflicts and prevent the submit going ahead. This option should be considered experimental at present. 
+When _preserveUser_ is true, _git p4_ normally dies if it cannot find an author in the p4 user map. This setting submits the change regardless.
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4exportLabels)git-p4.exportLabels 
-    
-Export Git tags to p4 labels, as per --export-labels. 
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4skipSubmitEdit)git-p4.skipSubmitEdit
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4labelExportRegexp)git-p4.labelExportRegexp 
-    
-Only p4 labels matching this regular expression will be exported. The default value is _[a-zA-Z0-9_\\-.]+$_. 
+The submit process invokes the editor before each p4 change is submitted. If this setting is true, though, the editing step is skipped.
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4conflict)git-p4.conflict 
-    
-Specify submit behavior when a conflict with p4 is found, as per --conflict. The default behavior is _ask_. 
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4skipSubmitEditCheck)git-p4.skipSubmitEditCheck
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4disableRebase)git-p4.disableRebase 
-    
-Do not rebase the tree against p4/master following a submit. 
+After editing the p4 change message, _git p4_ makes sure that the description really was changed by looking at the file modification time. This option disables that test.
 
-[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4disableP4Sync)git-p4.disableP4Sync 
-    
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4allowSubmit)git-p4.allowSubmit
+
+By default, any branch can be used as the source for a _git p4 submit_ operation. This configuration variable, if set, permits only the named branches to be used as submit sources. Branch names must be the short names (no "refs/heads/"), and should be separated by commas (","), with no spaces.
+
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4skipUserNameCheck)git-p4.skipUserNameCheck
+
+If the user running _git p4 submit_ does not exist in the p4 user map, _git p4_ exits. This option can be used to force submission regardless.
+
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4attemptRCSCleanup)git-p4.attemptRCSCleanup
+
+If enabled, _git p4 submit_ will attempt to cleanup RCS keywords ($Header$, etc). These would otherwise cause merge conflicts and prevent the submit going ahead. This option should be considered experimental at present.
+
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4exportLabels)git-p4.exportLabels
+
+Export Git tags to p4 labels, as per --export-labels.
+
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4labelExportRegexp)git-p4.labelExportRegexp
+
+Only p4 labels matching this regular expression will be exported. The default value is _[a-zA-Z0-9_\\-.]+$_.
+
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4conflict)git-p4.conflict
+
+Specify submit behavior when a conflict with p4 is found, as per --conflict. The default behavior is _ask_.
+
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4disableRebase)git-p4.disableRebase
+
+Do not rebase the tree against p4/master following a submit.
+
+[](https://git-scm.com/docs/git-p4#Documentation/git-p4.txt-git-p4disableP4Sync)git-p4.disableP4Sync
+
 Do not sync p4/master with Perforce following a submit. Implies git-p4.disableRebase.
 ##  [](https://git-scm.com/docs/git-p4#_implementation_details)IMPLEMENTATION DETAILS
   * Changesets from p4 are imported using Git fast-import.
@@ -740,6 +740,6 @@ Do not sync p4/master with Perforce following a submit. Implies git-p4.disableRe
 ##  [](https://git-scm.com/docs/git-p4#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### p4
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-verify-tag#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-verify-tag#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-verify-tag#_description)
@@ -33,8 +33,8 @@ Localized versions of **git-verify-tag** manual
   5. [українська мова ](https://git-scm.com/docs/git-verify-tag/uk)
   6. [简体中文 ](https://git-scm.com/docs/git-verify-tag/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-verify-tag)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -199,21 +199,21 @@ git verify-tag [-v | --verbose] [--format=_<format>_] [--raw] _<tag>_…​
 
 ##  [](https://git-scm.com/docs/git-verify-tag#_description)DESCRIPTION
 Validates the gpg signature created by `git` `tag` in the tag objects listed on the command line.
-##  [](https://git-scm.com/docs/git-verify-tag#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-verify-tag#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-verify-tag#Documentation/git-verify-tag.txt---raw)`--raw` 
-    
-Print the raw gpg status output to standard error instead of the normal human-readable output. 
+[](https://git-scm.com/docs/git-verify-tag#Documentation/git-verify-tag.txt---raw)`--raw`
 
-[](https://git-scm.com/docs/git-verify-tag#Documentation/git-verify-tag.txt--v)`-v` 
+Print the raw gpg status output to standard error instead of the normal human-readable output.
+
+[](https://git-scm.com/docs/git-verify-tag#Documentation/git-verify-tag.txt--v)`-v`
 
 
-[](https://git-scm.com/docs/git-verify-tag#Documentation/git-verify-tag.txt---verbose)`--verbose` 
-    
+[](https://git-scm.com/docs/git-verify-tag#Documentation/git-verify-tag.txt---verbose)`--verbose`
+
 Print the contents of the tag object before validating it.
 ##  [](https://git-scm.com/docs/git-verify-tag#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### verify-tag
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-column#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-column#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-column#_description)
@@ -35,8 +35,8 @@ Localized versions of **git-column** manual
   5. [українська мова ](https://git-scm.com/docs/git-column/uk)
   6. [简体中文 ](https://git-scm.com/docs/git-column/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-column)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -206,34 +206,34 @@ _git column_ [--command=<name>] [--[raw-]mode=<mode>] [--width=<width>]
 
 ##  [](https://git-scm.com/docs/git-column#_description)DESCRIPTION
 This command formats the lines of its standard input into a table with multiple columns. Each input line occupies one cell of the table. It is used internally by other git commands to format output into columns.
-##  [](https://git-scm.com/docs/git-column#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-column#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-column#Documentation/git-column.txt---commandname)--command=<name> 
-    
-Look up layout mode using configuration variable column.<name> and column.ui. 
+[](https://git-scm.com/docs/git-column#Documentation/git-column.txt---commandname)--command=<name>
 
-[](https://git-scm.com/docs/git-column#Documentation/git-column.txt---modemode)--mode=<mode> 
-    
-Specify layout mode. See configuration variable column.ui for option syntax in [git-config[1]](https://git-scm.com/docs/git-config). 
+Look up layout mode using configuration variable column.<name> and column.ui.
 
-[](https://git-scm.com/docs/git-column#Documentation/git-column.txt---raw-moden)--raw-mode=<n> 
-    
-Same as --mode but take mode encoded as a number. This is mainly used by other commands that have already parsed layout mode. 
+[](https://git-scm.com/docs/git-column#Documentation/git-column.txt---modemode)--mode=<mode>
 
-[](https://git-scm.com/docs/git-column#Documentation/git-column.txt---widthwidth)--width=<width> 
-    
-Specify the terminal width. By default _git column_ will detect the terminal width, or fall back to 80 if it is unable to do so. 
+Specify layout mode. See configuration variable column.ui for option syntax in [git-config[1]](https://git-scm.com/docs/git-config).
 
-[](https://git-scm.com/docs/git-column#Documentation/git-column.txt---indentstring)--indent=<string> 
-    
-String to be printed at the beginning of each line. 
+[](https://git-scm.com/docs/git-column#Documentation/git-column.txt---raw-moden)--raw-mode=<n>
 
-[](https://git-scm.com/docs/git-column#Documentation/git-column.txt---nlstring)--nl=<string> 
-    
-String to be printed at the end of each line, including newline character. 
+Same as --mode but take mode encoded as a number. This is mainly used by other commands that have already parsed layout mode.
 
-[](https://git-scm.com/docs/git-column#Documentation/git-column.txt---paddingN)--padding=<N> 
-    
+[](https://git-scm.com/docs/git-column#Documentation/git-column.txt---widthwidth)--width=<width>
+
+Specify the terminal width. By default _git column_ will detect the terminal width, or fall back to 80 if it is unable to do so.
+
+[](https://git-scm.com/docs/git-column#Documentation/git-column.txt---indentstring)--indent=<string>
+
+String to be printed at the beginning of each line.
+
+[](https://git-scm.com/docs/git-column#Documentation/git-column.txt---nlstring)--nl=<string>
+
+String to be printed at the end of each line, including newline character.
+
+[](https://git-scm.com/docs/git-column#Documentation/git-column.txt---paddingN)--padding=<N>
+
 The number of spaces between columns. One space by default.
 ##  [](https://git-scm.com/docs/git-column#_examples)EXAMPLES
 Format data by columns:
@@ -262,65 +262,65 @@ v2.4.8  v2.4.9
 ```
 
 ##  [](https://git-scm.com/docs/git-column#_configuration)CONFIGURATION
-Everything below this line in this section is selectively included from the [git-config[1]](https://git-scm.com/docs/git-config) documentation. The content is the same as what’s found there: 
+Everything below this line in this section is selectively included from the [git-config[1]](https://git-scm.com/docs/git-config) documentation. The content is the same as what’s found there:
 
-[](https://git-scm.com/docs/git-column#Documentation/git-column.txt-columnui)column.ui 
-    
+[](https://git-scm.com/docs/git-column#Documentation/git-column.txt-columnui)column.ui
+
 Specify whether supported commands should output in columns. This variable consists of a list of tokens separated by spaces or commas:
-These options control when the feature should be enabled (defaults to _never_): 
+These options control when the feature should be enabled (defaults to _never_):
 
-[](https://git-scm.com/docs/git-column#Documentation/git-column.txt-always)`always` 
-    
-always show in columns 
+[](https://git-scm.com/docs/git-column#Documentation/git-column.txt-always)`always`
 
-[](https://git-scm.com/docs/git-column#Documentation/git-column.txt-never)`never` 
-    
-never show in columns 
+always show in columns
 
-[](https://git-scm.com/docs/git-column#Documentation/git-column.txt-auto)`auto` 
-    
+[](https://git-scm.com/docs/git-column#Documentation/git-column.txt-never)`never`
+
+never show in columns
+
+[](https://git-scm.com/docs/git-column#Documentation/git-column.txt-auto)`auto`
+
 show in columns if the output is to the terminal
-These options control layout (defaults to _column_). Setting any of these implies _always_ if none of _always_ , _never_ , or _auto_ are specified. 
+These options control layout (defaults to _column_). Setting any of these implies _always_ if none of _always_ , _never_ , or _auto_ are specified.
 
-[](https://git-scm.com/docs/git-column#Documentation/git-column.txt-column)`column` 
-    
-fill columns before rows 
+[](https://git-scm.com/docs/git-column#Documentation/git-column.txt-column)`column`
 
-[](https://git-scm.com/docs/git-column#Documentation/git-column.txt-row)`row` 
-    
-fill rows before columns 
+fill columns before rows
 
-[](https://git-scm.com/docs/git-column#Documentation/git-column.txt-plain)`plain` 
-    
+[](https://git-scm.com/docs/git-column#Documentation/git-column.txt-row)`row`
+
+fill rows before columns
+
+[](https://git-scm.com/docs/git-column#Documentation/git-column.txt-plain)`plain`
+
 show in one column
-Finally, these options can be combined with a layout option (defaults to _nodense_): 
+Finally, these options can be combined with a layout option (defaults to _nodense_):
 
-[](https://git-scm.com/docs/git-column#Documentation/git-column.txt-dense)`dense` 
-    
-make unequal size columns to utilize more space 
+[](https://git-scm.com/docs/git-column#Documentation/git-column.txt-dense)`dense`
 
-[](https://git-scm.com/docs/git-column#Documentation/git-column.txt-nodense)`nodense` 
-    
-make equal size columns 
+make unequal size columns to utilize more space
 
-[](https://git-scm.com/docs/git-column#Documentation/git-column.txt-columnbranch)column.branch 
-    
-Specify whether to output branch listing in `git` `branch` in columns. See `column.ui` for details. 
+[](https://git-scm.com/docs/git-column#Documentation/git-column.txt-nodense)`nodense`
 
-[](https://git-scm.com/docs/git-column#Documentation/git-column.txt-columnclean)column.clean 
-    
-Specify the layout when listing items in `git` `clean` `-i`, which always shows files and directories in columns. See `column.ui` for details. 
+make equal size columns
 
-[](https://git-scm.com/docs/git-column#Documentation/git-column.txt-columnstatus)column.status 
-    
-Specify whether to output untracked files in `git` `status` in columns. See `column.ui` for details. 
+[](https://git-scm.com/docs/git-column#Documentation/git-column.txt-columnbranch)column.branch
 
-[](https://git-scm.com/docs/git-column#Documentation/git-column.txt-columntag)column.tag 
-    
+Specify whether to output branch listing in `git` `branch` in columns. See `column.ui` for details.
+
+[](https://git-scm.com/docs/git-column#Documentation/git-column.txt-columnclean)column.clean
+
+Specify the layout when listing items in `git` `clean` `-i`, which always shows files and directories in columns. See `column.ui` for details.
+
+[](https://git-scm.com/docs/git-column#Documentation/git-column.txt-columnstatus)column.status
+
+Specify whether to output untracked files in `git` `status` in columns. See `column.ui` for details.
+
+[](https://git-scm.com/docs/git-column#Documentation/git-column.txt-columntag)column.tag
+
 Specify whether to output tag listings in `git` `tag` in columns. See `column.ui` for details.
 ##  [](https://git-scm.com/docs/git-column#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### column
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

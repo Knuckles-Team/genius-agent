@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-rerere#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-rerere#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-rerere#_description)
@@ -33,8 +33,8 @@ Localized versions of **git-rerere** manual
   4. [українська мова ](https://git-scm.com/docs/git-rerere/uk)
   5. [简体中文 ](https://git-scm.com/docs/git-rerere/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-rerere)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -204,33 +204,33 @@ _git rerere_ [clear | forget <pathspec>…​ | diff | status | remaining | gc]
 ##  [](https://git-scm.com/docs/git-rerere#_description)DESCRIPTION
 In a workflow employing relatively long lived topic branches, the developer sometimes needs to resolve the same conflicts over and over again until the topic branches are done (either merged to the "release" branch, or sent out and accepted upstream).
 This command assists the developer in this process by recording conflicted automerge results and corresponding hand resolve results on the initial manual merge, and applying previously recorded hand resolutions to their corresponding automerge results.
-Note |  You need to set the configuration variable `rerere.enabled` in order to enable this command.   
----|---  
+Note |  You need to set the configuration variable `rerere.enabled` in order to enable this command.
+---|---
 ##  [](https://git-scm.com/docs/git-rerere#_commands)COMMANDS
-Normally, _git rerere_ is run without arguments or user-intervention. However, it has several commands that allow it to interact with its working state. 
+Normally, _git rerere_ is run without arguments or user-intervention. However, it has several commands that allow it to interact with its working state.
 
-[](https://git-scm.com/docs/git-rerere#Documentation/git-rerere.txt-clear)_clear_ 
-    
-Reset the metadata used by rerere if a merge resolution is to be aborted. Calling _git am [--skip|--abort]_ or _git rebase [--skip|--abort]_ will automatically invoke this command. 
+[](https://git-scm.com/docs/git-rerere#Documentation/git-rerere.txt-clear)_clear_
 
-[](https://git-scm.com/docs/git-rerere#Documentation/git-rerere.txt-forgetpathspec)_forget_ <pathspec> 
-    
-Reset the conflict resolutions which rerere has recorded for the current conflict in <pathspec>. 
+Reset the metadata used by rerere if a merge resolution is to be aborted. Calling _git am [--skip|--abort]_ or _git rebase [--skip|--abort]_ will automatically invoke this command.
 
-[](https://git-scm.com/docs/git-rerere#Documentation/git-rerere.txt-diff)_diff_ 
-    
-Display diffs for the current state of the resolution. It is useful for tracking what has changed while the user is resolving conflicts. Additional arguments are passed directly to the system _diff_ command installed in PATH. 
+[](https://git-scm.com/docs/git-rerere#Documentation/git-rerere.txt-forgetpathspec)_forget_ <pathspec>
 
-[](https://git-scm.com/docs/git-rerere#Documentation/git-rerere.txt-status)_status_ 
-    
-Print paths with conflicts whose merge resolution rerere will record. 
+Reset the conflict resolutions which rerere has recorded for the current conflict in <pathspec>.
 
-[](https://git-scm.com/docs/git-rerere#Documentation/git-rerere.txt-remaining)_remaining_ 
-    
-Print paths with conflicts that have not been autoresolved by rerere. This includes paths whose resolutions cannot be tracked by rerere, such as conflicting submodules. 
+[](https://git-scm.com/docs/git-rerere#Documentation/git-rerere.txt-diff)_diff_
 
-[](https://git-scm.com/docs/git-rerere#Documentation/git-rerere.txt-gc)_gc_ 
-    
+Display diffs for the current state of the resolution. It is useful for tracking what has changed while the user is resolving conflicts. Additional arguments are passed directly to the system _diff_ command installed in PATH.
+
+[](https://git-scm.com/docs/git-rerere#Documentation/git-rerere.txt-status)_status_
+
+Print paths with conflicts whose merge resolution rerere will record.
+
+[](https://git-scm.com/docs/git-rerere#Documentation/git-rerere.txt-remaining)_remaining_
+
+Print paths with conflicts that have not been autoresolved by rerere. This includes paths whose resolutions cannot be tracked by rerere, such as conflicting submodules.
+
+[](https://git-scm.com/docs/git-rerere#Documentation/git-rerere.txt-gc)_gc_
+
 Prune records of conflicted merges that occurred a long time ago. By default, unresolved conflicts older than 15 days and resolved conflicts older than 60 days are pruned. These defaults are controlled via the `gc.rerereUnresolved` and `gc.rerereResolved` configuration variables respectively.
 ##  [](https://git-scm.com/docs/git-rerere#_discussion)DISCUSSION
 When your topic branch modifies an overlapping area that your master branch (or upstream) touched since your topic branch forked from it, you may want to test it with the latest master, even before your topic branch is ready to be pushed upstream:
@@ -302,6 +302,6 @@ you could run `git` `rebase` `master` `topic`, to bring yourself up to date befo
 ##  [](https://git-scm.com/docs/git-rerere#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### rerere
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

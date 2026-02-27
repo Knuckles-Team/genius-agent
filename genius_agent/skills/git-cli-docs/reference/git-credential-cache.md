@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-credential-cache#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-credential-cache#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-credential-cache#_description)
@@ -35,8 +35,8 @@ Localized versions of **git-credential-cache** manual
   4. [українська мова ](https://git-scm.com/docs/git-credential-cache/uk)
   5. [简体中文 ](https://git-scm.com/docs/git-credential-cache/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-credential-cache)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -208,14 +208,14 @@ git config credential.helper 'cache [<options>]'
 ##  [](https://git-scm.com/docs/git-credential-cache#_description)DESCRIPTION
 This command caches credentials for use by future Git programs. The stored credentials are kept in memory of the cache-daemon process (instead of being written to a file) and are forgotten after a configurable timeout. Credentials are forgotten sooner if the cache-daemon dies, for example if the system restarts. The cache is accessible over a Unix domain socket, restricted to the current user by filesystem permissions.
 You probably don’t want to invoke this command directly; it is meant to be used as a credential helper by other parts of Git. See [gitcredentials[7]](https://git-scm.com/docs/gitcredentials) or `EXAMPLES` below.
-##  [](https://git-scm.com/docs/git-credential-cache#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-credential-cache#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-credential-cache#Documentation/git-credential-cache.txt---timeoutseconds)--timeout <seconds> 
-    
-Number of seconds to cache credentials (default: 900). 
+[](https://git-scm.com/docs/git-credential-cache#Documentation/git-credential-cache.txt---timeoutseconds)--timeout <seconds>
 
-[](https://git-scm.com/docs/git-credential-cache#Documentation/git-credential-cache.txt---socketpath)--socket <path> 
-    
+Number of seconds to cache credentials (default: 900).
+
+[](https://git-scm.com/docs/git-credential-cache#Documentation/git-credential-cache.txt---socketpath)--socket <path>
+
 Use _< path>_ to contact a running cache daemon (or start a new cache daemon if one is not started). Defaults to `$XDG_CACHE_HOME/git/credential/socket` unless `~/.git-credential-cache/` exists in which case `~/.git-credential-cache/socket` is used instead. If your home directory is on a network-mounted filesystem, you may need to change this to a local filesystem. You must specify an absolute path.
 ##  [](https://git-scm.com/docs/git-credential-cache#_controlling_the_daemon)CONTROLLING THE DAEMON
 If you would like the daemon to exit early, forgetting all cached credentials before their timeout, you can issue an `exit` action:
@@ -248,6 +248,6 @@ To avoid frequently regenerating personal access tokens, configure a credential 
 ##  [](https://git-scm.com/docs/git-credential-cache#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### credential-cache
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

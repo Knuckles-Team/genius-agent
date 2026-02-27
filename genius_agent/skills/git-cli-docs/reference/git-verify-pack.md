@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-verify-pack#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-verify-pack#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-verify-pack#_description)
@@ -33,8 +33,8 @@ Localized versions of **git-verify-pack** manual
   4. [українська мова ](https://git-scm.com/docs/git-verify-pack/uk)
   5. [简体中文 ](https://git-scm.com/docs/git-verify-pack/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-verify-pack)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -199,24 +199,24 @@ git verify-pack [-v | --verbose] [-s | --stat-only] [--] _<pack>_.idx...
 
 ##  [](https://git-scm.com/docs/git-verify-pack#_description)DESCRIPTION
 Read each idx file for packed Git archive given on the command line, and verify the idx file and the corresponding pack file.
-##  [](https://git-scm.com/docs/git-verify-pack#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-verify-pack#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-verify-pack#Documentation/git-verify-pack.txt--v)`-v` 
-
-
-[](https://git-scm.com/docs/git-verify-pack#Documentation/git-verify-pack.txt---verbose)`--verbose` 
-    
-After verifying the pack, show the list of objects contained in the pack and a histogram of delta chain length. 
-
-[](https://git-scm.com/docs/git-verify-pack#Documentation/git-verify-pack.txt--s)`-s` 
+[](https://git-scm.com/docs/git-verify-pack#Documentation/git-verify-pack.txt--v)`-v`
 
 
-[](https://git-scm.com/docs/git-verify-pack#Documentation/git-verify-pack.txt---stat-only)`--stat-only` 
-    
-Do not verify the pack contents; only show the histogram of delta chain length. With `--verbose`, the list of objects is also shown. 
+[](https://git-scm.com/docs/git-verify-pack#Documentation/git-verify-pack.txt---verbose)`--verbose`
 
-[](https://git-scm.com/docs/git-verify-pack#Documentation/git-verify-pack.txt---)`--` 
-    
+After verifying the pack, show the list of objects contained in the pack and a histogram of delta chain length.
+
+[](https://git-scm.com/docs/git-verify-pack#Documentation/git-verify-pack.txt--s)`-s`
+
+
+[](https://git-scm.com/docs/git-verify-pack#Documentation/git-verify-pack.txt---stat-only)`--stat-only`
+
+Do not verify the pack contents; only show the histogram of delta chain length. With `--verbose`, the list of objects is also shown.
+
+[](https://git-scm.com/docs/git-verify-pack#Documentation/git-verify-pack.txt---)`--`
+
 Do not interpret any more arguments as options.
 ##  [](https://git-scm.com/docs/git-verify-pack#_output_format)OUTPUT FORMAT
 When specifying the `-v` option the format used is:
@@ -233,6 +233,6 @@ for objects that are deltified.
 ##  [](https://git-scm.com/docs/git-verify-pack#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### verify-pack
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

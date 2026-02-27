@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-refs#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-refs#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-refs#_description)
@@ -30,8 +30,8 @@
 Localized versions of **git-refs** manual
   1. [English ](https://git-scm.com/docs/git-refs)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-refs)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -206,160 +206,160 @@ git refs optimize [--all] [--no-prune] [--auto] [--include _<pattern>_] [--exclu
 
 ##  [](https://git-scm.com/docs/git-refs#_description)DESCRIPTION
 This command provides low-level access to refs.
-##  [](https://git-scm.com/docs/git-refs#_commands)COMMANDS 
+##  [](https://git-scm.com/docs/git-refs#_commands)COMMANDS
 
-[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt-migrate)`migrate` 
-    
-Migrate ref store between different formats. 
+[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt-migrate)`migrate`
 
-[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt-verify)`verify` 
-    
-Verify reference database consistency. 
+Migrate ref store between different formats.
 
-[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt-list)list 
-    
-List references in the repository with support for filtering, formatting, and sorting. This subcommand is an alias for [git-for-each-ref[1]](https://git-scm.com/docs/git-for-each-ref) and offers identical functionality. 
+[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt-verify)`verify`
 
-[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt-exists)exists 
-    
-Check whether the given reference exists. Returns an exit code of 0 if it does, 2 if it is missing, and 1 in case looking up the reference failed with an error other than the reference being missing. This does not verify whether the reference resolves to an actual object. 
+Verify reference database consistency.
 
-[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt-optimize)optimize 
-    
+[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt-list)list
+
+List references in the repository with support for filtering, formatting, and sorting. This subcommand is an alias for [git-for-each-ref[1]](https://git-scm.com/docs/git-for-each-ref) and offers identical functionality.
+
+[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt-exists)exists
+
+Check whether the given reference exists. Returns an exit code of 0 if it does, 2 if it is missing, and 1 in case looking up the reference failed with an error other than the reference being missing. This does not verify whether the reference resolves to an actual object.
+
+[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt-optimize)optimize
+
 Optimizes references to improve repository performance and reduce disk usage. This subcommand is an alias for [git-pack-refs[1]](https://git-scm.com/docs/git-pack-refs) and offers identical functionality.
 ##  [](https://git-scm.com/docs/git-refs#_options)OPTIONS
-The following options are specific to `git` `refs` `migrate`: 
+The following options are specific to `git` `refs` `migrate`:
 
-[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---ref-formatformat)`--ref-format=`_< format>_ 
-    
+[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---ref-formatformat)`--ref-format=`_< format>_
+
 The ref format to migrate the ref store to. Can be one of:
   * `files` for loose files with packed-refs. This is the default.
   * `reftable` for the reftable format. This format is experimental and its internals are subject to change.
 
 
 
-[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---dry-run)`--dry-run` 
-    
-Perform the migration, but do not modify the repository. The migrated refs will be written into a separate directory that can be inspected separately. The name of the directory will be reported on stdout. This can be used to double check that the migration works as expected before performing the actual migration. 
+[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---dry-run)`--dry-run`
 
-[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---reflog)`--reflog` 
+Perform the migration, but do not modify the repository. The migrated refs will be written into a separate directory that can be inspected separately. The name of the directory will be reported on stdout. This can be used to double check that the migration works as expected before performing the actual migration.
+
+[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---reflog)`--reflog`
 
 
-[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---no-reflog)`--no-reflog` 
-    
+[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---no-reflog)`--no-reflog`
+
 Choose between migrating the reflog data to the new backend, and discarding them. The default is "--reflog", to migrate.
-The following options are specific to `git` `refs` `verify`: 
+The following options are specific to `git` `refs` `verify`:
 
-[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---strict)`--strict` 
-    
-Enable stricter error checking. This will cause warnings to be reported as errors. See [git-fsck[1]](https://git-scm.com/docs/git-fsck). 
+[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---strict)`--strict`
 
-[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---verbose)`--verbose` 
-    
+Enable stricter error checking. This will cause warnings to be reported as errors. See [git-fsck[1]](https://git-scm.com/docs/git-fsck).
+
+[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---verbose)`--verbose`
+
 When verifying the reference database consistency, be chatty.
-The following options are specific to _git refs list_ : 
+The following options are specific to _git refs list_ :
 
-[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt-pattern)_< pattern>_... 
-    
-If one or more _< pattern>_ parameters are given, only refs are shown that match against at least one pattern, either using `fnmatch`(3) or literally, in the latter case matching completely or from the beginning up to a slash. 
+[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt-pattern)_< pattern>_...
 
-[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---stdin)`--stdin` 
-    
-The list of patterns is read from standard input instead of from the argument list. 
+If one or more _< pattern>_ parameters are given, only refs are shown that match against at least one pattern, either using `fnmatch`(3) or literally, in the latter case matching completely or from the beginning up to a slash.
 
-[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---countcount)`--count=`_< count>_ 
-    
-Stop after showing _< count>_ refs. 
+[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---stdin)`--stdin`
 
-[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---sortkey)`--sort=`_< key>_ 
-    
-Sort on the field name _< key>_. Prefix `-` to sort in descending order of the value. When unspecified, `refname` is used. You may use the `--sort=`_< key>_ option multiple times, in which case the last key becomes the primary key. 
+The list of patterns is read from standard input instead of from the argument list.
 
-[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---formatformat)`--format`[`=`_< format>_] 
-    
+[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---countcount)`--count=`_< count>_
+
+Stop after showing _< count>_ refs.
+
+[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---sortkey)`--sort=`_< key>_
+
+Sort on the field name _< key>_. Prefix `-` to sort in descending order of the value. When unspecified, `refname` is used. You may use the `--sort=`_< key>_ option multiple times, in which case the last key becomes the primary key.
+
+[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---formatformat)`--format`[`=`_< format>_]
+
 A string that interpolates `%`(`fieldname`) from a ref being shown and the object it points at. In addition, the string literal `%%` renders as `%` and `%xx` - where `xx` are hex digits - renders as the character with hex code `xx`. For example, `%00` interpolates to _\0_ (_NUL_), `%09` to _\t_ (_TAB_), and `%0a` to _\n_ (_LF_).
-When unspecified, _< format>_ defaults to `%`(`objectname`) `SPC` `%`(`objecttype`) `TAB` `%`(`refname`). 
+When unspecified, _< format>_ defaults to `%`(`objectname`) `SPC` `%`(`objecttype`) `TAB` `%`(`refname`).
 
-[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---colorwhen)`--color`[`=`_< when>_] 
-    
-Respect any colors specified in the `--format` option. The _< when__ field must be one of `always`, `never`, or `auto` (if _< when>_ is absent, behave as if `always` was given). 
+[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---colorwhen)`--color`[`=`_< when>_]
 
-[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---shell)`--shell` 
+Respect any colors specified in the `--format` option. The _< when__ field must be one of `always`, `never`, or `auto` (if _< when>_ is absent, behave as if `always` was given).
 
-
-[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---perl)`--perl` 
+[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---shell)`--shell`
 
 
-[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---python)`--python` 
+[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---perl)`--perl`
 
 
-[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---tcl)`--tcl` 
-    
-If given, strings that substitute `%`(`fieldname`) placeholders are quoted as string literals suitable for the specified host language. This is meant to produce a scriptlet that can directly be "eval"ed. 
+[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---python)`--python`
 
-[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---points-atobject)`--points-at=`_< object>_ 
-    
-Only list refs which points at the given object. 
 
-[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---mergedobject)`--merged`[`=`_< object>_] 
-    
-Only list refs whose tips are reachable from the specified commit (`HEAD` if not specified). 
+[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---tcl)`--tcl`
 
-[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---no-mergedobject)`--no-merged`[`=`_< object>_] 
-    
-Only list refs whose tips are not reachable from _< object>_(`HEAD` if not specified). 
+If given, strings that substitute `%`(`fieldname`) placeholders are quoted as string literals suitable for the specified host language. This is meant to produce a scriptlet that can directly be "eval"ed.
 
-[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---containsobject)`--contains`[`=`_< object>_] 
-    
-Only list refs which contain _< object>_(`HEAD` if not specified). 
+[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---points-atobject)`--points-at=`_< object>_
 
-[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---no-containsobject)`--no-contains`[`=`_< object>_] 
-    
-Only list refs which don’t contain _< object>_ (`HEAD` if not specified). 
+Only list refs which points at the given object.
 
-[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---ignore-case)`--ignore-case` 
-    
-Sorting and filtering refs are case insensitive. 
+[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---mergedobject)`--merged`[`=`_< object>_]
 
-[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---omit-empty)`--omit-empty` 
-    
-Do not print a newline after formatted refs where the format expands to the empty string. 
+Only list refs whose tips are reachable from the specified commit (`HEAD` if not specified).
 
-[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---excludeexcluded-pattern)`--exclude=`_< excluded-pattern>_ 
-    
-If one or more `--exclude` options are given, only refs which do not match any _< excluded-pattern>_ parameters are shown. Matching is done using the same rules as _< pattern>_ above. 
+[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---no-mergedobject)`--no-merged`[`=`_< object>_]
 
-[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---include-root-refs)`--include-root-refs` 
-    
-List root refs (`HEAD` and pseudorefs) apart from regular refs. 
+Only list refs whose tips are not reachable from _< object>_(`HEAD` if not specified).
 
-[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---start-aftermarker)`--start-after=`_< marker>_ 
-    
+[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---containsobject)`--contains`[`=`_< object>_]
+
+Only list refs which contain _< object>_(`HEAD` if not specified).
+
+[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---no-containsobject)`--no-contains`[`=`_< object>_]
+
+Only list refs which don’t contain _< object>_ (`HEAD` if not specified).
+
+[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---ignore-case)`--ignore-case`
+
+Sorting and filtering refs are case insensitive.
+
+[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---omit-empty)`--omit-empty`
+
+Do not print a newline after formatted refs where the format expands to the empty string.
+
+[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---excludeexcluded-pattern)`--exclude=`_< excluded-pattern>_
+
+If one or more `--exclude` options are given, only refs which do not match any _< excluded-pattern>_ parameters are shown. Matching is done using the same rules as _< pattern>_ above.
+
+[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---include-root-refs)`--include-root-refs`
+
+List root refs (`HEAD` and pseudorefs) apart from regular refs.
+
+[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---start-aftermarker)`--start-after=`_< marker>_
+
 Allows paginating the output by skipping references up to and including the specified marker. When paging, it should be noted that references may be deleted, modified or added between invocations. Output will only yield those references which follow the marker lexicographically. Output begins from the first reference that would come after the marker alphabetically. Cannot be used with `--sort=`_< key>_ or `--stdin` options, or the _< pattern>_ argument(s) to limit the refs.
-The following options are specific to _git refs optimize_ : 
+The following options are specific to _git refs optimize_ :
 
-[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---all)--all 
-    
-The command by default packs all tags and refs that are already packed, and leaves other refs alone. This is because branches are expected to be actively developed and packing their tips does not help performance. This option causes all refs to be packed as well, with the exception of hidden refs, broken refs, and symbolic refs. Useful for a repository with many branches of historical interests. 
+[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---all)--all
 
-[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---no-prune)--no-prune 
-    
-The command usually removes loose refs under `$GIT_DIR/refs` hierarchy after packing them. This option tells it not to. 
+The command by default packs all tags and refs that are already packed, and leaves other refs alone. This is because branches are expected to be actively developed and packing their tips does not help performance. This option causes all refs to be packed as well, with the exception of hidden refs, broken refs, and symbolic refs. Useful for a repository with many branches of historical interests.
 
-[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---auto)--auto 
-    
+[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---no-prune)--no-prune
+
+The command usually removes loose refs under `$GIT_DIR/refs` hierarchy after packing them. This option tells it not to.
+
+[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---auto)--auto
+
 Pack refs as needed depending on the current state of the ref database. The behavior depends on the ref format used by the repository and may change in the future.
   * "files": Loose references are packed into the `packed-refs` file based on the ratio of loose references to the size of the `packed-refs` file. The bigger the `packed-refs` file, the more loose references need to exist before we repack.
   * "reftable": Tables are compacted such that they form a geometric sequence. For two tables N and N+1, where N+1 is newer, this maintains the property that N is at least twice as big as N+1. Only tables that violate this property are compacted.
 
 
 
-[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---includepattern)--include <pattern> 
-    
-Pack refs based on a `glob`(`7`) pattern. Repetitions of this option accumulate inclusion patterns. If a ref is both included in `--include` and `--exclude`, `--exclude` takes precedence. Using `--include` will preclude all tags from being included by default. Symbolic refs and broken refs will never be packed. When used with `--all`, it will be a noop. Use `--no-include` to clear and reset the list of patterns. 
+[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---includepattern)--include <pattern>
 
-[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---excludepattern)--exclude <pattern> 
-    
+Pack refs based on a `glob`(`7`) pattern. Repetitions of this option accumulate inclusion patterns. If a ref is both included in `--include` and `--exclude`, `--exclude` takes precedence. Using `--include` will preclude all tags from being included by default. Symbolic refs and broken refs will never be packed. When used with `--all`, it will be a noop. Use `--no-include` to clear and reset the list of patterns.
+
+[](https://git-scm.com/docs/git-refs#Documentation/git-refs.txt---excludepattern)--exclude <pattern>
+
 Do not pack refs matching the given `glob`(`7`) pattern. Repetitions of this option accumulate exclusion patterns. Use `--no-exclude` to clear and reset the list of patterns. If a ref is already packed, including it with `--exclude` will not unpack it.
 When used with `--all`, pack only loose refs which do not match any of the provided `--exclude` patterns.
 When used with `--include`, refs provided to `--include`, minus refs that are provided to `--exclude` will be packed.
@@ -373,6 +373,6 @@ These limitations may eventually be lifted.
 ##  [](https://git-scm.com/docs/git-refs#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### refs
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

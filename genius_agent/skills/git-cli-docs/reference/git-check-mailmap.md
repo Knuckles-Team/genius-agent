@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-check-mailmap#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-check-mailmap#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-check-mailmap#_description)
@@ -37,8 +37,8 @@ Localized versions of **git-check-mailmap** manual
   6. [українська мова ](https://git-scm.com/docs/git-check-mailmap/uk)
   7. [简体中文 ](https://git-scm.com/docs/git-check-mailmap/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-check-mailmap)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -201,18 +201,18 @@ _git check-mailmap_ [<options>] <contact>…​
 
 ##  [](https://git-scm.com/docs/git-check-mailmap#_description)DESCRIPTION
 For each “Name <user@host>”, “<user@host>”, or “user@host” from the command-line or standard input (when using `--stdin`), look up the person’s canonical name and email address (see "Mapping Authors" below). If found, print them; otherwise print the input as-is.
-##  [](https://git-scm.com/docs/git-check-mailmap#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-check-mailmap#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-check-mailmap#Documentation/git-check-mailmap.txt---stdin)--stdin 
-    
-Read contacts, one per line, from the standard input after exhausting contacts provided on the command-line. 
+[](https://git-scm.com/docs/git-check-mailmap#Documentation/git-check-mailmap.txt---stdin)--stdin
 
-[](https://git-scm.com/docs/git-check-mailmap#Documentation/git-check-mailmap.txt---mailmap-filefile)--mailmap-file=<file> 
-    
-In addition to any configured mailmap files, read the specified mailmap file. Entries in this file take precedence over entries in either the default mailmap file or any configured mailmap file. 
+Read contacts, one per line, from the standard input after exhausting contacts provided on the command-line.
 
-[](https://git-scm.com/docs/git-check-mailmap#Documentation/git-check-mailmap.txt---mailmap-blobblob)--mailmap-blob=<blob> 
-    
+[](https://git-scm.com/docs/git-check-mailmap#Documentation/git-check-mailmap.txt---mailmap-filefile)--mailmap-file=<file>
+
+In addition to any configured mailmap files, read the specified mailmap file. Entries in this file take precedence over entries in either the default mailmap file or any configured mailmap file.
+
+[](https://git-scm.com/docs/git-check-mailmap#Documentation/git-check-mailmap.txt---mailmap-blobblob)--mailmap-blob=<blob>
+
 Like `--mailmap-file`, but consider the value as a reference to a blob in the repository. If both `--mailmap-file` and `--mailmap-blob` are specified, entries in `--mailmap-file` will take precedence.
 ##  [](https://git-scm.com/docs/git-check-mailmap#_output)OUTPUT
 For each contact, a single line is output, terminated by a newline. If the name is provided or known to the _mailmap_ , “Name <user@host>” is printed; otherwise only “<user@host>” is printed.
@@ -223,6 +223,6 @@ See [gitmailmap[5]](https://git-scm.com/docs/gitmailmap).
 ##  [](https://git-scm.com/docs/git-check-mailmap#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### check-mailmap
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

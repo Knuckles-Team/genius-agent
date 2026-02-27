@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-prune-packed#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-prune-packed#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-prune-packed#_description)
@@ -34,8 +34,8 @@ Localized versions of **git-prune-packed** manual
   5. [українська мова ](https://git-scm.com/docs/git-prune-packed/uk)
   6. [简体中文 ](https://git-scm.com/docs/git-prune-packed/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-prune-packed)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -201,26 +201,26 @@ This program searches the `$GIT_OBJECT_DIRECTORY` for all objects that currently
 All such extra objects are removed.
 A pack is a collection of objects, individually compressed, with delta compression applied, stored in a single file, with an associated index file.
 Packs are used to reduce the load on mirror systems, backup engines, disk storage, etc.
-##  [](https://git-scm.com/docs/git-prune-packed#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-prune-packed#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-prune-packed#Documentation/git-prune-packed.txt--n)-n 
-
-
-[](https://git-scm.com/docs/git-prune-packed#Documentation/git-prune-packed.txt---dry-run)--dry-run 
-    
-Don’t actually remove any objects, only show those that would have been removed. 
-
-[](https://git-scm.com/docs/git-prune-packed#Documentation/git-prune-packed.txt--q)-q 
+[](https://git-scm.com/docs/git-prune-packed#Documentation/git-prune-packed.txt--n)-n
 
 
-[](https://git-scm.com/docs/git-prune-packed#Documentation/git-prune-packed.txt---quiet)--quiet 
-    
+[](https://git-scm.com/docs/git-prune-packed#Documentation/git-prune-packed.txt---dry-run)--dry-run
+
+Don’t actually remove any objects, only show those that would have been removed.
+
+[](https://git-scm.com/docs/git-prune-packed#Documentation/git-prune-packed.txt--q)-q
+
+
+[](https://git-scm.com/docs/git-prune-packed#Documentation/git-prune-packed.txt---quiet)--quiet
+
 Squelch the progress indicator.
 ##  [](https://git-scm.com/docs/git-prune-packed#_see_also)SEE ALSO
 [git-pack-objects[1]](https://git-scm.com/docs/git-pack-objects) [git-repack[1]](https://git-scm.com/docs/git-repack)
 ##  [](https://git-scm.com/docs/git-prune-packed#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### prune-packed
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

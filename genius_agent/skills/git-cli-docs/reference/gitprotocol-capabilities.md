@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/gitprotocol-capabilities#_name)
     * [SYNOPSIS](https://git-scm.com/docs/gitprotocol-capabilities#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/gitprotocol-capabilities#_description)
@@ -53,8 +53,8 @@
 Localized versions of **gitprotocol-capabilities** manual
   1. [English ](https://git-scm.com/docs/gitprotocol-capabilities)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/gitprotocol-capabilities)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -214,8 +214,8 @@ gitprotocol-capabilities - Protocol v0 and v1 capabilities
 ```
 
 ##  [](https://git-scm.com/docs/gitprotocol-capabilities#_description)DESCRIPTION
-Note |  this document describes capabilities for versions 0 and 1 of the pack protocol. For version 2, please refer to the [gitprotocol-v2[5]](https://git-scm.com/docs/gitprotocol-v2) doc.   
----|---  
+Note |  this document describes capabilities for versions 0 and 1 of the pack protocol. For version 2, please refer to the [gitprotocol-v2[5]](https://git-scm.com/docs/gitprotocol-v2) doc.
+---|---
 Servers SHOULD support all capabilities defined in this document.
 On the very first line of the initial server response of either receive-pack and upload-pack the first reference is followed by a NUL byte and then a list of space delimited server capabilities. These allow the server to declare what it can and cannot support to the client.
 Client will then send a space separated list of capabilities it wants to be in effect. The client MUST NOT ask for capabilities the server did not say it supports.
@@ -317,6 +317,6 @@ Session IDs should be unique to a given process. They must fit within a packet-l
 ##  [](https://git-scm.com/docs/gitprotocol-capabilities#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### gitprotocol-capabilities
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

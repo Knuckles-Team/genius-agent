@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-last-modified#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-last-modified#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-last-modified#_description)
@@ -29,8 +29,8 @@
 Localized versions of **git-last-modified** manual
   1. [English ](https://git-scm.com/docs/git-last-modified)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-last-modified)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -188,34 +188,34 @@ git last-modified [--recursive] [--show-trees] [_<revision-range>_] [[--] _<path
 ##  [](https://git-scm.com/docs/git-last-modified#_description)DESCRIPTION
 Shows which commit last modified each of the relevant files and subdirectories. A commit renaming a path, or changing it’s mode is also taken into account.
 THIS COMMAND IS EXPERIMENTAL. THE BEHAVIOR MAY CHANGE.
-##  [](https://git-scm.com/docs/git-last-modified#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-last-modified#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-last-modified#Documentation/git-last-modified.txt--r)`-r` 
-
-
-[](https://git-scm.com/docs/git-last-modified#Documentation/git-last-modified.txt---recursive)`--recursive` 
-    
-Instead of showing tree entries, step into subtrees and show all entries inside them recursively. 
-
-[](https://git-scm.com/docs/git-last-modified#Documentation/git-last-modified.txt--t)`-t` 
+[](https://git-scm.com/docs/git-last-modified#Documentation/git-last-modified.txt--r)`-r`
 
 
-[](https://git-scm.com/docs/git-last-modified#Documentation/git-last-modified.txt---show-trees)`--show-trees` 
-    
-Show tree entries even when recursing into them. It has no effect without `--recursive`. 
+[](https://git-scm.com/docs/git-last-modified#Documentation/git-last-modified.txt---recursive)`--recursive`
 
-[](https://git-scm.com/docs/git-last-modified#Documentation/git-last-modified.txt-revision-range)_< revision-range>_ 
-    
-Only traverse commits in the specified revision range. When no _< revision-range>_ is specified, it defaults to `HEAD` (i.e. the whole history leading to the current commit). For a complete list of ways to spell _< revision-range>_, see the _Specifying Ranges_ section of [gitrevisions[7]](https://git-scm.com/docs/gitrevisions). 
+Instead of showing tree entries, step into subtrees and show all entries inside them recursively.
 
-[](https://git-scm.com/docs/git-last-modified#Documentation/git-last-modified.txt---path)[`--`] _< path>_... 
-    
+[](https://git-scm.com/docs/git-last-modified#Documentation/git-last-modified.txt--t)`-t`
+
+
+[](https://git-scm.com/docs/git-last-modified#Documentation/git-last-modified.txt---show-trees)`--show-trees`
+
+Show tree entries even when recursing into them. It has no effect without `--recursive`.
+
+[](https://git-scm.com/docs/git-last-modified#Documentation/git-last-modified.txt-revision-range)_< revision-range>_
+
+Only traverse commits in the specified revision range. When no _< revision-range>_ is specified, it defaults to `HEAD` (i.e. the whole history leading to the current commit). For a complete list of ways to spell _< revision-range>_, see the _Specifying Ranges_ section of [gitrevisions[7]](https://git-scm.com/docs/gitrevisions).
+
+[](https://git-scm.com/docs/git-last-modified#Documentation/git-last-modified.txt---path)[`--`] _< path>_...
+
 For each _< path>_ given, the commit which last modified it is returned. Without an optional path parameter, all files and subdirectories in path traversal the are included in the output.
 ##  [](https://git-scm.com/docs/git-last-modified#_see_also)SEE ALSO
 [git-blame[1]](https://git-scm.com/docs/git-blame), [git-log[1]](https://git-scm.com/docs/git-log).
 ##  [](https://git-scm.com/docs/git-last-modified#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### last-modified
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

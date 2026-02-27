@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-upload-archive#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-upload-archive#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-upload-archive#_description)
@@ -33,8 +33,8 @@ Localized versions of **git-upload-archive** manual
   4. [українська мова ](https://git-scm.com/docs/git-upload-archive/uk)
   5. [简体中文 ](https://git-scm.com/docs/git-upload-archive/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-upload-archive)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -205,14 +205,14 @@ In order to protect the privacy of objects that have been removed from history b
 
 Note that rule 3 disallows many cases that do not have any privacy implications. These rules are subject to change in future versions of git, and the server accessed by `git` `archive` `--remote` may or may not follow these exact rules.
 If the config option `uploadArchive.allowUnreachable` is true, these rules are ignored, and clients may use arbitrary sha1 expressions. This is useful if you do not care about the privacy of unreachable objects, or if your object database is already publicly available for access via non-smart-http.
-##  [](https://git-scm.com/docs/git-upload-archive#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-upload-archive#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-upload-archive#Documentation/git-upload-archive.txt-repository)<repository> 
-    
+[](https://git-scm.com/docs/git-upload-archive#Documentation/git-upload-archive.txt-repository)<repository>
+
 The repository to get a tar archive from.
 ##  [](https://git-scm.com/docs/git-upload-archive#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### upload-archive
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

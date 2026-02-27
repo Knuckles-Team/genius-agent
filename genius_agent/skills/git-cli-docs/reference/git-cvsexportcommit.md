@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-cvsexportcommit#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-cvsexportcommit#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-cvsexportcommit#_description)
@@ -34,8 +34,8 @@ Localized versions of **git-cvsexportcommit** manual
   4. [українська мова ](https://git-scm.com/docs/git-cvsexportcommit/uk)
   5. [简体中文 ](https://git-scm.com/docs/git-cvsexportcommit/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-cvsexportcommit)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -199,64 +199,64 @@ Specify the name of a CVS checkout using the -w switch or execute it from the ro
 It does its best to do the safe thing, it will check that the files are unchanged and up to date in the CVS checkout, and it will not autocommit by default.
 Supports file additions, removals, and commits that affect binary files.
 If the commit is a merge commit, you must tell _git cvsexportcommit_ what parent the changeset should be done against.
-##  [](https://git-scm.com/docs/git-cvsexportcommit#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-cvsexportcommit#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-cvsexportcommit#Documentation/git-cvsexportcommit.txt--c)-c 
-    
-Commit automatically if the patch applied cleanly. It will not commit if any hunks fail to apply or there were other problems. 
+[](https://git-scm.com/docs/git-cvsexportcommit#Documentation/git-cvsexportcommit.txt--c)-c
 
-[](https://git-scm.com/docs/git-cvsexportcommit#Documentation/git-cvsexportcommit.txt--p)-p 
-    
-Be pedantic (paranoid) when applying patches. Invokes patch with --fuzz=0 
+Commit automatically if the patch applied cleanly. It will not commit if any hunks fail to apply or there were other problems.
 
-[](https://git-scm.com/docs/git-cvsexportcommit#Documentation/git-cvsexportcommit.txt--a)-a 
-    
-Add authorship information. Adds Author line, and Committer (if different from Author) to the message. 
+[](https://git-scm.com/docs/git-cvsexportcommit#Documentation/git-cvsexportcommit.txt--p)-p
 
-[](https://git-scm.com/docs/git-cvsexportcommit#Documentation/git-cvsexportcommit.txt--d)-d 
-    
-Set an alternative CVSROOT to use. This corresponds to the CVS -d parameter. Usually users will not want to set this, except if using CVS in an asymmetric fashion. 
+Be pedantic (paranoid) when applying patches. Invokes patch with --fuzz=0
 
-[](https://git-scm.com/docs/git-cvsexportcommit#Documentation/git-cvsexportcommit.txt--f)-f 
-    
-Force the merge even if the files are not up to date. 
+[](https://git-scm.com/docs/git-cvsexportcommit#Documentation/git-cvsexportcommit.txt--a)-a
 
-[](https://git-scm.com/docs/git-cvsexportcommit#Documentation/git-cvsexportcommit.txt--P)-P 
-    
-Force the parent commit, even if it is not a direct parent. 
+Add authorship information. Adds Author line, and Committer (if different from Author) to the message.
 
-[](https://git-scm.com/docs/git-cvsexportcommit#Documentation/git-cvsexportcommit.txt--m)-m 
-    
-Prepend the commit message with the provided prefix. Useful for patch series and the like. 
+[](https://git-scm.com/docs/git-cvsexportcommit#Documentation/git-cvsexportcommit.txt--d)-d
 
-[](https://git-scm.com/docs/git-cvsexportcommit#Documentation/git-cvsexportcommit.txt--u)-u 
-    
-Update affected files from CVS repository before attempting export. 
+Set an alternative CVSROOT to use. This corresponds to the CVS -d parameter. Usually users will not want to set this, except if using CVS in an asymmetric fashion.
 
-[](https://git-scm.com/docs/git-cvsexportcommit#Documentation/git-cvsexportcommit.txt--k)-k 
-    
-Reverse CVS keyword expansion (e.g. $Revision: 1.2.3.4$ becomes $Revision$) in working CVS checkout before applying patch. 
+[](https://git-scm.com/docs/git-cvsexportcommit#Documentation/git-cvsexportcommit.txt--f)-f
 
-[](https://git-scm.com/docs/git-cvsexportcommit#Documentation/git-cvsexportcommit.txt--w)-w 
-    
-Specify the location of the CVS checkout to use for the export. This option does not require GIT_DIR to be set before execution if the current directory is within a Git repository. The default is the value of _cvsexportcommit.cvsdir_. 
+Force the merge even if the files are not up to date.
 
-[](https://git-scm.com/docs/git-cvsexportcommit#Documentation/git-cvsexportcommit.txt--W)-W 
-    
-Tell cvsexportcommit that the current working directory is not only a Git checkout, but also the CVS checkout. Therefore, Git will reset the working directory to the parent commit before proceeding. 
+[](https://git-scm.com/docs/git-cvsexportcommit#Documentation/git-cvsexportcommit.txt--P)-P
 
-[](https://git-scm.com/docs/git-cvsexportcommit#Documentation/git-cvsexportcommit.txt--v)-v 
-    
+Force the parent commit, even if it is not a direct parent.
+
+[](https://git-scm.com/docs/git-cvsexportcommit#Documentation/git-cvsexportcommit.txt--m)-m
+
+Prepend the commit message with the provided prefix. Useful for patch series and the like.
+
+[](https://git-scm.com/docs/git-cvsexportcommit#Documentation/git-cvsexportcommit.txt--u)-u
+
+Update affected files from CVS repository before attempting export.
+
+[](https://git-scm.com/docs/git-cvsexportcommit#Documentation/git-cvsexportcommit.txt--k)-k
+
+Reverse CVS keyword expansion (e.g. $Revision: 1.2.3.4$ becomes $Revision$) in working CVS checkout before applying patch.
+
+[](https://git-scm.com/docs/git-cvsexportcommit#Documentation/git-cvsexportcommit.txt--w)-w
+
+Specify the location of the CVS checkout to use for the export. This option does not require GIT_DIR to be set before execution if the current directory is within a Git repository. The default is the value of _cvsexportcommit.cvsdir_.
+
+[](https://git-scm.com/docs/git-cvsexportcommit#Documentation/git-cvsexportcommit.txt--W)-W
+
+Tell cvsexportcommit that the current working directory is not only a Git checkout, but also the CVS checkout. Therefore, Git will reset the working directory to the parent commit before proceeding.
+
+[](https://git-scm.com/docs/git-cvsexportcommit#Documentation/git-cvsexportcommit.txt--v)-v
+
 Verbose.
-##  [](https://git-scm.com/docs/git-cvsexportcommit#_configuration)CONFIGURATION 
+##  [](https://git-scm.com/docs/git-cvsexportcommit#_configuration)CONFIGURATION
 
-[](https://git-scm.com/docs/git-cvsexportcommit#Documentation/git-cvsexportcommit.txt-cvsexportcommitcvsdir)cvsexportcommit.cvsdir 
-    
+[](https://git-scm.com/docs/git-cvsexportcommit#Documentation/git-cvsexportcommit.txt-cvsexportcommitcvsdir)cvsexportcommit.cvsdir
+
 The default location of the CVS checkout to use for the export.
-##  [](https://git-scm.com/docs/git-cvsexportcommit#_examples)EXAMPLES 
+##  [](https://git-scm.com/docs/git-cvsexportcommit#_examples)EXAMPLES
 
-[](https://git-scm.com/docs/git-cvsexportcommit#Documentation/git-cvsexportcommit.txt-MergeonepatchintoCVS)Merge one patch into CVS 
-    
+[](https://git-scm.com/docs/git-cvsexportcommit#Documentation/git-cvsexportcommit.txt-MergeonepatchintoCVS)Merge one patch into CVS
+
 ```
 $ export GIT_DIR=~/project/.git
 $ cd ~/project_cvs_checkout
@@ -265,15 +265,15 @@ $ cvs commit -F .msg <files>
 ```
 
 
-[](https://git-scm.com/docs/git-cvsexportcommit#Documentation/git-cvsexportcommit.txt-MergeonepatchintoCVS-cand-woptionsTheworkingdirectoryiswithintheGitRepo)Merge one patch into CVS (-c and -w options). The working directory is within the Git Repo 
-    
+[](https://git-scm.com/docs/git-cvsexportcommit#Documentation/git-cvsexportcommit.txt-MergeonepatchintoCVS-cand-woptionsTheworkingdirectoryiswithintheGitRepo)Merge one patch into CVS (-c and -w options). The working directory is within the Git Repo
+
 ```
 	$ git cvsexportcommit -v -c -w ~/project_cvs_checkout <commit-sha1>
 ```
 
 
-[](https://git-scm.com/docs/git-cvsexportcommit#Documentation/git-cvsexportcommit.txt-MergependingpatchesintoCVSautomaticallyonlyifyoureallyknowwhatyouaredoing)Merge pending patches into CVS automatically — only if you really know what you are doing 
-    
+[](https://git-scm.com/docs/git-cvsexportcommit#Documentation/git-cvsexportcommit.txt-MergependingpatchesintoCVSautomaticallyonlyifyoureallyknowwhatyouaredoing)Merge pending patches into CVS automatically — only if you really know what you are doing
+
 ```
 $ export GIT_DIR=~/project/.git
 $ cd ~/project_cvs_checkout
@@ -283,6 +283,6 @@ $ git cherry cvshead myhead | sed -n 's/^+ //p' | xargs -l1 git cvsexportcommit 
 ##  [](https://git-scm.com/docs/git-cvsexportcommit#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### cvsexportcommit
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

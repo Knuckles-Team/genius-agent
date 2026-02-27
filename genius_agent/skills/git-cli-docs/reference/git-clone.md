@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-clone#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-clone#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-clone#_description)
@@ -42,8 +42,8 @@ Localized versions of **git-clone** manual
   11. [українська мова ](https://git-scm.com/docs/git-clone/uk)
   12. [简体中文 ](https://git-scm.com/docs/git-clone/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-clone)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -271,208 +271,208 @@ git clone [--template=_<template-directory>_]
 Clones a repository into a newly created directory, creates remote-tracking branches for each branch in the cloned repository (visible using `git` `branch` `--remotes`), and creates and checks out an initial branch that is forked from the cloned repository’s currently active branch.
 After the clone, a plain `git` `fetch` without arguments will update all the remote-tracking branches, and a `git` `pull` without arguments will in addition merge the remote master branch into the current master branch, if any (this is untrue when `--single-branch` is given; see below).
 This default configuration is achieved by creating references to the remote branch heads under `refs/remotes/origin` and by initializing `remote.origin.url` and `remote.origin.fetch` configuration variables.
-##  [](https://git-scm.com/docs/git-clone#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-clone#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt--l)`-l` 
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt--l)`-l`
 
 
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---local)`--local` 
-    
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---local)`--local`
+
 When the repository to clone from is on a local machine, this flag bypasses the normal "Git aware" transport mechanism and clones the repository by making a copy of `HEAD` and everything under objects and refs directories. The files under `.git/objects/` directory are hardlinked to save space when possible.
 If the repository is specified as a local path (e.g., `/path/to/repo`), this is the default, and `--local` is essentially a no-op. If the repository is specified as a URL, then this flag is ignored (and we never use the local optimizations). Specifying `--no-local` will override the default when `/path/to/repo` is given, using the regular Git transport instead.
 If the repository’s `$GIT_DIR/objects` has symbolic links or is a symbolic link, the clone will fail. This is a security measure to prevent the unintentional copying of files by dereferencing the symbolic links.
 This option does not work with repositories owned by other users for security reasons, and `--no-local` must be specified for the clone to succeed.
-**NOTE** : this operation can race with concurrent modification to the source repository, similar to running `cp` `-r` _< src>_ _< dst>_ while modifying _< src>_. 
+**NOTE** : this operation can race with concurrent modification to the source repository, similar to running `cp` `-r` _< src>_ _< dst>_ while modifying _< src>_.
 
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---no-hardlinks)`--no-hardlinks` 
-    
-Force the cloning process from a repository on a local filesystem to copy the files under the `.git/objects` directory instead of using hardlinks. This may be desirable if you are trying to make a back-up of your repository. 
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---no-hardlinks)`--no-hardlinks`
 
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt--s)`-s` 
+Force the cloning process from a repository on a local filesystem to copy the files under the `.git/objects` directory instead of using hardlinks. This may be desirable if you are trying to make a back-up of your repository.
+
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt--s)`-s`
 
 
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---shared)`--shared` 
-    
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---shared)`--shared`
+
 When the repository to clone is on the local machine, instead of using hard links, automatically setup `.git/objects/info/alternates` to share the objects with the source repository. The resulting repository starts out without any object of its own.
 **NOTE** : this is a possibly dangerous operation; do **not** use it unless you understand what it does. If you clone your repository using this option and then delete branches (or use any other Git command that makes any existing commit unreferenced) in the source repository, some objects may become unreferenced (or dangling). These objects may be removed by normal Git operations (such as `git` `commit`) which automatically call `git` `maintenance` `run` `--auto`. (See [git-maintenance[1]](https://git-scm.com/docs/git-maintenance).) If these objects are removed and were referenced by the cloned repository, then the cloned repository will become corrupt.
 Note that running `git` `repack` without the `--local` option in a repository cloned with `--shared` will copy objects from the source repository into a pack in the cloned repository, removing the disk space savings of `clone` `--shared`. It is safe, however, to run `git` `gc`, which uses the `--local` option by default.
-If you want to break the dependency of a repository cloned with `--shared` on its source repository, you can simply run `git` `repack` `-a` to copy all objects from the source repository into a pack in the cloned repository. 
+If you want to break the dependency of a repository cloned with `--shared` on its source repository, you can simply run `git` `repack` `-a` to copy all objects from the source repository into a pack in the cloned repository.
 
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---reference-if-ablerepository)`--reference`[`-if-able`] _< repository>_ 
-    
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---reference-if-ablerepository)`--reference`[`-if-able`] _< repository>_
+
 If the reference _< repository>_ is on the local machine, automatically setup `.git/objects/info/alternates` to obtain objects from the reference _< repository>_. Using an already existing repository as an alternate will require fewer objects to be copied from the repository being cloned, reducing network and local storage costs. When using the `--reference-if-able`, a non existing directory is skipped with a warning instead of aborting the clone.
-**NOTE** : see the NOTE for the `--shared` option, and also the `--dissociate` option. 
+**NOTE** : see the NOTE for the `--shared` option, and also the `--dissociate` option.
 
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---dissociate)`--dissociate` 
-    
-Borrow the objects from reference repositories specified with the `--reference` options only to reduce network transfer, and stop borrowing from them after a clone is made by making necessary local copies of borrowed objects. This option can also be used when cloning locally from a repository that already borrows objects from another repository—​the new repository will borrow objects from the same repository, and this option can be used to stop the borrowing. 
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---dissociate)`--dissociate`
 
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt--q)`-q` 
+Borrow the objects from reference repositories specified with the `--reference` options only to reduce network transfer, and stop borrowing from them after a clone is made by making necessary local copies of borrowed objects. This option can also be used when cloning locally from a repository that already borrows objects from another repository—​the new repository will borrow objects from the same repository, and this option can be used to stop the borrowing.
 
-
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---quiet)`--quiet` 
-    
-Operate quietly. Progress is not reported to the standard error stream. 
-
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt--v)`-v` 
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt--q)`-q`
 
 
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---verbose)`--verbose` 
-    
-Run verbosely. Does not affect the reporting of progress status to the standard error stream. 
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---quiet)`--quiet`
 
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---progress)`--progress` 
-    
-Progress status is reported on the standard error stream by default when it is attached to a terminal, unless `--quiet` is specified. This flag forces progress status even if the standard error stream is not directed to a terminal. 
+Operate quietly. Progress is not reported to the standard error stream.
 
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---server-optionoption)`--server-option=`_< option>_ 
-    
-Transmit the given string to the server when communicating using protocol version 2. The given string must not contain a NUL or LF character. The server’s handling of server options, including unknown ones, is server-specific. When multiple `--server-option=`_< option>_ are given, they are all sent to the other side in the order listed on the command line. When no `--server-option=`_< option>_ is given from the command line, the values of configuration variable `remote.`_< name>_`.serverOption` are used instead. 
-
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt--n)`-n` 
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt--v)`-v`
 
 
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---no-checkout)`--no-checkout` 
-    
-No checkout of `HEAD` is performed after the clone is complete. 
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---verbose)`--verbose`
 
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---no-reject-shallow)`--`[`no-`]`reject-shallow` 
-    
-Fail if the source repository is a shallow repository. The `clone.rejectShallow` configuration variable can be used to specify the default. 
+Run verbosely. Does not affect the reporting of progress status to the standard error stream.
 
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---bare)`--bare` 
-    
-Make a _bare_ Git repository. That is, instead of creating _< directory>_ and placing the administrative files in _< directory>_`/.git`, make the _< directory>_ itself the `$GIT_DIR`. This obviously implies the `--no-checkout` because there is nowhere to check out the working tree. Also the branch heads at the remote are copied directly to corresponding local branch heads, without mapping them to `refs/remotes/origin/`. When this option is used, neither remote-tracking branches nor the related configuration variables are created. 
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---progress)`--progress`
 
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---sparse)`--sparse` 
-    
-Employ a sparse-checkout, with only files in the toplevel directory initially being present. The [git-sparse-checkout[1]](https://git-scm.com/docs/git-sparse-checkout) command can be used to grow the working directory as needed. 
+Progress status is reported on the standard error stream by default when it is attached to a terminal, unless `--quiet` is specified. This flag forces progress status even if the standard error stream is not directed to a terminal.
 
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---filterfilter-spec)`--filter=`_< filter-spec>_ 
-    
-Use the partial clone feature and request that the server sends a subset of reachable objects according to a given object filter. When using `--filter`, the supplied _< filter-spec>_ is used for the partial clone filter. For example, `--filter=blob:none` will filter out all blobs (file contents) until needed by Git. Also, `--filter=blob:limit=`_< size>_ will filter out all blobs of size at least _< size>_. For more details on filter specifications, see the `--filter` option in [git-rev-list[1]](https://git-scm.com/docs/git-rev-list). 
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---server-optionoption)`--server-option=`_< option>_
 
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---also-filter-submodules)`--also-filter-submodules` 
-    
-Also apply the partial clone filter to any submodules in the repository. Requires `--filter` and `--recurse-submodules`. This can be turned on by default by setting the `clone.filterSubmodules` config option. 
+Transmit the given string to the server when communicating using protocol version 2. The given string must not contain a NUL or LF character. The server’s handling of server options, including unknown ones, is server-specific. When multiple `--server-option=`_< option>_ are given, they are all sent to the other side in the order listed on the command line. When no `--server-option=`_< option>_ is given from the command line, the values of configuration variable `remote.`_< name>_`.serverOption` are used instead.
 
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---mirror)`--mirror` 
-    
-Set up a mirror of the source repository. This implies `--bare`. Compared to `--bare`, `--mirror` not only maps local branches of the source to local branches of the target, it maps all refs (including remote-tracking branches, notes etc.) and sets up a refspec configuration such that all these refs are overwritten by a `git` `remote` `update` in the target repository. 
-
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt--oname)`-o` _< name>_ 
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt--n)`-n`
 
 
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---originname)`--origin` _< name>_ 
-    
-Instead of using the remote name `origin` to keep track of the upstream repository, use _< name>_. Overrides `clone.defaultRemoteName` from the config. 
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---no-checkout)`--no-checkout`
 
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt--bname)`-b` _< name>_ 
+No checkout of `HEAD` is performed after the clone is complete.
+
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---no-reject-shallow)`--`[`no-`]`reject-shallow`
+
+Fail if the source repository is a shallow repository. The `clone.rejectShallow` configuration variable can be used to specify the default.
+
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---bare)`--bare`
+
+Make a _bare_ Git repository. That is, instead of creating _< directory>_ and placing the administrative files in _< directory>_`/.git`, make the _< directory>_ itself the `$GIT_DIR`. This obviously implies the `--no-checkout` because there is nowhere to check out the working tree. Also the branch heads at the remote are copied directly to corresponding local branch heads, without mapping them to `refs/remotes/origin/`. When this option is used, neither remote-tracking branches nor the related configuration variables are created.
+
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---sparse)`--sparse`
+
+Employ a sparse-checkout, with only files in the toplevel directory initially being present. The [git-sparse-checkout[1]](https://git-scm.com/docs/git-sparse-checkout) command can be used to grow the working directory as needed.
+
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---filterfilter-spec)`--filter=`_< filter-spec>_
+
+Use the partial clone feature and request that the server sends a subset of reachable objects according to a given object filter. When using `--filter`, the supplied _< filter-spec>_ is used for the partial clone filter. For example, `--filter=blob:none` will filter out all blobs (file contents) until needed by Git. Also, `--filter=blob:limit=`_< size>_ will filter out all blobs of size at least _< size>_. For more details on filter specifications, see the `--filter` option in [git-rev-list[1]](https://git-scm.com/docs/git-rev-list).
+
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---also-filter-submodules)`--also-filter-submodules`
+
+Also apply the partial clone filter to any submodules in the repository. Requires `--filter` and `--recurse-submodules`. This can be turned on by default by setting the `clone.filterSubmodules` config option.
+
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---mirror)`--mirror`
+
+Set up a mirror of the source repository. This implies `--bare`. Compared to `--bare`, `--mirror` not only maps local branches of the source to local branches of the target, it maps all refs (including remote-tracking branches, notes etc.) and sets up a refspec configuration such that all these refs are overwritten by a `git` `remote` `update` in the target repository.
+
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt--oname)`-o` _< name>_
 
 
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---branchname)`--branch` _< name>_ 
-    
-Instead of pointing the newly created `HEAD` to the branch pointed to by the cloned repository’s `HEAD`, point to _< name>_ branch instead. In a non-bare repository, this is the branch that will be checked out. `--branch` can also take tags and detaches the `HEAD` at that commit in the resulting repository. 
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---originname)`--origin` _< name>_
 
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---revisionrev)`--revision=`_< rev>_ 
-    
-Create a new repository, and fetch the history leading to the given revision _< rev>_ (and nothing else), without making any remote-tracking branch, and without making any local branch, and detach `HEAD` to _< rev>_. The argument can be a ref name (e.g. `refs/heads/main` or `refs/tags/v1.0`) that peels down to a commit, or a hexadecimal object name. This option is incompatible with `--branch` and `--mirror`. 
+Instead of using the remote name `origin` to keep track of the upstream repository, use _< name>_. Overrides `clone.defaultRemoteName` from the config.
 
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt--uupload-pack)`-u` _< upload-pack>_ 
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt--bname)`-b` _< name>_
 
 
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---upload-packupload-pack)`--upload-pack` _< upload-pack>_ 
-    
-When given, and the repository to clone from is accessed via ssh, this specifies a non-default path for the command run on the other end. 
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---branchname)`--branch` _< name>_
 
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---templatetemplate-directory)`--template=`_< template-directory>_ 
-    
-Specify the directory from which templates will be used; (See the "TEMPLATE DIRECTORY" section of [git-init[1]](https://git-scm.com/docs/git-init).) 
+Instead of pointing the newly created `HEAD` to the branch pointed to by the cloned repository’s `HEAD`, point to _< name>_ branch instead. In a non-bare repository, this is the branch that will be checked out. `--branch` can also take tags and detaches the `HEAD` at that commit in the resulting repository.
 
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt--ckeyvalue)`-c` _< key>_`=`_< value>_ 
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---revisionrev)`--revision=`_< rev>_
+
+Create a new repository, and fetch the history leading to the given revision _< rev>_ (and nothing else), without making any remote-tracking branch, and without making any local branch, and detach `HEAD` to _< rev>_. The argument can be a ref name (e.g. `refs/heads/main` or `refs/tags/v1.0`) that peels down to a commit, or a hexadecimal object name. This option is incompatible with `--branch` and `--mirror`.
+
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt--uupload-pack)`-u` _< upload-pack>_
 
 
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---configkeyvalue)`--config` _< key>_`=`_< value>_ 
-    
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---upload-packupload-pack)`--upload-pack` _< upload-pack>_
+
+When given, and the repository to clone from is accessed via ssh, this specifies a non-default path for the command run on the other end.
+
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---templatetemplate-directory)`--template=`_< template-directory>_
+
+Specify the directory from which templates will be used; (See the "TEMPLATE DIRECTORY" section of [git-init[1]](https://git-scm.com/docs/git-init).)
+
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt--ckeyvalue)`-c` _< key>_`=`_< value>_
+
+
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---configkeyvalue)`--config` _< key>_`=`_< value>_
+
 Set a configuration variable in the newly-created repository; this takes effect immediately after the repository is initialized, but before the remote history is fetched or any files checked out. The _< key>_ is in the same format as expected by [git-config[1]](https://git-scm.com/docs/git-config) (e.g., `core.eol=true`). If multiple values are given for the same key, each value will be written to the config file. This makes it safe, for example, to add additional fetch refspecs to the origin remote.
-Due to limitations of the current implementation, some configuration variables do not take effect until after the initial fetch and checkout. Configuration variables known to not take effect are: `remote.`_< name>_`.mirror` and `remote.`_< name>_`.tagOpt`. Use the corresponding `--mirror` and `--no-tags` options instead. 
+Due to limitations of the current implementation, some configuration variables do not take effect until after the initial fetch and checkout. Configuration variables known to not take effect are: `remote.`_< name>_`.mirror` and `remote.`_< name>_`.tagOpt`. Use the corresponding `--mirror` and `--no-tags` options instead.
 
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---depthdepth)`--depth` _< depth>_ 
-    
-Create a _shallow_ clone with a history truncated to the specified number of commits. Implies `--single-branch` unless `--no-single-branch` is given to fetch the histories near the tips of all branches. If you want to clone submodules shallowly, also pass `--shallow-submodules`. 
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---depthdepth)`--depth` _< depth>_
 
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---shallow-sincedate)`--shallow-since=`_< date>_ 
-    
-Create a shallow clone with a history after the specified time. 
+Create a _shallow_ clone with a history truncated to the specified number of commits. Implies `--single-branch` unless `--no-single-branch` is given to fetch the histories near the tips of all branches. If you want to clone submodules shallowly, also pass `--shallow-submodules`.
 
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---shallow-excluderef)`--shallow-exclude=`_< ref>_ 
-    
-Create a shallow clone with a history, excluding commits reachable from a specified remote branch or tag. This option can be specified multiple times. 
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---shallow-sincedate)`--shallow-since=`_< date>_
 
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---single-branch)`--single-branch` 
+Create a shallow clone with a history after the specified time.
 
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---shallow-excluderef)`--shallow-exclude=`_< ref>_
 
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---no-single-branch)`--no-single-branch` 
-    
-Clone only the history leading to the tip of a single branch, either specified by the `--branch` option or the primary branch remote’s `HEAD` points at. Further fetches into the resulting repository will only update the remote-tracking branch for the branch this option was used for the initial cloning. If the `HEAD` at the remote did not point at any branch when `--single-branch` clone was made, no remote-tracking branch is created. 
+Create a shallow clone with a history, excluding commits reachable from a specified remote branch or tag. This option can be specified multiple times.
 
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---tags)`--tags` 
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---single-branch)`--single-branch`
 
 
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---no-tags)`--no-tags` 
-    
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---no-single-branch)`--no-single-branch`
+
+Clone only the history leading to the tip of a single branch, either specified by the `--branch` option or the primary branch remote’s `HEAD` points at. Further fetches into the resulting repository will only update the remote-tracking branch for the branch this option was used for the initial cloning. If the `HEAD` at the remote did not point at any branch when `--single-branch` clone was made, no remote-tracking branch is created.
+
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---tags)`--tags`
+
+
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---no-tags)`--no-tags`
+
 Control whether or not tags will be cloned. When `--no-tags` is given, the option will be become permanent by setting the `remote.`_< remote>_`.tagOpt=--no-tags` configuration. This ensures that future `git` `pull` and `git` `fetch` won’t follow any tags. Subsequent explicit tag fetches will still work (see [git-fetch[1]](https://git-scm.com/docs/git-fetch)).
 By default, tags are cloned and passing `--tags` is thus typically a no-op, unless it cancels out a previous `--no-tags`.
-Can be used in conjunction with `--single-branch` to clone and maintain a branch with no references other than a single cloned branch. This is useful e.g. to maintain minimal clones of the default branch of some repository for search indexing. 
+Can be used in conjunction with `--single-branch` to clone and maintain a branch with no references other than a single cloned branch. This is useful e.g. to maintain minimal clones of the default branch of some repository for search indexing.
 
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---recurse-submodulespathspec)`--recurse-submodules`[`=`_< pathspec>_] 
-    
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---recurse-submodulespathspec)`--recurse-submodules`[`=`_< pathspec>_]
+
 After the clone is created, initialize and clone submodules within based on the provided _< pathspec>_. If no `=`_< pathspec>_ is provided, all submodules are initialized and cloned. This option can be given multiple times for pathspecs consisting of multiple entries. The resulting clone has `submodule.active` set to the provided pathspec, or "`.`" (meaning all submodules) if no pathspec is provided.
-Submodules are initialized and cloned using their default settings. This is equivalent to running `git` `submodule` `update` `--init` `--recursive` _< pathspec>_ immediately after the clone is finished. This option is ignored if the cloned repository does not have a worktree/checkout (i.e. if any of `--no-checkout`/`-n`, `--bare`, or `--mirror` is given) 
+Submodules are initialized and cloned using their default settings. This is equivalent to running `git` `submodule` `update` `--init` `--recursive` _< pathspec>_ immediately after the clone is finished. This option is ignored if the cloned repository does not have a worktree/checkout (i.e. if any of `--no-checkout`/`-n`, `--bare`, or `--mirror` is given)
 
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---shallow-submodules)`--shallow-submodules` 
-
-
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---no-shallow-submodules)`--no-shallow-submodules` 
-    
-All submodules which are cloned will be shallow with a depth of 1. 
-
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---remote-submodules)`--remote-submodules` 
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---shallow-submodules)`--shallow-submodules`
 
 
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---no-remote-submodules)`--no-remote-submodules` 
-    
-All submodules which are cloned will use the status of the submodule’s remote-tracking branch to update the submodule, rather than the superproject’s recorded SHA-1. Equivalent to passing `--remote` to `git` `submodule` `update`. 
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---no-shallow-submodules)`--no-shallow-submodules`
 
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---separate-git-dirgit-dir)`--separate-git-dir=`_< git-dir>_ 
-    
-Instead of placing the cloned repository where it is supposed to be, place the cloned repository at the specified directory, then make a filesystem-agnostic Git symbolic link to there. The result is Git repository can be separated from working tree. 
+All submodules which are cloned will be shallow with a depth of 1.
 
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---ref-formatref-format)`--ref-format=`_< ref-format>_ 
-    
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---remote-submodules)`--remote-submodules`
+
+
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---no-remote-submodules)`--no-remote-submodules`
+
+All submodules which are cloned will use the status of the submodule’s remote-tracking branch to update the submodule, rather than the superproject’s recorded SHA-1. Equivalent to passing `--remote` to `git` `submodule` `update`.
+
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---separate-git-dirgit-dir)`--separate-git-dir=`_< git-dir>_
+
+Instead of placing the cloned repository where it is supposed to be, place the cloned repository at the specified directory, then make a filesystem-agnostic Git symbolic link to there. The result is Git repository can be separated from working tree.
+
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---ref-formatref-format)`--ref-format=`_< ref-format>_
+
 Specify the given ref storage format for the repository. The valid values are:
   * `files` for loose files with packed-refs. This is the default.
   * `reftable` for the reftable format. This format is experimental and its internals are subject to change.
 
 
 
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt--jn)`-j` _< n>_ 
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt--jn)`-j` _< n>_
 
 
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---jobsn)`--jobs` _< n>_ 
-    
-The number of submodules fetched at the same time. Defaults to the `submodule.fetchJobs` option. 
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---jobsn)`--jobs` _< n>_
 
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt-repository)_< repository>_ 
-    
-The (possibly remote) _< repository>_ to clone from. See the [GIT URLS](https://git-scm.com/docs/git-clone#URLS) section below for more information on specifying repositories. 
+The number of submodules fetched at the same time. Defaults to the `submodule.fetchJobs` option.
 
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt-directory)_< directory>_ 
-    
-The name of a new directory to clone into. The "humanish" part of the source repository is used if no _< directory>_ is explicitly given (`repo` for `/path/to/repo.git` and `foo` for `host.xz:foo/.git`). Cloning into an existing directory is only allowed if the directory is empty. 
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt-repository)_< repository>_
 
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---bundle-uriuri)`--bundle-uri=`_< uri>_ 
-    
+The (possibly remote) _< repository>_ to clone from. See the [GIT URLS](https://git-scm.com/docs/git-clone#URLS) section below for more information on specifying repositories.
+
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt-directory)_< directory>_
+
+The name of a new directory to clone into. The "humanish" part of the source repository is used if no _< directory>_ is explicitly given (`repo` for `/path/to/repo.git` and `foo` for `host.xz:foo/.git`). Cloning into an existing directory is only allowed if the directory is empty.
+
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---bundle-uriuri)`--bundle-uri=`_< uri>_
+
 Before fetching from the remote, fetch a bundle from the given _< uri>_ and unbundle the data into the local repository. The refs in the bundle will be stored under the hidden `refs/bundle/*` namespace. This option is incompatible with `--depth`, `--shallow-since`, and `--shallow-exclude`.
 ##  [](https://git-scm.com/docs/git-clone#_git_urls)GIT URLS
 In general, URLs contain information about the transport protocol, the address of the remote server, and the path to the repository. Depending on the transport protocol, some of this information may be absent.
@@ -571,38 +571,38 @@ $ git clone --no-local /home/otheruser/proj.git /pub/scm/proj.git
 
 
 ##  [](https://git-scm.com/docs/git-clone#_configuration)CONFIGURATION
-Everything below this line in this section is selectively included from the [git-config[1]](https://git-scm.com/docs/git-config) documentation. The content is the same as what’s found there: 
+Everything below this line in this section is selectively included from the [git-config[1]](https://git-scm.com/docs/git-config) documentation. The content is the same as what’s found there:
 
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt-inittemplateDir)`init.templateDir` 
-    
-Specify the directory from which templates will be copied. (See the "TEMPLATE DIRECTORY" section of [git-init[1]](https://git-scm.com/docs/git-init).) 
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt-inittemplateDir)`init.templateDir`
 
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt-initdefaultBranch)`init.defaultBranch` 
-    
-Allows overriding the default branch name e.g. when initializing a new repository. 
+Specify the directory from which templates will be copied. (See the "TEMPLATE DIRECTORY" section of [git-init[1]](https://git-scm.com/docs/git-init).)
 
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt-initdefaultObjectFormat)`init.defaultObjectFormat` 
-    
-Allows overriding the default object format for new repositories. See `--object-format=` in [git-init[1]](https://git-scm.com/docs/git-init). Both the command line option and the `GIT_DEFAULT_HASH` environment variable take precedence over this config. 
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt-initdefaultBranch)`init.defaultBranch`
 
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt-initdefaultRefFormat)`init.defaultRefFormat` 
-    
-Allows overriding the default ref storage format for new repositories. See `--ref-format=` in [git-init[1]](https://git-scm.com/docs/git-init). Both the command line option and the `GIT_DEFAULT_REF_FORMAT` environment variable take precedence over this config. 
+Allows overriding the default branch name e.g. when initializing a new repository.
 
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt-clonedefaultRemoteName)`clone.defaultRemoteName` 
-    
-The name of the remote to create when cloning a repository. Defaults to `origin`. It can be overridden by passing the `--origin` command-line option. 
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt-initdefaultObjectFormat)`init.defaultObjectFormat`
 
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt-clonerejectShallow)`clone.rejectShallow` 
-    
-Reject cloning a repository if it is a shallow one; this can be overridden by passing the `--reject-shallow` option on the command line. 
+Allows overriding the default object format for new repositories. See `--object-format=` in [git-init[1]](https://git-scm.com/docs/git-init). Both the command line option and the `GIT_DEFAULT_HASH` environment variable take precedence over this config.
 
-[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt-clonefilterSubmodules)`clone.filterSubmodules` 
-    
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt-initdefaultRefFormat)`init.defaultRefFormat`
+
+Allows overriding the default ref storage format for new repositories. See `--ref-format=` in [git-init[1]](https://git-scm.com/docs/git-init). Both the command line option and the `GIT_DEFAULT_REF_FORMAT` environment variable take precedence over this config.
+
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt-clonedefaultRemoteName)`clone.defaultRemoteName`
+
+The name of the remote to create when cloning a repository. Defaults to `origin`. It can be overridden by passing the `--origin` command-line option.
+
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt-clonerejectShallow)`clone.rejectShallow`
+
+Reject cloning a repository if it is a shallow one; this can be overridden by passing the `--reject-shallow` option on the command line.
+
+[](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt-clonefilterSubmodules)`clone.filterSubmodules`
+
 If a partial clone filter is provided (see `--filter` in [git-rev-list[1]](https://git-scm.com/docs/git-rev-list)) and `--recurse-submodules` is used, also apply the filter to submodules.
 ##  [](https://git-scm.com/docs/git-clone#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### clone
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

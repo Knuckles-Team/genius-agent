@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-clean#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-clean#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-clean#_description)
@@ -36,8 +36,8 @@ Localized versions of **git-clean** manual
   5. [українська мова ](https://git-scm.com/docs/git-clean/uk)
   6. [简体中文 ](https://git-scm.com/docs/git-clean/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-clean)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -219,53 +219,53 @@ _git clean_ [-d] [-f] [-i] [-n] [-q] [-e <pattern>] [-x | -X] [--] [<pathspec>�
 Cleans the working tree by recursively removing files that are not under version control, starting from the current directory.
 Normally, only files unknown to Git are removed, but if the `-x` option is specified, ignored files are also removed. This can, for example, be useful to remove all build products.
 If any optional _< pathspec>_... arguments are given, only those paths that match the pathspec are affected.
-##  [](https://git-scm.com/docs/git-clean#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-clean#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-clean#Documentation/git-clean.txt--d)-d 
-    
-Normally, when no <pathspec> is specified, git clean will not recurse into untracked directories to avoid removing too much. Specify -d to have it recurse into such directories as well. If a <pathspec> is specified, -d is irrelevant; all untracked files matching the specified paths (with exceptions for nested git directories mentioned under `--force`) will be removed. 
+[](https://git-scm.com/docs/git-clean#Documentation/git-clean.txt--d)-d
 
-[](https://git-scm.com/docs/git-clean#Documentation/git-clean.txt--f)-f 
+Normally, when no <pathspec> is specified, git clean will not recurse into untracked directories to avoid removing too much. Specify -d to have it recurse into such directories as well. If a <pathspec> is specified, -d is irrelevant; all untracked files matching the specified paths (with exceptions for nested git directories mentioned under `--force`) will be removed.
 
-
-[](https://git-scm.com/docs/git-clean#Documentation/git-clean.txt---force)--force 
-    
-If the Git configuration variable clean.requireForce is not set to false, _git clean_ will refuse to delete files or directories unless given -f. Git will refuse to modify untracked nested git repositories (directories with a .git subdirectory) unless a second -f is given. 
-
-[](https://git-scm.com/docs/git-clean#Documentation/git-clean.txt--i)-i 
+[](https://git-scm.com/docs/git-clean#Documentation/git-clean.txt--f)-f
 
 
-[](https://git-scm.com/docs/git-clean#Documentation/git-clean.txt---interactive)--interactive 
-    
-Show what would be done and clean files interactively. See “Interactive mode” for details. Configuration variable `clean.requireForce` is ignored, as this mode gives its own safety protection by going interactive. 
+[](https://git-scm.com/docs/git-clean#Documentation/git-clean.txt---force)--force
 
-[](https://git-scm.com/docs/git-clean#Documentation/git-clean.txt--n)-n 
+If the Git configuration variable clean.requireForce is not set to false, _git clean_ will refuse to delete files or directories unless given -f. Git will refuse to modify untracked nested git repositories (directories with a .git subdirectory) unless a second -f is given.
 
-
-[](https://git-scm.com/docs/git-clean#Documentation/git-clean.txt---dry-run)--dry-run 
-    
-Don’t actually remove anything, just show what would be done. Configuration variable `clean.requireForce` is ignored, as nothing will be deleted anyway. 
-
-[](https://git-scm.com/docs/git-clean#Documentation/git-clean.txt--q)-q 
+[](https://git-scm.com/docs/git-clean#Documentation/git-clean.txt--i)-i
 
 
-[](https://git-scm.com/docs/git-clean#Documentation/git-clean.txt---quiet)--quiet 
-    
-Be quiet, only report errors, but not the files that are successfully removed. 
+[](https://git-scm.com/docs/git-clean#Documentation/git-clean.txt---interactive)--interactive
 
-[](https://git-scm.com/docs/git-clean#Documentation/git-clean.txt--epattern)-e <pattern> 
+Show what would be done and clean files interactively. See “Interactive mode” for details. Configuration variable `clean.requireForce` is ignored, as this mode gives its own safety protection by going interactive.
+
+[](https://git-scm.com/docs/git-clean#Documentation/git-clean.txt--n)-n
 
 
-[](https://git-scm.com/docs/git-clean#Documentation/git-clean.txt---excludepattern)--exclude=<pattern> 
-    
-Use the given exclude pattern in addition to the standard ignore rules (see [gitignore[5]](https://git-scm.com/docs/gitignore)). 
+[](https://git-scm.com/docs/git-clean#Documentation/git-clean.txt---dry-run)--dry-run
 
-[](https://git-scm.com/docs/git-clean#Documentation/git-clean.txt--x)-x 
-    
-Don’t use the standard ignore rules (see [gitignore[5]](https://git-scm.com/docs/gitignore)), but still use the ignore rules given with `-e` options from the command line. This allows removing all untracked files, including build products. This can be used (possibly in conjunction with _git restore_ or _git reset_) to create a pristine working directory to test a clean build. 
+Don’t actually remove anything, just show what would be done. Configuration variable `clean.requireForce` is ignored, as nothing will be deleted anyway.
 
-[](https://git-scm.com/docs/git-clean#Documentation/git-clean.txt--X)-X 
-    
+[](https://git-scm.com/docs/git-clean#Documentation/git-clean.txt--q)-q
+
+
+[](https://git-scm.com/docs/git-clean#Documentation/git-clean.txt---quiet)--quiet
+
+Be quiet, only report errors, but not the files that are successfully removed.
+
+[](https://git-scm.com/docs/git-clean#Documentation/git-clean.txt--epattern)-e <pattern>
+
+
+[](https://git-scm.com/docs/git-clean#Documentation/git-clean.txt---excludepattern)--exclude=<pattern>
+
+Use the given exclude pattern in addition to the standard ignore rules (see [gitignore[5]](https://git-scm.com/docs/gitignore)).
+
+[](https://git-scm.com/docs/git-clean#Documentation/git-clean.txt--x)-x
+
+Don’t use the standard ignore rules (see [gitignore[5]](https://git-scm.com/docs/gitignore)), but still use the ignore rules given with `-e` options from the command line. This allows removing all untracked files, including build products. This can be used (possibly in conjunction with _git restore_ or _git reset_) to create a pristine working directory to test a clean build.
+
+[](https://git-scm.com/docs/git-clean#Documentation/git-clean.txt--X)-X
+
 Remove only files ignored by Git. This may be useful to rebuild everything from scratch, but keep manually created files.
 ##  [](https://git-scm.com/docs/git-clean#_interactive_mode)Interactive mode
 When the command enters the interactive mode, it shows the files and directories to be cleaned, and goes into its interactive command loop.
@@ -278,42 +278,42 @@ The command loop shows the list of subcommands available, and gives a prompt "Wh
 ```
 
 You also could say `c` or `clean` above as long as the choice is unique.
-The main command loop has 6 subcommands. 
+The main command loop has 6 subcommands.
 
-[](https://git-scm.com/docs/git-clean#Documentation/git-clean.txt-clean)clean 
-    
-Start cleaning files and directories, and then quit. 
+[](https://git-scm.com/docs/git-clean#Documentation/git-clean.txt-clean)clean
 
-[](https://git-scm.com/docs/git-clean#Documentation/git-clean.txt-filterbypattern)filter by pattern 
-    
-This shows the files and directories to be deleted and issues an "Input ignore patterns>>" prompt. You can input space-separated patterns to exclude files and directories from deletion. E.g. "*.c *.h" will exclude files ending with ".c" and ".h" from deletion. When you are satisfied with the filtered result, press ENTER (empty) back to the main menu. 
+Start cleaning files and directories, and then quit.
 
-[](https://git-scm.com/docs/git-clean#Documentation/git-clean.txt-selectbynumbers)select by numbers 
-    
-This shows the files and directories to be deleted and issues an "Select items to delete>>" prompt. When the prompt ends with double _> >_ like this, you can make more than one selection, concatenated with whitespace or comma. Also you can say ranges. E.g. "2-5 7,9" to choose 2,3,4,5,7,9 from the list. If the second number in a range is omitted, all remaining items are selected. E.g. "7-" to choose 7,8,9 from the list. You can say _*_ to choose everything. Also when you are satisfied with the filtered result, press ENTER (empty) back to the main menu. 
+[](https://git-scm.com/docs/git-clean#Documentation/git-clean.txt-filterbypattern)filter by pattern
 
-[](https://git-scm.com/docs/git-clean#Documentation/git-clean.txt-askeach)ask each 
-    
-This will start to clean, and you must confirm one by one in order to delete items. Please note that this action is not as efficient as the above two actions. 
+This shows the files and directories to be deleted and issues an "Input ignore patterns>>" prompt. You can input space-separated patterns to exclude files and directories from deletion. E.g. "*.c *.h" will exclude files ending with ".c" and ".h" from deletion. When you are satisfied with the filtered result, press ENTER (empty) back to the main menu.
 
-[](https://git-scm.com/docs/git-clean#Documentation/git-clean.txt-quit)quit 
-    
-This lets you quit without doing any cleaning. 
+[](https://git-scm.com/docs/git-clean#Documentation/git-clean.txt-selectbynumbers)select by numbers
 
-[](https://git-scm.com/docs/git-clean#Documentation/git-clean.txt-help)help 
-    
+This shows the files and directories to be deleted and issues an "Select items to delete>>" prompt. When the prompt ends with double _> >_ like this, you can make more than one selection, concatenated with whitespace or comma. Also you can say ranges. E.g. "2-5 7,9" to choose 2,3,4,5,7,9 from the list. If the second number in a range is omitted, all remaining items are selected. E.g. "7-" to choose 7,8,9 from the list. You can say _*_ to choose everything. Also when you are satisfied with the filtered result, press ENTER (empty) back to the main menu.
+
+[](https://git-scm.com/docs/git-clean#Documentation/git-clean.txt-askeach)ask each
+
+This will start to clean, and you must confirm one by one in order to delete items. Please note that this action is not as efficient as the above two actions.
+
+[](https://git-scm.com/docs/git-clean#Documentation/git-clean.txt-quit)quit
+
+This lets you quit without doing any cleaning.
+
+[](https://git-scm.com/docs/git-clean#Documentation/git-clean.txt-help)help
+
 Show brief usage of interactive git-clean.
 ##  [](https://git-scm.com/docs/git-clean#_configuration)CONFIGURATION
-Everything below this line in this section is selectively included from the [git-config[1]](https://git-scm.com/docs/git-config) documentation. The content is the same as what’s found there: 
+Everything below this line in this section is selectively included from the [git-config[1]](https://git-scm.com/docs/git-config) documentation. The content is the same as what’s found there:
 
-[](https://git-scm.com/docs/git-clean#Documentation/git-clean.txt-cleanrequireForce)clean.requireForce 
-    
+[](https://git-scm.com/docs/git-clean#Documentation/git-clean.txt-cleanrequireForce)clean.requireForce
+
 A boolean to make git-clean refuse to delete files unless -f is given. Defaults to true.
 ##  [](https://git-scm.com/docs/git-clean#_see_also)SEE ALSO
 [gitignore[5]](https://git-scm.com/docs/gitignore)
 ##  [](https://git-scm.com/docs/git-clean#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### clean
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

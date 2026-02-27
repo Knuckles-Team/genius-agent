@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-commit#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-commit#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-commit#_description)
@@ -43,8 +43,8 @@ Localized versions of **git-commit** manual
   7. [українська мова ](https://git-scm.com/docs/git-commit/uk)
   8. [简体中文 ](https://git-scm.com/docs/git-commit/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-commit)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -273,192 +273,192 @@ The content to be committed can be specified in several ways:
 
 The `--dry-run` option can be used to obtain a summary of what is included by any of the above for the next commit by giving the same set of parameters (options and paths).
 If you make a commit and then find a mistake immediately after that, you can recover from it with `git` `reset`.
-##  [](https://git-scm.com/docs/git-commit#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-commit#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt--a)`-a` 
-
-
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---all)`--all` 
-    
-Automatically stage files that have been modified and deleted, but new files you have not told Git about are not affected. 
-
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt--p)`-p` 
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt--a)`-a`
 
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---patch)`--patch` 
-    
-Use the interactive patch selection interface to choose which changes to commit. See [git-add[1]](https://git-scm.com/docs/git-add) for details. 
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---all)`--all`
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt--Un)`-U`_< n>_ 
+Automatically stage files that have been modified and deleted, but new files you have not told Git about are not affected.
 
-
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---unifiedn)`--unified=`_< n>_ 
-    
-Generate diffs with _< n>_ lines of context. Defaults to `diff.context` or 3 if the config option is unset. 
-
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---inter-hunk-contextn)`--inter-hunk-context=`_< n>_ 
-    
-Show the context between diff hunks, up to the specified _< number>_ of lines, thereby fusing hunks that are close to each other. Defaults to `diff.interHunkContext` or 0 if the config option is unset. 
-
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt--Ccommit)`-C` _< commit>_ 
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt--p)`-p`
 
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---reuse-messagecommit)`--reuse-message=`_< commit>_ 
-    
-Take an existing _< commit>_ object, and reuse the log message and the authorship information (including the timestamp) when creating the commit. 
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---patch)`--patch`
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt--ccommit)`-c` _< commit>_ 
+Use the interactive patch selection interface to choose which changes to commit. See [git-add[1]](https://git-scm.com/docs/git-add) for details.
+
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt--Un)`-U`_< n>_
 
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---reedit-messagecommit)`--reedit-message=`_< commit>_ 
-    
-Like `-C`, but with `-c` the editor is invoked, so that the user can further edit the commit message. 
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---unifiedn)`--unified=`_< n>_
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---fixupamendrewordcommit)`--fixup=`[(`amend`|`reword`)`:`]_< commit>_ 
-    
+Generate diffs with _< n>_ lines of context. Defaults to `diff.context` or 3 if the config option is unset.
+
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---inter-hunk-contextn)`--inter-hunk-context=`_< n>_
+
+Show the context between diff hunks, up to the specified _< number>_ of lines, thereby fusing hunks that are close to each other. Defaults to `diff.interHunkContext` or 0 if the config option is unset.
+
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt--Ccommit)`-C` _< commit>_
+
+
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---reuse-messagecommit)`--reuse-message=`_< commit>_
+
+Take an existing _< commit>_ object, and reuse the log message and the authorship information (including the timestamp) when creating the commit.
+
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt--ccommit)`-c` _< commit>_
+
+
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---reedit-messagecommit)`--reedit-message=`_< commit>_
+
+Like `-C`, but with `-c` the editor is invoked, so that the user can further edit the commit message.
+
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---fixupamendrewordcommit)`--fixup=`[(`amend`|`reword`)`:`]_< commit>_
+
 Create a new commit which "fixes up" _< commit>_ when applied with `git` `rebase` `--autosquash`. Plain `--fixup=`_< commit>_ creates a "fixup!" commit which changes the content of _< commit>_ but leaves its log message untouched. `--fixup=amend:`_< commit>_ is similar but creates an "amend!" commit which also replaces the log message of _< commit>_ with the log message of the "amend!" commit. `--fixup=reword:`_< commit>_ creates an "amend!" commit which replaces the log message of _< commit>_ with its own log message but makes no changes to the content of _< commit>_.
 The commit created by plain `--fixup=`_< commit>_ has a title composed of "fixup!" followed by the title of _< commit>_, and is recognized specially by `git` `rebase` `--autosquash`. The `-m` option may be used to supplement the log message of the created commit, but the additional commentary will be thrown away once the "fixup!" commit is squashed into _< commit>_ by `git` `rebase` `--autosquash`.
 The commit created by `--fixup=amend:`_< commit>_ is similar but its title is instead prefixed with "amend!". The log message of _< commit>_ is copied into the log message of the "amend!" commit and opened in an editor so it can be refined. When `git` `rebase` `--autosquash` squashes the "amend!" commit into _< commit>_, the log message of _< commit>_ is replaced by the refined log message from the "amend!" commit. It is an error for the "amend!" commit’s log message to be empty unless `--allow-empty-message` is specified.
 `--fixup=reword:`_< commit>_ is shorthand for `--fixup=amend:`_< commit>_ `--only`. It creates an "amend!" commit with only a log message (ignoring any changes staged in the index). When squashed by `git` `rebase` `--autosquash`, it replaces the log message of _< commit>_ without making any other changes.
-Neither "fixup!" nor "amend!" commits change authorship of _< commit>_ when applied by `git` `rebase` `--autosquash`. See [git-rebase[1]](https://git-scm.com/docs/git-rebase) for details. 
+Neither "fixup!" nor "amend!" commits change authorship of _< commit>_ when applied by `git` `rebase` `--autosquash`. See [git-rebase[1]](https://git-scm.com/docs/git-rebase) for details.
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---squashcommit)`--squash=`_< commit>_ 
-    
-Construct a commit message for use with `git` `rebase` `--autosquash`. The commit message title is taken from the specified commit with a prefix of "squash! ". Can be used with additional commit message options (`-m`/`-c`/`-C`/`-F`). See [git-rebase[1]](https://git-scm.com/docs/git-rebase) for details. 
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---squashcommit)`--squash=`_< commit>_
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---reset-author)`--reset-author` 
-    
-When used with `-C`/`-c`/`--amend` options, or when committing after a conflicting cherry-pick, declare that the authorship of the resulting commit now belongs to the committer. This also renews the author timestamp. 
+Construct a commit message for use with `git` `rebase` `--autosquash`. The commit message title is taken from the specified commit with a prefix of "squash! ". Can be used with additional commit message options (`-m`/`-c`/`-C`/`-F`). See [git-rebase[1]](https://git-scm.com/docs/git-rebase) for details.
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---short)`--short` 
-    
-When doing a dry-run, give the output in the short-format. See [git-status[1]](https://git-scm.com/docs/git-status) for details. Implies `--dry-run`. 
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---reset-author)`--reset-author`
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---branch)`--branch` 
-    
-Show the branch and tracking info even in short-format. See [git-status[1]](https://git-scm.com/docs/git-status) for details. 
+When used with `-C`/`-c`/`--amend` options, or when committing after a conflicting cherry-pick, declare that the authorship of the resulting commit now belongs to the committer. This also renews the author timestamp.
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---porcelain)`--porcelain` 
-    
-When doing a dry-run, give the output in a porcelain-ready format. See [git-status[1]](https://git-scm.com/docs/git-status) for details. Implies `--dry-run`. 
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---short)`--short`
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---long)`--long` 
-    
-When doing a dry-run, give the output in the long-format. This is the default output of [git-status[1]](https://git-scm.com/docs/git-status). Implies `--dry-run`. 
+When doing a dry-run, give the output in the short-format. See [git-status[1]](https://git-scm.com/docs/git-status) for details. Implies `--dry-run`.
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt--z)`-z` 
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---branch)`--branch`
 
+Show the branch and tracking info even in short-format. See [git-status[1]](https://git-scm.com/docs/git-status) for details.
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---null)`--null` 
-    
-When showing `short` or `porcelain` [git-status[1]](https://git-scm.com/docs/git-status) output, print the filename verbatim and terminate the entries with _NUL_ , instead of _LF_. If no format is given, implies the `--porcelain` output format. Without the `-z` option, filenames with "unusual" characters are quoted as explained for the configuration variable `core.quotePath` (see [git-config[1]](https://git-scm.com/docs/git-config)). 
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---porcelain)`--porcelain`
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt--Ffile)`-F` _< file>_ 
+When doing a dry-run, give the output in a porcelain-ready format. See [git-status[1]](https://git-scm.com/docs/git-status) for details. Implies `--dry-run`.
+
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---long)`--long`
+
+When doing a dry-run, give the output in the long-format. This is the default output of [git-status[1]](https://git-scm.com/docs/git-status). Implies `--dry-run`.
+
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt--z)`-z`
 
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---filefile)`--file=`_< file>_ 
-    
-Take the commit message from _< file>_. Use _-_ to read the message from the standard input. 
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---null)`--null`
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---authorauthor)`--author=`_< author>_ 
-    
-Override the commit author. Specify an explicit author using the standard _A U Thor <author@example.com>_ format. Otherwise _< author>_ is assumed to be a pattern and is used to search for an existing commit by that author (i.e. `git` `rev-list` `--all` `-i` `--author=`_< author>_); the commit author is then copied from the first such commit found. 
+When showing `short` or `porcelain` [git-status[1]](https://git-scm.com/docs/git-status) output, print the filename verbatim and terminate the entries with _NUL_ , instead of _LF_. If no format is given, implies the `--porcelain` output format. Without the `-z` option, filenames with "unusual" characters are quoted as explained for the configuration variable `core.quotePath` (see [git-config[1]](https://git-scm.com/docs/git-config)).
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---datedate)`--date=`_< date>_ 
-    
-Override the author date used in the commit. 
-
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt--mmsg)`-m` _< msg>_ 
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt--Ffile)`-F` _< file>_
 
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---messagemsg)`--message=`_< msg>_ 
-    
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---filefile)`--file=`_< file>_
+
+Take the commit message from _< file>_. Use _-_ to read the message from the standard input.
+
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---authorauthor)`--author=`_< author>_
+
+Override the commit author. Specify an explicit author using the standard _A U Thor <author@example.com>_ format. Otherwise _< author>_ is assumed to be a pattern and is used to search for an existing commit by that author (i.e. `git` `rev-list` `--all` `-i` `--author=`_< author>_); the commit author is then copied from the first such commit found.
+
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---datedate)`--date=`_< date>_
+
+Override the author date used in the commit.
+
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt--mmsg)`-m` _< msg>_
+
+
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---messagemsg)`--message=`_< msg>_
+
 Use _< msg>_ as the commit message. If multiple `-m` options are given, their values are concatenated as separate paragraphs.
-The `-m` option is mutually exclusive with `-c`, `-C`, and `-F`. 
+The `-m` option is mutually exclusive with `-c`, `-C`, and `-F`.
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt--tfile)`-t` _< file>_ 
-
-
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---templatefile)`--template=`_< file>_ 
-    
-When editing the commit message, start the editor with the contents in _< file>_. The `commit.template` configuration variable is often used to give this option implicitly to the command. This mechanism can be used by projects that want to guide participants with some hints on what to write in the message in what order. If the user exits the editor without editing the message, the commit is aborted. This has no effect when a message is given by other means, e.g. with the `-m` or `-F` options. 
-
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt--s)`-s` 
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt--tfile)`-t` _< file>_
 
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---signoff)`--signoff` 
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---templatefile)`--template=`_< file>_
+
+When editing the commit message, start the editor with the contents in _< file>_. The `commit.template` configuration variable is often used to give this option implicitly to the command. This mechanism can be used by projects that want to guide participants with some hints on what to write in the message in what order. If the user exits the editor without editing the message, the commit is aborted. This has no effect when a message is given by other means, e.g. with the `-m` or `-F` options.
+
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt--s)`-s`
 
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---no-signoff)`--no-signoff` 
-    
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---signoff)`--signoff`
+
+
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---no-signoff)`--no-signoff`
+
 Add a `Signed-off-by` trailer by the committer at the end of the commit log message. The meaning of a signoff depends on the project to which you’re committing. For example, it may certify that the committer has the rights to submit the work under the project’s license or agrees to some contributor representation, such as a Developer Certificate of Origin. (See <https://developercertificate.org> for the one used by the Linux kernel and Git projects.) Consult the documentation or leadership of the project to which you’re contributing to understand how the signoffs are used in that project.
 The `--no-signoff` option can be used to countermand an earlier `--signoff` option on the command line.
-Git does not (and will not) have a configuration variable to enable the `--signoff` command line option by default; see the `commit.signoff` entry in [gitfaq[7]](https://git-scm.com/docs/gitfaq) for more details. 
+Git does not (and will not) have a configuration variable to enable the `--signoff` command line option by default; see the `commit.signoff` entry in [gitfaq[7]](https://git-scm.com/docs/gitfaq) for more details.
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---trailertokenvalue)`--trailer` _< token>_[(`=`|`:`)_< value>_] 
-    
-Specify a (_< token>_, _< value>_) pair that should be applied as a trailer. (e.g. _git commit --trailer "Signed-off-by:C O Mitter \_ _< committer@example.com>" --trailer "Helped-by:C O Mitter \ _ _< committer@example.com>"_ will add the `Signed-off-by` trailer and the `Helped-by` trailer to the commit message.) The `trailer.*` configuration variables ([git-interpret-trailers[1]](https://git-scm.com/docs/git-interpret-trailers)) can be used to define if a duplicated trailer is omitted, where in the run of trailers each trailer would appear, and other details. 
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---trailertokenvalue)`--trailer` _< token>_[(`=`|`:`)_< value>_]
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt--n)`-n` 
+Specify a (_< token>_, _< value>_) pair that should be applied as a trailer. (e.g. _git commit --trailer "Signed-off-by:C O Mitter \_ _< committer@example.com>" --trailer "Helped-by:C O Mitter \ _ _< committer@example.com>"_ will add the `Signed-off-by` trailer and the `Helped-by` trailer to the commit message.) The `trailer.*` configuration variables ([git-interpret-trailers[1]](https://git-scm.com/docs/git-interpret-trailers)) can be used to define if a duplicated trailer is omitted, where in the run of trailers each trailer would appear, and other details.
 
-
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---verify)`--verify` 
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt--n)`-n`
 
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---no-verify)`--no-verify` 
-    
-Bypass the `pre-commit` and `commit-msg` hooks. See also [githooks[5]](https://git-scm.com/docs/githooks). 
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---verify)`--verify`
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---allow-empty)`--allow-empty` 
-    
-Usually recording a commit that has the exact same tree as its sole parent commit is a mistake, and the command prevents you from making such a commit. This option bypasses the safety, and is primarily for use by foreign SCM interface scripts. 
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---allow-empty-message)`--allow-empty-message` 
-    
-Create a commit with an empty commit message without using plumbing commands like [git-commit-tree[1]](https://git-scm.com/docs/git-commit-tree). Like `--allow-empty`, this command is primarily for use by foreign SCM interface scripts. 
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---no-verify)`--no-verify`
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---cleanupmode)`--cleanup=`_< mode>_ 
-    
-Determine how the supplied commit message should be cleaned up before committing. The _< mode>_ can be `strip`, `whitespace`, `verbatim`, `scissors` or `default`. 
+Bypass the `pre-commit` and `commit-msg` hooks. See also [githooks[5]](https://git-scm.com/docs/githooks).
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt-strip)`strip` 
-    
-Strip leading and trailing empty lines, trailing whitespace, commentary and collapse consecutive empty lines. 
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---allow-empty)`--allow-empty`
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt-whitespace)`whitespace` 
-    
-Same as `strip` except #commentary is not removed. 
+Usually recording a commit that has the exact same tree as its sole parent commit is a mistake, and the command prevents you from making such a commit. This option bypasses the safety, and is primarily for use by foreign SCM interface scripts.
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt-verbatim)`verbatim` 
-    
-Do not change the message at all. 
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---allow-empty-message)`--allow-empty-message`
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt-scissors)`scissors` 
-    
+Create a commit with an empty commit message without using plumbing commands like [git-commit-tree[1]](https://git-scm.com/docs/git-commit-tree). Like `--allow-empty`, this command is primarily for use by foreign SCM interface scripts.
+
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---cleanupmode)`--cleanup=`_< mode>_
+
+Determine how the supplied commit message should be cleaned up before committing. The _< mode>_ can be `strip`, `whitespace`, `verbatim`, `scissors` or `default`.
+
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt-strip)`strip`
+
+Strip leading and trailing empty lines, trailing whitespace, commentary and collapse consecutive empty lines.
+
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt-whitespace)`whitespace`
+
+Same as `strip` except #commentary is not removed.
+
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt-verbatim)`verbatim`
+
+Do not change the message at all.
+
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt-scissors)`scissors`
+
 Same as `whitespace` except that everything from (and including) the line found below is truncated, if the message is to be edited. "`#`" can be customized with `core.commentChar`.
 ```
 # ------------------------ >8 ------------------------
 ```
 
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt-default)`default` 
-    
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt-default)`default`
+
 Same as `strip` if the message is to be edited. Otherwise `whitespace`.
-The default can be changed by the `commit.cleanup` configuration variable (see [git-config[1]](https://git-scm.com/docs/git-config)). 
+The default can be changed by the `commit.cleanup` configuration variable (see [git-config[1]](https://git-scm.com/docs/git-config)).
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt--e)`-e` 
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt--e)`-e`
 
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---edit)`--edit` 
-    
-Let the user further edit the message taken from _< file>_ with `-F` _< file>_, command line with `-m` _< message>_, and from _< commit>_ with `-C` _< commit>_. 
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---edit)`--edit`
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---no-edit)`--no-edit` 
-    
-Use the selected commit message without launching an editor. For example, `git` `commit` `--amend` `--no-edit` amends a commit without changing its commit message. 
+Let the user further edit the message taken from _< file>_ with `-F` _< file>_, command line with `-m` _< message>_, and from _< commit>_ with `-C` _< commit>_.
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---amend)`--amend` 
-    
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---no-edit)`--no-edit`
+
+Use the selected commit message without launching an editor. For example, `git` `commit` `--amend` `--no-edit` amends a commit without changing its commit message.
+
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---amend)`--amend`
+
 Replace the tip of the current branch by creating a new commit. The recorded tree is prepared as usual (including the effect of the `-i` and `-o` options and explicit pathspec), and the message from the original commit is used as the starting point, instead of an empty message, when no other message is specified from the command line via options such as `-m`, `-F`, `-c`, etc. The new commit has the same parents and author as the current one (the `--reset-author` option can countermand this).
 It is a rough equivalent for:
 ```
@@ -468,99 +468,99 @@ It is a rough equivalent for:
 ```
 
 but can be used to amend a merge commit.
-You should understand the implications of rewriting history if you amend a commit that has already been published. (See the "RECOVERING FROM UPSTREAM REBASE" section in [git-rebase[1]](https://git-scm.com/docs/git-rebase).) 
+You should understand the implications of rewriting history if you amend a commit that has already been published. (See the "RECOVERING FROM UPSTREAM REBASE" section in [git-rebase[1]](https://git-scm.com/docs/git-rebase).)
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---no-post-rewrite)`--no-post-rewrite` 
-    
-Bypass the `post-rewrite` hook. 
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---no-post-rewrite)`--no-post-rewrite`
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt--i)`-i` 
+Bypass the `post-rewrite` hook.
 
-
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---include)`--include` 
-    
-Before making a commit out of staged contents so far, stage the contents of paths given on the command line as well. This is usually not what you want unless you are concluding a conflicted merge. 
-
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt--o)`-o` 
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt--i)`-i`
 
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---only)`--only` 
-    
-Make a commit by taking the updated working tree contents of the paths specified on the command line, disregarding any contents that have been staged for other paths. This is the default mode of operation of `git` `commit` if any paths are given on the command line, in which case this option can be omitted. If this option is specified together with `--amend`, then no paths need to be specified, which can be used to amend the last commit without committing changes that have already been staged. If used together with `--allow-empty` paths are also not required, and an empty commit will be created. 
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---include)`--include`
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---pathspec-from-filefile)`--pathspec-from-file=`_< file>_ 
-    
-Pass pathspec in _< file>_ instead of commandline args. If _< file>_ is exactly `-` then standard input is used. Pathspec elements are separated by _LF_ or _CR_ /_LF_. Pathspec elements can be quoted as explained for the configuration variable `core.quotePath` (see [git-config[1]](https://git-scm.com/docs/git-config)). See also `--pathspec-file-nul` and global `--literal-pathspecs`. 
+Before making a commit out of staged contents so far, stage the contents of paths given on the command line as well. This is usually not what you want unless you are concluding a conflicted merge.
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---pathspec-file-nul)`--pathspec-file-nul` 
-    
-Only meaningful with `--pathspec-from-file`. Pathspec elements are separated with _NUL_ character and all other characters are taken literally (including newlines and quotes). 
-
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt--umode)`-u`[_< mode>_] 
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt--o)`-o`
 
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---untracked-filesmode)`--untracked-files`[`=`_< mode>_] 
-    
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---only)`--only`
+
+Make a commit by taking the updated working tree contents of the paths specified on the command line, disregarding any contents that have been staged for other paths. This is the default mode of operation of `git` `commit` if any paths are given on the command line, in which case this option can be omitted. If this option is specified together with `--amend`, then no paths need to be specified, which can be used to amend the last commit without committing changes that have already been staged. If used together with `--allow-empty` paths are also not required, and an empty commit will be created.
+
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---pathspec-from-filefile)`--pathspec-from-file=`_< file>_
+
+Pass pathspec in _< file>_ instead of commandline args. If _< file>_ is exactly `-` then standard input is used. Pathspec elements are separated by _LF_ or _CR_ /_LF_. Pathspec elements can be quoted as explained for the configuration variable `core.quotePath` (see [git-config[1]](https://git-scm.com/docs/git-config)). See also `--pathspec-file-nul` and global `--literal-pathspecs`.
+
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---pathspec-file-nul)`--pathspec-file-nul`
+
+Only meaningful with `--pathspec-from-file`. Pathspec elements are separated with _NUL_ character and all other characters are taken literally (including newlines and quotes).
+
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt--umode)`-u`[_< mode>_]
+
+
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---untracked-filesmode)`--untracked-files`[`=`_< mode>_]
+
 Show untracked files.
 The _< mode>_ parameter is optional (defaults to `all`), and is used to specify the handling of untracked files; when `-u` is not used, the default is `normal`, i.e. show untracked files and directories.
-The possible options are: 
+The possible options are:
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt-no)`no` 
-    
-Show no untracked files 
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt-no)`no`
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt-normal)`normal` 
-    
-Shows untracked files and directories 
+Show no untracked files
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt-all)`all` 
-    
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt-normal)`normal`
+
+Shows untracked files and directories
+
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt-all)`all`
+
 Also shows individual files in untracked directories.
-All usual spellings for Boolean value `true` are taken as `normal` and `false` as `no`. The default can be changed using the `status.showUntrackedFiles` configuration variable documented in [git-config[1]](https://git-scm.com/docs/git-config). 
+All usual spellings for Boolean value `true` are taken as `normal` and `false` as `no`. The default can be changed using the `status.showUntrackedFiles` configuration variable documented in [git-config[1]](https://git-scm.com/docs/git-config).
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt--v)`-v` 
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt--v)`-v`
 
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---verbose)`--verbose` 
-    
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---verbose)`--verbose`
+
 Show unified diff between the `HEAD` commit and what would be committed at the bottom of the commit message template to help the user describe the commit by reminding what changes the commit has. Note that this diff output doesn’t have its lines prefixed with `#`. This diff will not be a part of the commit message. See the `commit.verbose` configuration variable in [git-config[1]](https://git-scm.com/docs/git-config).
-If specified twice, show in addition the unified diff between what would be committed and the worktree files, i.e. the unstaged changes to tracked files. 
+If specified twice, show in addition the unified diff between what would be committed and the worktree files, i.e. the unstaged changes to tracked files.
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt--q)`-q` 
-
-
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---quiet)`--quiet` 
-    
-Suppress commit summary message. 
-
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---dry-run)`--dry-run` 
-    
-Do not create a commit, but show a list of paths that are to be committed, paths with local changes that will be left uncommitted and paths that are untracked. 
-
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---status)`--status` 
-    
-Include the output of [git-status[1]](https://git-scm.com/docs/git-status) in the commit message template when using an editor to prepare the commit message. Defaults to on, but can be used to override configuration variable `commit.status`. 
-
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---no-status)`--no-status` 
-    
-Do not include the output of [git-status[1]](https://git-scm.com/docs/git-status) in the commit message template when using an editor to prepare the default commit message. 
-
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt--Skey-id)`-S`[_< key-id>_] 
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt--q)`-q`
 
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---gpg-signkey-id)`--gpg-sign`[`=`_< key-id>_] 
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---quiet)`--quiet`
+
+Suppress commit summary message.
+
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---dry-run)`--dry-run`
+
+Do not create a commit, but show a list of paths that are to be committed, paths with local changes that will be left uncommitted and paths that are untracked.
+
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---status)`--status`
+
+Include the output of [git-status[1]](https://git-scm.com/docs/git-status) in the commit message template when using an editor to prepare the commit message. Defaults to on, but can be used to override configuration variable `commit.status`.
+
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---no-status)`--no-status`
+
+Do not include the output of [git-status[1]](https://git-scm.com/docs/git-status) in the commit message template when using an editor to prepare the default commit message.
+
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt--Skey-id)`-S`[_< key-id>_]
 
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---no-gpg-sign)`--no-gpg-sign` 
-    
-GPG-sign commits. The _< key-id>_ is optional and defaults to the committer identity; if specified, it must be stuck to the option without a space. `--no-gpg-sign` is useful to countermand both `commit.gpgSign` configuration variable, and earlier `--gpg-sign`. 
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---gpg-signkey-id)`--gpg-sign`[`=`_< key-id>_]
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---)`--` 
-    
-Do not interpret any more arguments as options. 
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt-pathspec)_< pathspec>_... 
-    
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---no-gpg-sign)`--no-gpg-sign`
+
+GPG-sign commits. The _< key-id>_ is optional and defaults to the committer identity; if specified, it must be stuck to the option without a space. `--no-gpg-sign` is useful to countermand both `commit.gpgSign` configuration variable, and earlier `--gpg-sign`.
+
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---)`--`
+
+Do not interpret any more arguments as options.
+
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt-pathspec)_< pathspec>_...
+
 When _< pathspec>_ is given on the command line, commit the contents of the files that match the pathspec without recording the changes already added to the index. The contents of these files are also staged for the next commit on top of what have been staged before.
 For more details, see the _pathspec_ entry in [gitglossary[7]](https://git-scm.com/docs/gitglossary).
 ##  [](https://git-scm.com/docs/git-commit#_examples)EXAMPLES
@@ -624,21 +624,21 @@ In case (some of) these environment variables are not set, the information is ta
 The `author.name` and `committer.name` and their corresponding email options override `user.name` and `user.email` if set and are overridden themselves by the environment variables.
 The typical usage is to set just the `user.name` and `user.email` variables; the other options are provided for more complex use cases.
 ##  [](https://git-scm.com/docs/git-commit#_date_formats)DATE FORMATS
-The `GIT_AUTHOR_DATE` and `GIT_COMMITTER_DATE` environment variables support the following date formats: 
+The `GIT_AUTHOR_DATE` and `GIT_COMMITTER_DATE` environment variables support the following date formats:
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt-Gitinternalformat)Git internal format 
-    
-It is _< unix-timestamp>_ _< time-zone-offset>_, where _< unix-timestamp>_ is the number of seconds since the UNIX epoch. _< time-zone-offset>_ is a positive or negative offset from UTC. For example CET (which is 1 hour ahead of UTC) is `+0100`. 
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt-Gitinternalformat)Git internal format
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt-RFC2822)RFC 2822 
-    
-The standard date format as described by RFC 2822, for example `Thu,` `07` `Apr` `2005` `22:13:13` `+0200`. 
+It is _< unix-timestamp>_ _< time-zone-offset>_, where _< unix-timestamp>_ is the number of seconds since the UNIX epoch. _< time-zone-offset>_ is a positive or negative offset from UTC. For example CET (which is 1 hour ahead of UTC) is `+0100`.
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt-ISO8601)ISO 8601 
-    
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt-RFC2822)RFC 2822
+
+The standard date format as described by RFC 2822, for example `Thu,` `07` `Apr` `2005` `22:13:13` `+0200`.
+
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt-ISO8601)ISO 8601
+
 Time and date specified by the ISO 8601 standard, for example `2005-04-07T22:13:13`. The parser accepts a space instead of the `T` character as well. Fractional parts of a second will be ignored, for example `2005-04-07T22:13:13.019` will be treated as `2005-04-07T22:13:13`.
-Note |  In addition, the date part is accepted in the following formats: `YYYY.MM.DD`, `MM/DD/YYYY` and `DD.MM.YYYY`.   
----|---  
+Note |  In addition, the date part is accepted in the following formats: `YYYY.MM.DD`, `MM/DD/YYYY` and `DD.MM.YYYY`.
+---|---
 In addition to recognizing all date formats above, the `--date` option will also try to make sense of other, more human-centric date formats, such as relative dates like "yesterday" or "last Friday at noon".
 ##  [](https://git-scm.com/docs/git-commit#_discussion)DISCUSSION
 Though not required, it’s a good idea to begin the commit message with a single short (no more than 50 characters) line summarizing the change, followed by a blank line and then a more thorough description. The text up to the first blank line in a commit message is treated as the commit title, and that title is used throughout Git. For example, [git-format-patch[1]](https://git-scm.com/docs/git-format-patch) turns a commit into email, and it uses the title on the Subject line and the rest of the commit in the body.
@@ -669,39 +669,39 @@ If you do not have this configuration variable, the value of `i18n.commitEncodin
 Note that we deliberately chose not to re-code the commit log message when a commit is made to force UTF-8 at the commit object level, because re-coding to UTF-8 is not necessarily a reversible operation.
 ##  [](https://git-scm.com/docs/git-commit#_environment_and_configuration_variables)ENVIRONMENT AND CONFIGURATION VARIABLES
 The editor used to edit the commit log message will be chosen from the `GIT_EDITOR` environment variable, the `core.editor` configuration variable, the `VISUAL` environment variable, or the `EDITOR` environment variable (in that order). See [git-var[1]](https://git-scm.com/docs/git-var) for details.
-Everything above this line in this section isn’t included from the [git-config[1]](https://git-scm.com/docs/git-config) documentation. The content that follows is the same as what’s found there: 
+Everything above this line in this section isn’t included from the [git-config[1]](https://git-scm.com/docs/git-config) documentation. The content that follows is the same as what’s found there:
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt-commitcleanup)`commit.cleanup` 
-    
-This setting overrides the default of the `--cleanup` option in `git` `commit`. Changing the default can be useful when you always want to keep lines that begin with the comment character (`core.commentChar`, default `#`) in your log message, in which case you would do `git` `config` `commit.cleanup` `whitespace` (note that you will have to remove the help lines that begin with the comment character in the commit log template yourself, if you do this). 
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt-commitcleanup)`commit.cleanup`
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt-commitgpgSign)`commit.gpgSign` 
-    
-A boolean to specify whether all commits should be GPG signed. Use of this option when doing operations such as rebase can result in a large number of commits being signed. It may be convenient to use an agent to avoid typing your GPG passphrase several times. 
+This setting overrides the default of the `--cleanup` option in `git` `commit`. Changing the default can be useful when you always want to keep lines that begin with the comment character (`core.commentChar`, default `#`) in your log message, in which case you would do `git` `config` `commit.cleanup` `whitespace` (note that you will have to remove the help lines that begin with the comment character in the commit log template yourself, if you do this).
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt-commitstatus)`commit.status` 
-    
-A boolean to enable/disable inclusion of status information in the commit message template when using an editor to prepare the commit message. Defaults to `true`. 
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt-commitgpgSign)`commit.gpgSign`
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt-committemplate)`commit.template` 
-    
-Specify the pathname of a file to use as the template for new commit messages. 
+A boolean to specify whether all commits should be GPG signed. Use of this option when doing operations such as rebase can result in a large number of commits being signed. It may be convenient to use an agent to avoid typing your GPG passphrase several times.
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt-commitverbose)`commit.verbose` 
-    
-A boolean or int to specify the level of verbosity with `git` `commit`. 
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt-commitstatus)`commit.status`
+
+A boolean to enable/disable inclusion of status information in the commit message template when using an editor to prepare the commit message. Defaults to `true`.
+
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt-committemplate)`commit.template`
+
+Specify the pathname of a file to use as the template for new commit messages.
+
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt-commitverbose)`commit.verbose`
+
+A boolean or int to specify the level of verbosity with `git` `commit`.
 ##  [](https://git-scm.com/docs/git-commit#_hooks)HOOKS
 This command can run `commit-msg`, `prepare-commit-msg`, `pre-commit`, `post-commit` and `post-rewrite` hooks. See [githooks[5]](https://git-scm.com/docs/githooks) for more information.
-##  [](https://git-scm.com/docs/git-commit#_files)FILES 
+##  [](https://git-scm.com/docs/git-commit#_files)FILES
 
-[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt-GITDIRCOMMITEDITMSG)`$GIT_DIR/COMMIT_EDITMSG` 
-    
+[](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt-GITDIRCOMMITEDITMSG)`$GIT_DIR/COMMIT_EDITMSG`
+
 This file contains the commit message of a commit in progress. If `git` `commit` exits due to an error before creating a commit, any commit message that has been provided by the user (e.g., in an editor session) will be available in this file, but will be overwritten by the next invocation of `git` `commit`.
 ##  [](https://git-scm.com/docs/git-commit#_see_also)SEE ALSO
 [git-add[1]](https://git-scm.com/docs/git-add), [git-rm[1]](https://git-scm.com/docs/git-rm), [git-mv[1]](https://git-scm.com/docs/git-mv), [git-merge[1]](https://git-scm.com/docs/git-merge), [git-commit-tree[1]](https://git-scm.com/docs/git-commit-tree)
 ##  [](https://git-scm.com/docs/git-commit#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### commit
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-mktag#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-mktag#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-mktag#_description)
@@ -34,8 +34,8 @@ Localized versions of **git-mktag** manual
   5. [українська мова ](https://git-scm.com/docs/git-mktag/uk)
   6. [简体中文 ](https://git-scm.com/docs/git-mktag/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-mktag)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -215,10 +215,10 @@ Extra headers in the object are also an error under mktag, but ignored by [git-f
 git -c fsck.extraHeaderEntry=ignore mktag <my-tag-with-headers
 ```
 
-##  [](https://git-scm.com/docs/git-mktag#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-mktag#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-mktag#Documentation/git-mktag.txt---strict)--strict 
-    
+[](https://git-scm.com/docs/git-mktag#Documentation/git-mktag.txt---strict)--strict
+
 By default mktag turns on the equivalent of [git-fsck[1]](https://git-scm.com/docs/git-fsck) `--strict` mode. Use `--no-strict` to disable it.
 ##  [](https://git-scm.com/docs/git-mktag#_tag_format)Tag Format
 A tag signature file, to be fed to this command’s standard input, has a very simple fixed format: four lines of
@@ -233,6 +233,6 @@ followed by some _optional_ free-form message (some tags created by older Git ma
 ##  [](https://git-scm.com/docs/git-mktag#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### mktag
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

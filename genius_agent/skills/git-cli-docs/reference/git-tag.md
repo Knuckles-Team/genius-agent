@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-tag#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-tag#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-tag#_description)
@@ -39,8 +39,8 @@ Localized versions of **git-tag** manual
   4. [українська мова ](https://git-scm.com/docs/git-tag/uk)
   5. [简体中文 ](https://git-scm.com/docs/git-tag/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-tag)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -261,161 +261,161 @@ Otherwise, a tag reference that points directly at the given object (i.e., a lig
 A cryptographically signed tag object will be created when `-s` or `-u` _< key-id>_ is used. The signing backend (GPG, X.509, SSH, etc.) is controlled by the `gpg.format` configuration variable, defaulting to OpenPGP. When `-u` _< key-id>_ is not used, the committer identity for the current user is used to find the key for signing. The configuration variable `gpg.program` is used to specify a custom signing binary.
 Tag objects (created with `-a`, `-s`, or `-u`) are called "annotated" tags; they contain a creation date, the tagger name and e-mail, a tagging message, and an optional cryptographic signature. Whereas a "lightweight" tag is simply a name for an object (usually a commit object).
 Annotated tags are meant for release while lightweight tags are meant for private or temporary object labels. For this reason, some git commands for naming objects (like `git` `describe`) will ignore lightweight tags by default.
-##  [](https://git-scm.com/docs/git-tag#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-tag#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt--a)`-a` 
-
-
-[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt---annotate)`--annotate` 
-    
-Make an unsigned, annotated tag object 
-
-[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt--s)`-s` 
+[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt--a)`-a`
 
 
-[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt---sign)`--sign` 
-    
-Make a cryptographically signed tag, using the default signing key. The signing backend used depends on the `gpg.format` configuration variable. The default key is determined by the backend. For GPG, it’s based on the committer’s email address, while for SSH it may be a specific key file or agent identity. See [git-config[1]](https://git-scm.com/docs/git-config). 
+[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt---annotate)`--annotate`
 
-[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt---no-sign)`--no-sign` 
-    
-Override `tag.gpgSign` configuration variable that is set to force each and every tag to be signed. 
+Make an unsigned, annotated tag object
 
-[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt--ukey-id)`-u` _< key-id>_ 
+[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt--s)`-s`
 
 
-[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt---local-userkey-id)`--local-user=`_< key-id>_ 
-    
-Make a cryptographically signed tag using the given key. The format of the <key-id> and the backend used depend on the `gpg.format` configuration variable. See [git-config[1]](https://git-scm.com/docs/git-config). 
+[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt---sign)`--sign`
 
-[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt--f)`-f` 
+Make a cryptographically signed tag, using the default signing key. The signing backend used depends on the `gpg.format` configuration variable. The default key is determined by the backend. For GPG, it’s based on the committer’s email address, while for SSH it may be a specific key file or agent identity. See [git-config[1]](https://git-scm.com/docs/git-config).
 
+[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt---no-sign)`--no-sign`
 
-[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt---force)`--force` 
-    
-Replace an existing tag with the given name (instead of failing) 
+Override `tag.gpgSign` configuration variable that is set to force each and every tag to be signed.
 
-[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt--d)`-d` 
+[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt--ukey-id)`-u` _< key-id>_
 
 
-[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt---delete)`--delete` 
-    
-Delete existing tags with the given names. 
+[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt---local-userkey-id)`--local-user=`_< key-id>_
 
-[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt--v)`-v` 
+Make a cryptographically signed tag using the given key. The format of the <key-id> and the backend used depend on the `gpg.format` configuration variable. See [git-config[1]](https://git-scm.com/docs/git-config).
+
+[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt--f)`-f`
 
 
-[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt---verify)`--verify` 
-    
-Verify the cryptographic signature of the given tags. 
+[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt---force)`--force`
 
-[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt--nnum)`-n`_< num>_ 
-    
+Replace an existing tag with the given name (instead of failing)
+
+[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt--d)`-d`
+
+
+[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt---delete)`--delete`
+
+Delete existing tags with the given names.
+
+[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt--v)`-v`
+
+
+[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt---verify)`--verify`
+
+Verify the cryptographic signature of the given tags.
+
+[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt--nnum)`-n`_< num>_
+
 _< num>_ specifies how many lines from the annotation, if any, are printed when using `-l`. Implies `--list`.
-The default is not to print any annotation lines. If no number is given to `-n`, only the first line is printed. If the tag is not annotated, the commit message is displayed instead. 
+The default is not to print any annotation lines. If no number is given to `-n`, only the first line is printed. If the tag is not annotated, the commit message is displayed instead.
 
-[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt--l)`-l` 
+[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt--l)`-l`
 
 
-[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt---list)`--list` 
-    
+[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt---list)`--list`
+
 List tags. With optional _< pattern>_..., e.g. `git` `tag` `--list` `v-*'`, list only the tags that match the pattern(s).
 Running `git` `tag` without arguments also lists all tags. The pattern is a shell wildcard (i.e., matched using `fnmatch`(3)). Multiple patterns may be given; if any of them matches, the tag is shown.
-This option is implicitly supplied if any other list-like option such as `--contains` is provided. See the documentation for each of those options for details. 
+This option is implicitly supplied if any other list-like option such as `--contains` is provided. See the documentation for each of those options for details.
 
-[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt---sortkey)`--sort=`_< key>_ 
-    
-Sort based on the key given. Prefix `-` to sort in descending order of the value. You may use the `--sort=`_< key>_ option multiple times, in which case the last _< key>_ becomes the primary key. Also supports "`version:refname`" or "`v:refname`" (tag names are treated as versions). The "`version:refname`" sort order can also be affected by the "`versionsort.suffix`" configuration variable. The keys supported are the same as those in `git` `for-each-ref`. Sort order defaults to the value configured for the `tag.sort` variable if it exists, or lexicographic order otherwise. See [git-config[1]](https://git-scm.com/docs/git-config). 
+[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt---sortkey)`--sort=`_< key>_
 
-[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt---colorwhen)`--color`[`=`_< when>_] 
-    
-Respect any colors specified in the `--format` option. The _< when>_ field must be one of `always`, `never`, or `auto` (if _< when>_ is absent, behave as if `always` was given). 
+Sort based on the key given. Prefix `-` to sort in descending order of the value. You may use the `--sort=`_< key>_ option multiple times, in which case the last _< key>_ becomes the primary key. Also supports "`version:refname`" or "`v:refname`" (tag names are treated as versions). The "`version:refname`" sort order can also be affected by the "`versionsort.suffix`" configuration variable. The keys supported are the same as those in `git` `for-each-ref`. Sort order defaults to the value configured for the `tag.sort` variable if it exists, or lexicographic order otherwise. See [git-config[1]](https://git-scm.com/docs/git-config).
 
-[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt--i)`-i` 
+[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt---colorwhen)`--color`[`=`_< when>_]
 
+Respect any colors specified in the `--format` option. The _< when>_ field must be one of `always`, `never`, or `auto` (if _< when>_ is absent, behave as if `always` was given).
 
-[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt---ignore-case)`--ignore-case` 
-    
-Sorting and filtering tags are case insensitive. 
-
-[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt---omit-empty)`--omit-empty` 
-    
-Do not print a newline after formatted refs where the format expands to the empty string. 
-
-[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt---columnoptions)`--column`[`=`_< options>_] 
+[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt--i)`-i`
 
 
-[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt---no-column)`--no-column` 
-    
+[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt---ignore-case)`--ignore-case`
+
+Sorting and filtering tags are case insensitive.
+
+[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt---omit-empty)`--omit-empty`
+
+Do not print a newline after formatted refs where the format expands to the empty string.
+
+[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt---columnoptions)`--column`[`=`_< options>_]
+
+
+[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt---no-column)`--no-column`
+
 Display tag listing in columns. See configuration variable `column.tag` for option syntax. `--column` and `--no-column` without options are equivalent to `always` and `never` respectively.
-This option is only applicable when listing tags without annotation lines. 
+This option is only applicable when listing tags without annotation lines.
 
-[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt---containscommit)`--contains` [_< commit>_] 
-    
-Only list tags which contain _< commit>_ (`HEAD` if not specified). Implies `--list`. 
+[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt---containscommit)`--contains` [_< commit>_]
 
-[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt---no-containscommit)`--no-contains` [_< commit>_] 
-    
-Only list tags which don’t contain _< commit>_ (`HEAD` if not specified). Implies `--list`. 
+Only list tags which contain _< commit>_ (`HEAD` if not specified). Implies `--list`.
 
-[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt---mergedcommit)`--merged` [_< commit>_] 
-    
-Only list tags whose commits are reachable from _< commit>_ (`HEAD` if not specified). 
+[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt---no-containscommit)`--no-contains` [_< commit>_]
 
-[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt---no-mergedcommit)`--no-merged` [_< commit>_] 
-    
-Only list tags whose commits are not reachable from _< commit>_ (`HEAD` if not specified). 
+Only list tags which don’t contain _< commit>_ (`HEAD` if not specified). Implies `--list`.
 
-[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt---points-atobject)`--points-at` [_< object>_] 
-    
-Only list tags of _< object>_ (`HEAD` if not specified). Implies `--list`. 
+[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt---mergedcommit)`--merged` [_< commit>_]
 
-[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt--mmsg)`-m` _< msg>_ 
+Only list tags whose commits are reachable from _< commit>_ (`HEAD` if not specified).
 
+[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt---no-mergedcommit)`--no-merged` [_< commit>_]
 
-[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt---messagemsg)`--message=`_< msg>_ 
-    
-Use _< msg>_ (instead of prompting). If multiple `-m` options are given, their values are concatenated as separate paragraphs. Implies `-a` if none of `-a`, `-s`, or `-u` _< key-id>_ is given. 
+Only list tags whose commits are not reachable from _< commit>_ (`HEAD` if not specified).
 
-[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt--Ffile)`-F` _< file>_ 
+[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt---points-atobject)`--points-at` [_< object>_]
+
+Only list tags of _< object>_ (`HEAD` if not specified). Implies `--list`.
+
+[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt--mmsg)`-m` _< msg>_
 
 
-[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt---filefile)`--file=`_< file>_ 
-    
-Take the tag message from _< file>_. Use `-` to read the message from the standard input. Implies `-a` if none of `-a`, `-s`, or `-u` _< key-id>_ is given. 
+[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt---messagemsg)`--message=`_< msg>_
 
-[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt---trailertokenvalue)`--trailer` _< token>_[(`=`|`:`)_< value>_] 
-    
-Specify a (_< token>_, _< value>_) pair that should be applied as a trailer. (e.g. `git` `tag` `--trailer` `"Custom-Key:` `value"` will add a "Custom-Key" trailer to the tag message.) The `trailer.*` configuration variables ([git-interpret-trailers[1]](https://git-scm.com/docs/git-interpret-trailers)) can be used to define if a duplicated trailer is omitted, where in the run of trailers each trailer would appear, and other details. The trailers can be extracted in `git` `tag` `--list`, using `--format="%`(`trailers`)`"` placeholder. 
+Use _< msg>_ (instead of prompting). If multiple `-m` options are given, their values are concatenated as separate paragraphs. Implies `-a` if none of `-a`, `-s`, or `-u` _< key-id>_ is given.
 
-[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt--e)`-e` 
+[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt--Ffile)`-F` _< file>_
 
 
-[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt---edit)`--edit` 
-    
-Let further edit the message taken from file with `-F` and command line with `-m`. 
+[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt---filefile)`--file=`_< file>_
 
-[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt---cleanupmode)`--cleanup=`_< mode>_ 
-    
-Set how the tag message is cleaned up. The _< mode>_ can be one of `verbatim`, `whitespace` and `strip`. The `strip` mode is default. The `verbatim` mode does not change message at all, `whitespace` removes just leading/trailing whitespace lines and `strip` removes both whitespace and commentary. 
+Take the tag message from _< file>_. Use `-` to read the message from the standard input. Implies `-a` if none of `-a`, `-s`, or `-u` _< key-id>_ is given.
 
-[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt---create-reflog)`--create-reflog` 
-    
-Create a reflog for the tag. To globally enable reflogs for tags, see `core.logAllRefUpdates` in [git-config[1]](https://git-scm.com/docs/git-config). The negated form `--no-create-reflog` only overrides an earlier `--create-reflog`, but currently does not negate the setting of `core.logAllRefUpdates`. 
+[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt---trailertokenvalue)`--trailer` _< token>_[(`=`|`:`)_< value>_]
 
-[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt---formatformat)`--format=`_< format>_ 
-    
-A string that interpolates `%`(`fieldname`) from a tag ref being shown and the object it points at. The format is the same as that of [git-for-each-ref[1]](https://git-scm.com/docs/git-for-each-ref). When unspecified, defaults to `%`(`refname:strip=2`). 
+Specify a (_< token>_, _< value>_) pair that should be applied as a trailer. (e.g. `git` `tag` `--trailer` `"Custom-Key:` `value"` will add a "Custom-Key" trailer to the tag message.) The `trailer.*` configuration variables ([git-interpret-trailers[1]](https://git-scm.com/docs/git-interpret-trailers)) can be used to define if a duplicated trailer is omitted, where in the run of trailers each trailer would appear, and other details. The trailers can be extracted in `git` `tag` `--list`, using `--format="%`(`trailers`)`"` placeholder.
 
-[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt-tagname)_< tagname>_ 
-    
-The name of the tag to create, delete, or describe. The new tag name must pass all checks defined by [git-check-ref-format[1]](https://git-scm.com/docs/git-check-ref-format). Some of these checks may restrict the characters allowed in a tag name. 
-
-[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt-commit)_< commit>_ 
+[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt--e)`-e`
 
 
-[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt-object)_< object>_ 
-    
+[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt---edit)`--edit`
+
+Let further edit the message taken from file with `-F` and command line with `-m`.
+
+[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt---cleanupmode)`--cleanup=`_< mode>_
+
+Set how the tag message is cleaned up. The _< mode>_ can be one of `verbatim`, `whitespace` and `strip`. The `strip` mode is default. The `verbatim` mode does not change message at all, `whitespace` removes just leading/trailing whitespace lines and `strip` removes both whitespace and commentary.
+
+[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt---create-reflog)`--create-reflog`
+
+Create a reflog for the tag. To globally enable reflogs for tags, see `core.logAllRefUpdates` in [git-config[1]](https://git-scm.com/docs/git-config). The negated form `--no-create-reflog` only overrides an earlier `--create-reflog`, but currently does not negate the setting of `core.logAllRefUpdates`.
+
+[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt---formatformat)`--format=`_< format>_
+
+A string that interpolates `%`(`fieldname`) from a tag ref being shown and the object it points at. The format is the same as that of [git-for-each-ref[1]](https://git-scm.com/docs/git-for-each-ref). When unspecified, defaults to `%`(`refname:strip=2`).
+
+[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt-tagname)_< tagname>_
+
+The name of the tag to create, delete, or describe. The new tag name must pass all checks defined by [git-check-ref-format[1]](https://git-scm.com/docs/git-check-ref-format). Some of these checks may restrict the characters allowed in a tag name.
+
+[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt-commit)_< commit>_
+
+
+[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt-object)_< object>_
+
 The object that the new tag will refer to, usually a commit. Defaults to `HEAD`.
 ##  [](https://git-scm.com/docs/git-tag#_configuration)CONFIGURATION
 By default, `git` `tag` in sign-with-default mode (`-s`) will use your committer identity (of the form _Your Name <your@email.address>_) to find a key. If you want to use a different default key, you can specify it in the repository configuration as follows:
@@ -491,39 +491,39 @@ $ GIT_COMMITTER_DATE="2006-10-02 10:31" git tag -s v1.0.1
 ```
 
 ##  [](https://git-scm.com/docs/git-tag#_date_formats)DATE FORMATS
-The `GIT_AUTHOR_DATE` and `GIT_COMMITTER_DATE` environment variables support the following date formats: 
+The `GIT_AUTHOR_DATE` and `GIT_COMMITTER_DATE` environment variables support the following date formats:
 
-[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt-Gitinternalformat)Git internal format 
-    
-It is _< unix-timestamp>_ _< time-zone-offset>_, where _< unix-timestamp>_ is the number of seconds since the UNIX epoch. _< time-zone-offset>_ is a positive or negative offset from UTC. For example CET (which is 1 hour ahead of UTC) is `+0100`. 
+[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt-Gitinternalformat)Git internal format
 
-[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt-RFC2822)RFC 2822 
-    
-The standard date format as described by RFC 2822, for example `Thu,` `07` `Apr` `2005` `22:13:13` `+0200`. 
+It is _< unix-timestamp>_ _< time-zone-offset>_, where _< unix-timestamp>_ is the number of seconds since the UNIX epoch. _< time-zone-offset>_ is a positive or negative offset from UTC. For example CET (which is 1 hour ahead of UTC) is `+0100`.
 
-[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt-ISO8601)ISO 8601 
-    
+[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt-RFC2822)RFC 2822
+
+The standard date format as described by RFC 2822, for example `Thu,` `07` `Apr` `2005` `22:13:13` `+0200`.
+
+[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt-ISO8601)ISO 8601
+
 Time and date specified by the ISO 8601 standard, for example `2005-04-07T22:13:13`. The parser accepts a space instead of the `T` character as well. Fractional parts of a second will be ignored, for example `2005-04-07T22:13:13.019` will be treated as `2005-04-07T22:13:13`.
-Note |  In addition, the date part is accepted in the following formats: `YYYY.MM.DD`, `MM/DD/YYYY` and `DD.MM.YYYY`.   
----|---  
-##  [](https://git-scm.com/docs/git-tag#_files)FILES 
+Note |  In addition, the date part is accepted in the following formats: `YYYY.MM.DD`, `MM/DD/YYYY` and `DD.MM.YYYY`.
+---|---
+##  [](https://git-scm.com/docs/git-tag#_files)FILES
 
-[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt-GITDIRTAGEDITMSG)`$GIT_DIR/TAG_EDITMSG` 
-    
+[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt-GITDIRTAGEDITMSG)`$GIT_DIR/TAG_EDITMSG`
+
 This file contains the message of an in-progress annotated tag. If `git` `tag` exits due to an error before creating an annotated tag then the tag message that has been provided by the user in an editor session will be available in this file, but may be overwritten by the next invocation of `git` `tag`.
 ##  [](https://git-scm.com/docs/git-tag#_configuration_2)CONFIGURATION
-Everything below this line in this section is selectively included from the [git-config[1]](https://git-scm.com/docs/git-config) documentation. The content is the same as what’s found there: 
+Everything below this line in this section is selectively included from the [git-config[1]](https://git-scm.com/docs/git-config) documentation. The content is the same as what’s found there:
 
-[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt-tagforceSignAnnotated)`tag.forceSignAnnotated` 
-    
-A boolean to specify whether annotated tags created should be GPG signed. If `--annotate` is specified on the command line, it takes precedence over this option. 
+[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt-tagforceSignAnnotated)`tag.forceSignAnnotated`
 
-[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt-tagsort)`tag.sort` 
-    
-This variable controls the sort ordering of tags when displayed by `git-tag`. Without the `--sort=`_< value>_ option provided, the value of this variable will be used as the default. 
+A boolean to specify whether annotated tags created should be GPG signed. If `--annotate` is specified on the command line, it takes precedence over this option.
 
-[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt-taggpgSign)`tag.gpgSign` 
-    
+[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt-tagsort)`tag.sort`
+
+This variable controls the sort ordering of tags when displayed by `git-tag`. Without the `--sort=`_< value>_ option provided, the value of this variable will be used as the default.
+
+[](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt-taggpgSign)`tag.gpgSign`
+
 A boolean to specify whether all tags should be GPG signed. Use of this option when running in an automated script can result in a large number of tags being signed. It is therefore convenient to use an agent to avoid typing your GPG passphrase several times. Note that this option doesn’t affect tag signing behavior enabled by `-u` _< keyid>_ or `--local-user=`_< keyid>_ options.
 ##  [](https://git-scm.com/docs/git-tag#_notes)NOTES
 When combining multiple `--contains` and `--no-contains` filters, only references that contain at least one of the `--contains` commits and contain none of the `--no-contains` commits are shown.
@@ -533,6 +533,6 @@ When combining multiple `--merged` and `--no-merged` filters, only references th
 ##  [](https://git-scm.com/docs/git-tag#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### tag
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-patch-id#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-patch-id#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-patch-id#_description)
@@ -32,8 +32,8 @@ Localized versions of **git-patch-id** manual
   4. [українська мова ](https://git-scm.com/docs/git-patch-id/uk)
   5. [简体中文 ](https://git-scm.com/docs/git-patch-id/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-patch-id)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -204,30 +204,30 @@ Read a patch from the standard input and compute the patch ID for it.
 A "patch ID" is nothing but a sum of SHA-1 of the file diffs associated with a patch, with line numbers ignored. As such, it’s "reasonably stable", but at the same time also reasonably unique, i.e., two patches that have the same "patch ID" are almost guaranteed to be the same thing.
 The main usecase for this command is to look for likely duplicate commits.
 When dealing with `git` `diff-tree` `--patch` output, it takes advantage of the fact that the patch is prefixed with the object name of the commit, and outputs two 40-byte hexadecimal strings. The first string is the patch ID, and the second string is the commit ID. This can be used to make a mapping from patch ID to commit ID.
-##  [](https://git-scm.com/docs/git-patch-id#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-patch-id#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-patch-id#Documentation/git-patch-id.txt---verbatim)`--verbatim` 
-    
+[](https://git-scm.com/docs/git-patch-id#Documentation/git-patch-id.txt---verbatim)`--verbatim`
+
 Calculate the patch ID of the input as it is given, do not strip any whitespace. Implies `--stable` and forbids `--unstable`.
-This is the default if `patchid.verbatim` is `true`. 
+This is the default if `patchid.verbatim` is `true`.
 
-[](https://git-scm.com/docs/git-patch-id#Documentation/git-patch-id.txt---stable)`--stable` 
-    
+[](https://git-scm.com/docs/git-patch-id#Documentation/git-patch-id.txt---stable)`--stable`
+
 Use a "stable" sum of hashes as the patch ID. With this option:
   * Reordering file diffs that make up a patch does not affect the ID. In particular, two patches produced by comparing the same two trees with two different settings for `-O`_< orderfile>_ result in the same patch ID signature, thereby allowing the computed result to be used as a key to index some meta-information about the change between the two trees.
   * The result is different from the value produced by Git 1.9 and older or produced when an "unstable" hash (see `--unstable` below) is configured - even when used on a diff output taken without any use of `-O`_< orderfile>_, thereby making existing databases storing such "unstable" or historical patch IDs unusable.
   * All whitespace within the patch is ignored and does not affect the ID.
 
 
-This is the default if `patchid.stable` is set to `true`. 
+This is the default if `patchid.stable` is set to `true`.
 
-[](https://git-scm.com/docs/git-patch-id#Documentation/git-patch-id.txt---unstable)`--unstable` 
-    
+[](https://git-scm.com/docs/git-patch-id#Documentation/git-patch-id.txt---unstable)`--unstable`
+
 Use an "unstable" hash as the patch ID. With this option, the result produced is compatible with the patch ID value produced by Git 1.9 and older and whitespace is ignored. Users with pre-existing databases storing patch IDs produced by Git 1.9 and older (who do not deal with reordered patches) may want to use this option.
 This is the default.
 ##  [](https://git-scm.com/docs/git-patch-id#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### patch-id
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

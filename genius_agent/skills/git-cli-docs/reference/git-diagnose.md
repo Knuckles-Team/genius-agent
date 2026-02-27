@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-diagnose#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-diagnose#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-diagnose#_description)
@@ -28,8 +28,8 @@
 Localized versions of **git-diagnose** manual
   1. [English ](https://git-scm.com/docs/git-diagnose)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-diagnose)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -199,29 +199,29 @@ By default, the following information is captured in the archive:
 
 Additional information can be collected by selecting a different diagnostic mode using the `--mode` option.
 This tool differs from [git-bugreport[1]](https://git-scm.com/docs/git-bugreport) in that it collects much more detailed information with a greater focus on reporting the size and data shape of repository contents.
-##  [](https://git-scm.com/docs/git-diagnose#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-diagnose#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-diagnose#Documentation/git-diagnose.txt--opath)-o <path> 
-
-
-[](https://git-scm.com/docs/git-diagnose#Documentation/git-diagnose.txt---output-directorypath)--output-directory <path> 
-    
-Place the resulting diagnostics archive in _< path>_ instead of the current directory. 
-
-[](https://git-scm.com/docs/git-diagnose#Documentation/git-diagnose.txt--sformat)-s <format> 
+[](https://git-scm.com/docs/git-diagnose#Documentation/git-diagnose.txt--opath)-o <path>
 
 
-[](https://git-scm.com/docs/git-diagnose#Documentation/git-diagnose.txt---suffixformat)--suffix <format> 
-    
-Specify an alternate suffix for the diagnostics archive name, to create a file named _git-diagnostics- <formatted-suffix>_. This should take the form of a strftime(3) format string; the current local time will be used. 
+[](https://git-scm.com/docs/git-diagnose#Documentation/git-diagnose.txt---output-directorypath)--output-directory <path>
 
-[](https://git-scm.com/docs/git-diagnose#Documentation/git-diagnose.txt---modestatsall)--mode=(stats|all) 
-    
+Place the resulting diagnostics archive in _< path>_ instead of the current directory.
+
+[](https://git-scm.com/docs/git-diagnose#Documentation/git-diagnose.txt--sformat)-s <format>
+
+
+[](https://git-scm.com/docs/git-diagnose#Documentation/git-diagnose.txt---suffixformat)--suffix <format>
+
+Specify an alternate suffix for the diagnostics archive name, to create a file named _git-diagnostics- <formatted-suffix>_. This should take the form of a strftime(3) format string; the current local time will be used.
+
+[](https://git-scm.com/docs/git-diagnose#Documentation/git-diagnose.txt---modestatsall)--mode=(stats|all)
+
 Specify the type of diagnostics that should be collected. The default behavior of _git diagnose_ is equivalent to `--mode=stats`.
 The `--mode=all` option collects everything included in `--mode=stats`, as well as copies of `.git`, `.git/hooks`, `.git/info`, `.git/logs`, and `.git/objects/info` directories. This additional information may be sensitive, as it can be used to reconstruct the full contents of the diagnosed repository. Users should exercise caution when sharing an archive generated with `--mode=all`.
 ##  [](https://git-scm.com/docs/git-diagnose#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### diagnose
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

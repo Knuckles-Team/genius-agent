@@ -89,19 +89,19 @@ Appearance settings
 
 Search or jump to...
 # Search code, repositories, users, issues, pull requests...
-Search 
+Search
 Clear
 [Search syntax tips](https://docs.github.com/search-github/github-code-search/understanding-github-code-search-syntax)
-#  Provide feedback 
+#  Provide feedback
 We read every piece of feedback, and take your input very seriously.
 Include my email address so I can be contacted
-Cancel  Submit feedback 
-#  Saved searches 
+Cancel  Submit feedback
+#  Saved searches
 ## Use saved searches to filter your results more quickly
 Name
 Query
-To see all available qualifiers, see our [documentation](https://docs.github.com/search-github/github-code-search/understanding-github-code-search-syntax). 
-Cancel  Create saved search 
+To see all available qualifiers, see our [documentation](https://docs.github.com/search-github/github-code-search/understanding-github-code-search-syntax).
+Cancel  Create saved search
 [ Sign in ](https://github.com/login?return_to=https%3A%2F%2Fgithub.com%2Fgit%2Fgit%2Ftree%2FHEAD%2FDocumentation%2Ftechnical)
 [ Sign up ](https://github.com/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E%2Ffiles%2Fdisambiguate&source=header-repo&source_repo=git%2Fgit)
 Appearance settings
@@ -1055,10 +1055,10 @@ Open commit details
 /
 Top
 ## Folders and files
-Name | Name | Last commit message | Last commit date  
----|---|---|---  
+Name | Name | Last commit message | Last commit date
+---|---|---|---
 ### parent directory
-[](https://github.com/git/git/tree/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation)  
+[](https://github.com/git/git/tree/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation)
 [.gitignore](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/.gitignore ".gitignore") | [.gitignore](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/.gitignore ".gitignore") | [doc: update gitignore for .adoc extension](https://github.com/git/git/commit/89cdbffa8619b0f5e87bacf12dfa400259511b1e "doc: update gitignore for .adoc extension
 
 We presently use the ".txt" extension for our AsciiDoc files.  While not
@@ -1073,7 +1073,7 @@ accidentally checking in generated files, ignore the new extension for
 generated files in the documentation .gitignore files.
 
 Signed-off-by: brian m. carlson <sandals@crustytoothpaste.net>
-Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Jan 21, 2025  
+Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Jan 21, 2025
 [api-error-handling.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/api-error-handling.adoc "api-error-handling.adoc") | [api-error-handling.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/api-error-handling.adoc "api-error-handling.adoc") | [doc: use .adoc extension for AsciiDoc files](https://github.com/git/git/commit/1f010d6bdf756129db13d1367c888aa4153f6d87 "doc: use .adoc extension for AsciiDoc files
 
 We presently use the ".txt" extension for our AsciiDoc files.  While not
@@ -1092,7 +1092,7 @@ Note that this should not result in any user-visible changes to the
 documentation.
 
 Signed-off-by: brian m. carlson <sandals@crustytoothpaste.net>
-Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Jan 21, 2025  
+Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Jan 21, 2025
 [api-index-skel.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/api-index-skel.adoc "api-index-skel.adoc") | [api-index-skel.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/api-index-skel.adoc "api-index-skel.adoc") | [doc: use .adoc extension for AsciiDoc files](https://github.com/git/git/commit/1f010d6bdf756129db13d1367c888aa4153f6d87 "doc: use .adoc extension for AsciiDoc files
 
 We presently use the ".txt" extension for our AsciiDoc files.  While not
@@ -1111,7 +1111,7 @@ Note that this should not result in any user-visible changes to the
 documentation.
 
 Signed-off-by: brian m. carlson <sandals@crustytoothpaste.net>
-Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Jan 21, 2025  
+Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Jan 21, 2025
 [api-index.sh](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/api-index.sh "api-index.sh") | [api-index.sh](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/api-index.sh "api-index.sh") | [doc: use .adoc extension for AsciiDoc files](https://github.com/git/git/commit/1f010d6bdf756129db13d1367c888aa4153f6d87 "doc: use .adoc extension for AsciiDoc files
 
 We presently use the ".txt" extension for our AsciiDoc files.  While not
@@ -1130,7 +1130,7 @@ Note that this should not result in any user-visible changes to the
 documentation.
 
 Signed-off-by: brian m. carlson <sandals@crustytoothpaste.net>
-Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Jan 21, 2025  
+Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Jan 21, 2025
 [api-merge.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/api-merge.adoc "api-merge.adoc") | [api-merge.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/api-merge.adoc "api-merge.adoc") | [doc: use .adoc extension for AsciiDoc files](https://github.com/git/git/commit/1f010d6bdf756129db13d1367c888aa4153f6d87 "doc: use .adoc extension for AsciiDoc files
 
 We presently use the ".txt" extension for our AsciiDoc files.  While not
@@ -1149,7 +1149,7 @@ Note that this should not result in any user-visible changes to the
 documentation.
 
 Signed-off-by: brian m. carlson <sandals@crustytoothpaste.net>
-Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Jan 21, 2025  
+Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Jan 21, 2025
 [api-parse-options.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/api-parse-options.adoc "api-parse-options.adoc") | [api-parse-options.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/api-parse-options.adoc "api-parse-options.adoc") | [parse-options: rename `OPT_MAGNITUDE()` to `OPT_UNSIGNED()`](https://github.com/git/git/commit/785c17df7817df8512d2cb92cfc079ef0b4de27c "parse-options: rename `OPT_MAGNITUDE\(\)` to `OPT_UNSIGNED\(\)`
 
 With the preceding commit, `OPT_INTEGER\(\)` has learned to support unit
@@ -1162,7 +1162,7 @@ Adapt the name of `OPT_MAGNITUDE\(\)` accordingly by renaming it to
 `OPT_UNSIGNED\(\)`.
 
 Signed-off-by: Patrick Steinhardt <ps@pks.im>
-Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Apr 17, 2025  
+Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Apr 17, 2025
 [api-path-walk.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/api-path-walk.adoc "api-path-walk.adoc") | [api-path-walk.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/api-path-walk.adoc "api-path-walk.adoc") | [doc: check for absence of multiple terms in each entry of desc list](https://github.com/git/git/commit/ed260220948595b1311d4639dbfc20f02c807fac "doc: check for absence of multiple terms in each entry of desc list
 
 For simplifying automated translation of the documentation, it is better to
@@ -1180,14 +1180,14 @@ documentation.
 
 Reviewed-by: Collin Funk <collin.funk1@gmail.com>
 Signed-off-by: Jean-Noël Avila <jn.avila@free.fr>
-Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Aug 11, 2025  
+Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Aug 11, 2025
 [api-simple-ipc.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/api-simple-ipc.adoc "api-simple-ipc.adoc") | [api-simple-ipc.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/api-simple-ipc.adoc "api-simple-ipc.adoc") | [doc: *.txt -> *.adoc fixes](https://github.com/git/git/commit/97350e18e2fc2e753e34df4ee8c1107457aa0a91 "doc: *.txt -> *.adoc fixes
 
 Update a few more instances of Documentation/*.txt files which have been
 renamed to *.adoc.
 
 Signed-off-by: Todd Zullinger <tmz@pobox.com>
-Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Mar 3, 2025  
+Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Mar 3, 2025
 [api-trace2.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/api-trace2.adoc "api-trace2.adoc") | [api-trace2.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/api-trace2.adoc "api-trace2.adoc") | [doc: use .adoc extension for AsciiDoc files](https://github.com/git/git/commit/1f010d6bdf756129db13d1367c888aa4153f6d87 "doc: use .adoc extension for AsciiDoc files
 
 We presently use the ".txt" extension for our AsciiDoc files.  While not
@@ -1206,7 +1206,7 @@ Note that this should not result in any user-visible changes to the
 documentation.
 
 Signed-off-by: brian m. carlson <sandals@crustytoothpaste.net>
-Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Jan 21, 2025  
+Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Jan 21, 2025
 [bitmap-format.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/bitmap-format.adoc "bitmap-format.adoc") | [bitmap-format.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/bitmap-format.adoc "bitmap-format.adoc") | [doc: use .adoc extension for AsciiDoc files](https://github.com/git/git/commit/1f010d6bdf756129db13d1367c888aa4153f6d87 "doc: use .adoc extension for AsciiDoc files
 
 We presently use the ".txt" extension for our AsciiDoc files.  While not
@@ -1225,7 +1225,7 @@ Note that this should not result in any user-visible changes to the
 documentation.
 
 Signed-off-by: brian m. carlson <sandals@crustytoothpaste.net>
-Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Jan 21, 2025  
+Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Jan 21, 2025
 [build-systems.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/build-systems.adoc "build-systems.adoc") | [build-systems.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/build-systems.adoc "build-systems.adoc") | [doc: update references to renamed AsciiDoc files](https://github.com/git/git/commit/3717a5775a7ba9e5f5b2794171ab205c0a177ef8 "doc: update references to renamed AsciiDoc files
 
 The .txt extensions were changed to .adoc in 1f010d6 \(doc: use .adoc
@@ -1233,7 +1233,7 @@ extension for AsciiDoc files, 2025-01-20\). References to the renamed
 files were not updated yet.
 
 Signed-off-by: Jouke Witteveen <j.witteveen@gmail.com>
-Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Jun 6, 2025  
+Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Jun 6, 2025
 [bundle-uri.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/bundle-uri.adoc "bundle-uri.adoc") | [bundle-uri.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/bundle-uri.adoc "bundle-uri.adoc") | [bundle-uri: copy all bundle references ino the refs/bundle space](https://github.com/git/git/commit/c858c6442b53fc9b7e79923546668fe38fe2c58d "bundle-uri: copy all bundle references ino the refs/bundle space
 
 When downloading bundles via the bundle-uri functionality, we only copy the
@@ -1251,7 +1251,7 @@ bundle file into refs/bundle/heads instead of directly into refs/bundle/ so
 the tests also need to be updated to look in the new heirarchy.
 
 Signed-off-by: Scott Chacon <schacon@gmail.com>
-Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Apr 25, 2025  
+Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Apr 25, 2025
 [commit-graph.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/commit-graph.adoc "commit-graph.adoc") | [commit-graph.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/commit-graph.adoc "commit-graph.adoc") | [doc: commit-graph.adoc: fix up some formatting](https://github.com/git/git/commit/b770ed9545edf4919ea39d6fdd54fca402d28930 "doc: commit-graph.adoc: fix up some formatting
 
 The formatting markup syntax used in this document \(markdown?\) is not
@@ -1270,7 +1270,7 @@ In order to improve the \(html\) document formatting:
     so enclose it in a '....' block.
 
 Signed-off-by: Ramsay Jones <ramsay@ramsayjones.plus.com>
-Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Oct 16, 2025  
+Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Oct 16, 2025
 [directory-rename-detection.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/directory-rename-detection.adoc "directory-rename-detection.adoc") | [directory-rename-detection.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/directory-rename-detection.adoc "directory-rename-detection.adoc") | [doc: use .adoc extension for AsciiDoc files](https://github.com/git/git/commit/1f010d6bdf756129db13d1367c888aa4153f6d87 "doc: use .adoc extension for AsciiDoc files
 
 We presently use the ".txt" extension for our AsciiDoc files.  While not
@@ -1289,7 +1289,7 @@ Note that this should not result in any user-visible changes to the
 documentation.
 
 Signed-off-by: brian m. carlson <sandals@crustytoothpaste.net>
-Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Jan 21, 2025  
+Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Jan 21, 2025
 [hash-function-transition.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/hash-function-transition.adoc "hash-function-transition.adoc") | [hash-function-transition.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/hash-function-transition.adoc "hash-function-transition.adoc") | [docs: reflect actual double signature for tags](https://github.com/git/git/commit/d477892b30b25333badb829190eb349fb671458c "docs: reflect actual double signature for tags
 
 The documentation for the hash function transition reflects the original
@@ -1301,7 +1301,7 @@ documentation is inaccurate, update it to reflect the correct
 information.
 
 Signed-off-by: brian m. carlson <sandals@crustytoothpaste.net>
-Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Oct 9, 2025  
+Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Oct 9, 2025
 [large-object-promisors.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/large-object-promisors.adoc "large-object-promisors.adoc") | [large-object-promisors.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/large-object-promisors.adoc "large-object-promisors.adoc") | [doc: add large-object-promisors.adoc to the docs build](https://github.com/git/git/commit/1c1fc86d5557fbbf5ac6ccbaddd824e24fb2b91d "doc: add large-object-promisors.adoc to the docs build
 
 Commit 5040f9f164 \("doc: add technical design doc for large object
@@ -1338,7 +1338,7 @@ III ... at the beginning.
 \[1\] https://asciidoctor.org/docs/asciidoc-recommended-practices/
 
 Signed-off-by: Ramsay Jones <ramsay@ramsayjones.plus.com>
-Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Oct 16, 2025  
+Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Oct 16, 2025
 [long-running-process-protocol.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/long-running-process-protocol.adoc "long-running-process-protocol.adoc") | [long-running-process-protocol.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/long-running-process-protocol.adoc "long-running-process-protocol.adoc") | [doc: check well-formedness of delimited sections](https://github.com/git/git/commit/63d33eb7f6ba315c3ecdda63295d9f915d184fcd "doc: check well-formedness of delimited sections
 
 Having an empty line before each delimited sections is not required by
@@ -1364,7 +1364,7 @@ Finally, this test checks that the delimited section are terminated within
 the same file.
 
 Signed-off-by: Jean-Noël Avila <jn.avila@free.fr>
-Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Aug 11, 2025  
+Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Aug 11, 2025
 [meson.build](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/meson.build "meson.build") | [meson.build](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/meson.build "meson.build") | [Merge branch 'en/xdiff-cleanup-2'](https://github.com/git/git/commit/0c6707687f818fa43dca7c9381c55e611ba6c51e "Merge branch 'en/xdiff-cleanup-2'
 
 Code clean-up.
@@ -1379,7 +1379,7 @@ Code clean-up.
   xdiff: use size_t for xrecord_t.size
   xdiff: make xrecord_t.ptr a uint8_t instead of char
   xdiff: use ptrdiff_t for dstart/dend
-  doc: define unambiguous type mappings across C and Rust") | Dec 4, 2025  
+  doc: define unambiguous type mappings across C and Rust") | Dec 4, 2025
 [multi-pack-index.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/multi-pack-index.adoc "multi-pack-index.adoc") | [multi-pack-index.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/multi-pack-index.adoc "multi-pack-index.adoc") | [Documentation: describe incremental MIDX bitmaps](https://github.com/git/git/commit/4887bdd4c7bd97e3eeccfc113fd97605b1a3d9ba "Documentation: describe incremental MIDX bitmaps
 
 Prepare to implement support for reachability bitmaps for the new
@@ -1390,7 +1390,7 @@ details for incremental MIDX bitmaps.
 
 Signed-off-by: Taylor Blau <me@ttaylorr.com>
 Acked-by: Elijah Newren <newren@gmail.com>
-Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Mar 21, 2025  
+Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Mar 21, 2025
 [pack-heuristics.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/pack-heuristics.adoc "pack-heuristics.adoc") | [pack-heuristics.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/pack-heuristics.adoc "pack-heuristics.adoc") | [doc: use .adoc extension for AsciiDoc files](https://github.com/git/git/commit/1f010d6bdf756129db13d1367c888aa4153f6d87 "doc: use .adoc extension for AsciiDoc files
 
 We presently use the ".txt" extension for our AsciiDoc files.  While not
@@ -1409,7 +1409,7 @@ Note that this should not result in any user-visible changes to the
 documentation.
 
 Signed-off-by: brian m. carlson <sandals@crustytoothpaste.net>
-Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Jan 21, 2025  
+Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Jan 21, 2025
 [packfile-uri.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/packfile-uri.adoc "packfile-uri.adoc") | [packfile-uri.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/packfile-uri.adoc "packfile-uri.adoc") | [doc: use .adoc extension for AsciiDoc files](https://github.com/git/git/commit/1f010d6bdf756129db13d1367c888aa4153f6d87 "doc: use .adoc extension for AsciiDoc files
 
 We presently use the ".txt" extension for our AsciiDoc files.  While not
@@ -1428,7 +1428,7 @@ Note that this should not result in any user-visible changes to the
 documentation.
 
 Signed-off-by: brian m. carlson <sandals@crustytoothpaste.net>
-Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Jan 21, 2025  
+Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Jan 21, 2025
 [parallel-checkout.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/parallel-checkout.adoc "parallel-checkout.adoc") | [parallel-checkout.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/parallel-checkout.adoc "parallel-checkout.adoc") | [doc: use .adoc extension for AsciiDoc files](https://github.com/git/git/commit/1f010d6bdf756129db13d1367c888aa4153f6d87 "doc: use .adoc extension for AsciiDoc files
 
 We presently use the ".txt" extension for our AsciiDoc files.  While not
@@ -1447,11 +1447,11 @@ Note that this should not result in any user-visible changes to the
 documentation.
 
 Signed-off-by: brian m. carlson <sandals@crustytoothpaste.net>
-Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Jan 21, 2025  
+Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Jan 21, 2025
 [partial-clone.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/partial-clone.adoc "partial-clone.adoc") | [partial-clone.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/partial-clone.adoc "partial-clone.adoc") | [technical/partial-clone: update reference to rev-list-options.adoc](https://github.com/git/git/commit/59d92809088f28b06b0cd102dd166ba8b3144fc7 "technical/partial-clone: update reference to rev-list-options.adoc
 
 Signed-off-by: Todd Zullinger <tmz@pobox.com>
-Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Mar 3, 2025  
+Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Mar 3, 2025
 [platform-support.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/platform-support.adoc "platform-support.adoc") | [platform-support.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/platform-support.adoc "platform-support.adoc") | [doc: use .adoc extension for AsciiDoc files](https://github.com/git/git/commit/1f010d6bdf756129db13d1367c888aa4153f6d87 "doc: use .adoc extension for AsciiDoc files
 
 We presently use the ".txt" extension for our AsciiDoc files.  While not
@@ -1470,7 +1470,7 @@ Note that this should not result in any user-visible changes to the
 documentation.
 
 Signed-off-by: brian m. carlson <sandals@crustytoothpaste.net>
-Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Jan 21, 2025  
+Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Jan 21, 2025
 [racy-git.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/racy-git.adoc "racy-git.adoc") | [racy-git.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/racy-git.adoc "racy-git.adoc") | [doc: use .adoc extension for AsciiDoc files](https://github.com/git/git/commit/1f010d6bdf756129db13d1367c888aa4153f6d87 "doc: use .adoc extension for AsciiDoc files
 
 We presently use the ".txt" extension for our AsciiDoc files.  While not
@@ -1489,7 +1489,7 @@ Note that this should not result in any user-visible changes to the
 documentation.
 
 Signed-off-by: brian m. carlson <sandals@crustytoothpaste.net>
-Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Jan 21, 2025  
+Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Jan 21, 2025
 [reftable.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/reftable.adoc "reftable.adoc") | [reftable.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/reftable.adoc "reftable.adoc") | [doc: use .adoc extension for AsciiDoc files](https://github.com/git/git/commit/1f010d6bdf756129db13d1367c888aa4153f6d87 "doc: use .adoc extension for AsciiDoc files
 
 We presently use the ".txt" extension for our AsciiDoc files.  While not
@@ -1508,7 +1508,7 @@ Note that this should not result in any user-visible changes to the
 documentation.
 
 Signed-off-by: brian m. carlson <sandals@crustytoothpaste.net>
-Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Jan 21, 2025  
+Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Jan 21, 2025
 [remembering-renames.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/remembering-renames.adoc "remembering-renames.adoc") | [remembering-renames.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/remembering-renames.adoc "remembering-renames.adoc") | [doc: remembering-renames.adoc: fix asciidoc warnings](https://github.com/git/git/commit/4fa0e4d02cc624f2286b661d5c8c17a75515e66c "doc: remembering-renames.adoc: fix asciidoc warnings
 
 Both asciidoc and ascidoctor issue warnings about 'list item index:
@@ -1549,7 +1549,7 @@ In addition to the warnings, address some other formatting issues:
     change the '*' introducer to '**' to correct the sub-list format.
 
 Signed-off-by: Ramsay Jones <ramsay@ramsayjones.plus.com>
-Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Oct 16, 2025  
+Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Oct 16, 2025
 [repository-version.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/repository-version.adoc "repository-version.adoc") | [repository-version.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/repository-version.adoc "repository-version.adoc") | [doc: use .adoc extension for AsciiDoc files](https://github.com/git/git/commit/1f010d6bdf756129db13d1367c888aa4153f6d87 "doc: use .adoc extension for AsciiDoc files
 
 We presently use the ".txt" extension for our AsciiDoc files.  While not
@@ -1568,7 +1568,7 @@ Note that this should not result in any user-visible changes to the
 documentation.
 
 Signed-off-by: brian m. carlson <sandals@crustytoothpaste.net>
-Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Jan 21, 2025  
+Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Jan 21, 2025
 [rerere.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/rerere.adoc "rerere.adoc") | [rerere.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/rerere.adoc "rerere.adoc") | [doc: use .adoc extension for AsciiDoc files](https://github.com/git/git/commit/1f010d6bdf756129db13d1367c888aa4153f6d87 "doc: use .adoc extension for AsciiDoc files
 
 We presently use the ".txt" extension for our AsciiDoc files.  While not
@@ -1587,7 +1587,7 @@ Note that this should not result in any user-visible changes to the
 documentation.
 
 Signed-off-by: brian m. carlson <sandals@crustytoothpaste.net>
-Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Jan 21, 2025  
+Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Jan 21, 2025
 [scalar.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/scalar.adoc "scalar.adoc") | [scalar.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/scalar.adoc "scalar.adoc") | [doc: use .adoc extension for AsciiDoc files](https://github.com/git/git/commit/1f010d6bdf756129db13d1367c888aa4153f6d87 "doc: use .adoc extension for AsciiDoc files
 
 We presently use the ".txt" extension for our AsciiDoc files.  While not
@@ -1606,7 +1606,7 @@ Note that this should not result in any user-visible changes to the
 documentation.
 
 Signed-off-by: brian m. carlson <sandals@crustytoothpaste.net>
-Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Jan 21, 2025  
+Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Jan 21, 2025
 [send-pack-pipeline.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/send-pack-pipeline.adoc "send-pack-pipeline.adoc") | [send-pack-pipeline.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/send-pack-pipeline.adoc "send-pack-pipeline.adoc") | [doc: use .adoc extension for AsciiDoc files](https://github.com/git/git/commit/1f010d6bdf756129db13d1367c888aa4153f6d87 "doc: use .adoc extension for AsciiDoc files
 
 We presently use the ".txt" extension for our AsciiDoc files.  While not
@@ -1625,7 +1625,7 @@ Note that this should not result in any user-visible changes to the
 documentation.
 
 Signed-off-by: brian m. carlson <sandals@crustytoothpaste.net>
-Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Jan 21, 2025  
+Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Jan 21, 2025
 [shallow.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/shallow.adoc "shallow.adoc") | [shallow.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/shallow.adoc "shallow.adoc") | [doc: use .adoc extension for AsciiDoc files](https://github.com/git/git/commit/1f010d6bdf756129db13d1367c888aa4153f6d87 "doc: use .adoc extension for AsciiDoc files
 
 We presently use the ".txt" extension for our AsciiDoc files.  While not
@@ -1644,7 +1644,7 @@ Note that this should not result in any user-visible changes to the
 documentation.
 
 Signed-off-by: brian m. carlson <sandals@crustytoothpaste.net>
-Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Jan 21, 2025  
+Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Jan 21, 2025
 [sparse-checkout.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/sparse-checkout.adoc "sparse-checkout.adoc") | [sparse-checkout.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/sparse-checkout.adoc "sparse-checkout.adoc") | [doc: sparse-checkout.adoc: fix asciidoc warnings](https://github.com/git/git/commit/45e8b7c2d44043f4328c9aa4da31671df2546a79 "doc: sparse-checkout.adoc: fix asciidoc warnings
 
 Both asciidoc and asciidoctor issue warnings about 'list item index:
@@ -1684,7 +1684,7 @@ In addition to the warnings, address some other formatting issues:
     the output.
 
 Signed-off-by: Ramsay Jones <ramsay@ramsayjones.plus.com>
-Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Oct 16, 2025  
+Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Oct 16, 2025
 [sparse-index.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/sparse-index.adoc "sparse-index.adoc") | [sparse-index.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/sparse-index.adoc "sparse-index.adoc") | [doc: use .adoc extension for AsciiDoc files](https://github.com/git/git/commit/1f010d6bdf756129db13d1367c888aa4153f6d87 "doc: use .adoc extension for AsciiDoc files
 
 We presently use the ".txt" extension for our AsciiDoc files.  While not
@@ -1703,7 +1703,7 @@ Note that this should not result in any user-visible changes to the
 documentation.
 
 Signed-off-by: brian m. carlson <sandals@crustytoothpaste.net>
-Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Jan 21, 2025  
+Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Jan 21, 2025
 [trivial-merge.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/trivial-merge.adoc "trivial-merge.adoc") | [trivial-merge.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/trivial-merge.adoc "trivial-merge.adoc") | [doc: use .adoc extension for AsciiDoc files](https://github.com/git/git/commit/1f010d6bdf756129db13d1367c888aa4153f6d87 "doc: use .adoc extension for AsciiDoc files
 
 We presently use the ".txt" extension for our AsciiDoc files.  While not
@@ -1722,14 +1722,14 @@ Note that this should not result in any user-visible changes to the
 documentation.
 
 Signed-off-by: brian m. carlson <sandals@crustytoothpaste.net>
-Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Jan 21, 2025  
+Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Jan 21, 2025
 [unambiguous-types.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/unambiguous-types.adoc "unambiguous-types.adoc") | [unambiguous-types.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/unambiguous-types.adoc "unambiguous-types.adoc") | [doc: define unambiguous type mappings across C and Rust](https://github.com/git/git/commit/6971934d9bb4b8176b48658482862169a4582913 "doc: define unambiguous type mappings across C and Rust
 
 Document other nuances when crossing the FFI boundary. Other language
 mappings may be added in the future.
 
 Signed-off-by: Ezekiel Newren <ezekielnewren@gmail.com>
-Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Nov 18, 2025  
+Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Nov 18, 2025
 [unit-tests.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/unit-tests.adoc "unit-tests.adoc") | [unit-tests.adoc](https://github.com/git/git/blob/7b2bccb0d58d4f24705bf985de1f4612e4cf06e5/Documentation/technical/unit-tests.adoc "unit-tests.adoc") | [doc: use .adoc extension for AsciiDoc files](https://github.com/git/git/commit/1f010d6bdf756129db13d1367c888aa4153f6d87 "doc: use .adoc extension for AsciiDoc files
 
 We presently use the ".txt" extension for our AsciiDoc files.  While not
@@ -1748,10 +1748,10 @@ Note that this should not result in any user-visible changes to the
 documentation.
 
 Signed-off-by: brian m. carlson <sandals@crustytoothpaste.net>
-Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Jan 21, 2025  
-View all files  
+Signed-off-by: Junio C Hamano <gitster@pobox.com>") | Jan 21, 2025
+View all files
 ## Footer
-[ ](https://github.com) © 2026 GitHub, Inc. 
+[ ](https://github.com) © 2026 GitHub, Inc.
 ### Footer navigation
   * [Terms](https://docs.github.com/site-policy/github-terms/github-terms-of-service)
   * [Privacy](https://docs.github.com/site-policy/privacy-policies/github-privacy-statement)
@@ -1760,7 +1760,5 @@ View all files
   * [Community](https://github.community/)
   * [Docs](https://docs.github.com/)
   * [Contact](https://support.github.com?tags=dotcom-footer)
-  * Manage cookies 
-  * Do not share my personal information 
-
-
+  * Manage cookies
+  * Do not share my personal information

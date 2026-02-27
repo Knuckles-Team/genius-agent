@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/gitk#_name)
     * [SYNOPSIS](https://git-scm.com/docs/gitk#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/gitk#_description)
@@ -32,8 +32,8 @@
 Localized versions of **gitk** manual
   1. [English ](https://git-scm.com/docs/gitk)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/gitk)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -217,59 +217,59 @@ Displays changes in a repository or a selected set of commits. This includes vis
 To control which revisions to show, gitk supports most options applicable to the _git rev-list_ command. It also supports a few options applicable to the _git diff-*_ commands to control how the changes each commit introduces are shown. Finally, it supports some gitk-specific options.
 gitk generally only understands options with arguments in the _stuck_ form (see [gitcli[7]](https://git-scm.com/docs/gitcli)) due to limitations in the command-line parser.
 ###  [](https://git-scm.com/docs/gitk#_rev_list_options_and_arguments)rev-list options and arguments
-This manual page describes only the most frequently used options. See [git-rev-list[1]](https://git-scm.com/docs/git-rev-list) for a complete list. 
+This manual page describes only the most frequently used options. See [git-rev-list[1]](https://git-scm.com/docs/git-rev-list) for a complete list.
 
-[](https://git-scm.com/docs/gitk#Documentation/gitk.txt---all)--all 
-    
-Show all refs (branches, tags, etc.). 
+[](https://git-scm.com/docs/gitk#Documentation/gitk.txt---all)--all
 
-[](https://git-scm.com/docs/gitk#Documentation/gitk.txt---branchespattern)--branches[=<pattern>] 
+Show all refs (branches, tags, etc.).
 
-
-[](https://git-scm.com/docs/gitk#Documentation/gitk.txt---tagspattern)--tags[=<pattern>] 
+[](https://git-scm.com/docs/gitk#Documentation/gitk.txt---branchespattern)--branches[=<pattern>]
 
 
-[](https://git-scm.com/docs/gitk#Documentation/gitk.txt---remotespattern)--remotes[=<pattern>] 
-    
-Pretend as if all the branches (tags, remote branches, resp.) are listed on the command line as _< commit>_. If _< pattern>_ is given, limit refs to ones matching given shell glob. If pattern lacks _?_ , _*_ , or _[_ , _/*_ at the end is implied. 
-
-[](https://git-scm.com/docs/gitk#Documentation/gitk.txt---sincedate)--since=<date> 
-    
-Show commits more recent than a specific date. 
-
-[](https://git-scm.com/docs/gitk#Documentation/gitk.txt---untildate)--until=<date> 
-    
-Show commits older than a specific date. 
-
-[](https://git-scm.com/docs/gitk#Documentation/gitk.txt---date-order)--date-order 
-    
-Sort commits by date when possible. 
-
-[](https://git-scm.com/docs/gitk#Documentation/gitk.txt---merge)--merge 
-    
-After an attempt to merge stops with conflicts, show the commits on the history between two branches (i.e. the HEAD and the MERGE_HEAD) that modify the conflicted files and do not exist on all the heads being merged. 
-
-[](https://git-scm.com/docs/gitk#Documentation/gitk.txt---left-right)--left-right 
-    
-Mark which side of a symmetric difference a commit is reachable from. Commits from the left side are prefixed with a _<_ symbol and those from the right with a _>_ symbol. 
-
-[](https://git-scm.com/docs/gitk#Documentation/gitk.txt---full-history)--full-history 
-    
-When filtering history with _< path>…​_, does not prune some history. (See "History simplification" in [git-log[1]](https://git-scm.com/docs/git-log) for a more detailed explanation.) 
-
-[](https://git-scm.com/docs/gitk#Documentation/gitk.txt---simplify-merges)--simplify-merges 
-    
-Additional option to `--full-history` to remove some needless merges from the resulting history, as there are no selected commits contributing to this merge. (See "History simplification" in [git-log[1]](https://git-scm.com/docs/git-log) for a more detailed explanation.) 
-
-[](https://git-scm.com/docs/gitk#Documentation/gitk.txt---ancestry-path)--ancestry-path 
-    
-When given a range of commits to display (e.g. _commit1..commit2_ or _commit2 ^commit1_), only display commits that exist directly on the ancestry chain between the _commit1_ and _commit2_ , i.e. commits that are both descendants of _commit1_ , and ancestors of _commit2_. (See "History simplification" in [git-log[1]](https://git-scm.com/docs/git-log) for a more detailed explanation.) 
-
-[](https://git-scm.com/docs/gitk#Documentation/gitk.txt--Lstartendfile)`-L`_< start>_`,`_< end>_`:`_< file>_ 
+[](https://git-scm.com/docs/gitk#Documentation/gitk.txt---tagspattern)--tags[=<pattern>]
 
 
-[](https://git-scm.com/docs/gitk#Documentation/gitk.txt--Lfuncnamefile)`-L:`_< funcname>_`:`_< file>_ 
-    
+[](https://git-scm.com/docs/gitk#Documentation/gitk.txt---remotespattern)--remotes[=<pattern>]
+
+Pretend as if all the branches (tags, remote branches, resp.) are listed on the command line as _< commit>_. If _< pattern>_ is given, limit refs to ones matching given shell glob. If pattern lacks _?_ , _*_ , or _[_ , _/*_ at the end is implied.
+
+[](https://git-scm.com/docs/gitk#Documentation/gitk.txt---sincedate)--since=<date>
+
+Show commits more recent than a specific date.
+
+[](https://git-scm.com/docs/gitk#Documentation/gitk.txt---untildate)--until=<date>
+
+Show commits older than a specific date.
+
+[](https://git-scm.com/docs/gitk#Documentation/gitk.txt---date-order)--date-order
+
+Sort commits by date when possible.
+
+[](https://git-scm.com/docs/gitk#Documentation/gitk.txt---merge)--merge
+
+After an attempt to merge stops with conflicts, show the commits on the history between two branches (i.e. the HEAD and the MERGE_HEAD) that modify the conflicted files and do not exist on all the heads being merged.
+
+[](https://git-scm.com/docs/gitk#Documentation/gitk.txt---left-right)--left-right
+
+Mark which side of a symmetric difference a commit is reachable from. Commits from the left side are prefixed with a _<_ symbol and those from the right with a _>_ symbol.
+
+[](https://git-scm.com/docs/gitk#Documentation/gitk.txt---full-history)--full-history
+
+When filtering history with _< path>…​_, does not prune some history. (See "History simplification" in [git-log[1]](https://git-scm.com/docs/git-log) for a more detailed explanation.)
+
+[](https://git-scm.com/docs/gitk#Documentation/gitk.txt---simplify-merges)--simplify-merges
+
+Additional option to `--full-history` to remove some needless merges from the resulting history, as there are no selected commits contributing to this merge. (See "History simplification" in [git-log[1]](https://git-scm.com/docs/git-log) for a more detailed explanation.)
+
+[](https://git-scm.com/docs/gitk#Documentation/gitk.txt---ancestry-path)--ancestry-path
+
+When given a range of commits to display (e.g. _commit1..commit2_ or _commit2 ^commit1_), only display commits that exist directly on the ancestry chain between the _commit1_ and _commit2_ , i.e. commits that are both descendants of _commit1_ , and ancestors of _commit2_. (See "History simplification" in [git-log[1]](https://git-scm.com/docs/git-log) for a more detailed explanation.)
+
+[](https://git-scm.com/docs/gitk#Documentation/gitk.txt--Lstartendfile)`-L`_< start>_`,`_< end>_`:`_< file>_
+
+
+[](https://git-scm.com/docs/gitk#Documentation/gitk.txt--Lfuncnamefile)`-L:`_< funcname>_`:`_< file>_
+
 Trace the evolution of the line range given by _< start>_`,`_< end>_, or by the function name regex _< funcname>_, within the _< file>_. You may not give any pathspec limiters. This is currently limited to a walk starting from a single revision, i.e., you may only give zero or one positive revision arguments, and _< start>_ and _< end>_ (or _< funcname>_) must exist in the starting revision. You can specify this option more than once. Implies `--patch`. Patch output can be suppressed using `--no-patch`, but other diff formats (namely `--raw`, `--numstat`, `--shortstat`, `--dirstat`, `--summary`, `--name-only`, `--name-status`, `--check`) are not currently implemented.
 _< start>_ and _< end>_ can take one of these forms:
   * _< number>_
@@ -280,36 +280,36 @@ This form will use the first line matching the given POSIX _< regex>_. If _< sta
 This is only valid for _< end>_ and will specify a number of lines before or after the line given by _< start>_.
 
 
-If `:`_< funcname>_ is given in place of _< start>_ and _< end>_, it is a regular expression that denotes the range from the first funcname line that matches _< funcname>_, up to the next funcname line. `:`_< funcname>_ searches from the end of the previous `-L` range, if any, otherwise from the start of file. `^:`_< funcname>_ searches from the start of file. The function names are determined in the same way as `git` `diff` works out patch hunk headers (see _Defining a custom hunk-header_ in [gitattributes[5]](https://git-scm.com/docs/gitattributes)). 
+If `:`_< funcname>_ is given in place of _< start>_ and _< end>_, it is a regular expression that denotes the range from the first funcname line that matches _< funcname>_, up to the next funcname line. `:`_< funcname>_ searches from the end of the previous `-L` range, if any, otherwise from the start of file. `^:`_< funcname>_ searches from the start of file. The function names are determined in the same way as `git` `diff` works out patch hunk headers (see _Defining a custom hunk-header_ in [gitattributes[5]](https://git-scm.com/docs/gitattributes)).
 
-[](https://git-scm.com/docs/gitk#Documentation/gitk.txt-revisionrange)<revision range> 
-    
-Limit the revisions to show. This can be either a single revision meaning show from the given revision and back, or it can be a range in the form "_< from>_.._< to>_" to show all revisions between _< from>_ and back to _< to>_. Note, more advanced revision selection can be applied. For a more complete list of ways to spell object names, see [gitrevisions[7]](https://git-scm.com/docs/gitrevisions). 
+[](https://git-scm.com/docs/gitk#Documentation/gitk.txt-revisionrange)<revision range>
 
-[](https://git-scm.com/docs/gitk#Documentation/gitk.txt-path)<path>…​ 
-    
+Limit the revisions to show. This can be either a single revision meaning show from the given revision and back, or it can be a range in the form "_< from>_.._< to>_" to show all revisions between _< from>_ and back to _< to>_. Note, more advanced revision selection can be applied. For a more complete list of ways to spell object names, see [gitrevisions[7]](https://git-scm.com/docs/gitrevisions).
+
+[](https://git-scm.com/docs/gitk#Documentation/gitk.txt-path)<path>…​
+
 Limit commits to the ones touching files in the given paths. Note, to avoid ambiguity with respect to revision names use "--" to separate the paths from any preceding options.
-###  [](https://git-scm.com/docs/gitk#_gitk_specific_options)gitk-specific options 
+###  [](https://git-scm.com/docs/gitk#_gitk_specific_options)gitk-specific options
 
-[](https://git-scm.com/docs/gitk#Documentation/gitk.txt---argscmdcommand)--argscmd=<command> 
-    
-Command to be run each time gitk has to determine the revision range to show. The command is expected to print on its standard output a list of additional revisions to be shown, one per line. Use this instead of explicitly specifying a _< revision-range>_ if the set of commits to show may vary between refreshes. 
+[](https://git-scm.com/docs/gitk#Documentation/gitk.txt---argscmdcommand)--argscmd=<command>
 
-[](https://git-scm.com/docs/gitk#Documentation/gitk.txt---select-commitref)--select-commit=<ref> 
-    
+Command to be run each time gitk has to determine the revision range to show. The command is expected to print on its standard output a list of additional revisions to be shown, one per line. Use this instead of explicitly specifying a _< revision-range>_ if the set of commits to show may vary between refreshes.
+
+[](https://git-scm.com/docs/gitk#Documentation/gitk.txt---select-commitref)--select-commit=<ref>
+
 Select the specified commit after loading the graph. Default behavior is equivalent to specifying _--select-commit=HEAD_.
-##  [](https://git-scm.com/docs/gitk#_examples)Examples 
+##  [](https://git-scm.com/docs/gitk#_examples)Examples
 
-[](https://git-scm.com/docs/gitk#Documentation/gitk.txt-gitkv2612includescsidriversscsi)gitk v2.6.12.. include/scsi drivers/scsi 
-    
-Show the changes since version _v2.6.12_ that changed any file in the include/scsi or drivers/scsi subdirectories 
+[](https://git-scm.com/docs/gitk#Documentation/gitk.txt-gitkv2612includescsidriversscsi)gitk v2.6.12.. include/scsi drivers/scsi
 
-[](https://git-scm.com/docs/gitk#Documentation/gitk.txt-gitk--since2weeksago--gitk)gitk --since="2 weeks ago" -- gitk 
-    
-Show the changes during the last two weeks to the file _gitk_. The "--" is necessary to avoid confusion with the **branch** named _gitk_ 
+Show the changes since version _v2.6.12_ that changed any file in the include/scsi or drivers/scsi subdirectories
 
-[](https://git-scm.com/docs/gitk#Documentation/gitk.txt-gitk--max-count100--all--Makefile)gitk --max-count=100 --all -- Makefile 
-    
+[](https://git-scm.com/docs/gitk#Documentation/gitk.txt-gitk--since2weeksago--gitk)gitk --since="2 weeks ago" -- gitk
+
+Show the changes during the last two weeks to the file _gitk_. The "--" is necessary to avoid confusion with the **branch** named _gitk_
+
+[](https://git-scm.com/docs/gitk#Documentation/gitk.txt-gitk--max-count100--all--Makefile)gitk --max-count=100 --all -- Makefile
+
 Show at most 100 changes made to the file _Makefile_. Instead of only looking for changes in the current branch look in all branches.
 ##  [](https://git-scm.com/docs/gitk#_files)Files
 User configuration and preferences are stored at:
@@ -326,18 +326,18 @@ _gitk_ is actually maintained as an independent project, but stable versions are
 https://github.com/j6t/gitk
 ```
 
-##  [](https://git-scm.com/docs/gitk#_see_also)SEE ALSO 
+##  [](https://git-scm.com/docs/gitk#_see_also)SEE ALSO
 
-[](https://git-scm.com/docs/gitk#Documentation/gitk.txt-qgit1)_qgit(1)_ 
-    
-A repository browser written in C++ using Qt. 
+[](https://git-scm.com/docs/gitk#Documentation/gitk.txt-qgit1)_qgit(1)_
 
-[](https://git-scm.com/docs/gitk#Documentation/gitk.txt-tig1)_tig(1)_ 
-    
+A repository browser written in C++ using Qt.
+
+[](https://git-scm.com/docs/gitk#Documentation/gitk.txt-tig1)_tig(1)_
+
 A minimal repository browser and Git tool output highlighter written in C using Ncurses.
 ##  [](https://git-scm.com/docs/gitk#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### gitk
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

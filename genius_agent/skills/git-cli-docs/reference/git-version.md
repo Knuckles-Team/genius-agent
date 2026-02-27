@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-version#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-version#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-version#_description)
@@ -28,8 +28,8 @@
 Localized versions of **git-version** manual
   1. [English ](https://git-scm.com/docs/git-version)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-version)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -189,15 +189,15 @@ _git version_ [--build-options]
 ##  [](https://git-scm.com/docs/git-version#_description)DESCRIPTION
 With no options given, the version of _git_ is printed on the standard output.
 Note that `git` `--version` is identical to `git` `version` because the former is internally converted into the latter.
-##  [](https://git-scm.com/docs/git-version#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-version#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-version#Documentation/git-version.txt---build-options)--build-options 
-    
+[](https://git-scm.com/docs/git-version#Documentation/git-version.txt---build-options)--build-options
+
 Include additional information about how git was built for diagnostic purposes.
 The libraries used to implement the SHA-1 and SHA-256 algorithms are displayed in the form `SHA-1:` _< option>_ and `SHA-256:` _< option>_. Note that the SHA-1 options `SHA1_APPLE`, `SHA1_OPENSSL`, and `SHA1_BLK` do not use a collision detection algorithm and thus may be vulnerable to known SHA-1 collision attacks. When a faster SHA-1 implementation without collision detection is used for only non-cryptographic purposes, the algorithm is displayed in the form `non-collision-detecting-SHA-1:` _< option>_.
 ##  [](https://git-scm.com/docs/git-version#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### version
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-mktree#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-mktree#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-mktree#_description)
@@ -34,8 +34,8 @@ Localized versions of **git-mktree** manual
   6. [українська мова ](https://git-scm.com/docs/git-mktree/uk)
   7. [简体中文 ](https://git-scm.com/docs/git-mktree/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-mktree)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -200,22 +200,22 @@ _git mktree_ [-z] [--missing] [--batch]
 
 ##  [](https://git-scm.com/docs/git-mktree#_description)DESCRIPTION
 Reads standard input in non-recursive `ls-tree` output format, and creates a tree object. The order of the tree entries is normalized by mktree so pre-sorting the input is not required. The object name of the tree object built is written to the standard output.
-##  [](https://git-scm.com/docs/git-mktree#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-mktree#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-mktree#Documentation/git-mktree.txt--z)-z 
-    
-Read the NUL-terminated `ls-tree` `-z` output instead. 
+[](https://git-scm.com/docs/git-mktree#Documentation/git-mktree.txt--z)-z
 
-[](https://git-scm.com/docs/git-mktree#Documentation/git-mktree.txt---missing)--missing 
-    
-Allow missing objects. The default behaviour (without this option) is to verify that each tree entry’s hash identifies an existing object. This option has no effect on the treatment of gitlink entries (aka "submodules") which are always allowed to be missing. 
+Read the NUL-terminated `ls-tree` `-z` output instead.
 
-[](https://git-scm.com/docs/git-mktree#Documentation/git-mktree.txt---batch)--batch 
-    
+[](https://git-scm.com/docs/git-mktree#Documentation/git-mktree.txt---missing)--missing
+
+Allow missing objects. The default behaviour (without this option) is to verify that each tree entry’s hash identifies an existing object. This option has no effect on the treatment of gitlink entries (aka "submodules") which are always allowed to be missing.
+
+[](https://git-scm.com/docs/git-mktree#Documentation/git-mktree.txt---batch)--batch
+
 Allow building of more than one tree object before exiting. Each tree is separated by a single blank line. The final newline is optional. Note - if the `-z` option is used, lines are terminated with NUL.
 ##  [](https://git-scm.com/docs/git-mktree#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### mktree
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

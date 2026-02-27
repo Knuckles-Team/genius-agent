@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-fetch#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-fetch#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-fetch#_description)
@@ -44,8 +44,8 @@ Localized versions of **git-fetch** manual
   5. [українська мова ](https://git-scm.com/docs/git-fetch/uk)
   6. [简体中文 ](https://git-scm.com/docs/git-fetch/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-fetch)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -280,258 +280,258 @@ By default, any tag that points into the histories being fetched is also fetched
 `git` `fetch` can fetch from either a single named repository or URL, or from several repositories at once if _< group>_ is given and there is a `remotes.`_< group>_ entry in the configuration file. (See [git-config[1]](https://git-scm.com/docs/git-config)).
 When no remote is specified, by default the `origin` remote will be used, unless there’s an upstream branch configured for the current branch.
 The names of refs that are fetched, together with the object names they point at, are written to `.git/FETCH_HEAD`. This information may be used by scripts or other git commands, such as [git-pull[1]](https://git-scm.com/docs/git-pull).
-##  [](https://git-scm.com/docs/git-fetch#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-fetch#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---all)`--all` 
-
-
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---no-all)`--no-all` 
-    
-Fetch all remotes, except for the ones that has the `remote.`_< name>_`.skipFetchAll` configuration variable set. This overrides the configuration variable `fetch.all`. 
-
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt--a)`-a` 
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---all)`--all`
 
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---append)`--append` 
-    
-Append ref names and object names of fetched refs to the existing contents of `.git/FETCH_HEAD`. Without this option old data in `.git/FETCH_HEAD` will be overwritten. 
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---no-all)`--no-all`
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---atomic)`--atomic` 
-    
-Use an atomic transaction to update local refs. Either all refs are updated, or on error, no refs are updated. 
+Fetch all remotes, except for the ones that has the `remote.`_< name>_`.skipFetchAll` configuration variable set. This overrides the configuration variable `fetch.all`.
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---depthdepth)`--depth=`_< depth>_ 
-    
-Limit fetching to the specified number of commits from the tip of each remote branch history. If fetching to a _shallow_ repository created by `git` `clone` with `--depth=`_< depth>_ option (see [git-clone[1]](https://git-scm.com/docs/git-clone)), deepen or shorten the history to the specified number of commits. Tags for the deepened commits are not fetched. 
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt--a)`-a`
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---deependepth)`--deepen=`_< depth>_ 
-    
-Similar to `--depth`, except it specifies the number of commits from the current shallow boundary instead of from the tip of each remote branch history. 
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---shallow-sincedate)`--shallow-since=`_< date>_ 
-    
-Deepen or shorten the history of a shallow repository to include all reachable commits after _< date>_. 
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---append)`--append`
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---shallow-excluderef)`--shallow-exclude=`_< ref>_ 
-    
-Deepen or shorten the history of a shallow repository to exclude commits reachable from a specified remote branch or tag. This option can be specified multiple times. 
+Append ref names and object names of fetched refs to the existing contents of `.git/FETCH_HEAD`. Without this option old data in `.git/FETCH_HEAD` will be overwritten.
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---unshallow)`--unshallow` 
-    
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---atomic)`--atomic`
+
+Use an atomic transaction to update local refs. Either all refs are updated, or on error, no refs are updated.
+
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---depthdepth)`--depth=`_< depth>_
+
+Limit fetching to the specified number of commits from the tip of each remote branch history. If fetching to a _shallow_ repository created by `git` `clone` with `--depth=`_< depth>_ option (see [git-clone[1]](https://git-scm.com/docs/git-clone)), deepen or shorten the history to the specified number of commits. Tags for the deepened commits are not fetched.
+
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---deependepth)`--deepen=`_< depth>_
+
+Similar to `--depth`, except it specifies the number of commits from the current shallow boundary instead of from the tip of each remote branch history.
+
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---shallow-sincedate)`--shallow-since=`_< date>_
+
+Deepen or shorten the history of a shallow repository to include all reachable commits after _< date>_.
+
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---shallow-excluderef)`--shallow-exclude=`_< ref>_
+
+Deepen or shorten the history of a shallow repository to exclude commits reachable from a specified remote branch or tag. This option can be specified multiple times.
+
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---unshallow)`--unshallow`
+
 If the source repository is complete, convert a shallow repository to a complete one, removing all the limitations imposed by shallow repositories.
-If the source repository is shallow, fetch as much as possible so that the current repository has the same history as the source repository. 
+If the source repository is shallow, fetch as much as possible so that the current repository has the same history as the source repository.
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---update-shallow)`--update-shallow` 
-    
-By default when fetching from a shallow repository, `git` `fetch` refuses refs that require updating `.git/shallow`. This option updates `.git/shallow` and accepts such refs. 
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---update-shallow)`--update-shallow`
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---negotiation-tipcommitglob)`--negotiation-tip=`(_< commit>_|_< glob>_) 
-    
+By default when fetching from a shallow repository, `git` `fetch` refuses refs that require updating `.git/shallow`. This option updates `.git/shallow` and accepts such refs.
+
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---negotiation-tipcommitglob)`--negotiation-tip=`(_< commit>_|_< glob>_)
+
 By default, Git will report, to the server, commits reachable from all local refs to find common commits in an attempt to reduce the size of the to-be-received packfile. If specified, Git will only report commits reachable from the given tips. This is useful to speed up fetches when the user knows which local ref is likely to have commits in common with the upstream ref being fetched.
 This option may be specified more than once; if so, Git will report commits reachable from any of the given commits.
 The argument to this option may be a glob on ref names, a ref, or the (possibly abbreviated) SHA-1 of a commit. Specifying a glob is equivalent to specifying this option multiple times, one for each matching ref name.
-See also the `fetch.negotiationAlgorithm` and `push.negotiate` configuration variables documented in [git-config[1]](https://git-scm.com/docs/git-config), and the `--negotiate-only` option below. 
+See also the `fetch.negotiationAlgorithm` and `push.negotiate` configuration variables documented in [git-config[1]](https://git-scm.com/docs/git-config), and the `--negotiate-only` option below.
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---negotiate-only)`--negotiate-only` 
-    
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---negotiate-only)`--negotiate-only`
+
 Do not fetch anything from the server, and instead print the ancestors of the provided `--negotiation-tip=` arguments, which we have in common with the server.
-This is incompatible with `--recurse-submodules=`(`yes`|`on-demand`). Internally this is used to implement the `push.negotiate` option, see [git-config[1]](https://git-scm.com/docs/git-config). 
+This is incompatible with `--recurse-submodules=`(`yes`|`on-demand`). Internally this is used to implement the `push.negotiate` option, see [git-config[1]](https://git-scm.com/docs/git-config).
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---dry-run)`--dry-run` 
-    
-Show what would be done, without making any changes. 
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---dry-run)`--dry-run`
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---porcelain)`--porcelain` 
-    
+Show what would be done, without making any changes.
+
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---porcelain)`--porcelain`
+
 Print the output to standard output in an easy-to-parse format for scripts. See section OUTPUT in [git-fetch[1]](https://git-scm.com/docs/git-fetch) for details.
-This is incompatible with `--recurse-submodules=`(`yes`|`on-demand`) and takes precedence over the `fetch.output` config option. 
+This is incompatible with `--recurse-submodules=`(`yes`|`on-demand`) and takes precedence over the `fetch.output` config option.
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---write-fetch-head)`--write-fetch-head` 
-
-
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---no-write-fetch-head)`--no-write-fetch-head` 
-    
-Write the list of remote refs fetched in the `FETCH_HEAD` file directly under `$GIT_DIR`. This is the default. Passing `--no-write-fetch-head` from the command line tells Git not to write the file. Under `--dry-run` option, the file is never written. 
-
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt--f)`-f` 
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---write-fetch-head)`--write-fetch-head`
 
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---force)`--force` 
-    
-When `git` `fetch` is used with _< src>_`:`_< dst>_ refspec, it may refuse to update the local branch as discussed in the _< refspec>_ part below. This option overrides that check. 
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---no-write-fetch-head)`--no-write-fetch-head`
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt--k)`-k` 
+Write the list of remote refs fetched in the `FETCH_HEAD` file directly under `$GIT_DIR`. This is the default. Passing `--no-write-fetch-head` from the command line tells Git not to write the file. Under `--dry-run` option, the file is never written.
 
-
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---keep)`--keep` 
-    
-Keep downloaded pack. 
-
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---multiple)`--multiple` 
-    
-Allow several _< repository>_ and _< group>_ arguments to be specified. No _< refspec>_s may be specified. 
-
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---auto-maintenance)`--auto-maintenance` 
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt--f)`-f`
 
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---no-auto-maintenance)`--no-auto-maintenance` 
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---force)`--force`
+
+When `git` `fetch` is used with _< src>_`:`_< dst>_ refspec, it may refuse to update the local branch as discussed in the _< refspec>_ part below. This option overrides that check.
+
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt--k)`-k`
 
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---auto-gc)`--auto-gc` 
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---keep)`--keep`
+
+Keep downloaded pack.
+
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---multiple)`--multiple`
+
+Allow several _< repository>_ and _< group>_ arguments to be specified. No _< refspec>_s may be specified.
+
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---auto-maintenance)`--auto-maintenance`
 
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---no-auto-gc)`--no-auto-gc` 
-    
-Run `git` `maintenance` `run` `--auto` at the end to perform automatic repository maintenance if needed. This is enabled by default. 
-
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---write-commit-graph)`--write-commit-graph` 
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---no-auto-maintenance)`--no-auto-maintenance`
 
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---no-write-commit-graph)`--no-write-commit-graph` 
-    
-Write a commit-graph after fetching. This overrides the config setting `fetch.writeCommitGraph`. 
-
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---prefetch)`--prefetch` 
-    
-Modify the configured refspec to place all refs into the `refs/prefetch/` namespace. See the `prefetch` task in [git-maintenance[1]](https://git-scm.com/docs/git-maintenance). 
-
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt--p)`-p` 
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---auto-gc)`--auto-gc`
 
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---prune)`--prune` 
-    
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---no-auto-gc)`--no-auto-gc`
+
+Run `git` `maintenance` `run` `--auto` at the end to perform automatic repository maintenance if needed. This is enabled by default.
+
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---write-commit-graph)`--write-commit-graph`
+
+
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---no-write-commit-graph)`--no-write-commit-graph`
+
+Write a commit-graph after fetching. This overrides the config setting `fetch.writeCommitGraph`.
+
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---prefetch)`--prefetch`
+
+Modify the configured refspec to place all refs into the `refs/prefetch/` namespace. See the `prefetch` task in [git-maintenance[1]](https://git-scm.com/docs/git-maintenance).
+
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt--p)`-p`
+
+
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---prune)`--prune`
+
 Before fetching, remove any remote-tracking references that no longer exist on the remote. Tags are not subject to pruning if they are fetched only because of the default tag auto-following or due to a `--tags` option. However, if tags are fetched due to an explicit refspec (either on the command line or in the remote configuration, for example if the remote was cloned with the `--mirror` option), then they are also subject to pruning. Supplying `--prune-tags` is a shorthand for providing the tag refspec.
-See the PRUNING section below for more details. 
+See the PRUNING section below for more details.
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt--P)`-P` 
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt--P)`-P`
 
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---prune-tags)`--prune-tags` 
-    
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---prune-tags)`--prune-tags`
+
 Before fetching, remove any local tags that no longer exist on the remote if `--prune` is enabled. This option should be used more carefully, unlike `--prune` it will remove any local references (local tags) that have been created. This option is a shorthand for providing the explicit tag refspec along with `--prune`, see the discussion about that in its documentation.
-See the PRUNING section below for more details. 
+See the PRUNING section below for more details.
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt--n)`-n` 
-
-
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---no-tags)`--no-tags` 
-    
-By default, tags that point at objects that are downloaded from the remote repository are fetched and stored locally. This option disables this automatic tag following. The default behavior for a remote may be specified with the `remote.`_< name>_`.tagOpt` setting. See [git-config[1]](https://git-scm.com/docs/git-config). 
-
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---refetch)`--refetch` 
-    
-Instead of negotiating with the server to avoid transferring commits and associated objects that are already present locally, this option fetches all objects as a fresh clone would. Use this to reapply a partial clone filter from configuration or using `--filter=` when the filter definition has changed. Automatic post-fetch maintenance will perform object database pack consolidation to remove any duplicate objects. 
-
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---refmaprefspec)`--refmap=`_< refspec>_ 
-    
-When fetching refs listed on the command line, use the specified refspec (can be given more than once) to map the refs to remote-tracking branches, instead of the values of `remote.`_< name>_`.fetch` configuration variables for the remote repository. Providing an empty _< refspec>_ to the `--refmap` option causes Git to ignore the configured refspecs and rely entirely on the refspecs supplied as command-line arguments. See section on "Configured Remote-tracking Branches" for details. 
-
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt--t)`-t` 
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt--n)`-n`
 
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---tags)`--tags` 
-    
-Fetch all tags from the remote (i.e., fetch remote tags `refs/tags/*` into local tags with the same name), in addition to whatever else would otherwise be fetched. Using this option alone does not subject tags to pruning, even if `--prune` is used (though tags may be pruned anyway if they are also the destination of an explicit refspec; see `--prune`). 
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---no-tags)`--no-tags`
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---recurse-submodulesyeson-demandno)`--recurse-submodules`[`=`(`yes`|`on-demand`|`no`)] 
-    
+By default, tags that point at objects that are downloaded from the remote repository are fetched and stored locally. This option disables this automatic tag following. The default behavior for a remote may be specified with the `remote.`_< name>_`.tagOpt` setting. See [git-config[1]](https://git-scm.com/docs/git-config).
+
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---refetch)`--refetch`
+
+Instead of negotiating with the server to avoid transferring commits and associated objects that are already present locally, this option fetches all objects as a fresh clone would. Use this to reapply a partial clone filter from configuration or using `--filter=` when the filter definition has changed. Automatic post-fetch maintenance will perform object database pack consolidation to remove any duplicate objects.
+
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---refmaprefspec)`--refmap=`_< refspec>_
+
+When fetching refs listed on the command line, use the specified refspec (can be given more than once) to map the refs to remote-tracking branches, instead of the values of `remote.`_< name>_`.fetch` configuration variables for the remote repository. Providing an empty _< refspec>_ to the `--refmap` option causes Git to ignore the configured refspecs and rely entirely on the refspecs supplied as command-line arguments. See section on "Configured Remote-tracking Branches" for details.
+
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt--t)`-t`
+
+
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---tags)`--tags`
+
+Fetch all tags from the remote (i.e., fetch remote tags `refs/tags/*` into local tags with the same name), in addition to whatever else would otherwise be fetched. Using this option alone does not subject tags to pruning, even if `--prune` is used (though tags may be pruned anyway if they are also the destination of an explicit refspec; see `--prune`).
+
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---recurse-submodulesyeson-demandno)`--recurse-submodules`[`=`(`yes`|`on-demand`|`no`)]
+
 Control if and under what conditions new commits of submodules should be fetched too. When recursing through submodules, `git` `fetch` always attempts to fetch "changed" submodules, that is, a submodule that has commits that are referenced by a newly fetched superproject commit but are missing in the local submodule clone. A changed submodule can be fetched as long as it is present locally e.g. in `$GIT_DIR/modules/` (see [gitsubmodules[7]](https://git-scm.com/docs/gitsubmodules)); if the upstream adds a new submodule, that submodule cannot be fetched until it is cloned e.g. by `git` `submodule` `update`.
 When set to `on-demand`, only changed submodules are fetched. When set to `yes`, all populated submodules are fetched and submodules that are both unpopulated and changed are fetched. When set to `no`, submodules are never fetched.
-When unspecified, this uses the value of `fetch.recurseSubmodules` if it is set (see [git-config[1]](https://git-scm.com/docs/git-config)), defaulting to `on-demand` if unset. When this option is used without any value, it defaults to `yes`. 
+When unspecified, this uses the value of `fetch.recurseSubmodules` if it is set (see [git-config[1]](https://git-scm.com/docs/git-config)), defaulting to `on-demand` if unset. When this option is used without any value, it defaults to `yes`.
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt--jn)`-j` _< n>_ 
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt--jn)`-j` _< n>_
 
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---jobsn)`--jobs=`_< n>_ 
-    
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---jobsn)`--jobs=`_< n>_
+
 Parallelize all forms of fetching up to _< n>_ jobs at a time.
 If the `--multiple` option was specified, the different remotes will be fetched in parallel. If multiple submodules are fetched, they will be fetched in parallel. To control them independently, use the config settings `fetch.parallel` and `submodule.fetchJobs` (see [git-config[1]](https://git-scm.com/docs/git-config)).
-Typically, parallel recursive and multi-remote fetches will be faster. By default fetches are performed sequentially, not in parallel. 
+Typically, parallel recursive and multi-remote fetches will be faster. By default fetches are performed sequentially, not in parallel.
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---no-recurse-submodules)`--no-recurse-submodules` 
-    
-Disable recursive fetching of submodules (this has the same effect as using the `--recurse-submodules=no` option). 
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---no-recurse-submodules)`--no-recurse-submodules`
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---set-upstream)`--set-upstream` 
-    
-If the remote is fetched successfully, add upstream (tracking) reference, used by argument-less [git-pull[1]](https://git-scm.com/docs/git-pull) and other commands. For more information, see `branch.`_< name>_`.merge` and `branch.`_< name>_`.remote` in [git-config[1]](https://git-scm.com/docs/git-config). 
+Disable recursive fetching of submodules (this has the same effect as using the `--recurse-submodules=no` option).
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---submodule-prefixpath)`--submodule-prefix=`_< path>_ 
-    
-Prepend _< path>_ to paths printed in informative messages such as "Fetching submodule foo". This option is used internally when recursing over submodules. 
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---set-upstream)`--set-upstream`
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---recurse-submodules-defaultyeson-demand)`--recurse-submodules-default=`(`yes`|`on-demand`) 
-    
-This option is used internally to temporarily provide a non-negative default value for the `--recurse-submodules` option. All other methods of configuring fetch’s submodule recursion (such as settings in [gitmodules[5]](https://git-scm.com/docs/gitmodules) and [git-config[1]](https://git-scm.com/docs/git-config)) override this option, as does specifying `--`[`no-`]`recurse-submodules` directly. 
+If the remote is fetched successfully, add upstream (tracking) reference, used by argument-less [git-pull[1]](https://git-scm.com/docs/git-pull) and other commands. For more information, see `branch.`_< name>_`.merge` and `branch.`_< name>_`.remote` in [git-config[1]](https://git-scm.com/docs/git-config).
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt--u)`-u` 
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---submodule-prefixpath)`--submodule-prefix=`_< path>_
 
+Prepend _< path>_ to paths printed in informative messages such as "Fetching submodule foo". This option is used internally when recursing over submodules.
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---update-head-ok)`--update-head-ok` 
-    
-By default `git` `fetch` refuses to update the head which corresponds to the current branch. This flag disables the check. This is purely for the internal use for `git` `pull` to communicate with `git` `fetch`, and unless you are implementing your own Porcelain you are not supposed to use it. 
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---recurse-submodules-defaultyeson-demand)`--recurse-submodules-default=`(`yes`|`on-demand`)
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---upload-packupload-pack)`--upload-pack` _< upload-pack>_ 
-    
-When given, and the repository to fetch from is handled by `git` `fetch-pack`, `--exec=`_< upload-pack>_ is passed to the command to specify non-default path for the command run on the other end. 
+This option is used internally to temporarily provide a non-negative default value for the `--recurse-submodules` option. All other methods of configuring fetch’s submodule recursion (such as settings in [gitmodules[5]](https://git-scm.com/docs/gitmodules) and [git-config[1]](https://git-scm.com/docs/git-config)) override this option, as does specifying `--`[`no-`]`recurse-submodules` directly.
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt--q)`-q` 
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt--u)`-u`
 
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---quiet)`--quiet` 
-    
-Pass `--quiet` to `git-fetch-pack` and silence any other internally used git commands. Progress is not reported to the standard error stream. 
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---update-head-ok)`--update-head-ok`
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt--v)`-v` 
+By default `git` `fetch` refuses to update the head which corresponds to the current branch. This flag disables the check. This is purely for the internal use for `git` `pull` to communicate with `git` `fetch`, and unless you are implementing your own Porcelain you are not supposed to use it.
 
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---upload-packupload-pack)`--upload-pack` _< upload-pack>_
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---verbose)`--verbose` 
-    
-Be verbose. 
+When given, and the repository to fetch from is handled by `git` `fetch-pack`, `--exec=`_< upload-pack>_ is passed to the command to specify non-default path for the command run on the other end.
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---progress)`--progress` 
-    
-Progress status is reported on the standard error stream by default when it is attached to a terminal, unless `-q` is specified. This flag forces progress status even if the standard error stream is not directed to a terminal. 
-
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt--ooption)`-o` _< option>_ 
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt--q)`-q`
 
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---server-optionoption)`--server-option=`_< option>_ 
-    
-Transmit the given string to the server when communicating using protocol version 2. The given string must not contain a _NUL_ or _LF_ character. The server’s handling of server options, including unknown ones, is server-specific. When multiple `--server-option=`_< option>_ are given, they are all sent to the other side in the order listed on the command line. When no `--server-option=`_< option>_ is given from the command line, the values of configuration variable `remote.`_< name>_`.serverOption` are used instead. 
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---quiet)`--quiet`
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---show-forced-updates)`--show-forced-updates` 
-    
-By default, git checks if a branch is force-updated during fetch. This can be disabled through `fetch.showForcedUpdates`, but the `--show-forced-updates` option guarantees this check occurs. See [git-config[1]](https://git-scm.com/docs/git-config). 
+Pass `--quiet` to `git-fetch-pack` and silence any other internally used git commands. Progress is not reported to the standard error stream.
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---no-show-forced-updates)`--no-show-forced-updates` 
-    
-By default, git checks if a branch is force-updated during fetch. Pass `--no-show-forced-updates` or set `fetch.showForcedUpdates` to false to skip this check for performance reasons. If used during `git-pull` the `--ff-only` option will still check for forced updates before attempting a fast-forward update. See [git-config[1]](https://git-scm.com/docs/git-config). 
-
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt--4)`-4` 
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt--v)`-v`
 
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---ipv4)`--ipv4` 
-    
-Use IPv4 addresses only, ignoring IPv6 addresses. 
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---verbose)`--verbose`
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt--6)`-6` 
+Be verbose.
+
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---progress)`--progress`
+
+Progress status is reported on the standard error stream by default when it is attached to a terminal, unless `-q` is specified. This flag forces progress status even if the standard error stream is not directed to a terminal.
+
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt--ooption)`-o` _< option>_
 
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---ipv6)`--ipv6` 
-    
-Use IPv6 addresses only, ignoring IPv4 addresses. 
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---server-optionoption)`--server-option=`_< option>_
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt-repository)_< repository>_ 
-    
-The "remote" repository that is the source of a fetch or pull operation. This parameter can be either a URL (see the section [GIT URLS](https://git-scm.com/docs/git-fetch#URLS) below) or the name of a remote (see the section [REMOTES](https://git-scm.com/docs/git-fetch#REMOTES) below). 
+Transmit the given string to the server when communicating using protocol version 2. The given string must not contain a _NUL_ or _LF_ character. The server’s handling of server options, including unknown ones, is server-specific. When multiple `--server-option=`_< option>_ are given, they are all sent to the other side in the order listed on the command line. When no `--server-option=`_< option>_ is given from the command line, the values of configuration variable `remote.`_< name>_`.serverOption` are used instead.
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt-group)_< group>_ 
-    
-A name referring to a list of repositories as the value of `remotes.`_< group>_ in the configuration file. (See [git-config[1]](https://git-scm.com/docs/git-config)). 
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---show-forced-updates)`--show-forced-updates`
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt-refspec)_< refspec>_ 
-    
+By default, git checks if a branch is force-updated during fetch. This can be disabled through `fetch.showForcedUpdates`, but the `--show-forced-updates` option guarantees this check occurs. See [git-config[1]](https://git-scm.com/docs/git-config).
+
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---no-show-forced-updates)`--no-show-forced-updates`
+
+By default, git checks if a branch is force-updated during fetch. Pass `--no-show-forced-updates` or set `fetch.showForcedUpdates` to false to skip this check for performance reasons. If used during `git-pull` the `--ff-only` option will still check for forced updates before attempting a fast-forward update. See [git-config[1]](https://git-scm.com/docs/git-config).
+
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt--4)`-4`
+
+
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---ipv4)`--ipv4`
+
+Use IPv4 addresses only, ignoring IPv6 addresses.
+
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt--6)`-6`
+
+
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---ipv6)`--ipv6`
+
+Use IPv6 addresses only, ignoring IPv4 addresses.
+
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt-repository)_< repository>_
+
+The "remote" repository that is the source of a fetch or pull operation. This parameter can be either a URL (see the section [GIT URLS](https://git-scm.com/docs/git-fetch#URLS) below) or the name of a remote (see the section [REMOTES](https://git-scm.com/docs/git-fetch#REMOTES) below).
+
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt-group)_< group>_
+
+A name referring to a list of repositories as the value of `remotes.`_< group>_ in the configuration file. (See [git-config[1]](https://git-scm.com/docs/git-config)).
+
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt-refspec)_< refspec>_
+
 Specifies which refs to fetch and which local refs to update. When no _< refspec>_s appear on the command line, the refs to fetch are read from `remote.`_< repository>_`.fetch` variables instead (see [CONFIGURED REMOTE-TRACKING BRANCHES](https://git-scm.com/docs/git-fetch#CRTB) below).
 The format of a _< refspec>_ parameter is an optional plus `+`, followed by the source _< src>_, followed by a colon `:`, followed by the destination _< dst>_. The colon can be omitted when _< dst>_ is empty. _< src>_ is typically a ref, or a glob pattern with a single `*` that is used to match a set of refs, but it can also be a fully spelled hex object name.
 A _< refspec>_ may contain a `*` in its _< src>_ to indicate a simple pattern match. Such a refspec functions like a glob that matches any ref with the pattern. A pattern _< refspec>_ must have one and only one `*` in both the _< src>_ and _< dst>_. It will map refs to the destination by replacing the `*` with the contents matched from the source.
@@ -543,11 +543,11 @@ Until Git version 2.20, and unlike when pushing with [git-push[1]](https://git-s
 Unlike when pushing with [git-push[1]](https://git-scm.com/docs/git-push), any updates outside of `refs/{tags,heads}/*` will be accepted without `+` in the refspec (or `--force`), whether that’s swapping e.g. a tree object for a blob, or a commit for another commit that doesn’t have the previous commit as an ancestor etc.
 Unlike when pushing with [git-push[1]](https://git-scm.com/docs/git-push), there is no configuration which’ll amend these rules, and nothing like a `pre-fetch` hook analogous to the `pre-receive` hook.
 As with pushing with [git-push[1]](https://git-scm.com/docs/git-push), all of the rules described above about what’s not allowed as an update can be overridden by adding an optional leading `+` to a refspec (or using the `--force` command line option). The only exception to this is that no amount of forcing will make the `refs/heads/*` namespace accept a non-commit object.
-Note |  When the remote branch you want to fetch is known to be rewound and rebased regularly, it is expected that its new tip will not be a descendant of its previous tip (as stored in your remote-tracking branch the last time you fetched). You would want to use the `+` sign to indicate non-fast-forward updates will be needed for such branches. There is no way to determine or declare that a branch will be made available in a repository with this behavior; the pulling user simply must know this is the expected usage pattern for a branch.   
----|--- 
+Note |  When the remote branch you want to fetch is known to be rewound and rebased regularly, it is expected that its new tip will not be a descendant of its previous tip (as stored in your remote-tracking branch the last time you fetched). You would want to use the `+` sign to indicate non-fast-forward updates will be needed for such branches. There is no way to determine or declare that a branch will be made available in a repository with this behavior; the pulling user simply must know this is the expected usage pattern for a branch.
+---|---
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---stdin)`--stdin` 
-      
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---stdin)`--stdin`
+
 Read refspecs, one per line, from stdin in addition to those provided as arguments. The "tag _< name>_" format is not supported.
 ##  [](https://git-scm.com/docs/git-fetch#_git_urls)GIT URLS
 In general, URLs contain information about the transport protocol, the address of the remote server, and the path to the repository. Depending on the transport protocol, some of this information may be absent.
@@ -676,8 +676,8 @@ You can set an upstream branch explicitly with `git` `push` `--set-upstream` _< 
   * Checking out a remote-tracking branch with `git` `checkout` _< branch>_ will automatically create a local branch with that name and set the upstream to the remote branch.
 
 
-Note |  Upstream branches are sometimes referred to as "tracking information", as in "set the branch’s tracking information".   
----|---  
+Note |  Upstream branches are sometimes referred to as "tracking information", as in "set the branch’s tracking information".
+---|---
 ##  [](https://git-scm.com/docs/git-fetch#CRTB)CONFIGURED REMOTE-TRACKING BRANCHES
 You often interact with the same remote repository by regularly and repeatedly fetching from it. In order to keep track of the progress of such a remote repository, `git` `fetch` allows you to configure `remote.`_< repository>_`.fetch` configuration variables.
 Typically such a variable may look like this:
@@ -740,54 +740,54 @@ When using `--porcelain`, the output format is intended to be machine-parseable.
 ```
 
 The status of up-to-date refs is shown only if the `--verbose` option is used.
-In compact output mode, specified with configuration variable fetch.output, if either entire _< from>_ or _< to>_ is found in the other string, it will be substituted with `*` in the other string. For example, _master - > origin/master_ becomes _master - > origin/*_. 
+In compact output mode, specified with configuration variable fetch.output, if either entire _< from>_ or _< to>_ is found in the other string, it will be substituted with `*` in the other string. For example, _master - > origin/master_ becomes _master - > origin/*_.
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt-flag)flag 
-    
-A single character indicating the status of the ref: 
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt-flag)flag
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt-space)(space) 
-    
-for a successfully fetched fast-forward; 
+A single character indicating the status of the ref:
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt-)`+` 
-    
-for a successful forced update; 
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt-space)(space)
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt--)`-` 
-    
-for a successfully pruned ref; 
+for a successfully fetched fast-forward;
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt-t)`t` 
-    
-for a successful tag update; 
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt-)`+`
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt--1)`*` 
-    
-for a successfully fetched new ref; 
+for a successful forced update;
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt--1-1)`!` 
-    
-for a ref that was rejected or failed to update; and 
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt--)`-`
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt--1-1-1)`=` 
-    
-for a ref that was up to date and did not need fetching. 
+for a successfully pruned ref;
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt-summary)summary 
-    
-For a successfully fetched ref, the summary shows the old and new values of the ref in a form suitable for using as an argument to `git` `log` (this is _< old>_`..`_< new>_ in most cases, and _< old>_`...`_< new>_ for forced non-fast-forward updates). 
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt-t)`t`
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt-from)from 
-    
-The name of the remote ref being fetched from, minus its `refs/`_< type>_`/` prefix. In the case of deletion, the name of the remote ref is "(none)". 
+for a successful tag update;
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt-to)to 
-    
-The name of the local ref being updated, minus its `refs/`_< type>_`/` prefix. 
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt--1)`*`
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt-reason)reason 
-    
+for a successfully fetched new ref;
+
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt--1-1)`!`
+
+for a ref that was rejected or failed to update; and
+
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt--1-1-1)`=`
+
+for a ref that was up to date and did not need fetching.
+
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt-summary)summary
+
+For a successfully fetched ref, the summary shows the old and new values of the ref in a form suitable for using as an argument to `git` `log` (this is _< old>_`..`_< new>_ in most cases, and _< old>_`...`_< new>_ for forced non-fast-forward updates).
+
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt-from)from
+
+The name of the remote ref being fetched from, minus its `refs/`_< type>_`/` prefix. In the case of deletion, the name of the remote ref is "(none)".
+
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt-to)to
+
+The name of the local ref being updated, minus its `refs/`_< type>_`/` prefix.
+
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt-reason)reason
+
 A human-readable explanation. In the case of successfully fetched refs, no explanation is needed. For a failed ref, the reason for failure is described.
 ##  [](https://git-scm.com/docs/git-fetch#_examples)EXAMPLES
   * Update the remote-tracking branches:
@@ -820,70 +820,70 @@ The known attack vectors are as follows:
 
 
 ##  [](https://git-scm.com/docs/git-fetch#_configuration)CONFIGURATION
-Everything below this line in this section is selectively included from the [git-config[1]](https://git-scm.com/docs/git-config) documentation. The content is the same as what’s found there: 
+Everything below this line in this section is selectively included from the [git-config[1]](https://git-scm.com/docs/git-config) documentation. The content is the same as what’s found there:
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt-fetchrecurseSubmodules)`fetch.recurseSubmodules` 
-    
-This option controls whether `git` `fetch` (and the underlying fetch in `git` `pull`) will recursively fetch into populated submodules. This option can be set either to a boolean value or to `on-demand`. Setting it to a boolean changes the behavior of fetch and pull to recurse unconditionally into submodules when set to true or to not recurse at all when set to false. When set to `on-demand`, fetch and pull will only recurse into a populated submodule when its superproject retrieves a commit that updates the submodule’s reference. Defaults to `on-demand`, or to the value of `submodule.recurse` if set. 
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt-fetchrecurseSubmodules)`fetch.recurseSubmodules`
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt-fetchfsckObjects)`fetch.fsckObjects` 
-    
-If it is set to true, git-fetch-pack will check all fetched objects. See `transfer.fsckObjects` for what’s checked. Defaults to `false`. If not set, the value of `transfer.fsckObjects` is used instead. 
+This option controls whether `git` `fetch` (and the underlying fetch in `git` `pull`) will recursively fetch into populated submodules. This option can be set either to a boolean value or to `on-demand`. Setting it to a boolean changes the behavior of fetch and pull to recurse unconditionally into submodules when set to true or to not recurse at all when set to false. When set to `on-demand`, fetch and pull will only recurse into a populated submodule when its superproject retrieves a commit that updates the submodule’s reference. Defaults to `on-demand`, or to the value of `submodule.recurse` if set.
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt-fetchfsckmsg-id)`fetch.fsck.`_< msg-id>_ 
-    
-Acts like `fsck.`_< msg-id>_, but is used by [git-fetch-pack[1]](https://git-scm.com/docs/git-fetch-pack) instead of [git-fsck[1]](https://git-scm.com/docs/git-fsck). See the `fsck.`_< msg-id>_ documentation for details. 
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt-fetchfsckObjects)`fetch.fsckObjects`
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt-fetchfsckskipList)`fetch.fsck.skipList` 
-    
-Acts like `fsck.skipList`, but is used by [git-fetch-pack[1]](https://git-scm.com/docs/git-fetch-pack) instead of [git-fsck[1]](https://git-scm.com/docs/git-fsck). See the `fsck.skipList` documentation for details. 
+If it is set to true, git-fetch-pack will check all fetched objects. See `transfer.fsckObjects` for what’s checked. Defaults to `false`. If not set, the value of `transfer.fsckObjects` is used instead.
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt-fetchunpackLimit)`fetch.unpackLimit` 
-    
-If the number of objects fetched over the Git native transfer is below this limit, then the objects will be unpacked into loose object files. However if the number of received objects equals or exceeds this limit then the received pack will be stored as a pack, after adding any missing delta bases. Storing the pack from a push can make the push operation complete faster, especially on slow filesystems. If not set, the value of `transfer.unpackLimit` is used instead. 
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt-fetchfsckmsg-id)`fetch.fsck.`_< msg-id>_
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt-fetchprune)`fetch.prune` 
-    
-If true, fetch will automatically behave as if the `--prune` option was given on the command line. See also `remote.`_< name>_`.prune` and the PRUNING section of [git-fetch[1]](https://git-scm.com/docs/git-fetch). 
+Acts like `fsck.`_< msg-id>_, but is used by [git-fetch-pack[1]](https://git-scm.com/docs/git-fetch-pack) instead of [git-fsck[1]](https://git-scm.com/docs/git-fsck). See the `fsck.`_< msg-id>_ documentation for details.
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt-fetchpruneTags)`fetch.pruneTags` 
-    
-If true, fetch will automatically behave as if the `refs/tags/*:refs/tags/*` refspec was provided when pruning, if not set already. This allows for setting both this option and `fetch.prune` to maintain a 1=1 mapping to upstream refs. See also `remote.`_< name>_`.pruneTags` and the PRUNING section of [git-fetch[1]](https://git-scm.com/docs/git-fetch). 
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt-fetchfsckskipList)`fetch.fsck.skipList`
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt-fetchall)`fetch.all` 
-    
-If true, fetch will attempt to update all available remotes. This behavior can be overridden by passing `--no-all` or by explicitly specifying one or more remote(s) to fetch from. Defaults to `false`. 
+Acts like `fsck.skipList`, but is used by [git-fetch-pack[1]](https://git-scm.com/docs/git-fetch-pack) instead of [git-fsck[1]](https://git-scm.com/docs/git-fsck). See the `fsck.skipList` documentation for details.
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt-fetchoutput)`fetch.output` 
-    
-Control how ref update status is printed. Valid values are `full` and `compact`. Default value is `full`. See the OUTPUT section in [git-fetch[1]](https://git-scm.com/docs/git-fetch) for details. 
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt-fetchunpackLimit)`fetch.unpackLimit`
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt-fetchnegotiationAlgorithm)`fetch.negotiationAlgorithm` 
-    
+If the number of objects fetched over the Git native transfer is below this limit, then the objects will be unpacked into loose object files. However if the number of received objects equals or exceeds this limit then the received pack will be stored as a pack, after adding any missing delta bases. Storing the pack from a push can make the push operation complete faster, especially on slow filesystems. If not set, the value of `transfer.unpackLimit` is used instead.
+
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt-fetchprune)`fetch.prune`
+
+If true, fetch will automatically behave as if the `--prune` option was given on the command line. See also `remote.`_< name>_`.prune` and the PRUNING section of [git-fetch[1]](https://git-scm.com/docs/git-fetch).
+
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt-fetchpruneTags)`fetch.pruneTags`
+
+If true, fetch will automatically behave as if the `refs/tags/*:refs/tags/*` refspec was provided when pruning, if not set already. This allows for setting both this option and `fetch.prune` to maintain a 1=1 mapping to upstream refs. See also `remote.`_< name>_`.pruneTags` and the PRUNING section of [git-fetch[1]](https://git-scm.com/docs/git-fetch).
+
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt-fetchall)`fetch.all`
+
+If true, fetch will attempt to update all available remotes. This behavior can be overridden by passing `--no-all` or by explicitly specifying one or more remote(s) to fetch from. Defaults to `false`.
+
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt-fetchoutput)`fetch.output`
+
+Control how ref update status is printed. Valid values are `full` and `compact`. Default value is `full`. See the OUTPUT section in [git-fetch[1]](https://git-scm.com/docs/git-fetch) for details.
+
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt-fetchnegotiationAlgorithm)`fetch.negotiationAlgorithm`
+
 Control how information about the commits in the local repository is sent when negotiating the contents of the packfile to be sent by the server. Set to `consecutive` to use an algorithm that walks over consecutive commits checking each one. Set to `skipping` to use an algorithm that skips commits in an effort to converge faster, but may result in a larger-than-necessary packfile; or set to `noop` to not send any information at all, which will almost certainly result in a larger-than-necessary packfile, but will skip the negotiation step. Set to `default` to override settings made previously and use the default behaviour. The default is normally `consecutive`, but if `feature.experimental` is `true`, then the default is `skipping`. Unknown values will cause `git` `fetch` to error out.
-See also the `--negotiate-only` and `--negotiation-tip` options to [git-fetch[1]](https://git-scm.com/docs/git-fetch). 
+See also the `--negotiate-only` and `--negotiation-tip` options to [git-fetch[1]](https://git-scm.com/docs/git-fetch).
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt-fetchshowForcedUpdates)`fetch.showForcedUpdates` 
-    
-Set to `false` to enable `--no-show-forced-updates` in [git-fetch[1]](https://git-scm.com/docs/git-fetch) and [git-pull[1]](https://git-scm.com/docs/git-pull) commands. Defaults to `true`. 
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt-fetchshowForcedUpdates)`fetch.showForcedUpdates`
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt-fetchparallel)`fetch.parallel` 
-    
+Set to `false` to enable `--no-show-forced-updates` in [git-fetch[1]](https://git-scm.com/docs/git-fetch) and [git-pull[1]](https://git-scm.com/docs/git-pull) commands. Defaults to `true`.
+
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt-fetchparallel)`fetch.parallel`
+
 Specifies the maximal number of fetch operations to be run in parallel at a time (submodules, or remotes when the `--multiple` option of [git-fetch[1]](https://git-scm.com/docs/git-fetch) is in effect).
 A value of 0 will give some reasonable default. If unset, it defaults to 1.
-For submodules, this setting can be overridden using the `submodule.fetchJobs` config setting. 
+For submodules, this setting can be overridden using the `submodule.fetchJobs` config setting.
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt-fetchwriteCommitGraph)`fetch.writeCommitGraph` 
-    
-Set to true to write a commit-graph after every `git` `fetch` command that downloads a pack-file from a remote. Using the `--split` option, most executions will create a very small commit-graph file on top of the existing commit-graph file(s). Occasionally, these files will merge and the write may take longer. Having an updated commit-graph file helps performance of many Git commands, including `git` `merge-base`, `git` `push` `-f`, and `git` `log` `--graph`. Defaults to `false`. 
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt-fetchwriteCommitGraph)`fetch.writeCommitGraph`
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt-fetchbundleURI)`fetch.bundleURI` 
-    
+Set to true to write a commit-graph after every `git` `fetch` command that downloads a pack-file from a remote. Using the `--split` option, most executions will create a very small commit-graph file on top of the existing commit-graph file(s). Occasionally, these files will merge and the write may take longer. Having an updated commit-graph file helps performance of many Git commands, including `git` `merge-base`, `git` `push` `-f`, and `git` `log` `--graph`. Defaults to `false`.
+
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt-fetchbundleURI)`fetch.bundleURI`
+
 This value stores a URI for downloading Git object data from a bundle URI before performing an incremental fetch from the origin Git server. This is similar to how the `--bundle-uri` option behaves in [git-clone[1]](https://git-scm.com/docs/git-clone). `git` `clone` `--bundle-uri` will set the `fetch.bundleURI` value if the supplied bundle URI contains a bundle list that is organized for incremental fetches.
-If you modify this value and your repository has a `fetch.bundleCreationToken` value, then remove that `fetch.bundleCreationToken` value before fetching from the new bundle URI. 
+If you modify this value and your repository has a `fetch.bundleCreationToken` value, then remove that `fetch.bundleCreationToken` value before fetching from the new bundle URI.
 
-[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt-fetchbundleCreationToken)`fetch.bundleCreationToken` 
-    
+[](https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt-fetchbundleCreationToken)`fetch.bundleCreationToken`
+
 When using `fetch.bundleURI` to fetch incrementally from a bundle list that uses the "`creationToken`" heuristic, this config value stores the maximum `creationToken` value of the downloaded bundles. This value is used to prevent downloading bundles in the future if the advertised `creationToken` is not strictly larger than this value.
 The creation token values are chosen by the provider serving the specific bundle URI. If you modify the URI at `fetch.bundleURI`, then be sure to remove the value for the `fetch.bundleCreationToken` value before fetching.
 ##  [](https://git-scm.com/docs/git-fetch#_bugs)BUGS
@@ -893,6 +893,6 @@ Using `--recurse-submodules` can only fetch new commits in submodules that are p
 ##  [](https://git-scm.com/docs/git-fetch#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### fetch
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

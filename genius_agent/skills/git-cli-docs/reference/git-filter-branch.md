@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-filter-branch#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-filter-branch#_synopsis)
     * [WARNING](https://git-scm.com/docs/git-filter-branch#_warning)
@@ -37,8 +37,8 @@ Localized versions of **git-filter-branch** manual
   3. [українська мова ](https://git-scm.com/docs/git-filter-branch/uk)
   4. [简体中文 ](https://git-scm.com/docs/git-filter-branch/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-filter-branch)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -235,74 +235,74 @@ Note that since this operation is very I/O expensive, it might be a good idea to
 The filters are applied in the order as listed below. The <command> argument is always evaluated in the shell context using the _eval_ command (with the notable exception of the commit filter, for technical reasons). Prior to that, the `$GIT_COMMIT` environment variable will be set to contain the id of the commit being rewritten. Also, GIT_AUTHOR_NAME, GIT_AUTHOR_EMAIL, GIT_AUTHOR_DATE, GIT_COMMITTER_NAME, GIT_COMMITTER_EMAIL, and GIT_COMMITTER_DATE are taken from the current commit and exported to the environment, in order to affect the author and committer identities of the replacement commit created by [git-commit-tree[1]](https://git-scm.com/docs/git-commit-tree) after the filters have run.
 If any evaluation of <command> returns a non-zero exit status, the whole operation will be aborted.
 A _map_ function is available that takes an "original sha1 id" argument and outputs a "rewritten sha1 id" if the commit has been already rewritten, and "original sha1 id" otherwise; the _map_ function can return several ids on separate lines if your commit filter emitted multiple commits.
-##  [](https://git-scm.com/docs/git-filter-branch#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-filter-branch#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-filter-branch#Documentation/git-filter-branch.txt---setupcommand)--setup <command> 
-    
-This is not a real filter executed for each commit but a one time setup just before the loop. Therefore no commit-specific variables are defined yet. Functions or variables defined here can be used or modified in the following filter steps except the commit filter, for technical reasons. 
+[](https://git-scm.com/docs/git-filter-branch#Documentation/git-filter-branch.txt---setupcommand)--setup <command>
 
-[](https://git-scm.com/docs/git-filter-branch#Documentation/git-filter-branch.txt---subdirectory-filterdirectory)--subdirectory-filter <directory> 
-    
-Only look at the history which touches the given subdirectory. The result will contain that directory (and only that) as its project root. Implies [Remap to ancestor](https://git-scm.com/docs/git-filter-branch#Remap_to_ancestor). 
+This is not a real filter executed for each commit but a one time setup just before the loop. Therefore no commit-specific variables are defined yet. Functions or variables defined here can be used or modified in the following filter steps except the commit filter, for technical reasons.
 
-[](https://git-scm.com/docs/git-filter-branch#Documentation/git-filter-branch.txt---env-filtercommand)--env-filter <command> 
-    
-This filter may be used if you only need to modify the environment in which the commit will be performed. Specifically, you might want to rewrite the author/committer name/email/time environment variables (see [git-commit-tree[1]](https://git-scm.com/docs/git-commit-tree) for details). 
+[](https://git-scm.com/docs/git-filter-branch#Documentation/git-filter-branch.txt---subdirectory-filterdirectory)--subdirectory-filter <directory>
 
-[](https://git-scm.com/docs/git-filter-branch#Documentation/git-filter-branch.txt---tree-filtercommand)--tree-filter <command> 
-    
-This is the filter for rewriting the tree and its contents. The argument is evaluated in shell with the working directory set to the root of the checked out tree. The new tree is then used as-is (new files are auto-added, disappeared files are auto-removed - neither .gitignore files nor any other ignore rules **HAVE ANY EFFECT**!). 
+Only look at the history which touches the given subdirectory. The result will contain that directory (and only that) as its project root. Implies [Remap to ancestor](https://git-scm.com/docs/git-filter-branch#Remap_to_ancestor).
 
-[](https://git-scm.com/docs/git-filter-branch#Documentation/git-filter-branch.txt---index-filtercommand)--index-filter <command> 
-    
-This is the filter for rewriting the index. It is similar to the tree filter but does not check out the tree, which makes it much faster. Frequently used with `git` `rm` `--cached` `--ignore-unmatch` ..., see EXAMPLES below. For hairy cases, see [git-update-index[1]](https://git-scm.com/docs/git-update-index). 
+[](https://git-scm.com/docs/git-filter-branch#Documentation/git-filter-branch.txt---env-filtercommand)--env-filter <command>
 
-[](https://git-scm.com/docs/git-filter-branch#Documentation/git-filter-branch.txt---parent-filtercommand)--parent-filter <command> 
-    
-This is the filter for rewriting the commit’s parent list. It will receive the parent string on stdin and shall output the new parent string on stdout. The parent string is in the format described in [git-commit-tree[1]](https://git-scm.com/docs/git-commit-tree): empty for the initial commit, "-p parent" for a normal commit and "-p parent1 -p parent2 -p parent3 …​" for a merge commit. 
+This filter may be used if you only need to modify the environment in which the commit will be performed. Specifically, you might want to rewrite the author/committer name/email/time environment variables (see [git-commit-tree[1]](https://git-scm.com/docs/git-commit-tree) for details).
 
-[](https://git-scm.com/docs/git-filter-branch#Documentation/git-filter-branch.txt---msg-filtercommand)--msg-filter <command> 
-    
-This is the filter for rewriting the commit messages. The argument is evaluated in the shell with the original commit message on standard input; its standard output is used as the new commit message. 
+[](https://git-scm.com/docs/git-filter-branch#Documentation/git-filter-branch.txt---tree-filtercommand)--tree-filter <command>
 
-[](https://git-scm.com/docs/git-filter-branch#Documentation/git-filter-branch.txt---commit-filtercommand)--commit-filter <command> 
-    
+This is the filter for rewriting the tree and its contents. The argument is evaluated in shell with the working directory set to the root of the checked out tree. The new tree is then used as-is (new files are auto-added, disappeared files are auto-removed - neither .gitignore files nor any other ignore rules **HAVE ANY EFFECT**!).
+
+[](https://git-scm.com/docs/git-filter-branch#Documentation/git-filter-branch.txt---index-filtercommand)--index-filter <command>
+
+This is the filter for rewriting the index. It is similar to the tree filter but does not check out the tree, which makes it much faster. Frequently used with `git` `rm` `--cached` `--ignore-unmatch` ..., see EXAMPLES below. For hairy cases, see [git-update-index[1]](https://git-scm.com/docs/git-update-index).
+
+[](https://git-scm.com/docs/git-filter-branch#Documentation/git-filter-branch.txt---parent-filtercommand)--parent-filter <command>
+
+This is the filter for rewriting the commit’s parent list. It will receive the parent string on stdin and shall output the new parent string on stdout. The parent string is in the format described in [git-commit-tree[1]](https://git-scm.com/docs/git-commit-tree): empty for the initial commit, "-p parent" for a normal commit and "-p parent1 -p parent2 -p parent3 …​" for a merge commit.
+
+[](https://git-scm.com/docs/git-filter-branch#Documentation/git-filter-branch.txt---msg-filtercommand)--msg-filter <command>
+
+This is the filter for rewriting the commit messages. The argument is evaluated in the shell with the original commit message on standard input; its standard output is used as the new commit message.
+
+[](https://git-scm.com/docs/git-filter-branch#Documentation/git-filter-branch.txt---commit-filtercommand)--commit-filter <command>
+
 This is the filter for performing the commit. If this filter is specified, it will be called instead of the _git commit-tree_ command, with arguments of the form "<TREE_ID> [(-p <PARENT_COMMIT_ID>)…​]" and the log message on stdin. The commit id is expected on stdout.
 As a special extension, the commit filter may emit multiple commit ids; in that case, the rewritten children of the original commit will have all of them as parents.
 You can use the _map_ convenience function in this filter, and other convenience functions, too. For example, calling _skip_commit "$@"_ will leave out the current commit (but not its changes! If you want that, use _git rebase_ instead).
-You can also use the `git_commit_non_empty_tree` `"$@"` instead of `git` `commit-tree` `"$@"` if you don’t wish to keep commits with a single parent and that makes no change to the tree. 
+You can also use the `git_commit_non_empty_tree` `"$@"` instead of `git` `commit-tree` `"$@"` if you don’t wish to keep commits with a single parent and that makes no change to the tree.
 
-[](https://git-scm.com/docs/git-filter-branch#Documentation/git-filter-branch.txt---tag-name-filtercommand)--tag-name-filter <command> 
-    
+[](https://git-scm.com/docs/git-filter-branch#Documentation/git-filter-branch.txt---tag-name-filtercommand)--tag-name-filter <command>
+
 This is the filter for rewriting tag names. When passed, it will be called for every tag ref that points to a rewritten object (or to a tag object which points to a rewritten object). The original tag name is passed via standard input, and the new tag name is expected on standard output.
 The original tags are not deleted, but can be overwritten; use "--tag-name-filter cat" to simply update the tags. In this case, be very careful and make sure you have the old tags backed up in case the conversion has run afoul.
-Nearly proper rewriting of tag objects is supported. If the tag has a message attached, a new tag object will be created with the same message, author, and timestamp. If the tag has a signature attached, the signature will be stripped. It is by definition impossible to preserve signatures. The reason this is "nearly" proper, is because ideally if the tag did not change (points to the same object, has the same name, etc.) it should retain any signature. That is not the case, signatures will always be removed, buyer beware. There is also no support for changing the author or timestamp (or the tag message for that matter). Tags which point to other tags will be rewritten to point to the underlying commit. 
+Nearly proper rewriting of tag objects is supported. If the tag has a message attached, a new tag object will be created with the same message, author, and timestamp. If the tag has a signature attached, the signature will be stripped. It is by definition impossible to preserve signatures. The reason this is "nearly" proper, is because ideally if the tag did not change (points to the same object, has the same name, etc.) it should retain any signature. That is not the case, signatures will always be removed, buyer beware. There is also no support for changing the author or timestamp (or the tag message for that matter). Tags which point to other tags will be rewritten to point to the underlying commit.
 
-[](https://git-scm.com/docs/git-filter-branch#Documentation/git-filter-branch.txt---prune-empty)--prune-empty 
-    
-Some filters will generate empty commits that leave the tree untouched. This option instructs git-filter-branch to remove such commits if they have exactly one or zero non-pruned parents; merge commits will therefore remain intact. This option cannot be used together with `--commit-filter`, though the same effect can be achieved by using the provided `git_commit_non_empty_tree` function in a commit filter. 
+[](https://git-scm.com/docs/git-filter-branch#Documentation/git-filter-branch.txt---prune-empty)--prune-empty
 
-[](https://git-scm.com/docs/git-filter-branch#Documentation/git-filter-branch.txt---originalnamespace)--original <namespace> 
-    
-Use this option to set the namespace where the original commits will be stored. The default value is _refs/original_. 
+Some filters will generate empty commits that leave the tree untouched. This option instructs git-filter-branch to remove such commits if they have exactly one or zero non-pruned parents; merge commits will therefore remain intact. This option cannot be used together with `--commit-filter`, though the same effect can be achieved by using the provided `git_commit_non_empty_tree` function in a commit filter.
 
-[](https://git-scm.com/docs/git-filter-branch#Documentation/git-filter-branch.txt--ddirectory)-d <directory> 
-    
-Use this option to set the path to the temporary directory used for rewriting. When applying a tree filter, the command needs to temporarily check out the tree to some directory, which may consume considerable space in case of large projects. By default it does this in the `.git-rewrite/` directory but you can override that choice by this parameter. 
+[](https://git-scm.com/docs/git-filter-branch#Documentation/git-filter-branch.txt---originalnamespace)--original <namespace>
 
-[](https://git-scm.com/docs/git-filter-branch#Documentation/git-filter-branch.txt--f)-f 
+Use this option to set the namespace where the original commits will be stored. The default value is _refs/original_.
+
+[](https://git-scm.com/docs/git-filter-branch#Documentation/git-filter-branch.txt--ddirectory)-d <directory>
+
+Use this option to set the path to the temporary directory used for rewriting. When applying a tree filter, the command needs to temporarily check out the tree to some directory, which may consume considerable space in case of large projects. By default it does this in the `.git-rewrite/` directory but you can override that choice by this parameter.
+
+[](https://git-scm.com/docs/git-filter-branch#Documentation/git-filter-branch.txt--f)-f
 
 
-[](https://git-scm.com/docs/git-filter-branch#Documentation/git-filter-branch.txt---force)--force 
-    
-_git filter-branch_ refuses to start with an existing temporary directory or when there are already refs starting with _refs/original/_ , unless forced. 
+[](https://git-scm.com/docs/git-filter-branch#Documentation/git-filter-branch.txt---force)--force
 
-[](https://git-scm.com/docs/git-filter-branch#Documentation/git-filter-branch.txt---state-branchbranch)--state-branch <branch> 
-    
-This option will cause the mapping from old to new objects to be loaded from named branch upon startup and saved as a new commit to that branch upon exit, enabling incremental of large trees. If _< branch>_ does not exist it will be created. 
+_git filter-branch_ refuses to start with an existing temporary directory or when there are already refs starting with _refs/original/_ , unless forced.
 
-[](https://git-scm.com/docs/git-filter-branch#Documentation/git-filter-branch.txt-rev-listoptions)<rev-list options>…​ 
-    
+[](https://git-scm.com/docs/git-filter-branch#Documentation/git-filter-branch.txt---state-branchbranch)--state-branch <branch>
+
+This option will cause the mapping from old to new objects to be loaded from named branch upon startup and saved as a new commit to that branch upon exit, enabling incremental of large trees. If _< branch>_ does not exist it will be created.
+
+[](https://git-scm.com/docs/git-filter-branch#Documentation/git-filter-branch.txt-rev-listoptions)<rev-list options>…​
+
 Arguments for _git rev-list_. All positive refs included by these options are rewritten. You may also specify options such as `--all`, but you must use `--` to separate them from the _git filter-branch_ options. Implies [Remap to ancestor](https://git-scm.com/docs/git-filter-branch#Remap_to_ancestor).
 ###  [](https://git-scm.com/docs/git-filter-branch#Remap_to_ancestor)Remap to ancestor
 By using [git-rev-list[1]](https://git-scm.com/docs/git-rev-list) arguments, e.g., path limiters, you can limit the set of revisions which get rewritten. However, positive refs on the command line are distinguished: we don’t let them be excluded by such limiters. For this purpose, they are instead rewritten to point at the nearest ancestor that was not excluded.
@@ -490,6 +490,6 @@ Also, the poor performance of git-filter-branch often leads to safety issues:
 ##  [](https://git-scm.com/docs/git-filter-branch#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### filter-branch
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

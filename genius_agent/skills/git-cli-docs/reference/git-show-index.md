@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-show-index#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-show-index#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-show-index#_description)
@@ -33,8 +33,8 @@ Localized versions of **git-show-index** manual
   5. [українська мова ](https://git-scm.com/docs/git-show-index/uk)
   6. [简体中文 ](https://git-scm.com/docs/git-show-index/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-show-index)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -210,16 +210,16 @@ Read the `.idx` file for a Git packfile (created with [git-pack-objects[1]](http
 
 The objects are output in the order in which they are found in the index file, which should be (in a correctly constructed file) sorted by object id.
 Note that you can get more information on a packfile by calling [git-verify-pack[1]](https://git-scm.com/docs/git-verify-pack). However, as this command considers only the index file itself, it’s both faster and more flexible.
-##  [](https://git-scm.com/docs/git-show-index#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-show-index#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-show-index#Documentation/git-show-index.txt---object-formathash-algorithm)--object-format=<hash-algorithm> 
-    
+[](https://git-scm.com/docs/git-show-index#Documentation/git-show-index.txt---object-formathash-algorithm)--object-format=<hash-algorithm>
+
 Specify the given object format (hash algorithm) for the index file. The valid values are _sha1_ and (if enabled) _sha256_. The default is the algorithm for the current repository (set by `extensions.objectFormat`), or _sha1_ if no value is set or outside a repository..
 Note: At present, there is no interoperability between SHA-256 repositories and SHA-1 repositories.
 Historically, we warned that SHA-256 repositories may later need backward incompatible changes when we introduce such interoperability features. Today, we only expect compatible changes. Furthermore, if such changes prove to be necessary, it can be expected that SHA-256 repositories created with today’s Git will be usable by future versions of Git without data loss.
 ##  [](https://git-scm.com/docs/git-show-index#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### show-index
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

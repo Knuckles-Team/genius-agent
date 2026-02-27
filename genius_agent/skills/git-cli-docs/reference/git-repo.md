@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-repo#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-repo#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-repo#_description)
@@ -31,8 +31,8 @@
 Localized versions of **git-repo** manual
   1. [English ](https://git-scm.com/docs/git-repo)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-repo)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -191,63 +191,63 @@ git repo structure [--format=(table|keyvalue|nul) | -z]
 ##  [](https://git-scm.com/docs/git-repo#_description)DESCRIPTION
 Retrieve information about the repository.
 THIS COMMAND IS EXPERIMENTAL. THE BEHAVIOR MAY CHANGE.
-##  [](https://git-scm.com/docs/git-repo#_commands)COMMANDS 
+##  [](https://git-scm.com/docs/git-repo#_commands)COMMANDS
 
-[](https://git-scm.com/docs/git-repo#Documentation/git-repo.txt-info--formatkeyvaluenul-z--allkey)`info` [`--format=`(`keyvalue`|`nul`) | `-z`] [`--all` | _< key>_...] 
-    
+[](https://git-scm.com/docs/git-repo#Documentation/git-repo.txt-info--formatkeyvaluenul-z--allkey)`info` [`--format=`(`keyvalue`|`nul`) | `-z`] [`--all` | _< key>_...]
+
 Retrieve metadata-related information about the current repository. Only the requested data will be returned based on their keys (see "INFO KEYS" section below).
 The values are returned in the same order in which their respective keys were requested. The `--all` flag requests the values for all the available keys.
-The output format can be chosen through the flag `--format`. Two formats are supported: 
+The output format can be chosen through the flag `--format`. Two formats are supported:
 
-[](https://git-scm.com/docs/git-repo#Documentation/git-repo.txt-keyvalue)`keyvalue` 
-    
-output key-value pairs one per line using the `=` character as the delimiter between the key and the value. Values containing "unusual" characters are quoted as explained for the configuration variable `core.quotePath` (see [git-config[1]](https://git-scm.com/docs/git-config)). This is the default. 
+[](https://git-scm.com/docs/git-repo#Documentation/git-repo.txt-keyvalue)`keyvalue`
 
-[](https://git-scm.com/docs/git-repo#Documentation/git-repo.txt-nul)`nul` 
-    
+output key-value pairs one per line using the `=` character as the delimiter between the key and the value. Values containing "unusual" characters are quoted as explained for the configuration variable `core.quotePath` (see [git-config[1]](https://git-scm.com/docs/git-config)). This is the default.
+
+[](https://git-scm.com/docs/git-repo#Documentation/git-repo.txt-nul)`nul`
+
 similar to `keyvalue`, but using a newline character as the delimiter between the key and the value and using a NUL character after each value. This format is better suited for being parsed by another applications than `keyvalue`. Unlike in the `keyvalue` format, the values are never quoted.
-`-z` is an alias for `--format=nul`. 
+`-z` is an alias for `--format=nul`.
 
-[](https://git-scm.com/docs/git-repo#Documentation/git-repo.txt-structure--formattablekeyvaluenul-z)`structure` [`--format=`(`table`|`keyvalue`|`nul`) | `-z`] 
-    
+[](https://git-scm.com/docs/git-repo#Documentation/git-repo.txt-structure--formattablekeyvaluenul-z)`structure` [`--format=`(`table`|`keyvalue`|`nul`) | `-z`]
+
 Retrieve statistics about the current repository structure. The following kinds of information are reported:
   * Reference counts categorized by type
   * Reachable object counts categorized by type
   * Total inflated size of reachable objects by type
   * Total disk size of reachable objects by type
-The output format can be chosen through the flag `--format`. Three formats are supported: 
+The output format can be chosen through the flag `--format`. Three formats are supported:
 
-[](https://git-scm.com/docs/git-repo#Documentation/git-repo.txt-table)`table` 
-    
-Outputs repository stats in a human-friendly table. This format may change and is not intended for machine parsing. This is the default format. 
+[](https://git-scm.com/docs/git-repo#Documentation/git-repo.txt-table)`table`
 
-[](https://git-scm.com/docs/git-repo#Documentation/git-repo.txt-keyvalue-1)`keyvalue` 
-    
-Each line of output contains a key-value pair for a repository stat. The _=_ character is used to delimit between the key and the value. Values containing "unusual" characters are quoted as explained for the configuration variable `core.quotePath` (see [git-config[1]](https://git-scm.com/docs/git-config)). 
+Outputs repository stats in a human-friendly table. This format may change and is not intended for machine parsing. This is the default format.
 
-[](https://git-scm.com/docs/git-repo#Documentation/git-repo.txt-nul-1)`nul` 
-    
+[](https://git-scm.com/docs/git-repo#Documentation/git-repo.txt-keyvalue-1)`keyvalue`
+
+Each line of output contains a key-value pair for a repository stat. The _=_ character is used to delimit between the key and the value. Values containing "unusual" characters are quoted as explained for the configuration variable `core.quotePath` (see [git-config[1]](https://git-scm.com/docs/git-config)).
+
+[](https://git-scm.com/docs/git-repo#Documentation/git-repo.txt-nul-1)`nul`
+
 Similar to `keyvalue`, but uses a NUL character to delimit between key-value pairs instead of a newline. Also uses a newline character as the delimiter between the key and value instead of _=_. Unlike the `keyvalue` format, values containing "unusual" characters are never quoted.
 `-z` is an alias for `--format=nul`.
 
 
 ##  [](https://git-scm.com/docs/git-repo#_info_keys)INFO KEYS
-In order to obtain a set of values from `git` `repo` `info`, you should provide the keys that identify them. Here’s a list of the available keys and the values that they return: 
+In order to obtain a set of values from `git` `repo` `info`, you should provide the keys that identify them. Here’s a list of the available keys and the values that they return:
 
-[](https://git-scm.com/docs/git-repo#Documentation/git-repo.txt-layoutbare)`layout.bare` 
-    
-`true` if this is a bare repository, otherwise `false`. 
+[](https://git-scm.com/docs/git-repo#Documentation/git-repo.txt-layoutbare)`layout.bare`
 
-[](https://git-scm.com/docs/git-repo#Documentation/git-repo.txt-layoutshallow)`layout.shallow` 
-    
-`true` if this is a shallow repository, otherwise `false`. 
+`true` if this is a bare repository, otherwise `false`.
 
-[](https://git-scm.com/docs/git-repo#Documentation/git-repo.txt-objectformat)`object.format` 
-    
-The object format (hash algorithm) used in the repository. 
+[](https://git-scm.com/docs/git-repo#Documentation/git-repo.txt-layoutshallow)`layout.shallow`
 
-[](https://git-scm.com/docs/git-repo#Documentation/git-repo.txt-referencesformat)`references.format` 
-    
+`true` if this is a shallow repository, otherwise `false`.
+
+[](https://git-scm.com/docs/git-repo#Documentation/git-repo.txt-objectformat)`object.format`
+
+The object format (hash algorithm) used in the repository.
+
+[](https://git-scm.com/docs/git-repo#Documentation/git-repo.txt-referencesformat)`references.format`
+
 The reference storage format. The valid values are:
   * `files` for loose files with packed-refs. This is the default.
   * `reftable` for the reftable format. This format is experimental and its internals are subject to change.
@@ -271,6 +271,6 @@ git repo info --format=nul layout.bare layout.shallow
 ##  [](https://git-scm.com/docs/git-repo#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### repo
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

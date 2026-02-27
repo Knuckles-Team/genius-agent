@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-name-rev#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-name-rev#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-name-rev#_description)
@@ -33,8 +33,8 @@ Localized versions of **git-name-rev** manual
   4. [українська мова ](https://git-scm.com/docs/git-name-rev/uk)
   5. [简体中文 ](https://git-scm.com/docs/git-name-rev/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-name-rev)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -202,26 +202,26 @@ _git name-rev_ [--tags] [--refs=<pattern>]
 
 ##  [](https://git-scm.com/docs/git-name-rev#_description)DESCRIPTION
 Finds symbolic names suitable for human digestion for revisions given in any format parsable by _git rev-parse_.
-##  [](https://git-scm.com/docs/git-name-rev#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-name-rev#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-name-rev#Documentation/git-name-rev.txt---tags)--tags 
-    
-Do not use branch names, but only tags to name the commits 
+[](https://git-scm.com/docs/git-name-rev#Documentation/git-name-rev.txt---tags)--tags
 
-[](https://git-scm.com/docs/git-name-rev#Documentation/git-name-rev.txt---refspattern)--refs=<pattern> 
-    
-Only use refs whose names match a given shell pattern. The pattern can be a branch name, a tag name, or a fully qualified ref name. If given multiple times, use refs whose names match any of the given shell patterns. Use `--no-refs` to clear any previous ref patterns given. 
+Do not use branch names, but only tags to name the commits
 
-[](https://git-scm.com/docs/git-name-rev#Documentation/git-name-rev.txt---excludepattern)--exclude=<pattern> 
-    
-Do not use any ref whose name matches a given shell pattern. The pattern can be one of branch name, tag name or fully qualified ref name. If given multiple times, a ref will be excluded when it matches any of the given patterns. When used together with --refs, a ref will be used as a match only when it matches at least one --refs pattern and does not match any --exclude patterns. Use `--no-exclude` to clear the list of exclude patterns. 
+[](https://git-scm.com/docs/git-name-rev#Documentation/git-name-rev.txt---refspattern)--refs=<pattern>
 
-[](https://git-scm.com/docs/git-name-rev#Documentation/git-name-rev.txt---all)--all 
-    
-List all commits reachable from all refs 
+Only use refs whose names match a given shell pattern. The pattern can be a branch name, a tag name, or a fully qualified ref name. If given multiple times, use refs whose names match any of the given shell patterns. Use `--no-refs` to clear any previous ref patterns given.
 
-[](https://git-scm.com/docs/git-name-rev#Documentation/git-name-rev.txt---annotate-stdin)--annotate-stdin 
-    
+[](https://git-scm.com/docs/git-name-rev#Documentation/git-name-rev.txt---excludepattern)--exclude=<pattern>
+
+Do not use any ref whose name matches a given shell pattern. The pattern can be one of branch name, tag name or fully qualified ref name. If given multiple times, a ref will be excluded when it matches any of the given patterns. When used together with --refs, a ref will be used as a match only when it matches at least one --refs pattern and does not match any --exclude patterns. Use `--no-exclude` to clear the list of exclude patterns.
+
+[](https://git-scm.com/docs/git-name-rev#Documentation/git-name-rev.txt---all)--all
+
+List all commits reachable from all refs
+
+[](https://git-scm.com/docs/git-name-rev#Documentation/git-name-rev.txt---annotate-stdin)--annotate-stdin
+
 Transform stdin by substituting all the 40-character SHA-1 hexes (say $hex) with "$hex ($rev_name)". When used with --name-only, substitute with "$rev_name", omitting $hex altogether. This option was called `--stdin` in older versions of Git.
 For example:
 ```
@@ -245,16 +245,16 @@ while its tree object is 70d105cc79e63b81cfdcb08a15297c23e60b07ad
 ```
 
 
-[](https://git-scm.com/docs/git-name-rev#Documentation/git-name-rev.txt---name-only)--name-only 
-    
-Instead of printing both the SHA-1 and the name, print only the name. If given with --tags the usual tag prefix of "tags/" is also omitted from the name, matching the output of `git-describe` more closely. 
+[](https://git-scm.com/docs/git-name-rev#Documentation/git-name-rev.txt---name-only)--name-only
 
-[](https://git-scm.com/docs/git-name-rev#Documentation/git-name-rev.txt---no-undefined)--no-undefined 
-    
-Die with error code != 0 when a reference is undefined, instead of printing `undefined`. 
+Instead of printing both the SHA-1 and the name, print only the name. If given with --tags the usual tag prefix of "tags/" is also omitted from the name, matching the output of `git-describe` more closely.
 
-[](https://git-scm.com/docs/git-name-rev#Documentation/git-name-rev.txt---always)--always 
-    
+[](https://git-scm.com/docs/git-name-rev#Documentation/git-name-rev.txt---no-undefined)--no-undefined
+
+Die with error code != 0 when a reference is undefined, instead of printing `undefined`.
+
+[](https://git-scm.com/docs/git-name-rev#Documentation/git-name-rev.txt---always)--always
+
 Show uniquely abbreviated commit object as fallback.
 ##  [](https://git-scm.com/docs/git-name-rev#_examples)EXAMPLES
 Given a commit, find out where it is relative to the local refs. Say somebody wrote you about that fantastic commit 33db5f4d9027a10e477ccf054b2c1ab94f74c85a. Of course, you look into the commit, but that only tells you what happened, but not the context.
@@ -273,6 +273,6 @@ Another nice thing you can do is:
 ##  [](https://git-scm.com/docs/git-name-rev#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### name-rev
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

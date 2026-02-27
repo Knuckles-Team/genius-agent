@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/gitweb#_name)
     * [SYNOPSIS](https://git-scm.com/docs/gitweb#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/gitweb#_description)
@@ -33,8 +33,8 @@
 Localized versions of **gitweb** manual
   1. [English ](https://git-scm.com/docs/gitweb)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/gitweb)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -238,14 +238,14 @@ This file uses the following format:
   * Whitespace separated fields; any run of whitespace can be used as field separator (rules for Perl’s "`split`(`"` `",` `$line`)").
   * Fields use modified URI encoding, defined in RFC 3986, section 2.1 (Percent-Encoding), or rather "Query string encoding" (see <https://en.wikipedia.org/wiki/Query_string#URL_encoding>), the difference being that SP (" ") can be encoded as "+" (and therefore "+" has to be also percent-encoded).
 Reserved characters are: "%" (used for encoding), "+" (can be used to encode SPACE), all whitespace characters as defined in Perl, including SP, TAB and LF, (used to separate fields in a record).
-  * Currently recognized fields are: 
+  * Currently recognized fields are:
 
-[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-repositorypath)<repository path> 
-    
-path to repository GIT_DIR, relative to `$projectroot` 
+[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-repositorypath)<repository path>
 
-[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-repositoryowner)<repository owner> 
-    
+path to repository GIT_DIR, relative to `$projectroot`
+
+[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-repositoryowner)<repository owner>
+
 displayed as repository owner, preferably full name, or email, or both
 
 
@@ -306,38 +306,38 @@ $export_auth_hook = sub {
 
 ###  [](https://git-scm.com/docs/gitweb#_per_repository_gitweb_configuration)Per-repository gitweb configuration
 You can configure individual repositories shown in gitweb by creating file in the `GIT_DIR` of Git repository, or by setting some repo configuration variable (in `GIT_DIR/config`, see [git-config[1]](https://git-scm.com/docs/git-config)).
-You can use the following files in repository: 
+You can use the following files in repository:
 
-[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-READMEhtml)README.html 
-    
-A html file (HTML fragment) which is included on the gitweb project "summary" page inside _< div>_ block element. You can use it for longer description of a project, to provide links (for example to project’s homepage), etc. This is recognized only if XSS prevention is off (`$prevent_xss` is false, see [gitweb.conf[5]](https://git-scm.com/docs/gitweb.conf)); a way to include a README safely when XSS prevention is on may be worked out in the future. 
+[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-READMEhtml)README.html
 
-[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-descriptionorgitwebdescription)description (or `gitweb.description`) 
-    
+A html file (HTML fragment) which is included on the gitweb project "summary" page inside _< div>_ block element. You can use it for longer description of a project, to provide links (for example to project’s homepage), etc. This is recognized only if XSS prevention is off (`$prevent_xss` is false, see [gitweb.conf[5]](https://git-scm.com/docs/gitweb.conf)); a way to include a README safely when XSS prevention is on may be worked out in the future.
+
+[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-descriptionorgitwebdescription)description (or `gitweb.description`)
+
 Short (shortened to `$projects_list_description_width` in the projects list page, which is 25 characters by default; see [gitweb.conf[5]](https://git-scm.com/docs/gitweb.conf)) single line description of a project (of a repository). Plain text file; HTML will be escaped. By default set to
 ```
 Unnamed repository; edit this file to name it for gitweb.
 ```
 
-from the template during repository creation, usually installed in `/usr/share/git-core/templates/`. You can use the `gitweb.description` repo configuration variable, but the file takes precedence. 
+from the template during repository creation, usually installed in `/usr/share/git-core/templates/`. You can use the `gitweb.description` repo configuration variable, but the file takes precedence.
 
-[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-categoryorgitwebcategory)category (or `gitweb.category`) 
-    
+[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-categoryorgitwebcategory)category (or `gitweb.category`)
+
 Single line category of a project, used to group projects if `$projects_list_group_categories` is enabled. By default (file and configuration variable absent), uncategorized projects are put in the `$project_list_default_category` category. You can use the `gitweb.category` repo configuration variable, but the file takes precedence.
-The configuration variables `$projects_list_group_categories` and `$project_list_default_category` are described in [gitweb.conf[5]](https://git-scm.com/docs/gitweb.conf) 
+The configuration variables `$projects_list_group_categories` and `$project_list_default_category` are described in [gitweb.conf[5]](https://git-scm.com/docs/gitweb.conf)
 
-[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-cloneurlormultiple-valuedgitweburl)cloneurl (or multiple-valued `gitweb.url`) 
-    
+[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-cloneurlormultiple-valuedgitweburl)cloneurl (or multiple-valued `gitweb.url`)
+
 File with repository URL (used for clone and fetch), one per line. Displayed in the project summary page. You can use multiple-valued `gitweb.url` repository configuration variable for that, but the file takes precedence.
-This is per-repository enhancement / version of global prefix-based `@git_base_url_list` gitweb configuration variable (see [gitweb.conf[5]](https://git-scm.com/docs/gitweb.conf)). 
+This is per-repository enhancement / version of global prefix-based `@git_base_url_list` gitweb configuration variable (see [gitweb.conf[5]](https://git-scm.com/docs/gitweb.conf)).
 
-[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-gitwebowner)gitweb.owner 
-    
+[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-gitwebowner)gitweb.owner
+
 You can use the `gitweb.owner` repository configuration variable to set repository’s owner. It is displayed in the project list and summary page.
-If it’s not set, filesystem directory’s owner is used (via GECOS field, i.e. real name field from **getpwuid**(3)) if `$projects_list` is unset (gitweb scans `$projectroot` for repositories); if `$projects_list` points to file with list of repositories, then project owner defaults to value from this file for given repository. 
+If it’s not set, filesystem directory’s owner is used (via GECOS field, i.e. real name field from **getpwuid**(3)) if `$projects_list` is unset (gitweb scans `$projectroot` for repositories); if `$projects_list` points to file with list of repositories, then project owner defaults to value from this file for given repository.
 
-[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-variousgitwebconfigvariablesinconfig)various `gitweb.*` config variables (in config) 
-    
+[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-variousgitwebconfigvariablesinconfig)various `gitweb.*` config variables (in config)
+
 Read description of `%feature` hash for detailed list, and descriptions. See also "Configuring gitweb features" section in [gitweb.conf[5]](https://git-scm.com/docs/gitweb.conf)
 ##  [](https://git-scm.com/docs/gitweb#_actions_and_urls)ACTIONS, AND URLS
 Gitweb can use path_info (component) based URLs, or it can pass all necessary information via query parameters. The typical gitweb URLs are broken down in to five components:
@@ -346,25 +346,25 @@ Gitweb can use path_info (component) based URLs, or it can pass all necessary in
 ```
 
 
-[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-repo)repo 
-    
+[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-repo)repo
+
 The repository the action will be performed on.
-All actions except for those that list all available projects, in whatever form, require this parameter. 
+All actions except for those that list all available projects, in whatever form, require this parameter.
 
-[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-action)action 
-    
-The action that will be run. Defaults to _projects_list_ if repo is not set, and to _summary_ otherwise. 
+[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-action)action
 
-[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-revision)revision 
-    
-Revision shown. Defaults to HEAD. 
+The action that will be run. Defaults to _projects_list_ if repo is not set, and to _summary_ otherwise.
 
-[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-path)path 
-    
-The path within the <repository> that the action is performed on, for those actions that require it. 
+[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-revision)revision
 
-[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-arguments)arguments 
-    
+Revision shown. Defaults to HEAD.
+
+[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-path)path
+
+The path within the <repository> that the action is performed on, for those actions that require it.
+
+[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-arguments)arguments
+
 Any arguments that control the behaviour of the action.
 Some actions require or allow to specify two revisions, and sometimes even two pathnames. In most general form such path_info (component) based gitweb URL looks like this:
 ```
@@ -377,84 +377,84 @@ $feature{'blame'}{'default'} = [1];
 ```
 
 ###  [](https://git-scm.com/docs/gitweb#_actions)Actions:
-The standard actions are: 
+The standard actions are:
 
-[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-projectlist)project_list 
-    
-Lists the available Git repositories. This is the default command if no repository is specified in the URL. 
+[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-projectlist)project_list
 
-[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-summary)summary 
-    
-Displays summary about given repository. This is the default command if no action is specified in URL, and only repository is specified. 
+Lists the available Git repositories. This is the default command if no repository is specified in the URL.
 
-[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-heads)heads 
+[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-summary)summary
+
+Displays summary about given repository. This is the default command if no action is specified in URL, and only repository is specified.
+
+[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-heads)heads
 
 
-[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-remotes)remotes 
-    
+[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-remotes)remotes
+
 Lists all local or all remote-tracking branches in given repository.
-The latter is not available by default, unless configured. 
+The latter is not available by default, unless configured.
 
-[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-tags)tags 
-    
-List all tags (lightweight and annotated) in given repository. 
+[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-tags)tags
 
-[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-blob)blob 
+List all tags (lightweight and annotated) in given repository.
 
-
-[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-tree)tree 
-    
-Shows the files and directories in a given repository path, at given revision. This is default command if no action is specified in the URL, and path is given. 
-
-[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-blobplain)blob_plain 
-    
-Returns the raw data for the file in given repository, at given path and revision. Links to this action are marked _raw_. 
-
-[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-blobdiff)blobdiff 
-    
-Shows the difference between two revisions of the same file. 
-
-[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-blame)blame 
+[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-blob)blob
 
 
-[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-blameincremental)blame_incremental 
-    
+[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-tree)tree
+
+Shows the files and directories in a given repository path, at given revision. This is default command if no action is specified in the URL, and path is given.
+
+[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-blobplain)blob_plain
+
+Returns the raw data for the file in given repository, at given path and revision. Links to this action are marked _raw_.
+
+[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-blobdiff)blobdiff
+
+Shows the difference between two revisions of the same file.
+
+[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-blame)blame
+
+
+[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-blameincremental)blame_incremental
+
 Shows the blame (also called annotation) information for a file. On a per line basis it shows the revision in which that line was last changed and the user that committed the change. The incremental version (which if configured is used automatically when JavaScript is enabled) uses Ajax to incrementally add blame info to the contents of given file.
-This action is disabled by default for performance reasons. 
+This action is disabled by default for performance reasons.
 
-[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-commit)commit 
-
-
-[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-commitdiff)commitdiff 
-    
-Shows information about a specific commit in a repository. The _commit_ view shows information about commit in more detail, the _commitdiff_ action shows changeset for given commit. 
-
-[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-patch)patch 
-    
-Returns the commit in plain text mail format, suitable for applying with [git-am[1]](https://git-scm.com/docs/git-am). 
-
-[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-tag)tag 
-    
-Display specific annotated tag (tag object). 
-
-[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-log)log 
+[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-commit)commit
 
 
-[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-shortlog)shortlog 
-    
+[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-commitdiff)commitdiff
+
+Shows information about a specific commit in a repository. The _commit_ view shows information about commit in more detail, the _commitdiff_ action shows changeset for given commit.
+
+[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-patch)patch
+
+Returns the commit in plain text mail format, suitable for applying with [git-am[1]](https://git-scm.com/docs/git-am).
+
+[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-tag)tag
+
+Display specific annotated tag (tag object).
+
+[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-log)log
+
+
+[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-shortlog)shortlog
+
 Shows log information (commit message or just commit subject) for a given branch (starting from given revision).
-The _shortlog_ view is more compact; it shows one commit per line. 
+The _shortlog_ view is more compact; it shows one commit per line.
 
-[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-history)history 
-    
+[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-history)history
+
 Shows history of the file or directory in a given repository path, starting from given revision (defaults to HEAD, i.e. default branch).
-This view is similar to _shortlog_ view. 
+This view is similar to _shortlog_ view.
 
-[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-rss)rss 
+[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-rss)rss
 
 
-[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-atom)atom 
-    
+[](https://git-scm.com/docs/gitweb#Documentation/gitweb.txt-atom)atom
+
 Generates an RSS (or Atom) feed of changes to repository.
 ##  [](https://git-scm.com/docs/gitweb#_webserver_configuration)WEBSERVER CONFIGURATION
 This section explains how to configure some common webservers to run gitweb. In all cases, `/path/to/gitweb` in the examples is the directory you ran installed gitweb in, and contains `gitweb_config.perl`.
@@ -683,6 +683,6 @@ Please report any bugs or feature requests to git@vger.kernel.org, putting "gitw
 ##  [](https://git-scm.com/docs/gitweb#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### gitweb
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

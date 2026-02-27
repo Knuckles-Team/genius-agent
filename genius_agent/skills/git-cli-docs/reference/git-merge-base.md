@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-merge-base#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-merge-base#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-merge-base#_description)
@@ -36,8 +36,8 @@ Localized versions of **git-merge-base** manual
   4. [українська мова ](https://git-scm.com/docs/git-merge-base/uk)
   5. [简体中文 ](https://git-scm.com/docs/git-merge-base/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-merge-base)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -215,30 +215,30 @@ _git merge-base_ finds the best common ancestor(s) between two commits to use in
 ##  [](https://git-scm.com/docs/git-merge-base#_operation_modes)OPERATION MODES
 In the most common special case, specifying only two commits on the command line means computing the merge base between the given two commits.
 More generally, among the two commits to compute the merge base from, one is specified by the first commit argument on the command line; the other commit is a (possibly hypothetical) commit that is a merge across all the remaining commits on the command line.
-As a consequence, the _merge base_ is not necessarily contained in each of the commit arguments if more than two commits are specified. This is different from [git-show-branch[1]](https://git-scm.com/docs/git-show-branch) when used with the `--merge-base` option. 
+As a consequence, the _merge base_ is not necessarily contained in each of the commit arguments if more than two commits are specified. This is different from [git-show-branch[1]](https://git-scm.com/docs/git-show-branch) when used with the `--merge-base` option.
 
-[](https://git-scm.com/docs/git-merge-base#Documentation/git-merge-base.txt---octopus)--octopus 
-    
-Compute the best common ancestors of all supplied commits, in preparation for an n-way merge. This mimics the behavior of _git show-branch --merge-base_. 
+[](https://git-scm.com/docs/git-merge-base#Documentation/git-merge-base.txt---octopus)--octopus
 
-[](https://git-scm.com/docs/git-merge-base#Documentation/git-merge-base.txt---independent)--independent 
-    
-Instead of printing merge bases, print a minimal subset of the supplied commits with the same ancestors. In other words, among the commits given, list those which cannot be reached from any other. This mimics the behavior of _git show-branch --independent_. 
+Compute the best common ancestors of all supplied commits, in preparation for an n-way merge. This mimics the behavior of _git show-branch --merge-base_.
 
-[](https://git-scm.com/docs/git-merge-base#Documentation/git-merge-base.txt---is-ancestor)--is-ancestor 
-    
-Check if the first <commit> is an ancestor of the second <commit>, and exit with status 0 if true, or with status 1 if not. Errors are signaled by a non-zero status that is not 1. 
+[](https://git-scm.com/docs/git-merge-base#Documentation/git-merge-base.txt---independent)--independent
 
-[](https://git-scm.com/docs/git-merge-base#Documentation/git-merge-base.txt---fork-point)--fork-point 
-    
+Instead of printing merge bases, print a minimal subset of the supplied commits with the same ancestors. In other words, among the commits given, list those which cannot be reached from any other. This mimics the behavior of _git show-branch --independent_.
+
+[](https://git-scm.com/docs/git-merge-base#Documentation/git-merge-base.txt---is-ancestor)--is-ancestor
+
+Check if the first <commit> is an ancestor of the second <commit>, and exit with status 0 if true, or with status 1 if not. Errors are signaled by a non-zero status that is not 1.
+
+[](https://git-scm.com/docs/git-merge-base#Documentation/git-merge-base.txt---fork-point)--fork-point
+
 Find the point at which a branch (or any history that leads to <commit>) forked from another branch (or any reference) <ref>. This does not just look for the common ancestor of the two commits, but also takes into account the reflog of <ref> to see if the history leading to <commit> forked from an earlier incarnation of the branch <ref> (see discussion of this mode below).
-##  [](https://git-scm.com/docs/git-merge-base#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-merge-base#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-merge-base#Documentation/git-merge-base.txt--a)-a 
+[](https://git-scm.com/docs/git-merge-base#Documentation/git-merge-base.txt--a)-a
 
 
-[](https://git-scm.com/docs/git-merge-base#Documentation/git-merge-base.txt---all)--all 
-    
+[](https://git-scm.com/docs/git-merge-base#Documentation/git-merge-base.txt---all)--all
+
 Output all merge bases for the commits, instead of just one.
 ##  [](https://git-scm.com/docs/git-merge-base#_discussion)DISCUSSION
 Given two commits _A_ and _B_ , `git` `merge-base` `A` `B` will output a commit which is reachable from both _A_ and _B_ through the parent relationship.
@@ -341,6 +341,6 @@ Also, the remote-tracking branch you use the `--fork-point` mode with must be th
 ##  [](https://git-scm.com/docs/git-merge-base#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### merge-base
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

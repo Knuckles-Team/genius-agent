@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-archimport#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-archimport#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-archimport#_description)
@@ -35,8 +35,8 @@ Localized versions of **git-archimport** manual
   6. [українська мова ](https://git-scm.com/docs/git-archimport/uk)
   7. [简体中文 ](https://git-scm.com/docs/git-archimport/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-archimport)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -209,46 +209,46 @@ Associating multiple Arch branches to one Git branch is possible; the result wil
 ##  [](https://git-scm.com/docs/git-archimport#_merges)MERGES
 Patch merge data from Arch is used to mark merges in Git as well. Git does not care much about tracking patches, and only considers a merge when a branch incorporates all the commits since the point they forked. The end result is that Git will have a good idea of how far branches have diverged. So the import process does lose some patch-trading metadata.
 Fortunately, when you try and merge branches imported from Arch, Git will find a good merge base, and it has a good chance of identifying patches that have been traded out-of-sequence between the branches.
-##  [](https://git-scm.com/docs/git-archimport#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-archimport#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-archimport#Documentation/git-archimport.txt--h)-h 
-    
-Display usage. 
+[](https://git-scm.com/docs/git-archimport#Documentation/git-archimport.txt--h)-h
 
-[](https://git-scm.com/docs/git-archimport#Documentation/git-archimport.txt--v)-v 
-    
-Verbose output. 
+Display usage.
 
-[](https://git-scm.com/docs/git-archimport#Documentation/git-archimport.txt--T)-T 
-    
-Many tags. Will create a tag for every commit, reflecting the commit name in the Arch repository. 
+[](https://git-scm.com/docs/git-archimport#Documentation/git-archimport.txt--v)-v
 
-[](https://git-scm.com/docs/git-archimport#Documentation/git-archimport.txt--f)-f 
-    
-Use the fast patchset import strategy. This can be significantly faster for large trees, but cannot handle directory renames or permissions changes. The default strategy is slow and safe. 
+Verbose output.
 
-[](https://git-scm.com/docs/git-archimport#Documentation/git-archimport.txt--o)-o 
-    
-Use this for compatibility with old-style branch names used by earlier versions of _git archimport_. Old-style branch names were category--branch, whereas new-style branch names are archive,category--branch--version. In both cases, names given on the command-line will override the automatically-generated ones. 
+[](https://git-scm.com/docs/git-archimport#Documentation/git-archimport.txt--T)-T
 
-[](https://git-scm.com/docs/git-archimport#Documentation/git-archimport.txt--Ddepth)-D <depth> 
-    
-Follow merge ancestry and attempt to import trees that have been merged from. Specify a depth greater than 1 if patch logs have been pruned. 
+Many tags. Will create a tag for every commit, reflecting the commit name in the Arch repository.
 
-[](https://git-scm.com/docs/git-archimport#Documentation/git-archimport.txt--a)-a 
-    
-Attempt to auto-register archives at `http://mirrors.sourcecontrol.net` This is particularly useful with the -D option. 
+[](https://git-scm.com/docs/git-archimport#Documentation/git-archimport.txt--f)-f
 
-[](https://git-scm.com/docs/git-archimport#Documentation/git-archimport.txt--ttmpdir)-t <tmpdir> 
-    
-Override the default tempdir. 
+Use the fast patchset import strategy. This can be significantly faster for large trees, but cannot handle directory renames or permissions changes. The default strategy is slow and safe.
 
-[](https://git-scm.com/docs/git-archimport#Documentation/git-archimport.txt-archivebranch)<archive>/<branch> 
-    
+[](https://git-scm.com/docs/git-archimport#Documentation/git-archimport.txt--o)-o
+
+Use this for compatibility with old-style branch names used by earlier versions of _git archimport_. Old-style branch names were category--branch, whereas new-style branch names are archive,category--branch--version. In both cases, names given on the command-line will override the automatically-generated ones.
+
+[](https://git-scm.com/docs/git-archimport#Documentation/git-archimport.txt--Ddepth)-D <depth>
+
+Follow merge ancestry and attempt to import trees that have been merged from. Specify a depth greater than 1 if patch logs have been pruned.
+
+[](https://git-scm.com/docs/git-archimport#Documentation/git-archimport.txt--a)-a
+
+Attempt to auto-register archives at `http://mirrors.sourcecontrol.net` This is particularly useful with the -D option.
+
+[](https://git-scm.com/docs/git-archimport#Documentation/git-archimport.txt--ttmpdir)-t <tmpdir>
+
+Override the default tempdir.
+
+[](https://git-scm.com/docs/git-archimport#Documentation/git-archimport.txt-archivebranch)<archive>/<branch>
+
 <archive>/<branch> identifier in a format that `tla` `log` understands.
 ##  [](https://git-scm.com/docs/git-archimport#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### archimport
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

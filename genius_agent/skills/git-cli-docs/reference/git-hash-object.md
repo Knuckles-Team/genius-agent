@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-hash-object#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-hash-object#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-hash-object#_description)
@@ -32,8 +32,8 @@ Localized versions of **git-hash-object** manual
   4. [українська мова ](https://git-scm.com/docs/git-hash-object/uk)
   5. [简体中文 ](https://git-scm.com/docs/git-hash-object/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-hash-object)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -204,38 +204,38 @@ _git hash-object_ [-t <type>] [-w] --stdin-paths [--no-filters]
 
 ##  [](https://git-scm.com/docs/git-hash-object#_description)DESCRIPTION
 Computes the object ID value for an object with specified type with the contents of the named file (which can be outside of the work tree), and optionally writes the resulting object into the object database. Reports its object ID to its standard output. When <type> is not specified, it defaults to "blob".
-##  [](https://git-scm.com/docs/git-hash-object#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-hash-object#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-hash-object#Documentation/git-hash-object.txt--ttype)-t <type> 
-    
-Specify the type of object to be created (default: "blob"). Possible values are `commit`, `tree`, `blob`, and `tag`. 
+[](https://git-scm.com/docs/git-hash-object#Documentation/git-hash-object.txt--ttype)-t <type>
 
-[](https://git-scm.com/docs/git-hash-object#Documentation/git-hash-object.txt--w)-w 
-    
-Actually write the object into the object database. 
+Specify the type of object to be created (default: "blob"). Possible values are `commit`, `tree`, `blob`, and `tag`.
 
-[](https://git-scm.com/docs/git-hash-object#Documentation/git-hash-object.txt---stdin)--stdin 
-    
-Read the object from standard input instead of from a file. 
+[](https://git-scm.com/docs/git-hash-object#Documentation/git-hash-object.txt--w)-w
 
-[](https://git-scm.com/docs/git-hash-object#Documentation/git-hash-object.txt---stdin-paths)--stdin-paths 
-    
-Read file names from the standard input, one per line, instead of from the command-line. 
+Actually write the object into the object database.
 
-[](https://git-scm.com/docs/git-hash-object#Documentation/git-hash-object.txt---path)--path 
-    
-Hash object as if it were located at the given path. The location of the file does not directly influence the hash value, but the path is used to determine which Git filters should be applied to the object before it can be placed in the object database. As a result of applying filters, the actual blob put into the object database may differ from the given file. This option is mainly useful for hashing temporary files located outside of the working directory or files read from stdin. 
+[](https://git-scm.com/docs/git-hash-object#Documentation/git-hash-object.txt---stdin)--stdin
 
-[](https://git-scm.com/docs/git-hash-object#Documentation/git-hash-object.txt---no-filters)--no-filters 
-    
-Hash the contents as is, ignoring any input filter that would have been chosen by the attributes mechanism, including the end-of-line conversion. If the file is read from standard input then this is always implied, unless the `--path` option is given. 
+Read the object from standard input instead of from a file.
 
-[](https://git-scm.com/docs/git-hash-object#Documentation/git-hash-object.txt---literally)--literally 
-    
+[](https://git-scm.com/docs/git-hash-object#Documentation/git-hash-object.txt---stdin-paths)--stdin-paths
+
+Read file names from the standard input, one per line, instead of from the command-line.
+
+[](https://git-scm.com/docs/git-hash-object#Documentation/git-hash-object.txt---path)--path
+
+Hash object as if it were located at the given path. The location of the file does not directly influence the hash value, but the path is used to determine which Git filters should be applied to the object before it can be placed in the object database. As a result of applying filters, the actual blob put into the object database may differ from the given file. This option is mainly useful for hashing temporary files located outside of the working directory or files read from stdin.
+
+[](https://git-scm.com/docs/git-hash-object#Documentation/git-hash-object.txt---no-filters)--no-filters
+
+Hash the contents as is, ignoring any input filter that would have been chosen by the attributes mechanism, including the end-of-line conversion. If the file is read from standard input then this is always implied, unless the `--path` option is given.
+
+[](https://git-scm.com/docs/git-hash-object#Documentation/git-hash-object.txt---literally)--literally
+
 Allow `--stdin` to hash any garbage into a loose object which might not otherwise pass standard object parsing or git-fsck checks. Useful for stress-testing Git itself or reproducing characteristics of corrupt or bogus objects encountered in the wild.
 ##  [](https://git-scm.com/docs/git-hash-object#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### hash-object
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

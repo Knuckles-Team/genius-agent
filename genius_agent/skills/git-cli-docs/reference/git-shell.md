@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-shell#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-shell#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-shell#_description)
@@ -36,8 +36,8 @@ Localized versions of **git-shell** manual
   5. [українська мова ](https://git-scm.com/docs/git-shell/uk)
   6. [简体中文 ](https://git-scm.com/docs/git-shell/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-shell)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -202,20 +202,20 @@ _ssh_ <user>@localhost
 ##  [](https://git-scm.com/docs/git-shell#_description)DESCRIPTION
 This is a login shell for SSH accounts to provide restricted Git access. It permits execution only of server-side Git commands implementing the pull/push functionality, plus custom commands present in a subdirectory named `git-shell-commands` in the user’s home directory.
 ##  [](https://git-scm.com/docs/git-shell#_commands)COMMANDS
-_git shell_ accepts the following commands after the `-c` option: 
+_git shell_ accepts the following commands after the `-c` option:
 
-[](https://git-scm.com/docs/git-shell#Documentation/git-shell.txt-gitreceive-packargument)_git receive-pack <argument>_ 
-
-
-[](https://git-scm.com/docs/git-shell#Documentation/git-shell.txt-gitupload-packargument)_git upload-pack <argument>_ 
+[](https://git-scm.com/docs/git-shell#Documentation/git-shell.txt-gitreceive-packargument)_git receive-pack <argument>_
 
 
-[](https://git-scm.com/docs/git-shell#Documentation/git-shell.txt-gitupload-archiveargument)_git upload-archive <argument>_ 
-    
-Call the corresponding server-side command to support the client’s _git push_ , _git fetch_ , or _git archive --remote_ request. 
+[](https://git-scm.com/docs/git-shell#Documentation/git-shell.txt-gitupload-packargument)_git upload-pack <argument>_
 
-[](https://git-scm.com/docs/git-shell#Documentation/git-shell.txt-cvsserver)_cvs server_ 
-    
+
+[](https://git-scm.com/docs/git-shell#Documentation/git-shell.txt-gitupload-archiveargument)_git upload-archive <argument>_
+
+Call the corresponding server-side command to support the client’s _git push_ , _git fetch_ , or _git archive --remote_ request.
+
+[](https://git-scm.com/docs/git-shell#Documentation/git-shell.txt-cvsserver)_cvs server_
+
 Imitate a CVS server. See [git-cvsserver[1]](https://git-scm.com/docs/git-cvsserver).
 If a `~/git-shell-commands` directory is present, _git shell_ will also handle other, custom commands by running "`git-shell-commands/`_< command>_ _< arguments>_" from the user’s home directory.
 ##  [](https://git-scm.com/docs/git-shell#_interactive_use)INTERACTIVE USE
@@ -255,6 +255,6 @@ ssh(1), [git-daemon[1]](https://git-scm.com/docs/git-daemon), contrib/git-shell-
 ##  [](https://git-scm.com/docs/git-shell#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### shell
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

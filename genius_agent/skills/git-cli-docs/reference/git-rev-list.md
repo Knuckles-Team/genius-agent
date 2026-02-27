@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-rev-list#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-rev-list#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-rev-list#_description)
@@ -35,8 +35,8 @@ Localized versions of **git-rev-list** manual
   5. [українська мова ](https://git-scm.com/docs/git-rev-list/uk)
   6. [简体中文 ](https://git-scm.com/docs/git-rev-list/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-rev-list)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -299,227 +299,227 @@ _rev-list_ is an essential Git command, since it provides the ability to build a
 ###  [](https://git-scm.com/docs/git-rev-list#_commit_limiting)Commit Limiting
 Besides specifying a range of commits that should be listed using the special notations explained in the description, additional commit limiting may be applied.
 Using more options generally further limits the output (e.g. `--since=`_< date1>_ limits to commits newer than _< date1>_, and using it with `--grep=`_< pattern>_ further limits to commits whose log message has a line that matches _< pattern>_), unless otherwise noted.
-Note that these are applied before commit ordering and formatting options, such as `--reverse`. 
+Note that these are applied before commit ordering and formatting options, such as `--reverse`.
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt--number)`-`_< number>_ 
-
-
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt--nnumber)`-n` _< number>_ 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt--number)`-`_< number>_
 
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---max-countnumber)`--max-count=`_< number>_ 
-    
-Limit the output to _< number>_ commits. 
-
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---skipnumber)`--skip=`_< number>_ 
-    
-Skip _< number>_ commits before starting to show the commit output. 
-
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---sincedate)`--since=`_< date>_ 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt--nnumber)`-n` _< number>_
 
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---afterdate)`--after=`_< date>_ 
-    
-Show commits more recent than _< date>_. 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---max-countnumber)`--max-count=`_< number>_
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---since-as-filterdate)`--since-as-filter=`_< date>_ 
-    
-Show all commits more recent than _< date>_. This visits all commits in the range, rather than stopping at the first commit which is older than _< date>_. 
+Limit the output to _< number>_ commits.
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---untildate)`--until=`_< date>_ 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---skipnumber)`--skip=`_< number>_
 
+Skip _< number>_ commits before starting to show the commit output.
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---beforedate)`--before=`_< date>_ 
-    
-Show commits older than _< date>_. 
-
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---max-agetimestamp)`--max-age=`_< timestamp>_ 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---sincedate)`--since=`_< date>_
 
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---min-agetimestamp)`--min-age=`_< timestamp>_ 
-    
-Limit the commits output to specified time range. 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---afterdate)`--after=`_< date>_
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---authorpattern)`--author=`_< pattern>_ 
+Show commits more recent than _< date>_.
 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---since-as-filterdate)`--since-as-filter=`_< date>_
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---committerpattern)`--committer=`_< pattern>_ 
-    
-Limit the commits output to ones with author/committer header lines that match the _< pattern>_ regular expression. With more than one `--author=`_< pattern>_, commits whose author matches any of the _< pattern>_ are chosen (similarly for multiple `--committer=`_< pattern>_). 
+Show all commits more recent than _< date>_. This visits all commits in the range, rather than stopping at the first commit which is older than _< date>_.
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---grep-reflogpattern)`--grep-reflog=`_< pattern>_ 
-    
-Limit the commits output to ones with reflog entries that match the _< pattern>_ regular expression. With more than one `--grep-reflog`, commits whose reflog message matches any of the given patterns are chosen. It is an error to use this option unless `--walk-reflogs` is in use. 
-
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---greppattern)`--grep=`_< pattern>_ 
-    
-Limit the commits output to ones with a log message that matches the _< pattern>_ regular expression. With more than one `--grep=`_< pattern>_, commits whose message matches any of the _< pattern>_ are chosen (but see `--all-match`). 
-
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---all-match)`--all-match` 
-    
-Limit the commits output to ones that match all given `--grep`, instead of ones that match at least one. 
-
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---invert-grep)`--invert-grep` 
-    
-Limit the commits output to ones with a log message that do not match the _< pattern>_ specified with `--grep=`_< pattern>_. 
-
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt--i)`-i` 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---untildate)`--until=`_< date>_
 
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---regexp-ignore-case)`--regexp-ignore-case` 
-    
-Match the regular expression limiting patterns without regard to letter case. 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---beforedate)`--before=`_< date>_
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---basic-regexp)`--basic-regexp` 
-    
-Consider the limiting patterns to be basic regular expressions; this is the default. 
+Show commits older than _< date>_.
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt--E)`-E` 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---max-agetimestamp)`--max-age=`_< timestamp>_
 
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---extended-regexp)`--extended-regexp` 
-    
-Consider the limiting patterns to be extended regular expressions instead of the default basic regular expressions. 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---min-agetimestamp)`--min-age=`_< timestamp>_
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt--F)`-F` 
+Limit the commits output to specified time range.
 
-
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---fixed-strings)`--fixed-strings` 
-    
-Consider the limiting patterns to be fixed strings (don’t interpret pattern as a regular expression). 
-
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt--P)`-P` 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---authorpattern)`--author=`_< pattern>_
 
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---perl-regexp)`--perl-regexp` 
-    
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---committerpattern)`--committer=`_< pattern>_
+
+Limit the commits output to ones with author/committer header lines that match the _< pattern>_ regular expression. With more than one `--author=`_< pattern>_, commits whose author matches any of the _< pattern>_ are chosen (similarly for multiple `--committer=`_< pattern>_).
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---grep-reflogpattern)`--grep-reflog=`_< pattern>_
+
+Limit the commits output to ones with reflog entries that match the _< pattern>_ regular expression. With more than one `--grep-reflog`, commits whose reflog message matches any of the given patterns are chosen. It is an error to use this option unless `--walk-reflogs` is in use.
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---greppattern)`--grep=`_< pattern>_
+
+Limit the commits output to ones with a log message that matches the _< pattern>_ regular expression. With more than one `--grep=`_< pattern>_, commits whose message matches any of the _< pattern>_ are chosen (but see `--all-match`).
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---all-match)`--all-match`
+
+Limit the commits output to ones that match all given `--grep`, instead of ones that match at least one.
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---invert-grep)`--invert-grep`
+
+Limit the commits output to ones with a log message that do not match the _< pattern>_ specified with `--grep=`_< pattern>_.
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt--i)`-i`
+
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---regexp-ignore-case)`--regexp-ignore-case`
+
+Match the regular expression limiting patterns without regard to letter case.
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---basic-regexp)`--basic-regexp`
+
+Consider the limiting patterns to be basic regular expressions; this is the default.
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt--E)`-E`
+
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---extended-regexp)`--extended-regexp`
+
+Consider the limiting patterns to be extended regular expressions instead of the default basic regular expressions.
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt--F)`-F`
+
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---fixed-strings)`--fixed-strings`
+
+Consider the limiting patterns to be fixed strings (don’t interpret pattern as a regular expression).
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt--P)`-P`
+
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---perl-regexp)`--perl-regexp`
+
 Consider the limiting patterns to be Perl-compatible regular expressions.
-Support for these types of regular expressions is an optional compile-time dependency. If Git wasn’t compiled with support for them providing this option will cause it to die. 
+Support for these types of regular expressions is an optional compile-time dependency. If Git wasn’t compiled with support for them providing this option will cause it to die.
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---remove-empty)`--remove-empty` 
-    
-Stop when a given path disappears from the tree. 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---remove-empty)`--remove-empty`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---merges)`--merges` 
-    
-Print only merge commits. This is exactly the same as `--min-parents=2`. 
+Stop when a given path disappears from the tree.
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---no-merges)`--no-merges` 
-    
-Do not print commits with more than one parent. This is exactly the same as `--max-parents=1`. 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---merges)`--merges`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---min-parentsnumber)`--min-parents=`_< number>_ 
+Print only merge commits. This is exactly the same as `--min-parents=2`.
 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---no-merges)`--no-merges`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---max-parentsnumber)`--max-parents=`_< number>_ 
+Do not print commits with more than one parent. This is exactly the same as `--max-parents=1`.
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---min-parentsnumber)`--min-parents=`_< number>_
 
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---no-min-parents)`--no-min-parents` 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---max-parentsnumber)`--max-parents=`_< number>_
 
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---no-max-parents)`--no-max-parents` 
-    
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---no-min-parents)`--no-min-parents`
+
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---no-max-parents)`--no-max-parents`
+
 Show only commits which have at least (or at most) that many parent commits. In particular, `--max-parents=1` is the same as `--no-merges`, `--min-parents=2` is the same as `--merges`. `--max-parents=0` gives all root commits and `--min-parents=3` all octopus merges.
-`--no-min-parents` and `--no-max-parents` reset these limits (to no limit) again. Equivalent forms are `--min-parents=0` (any commit has 0 or more parents) and `--max-parents=-1` (negative numbers denote no upper limit). 
+`--no-min-parents` and `--no-max-parents` reset these limits (to no limit) again. Equivalent forms are `--min-parents=0` (any commit has 0 or more parents) and `--max-parents=-1` (negative numbers denote no upper limit).
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---first-parent)`--first-parent` 
-    
-When finding commits to include, follow only the first parent commit upon seeing a merge commit. This option can give a better overview when viewing the evolution of a particular topic branch, because merges into a topic branch tend to be only about adjusting to updated upstream from time to time, and this option allows you to ignore the individual commits brought in to your history by such a merge. 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---first-parent)`--first-parent`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---exclude-first-parent-only)`--exclude-first-parent-only` 
-    
-When finding commits to exclude (with a _^_), follow only the first parent commit upon seeing a merge commit. This can be used to find the set of changes in a topic branch from the point where it diverged from the remote branch, given that arbitrary merges can be valid topic branch changes. 
+When finding commits to include, follow only the first parent commit upon seeing a merge commit. This option can give a better overview when viewing the evolution of a particular topic branch, because merges into a topic branch tend to be only about adjusting to updated upstream from time to time, and this option allows you to ignore the individual commits brought in to your history by such a merge.
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---not)`--not` 
-    
-Reverses the meaning of the _^_ prefix (or lack thereof) for all following revision specifiers, up to the next `--not`. When used on the command line before --stdin, the revisions passed through stdin will not be affected by it. Conversely, when passed via standard input, the revisions passed on the command line will not be affected by it. 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---exclude-first-parent-only)`--exclude-first-parent-only`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---all)`--all` 
-    
-Pretend as if all the refs in `refs/`, along with `HEAD`, are listed on the command line as _< commit>_. 
+When finding commits to exclude (with a _^_), follow only the first parent commit upon seeing a merge commit. This can be used to find the set of changes in a topic branch from the point where it diverged from the remote branch, given that arbitrary merges can be valid topic branch changes.
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---branchespattern)`--branches`[`=`_< pattern>_] 
-    
-Pretend as if all the refs in `refs/heads` are listed on the command line as _< commit>_. If _< pattern>_ is given, limit branches to ones matching given shell glob. If _< pattern>_ lacks _?_ , _*_ , or _[_ , _/*_ at the end is implied. 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---not)`--not`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---tagspattern)`--tags`[`=`_< pattern>_] 
-    
-Pretend as if all the refs in `refs/tags` are listed on the command line as _< commit>_. If _< pattern>_ is given, limit tags to ones matching given shell glob. If pattern lacks _?_ , _*_ , or _[_ , _/*_ at the end is implied. 
+Reverses the meaning of the _^_ prefix (or lack thereof) for all following revision specifiers, up to the next `--not`. When used on the command line before --stdin, the revisions passed through stdin will not be affected by it. Conversely, when passed via standard input, the revisions passed on the command line will not be affected by it.
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---remotespattern)`--remotes`[`=`_< pattern>_] 
-    
-Pretend as if all the refs in `refs/remotes` are listed on the command line as _< commit>_. If _< pattern>_ is given, limit remote-tracking branches to ones matching given shell glob. If pattern lacks _?_ , _*_ , or _[_ , _/*_ at the end is implied. 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---all)`--all`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---globglob-pattern)`--glob=`_< glob-pattern>_ 
-    
-Pretend as if all the refs matching shell glob _< glob-pattern>_ are listed on the command line as _< commit>_. Leading _refs/_ , is automatically prepended if missing. If pattern lacks _?_ , _*_ , or _[_ , _/*_ at the end is implied. 
+Pretend as if all the refs in `refs/`, along with `HEAD`, are listed on the command line as _< commit>_.
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---excludeglob-pattern)`--exclude=`_< glob-pattern>_ 
-    
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---branchespattern)`--branches`[`=`_< pattern>_]
+
+Pretend as if all the refs in `refs/heads` are listed on the command line as _< commit>_. If _< pattern>_ is given, limit branches to ones matching given shell glob. If _< pattern>_ lacks _?_ , _*_ , or _[_ , _/*_ at the end is implied.
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---tagspattern)`--tags`[`=`_< pattern>_]
+
+Pretend as if all the refs in `refs/tags` are listed on the command line as _< commit>_. If _< pattern>_ is given, limit tags to ones matching given shell glob. If pattern lacks _?_ , _*_ , or _[_ , _/*_ at the end is implied.
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---remotespattern)`--remotes`[`=`_< pattern>_]
+
+Pretend as if all the refs in `refs/remotes` are listed on the command line as _< commit>_. If _< pattern>_ is given, limit remote-tracking branches to ones matching given shell glob. If pattern lacks _?_ , _*_ , or _[_ , _/*_ at the end is implied.
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---globglob-pattern)`--glob=`_< glob-pattern>_
+
+Pretend as if all the refs matching shell glob _< glob-pattern>_ are listed on the command line as _< commit>_. Leading _refs/_ , is automatically prepended if missing. If pattern lacks _?_ , _*_ , or _[_ , _/*_ at the end is implied.
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---excludeglob-pattern)`--exclude=`_< glob-pattern>_
+
 Do not include refs matching _< glob-pattern>_ that the next `--all`, `--branches`, `--tags`, `--remotes`, or `--glob` would otherwise consider. Repetitions of this option accumulate exclusion patterns up to the next `--all`, `--branches`, `--tags`, `--remotes`, or `--glob` option (other options or arguments do not clear accumulated patterns).
-The patterns given should not begin with `refs/heads`, `refs/tags`, or `refs/remotes` when applied to `--branches`, `--tags`, or `--remotes`, respectively, and they must begin with `refs/` when applied to `--glob` or `--all`. If a trailing _/*_ is intended, it must be given explicitly. 
+The patterns given should not begin with `refs/heads`, `refs/tags`, or `refs/remotes` when applied to `--branches`, `--tags`, or `--remotes`, respectively, and they must begin with `refs/` when applied to `--glob` or `--all`. If a trailing _/*_ is intended, it must be given explicitly.
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---exclude-hiddenfetchreceiveuploadpack)`--exclude-hidden=`(`fetch`|`receive`|`uploadpack`) 
-    
-Do not include refs that would be hidden by `git-fetch`, `git-receive-pack` or `git-upload-pack` by consulting the appropriate `fetch.hideRefs`, `receive.hideRefs` or `uploadpack.hideRefs` configuration along with `transfer.hideRefs` (see [git-config[1]](https://git-scm.com/docs/git-config)). This option affects the next pseudo-ref option `--all` or `--glob` and is cleared after processing them. 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---exclude-hiddenfetchreceiveuploadpack)`--exclude-hidden=`(`fetch`|`receive`|`uploadpack`)
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---reflog)`--reflog` 
-    
-Pretend as if all objects mentioned by reflogs are listed on the command line as _< commit>_. 
+Do not include refs that would be hidden by `git-fetch`, `git-receive-pack` or `git-upload-pack` by consulting the appropriate `fetch.hideRefs`, `receive.hideRefs` or `uploadpack.hideRefs` configuration along with `transfer.hideRefs` (see [git-config[1]](https://git-scm.com/docs/git-config)). This option affects the next pseudo-ref option `--all` or `--glob` and is cleared after processing them.
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---alternate-refs)`--alternate-refs` 
-    
-Pretend as if all objects mentioned as ref tips of alternate repositories were listed on the command line. An alternate repository is any repository whose object directory is specified in `objects/info/alternates`. The set of included objects may be modified by `core.alternateRefsCommand`, etc. See [git-config[1]](https://git-scm.com/docs/git-config). 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---reflog)`--reflog`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---single-worktree)`--single-worktree` 
-    
-By default, all working trees will be examined by the following options when there are more than one (see [git-worktree[1]](https://git-scm.com/docs/git-worktree)): `--all`, `--reflog` and `--indexed-objects`. This option forces them to examine the current working tree only. 
+Pretend as if all objects mentioned by reflogs are listed on the command line as _< commit>_.
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---ignore-missing)`--ignore-missing` 
-    
-Upon seeing an invalid object name in the input, pretend as if the bad input was not given. 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---alternate-refs)`--alternate-refs`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---stdin)`--stdin` 
-    
-In addition to getting arguments from the command line, read them from standard input as well. This accepts commits and pseudo-options like `--all` and `--glob=`. When a `--` separator is seen, the following input is treated as paths and used to limit the result. Flags like `--not` which are read via standard input are only respected for arguments passed in the same way and will not influence any subsequent command line arguments. 
+Pretend as if all objects mentioned as ref tips of alternate repositories were listed on the command line. An alternate repository is any repository whose object directory is specified in `objects/info/alternates`. The set of included objects may be modified by `core.alternateRefsCommand`, etc. See [git-config[1]](https://git-scm.com/docs/git-config).
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---quiet)`--quiet` 
-    
-Don’t print anything to standard output. This form is primarily meant to allow the caller to test the exit status to see if a range of objects is fully connected (or not). It is faster than redirecting stdout to `/dev/null` as the output does not have to be formatted. 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---single-worktree)`--single-worktree`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---disk-usage)`--disk-usage` 
+By default, all working trees will be examined by the following options when there are more than one (see [git-worktree[1]](https://git-scm.com/docs/git-worktree)): `--all`, `--reflog` and `--indexed-objects`. This option forces them to examine the current working tree only.
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---ignore-missing)`--ignore-missing`
+
+Upon seeing an invalid object name in the input, pretend as if the bad input was not given.
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---stdin)`--stdin`
+
+In addition to getting arguments from the command line, read them from standard input as well. This accepts commits and pseudo-options like `--all` and `--glob=`. When a `--` separator is seen, the following input is treated as paths and used to limit the result. Flags like `--not` which are read via standard input are only respected for arguments passed in the same way and will not influence any subsequent command line arguments.
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---quiet)`--quiet`
+
+Don’t print anything to standard output. This form is primarily meant to allow the caller to test the exit status to see if a range of objects is fully connected (or not). It is faster than redirecting stdout to `/dev/null` as the output does not have to be formatted.
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---disk-usage)`--disk-usage`
 
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---disk-usagehuman)`--disk-usage=human` 
-    
-Suppress normal output; instead, print the sum of the bytes used for on-disk storage by the selected commits or objects. This is equivalent to piping the output into `git` `cat-file` `--batch-check='%`(`objectsize:disk`), except that it runs much faster (especially with `--use-bitmap-index`). See the `CAVEATS` section in [git-cat-file[1]](https://git-scm.com/docs/git-cat-file) for the limitations of what "on-disk storage" means. With the optional value `human`, on-disk storage size is shown in human-readable string(e.g. 12.24 Kib, 3.50 Mib). 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---disk-usagehuman)`--disk-usage=human`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---cherry-mark)`--cherry-mark` 
-    
-Like `--cherry-pick` (see below) but mark equivalent commits with `=` rather than omitting them, and inequivalent ones with `+`. 
+Suppress normal output; instead, print the sum of the bytes used for on-disk storage by the selected commits or objects. This is equivalent to piping the output into `git` `cat-file` `--batch-check='%`(`objectsize:disk`), except that it runs much faster (especially with `--use-bitmap-index`). See the `CAVEATS` section in [git-cat-file[1]](https://git-scm.com/docs/git-cat-file) for the limitations of what "on-disk storage" means. With the optional value `human`, on-disk storage size is shown in human-readable string(e.g. 12.24 Kib, 3.50 Mib).
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---cherry-pick)`--cherry-pick` 
-    
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---cherry-mark)`--cherry-mark`
+
+Like `--cherry-pick` (see below) but mark equivalent commits with `=` rather than omitting them, and inequivalent ones with `+`.
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---cherry-pick)`--cherry-pick`
+
 Omit any commit that introduces the same change as another commit on the “other side” when the set of commits are limited with symmetric difference.
-For example, if you have two branches, `A` and `B`, a usual way to list all commits on only one side of them is with `--left-right` (see the example below in the description of the `--left-right` option). However, it shows the commits that were cherry-picked from the other branch (for example, “3rd on b” may be cherry-picked from branch A). With this option, such pairs of commits are excluded from the output. 
+For example, if you have two branches, `A` and `B`, a usual way to list all commits on only one side of them is with `--left-right` (see the example below in the description of the `--left-right` option). However, it shows the commits that were cherry-picked from the other branch (for example, “3rd on b” may be cherry-picked from branch A). With this option, such pairs of commits are excluded from the output.
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---left-only)`--left-only` 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---left-only)`--left-only`
 
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---right-only)`--right-only` 
-    
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---right-only)`--right-only`
+
 List only commits on the respective side of a symmetric difference, i.e. only those which would be marked _<_ resp. _>_ by `--left-right`.
-For example, `--cherry-pick` `--right-only` `A...B` omits those commits from `B` which are in `A` or are patch-equivalent to a commit in `A`. In other words, this lists the `+` commits from `git` `cherry` `A` `B`. More precisely, `--cherry-pick` `--right-only` `--no-merges` gives the exact list. 
+For example, `--cherry-pick` `--right-only` `A...B` omits those commits from `B` which are in `A` or are patch-equivalent to a commit in `A`. In other words, this lists the `+` commits from `git` `cherry` `A` `B`. More precisely, `--cherry-pick` `--right-only` `--no-merges` gives the exact list.
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---cherry)`--cherry` 
-    
-A synonym for `--right-only` `--cherry-mark` `--no-merges`; useful to limit the output to the commits on our side and mark those that have been applied to the other side of a forked history with `git` `log` `--cherry` `upstream...mybranch`, similar to `git` `cherry` `upstream` `mybranch`. 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---cherry)`--cherry`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt--g)`-g` 
+A synonym for `--right-only` `--cherry-mark` `--no-merges`; useful to limit the output to the commits on our side and mark those that have been applied to the other side of a forked history with `git` `log` `--cherry` `upstream...mybranch`, similar to `git` `cherry` `upstream` `mybranch`.
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt--g)`-g`
 
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---walk-reflogs)`--walk-reflogs` 
-    
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---walk-reflogs)`--walk-reflogs`
+
 Instead of walking the commit ancestry chain, walk reflog entries from the most recent one to older ones. When this option is used you cannot specify commits to exclude (that is, `^`_< commit>_, _< commit1>_`..`_< commit2>_, and _< commit1>_`...`_< commit2>_ notations cannot be used).
 With `--pretty` format other than `oneline` and `reference` (for obvious reasons), this causes the output to have two extra lines of information taken from the reflog. The reflog designator in the output may be shown as `ref@{`_< Nth>_`}` (where _< Nth>_ is the reverse-chronological index in the reflog) or as `ref@{`_< timestamp>_`}` (with the _< timestamp>_ for that entry), depending on a few rules:
   1. If the starting point is specified as `ref@{`_< Nth>_`}`, show the index format.
@@ -529,26 +529,26 @@ With `--pretty` format other than `oneline` and `reference` (for obvious reasons
 
 
 Under `--pretty=oneline`, the commit message is prefixed with this information on the same line. This option cannot be combined with `--reverse`. See also [git-reflog[1]](https://git-scm.com/docs/git-reflog).
-Under `--pretty=reference`, this information will not be shown at all. 
+Under `--pretty=reference`, this information will not be shown at all.
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---merge)`--merge` 
-    
-Show commits touching conflicted paths in the range `HEAD...`_< other>_, where _< other>_ is the first existing pseudoref in `MERGE_HEAD`, `CHERRY_PICK_HEAD`, `REVERT_HEAD` or `REBASE_HEAD`. Only works when the index has unmerged entries. This option can be used to show relevant commits when resolving conflicts from a 3-way merge. 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---merge)`--merge`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---boundary)`--boundary` 
-    
-Output excluded boundary commits. Boundary commits are prefixed with `-`. 
+Show commits touching conflicted paths in the range `HEAD...`_< other>_, where _< other>_ is the first existing pseudoref in `MERGE_HEAD`, `CHERRY_PICK_HEAD`, `REVERT_HEAD` or `REBASE_HEAD`. Only works when the index has unmerged entries. This option can be used to show relevant commits when resolving conflicts from a 3-way merge.
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---use-bitmap-index)`--use-bitmap-index` 
-    
-Try to speed up the traversal using the pack bitmap index (if one is available). Note that when traversing with `--objects`, trees and blobs will not have their associated path printed. 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---boundary)`--boundary`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---progressheader)`--progress=`_< header>_ 
-    
-Show progress reports on stderr as objects are considered. The _< header>_ text will be printed with each progress update. 
+Output excluded boundary commits. Boundary commits are prefixed with `-`.
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt--z)`-z` 
-    
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---use-bitmap-index)`--use-bitmap-index`
+
+Try to speed up the traversal using the pack bitmap index (if one is available). Note that when traversing with `--objects`, trees and blobs will not have their associated path printed.
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---progressheader)`--progress=`_< header>_
+
+Show progress reports on stderr as objects are considered. The _< header>_ text will be printed with each progress update.
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt--z)`-z`
+
 Instead of being newline-delimited, each outputted object and its accompanying metadata is delimited using NUL bytes. Output is printed in the following form:
 ```
 <OID> NUL [<token>=<value> NUL]...
@@ -565,44 +565,44 @@ Additional object metadata, such as object paths or boundary objects, is printed
 This mode is only compatible with the `--objects`, `--boundary`, and `--missing` output options.
 ###  [](https://git-scm.com/docs/git-rev-list#_history_simplification)History Simplification
 Sometimes you are only interested in parts of the history, for example the commits modifying a particular <path>. But there are two parts of _History Simplification_ , one part is selecting the commits and the other is how to do it, as there are various strategies to simplify the history.
-The following options select the commits to be shown: 
+The following options select the commits to be shown:
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-paths)_< paths>_ 
-    
-Commits modifying the given <paths> are selected. 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-paths)_< paths>_
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---simplify-by-decoration)`--simplify-by-decoration` 
-    
+Commits modifying the given <paths> are selected.
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---simplify-by-decoration)`--simplify-by-decoration`
+
 Commits that are referred by some branch or tag are selected.
 Note that extra commits can be shown to give a meaningful history.
-The following options affect the way the simplification is performed: 
+The following options affect the way the simplification is performed:
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-Defaultmode)`Default` `mode` 
-    
-Simplifies the history to the simplest history explaining the final state of the tree. Simplest because it prunes some side branches if the end result is the same (i.e. merging branches with the same content) 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-Defaultmode)`Default` `mode`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---show-pulls)`--show-pulls` 
-    
-Include all commits from the default mode, but also any merge commits that are not TREESAME to the first parent but are TREESAME to a later parent. This mode is helpful for showing the merge commits that "first introduced" a change to a branch. 
+Simplifies the history to the simplest history explaining the final state of the tree. Simplest because it prunes some side branches if the end result is the same (i.e. merging branches with the same content)
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---full-history)`--full-history` 
-    
-Same as the default mode, but does not prune some history. 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---show-pulls)`--show-pulls`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---dense)`--dense` 
-    
-Only the selected commits are shown, plus some to have a meaningful history. 
+Include all commits from the default mode, but also any merge commits that are not TREESAME to the first parent but are TREESAME to a later parent. This mode is helpful for showing the merge commits that "first introduced" a change to a branch.
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---sparse)`--sparse` 
-    
-All commits in the simplified history are shown. 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---full-history)`--full-history`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---simplify-merges)`--simplify-merges` 
-    
-Additional option to `--full-history` to remove some needless merges from the resulting history, as there are no selected commits contributing to this merge. 
+Same as the default mode, but does not prune some history.
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---ancestry-pathcommit)`--ancestry-path`[`=`_< commit>_] 
-    
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---dense)`--dense`
+
+Only the selected commits are shown, plus some to have a meaningful history.
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---sparse)`--sparse`
+
+All commits in the simplified history are shown.
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---simplify-merges)`--simplify-merges`
+
+Additional option to `--full-history` to remove some needless merges from the resulting history, as there are no selected commits contributing to this merge.
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---ancestry-pathcommit)`--ancestry-path`[`=`_< commit>_]
+
 When given a range of commits to display (e.g. _< commit1>_`..`_< commit2>_ or _< commit2>_ `^`_< commit1>_), and a commit _< commit>_ in that range, only display commits in that range that are ancestors of _< commit>_, descendants of _< commit>_, or _< commit>_ itself. If no commit is specified, use _< commit1>_ (the excluded part of the range) as _< commit>_. Can be passed multiple times; if so, a commit is included if it is any of the commits given or if it is an ancestor or descendant of one of them.
 A more detailed explanation follows.
 Suppose you specified `foo` as the _< paths>_. We shall call commits that modify `foo` !TREESAME, and the rest TREESAME. (In a diff filtered for `foo`, they look different and equal, respectively.)
@@ -625,10 +625,10 @@ The horizontal line of history A---Q is taken to be the first parent of each mer
   * `X` is an independent root commit that added a new file `side`, and `Y` modified it. `Y` is TREESAME to `X`. Its merge `Q` added `side` to `P`, and `Q` is TREESAME to `P`, but not to `Y`.
 
 
-`rev-list` walks backwards through history, including or excluding commits based on whether `--full-history` and/or parent rewriting (via `--parents` or `--children`) are used. The following settings are available. 
+`rev-list` walks backwards through history, including or excluding commits based on whether `--full-history` and/or parent rewriting (via `--parents` or `--children`) are used. The following settings are available.
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-Defaultmode-1)Default mode 
-    
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-Defaultmode-1)Default mode
+
 Commits are included if they are not TREESAME to any parent (though this can be changed, see `--sparse` below). If the commit was a merge, and it was TREESAME to one parent, follow only that parent. (Even if there are several TREESAME parents, follow only one of them.) Otherwise, follow all parents.
 This results in:
 ```
@@ -638,20 +638,20 @@ This results in:
 ```
 
 Note how the rule to only follow the TREESAME parent, if one is available, removed `B` from consideration entirely. `C` was considered via `N`, but is TREESAME. Root commits are compared to an empty tree, so `I` is !TREESAME.
-Parent/child relations are only visible with `--parents`, but that does not affect the commits selected in default mode, so we have shown the parent lines. 
+Parent/child relations are only visible with `--parents`, but that does not affect the commits selected in default mode, so we have shown the parent lines.
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---full-historywithoutparentrewriting)`--full-history` without parent rewriting 
-    
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---full-historywithoutparentrewriting)`--full-history` without parent rewriting
+
 This mode differs from the default in one point: always follow all parents of a merge, even if it is TREESAME to one of them. Even if more than one side of the merge has commits that are included, this does not imply that the merge itself is! In the example, we get
 ```
 	I  A  B  N  D  O  P  Q
 ```
 
 `M` was excluded because it is TREESAME to both parents. `E`, `C` and `B` were all walked, but only `B` was !TREESAME, so the others do not appear.
-Note that without parent rewriting, it is not really possible to talk about the parent/child relationships between the commits, so we show them disconnected. 
+Note that without parent rewriting, it is not really possible to talk about the parent/child relationships between the commits, so we show them disconnected.
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---full-historywithparentrewriting)`--full-history` with parent rewriting 
-    
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---full-historywithparentrewriting)`--full-history` with parent rewriting
+
 Ordinary commits are only included if they are !TREESAME (though this can be changed, see `--sparse` below).
 Merges are always included. However, their parent list is rewritten: Along each parent, prune away commits that are not included themselves. This results in
 ```
@@ -663,19 +663,19 @@ Merges are always included. However, their parent list is rewritten: Along each 
 ```
 
 Compare to `--full-history` without rewriting above. Note that `E` was pruned away because it is TREESAME, but the parent list of P was rewritten to contain `E`'s parent `I`. The same happened for `C` and `N`, and `X`, `Y` and `Q`.
-In addition to the above settings, you can change whether TREESAME affects inclusion: 
+In addition to the above settings, you can change whether TREESAME affects inclusion:
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---dense-1)`--dense` 
-    
-Commits that are walked are included if they are not TREESAME to any parent. 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---dense-1)`--dense`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---sparse-1)`--sparse` 
-    
+Commits that are walked are included if they are not TREESAME to any parent.
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---sparse-1)`--sparse`
+
 All commits that are walked are included.
-Note that without `--full-history`, this still simplifies merges: if one of the parents is TREESAME, we follow only that one, so the other sides of the merge are never walked. 
+Note that without `--full-history`, this still simplifies merges: if one of the parents is TREESAME, we follow only that one, so the other sides of the merge are never walked.
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---simplify-merges-1)`--simplify-merges` 
-    
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---simplify-merges-1)`--simplify-merges`
+
 First, build a history graph in the same way that `--full-history` with parent rewriting does (see above).
 Then simplify each commit `C` to its replacement `C'` in the final history according to the following rules:
   * Set `C'` to `C`.
@@ -698,10 +698,10 @@ Note the major differences in `N`, `P`, and `Q` over `--full-history`:
   * `Q`'s parent list had `Y` simplified to `X`. `X` was then removed, because it was a TREESAME root. `Q` was then removed completely, because it had one parent and is TREESAME.
 
 
-There is another simplification mode available: 
+There is another simplification mode available:
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---ancestry-pathcommit-1)`--ancestry-path`[`=`_< commit>_] 
-    
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---ancestry-pathcommit-1)`--ancestry-path`[`=`_< commit>_]
+
 Limit the displayed commits to those which are an ancestor of _< commit>_, or which are a descendant of _< commit>_, or are _< commit>_ itself.
 As an example use case, consider the following commit history:
 ```
@@ -777,10 +777,10 @@ When using the `--simplify-merges` option, the commits `O` and `P` disappear fro
 
 In this view, we see all of the important single-parent changes from `A`, `B`, and `X`. We also see the carefully-resolved merge `M` and the not-so-carefully-resolved merge `R`. This is usually enough information to determine why the commits `A` and `B` "disappeared" from history in the default view. However, there are a few issues with this approach.
 The first issue is performance. Unlike any previous option, the `--simplify-merges` option requires walking the entire commit history before returning a single result. This can make the option difficult to use for very large repositories.
-The second issue is one of auditing. When many contributors are working on the same repository, it is important which merge commits introduced a change into an important branch. The problematic merge `R` above is not likely to be the merge commit that was used to merge into an important branch. Instead, the merge `N` was used to merge `R` and `X` into the important branch. This commit may have information about why the change `X` came to override the changes from `A` and `B` in its commit message. 
+The second issue is one of auditing. When many contributors are working on the same repository, it is important which merge commits introduced a change into an important branch. The problematic merge `R` above is not likely to be the merge commit that was used to merge into an important branch. Instead, the merge `N` was used to merge `R` and `X` into the important branch. This commit may have information about why the change `X` came to override the changes from `A` and `B` in its commit message.
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---show-pulls-1)`--show-pulls` 
-    
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---show-pulls-1)`--show-pulls`
+
 In addition to the commits shown in the default history, show each merge commit that is not TREESAME to its first parent but is TREESAME to a later parent.
 When a merge commit is included by `--show-pulls`, the merge is treated as if it "pulled" the change from another branch. When using `--show-pulls` on this example (and no other options) the resulting graph is:
 ```
@@ -800,10 +800,10 @@ When `--show-pulls` is paired with `--simplify-merges`, the graph includes all o
 
 Notice that since `M` is reachable from `R`, the edge from `N` to `M` was simplified away. However, `N` still appears in the history as an important commit because it "pulled" the change `R` into the main branch.
 The `--simplify-by-decoration` option allows you to view only the big picture of the topology of the history, by omitting commits that are not referenced by tags. Commits are marked as !TREESAME (in other words, kept after history simplification rules described above) if (1) they are referenced by tags, or (2) they change the contents of the paths given on the command line. All other commits are marked as TREESAME (subject to be simplified away).
-###  [](https://git-scm.com/docs/git-rev-list#_bisection_helpers)Bisection Helpers 
+###  [](https://git-scm.com/docs/git-rev-list#_bisection_helpers)Bisection Helpers
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---bisect)`--bisect` 
-    
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---bisect)`--bisect`
+
 Limit output to the one commit object which is roughly halfway between included and excluded commits. Note that the bad bisection ref `refs/bisect/bad` is added to the included commits (if it exists) and the good bisection refs `refs/bisect/good-*` are added to the excluded commits (if they exist). Thus, supposing there are no refs in `refs/bisect/`, if
 ```
 	$ git rev-list --bisect foo ^bar ^baz
@@ -815,30 +815,30 @@ outputs _midpoint_ , the output of the two commands
 	$ git rev-list midpoint ^bar ^baz
 ```
 
-would be of roughly the same length. Finding the change which introduces a regression is thus reduced to a binary search: repeatedly generate and test new 'midpoint’s until the commit chain is of length one. 
+would be of roughly the same length. Finding the change which introduces a regression is thus reduced to a binary search: repeatedly generate and test new 'midpoint’s until the commit chain is of length one.
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---bisect-vars)`--bisect-vars` 
-    
-This calculates the same as `--bisect`, except that refs in `refs/bisect/` are not used, and except that this outputs text ready to be eval’ed by the shell. These lines will assign the name of the midpoint revision to the variable `bisect_rev`, and the expected number of commits to be tested after `bisect_rev` is tested to `bisect_nr`, the expected number of commits to be tested if `bisect_rev` turns out to be good to `bisect_good`, the expected number of commits to be tested if `bisect_rev` turns out to be bad to `bisect_bad`, and the number of commits we are bisecting right now to `bisect_all`. 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---bisect-vars)`--bisect-vars`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---bisect-all)`--bisect-all` 
-    
+This calculates the same as `--bisect`, except that refs in `refs/bisect/` are not used, and except that this outputs text ready to be eval’ed by the shell. These lines will assign the name of the midpoint revision to the variable `bisect_rev`, and the expected number of commits to be tested after `bisect_rev` is tested to `bisect_nr`, the expected number of commits to be tested if `bisect_rev` turns out to be good to `bisect_good`, the expected number of commits to be tested if `bisect_rev` turns out to be bad to `bisect_bad`, and the number of commits we are bisecting right now to `bisect_all`.
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---bisect-all)`--bisect-all`
+
 This outputs all the commit objects between the included and excluded commits, ordered by their distance to the included and excluded commits. Refs in `refs/bisect/` are not used. The farthest from them is displayed first. (This is the only one displayed by `--bisect`.)
 This is useful because it makes it easy to choose a good commit to test when you want to avoid to test some of them for some reason (they may not compile for example).
 This option can be used along with `--bisect-vars`, in this case, after all the sorted commit objects, there will be the same text as if `--bisect-vars` had been used alone.
 ###  [](https://git-scm.com/docs/git-rev-list#_commit_ordering)Commit Ordering
-By default, the commits are shown in reverse chronological order. 
+By default, the commits are shown in reverse chronological order.
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---date-order)`--date-order` 
-    
-Show no parents before all of its children are shown, but otherwise show commits in the commit timestamp order. 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---date-order)`--date-order`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---author-date-order)`--author-date-order` 
-    
-Show no parents before all of its children are shown, but otherwise show commits in the author timestamp order. 
+Show no parents before all of its children are shown, but otherwise show commits in the commit timestamp order.
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---topo-order)`--topo-order` 
-    
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---author-date-order)`--author-date-order`
+
+Show no parents before all of its children are shown, but otherwise show commits in the author timestamp order.
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---topo-order)`--topo-order`
+
 Show no parents before all of its children are shown, and avoid showing commits on multiple lines of history intermixed.
 For example, in a commit history like this:
 ```
@@ -848,48 +848,48 @@ For example, in a commit history like this:
 ```
 
 where the numbers denote the order of commit timestamps, `git` `rev-list` and friends with `--date-order` show the commits in the timestamp order: 8 7 6 5 4 3 2 1.
-With `--topo-order`, they would show 8 6 5 3 7 4 2 1 (or 8 7 4 2 6 5 3 1); some older commits are shown before newer ones in order to avoid showing the commits from two parallel development track mixed together. 
+With `--topo-order`, they would show 8 6 5 3 7 4 2 1 (or 8 7 4 2 6 5 3 1); some older commits are shown before newer ones in order to avoid showing the commits from two parallel development track mixed together.
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---reverse)`--reverse` 
-    
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---reverse)`--reverse`
+
 Output the commits chosen to be shown (see _Commit Limiting_ section above) in reverse order. Cannot be combined with `--walk-reflogs`.
 ###  [](https://git-scm.com/docs/git-rev-list#_object_traversal)Object Traversal
-These options are mostly targeted for packing of Git repositories. 
+These options are mostly targeted for packing of Git repositories.
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---objects)`--objects` 
-    
-Print the object IDs of any object referenced by the listed commits. `--objects` `foo` `^bar` thus means "send me all object IDs which I need to download if I have the commit object `bar` but not `foo`". See also `--object-names` below. 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---objects)`--objects`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---in-commit-order)`--in-commit-order` 
-    
-Print tree and blob ids in order of the commits. The tree and blob ids are printed after they are first referenced by a commit. 
+Print the object IDs of any object referenced by the listed commits. `--objects` `foo` `^bar` thus means "send me all object IDs which I need to download if I have the commit object `bar` but not `foo`". See also `--object-names` below.
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---objects-edge)`--objects-edge` 
-    
-Similar to `--objects`, but also print the IDs of excluded commits prefixed with a "`-`" character. This is used by [git-pack-objects[1]](https://git-scm.com/docs/git-pack-objects) to build a “thin” pack, which records objects in deltified form based on objects contained in these excluded commits to reduce network traffic. 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---in-commit-order)`--in-commit-order`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---objects-edge-aggressive)`--objects-edge-aggressive` 
-    
-Similar to `--objects-edge`, but it tries harder to find excluded commits at the cost of increased time. This is used instead of `--objects-edge` to build “thin” packs for shallow repositories. 
+Print tree and blob ids in order of the commits. The tree and blob ids are printed after they are first referenced by a commit.
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---indexed-objects)`--indexed-objects` 
-    
-Pretend as if all trees and blobs used by the index are listed on the command line. Note that you probably want to use `--objects`, too. 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---objects-edge)`--objects-edge`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---unpacked)`--unpacked` 
-    
-Only useful with `--objects`; print the object IDs that are not in packs. 
+Similar to `--objects`, but also print the IDs of excluded commits prefixed with a "`-`" character. This is used by [git-pack-objects[1]](https://git-scm.com/docs/git-pack-objects) to build a “thin” pack, which records objects in deltified form based on objects contained in these excluded commits to reduce network traffic.
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---object-names)`--object-names` 
-    
-Only useful with `--objects`; print the names of the object IDs that are found. This is the default behavior. Note that the "name" of each object is ambiguous, and mostly intended as a hint for packing objects. In particular: no distinction is made between the names of tags, trees, and blobs; path names may be modified to remove newlines; and if an object would appear multiple times with different names, only one name is shown. 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---objects-edge-aggressive)`--objects-edge-aggressive`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---no-object-names)`--no-object-names` 
-    
-Only useful with `--objects`; does not print the names of the object IDs that are found. This inverts `--object-names`. This flag allows the output to be more easily parsed by commands such as [git-cat-file[1]](https://git-scm.com/docs/git-cat-file). 
+Similar to `--objects-edge`, but it tries harder to find excluded commits at the cost of increased time. This is used instead of `--objects-edge` to build “thin” packs for shallow repositories.
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---filterfilter-spec)`--filter=`_< filter-spec>_ 
-    
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---indexed-objects)`--indexed-objects`
+
+Pretend as if all trees and blobs used by the index are listed on the command line. Note that you probably want to use `--objects`, too.
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---unpacked)`--unpacked`
+
+Only useful with `--objects`; print the object IDs that are not in packs.
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---object-names)`--object-names`
+
+Only useful with `--objects`; print the names of the object IDs that are found. This is the default behavior. Note that the "name" of each object is ambiguous, and mostly intended as a hint for packing objects. In particular: no distinction is made between the names of tags, trees, and blobs; path names may be modified to remove newlines; and if an object would appear multiple times with different names, only one name is shown.
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---no-object-names)`--no-object-names`
+
+Only useful with `--objects`; does not print the names of the object IDs that are found. This inverts `--object-names`. This flag allows the output to be more easily parsed by commands such as [git-cat-file[1]](https://git-scm.com/docs/git-cat-file).
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---filterfilter-spec)`--filter=`_< filter-spec>_
+
 Only useful with one of the `--objects*`; omits objects (usually blobs) from the list of printed objects. The _< filter-spec>_ may be one of the following:
 The form `--filter=blob:none` omits all blobs.
 The form `--filter=blob:limit=`_< n>_[`kmg`] omits blobs of size at least _< n>_ bytes or units. _< n>_ may be zero. The suffixes `k`, `m`, and `g` can be used to name units in KiB, MiB, or GiB. For example, `blob:limit=1k` is the same as _blob:limit=1024_.
@@ -899,22 +899,22 @@ The form `--filter=tree:`_< depth>_ omits all blobs and trees whose depth from t
 Note that the form `--filter=sparse:path=`_< path>_ that wants to read from an arbitrary path on the filesystem has been dropped for security reasons.
 Multiple `--filter=` flags can be specified to combine filters. Only objects which are accepted by every filter are included.
 The form `--filter=combine:`_< filter1>_`+`_< filter2>_`+...`_< filterN>_ can also be used to combined several filters, but this is harder than just repeating the `--filter` flag and is usually not necessary. Filters are joined by _+_ and individual filters are %-encoded (i.e. URL-encoded). Besides the _+_ and _%_ characters, the following characters are reserved and also must be encoded: _~!@#$^ &*()[]{}\;",<>?__'`_ as well as all characters with ASCII code <= `0x20`, which includes space and newline.
-Other arbitrary characters can also be encoded. For instance, `combine:tree:3+blob:none` and `combine:tree%3A3+blob%3Anone` are equivalent. 
+Other arbitrary characters can also be encoded. For instance, `combine:tree:3+blob:none` and `combine:tree%3A3+blob%3Anone` are equivalent.
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---no-filter)`--no-filter` 
-    
-Turn off any previous `--filter=` argument. 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---no-filter)`--no-filter`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---filter-provided-objects)`--filter-provided-objects` 
-    
-Filter the list of explicitly provided objects, which would otherwise always be printed even if they did not match any of the filters. Only useful with `--filter=`. 
+Turn off any previous `--filter=` argument.
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---filter-print-omitted)`--filter-print-omitted` 
-    
-Only useful with `--filter=`; prints a list of the objects omitted by the filter. Object IDs are prefixed with a “~” character. 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---filter-provided-objects)`--filter-provided-objects`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---missingmissing-action)`--missing=`_< missing-action>_ 
-    
+Filter the list of explicitly provided objects, which would otherwise always be printed even if they did not match any of the filters. Only useful with `--filter=`.
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---filter-print-omitted)`--filter-print-omitted`
+
+Only useful with `--filter=`; prints a list of the objects omitted by the filter. Object IDs are prefixed with a “~” character.
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---missingmissing-action)`--missing=`_< missing-action>_
+
 A debug option to help with future "partial clone" development. This option specifies how missing objects are handled.
 The form `--missing=error` requests that rev-list stop with an error if a missing object is encountered. This is the default action.
 The form `--missing=allow-any` will allow object traversal to continue if a missing object is encountered. Missing objects will silently be omitted from the results.
@@ -925,70 +925,70 @@ The form `--missing=print-info` is like `print`, but will also print additional 
   * The `type=`_< type>_ shows the type of the missing object inferred from a containing object.
 
 
-If some tips passed to the traversal are missing, they will be considered as missing too, and the traversal will ignore them. In case we cannot get their Object ID though, an error will be raised. 
+If some tips passed to the traversal are missing, they will be considered as missing too, and the traversal will ignore them. In case we cannot get their Object ID though, an error will be raised.
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---exclude-promisor-objects)`--exclude-promisor-objects` 
-    
-(For internal use only.) Prefilter object traversal at promisor boundary. This is used with partial clone. This is stronger than `--missing=allow-promisor` because it limits the traversal, rather than just silencing errors about missing objects. 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---exclude-promisor-objects)`--exclude-promisor-objects`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---no-walksortedunsorted)`--no-walk`[`=`(`sorted`|`unsorted`)] 
-    
-Only show the given commits, but do not traverse their ancestors. This has no effect if a range is specified. If the argument `unsorted` is given, the commits are shown in the order they were given on the command line. Otherwise (if `sorted` or no argument was given), the commits are shown in reverse chronological order by commit time. Cannot be combined with `--graph`. 
+(For internal use only.) Prefilter object traversal at promisor boundary. This is used with partial clone. This is stronger than `--missing=allow-promisor` because it limits the traversal, rather than just silencing errors about missing objects.
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---do-walk)`--do-walk` 
-    
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---no-walksortedunsorted)`--no-walk`[`=`(`sorted`|`unsorted`)]
+
+Only show the given commits, but do not traverse their ancestors. This has no effect if a range is specified. If the argument `unsorted` is given, the commits are shown in the order they were given on the command line. Otherwise (if `sorted` or no argument was given), the commits are shown in reverse chronological order by commit time. Cannot be combined with `--graph`.
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---do-walk)`--do-walk`
+
 Overrides a previous `--no-walk`.
 ###  [](https://git-scm.com/docs/git-rev-list#_commit_formatting)Commit Formatting
-Using these options, [git-rev-list[1]](https://git-scm.com/docs/git-rev-list) will act similar to the more specialized family of commit log tools: [git-log[1]](https://git-scm.com/docs/git-log), [git-show[1]](https://git-scm.com/docs/git-show), and [git-whatchanged[1]](https://git-scm.com/docs/git-whatchanged). 
+Using these options, [git-rev-list[1]](https://git-scm.com/docs/git-rev-list) will act similar to the more specialized family of commit log tools: [git-log[1]](https://git-scm.com/docs/git-log), [git-show[1]](https://git-scm.com/docs/git-show), and [git-whatchanged[1]](https://git-scm.com/docs/git-whatchanged).
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---prettyformat)`--pretty`[`=`_< format>_] 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---prettyformat)`--pretty`[`=`_< format>_]
 
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---formatformat)`--format=`_< format>_ 
-    
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---formatformat)`--format=`_< format>_
+
 Pretty-print the contents of the commit logs in a given format, where _< format>_ can be one of `oneline`, `short`, `medium`, `full`, `fuller`, `reference`, `email`, `raw`, `format:`_< string>_ and `tformat:`_< string>_. When _< format>_ is none of the above, and has `%`_< placeholder>_ in it, it acts as if `--pretty=tformat:`_< format>_ were given.
 See the "PRETTY FORMATS" section for some additional details for each format. When `=`_< format>_ part is omitted, it defaults to `medium`.
-Note |  you can specify the default pretty format in the repository configuration (see [git-config[1]](https://git-scm.com/docs/git-config)).   
----|--- 
+Note |  you can specify the default pretty format in the repository configuration (see [git-config[1]](https://git-scm.com/docs/git-config)).
+---|---
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---abbrev-commit)`--abbrev-commit` 
-      
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---abbrev-commit)`--abbrev-commit`
+
 Instead of showing the full 40-byte hexadecimal commit object name, show a prefix that names the object uniquely. `--abbrev=`_< n>_ (which also modifies diff output, if it is displayed) option can be used to specify the minimum length of the prefix.
-This should make `--pretty=oneline` a whole lot more readable for people using 80-column terminals. 
+This should make `--pretty=oneline` a whole lot more readable for people using 80-column terminals.
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---no-abbrev-commit)`--no-abbrev-commit` 
-    
-Show the full 40-byte hexadecimal commit object name. This negates `--abbrev-commit`, either explicit or implied by other options such as `--oneline`. It also overrides the `log.abbrevCommit` variable. 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---no-abbrev-commit)`--no-abbrev-commit`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---oneline)`--oneline` 
-    
-This is a shorthand for `--pretty=oneline` `--abbrev-commit` used together. 
+Show the full 40-byte hexadecimal commit object name. This negates `--abbrev-commit`, either explicit or implied by other options such as `--oneline`. It also overrides the `log.abbrevCommit` variable.
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---encodingencoding)`--encoding=`_< encoding>_ 
-    
-Commit objects record the character encoding used for the log message in their encoding header; this option can be used to tell the command to re-code the commit log message in the encoding preferred by the user. For non plumbing commands this defaults to UTF-8. Note that if an object claims to be encoded in `X` and we are outputting in `X`, we will output the object verbatim; this means that invalid sequences in the original commit may be copied to the output. Likewise, if iconv(3) fails to convert the commit, we will quietly output the original object verbatim. 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---oneline)`--oneline`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---expand-tabsn)`--expand-tabs=`_< n>_ 
+This is a shorthand for `--pretty=oneline` `--abbrev-commit` used together.
 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---encodingencoding)`--encoding=`_< encoding>_
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---expand-tabs)`--expand-tabs` 
+Commit objects record the character encoding used for the log message in their encoding header; this option can be used to tell the command to re-code the commit log message in the encoding preferred by the user. For non plumbing commands this defaults to UTF-8. Note that if an object claims to be encoded in `X` and we are outputting in `X`, we will output the object verbatim; this means that invalid sequences in the original commit may be copied to the output. Likewise, if iconv(3) fails to convert the commit, we will quietly output the original object verbatim.
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---expand-tabsn)`--expand-tabs=`_< n>_
 
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---no-expand-tabs)`--no-expand-tabs` 
-    
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---expand-tabs)`--expand-tabs`
+
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---no-expand-tabs)`--no-expand-tabs`
+
 Perform a tab expansion (replace each tab with enough spaces to fill to the next display column that is a multiple of _< n>_) in the log message before showing it in the output. `--expand-tabs` is a short-hand for `--expand-tabs=8`, and `--no-expand-tabs` is a short-hand for `--expand-tabs=0`, which disables tab expansion.
-By default, tabs are expanded in pretty formats that indent the log message by 4 spaces (i.e. `medium`, which is the default, `full`, and `fuller`). 
+By default, tabs are expanded in pretty formats that indent the log message by 4 spaces (i.e. `medium`, which is the default, `full`, and `fuller`).
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---show-signature)`--show-signature` 
-    
-Check the validity of a signed commit object by passing the signature to `gpg` `--verify` and show the output. 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---show-signature)`--show-signature`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---relative-date)`--relative-date` 
-    
-Synonym for `--date=relative`. 
+Check the validity of a signed commit object by passing the signature to `gpg` `--verify` and show the output.
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---dateformat)`--date=`_< format>_ 
-    
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---relative-date)`--relative-date`
+
+Synonym for `--date=relative`.
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---dateformat)`--date=`_< format>_
+
 Only takes effect for dates shown in human-readable format, such as when using `--pretty`. `log.date` config variable sets a default value for the log command’s `--date` option. By default, dates are shown in the original time zone (either committer’s or author’s). If `-local` is appended to the format (e.g., `iso-local`), the user’s local time zone is used instead.
 `--date=relative` shows dates relative to the current time, e.g. “2 hours ago”. The `-local` option has no effect for `--date=relative`.
 `--date=local` is an alias for `--date=default-local`.
@@ -1005,34 +1005,34 @@ Only takes effect for dates shown in human-readable format, such as when using `
 `--date=human` shows the timezone if the timezone does not match the current time-zone, and doesn’t print the whole date if that matches (ie skip printing year for dates that are "this year", but also skip the whole date itself if it’s in the last few days and we can just say what weekday it was). For older dates the hour and minute is also omitted.
 `--date=unix` shows the date as a Unix epoch timestamp (seconds since 1970). As with `--raw`, this is always in UTC and therefore `-local` has no effect.
 `--date=format:`_< format>_ feeds the _< format>_ to your system `strftime`, except for `%s`, `%z`, and `%Z`, which are handled internally. Use `--date=format:%c` to show the date in your system locale’s preferred format. See the `strftime`(3) manual for a complete list of format placeholders. When using `-local`, the correct syntax is `--date=format-local:`_< format>_.
-`--date=default` is the default format, and is based on ctime(3) output. It shows a single line with three-letter day of the week, three-letter month, day-of-month, hour-minute-seconds in "HH:MM:SS" format, followed by 4-digit year, plus timezone information, unless the local time zone is used, e.g. `Thu` `Jan` `1` `00:00:00` `1970` `+0000`. 
+`--date=default` is the default format, and is based on ctime(3) output. It shows a single line with three-letter day of the week, three-letter month, day-of-month, hour-minute-seconds in "HH:MM:SS" format, followed by 4-digit year, plus timezone information, unless the local time zone is used, e.g. `Thu` `Jan` `1` `00:00:00` `1970` `+0000`.
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---header)`--header` 
-    
-Print the contents of the commit in raw-format; each record is separated with a NUL character. 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---header)`--header`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---no-commit-header)`--no-commit-header` 
-    
-Suppress the header line containing "commit" and the object ID printed before the specified format. This has no effect on the built-in formats; only custom formats are affected. 
+Print the contents of the commit in raw-format; each record is separated with a NUL character.
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---commit-header)`--commit-header` 
-    
-Overrides a previous `--no-commit-header`. 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---no-commit-header)`--no-commit-header`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---parents)`--parents` 
-    
-Print also the parents of the commit (in the form "commit parent…​"). Also enables parent rewriting, see _History Simplification_ above. 
+Suppress the header line containing "commit" and the object ID printed before the specified format. This has no effect on the built-in formats; only custom formats are affected.
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---children)`--children` 
-    
-Print also the children of the commit (in the form "commit child…​"). Also enables parent rewriting, see _History Simplification_ above. 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---commit-header)`--commit-header`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---timestamp)`--timestamp` 
-    
-Print the raw commit timestamp. 
+Overrides a previous `--no-commit-header`.
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---left-right)`--left-right` 
-    
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---parents)`--parents`
+
+Print also the parents of the commit (in the form "commit parent…​"). Also enables parent rewriting, see _History Simplification_ above.
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---children)`--children`
+
+Print also the children of the commit (in the form "commit child…​"). Also enables parent rewriting, see _History Simplification_ above.
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---timestamp)`--timestamp`
+
+Print the raw commit timestamp.
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---left-right)`--left-right`
+
 Mark which side of a symmetric difference a commit is reachable from. Commits from the left side are prefixed with _<_ and those from the right with _>_. If combined with `--boundary`, those commits are prefixed with `-`.
 For example, if you have this topology:
 ```
@@ -1056,18 +1056,18 @@ you would get an output like this:
 ```
 
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---graph)`--graph` 
-    
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---graph)`--graph`
+
 Draw a text-based graphical representation of the commit history on the left hand side of the output. This may cause extra lines to be printed in between commits, in order for the graph history to be drawn properly. Cannot be combined with `--no-walk`.
 This enables parent rewriting, see _History Simplification_ above.
-This implies the `--topo-order` option by default, but the `--date-order` option may also be specified. 
+This implies the `--topo-order` option by default, but the `--date-order` option may also be specified.
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---show-linear-breakbarrier)`--show-linear-break`[`=`_< barrier>_] 
-    
-When `--graph` is not used, all history branches are flattened which can make it hard to see that the two consecutive commits do not belong to a linear branch. This option puts a barrier in between them in that case. If _< barrier>_ is specified, it is the string that will be shown instead of the default one. 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---show-linear-breakbarrier)`--show-linear-break`[`=`_< barrier>_]
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---count)`--count` 
-    
+When `--graph` is not used, all history branches are flattened which can make it hard to see that the two consecutive commits do not belong to a linear branch. This option puts a barrier in between them in that case. If _< barrier>_ is specified, it is the string that will be shown instead of the default one.
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---count)`--count`
+
 Print a number stating how many commits would have been listed, and suppress all other output. When used together with `--left-right`, instead print the counts for left and right commits, separated by a tab. When used together with `--cherry-mark`, omit patch equivalent commits from these counts and print the count for equivalent commits separated by a tab.
 ##  [](https://git-scm.com/docs/git-rev-list#_pretty_formats)PRETTY FORMATS
 If the commit is a merge, and if the pretty-format is not `oneline`, `email` or `raw`, an additional line is inserted before the `Author:` line. This line begins with "Merge: " and the hashes of ancestral commits are printed, separated by spaces. Note that the listed commits may not necessarily be the list of the _direct_ parent commits if you have limited your view of history: for example, if you are only interested in changes related to a certain directory or file.
@@ -1166,225 +1166,225 @@ The title was >>t4119: test autocomputing -p<n> for traditional diff input.<<
 ```
 
 The placeholders are:
-    * Placeholders that expand to a single literal character: 
+    * Placeholders that expand to a single literal character:
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-n)`%n` 
-    
-newline 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-n)`%n`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-)`%%` 
-    
-a raw `%` 
+newline
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-x00)`%x00` 
-    
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-)`%%`
+
+a raw `%`
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-x00)`%x00`
+
 `%x` followed by two hexadecimal digits is replaced with a byte with the hexadecimal digits' value (we will call this "literal formatting code" in the rest of this document).
-    * Placeholders that affect formatting of later placeholders: 
+    * Placeholders that affect formatting of later placeholders:
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-Cred)`%Cred` 
-    
-switch color to red 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-Cred)`%Cred`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-Cgreen)`%Cgreen` 
-    
-switch color to green 
+switch color to red
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-Cblue)`%Cblue` 
-    
-switch color to blue 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-Cgreen)`%Cgreen`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-Creset)`%Creset` 
-    
-reset color 
+switch color to green
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-Cspec)`%C`(_< spec>_) 
-    
-color specification, as described under Values in the "CONFIGURATION FILE" section of [git-config[1]](https://git-scm.com/docs/git-config). By default, colors are shown only when enabled for log output (by `color.diff`, `color.ui`, or `--color`, and respecting the `auto` settings of the former if we are going to a terminal). `%C`(`auto,`_< spec>_) is accepted as a historical synonym for the default (e.g., `%C`(`auto,red`)). Specifying `%C`(`always,`_< spec>_) will show the colors even when color is not otherwise enabled (though consider just using `--color=always` to enable color for the whole output, including this format and anything else git might color). `auto` alone (i.e. `%C`(`auto`)) will turn on auto coloring on the next placeholders until the color is switched again. 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-Cblue)`%Cblue`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-m)`%m` 
-    
-left (_<_), right (_>_) or boundary (`-`) mark 
+switch color to blue
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-wwi1i2)`%w`([_< w>_[`,`_< i1>_[`,`_< i2>_]]]) 
-    
-switch line wrapping, like the `-w` option of [git-shortlog[1]](https://git-scm.com/docs/git-shortlog). 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-Creset)`%Creset`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-ntruncltruncmtrunc)_% <(__< n>_[`,`(`trunc`|`ltrunc`|`mtrunc`)]) 
-    
-make the next placeholder take at least N column widths, padding spaces on the right if necessary. Optionally truncate (with ellipsis `..`) at the left (ltrunc) `..ft`, the middle (mtrunc) `mi..le`, or the end (trunc) `rig..`, if the output is longer than _< n>_ columns. Note 1: that truncating only works correctly with _< n>_ >= 2. Note 2: spaces around the _< n>_ and _< m>_ (see below) values are optional. Note 3: Emojis and other wide characters will take two display columns, which may over-run column boundaries. Note 4: decomposed character combining marks may be misplaced at padding boundaries. 
+reset color
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-m-1)_% <|(__< m>_ ) 
-    
-make the next placeholder take at least until _< m>_ th display column, padding spaces on the right if necessary. Use negative _< m>_ values for column positions measured from the right hand edge of the terminal window. 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-Cspec)`%C`(_< spec>_)
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-n-1)_% >(__< n>_) 
+color specification, as described under Values in the "CONFIGURATION FILE" section of [git-config[1]](https://git-scm.com/docs/git-config). By default, colors are shown only when enabled for log output (by `color.diff`, `color.ui`, or `--color`, and respecting the `auto` settings of the former if we are going to a terminal). `%C`(`auto,`_< spec>_) is accepted as a historical synonym for the default (e.g., `%C`(`auto,red`)). Specifying `%C`(`always,`_< spec>_) will show the colors even when color is not otherwise enabled (though consider just using `--color=always` to enable color for the whole output, including this format and anything else git might color). `auto` alone (i.e. `%C`(`auto`)) will turn on auto coloring on the next placeholders until the color is switched again.
 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-m)`%m`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-m-1-1)_% >|(__< m>_) 
-    
-similar to _% <(__< n>_), _% <|(__< m>_) respectively, but padding spaces on the left 
+left (_<_), right (_>_) or boundary (`-`) mark
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-n-1-1)_% >>(__< n>_) 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-wwi1i2)`%w`([_< w>_[`,`_< i1>_[`,`_< i2>_]]])
+
+switch line wrapping, like the `-w` option of [git-shortlog[1]](https://git-scm.com/docs/git-shortlog).
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-ntruncltruncmtrunc)_% <(__< n>_[`,`(`trunc`|`ltrunc`|`mtrunc`)])
+
+make the next placeholder take at least N column widths, padding spaces on the right if necessary. Optionally truncate (with ellipsis `..`) at the left (ltrunc) `..ft`, the middle (mtrunc) `mi..le`, or the end (trunc) `rig..`, if the output is longer than _< n>_ columns. Note 1: that truncating only works correctly with _< n>_ >= 2. Note 2: spaces around the _< n>_ and _< m>_ (see below) values are optional. Note 3: Emojis and other wide characters will take two display columns, which may over-run column boundaries. Note 4: decomposed character combining marks may be misplaced at padding boundaries.
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-m-1)_% <|(__< m>_ )
+
+make the next placeholder take at least until _< m>_ th display column, padding spaces on the right if necessary. Use negative _< m>_ values for column positions measured from the right hand edge of the terminal window.
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-n-1)_% >(__< n>_)
 
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-m-1-1-1)_% >>|(__< m>_) 
-    
-similar to _% >(__< n>_), _% >|(__< m>_) respectively, except that if the next placeholder takes more spaces than given and there are spaces on its left, use those spaces 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-m-1-1)_% >|(__< m>_)
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-n-1-1-1)_% ><(__< n>_) 
+similar to _% <(__< n>_), _% <|(__< m>_) respectively, but padding spaces on the left
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-n-1-1)_% >>(__< n>_)
 
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-m-1-1-1-1)_% ><|(__< m>_) 
-    
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-m-1-1-1)_% >>|(__< m>_)
+
+similar to _% >(__< n>_), _% >|(__< m>_) respectively, except that if the next placeholder takes more spaces than given and there are spaces on its left, use those spaces
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-n-1-1-1)_% ><(__< n>_)
+
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-m-1-1-1-1)_% ><|(__< m>_)
+
 similar to _% <(__< n>_), _% <|(__< m>_) respectively, but padding both sides (i.e. the text is centered)
-    * Placeholders that expand to information extracted from the commit: 
+    * Placeholders that expand to information extracted from the commit:
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-H)`%H` 
-    
-commit hash 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-H)`%H`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-h)`%h` 
-    
-abbreviated commit hash 
+commit hash
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-T)`%T` 
-    
-tree hash 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-h)`%h`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-t)`%t` 
-    
-abbreviated tree hash 
+abbreviated commit hash
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-P)`%P` 
-    
-parent hashes 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-T)`%T`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-p)`%p` 
-    
-abbreviated parent hashes 
+tree hash
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-an)`%an` 
-    
-author name 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-t)`%t`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-aN)`%aN` 
-    
-author name (respecting .mailmap, see [git-shortlog[1]](https://git-scm.com/docs/git-shortlog) or [git-blame[1]](https://git-scm.com/docs/git-blame)) 
+abbreviated tree hash
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-ae)`%ae` 
-    
-author email 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-P)`%P`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-aE)`%aE` 
-    
-author email (respecting .mailmap, see [git-shortlog[1]](https://git-scm.com/docs/git-shortlog) or [git-blame[1]](https://git-scm.com/docs/git-blame)) 
+parent hashes
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-al)`%al` 
-    
-author email local-part (the part before the `@` sign) 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-p)`%p`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-aL)`%aL` 
-    
-author local-part (see `%al`) respecting .mailmap, see [git-shortlog[1]](https://git-scm.com/docs/git-shortlog) or [git-blame[1]](https://git-scm.com/docs/git-blame)) 
+abbreviated parent hashes
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-ad)`%ad` 
-    
-author date (format respects --date= option) 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-an)`%an`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-aD)`%aD` 
-    
-author date, RFC2822 style 
+author name
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-ar)`%ar` 
-    
-author date, relative 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-aN)`%aN`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-at)`%at` 
-    
-author date, UNIX timestamp 
+author name (respecting .mailmap, see [git-shortlog[1]](https://git-scm.com/docs/git-shortlog) or [git-blame[1]](https://git-scm.com/docs/git-blame))
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-ai)`%ai` 
-    
-author date, ISO 8601-like format 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-ae)`%ae`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-aI)`%aI` 
-    
-author date, strict ISO 8601 format 
+author email
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-as)`%as` 
-    
-author date, short format (`YYYY-MM-DD`) 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-aE)`%aE`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-ah)`%ah` 
-    
-author date, human style (like the `--date=human` option of [git-rev-list[1]](https://git-scm.com/docs/git-rev-list)) 
+author email (respecting .mailmap, see [git-shortlog[1]](https://git-scm.com/docs/git-shortlog) or [git-blame[1]](https://git-scm.com/docs/git-blame))
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-cn)`%cn` 
-    
-committer name 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-al)`%al`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-cN)`%cN` 
-    
-committer name (respecting .mailmap, see [git-shortlog[1]](https://git-scm.com/docs/git-shortlog) or [git-blame[1]](https://git-scm.com/docs/git-blame)) 
+author email local-part (the part before the `@` sign)
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-ce)`%ce` 
-    
-committer email 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-aL)`%aL`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-cE)`%cE` 
-    
-committer email (respecting .mailmap, see [git-shortlog[1]](https://git-scm.com/docs/git-shortlog) or [git-blame[1]](https://git-scm.com/docs/git-blame)) 
+author local-part (see `%al`) respecting .mailmap, see [git-shortlog[1]](https://git-scm.com/docs/git-shortlog) or [git-blame[1]](https://git-scm.com/docs/git-blame))
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-cl)`%cl` 
-    
-committer email local-part (the part before the `@` sign) 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-ad)`%ad`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-cL)`%cL` 
-    
-committer local-part (see `%cl`) respecting .mailmap, see [git-shortlog[1]](https://git-scm.com/docs/git-shortlog) or [git-blame[1]](https://git-scm.com/docs/git-blame)) 
+author date (format respects --date= option)
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-cd)`%cd` 
-    
-committer date (format respects --date= option) 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-aD)`%aD`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-cD)`%cD` 
-    
-committer date, RFC2822 style 
+author date, RFC2822 style
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-cr)`%cr` 
-    
-committer date, relative 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-ar)`%ar`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-ct)`%ct` 
-    
-committer date, UNIX timestamp 
+author date, relative
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-ci)`%ci` 
-    
-committer date, ISO 8601-like format 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-at)`%at`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-cI)`%cI` 
-    
-committer date, strict ISO 8601 format 
+author date, UNIX timestamp
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-cs)`%cs` 
-    
-committer date, short format (`YYYY-MM-DD`) 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-ai)`%ai`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-ch)`%ch` 
-    
-committer date, human style (like the `--date=human` option of [git-rev-list[1]](https://git-scm.com/docs/git-rev-list)) 
+author date, ISO 8601-like format
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-d)`%d` 
-    
-ref names, like the --decorate option of [git-log[1]](https://git-scm.com/docs/git-log) 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-aI)`%aI`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-D)`%D` 
-    
-ref names without the " (", ")" wrapping. 
+author date, strict ISO 8601 format
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-decorateoption)`%`(`decorate`[`:`_< option>_`,...`]) 
-    
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-as)`%as`
+
+author date, short format (`YYYY-MM-DD`)
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-ah)`%ah`
+
+author date, human style (like the `--date=human` option of [git-rev-list[1]](https://git-scm.com/docs/git-rev-list))
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-cn)`%cn`
+
+committer name
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-cN)`%cN`
+
+committer name (respecting .mailmap, see [git-shortlog[1]](https://git-scm.com/docs/git-shortlog) or [git-blame[1]](https://git-scm.com/docs/git-blame))
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-ce)`%ce`
+
+committer email
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-cE)`%cE`
+
+committer email (respecting .mailmap, see [git-shortlog[1]](https://git-scm.com/docs/git-shortlog) or [git-blame[1]](https://git-scm.com/docs/git-blame))
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-cl)`%cl`
+
+committer email local-part (the part before the `@` sign)
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-cL)`%cL`
+
+committer local-part (see `%cl`) respecting .mailmap, see [git-shortlog[1]](https://git-scm.com/docs/git-shortlog) or [git-blame[1]](https://git-scm.com/docs/git-blame))
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-cd)`%cd`
+
+committer date (format respects --date= option)
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-cD)`%cD`
+
+committer date, RFC2822 style
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-cr)`%cr`
+
+committer date, relative
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-ct)`%ct`
+
+committer date, UNIX timestamp
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-ci)`%ci`
+
+committer date, ISO 8601-like format
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-cI)`%cI`
+
+committer date, strict ISO 8601 format
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-cs)`%cs`
+
+committer date, short format (`YYYY-MM-DD`)
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-ch)`%ch`
+
+committer date, human style (like the `--date=human` option of [git-rev-list[1]](https://git-scm.com/docs/git-rev-list))
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-d)`%d`
+
+ref names, like the --decorate option of [git-log[1]](https://git-scm.com/docs/git-log)
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-D)`%D`
+
+ref names without the " (", ")" wrapping.
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-decorateoption)`%`(`decorate`[`:`_< option>_`,...`])
+
 ref names with custom decorations. The `decorate` string may be followed by a colon and zero or more comma-separated options. Option values may contain literal formatting codes. These must be used for commas (`%x2C`) and closing parentheses (`%x29`), due to their role in the option syntax.
       * `prefix=`_< value>_: Shown before the list of ref names. Defaults to " (".
       * `suffix=`_< value>_: Shown after the list of ref names. Defaults to ")".
@@ -1392,98 +1392,98 @@ ref names with custom decorations. The `decorate` string may be followed by a co
       * `pointer=`_< value>_: Shown between HEAD and the branch it points to, if any. Defaults to "  _→_ ".
       * `tag=`_< value>_: Shown before tag names. Defaults to "`tag:` ".
 For example, to produce decorations with no wrapping or tag annotations, and spaces as separators:
-`%`(`decorate:prefix=,suffix=,tag=,separator=` ) 
+`%`(`decorate:prefix=,suffix=,tag=,separator=` )
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-describeoption)`%`(`describe`[`:`_< option>_`,...`]) 
-    
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-describeoption)`%`(`describe`[`:`_< option>_`,...`])
+
 human-readable name, like [git-describe[1]](https://git-scm.com/docs/git-describe); empty string for undescribable commits. The `describe` string may be followed by a colon and zero or more comma-separated options. Descriptions can be inconsistent when tags are added or removed at the same time.
     * `tags`[`=`_< bool-value>_]: Instead of only considering annotated tags, consider lightweight tags as well.
     * `abbrev=`_< number>_: Instead of using the default number of hexadecimal digits (which will vary according to the number of objects in the repository with a default of 7) of the abbreviated object name, use <number> digits, or as many digits as needed to form a unique object name.
     * `match=`_< pattern>_: Only consider tags matching the given `glob`(`7`) _< pattern>_, excluding the `refs/tags/` prefix.
-    * `exclude=`_< pattern>_: Do not consider tags matching the given `glob`(`7`) _< pattern>_, excluding the `refs/tags/` prefix. 
+    * `exclude=`_< pattern>_: Do not consider tags matching the given `glob`(`7`) _< pattern>_, excluding the `refs/tags/` prefix.
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-S)`%S` 
-    
-ref name given on the command line by which the commit was reached (like `git` `log` `--source`), only works with `git` `log` 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-S)`%S`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-e)`%e` 
-    
-encoding 
+ref name given on the command line by which the commit was reached (like `git` `log` `--source`), only works with `git` `log`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-s)`%s` 
-    
-subject 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-e)`%e`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-f)`%f` 
-    
-sanitized subject line, suitable for a filename 
+encoding
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-b)`%b` 
-    
-body 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-s)`%s`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-B)`%B` 
-    
-raw body (unwrapped subject and body) 
+subject
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-GG)`%GG` 
-    
-raw verification message from GPG for a signed commit 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-f)`%f`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-G)_%G?_ 
-    
-show "G" for a good (valid) signature, "B" for a bad signature, "U" for a good signature with unknown validity, "X" for a good signature that has expired, "Y" for a good signature made by an expired key, "R" for a good signature made by a revoked key, "E" if the signature cannot be checked (e.g. missing key) and "N" for no signature 
+sanitized subject line, suitable for a filename
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-GS)`%GS` 
-    
-show the name of the signer for a signed commit 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-b)`%b`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-GK)`%GK` 
-    
-show the key used to sign a signed commit 
+body
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-GF)`%GF` 
-    
-show the fingerprint of the key used to sign a signed commit 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-B)`%B`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-GP)`%GP` 
-    
-show the fingerprint of the primary key whose subkey was used to sign a signed commit 
+raw body (unwrapped subject and body)
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-GT)`%GT` 
-    
-show the trust level for the key used to sign a signed commit 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-GG)`%GG`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-gD)`%gD` 
-    
-reflog selector, e.g., `refs/stash@{1}` or `refs/stash@{2` `minutes` `ago}`; the format follows the rules described for the `-g` option. The portion before the `@` is the refname as given on the command line (so `git` `log` `-g` `refs/heads/master` would yield `refs/heads/master@{0}`). 
+raw verification message from GPG for a signed commit
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-gd)`%gd` 
-    
-shortened reflog selector; same as `%gD`, but the refname portion is shortened for human readability (so `refs/heads/master` becomes just `master`). 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-G)_%G?_
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-gn)`%gn` 
-    
-reflog identity name 
+show "G" for a good (valid) signature, "B" for a bad signature, "U" for a good signature with unknown validity, "X" for a good signature that has expired, "Y" for a good signature made by an expired key, "R" for a good signature made by a revoked key, "E" if the signature cannot be checked (e.g. missing key) and "N" for no signature
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-gN)`%gN` 
-    
-reflog identity name (respecting .mailmap, see [git-shortlog[1]](https://git-scm.com/docs/git-shortlog) or [git-blame[1]](https://git-scm.com/docs/git-blame)) 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-GS)`%GS`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-ge)`%ge` 
-    
-reflog identity email 
+show the name of the signer for a signed commit
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-gE)`%gE` 
-    
-reflog identity email (respecting .mailmap, see [git-shortlog[1]](https://git-scm.com/docs/git-shortlog) or [git-blame[1]](https://git-scm.com/docs/git-blame)) 
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-GK)`%GK`
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-gs)`%gs` 
-    
-reflog subject 
+show the key used to sign a signed commit
 
-[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-trailersoption)`%`(`trailers`[`:`_< option>_`,...`]) 
-    
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-GF)`%GF`
+
+show the fingerprint of the key used to sign a signed commit
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-GP)`%GP`
+
+show the fingerprint of the primary key whose subkey was used to sign a signed commit
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-GT)`%GT`
+
+show the trust level for the key used to sign a signed commit
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-gD)`%gD`
+
+reflog selector, e.g., `refs/stash@{1}` or `refs/stash@{2` `minutes` `ago}`; the format follows the rules described for the `-g` option. The portion before the `@` is the refname as given on the command line (so `git` `log` `-g` `refs/heads/master` would yield `refs/heads/master@{0}`).
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-gd)`%gd`
+
+shortened reflog selector; same as `%gD`, but the refname portion is shortened for human readability (so `refs/heads/master` becomes just `master`).
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-gn)`%gn`
+
+reflog identity name
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-gN)`%gN`
+
+reflog identity name (respecting .mailmap, see [git-shortlog[1]](https://git-scm.com/docs/git-shortlog) or [git-blame[1]](https://git-scm.com/docs/git-blame))
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-ge)`%ge`
+
+reflog identity email
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-gE)`%gE`
+
+reflog identity email (respecting .mailmap, see [git-shortlog[1]](https://git-scm.com/docs/git-shortlog) or [git-blame[1]](https://git-scm.com/docs/git-blame))
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-gs)`%gs`
+
+reflog subject
+
+[](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt-trailersoption)`%`(`trailers`[`:`_< option>_`,...`])
+
 display the trailers of the body as interpreted by [git-interpret-trailers[1]](https://git-scm.com/docs/git-interpret-trailers). The `trailers` string may be followed by a colon and zero or more comma-separated options. If any option is provided multiple times, the last occurrence wins.
     * `key=`_< key>_: only show trailers with specified <key>. Matching is done case-insensitively and trailing colon is optional. If option is given multiple times trailer lines matching any of the keys are shown. This option automatically enables the `only` option so that non-trailer lines in the trailer block are hidden. If that is not desired it can be disabled with `only=false`. E.g., `%`(`trailers:key=Reviewed-by`) shows trailer lines with key `Reviewed-by`.
     * `only`[`=`_< bool>_]: select whether non-trailer lines from the trailer block should be included.
@@ -1494,8 +1494,8 @@ display the trailers of the body as interpreted by [git-interpret-trailers[1]](h
     * `key_value_separator=`_< sep>_: specify the separator inserted between the key and value of each trailer. Defaults to ": ". Otherwise it shares the same semantics as `separator=`_< sep>_ above.
 
 
-Note |  Some placeholders may depend on other options given to the revision traversal engine. For example, the `%g*` reflog options will insert an empty string unless we are traversing reflog entries (e.g., by `git` `log` `-g`). The `%d` and `%D` placeholders will use the "short" decoration format if `--decorate` was not already provided on the command line.   
----|---  
+Note |  Some placeholders may depend on other options given to the revision traversal engine. For example, the `%g*` reflog options will insert an empty string unless we are traversing reflog entries (e.g., by `git` `log` `-g`). The `%d` and `%D` placeholders will use the "short" decoration format if `--decorate` was not already provided on the command line.
+---|---
 The boolean options accept an optional value [`=`_< bool-value>_]. The values taken by `--type=bool` [git-config[1]](https://git-scm.com/docs/git-config), like `yes` and `off`, are all accepted. Giving a boolean option without `=`_< value>_ is equivalent to giving it with `=true`.
 If you add a `+` (plus sign) after `%` of a placeholder, a line-feed is inserted immediately before the expansion if and only if the placeholder expands to a non-empty string.
 If you add a `-` (minus sign) after `%` of a placeholder, all consecutive line-feeds immediately preceding the expansion are deleted if and only if the placeholder expands to an empty string.
@@ -1592,6 +1592,6 @@ git rev-list --disk-usage --objects --remotes=$suspect --not --remotes=origin
 ##  [](https://git-scm.com/docs/git-rev-list#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### rev-list
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

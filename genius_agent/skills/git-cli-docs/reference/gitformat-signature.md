@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/gitformat-signature#_name)
     * [SYNOPSIS](https://git-scm.com/docs/gitformat-signature#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/gitformat-signature#_description)
@@ -30,8 +30,8 @@
 Localized versions of **gitformat-signature** manual
   1. [English ](https://git-scm.com/docs/gitformat-signature)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/gitformat-signature)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -191,18 +191,18 @@ gitformat-signature - Git cryptographic signature formats
 
 ##  [](https://git-scm.com/docs/gitformat-signature#_description)DESCRIPTION
 Git uses cryptographic signatures in various places, currently objects (tags, commits, mergetags) and transactions (pushes). In every case, the command which is about to create an object or transaction determines a payload from that, calls an external program to obtain a detached signature for the payload (`gpg` `-bsa` in the case of PGP signatures), and embeds the signature into the object or transaction.
-Signatures begin with an "ASCII Armor" header line and end with a tail line, which differ depending on signature type (as selected by `gpg.format`, see [git-config[1]](https://git-scm.com/docs/git-config)). These are, for `gpg.format` values: 
+Signatures begin with an "ASCII Armor" header line and end with a tail line, which differ depending on signature type (as selected by `gpg.format`, see [git-config[1]](https://git-scm.com/docs/git-config)). These are, for `gpg.format` values:
 
-[](https://git-scm.com/docs/gitformat-signature#Documentation/gitformat-signature.txt-gpgPGP)`gpg` (PGP) 
-    
-`-----BEGIN` `PGP` `SIGNATURE-----` and `-----END` `PGP` `SIGNATURE-----`. Or, if gpg is told to produce RFC1991 signatures, `-----BEGIN` `PGP` `MESSAGE-----` and `-----END` `PGP` `MESSAGE-----` 
+[](https://git-scm.com/docs/gitformat-signature#Documentation/gitformat-signature.txt-gpgPGP)`gpg` (PGP)
 
-[](https://git-scm.com/docs/gitformat-signature#Documentation/gitformat-signature.txt-sshSSH)`ssh` (SSH) 
-    
-`-----BEGIN` `SSH` `SIGNATURE-----` and `-----END` `SSH` `SIGNATURE-----` 
+`-----BEGIN` `PGP` `SIGNATURE-----` and `-----END` `PGP` `SIGNATURE-----`. Or, if gpg is told to produce RFC1991 signatures, `-----BEGIN` `PGP` `MESSAGE-----` and `-----END` `PGP` `MESSAGE-----`
 
-[](https://git-scm.com/docs/gitformat-signature#Documentation/gitformat-signature.txt-x509X509)`x509` (X.509) 
-    
+[](https://git-scm.com/docs/gitformat-signature#Documentation/gitformat-signature.txt-sshSSH)`ssh` (SSH)
+
+`-----BEGIN` `SSH` `SIGNATURE-----` and `-----END` `SSH` `SIGNATURE-----`
+
+[](https://git-scm.com/docs/gitformat-signature#Documentation/gitformat-signature.txt-x509X509)`x509` (X.509)
+
 `-----BEGIN` `SIGNED` `MESSAGE-----` and `-----END` `SIGNED` `MESSAGE-----`
 Signatures sometimes appear as a part of the normal payload (e.g. a signed tag has the signature block appended after the payload that the signature applies to), and sometimes appear in the value of an object header (e.g. a merge commit that merged a signed tag would have the entire tag contents on its "mergetag" header). In the case of the latter, the usual multi-line formatting rule for object headers applies. I.e. the second and subsequent lines are prefixed with a SP to signal that the line is continued from the previous line.
 This is even true for an originally empty line. In the following examples, the end of line that ends with a whitespace letter is highlighted with a `$` sign; if you are trying to recreate these example by hand, do not cut and paste them—​they are there primarily to highlight extra whitespace at the end of some lines.
@@ -379,6 +379,6 @@ Date:   Wed Jun 15 09:13:29 2016 +0000
 ##  [](https://git-scm.com/docs/gitformat-signature#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### gitformat-signature
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

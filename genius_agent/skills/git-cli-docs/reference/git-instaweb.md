@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-instaweb#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-instaweb#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-instaweb#_description)
@@ -34,8 +34,8 @@ Localized versions of **git-instaweb** manual
   4. [українська мова ](https://git-scm.com/docs/git-instaweb/uk)
   5. [简体中文 ](https://git-scm.com/docs/git-instaweb/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-instaweb)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -200,62 +200,62 @@ _git instaweb_ [--start] [--stop] [--restart]
 
 ##  [](https://git-scm.com/docs/git-instaweb#_description)DESCRIPTION
 A simple script to set up `gitweb` and a web server for browsing the local repository.
-##  [](https://git-scm.com/docs/git-instaweb#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-instaweb#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-instaweb#Documentation/git-instaweb.txt--l)-l 
-
-
-[](https://git-scm.com/docs/git-instaweb#Documentation/git-instaweb.txt---local)--local 
-    
-Only bind the web server to the local IP (127.0.0.1). 
-
-[](https://git-scm.com/docs/git-instaweb#Documentation/git-instaweb.txt--d)-d 
+[](https://git-scm.com/docs/git-instaweb#Documentation/git-instaweb.txt--l)-l
 
 
-[](https://git-scm.com/docs/git-instaweb#Documentation/git-instaweb.txt---httpd)--httpd 
-    
-The HTTP daemon command-line that will be executed. Command-line options may be specified here, and the configuration file will be added at the end of the command-line. Currently apache2, lighttpd, mongoose, plackup, python and webrick are supported. (Default: lighttpd) 
+[](https://git-scm.com/docs/git-instaweb#Documentation/git-instaweb.txt---local)--local
 
-[](https://git-scm.com/docs/git-instaweb#Documentation/git-instaweb.txt--m)-m 
+Only bind the web server to the local IP (127.0.0.1).
 
-
-[](https://git-scm.com/docs/git-instaweb#Documentation/git-instaweb.txt---module-path)--module-path 
-    
-The module path (only needed if httpd is Apache). (Default: /usr/lib/apache2/modules) 
-
-[](https://git-scm.com/docs/git-instaweb#Documentation/git-instaweb.txt--p)-p 
+[](https://git-scm.com/docs/git-instaweb#Documentation/git-instaweb.txt--d)-d
 
 
-[](https://git-scm.com/docs/git-instaweb#Documentation/git-instaweb.txt---port)--port 
-    
-The port number to bind the httpd to. (Default: 1234) 
+[](https://git-scm.com/docs/git-instaweb#Documentation/git-instaweb.txt---httpd)--httpd
 
-[](https://git-scm.com/docs/git-instaweb#Documentation/git-instaweb.txt--b)-b 
+The HTTP daemon command-line that will be executed. Command-line options may be specified here, and the configuration file will be added at the end of the command-line. Currently apache2, lighttpd, mongoose, plackup, python and webrick are supported. (Default: lighttpd)
 
-
-[](https://git-scm.com/docs/git-instaweb#Documentation/git-instaweb.txt---browser)--browser 
-    
-The web browser that should be used to view the gitweb page. This will be passed to the _git web--browse_ helper script along with the URL of the gitweb instance. See [git-web--browse[1]](https://git-scm.com/docs/git-web--browse) for more information about this. If the script fails, the URL will be printed to stdout. 
-
-[](https://git-scm.com/docs/git-instaweb#Documentation/git-instaweb.txt-start)start 
+[](https://git-scm.com/docs/git-instaweb#Documentation/git-instaweb.txt--m)-m
 
 
-[](https://git-scm.com/docs/git-instaweb#Documentation/git-instaweb.txt---start)--start 
-    
-Start the httpd instance and exit. Regenerate configuration files as necessary for spawning a new instance. 
+[](https://git-scm.com/docs/git-instaweb#Documentation/git-instaweb.txt---module-path)--module-path
 
-[](https://git-scm.com/docs/git-instaweb#Documentation/git-instaweb.txt-stop)stop 
+The module path (only needed if httpd is Apache). (Default: /usr/lib/apache2/modules)
 
-
-[](https://git-scm.com/docs/git-instaweb#Documentation/git-instaweb.txt---stop)--stop 
-    
-Stop the httpd instance and exit. This does not generate any of the configuration files for spawning a new instance, nor does it close the browser. 
-
-[](https://git-scm.com/docs/git-instaweb#Documentation/git-instaweb.txt-restart)restart 
+[](https://git-scm.com/docs/git-instaweb#Documentation/git-instaweb.txt--p)-p
 
 
-[](https://git-scm.com/docs/git-instaweb#Documentation/git-instaweb.txt---restart)--restart 
-    
+[](https://git-scm.com/docs/git-instaweb#Documentation/git-instaweb.txt---port)--port
+
+The port number to bind the httpd to. (Default: 1234)
+
+[](https://git-scm.com/docs/git-instaweb#Documentation/git-instaweb.txt--b)-b
+
+
+[](https://git-scm.com/docs/git-instaweb#Documentation/git-instaweb.txt---browser)--browser
+
+The web browser that should be used to view the gitweb page. This will be passed to the _git web--browse_ helper script along with the URL of the gitweb instance. See [git-web--browse[1]](https://git-scm.com/docs/git-web--browse) for more information about this. If the script fails, the URL will be printed to stdout.
+
+[](https://git-scm.com/docs/git-instaweb#Documentation/git-instaweb.txt-start)start
+
+
+[](https://git-scm.com/docs/git-instaweb#Documentation/git-instaweb.txt---start)--start
+
+Start the httpd instance and exit. Regenerate configuration files as necessary for spawning a new instance.
+
+[](https://git-scm.com/docs/git-instaweb#Documentation/git-instaweb.txt-stop)stop
+
+
+[](https://git-scm.com/docs/git-instaweb#Documentation/git-instaweb.txt---stop)--stop
+
+Stop the httpd instance and exit. This does not generate any of the configuration files for spawning a new instance, nor does it close the browser.
+
+[](https://git-scm.com/docs/git-instaweb#Documentation/git-instaweb.txt-restart)restart
+
+
+[](https://git-scm.com/docs/git-instaweb#Documentation/git-instaweb.txt---restart)--restart
+
 Restart the httpd instance and exit. Regenerate configuration files as necessary for spawning a new instance.
 ##  [](https://git-scm.com/docs/git-instaweb#_configuration)CONFIGURATION
 You may specify configuration in your .git/config
@@ -274,6 +274,6 @@ If the configuration variable `instaweb.browser` is not set, `web.browser` will 
 ##  [](https://git-scm.com/docs/git-instaweb#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### instaweb
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

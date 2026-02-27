@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/giteveryday#_name)
     * [SYNOPSIS](https://git-scm.com/docs/giteveryday#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/giteveryday#_description)
@@ -31,8 +31,8 @@
 Localized versions of **giteveryday** manual
   1. [English ](https://git-scm.com/docs/giteveryday)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/giteveryday)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -218,10 +218,10 @@ A standalone individual developer does not exchange patches with other people, a
   * [git-tag[1]](https://git-scm.com/docs/git-tag) to mark a known point.
 
 
-###  [](https://git-scm.com/docs/giteveryday#_examples)Examples 
+###  [](https://git-scm.com/docs/giteveryday#_examples)Examples
 
-[](https://git-scm.com/docs/giteveryday#Documentation/giteveryday.txt-Useatarballasastartingpointforanewrepository)Use a tarball as a starting point for a new repository. 
-    
+[](https://git-scm.com/docs/giteveryday#Documentation/giteveryday.txt-Useatarballasastartingpointforanewrepository)Use a tarball as a starting point for a new repository.
+
 ```
 $ tar zxf frotz.tar.gz
 $ cd frotz
@@ -236,8 +236,8 @@ $ git tag v2.43 **(2)**
 
 
 
-[](https://git-scm.com/docs/giteveryday#Documentation/giteveryday.txt-Createatopicbranchanddevelop)Create a topic branch and develop. 
-    
+[](https://git-scm.com/docs/giteveryday#Documentation/giteveryday.txt-Createatopicbranchanddevelop)Create a topic branch and develop.
+
 ```
 $ git switch -c alsa-audio **(1)**
 $ edit/compile/test
@@ -278,10 +278,10 @@ A developer working as a participant in a group project needs to learn how to co
   * [git-request-pull[1]](https://git-scm.com/docs/git-request-pull) to create a summary of changes for your upstream to pull.
 
 
-###  [](https://git-scm.com/docs/giteveryday#_examples_2)Examples 
+###  [](https://git-scm.com/docs/giteveryday#_examples_2)Examples
 
-[](https://git-scm.com/docs/giteveryday#Documentation/giteveryday.txt-ClonetheupstreamandworkonitFeedchangestoupstream)Clone the upstream and work on it. Feed changes to upstream. 
-    
+[](https://git-scm.com/docs/giteveryday#Documentation/giteveryday.txt-ClonetheupstreamandworkonitFeedchangestoupstream)Clone the upstream and work on it. Feed changes to upstream.
+
 ```
 $ git clone git://git.kernel.org/pub/scm/.../torvalds/linux-2.6 my2.6
 $ cd my2.6
@@ -312,8 +312,8 @@ $ git gc **(11)**
 
 
 
-[](https://git-scm.com/docs/giteveryday#Documentation/giteveryday.txt-Pushintoanotherrepository)Push into another repository. 
-    
+[](https://git-scm.com/docs/giteveryday#Documentation/giteveryday.txt-Pushintoanotherrepository)Push into another repository.
+
 ```
 satellite$ git clone mothership:frotz frotz **(1)**
 satellite$ cd frotz
@@ -340,8 +340,8 @@ mothership$ git merge satellite/master **(5)**
 
 
 
-[](https://git-scm.com/docs/giteveryday#Documentation/giteveryday.txt-Branchoffofaspecifictag)Branch off of a specific tag. 
-    
+[](https://git-scm.com/docs/giteveryday#Documentation/giteveryday.txt-Branchoffofaspecifictag)Branch off of a specific tag.
+
 ```
 $ git switch -c private2.6.14 v2.6.14 **(1)**
 $ edit/compile/test; git commit -a
@@ -350,7 +350,7 @@ $ git cherry-pick v2.6.14..private2.6.14 **(2)**
 ```
 
   1. create a private branch based on a well known (but somewhat behind) tag.
-  2. forward port all changes in `private2.6.14` branch to `master` branch without a formal "merging". Or longhand  
+  2. forward port all changes in `private2.6.14` branch to `master` branch without a formal "merging". Or longhand
 `git` `format-patch` `-k` `-m` `--stdout` `v2.6.14..private2.6.14` | `git` `am` `-3` `-k`
 
 
@@ -365,10 +365,10 @@ This section can also be used by those who respond to `git` `request-pull` or pu
   * [git-push[1]](https://git-scm.com/docs/git-push) to publish the bleeding edge.
 
 
-###  [](https://git-scm.com/docs/giteveryday#_examples_3)Examples 
+###  [](https://git-scm.com/docs/giteveryday#_examples_3)Examples
 
-[](https://git-scm.com/docs/giteveryday#Documentation/giteveryday.txt-AtypicalintegratorsGitday)A typical integrator’s Git day. 
-    
+[](https://git-scm.com/docs/giteveryday#Documentation/giteveryday.txt-AtypicalintegratorsGitday)A typical integrator’s Git day.
+
 ```
 $ git status **(1)**
 $ git branch --no-merged master **(2)**
@@ -434,28 +434,28 @@ In addition there are a number of other widely deployed hosting, browsing and re
   * gitolite, gerrit code review, cgit and others.
 
 
-###  [](https://git-scm.com/docs/giteveryday#_examples_4)Examples 
+###  [](https://git-scm.com/docs/giteveryday#_examples_4)Examples
 
-[](https://git-scm.com/docs/giteveryday#Documentation/giteveryday.txt-Weassumethefollowinginetcservices)We assume the following in /etc/services 
-    
+[](https://git-scm.com/docs/giteveryday#Documentation/giteveryday.txt-Weassumethefollowinginetcservices)We assume the following in /etc/services
+
 ```
 $ grep 9418 /etc/services
 git		9418/tcp		# Git Version Control System
 ```
 
 
-[](https://git-scm.com/docs/giteveryday#Documentation/giteveryday.txt-Rungit-daemontoservepubscmfrominetd)Run git-daemon to serve /pub/scm from inetd. 
-    
+[](https://git-scm.com/docs/giteveryday#Documentation/giteveryday.txt-Rungit-daemontoservepubscmfrominetd)Run git-daemon to serve /pub/scm from inetd.
+
 ```
 $ grep git /etc/inetd.conf
 git	stream	tcp	nowait	nobody \
   /usr/bin/git-daemon git-daemon --inetd --export-all /pub/scm
 ```
 
-The actual configuration line should be on one line. 
+The actual configuration line should be on one line.
 
-[](https://git-scm.com/docs/giteveryday#Documentation/giteveryday.txt-Rungit-daemontoservepubscmfromxinetd)Run git-daemon to serve /pub/scm from xinetd. 
-    
+[](https://git-scm.com/docs/giteveryday#Documentation/giteveryday.txt-Rungit-daemontoservepubscmfromxinetd)Run git-daemon to serve /pub/scm from xinetd.
+
 ```
 $ cat /etc/xinetd.d/git-daemon
 # default: off
@@ -474,10 +474,10 @@ service git
 }
 ```
 
-Check your xinetd(8) documentation and setup, this is from a Fedora system. Others might be different. 
+Check your xinetd(8) documentation and setup, this is from a Fedora system. Others might be different.
 
-[](https://git-scm.com/docs/giteveryday#Documentation/giteveryday.txt-Givepushpullonlyaccesstodevelopersusinggit-over-ssh)Give push/pull only access to developers using git-over-ssh. 
-    
+[](https://git-scm.com/docs/giteveryday#Documentation/giteveryday.txt-Givepushpullonlyaccesstodevelopersusinggit-over-ssh)Give push/pull only access to developers using git-over-ssh.
+
 e.g. those using: `$` `git` `push/pull` `ssh://host.xz/pub/scm/project`
 ```
 $ grep git /etc/passwd **(1)**
@@ -494,8 +494,8 @@ $ grep git /etc/shells **(2)**
 
 
 
-[](https://git-scm.com/docs/giteveryday#Documentation/giteveryday.txt-CVS-stylesharedrepository)CVS-style shared repository. 
-    
+[](https://git-scm.com/docs/giteveryday#Documentation/giteveryday.txt-CVS-stylesharedrepository)CVS-style shared repository.
+
 ```
 $ grep git /etc/group **(1)**
 git:x:9418:alice,bob,cindy,david
@@ -528,6 +528,6 @@ refs/tags/v[0-9]*	david
 ##  [](https://git-scm.com/docs/giteveryday#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### giteveryday
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

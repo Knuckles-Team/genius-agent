@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-receive-pack#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-receive-pack#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-receive-pack#_description)
@@ -37,8 +37,8 @@ Localized versions of **git-receive-pack** manual
   3. [українська мова ](https://git-scm.com/docs/git-receive-pack/uk)
   4. [简体中文 ](https://git-scm.com/docs/git-receive-pack/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-receive-pack)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -220,18 +220,18 @@ The command allows for the creation and fast-forwarding of sha1 refs (heads/tags
 There are other real-world examples of using update and post-update hooks found in the Documentation/howto directory.
 _git-receive-pack_ honours the receive.denyNonFastForwards config option, which tells it if updates to a ref should be denied if they are not fast-forwards.
 A number of other receive.* config options are available to tweak its behavior, see [git-config[1]](https://git-scm.com/docs/git-config).
-##  [](https://git-scm.com/docs/git-receive-pack#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-receive-pack#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-receive-pack#Documentation/git-receive-pack.txt-git-dir)<git-dir> 
-    
-The repository to sync into. 
+[](https://git-scm.com/docs/git-receive-pack#Documentation/git-receive-pack.txt-git-dir)<git-dir>
 
-[](https://git-scm.com/docs/git-receive-pack#Documentation/git-receive-pack.txt---http-backend-info-refs)--http-backend-info-refs 
-    
-Used by [git-http-backend[1]](https://git-scm.com/docs/git-http-backend) to serve up _$GIT_URL/info/refs?service=git-receive-pack_ requests. See `--http-backend-info-refs` in [git-upload-pack[1]](https://git-scm.com/docs/git-upload-pack). 
+The repository to sync into.
 
-[](https://git-scm.com/docs/git-receive-pack#Documentation/git-receive-pack.txt---skip-connectivity-check)--skip-connectivity-check 
-    
+[](https://git-scm.com/docs/git-receive-pack#Documentation/git-receive-pack.txt---http-backend-info-refs)--http-backend-info-refs
+
+Used by [git-http-backend[1]](https://git-scm.com/docs/git-http-backend) to serve up _$GIT_URL/info/refs?service=git-receive-pack_ requests. See `--http-backend-info-refs` in [git-upload-pack[1]](https://git-scm.com/docs/git-upload-pack).
+
+[](https://git-scm.com/docs/git-receive-pack#Documentation/git-receive-pack.txt---skip-connectivity-check)--skip-connectivity-check
+
 Bypasses the connectivity checks that validate the existence of all objects in the transitive closure of reachable objects. This option is intended for server operators that want to implement their own object connectivity validation outside of Git. This is useful in such cases where the server-side knows additional information about how Git is being used and thus can rely on certain guarantees to more efficiently compute object connectivity that Git itself cannot make. Usage of this option without a reliable external mechanism to ensure full reachable object connectivity risks corrupting the repository and should not be used in the general case.
 ##  [](https://git-scm.com/docs/git-receive-pack#_pre_receive_hook)PRE-RECEIVE HOOK
 Before any ref is updated, if $GIT_DIR/hooks/pre-receive file exists and is executable, it will be invoked once with no parameters. The standard input of the hook will be one line per ref to be updated:
@@ -240,49 +240,49 @@ sha1-old SP sha1-new SP refname LF
 ```
 
 The refname value is relative to $GIT_DIR; e.g. for the master head this is "refs/heads/master". The two sha1 values before each refname are the object names for the refname before and after the update. Refs to be created will have sha1-old equal to 0{40}, while refs to be deleted will have sha1-new equal to 0{40}, otherwise sha1-old and sha1-new should be valid objects in the repository.
-When accepting a signed push (see [git-push[1]](https://git-scm.com/docs/git-push)), the signed push certificate is stored in a blob and an environment variable `GIT_PUSH_CERT` can be consulted for its object name. See the description of `post-receive` hook for an example. In addition, the certificate is verified using GPG and the result is exported with the following environment variables: 
+When accepting a signed push (see [git-push[1]](https://git-scm.com/docs/git-push)), the signed push certificate is stored in a blob and an environment variable `GIT_PUSH_CERT` can be consulted for its object name. See the description of `post-receive` hook for an example. In addition, the certificate is verified using GPG and the result is exported with the following environment variables:
 
-[](https://git-scm.com/docs/git-receive-pack#Documentation/git-receive-pack.txt-GITPUSHCERTSIGNER)`GIT_PUSH_CERT_SIGNER` 
-    
-The name and the e-mail address of the owner of the key that signed the push certificate. 
+[](https://git-scm.com/docs/git-receive-pack#Documentation/git-receive-pack.txt-GITPUSHCERTSIGNER)`GIT_PUSH_CERT_SIGNER`
 
-[](https://git-scm.com/docs/git-receive-pack#Documentation/git-receive-pack.txt-GITPUSHCERTKEY)`GIT_PUSH_CERT_KEY` 
-    
-The GPG key ID of the key that signed the push certificate. 
+The name and the e-mail address of the owner of the key that signed the push certificate.
 
-[](https://git-scm.com/docs/git-receive-pack#Documentation/git-receive-pack.txt-GITPUSHCERTSTATUS)`GIT_PUSH_CERT_STATUS` 
-    
-The status of GPG verification of the push certificate, using the same mnemonic as used in _%G?_ format of `git` `log` family of commands (see [git-log[1]](https://git-scm.com/docs/git-log)). 
+[](https://git-scm.com/docs/git-receive-pack#Documentation/git-receive-pack.txt-GITPUSHCERTKEY)`GIT_PUSH_CERT_KEY`
 
-[](https://git-scm.com/docs/git-receive-pack#Documentation/git-receive-pack.txt-GITPUSHCERTNONCE)`GIT_PUSH_CERT_NONCE` 
-    
-The nonce string the process asked the signer to include in the push certificate. If this does not match the value recorded on the "nonce" header in the push certificate, it may indicate that the certificate is a valid one that is being replayed from a separate "git push" session. 
+The GPG key ID of the key that signed the push certificate.
 
-[](https://git-scm.com/docs/git-receive-pack#Documentation/git-receive-pack.txt-GITPUSHCERTNONCESTATUS)`GIT_PUSH_CERT_NONCE_STATUS` 
-     
+[](https://git-scm.com/docs/git-receive-pack#Documentation/git-receive-pack.txt-GITPUSHCERTSTATUS)`GIT_PUSH_CERT_STATUS`
 
-[](https://git-scm.com/docs/git-receive-pack#Documentation/git-receive-pack.txt-UNSOLICITED)`UNSOLICITED` 
-    
-"git push --signed" sent a nonce when we did not ask it to send one. 
+The status of GPG verification of the push certificate, using the same mnemonic as used in _%G?_ format of `git` `log` family of commands (see [git-log[1]](https://git-scm.com/docs/git-log)).
 
-[](https://git-scm.com/docs/git-receive-pack#Documentation/git-receive-pack.txt-MISSING)`MISSING` 
-    
-"git push --signed" did not send any nonce header. 
+[](https://git-scm.com/docs/git-receive-pack#Documentation/git-receive-pack.txt-GITPUSHCERTNONCE)`GIT_PUSH_CERT_NONCE`
 
-[](https://git-scm.com/docs/git-receive-pack#Documentation/git-receive-pack.txt-BAD)`BAD` 
-    
-"git push --signed" sent a bogus nonce. 
+The nonce string the process asked the signer to include in the push certificate. If this does not match the value recorded on the "nonce" header in the push certificate, it may indicate that the certificate is a valid one that is being replayed from a separate "git push" session.
 
-[](https://git-scm.com/docs/git-receive-pack#Documentation/git-receive-pack.txt-OK)`OK` 
-    
-"git push --signed" sent the nonce we asked it to send. 
+[](https://git-scm.com/docs/git-receive-pack#Documentation/git-receive-pack.txt-GITPUSHCERTNONCESTATUS)`GIT_PUSH_CERT_NONCE_STATUS`
 
-[](https://git-scm.com/docs/git-receive-pack#Documentation/git-receive-pack.txt-SLOP)`SLOP` 
-    
-"git push --signed" sent a nonce different from what we asked it to send now, but in a previous session. See `GIT_PUSH_CERT_NONCE_SLOP` environment variable. 
 
-[](https://git-scm.com/docs/git-receive-pack#Documentation/git-receive-pack.txt-GITPUSHCERTNONCESLOP)`GIT_PUSH_CERT_NONCE_SLOP` 
-    
+[](https://git-scm.com/docs/git-receive-pack#Documentation/git-receive-pack.txt-UNSOLICITED)`UNSOLICITED`
+
+"git push --signed" sent a nonce when we did not ask it to send one.
+
+[](https://git-scm.com/docs/git-receive-pack#Documentation/git-receive-pack.txt-MISSING)`MISSING`
+
+"git push --signed" did not send any nonce header.
+
+[](https://git-scm.com/docs/git-receive-pack#Documentation/git-receive-pack.txt-BAD)`BAD`
+
+"git push --signed" sent a bogus nonce.
+
+[](https://git-scm.com/docs/git-receive-pack#Documentation/git-receive-pack.txt-OK)`OK`
+
+"git push --signed" sent the nonce we asked it to send.
+
+[](https://git-scm.com/docs/git-receive-pack#Documentation/git-receive-pack.txt-SLOP)`SLOP`
+
+"git push --signed" sent a nonce different from what we asked it to send now, but in a previous session. See `GIT_PUSH_CERT_NONCE_SLOP` environment variable.
+
+[](https://git-scm.com/docs/git-receive-pack#Documentation/git-receive-pack.txt-GITPUSHCERTNONCESLOP)`GIT_PUSH_CERT_NONCE_SLOP`
+
 "git push --signed" sent a nonce different from what we asked it to send now, but in a different session whose starting time is different by this many seconds from the current session. Only meaningful when `GIT_PUSH_CERT_NONCE_STATUS` says `SLOP`. Also read about `receive.certNonceSlop` variable in [git-config[1]](https://git-scm.com/docs/git-config).
 This hook is called before any refname is updated and before any fast-forward checks are performed.
 If the pre-receive hook exits with a non-zero exit status no updates will be performed, and the update, post-receive and post-update hooks will not be invoked either. This can be useful to quickly bail out if the update is not to be supported.
@@ -355,6 +355,6 @@ This has a few user-visible effects and caveats:
 ##  [](https://git-scm.com/docs/git-receive-pack#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### receive-pack
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

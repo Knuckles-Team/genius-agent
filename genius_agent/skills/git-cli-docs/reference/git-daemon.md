@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-daemon#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-daemon#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-daemon#_description)
@@ -35,8 +35,8 @@ Localized versions of **git-daemon** manual
   4. [українська мова ](https://git-scm.com/docs/git-daemon/uk)
   5. [简体中文 ](https://git-scm.com/docs/git-daemon/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-daemon)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -225,160 +225,160 @@ It verifies that the directory has the magic file "git-daemon-export-ok", and it
 By default, only `upload-pack` service is enabled, which serves `git` `fetch-pack` and `git` `ls-remote` clients, which are invoked from `git` `fetch`, `git` `pull`, and `git` `clone`.
 This is ideally suited for read-only updates, i.e., pulling from Git repositories.
 An `upload-archive` also exists to serve `git` `archive`.
-##  [](https://git-scm.com/docs/git-daemon#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-daemon#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---strict-paths)`--strict-paths` 
-    
-Match paths exactly (i.e. don’t allow "/foo/repo" when the real path is "/foo/repo.git" or "/foo/repo/.git") and don’t do user-relative paths. `git` `daemon` will refuse to start when this option is enabled and no directory arguments are provided. 
+[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---strict-paths)`--strict-paths`
 
-[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---base-pathpath)`--base-path=`_< path>_ 
-    
-Remap all the path requests as relative to the given path. This is sort of "Git root" - if you run `git` `daemon` with `--base-path=/srv/git` on `example.com`, then if you later try to pull from `git://example.com/hello.git`, `git` `daemon` will interpret the path as `/srv/git/hello.git`. 
+Match paths exactly (i.e. don’t allow "/foo/repo" when the real path is "/foo/repo.git" or "/foo/repo/.git") and don’t do user-relative paths. `git` `daemon` will refuse to start when this option is enabled and no directory arguments are provided.
 
-[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---base-path-relaxed)`--base-path-relaxed` 
-    
-If `--base-path` is enabled and repo lookup fails, with this option `git` `daemon` will attempt to lookup without prefixing the base path. This is useful for switching to `--base-path` usage, while still allowing the old paths. 
+[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---base-pathpath)`--base-path=`_< path>_
 
-[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---interpolated-pathpathtemplate)`--interpolated-path=`_< pathtemplate>_ 
-    
-To support virtual hosting, an interpolated path template can be used to dynamically construct alternate paths. The template supports `%H` for the target hostname as supplied by the client but converted to all lowercase, `%CH` for the canonical hostname, `%IP` for the server’s IP address, `%P` for the port number, and `%D` for the absolute path of the named repository. After interpolation, the path is validated against the directory list. 
+Remap all the path requests as relative to the given path. This is sort of "Git root" - if you run `git` `daemon` with `--base-path=/srv/git` on `example.com`, then if you later try to pull from `git://example.com/hello.git`, `git` `daemon` will interpret the path as `/srv/git/hello.git`.
 
-[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---export-all)`--export-all` 
-    
-Allow pulling from all directories that look like Git repositories (have the _objects_ and _refs_ subdirectories), even if they do not have the `git-daemon-export-ok` file. 
+[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---base-path-relaxed)`--base-path-relaxed`
 
-[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---inetd)`--inetd` 
-    
-Have the server run as an inetd service. Implies `--syslog` (may be overridden with `--log-destination=`). Incompatible with `--detach`, `--port`, `--listen`, `--user` and `--group` options. 
+If `--base-path` is enabled and repo lookup fails, with this option `git` `daemon` will attempt to lookup without prefixing the base path. This is useful for switching to `--base-path` usage, while still allowing the old paths.
 
-[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---listenhost-or-ipaddr)`--listen=`_< host-or-ipaddr>_ 
-    
-Listen on a specific IP address or hostname. IP addresses can be either an IPv4 address or an IPv6 address if supported. If IPv6 is not supported, then `--listen=`_< hostname>_ is also not supported and `--listen` must be given an IPv4 address. Can be given more than once. Incompatible with `--inetd` option. 
+[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---interpolated-pathpathtemplate)`--interpolated-path=`_< pathtemplate>_
 
-[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---portn)`--port=`_< n>_ 
-    
-Listen on an alternative port. Incompatible with `--inetd` option. 
+To support virtual hosting, an interpolated path template can be used to dynamically construct alternate paths. The template supports `%H` for the target hostname as supplied by the client but converted to all lowercase, `%CH` for the canonical hostname, `%IP` for the server’s IP address, `%P` for the port number, and `%D` for the absolute path of the named repository. After interpolation, the path is validated against the directory list.
 
-[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---init-timeoutn)`--init-timeout=`_< n>_ 
-    
-Timeout (in seconds) between the moment the connection is established and the client request is received (typically a rather low value, since that should be basically immediate). 
+[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---export-all)`--export-all`
 
-[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---timeoutn)`--timeout=`_< n>_ 
-    
-Timeout (in seconds) for specific client sub-requests. This includes the time it takes for the server to process the sub-request and the time spent waiting for the next client’s request. 
+Allow pulling from all directories that look like Git repositories (have the _objects_ and _refs_ subdirectories), even if they do not have the `git-daemon-export-ok` file.
 
-[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---max-connectionsn)`--max-connections=`_< n>_ 
-    
-Maximum number of concurrent clients, defaults to 32. Set it to zero for no limit. 
+[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---inetd)`--inetd`
 
-[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---syslog)`--syslog` 
-    
-Short for `--log-destination=syslog`. 
+Have the server run as an inetd service. Implies `--syslog` (may be overridden with `--log-destination=`). Incompatible with `--detach`, `--port`, `--listen`, `--user` and `--group` options.
 
-[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---log-destinationdestination)`--log-destination=`_< destination>_ 
-    
-Send log messages to the specified destination. Note that this option does not imply `--verbose`, thus by default only error conditions will be logged. The _< destination>_ must be one of: 
+[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---listenhost-or-ipaddr)`--listen=`_< host-or-ipaddr>_
 
-[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt-stderr)`stderr` 
-    
-Write to standard error. Note that if `--detach` is specified, the process disconnects from the real standard error, making this destination effectively equivalent to `none`. 
+Listen on a specific IP address or hostname. IP addresses can be either an IPv4 address or an IPv6 address if supported. If IPv6 is not supported, then `--listen=`_< hostname>_ is also not supported and `--listen` must be given an IPv4 address. Can be given more than once. Incompatible with `--inetd` option.
 
-[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt-syslog)`syslog` 
-    
-Write to syslog, using the `git-daemon` identifier. 
+[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---portn)`--port=`_< n>_
 
-[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt-none)`none` 
-    
+Listen on an alternative port. Incompatible with `--inetd` option.
+
+[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---init-timeoutn)`--init-timeout=`_< n>_
+
+Timeout (in seconds) between the moment the connection is established and the client request is received (typically a rather low value, since that should be basically immediate).
+
+[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---timeoutn)`--timeout=`_< n>_
+
+Timeout (in seconds) for specific client sub-requests. This includes the time it takes for the server to process the sub-request and the time spent waiting for the next client’s request.
+
+[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---max-connectionsn)`--max-connections=`_< n>_
+
+Maximum number of concurrent clients, defaults to 32. Set it to zero for no limit.
+
+[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---syslog)`--syslog`
+
+Short for `--log-destination=syslog`.
+
+[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---log-destinationdestination)`--log-destination=`_< destination>_
+
+Send log messages to the specified destination. Note that this option does not imply `--verbose`, thus by default only error conditions will be logged. The _< destination>_ must be one of:
+
+[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt-stderr)`stderr`
+
+Write to standard error. Note that if `--detach` is specified, the process disconnects from the real standard error, making this destination effectively equivalent to `none`.
+
+[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt-syslog)`syslog`
+
+Write to syslog, using the `git-daemon` identifier.
+
+[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt-none)`none`
+
 Disable all logging.
-The default destination is `syslog` if `--inetd` or `--detach` is specified, otherwise `stderr`. 
+The default destination is `syslog` if `--inetd` or `--detach` is specified, otherwise `stderr`.
 
-[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---user-path)`--user-path` 
-
-
-[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---user-pathpath)`--user-path=`_< path>_ 
-    
-Allow ~user notation to be used in requests. When specified with no parameter, a request to git://host/~alice/foo is taken as a request to access _foo_ repository in the home directory of user `alice`. If `--user-path=`_< path>_ is specified, the same request is taken as a request to access _< path>_`/foo` repository in the home directory of user `alice`. 
-
-[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---verbose)`--verbose` 
-    
-Log details about the incoming connections and requested files. 
-
-[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---reuseaddr)`--reuseaddr` 
-    
-Use `SO_REUSEADDR` when binding the listening socket. This allows the server to restart without waiting for old connections to time out. 
-
-[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---detach)`--detach` 
-    
-Detach from the shell. Implies `--syslog`. 
-
-[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---pid-filefile)`--pid-file=`_< file>_ 
-    
-Save the process id in _< file>_. Ignored when the daemon is run under `--inetd`. 
-
-[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---useruser)`--user=`_< user>_ 
+[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---user-path)`--user-path`
 
 
-[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---groupgroup)`--group=`_< group>_ 
-    
+[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---user-pathpath)`--user-path=`_< path>_
+
+Allow ~user notation to be used in requests. When specified with no parameter, a request to git://host/~alice/foo is taken as a request to access _foo_ repository in the home directory of user `alice`. If `--user-path=`_< path>_ is specified, the same request is taken as a request to access _< path>_`/foo` repository in the home directory of user `alice`.
+
+[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---verbose)`--verbose`
+
+Log details about the incoming connections and requested files.
+
+[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---reuseaddr)`--reuseaddr`
+
+Use `SO_REUSEADDR` when binding the listening socket. This allows the server to restart without waiting for old connections to time out.
+
+[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---detach)`--detach`
+
+Detach from the shell. Implies `--syslog`.
+
+[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---pid-filefile)`--pid-file=`_< file>_
+
+Save the process id in _< file>_. Ignored when the daemon is run under `--inetd`.
+
+[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---useruser)`--user=`_< user>_
+
+
+[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---groupgroup)`--group=`_< group>_
+
 Change daemon’s uid and gid before entering the service loop. When only `--user` is given without `--group`, the primary group ID for the user is used. The values of the option are given to `getpwnam`(`3`) and `getgrnam`(`3`) and numeric IDs are not supported.
 Giving these options is an error when used with `--inetd`; use the facility of inet daemon to achieve the same before spawning `git` `daemon` if needed.
-Like many programs that switch user id, the daemon does not reset environment variables such as `HOME` when it runs git programs, e.g. `upload-pack` and `receive-pack`. When using this option, you may also want to set and export `HOME` to point at the home directory of _< user>_ before starting the daemon, and make sure any Git configuration files in that directory are readable by _< user>_. 
+Like many programs that switch user id, the daemon does not reset environment variables such as `HOME` when it runs git programs, e.g. `upload-pack` and `receive-pack`. When using this option, you may also want to set and export `HOME` to point at the home directory of _< user>_ before starting the daemon, and make sure any Git configuration files in that directory are readable by _< user>_.
 
-[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---enableservice)`--enable=`_< service>_ 
-
-
-[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---disableservice)`--disable=`_< service>_ 
-    
-Enable/disable the service site-wide per default. Note that a service disabled site-wide can still be enabled per repository if it is marked overridable and the repository enables the service with a configuration item. 
-
-[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---allow-overrideservice)`--allow-override=`_< service>_ 
+[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---enableservice)`--enable=`_< service>_
 
 
-[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---forbid-overrideservice)`--forbid-override=`_< service>_ 
-    
-Allow/forbid overriding the site-wide default with per repository configuration. By default, all the services may be overridden. 
+[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---disableservice)`--disable=`_< service>_
 
-[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---informative-errors)`--informative-errors` 
+Enable/disable the service site-wide per default. Note that a service disabled site-wide can still be enabled per repository if it is marked overridable and the repository enables the service with a configuration item.
+
+[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---allow-overrideservice)`--allow-override=`_< service>_
 
 
-[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---no-informative-errors)`--no-informative-errors` 
-    
-When informative errors are turned on, git-daemon will report more verbose errors to the client, differentiating conditions like "no such repository" from "repository not exported". This is more convenient for clients, but may leak information about the existence of unexported repositories. When informative errors are not enabled, all errors report "access denied" to the client. The default is `--no-informative-errors`. 
+[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---forbid-overrideservice)`--forbid-override=`_< service>_
 
-[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---access-hookpath)`--access-hook=`_< path>_ 
-    
+Allow/forbid overriding the site-wide default with per repository configuration. By default, all the services may be overridden.
+
+[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---informative-errors)`--informative-errors`
+
+
+[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---no-informative-errors)`--no-informative-errors`
+
+When informative errors are turned on, git-daemon will report more verbose errors to the client, differentiating conditions like "no such repository" from "repository not exported". This is more convenient for clients, but may leak information about the existence of unexported repositories. When informative errors are not enabled, all errors report "access denied" to the client. The default is `--no-informative-errors`.
+
+[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt---access-hookpath)`--access-hook=`_< path>_
+
 Every time a client connects, first run an external command specified by the <path> with service name (e.g. "upload-pack"), path to the repository, hostname (`%H`), canonical hostname (`%CH`), IP address (`%IP`), and TCP port (`%P`) as its command-line arguments. The external command can decide to decline the service by exiting with a non-zero status (or to allow it by exiting with a zero status). It can also look at the $REMOTE_ADDR and `$REMOTE_PORT` environment variables to learn about the requestor when making this decision.
-The external command can optionally write a single line to its standard output to be sent to the requestor as an error message when it declines the service. 
+The external command can optionally write a single line to its standard output to be sent to the requestor as an error message when it declines the service.
 
-[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt-directory)_< directory>_ 
-    
+[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt-directory)_< directory>_
+
 The remaining arguments provide a list of directories. If any directories are specified, then the `git-daemon` process will serve a requested directory only if it is contained in one of these directories. If `--strict-paths` is specified, then the requested directory must match one of these directories exactly.
 ##  [](https://git-scm.com/docs/git-daemon#_services)SERVICES
-These services can be globally enabled/disabled using the command-line options of this command. If finer-grained control is desired (e.g. to allow `git` `archive` to be run against only in a few selected repositories the daemon serves), the per-repository configuration file can be used to enable or disable them. 
+These services can be globally enabled/disabled using the command-line options of this command. If finer-grained control is desired (e.g. to allow `git` `archive` to be run against only in a few selected repositories the daemon serves), the per-repository configuration file can be used to enable or disable them.
 
-[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt-upload-pack)upload-pack 
-    
-This serves `git` `fetch-pack` and `git` `ls-remote` clients. It is enabled by default, but a repository can disable it by setting `daemon.uploadpack` configuration item to `false`. 
+[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt-upload-pack)upload-pack
 
-[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt-upload-archive)upload-archive 
-    
-This serves `git` `archive` `--remote`. It is disabled by default, but a repository can enable it by setting `daemon.uploadarch` configuration item to `true`. 
+This serves `git` `fetch-pack` and `git` `ls-remote` clients. It is enabled by default, but a repository can disable it by setting `daemon.uploadpack` configuration item to `false`.
 
-[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt-receive-pack)receive-pack 
-    
+[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt-upload-archive)upload-archive
+
+This serves `git` `archive` `--remote`. It is disabled by default, but a repository can enable it by setting `daemon.uploadarch` configuration item to `true`.
+
+[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt-receive-pack)receive-pack
+
 This serves `git` `send-pack` clients, allowing anonymous push. It is disabled by default, as there is _no_ authentication in the protocol (in other words, anybody can push anything into the repository, including removal of refs). This is solely meant for a closed LAN setting where everybody is friendly. This service can be enabled by setting `daemon.receivepack` configuration item to `true`.
-##  [](https://git-scm.com/docs/git-daemon#_examples)EXAMPLES 
+##  [](https://git-scm.com/docs/git-daemon#_examples)EXAMPLES
 
-[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt-Weassumethefollowinginetcservices)We assume the following in /etc/services 
-    
+[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt-Weassumethefollowinginetcservices)We assume the following in /etc/services
+
 ```
 $ grep 9418 /etc/services
 git		9418/tcp		# Git Version Control System
 ```
 
 
-[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt-gitdaemonasinetdserver)_git daemon_ as inetd server 
-    
+[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt-gitdaemonasinetdserver)_git daemon_ as inetd server
+
 To set up _git daemon_ as an inetd service that handles any repository within `/pub/foo` or `/pub/bar`, place an entry like the following into `/etc/inetd` all on one line:
 ```
 	git stream tcp nowait nobody  /usr/bin/git
@@ -387,8 +387,8 @@ To set up _git daemon_ as an inetd service that handles any repository within `/
 ```
 
 
-[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt-gitdaemonasinetdserverforvirtualhosts)_git daemon_ as inetd server for virtual hosts 
-    
+[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt-gitdaemonasinetdserverforvirtualhosts)_git daemon_ as inetd server for virtual hosts
+
 To set up _git daemon_ as an inetd service that handles repositories for different virtual hosts, `www.example.com` and `www.example.org`, place an entry like the following into `/etc/inetd` all on one line:
 ```
 	git stream tcp nowait nobody /usr/bin/git
@@ -399,10 +399,10 @@ To set up _git daemon_ as an inetd service that handles repositories for differe
 		/software
 ```
 
-In this example, the root-level directory `/pub` will contain a subdirectory for each virtual host name supported. Further, both hosts advertise repositories simply as `git://www.example.com/software/repo.git`. For pre-1.4.0 clients, a symlink from `/software` into the appropriate default repository could be made as well. 
+In this example, the root-level directory `/pub` will contain a subdirectory for each virtual host name supported. Further, both hosts advertise repositories simply as `git://www.example.com/software/repo.git`. For pre-1.4.0 clients, a symlink from `/software` into the appropriate default repository could be made as well.
 
-[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt-gitdaemonasregulardaemonforvirtualhosts)_git daemon_ as regular daemon for virtual hosts 
-    
+[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt-gitdaemonasregulardaemonforvirtualhosts)_git daemon_ as regular daemon for virtual hosts
+
 To set up `git` `daemon` as a regular, non-inetd service that handles repositories for multiple virtual hosts based on their IP addresses, start the daemon like this:
 ```
 	git daemon --verbose --export-all
@@ -411,10 +411,10 @@ To set up `git` `daemon` as a regular, non-inetd service that handles repositori
 		/pub/10.10.220.23/software
 ```
 
-In this example, the root-level directory `/pub` will contain a subdirectory for each virtual host IP address supported. Repositories can still be accessed by hostname though, assuming they correspond to these IP addresses. 
+In this example, the root-level directory `/pub` will contain a subdirectory for each virtual host IP address supported. Repositories can still be accessed by hostname though, assuming they correspond to these IP addresses.
 
-[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt-selectivelyenabledisableservicesperrepository)selectively enable/disable services per repository 
-    
+[](https://git-scm.com/docs/git-daemon#Documentation/git-daemon.txt-selectivelyenabledisableservicesperrepository)selectively enable/disable services per repository
+
 To enable `git` `archive` `--remote` and disable `git` `fetch` against a repository, have the following in the configuration file in the repository (that is the file _config_ next to `HEAD`, _refs_ and _objects_).
 ```
 	[daemon]
@@ -427,6 +427,6 @@ To enable `git` `archive` `--remote` and disable `git` `fetch` against a reposit
 ##  [](https://git-scm.com/docs/git-daemon#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### daemon
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

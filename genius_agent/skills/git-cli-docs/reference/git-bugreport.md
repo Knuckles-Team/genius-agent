@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-bugreport#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-bugreport#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-bugreport#_description)
@@ -33,8 +33,8 @@ Localized versions of **git-bugreport** manual
   5. [українська мова ](https://git-scm.com/docs/git-bugreport/uk)
   6. [简体中文 ](https://git-scm.com/docs/git-bugreport/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-bugreport)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -221,35 +221,35 @@ The following information is captured automatically:
 
 Additional information may be gathered into a separate zip archive using the `--diagnose` option, and can be attached alongside the bugreport document to provide additional context to readers.
 This tool is invoked via the typical Git setup process, which means that in some cases, it might not be able to launch - for example, if a relevant config file is unreadable. In this kind of scenario, it may be helpful to manually gather the kind of information listed above when manually asking for help.
-##  [](https://git-scm.com/docs/git-bugreport#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-bugreport#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-bugreport#Documentation/git-bugreport.txt--opath)-o <path> 
-
-
-[](https://git-scm.com/docs/git-bugreport#Documentation/git-bugreport.txt---output-directorypath)--output-directory <path> 
-    
-Place the resulting bug report file in _< path>_ instead of the current directory. 
-
-[](https://git-scm.com/docs/git-bugreport#Documentation/git-bugreport.txt--sformat)-s <format> 
+[](https://git-scm.com/docs/git-bugreport#Documentation/git-bugreport.txt--opath)-o <path>
 
 
-[](https://git-scm.com/docs/git-bugreport#Documentation/git-bugreport.txt---suffixformat)--suffix <format> 
+[](https://git-scm.com/docs/git-bugreport#Documentation/git-bugreport.txt---output-directorypath)--output-directory <path>
+
+Place the resulting bug report file in _< path>_ instead of the current directory.
+
+[](https://git-scm.com/docs/git-bugreport#Documentation/git-bugreport.txt--sformat)-s <format>
 
 
-[](https://git-scm.com/docs/git-bugreport#Documentation/git-bugreport.txt---no-suffix)--no-suffix 
-    
-Specify an alternate suffix for the bugreport name, to create a file named _git-bugreport- <formatted-suffix>_. This should take the form of a strftime(3) format string; the current local time will be used. `--no-suffix` disables the suffix and the file is just named `git-bugreport` without any disambiguation measure. 
-
-[](https://git-scm.com/docs/git-bugreport#Documentation/git-bugreport.txt---no-diagnose)--no-diagnose 
+[](https://git-scm.com/docs/git-bugreport#Documentation/git-bugreport.txt---suffixformat)--suffix <format>
 
 
-[](https://git-scm.com/docs/git-bugreport#Documentation/git-bugreport.txt---diagnosemode)--diagnose[=<mode>] 
-    
+[](https://git-scm.com/docs/git-bugreport#Documentation/git-bugreport.txt---no-suffix)--no-suffix
+
+Specify an alternate suffix for the bugreport name, to create a file named _git-bugreport- <formatted-suffix>_. This should take the form of a strftime(3) format string; the current local time will be used. `--no-suffix` disables the suffix and the file is just named `git-bugreport` without any disambiguation measure.
+
+[](https://git-scm.com/docs/git-bugreport#Documentation/git-bugreport.txt---no-diagnose)--no-diagnose
+
+
+[](https://git-scm.com/docs/git-bugreport#Documentation/git-bugreport.txt---diagnosemode)--diagnose[=<mode>]
+
 Create a zip archive of supplemental information about the user’s machine, Git client, and repository state. The archive is written to the same output directory as the bug report and is named _git-diagnostics- <formatted-suffix>_.
 Without `mode` specified, the diagnostic archive will contain the default set of statistics reported by `git` `diagnose`. An optional `mode` value may be specified to change which information is included in the archive. See [git-diagnose[1]](https://git-scm.com/docs/git-diagnose) for the list of valid values for `mode` and details about their usage.
 ##  [](https://git-scm.com/docs/git-bugreport#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### bugreport
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

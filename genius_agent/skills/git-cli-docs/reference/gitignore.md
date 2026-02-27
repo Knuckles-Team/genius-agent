@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/gitignore#_name)
     * [SYNOPSIS](https://git-scm.com/docs/gitignore#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/gitignore#_description)
@@ -38,8 +38,8 @@ Localized versions of **gitignore** manual
   6. [українська мова ](https://git-scm.com/docs/gitignore/uk)
   7. [简体中文 ](https://git-scm.com/docs/gitignore/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/gitignore)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -319,6 +319,6 @@ Example to exclude everything except a specific directory `foo/bar` (note the `/
 ##  [](https://git-scm.com/docs/gitignore#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### gitignore
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/gitrepository-layout#_name)
     * [SYNOPSIS](https://git-scm.com/docs/gitrepository-layout#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/gitrepository-layout#_description)
@@ -29,8 +29,8 @@
 Localized versions of **gitrepository-layout** manual
   1. [English ](https://git-scm.com/docs/gitrepository-layout)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/gitrepository-layout)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -223,10 +223,10 @@ A Git repository comes in two different flavours:
 
 
 **Note** : Also you can have a plain text file `.git` at the root of your working tree, containing `gitdir:` _< path>_ to point at the real directory that has the repository. This mechanism is called a _gitfile_ and is usually managed via the `git` `submodule` and `git` `worktree` commands. It is often used for a working tree of a submodule checkout, to allow you in the containing superproject to `git` `checkout` a branch that does not have the submodule. The `checkout` has to remove the entire submodule working tree, without losing the submodule repository.
-These things may exist in a Git repository. 
+These things may exist in a Git repository.
 
-[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-objects)objects 
-    
+[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-objects)objects
+
 Object store associated with this repository. Usually an object store is self sufficient (i.e. all the objects that are referred to by an object found in it are also found in it), but there are a few ways to violate it.
   1. You could have an incomplete but locally usable repository by creating a shallow clone. See [git-clone[1]](https://git-scm.com/docs/git-clone).
   2. You could be using the `objects/info/alternates` or `$GIT_ALTERNATE_OBJECT_DIRECTORIES` mechanisms to _borrow_ objects from other object stores. A repository with this kind of incomplete object store is not suitable to be published for use with dumb transports but otherwise is OK as long as `objects/info/alternates` points at the object stores it borrows from.
@@ -234,156 +234,156 @@ This directory is ignored if $GIT_COMMON_DIR is set and "$GIT_COMMON_DIR/objects
 
 
 
-[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-objects0-9a-f0-9a-f)objects/[0-9a-f][0-9a-f] 
-    
-A newly created object is stored in its own file. The objects are splayed over 256 subdirectories using the first two characters of the sha1 object name to keep the number of directory entries in `objects` itself to a manageable number. Objects found here are often called _unpacked_ (or _loose_) objects. 
+[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-objects0-9a-f0-9a-f)objects/[0-9a-f][0-9a-f]
 
-[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-objectspack)objects/pack 
-    
-Packs (files that store many objects in compressed form, along with index files to allow them to be randomly accessed) are found in this directory. 
+A newly created object is stored in its own file. The objects are splayed over 256 subdirectories using the first two characters of the sha1 object name to keep the number of directory entries in `objects` itself to a manageable number. Objects found here are often called _unpacked_ (or _loose_) objects.
 
-[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-objectsinfo)objects/info 
-    
-Additional information about the object store is recorded in this directory. 
+[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-objectspack)objects/pack
 
-[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-objectsinfopacks)objects/info/packs 
-    
-This file is to help dumb transports discover what packs are available in this object store. Whenever a pack is added or removed, `git` `update-server-info` should be run to keep this file up to date if the repository is published for dumb transports. _git repack_ does this by default. 
+Packs (files that store many objects in compressed form, along with index files to allow them to be randomly accessed) are found in this directory.
 
-[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-objectsinfoalternates)objects/info/alternates 
-    
-This file records paths to alternate object stores that this object store borrows objects from, one pathname per line. Note that not only native Git tools use it locally, but the HTTP fetcher also tries to use it remotely; this will usually work if you have relative paths (relative to the object database, not to the repository!) in your alternates file, but it will not work if you use absolute paths unless the absolute path in filesystem and web URL is the same. See also `objects/info/http-alternates`. 
+[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-objectsinfo)objects/info
 
-[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-objectsinfohttp-alternates)objects/info/http-alternates 
-    
-This file records URLs to alternate object stores that this object store borrows objects from, to be used when the repository is fetched over HTTP. 
+Additional information about the object store is recorded in this directory.
 
-[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-refs)refs 
-    
-References are stored in subdirectories of this directory. The _git prune_ command knows to preserve objects reachable from refs found in this directory and its subdirectories. This directory is ignored (except refs/bisect, refs/rewritten and refs/worktree) if $GIT_COMMON_DIR is set and "$GIT_COMMON_DIR/refs" will be used instead. 
+[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-objectsinfopacks)objects/info/packs
 
-[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-refsheadsname)refs/heads/`name` 
-    
-records tip-of-the-tree commit objects of branch `name` 
+This file is to help dumb transports discover what packs are available in this object store. Whenever a pack is added or removed, `git` `update-server-info` should be run to keep this file up to date if the repository is published for dumb transports. _git repack_ does this by default.
 
-[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-refstagsname)refs/tags/`name` 
-    
-records any object name (not necessarily a commit object, or a tag object that points at a commit object). 
+[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-objectsinfoalternates)objects/info/alternates
 
-[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-refsremotesname)refs/remotes/`name` 
-    
-records tip-of-the-tree commit objects of branches copied from a remote repository. 
+This file records paths to alternate object stores that this object store borrows objects from, one pathname per line. Note that not only native Git tools use it locally, but the HTTP fetcher also tries to use it remotely; this will usually work if you have relative paths (relative to the object database, not to the repository!) in your alternates file, but it will not work if you use absolute paths unless the absolute path in filesystem and web URL is the same. See also `objects/info/http-alternates`.
 
-[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-refsreplaceobj-sha1)refs/replace/_< obj-sha1>_ 
-    
-records the SHA-1 of the object that replaces _< obj-sha1>_. This is similar to info/grafts and is internally used and maintained by [git-replace[1]](https://git-scm.com/docs/git-replace). Such refs can be exchanged between repositories while grafts are not. 
+[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-objectsinfohttp-alternates)objects/info/http-alternates
 
-[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-packed-refs)packed-refs 
-    
-records the same information as refs/heads/, refs/tags/, and friends record in a more efficient way. See [git-pack-refs[1]](https://git-scm.com/docs/git-pack-refs). This file is ignored if $GIT_COMMON_DIR is set and "$GIT_COMMON_DIR/packed-refs" will be used instead. 
+This file records URLs to alternate object stores that this object store borrows objects from, to be used when the repository is fetched over HTTP.
 
-[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-HEAD)HEAD 
-    
+[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-refs)refs
+
+References are stored in subdirectories of this directory. The _git prune_ command knows to preserve objects reachable from refs found in this directory and its subdirectories. This directory is ignored (except refs/bisect, refs/rewritten and refs/worktree) if $GIT_COMMON_DIR is set and "$GIT_COMMON_DIR/refs" will be used instead.
+
+[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-refsheadsname)refs/heads/`name`
+
+records tip-of-the-tree commit objects of branch `name`
+
+[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-refstagsname)refs/tags/`name`
+
+records any object name (not necessarily a commit object, or a tag object that points at a commit object).
+
+[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-refsremotesname)refs/remotes/`name`
+
+records tip-of-the-tree commit objects of branches copied from a remote repository.
+
+[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-refsreplaceobj-sha1)refs/replace/_< obj-sha1>_
+
+records the SHA-1 of the object that replaces _< obj-sha1>_. This is similar to info/grafts and is internally used and maintained by [git-replace[1]](https://git-scm.com/docs/git-replace). Such refs can be exchanged between repositories while grafts are not.
+
+[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-packed-refs)packed-refs
+
+records the same information as refs/heads/, refs/tags/, and friends record in a more efficient way. See [git-pack-refs[1]](https://git-scm.com/docs/git-pack-refs). This file is ignored if $GIT_COMMON_DIR is set and "$GIT_COMMON_DIR/packed-refs" will be used instead.
+
+[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-HEAD)HEAD
+
 A symref (see glossary) to the `refs/heads/` namespace describing the currently active branch. It does not mean much if the repository is not associated with any working tree (i.e. a _bare_ repository), but a valid Git repository **must** have the HEAD file; some porcelains may use it to guess the designated "default" branch of the repository (usually _master_). It is legal if the named branch _name_ does not (yet) exist. In some legacy setups, it is a symbolic link instead of a symref that points at the current branch.
-HEAD can also record a specific commit directly, instead of being a symref to point at the current branch. Such a state is often called _detached HEAD._ See [git-checkout[1]](https://git-scm.com/docs/git-checkout) for details. 
+HEAD can also record a specific commit directly, instead of being a symref to point at the current branch. Such a state is often called _detached HEAD._ See [git-checkout[1]](https://git-scm.com/docs/git-checkout) for details.
 
-[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-config)config 
-    
-Repository specific configuration file. This file is ignored if $GIT_COMMON_DIR is set and "$GIT_COMMON_DIR/config" will be used instead. 
+[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-config)config
 
-[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-configworktree)config.worktree 
-    
-Working directory specific configuration file for the main working directory in multiple working directory setup (see [git-worktree[1]](https://git-scm.com/docs/git-worktree)). 
+Repository specific configuration file. This file is ignored if $GIT_COMMON_DIR is set and "$GIT_COMMON_DIR/config" will be used instead.
 
-[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-branches)branches 
-    
+[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-configworktree)config.worktree
+
+Working directory specific configuration file for the main working directory in multiple working directory setup (see [git-worktree[1]](https://git-scm.com/docs/git-worktree)).
+
+[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-branches)branches
+
 A deprecated way to store shorthands to be used to specify a URL to _git fetch_ , _git pull_ and _git push_. A file can be stored as `branches/`_< name>_ and then _name_ can be given to these commands in place of _repository_ argument. See the REMOTES section in [git-fetch[1]](https://git-scm.com/docs/git-fetch) for details. This mechanism is legacy and not likely to be found in modern repositories. This directory is ignored if $GIT_COMMON_DIR is set and "$GIT_COMMON_DIR/branches" will be used instead.
-Git will stop reading remotes from this directory in Git 3.0. 
+Git will stop reading remotes from this directory in Git 3.0.
 
-[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-hooks)hooks 
-    
-Hooks are customization scripts used by various Git commands. A handful of sample hooks are installed when _git init_ is run, but all of them are disabled by default. To enable, the `.sample` suffix has to be removed from the filename by renaming. Read [githooks[5]](https://git-scm.com/docs/githooks) for more details about each hook. This directory is ignored if $GIT_COMMON_DIR is set and "$GIT_COMMON_DIR/hooks" will be used instead. 
+[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-hooks)hooks
 
-[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-common)common 
-    
-When multiple working trees are used, most of files in $GIT_DIR are per-worktree with a few known exceptions. All files under _common_ however will be shared between all working trees. 
+Hooks are customization scripts used by various Git commands. A handful of sample hooks are installed when _git init_ is run, but all of them are disabled by default. To enable, the `.sample` suffix has to be removed from the filename by renaming. Read [githooks[5]](https://git-scm.com/docs/githooks) for more details about each hook. This directory is ignored if $GIT_COMMON_DIR is set and "$GIT_COMMON_DIR/hooks" will be used instead.
 
-[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-index)index 
-    
-The current index file for the repository. It is usually not found in a bare repository. 
+[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-common)common
 
-[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-sharedindexSHA-1)sharedindex.<SHA-1> 
-    
-The shared index part, to be referenced by $GIT_DIR/index and other temporary index files. Only valid in split index mode. 
+When multiple working trees are used, most of files in $GIT_DIR are per-worktree with a few known exceptions. All files under _common_ however will be shared between all working trees.
 
-[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-info)info 
-    
-Additional information about the repository is recorded in this directory. This directory is ignored if $GIT_COMMON_DIR is set and "$GIT_COMMON_DIR/info" will be used instead. 
+[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-index)index
 
-[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-inforefs)info/refs 
-    
-This file helps dumb transports discover what refs are available in this repository. If the repository is published for dumb transports, this file should be regenerated by _git update-server-info_ every time a tag or branch is created or modified. This is normally done from the `hooks/update` hook, which is run by the _git-receive-pack_ command when you _git push_ into the repository. 
+The current index file for the repository. It is usually not found in a bare repository.
 
-[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-infografts)info/grafts 
-    
+[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-sharedindexSHA-1)sharedindex.<SHA-1>
+
+The shared index part, to be referenced by $GIT_DIR/index and other temporary index files. Only valid in split index mode.
+
+[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-info)info
+
+Additional information about the repository is recorded in this directory. This directory is ignored if $GIT_COMMON_DIR is set and "$GIT_COMMON_DIR/info" will be used instead.
+
+[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-inforefs)info/refs
+
+This file helps dumb transports discover what refs are available in this repository. If the repository is published for dumb transports, this file should be regenerated by _git update-server-info_ every time a tag or branch is created or modified. This is normally done from the `hooks/update` hook, which is run by the _git-receive-pack_ command when you _git push_ into the repository.
+
+[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-infografts)info/grafts
+
 This file records fake commit ancestry information, to pretend the set of parents a commit has is different from how the commit was actually created. One record per line describes a commit and its fake parents by listing their 40-byte hexadecimal object names separated by a space and terminated by a newline.
-Note that the grafts mechanism is outdated and can lead to problems transferring objects between repositories; see [git-replace[1]](https://git-scm.com/docs/git-replace) for a more flexible and robust system to do the same thing. 
+Note that the grafts mechanism is outdated and can lead to problems transferring objects between repositories; see [git-replace[1]](https://git-scm.com/docs/git-replace) for a more flexible and robust system to do the same thing.
 
-[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-infoexclude)info/exclude 
-    
-This file, by convention among Porcelains, stores the exclude pattern list. `.gitignore` is the per-directory ignore file. _git status_ , _git add_ , _git rm_ and _git clean_ look at it but the core Git commands do not look at it. See also: [gitignore[5]](https://git-scm.com/docs/gitignore). 
+[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-infoexclude)info/exclude
 
-[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-infoattributes)info/attributes 
-    
-Defines which attributes to assign to a path, similar to per-directory `.gitattributes` files. See also: [gitattributes[5]](https://git-scm.com/docs/gitattributes). 
+This file, by convention among Porcelains, stores the exclude pattern list. `.gitignore` is the per-directory ignore file. _git status_ , _git add_ , _git rm_ and _git clean_ look at it but the core Git commands do not look at it. See also: [gitignore[5]](https://git-scm.com/docs/gitignore).
 
-[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-infosparse-checkout)info/sparse-checkout 
-    
-This file stores sparse checkout patterns. See also: [git-read-tree[1]](https://git-scm.com/docs/git-read-tree). 
+[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-infoattributes)info/attributes
 
-[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-remotes)remotes 
-    
+Defines which attributes to assign to a path, similar to per-directory `.gitattributes` files. See also: [gitattributes[5]](https://git-scm.com/docs/gitattributes).
+
+[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-infosparse-checkout)info/sparse-checkout
+
+This file stores sparse checkout patterns. See also: [git-read-tree[1]](https://git-scm.com/docs/git-read-tree).
+
+[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-remotes)remotes
+
 Stores shorthands for URL and default refnames for use when interacting with remote repositories via _git fetch_ , _git pull_ and _git push_ commands. See the REMOTES section in [git-fetch[1]](https://git-scm.com/docs/git-fetch) for details. This mechanism is legacy and not likely to be found in modern repositories. This directory is ignored if $GIT_COMMON_DIR is set and "$GIT_COMMON_DIR/remotes" will be used instead.
-Git will stop reading remotes from this directory in Git 3.0. 
+Git will stop reading remotes from this directory in Git 3.0.
 
-[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-logs)logs 
-    
-Records of changes made to refs are stored in this directory. See [git-update-ref[1]](https://git-scm.com/docs/git-update-ref) for more information. This directory is ignored (except logs/HEAD) if $GIT_COMMON_DIR is set and "$GIT_COMMON_DIR/logs" will be used instead. 
+[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-logs)logs
 
-[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-logsrefsheadsname)logs/refs/heads/`name` 
-    
-Records all changes made to the branch tip named `name`. 
+Records of changes made to refs are stored in this directory. See [git-update-ref[1]](https://git-scm.com/docs/git-update-ref) for more information. This directory is ignored (except logs/HEAD) if $GIT_COMMON_DIR is set and "$GIT_COMMON_DIR/logs" will be used instead.
 
-[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-logsrefstagsname)logs/refs/tags/`name` 
-    
-Records all changes made to the tag named `name`. 
+[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-logsrefsheadsname)logs/refs/heads/`name`
 
-[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-shallow)shallow 
-    
-This is similar to `info/grafts` but is internally used and maintained by shallow clone mechanism. See `--depth` option to [git-clone[1]](https://git-scm.com/docs/git-clone) and [git-fetch[1]](https://git-scm.com/docs/git-fetch). This file is ignored if $GIT_COMMON_DIR is set and "$GIT_COMMON_DIR/shallow" will be used instead. 
+Records all changes made to the branch tip named `name`.
 
-[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-commondir)commondir 
-    
-If this file exists, $GIT_COMMON_DIR (see [git[1]](https://git-scm.com/docs/git)) will be set to the path specified in this file if it is not explicitly set. If the specified path is relative, it is relative to $GIT_DIR. The repository with commondir is incomplete without the repository pointed by "commondir". 
+[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-logsrefstagsname)logs/refs/tags/`name`
 
-[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-modules)modules 
-    
-Contains the git-repositories of the submodules. 
+Records all changes made to the tag named `name`.
 
-[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-worktrees)worktrees 
-    
-Contains administrative data for linked working trees. Each subdirectory contains the working tree-related part of a linked working tree. This directory is ignored if $GIT_COMMON_DIR is set, in which case "$GIT_COMMON_DIR/worktrees" will be used instead. 
+[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-shallow)shallow
 
-[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-worktreesidgitdir)worktrees/<id>/gitdir 
-    
-A text file containing the absolute path back to the .git file that points to here. This is used to check if the linked repository has been manually removed and there is no need to keep this directory any more. The mtime of this file should be updated every time the linked repository is accessed. 
+This is similar to `info/grafts` but is internally used and maintained by shallow clone mechanism. See `--depth` option to [git-clone[1]](https://git-scm.com/docs/git-clone) and [git-fetch[1]](https://git-scm.com/docs/git-fetch). This file is ignored if $GIT_COMMON_DIR is set and "$GIT_COMMON_DIR/shallow" will be used instead.
 
-[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-worktreesidlocked)worktrees/<id>/locked 
-    
-If this file exists, the linked working tree may be on a portable device and not available. The presence of this file prevents `worktrees/`_< id>_ from being pruned either automatically or manually by `git` `worktree` `prune`. The file may contain a string explaining why the repository is locked. 
+[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-commondir)commondir
 
-[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-worktreesidconfigworktree)worktrees/<id>/config.worktree 
-    
+If this file exists, $GIT_COMMON_DIR (see [git[1]](https://git-scm.com/docs/git)) will be set to the path specified in this file if it is not explicitly set. If the specified path is relative, it is relative to $GIT_DIR. The repository with commondir is incomplete without the repository pointed by "commondir".
+
+[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-modules)modules
+
+Contains the git-repositories of the submodules.
+
+[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-worktrees)worktrees
+
+Contains administrative data for linked working trees. Each subdirectory contains the working tree-related part of a linked working tree. This directory is ignored if $GIT_COMMON_DIR is set, in which case "$GIT_COMMON_DIR/worktrees" will be used instead.
+
+[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-worktreesidgitdir)worktrees/<id>/gitdir
+
+A text file containing the absolute path back to the .git file that points to here. This is used to check if the linked repository has been manually removed and there is no need to keep this directory any more. The mtime of this file should be updated every time the linked repository is accessed.
+
+[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-worktreesidlocked)worktrees/<id>/locked
+
+If this file exists, the linked working tree may be on a portable device and not available. The presence of this file prevents `worktrees/`_< id>_ from being pruned either automatically or manually by `git` `worktree` `prune`. The file may contain a string explaining why the repository is locked.
+
+[](https://git-scm.com/docs/gitrepository-layout#Documentation/gitrepository-layout.txt-worktreesidconfigworktree)worktrees/<id>/config.worktree
+
 Working directory specific configuration file.
 ##  [](https://git-scm.com/docs/gitrepository-layout#_git_repository_format_versions)Git Repository Format Versions
 Every git repository is marked with a numeric version in the `core.repositoryformatversion` key of its `config` file. This version specifies the rules for operating on the on-disk repository data. An implementation of git which does not understand a particular version advertised by an on-disk repository MUST NOT operate on that repository; doing so risks not only producing wrong results, but actually losing data.
@@ -411,6 +411,6 @@ The defined extensions are given in the `extensions.*` section of [git-config[1]
 ##  [](https://git-scm.com/docs/gitrepository-layout#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### gitrepository-layout
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

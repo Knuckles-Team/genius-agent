@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-merge-index#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-merge-index#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-merge-index#_description)
@@ -32,8 +32,8 @@ Localized versions of **git-merge-index** manual
   4. [українська мова ](https://git-scm.com/docs/git-merge-index/uk)
   5. [简体中文 ](https://git-scm.com/docs/git-merge-index/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-merge-index)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -194,22 +194,22 @@ _git merge-index_ [-o] [-q] <merge-program> (-a | ( [--] <file>…​) )
 
 ##  [](https://git-scm.com/docs/git-merge-index#_description)DESCRIPTION
 This looks up the <file>(s) in the index and, if there are any merge entries, passes the SHA-1 hash for those files as arguments 1, 2, 3 (empty argument if no file), and <file> as argument 4. File modes for the three files are passed as arguments 5, 6 and 7.
-##  [](https://git-scm.com/docs/git-merge-index#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-merge-index#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-merge-index#Documentation/git-merge-index.txt---)-- 
-    
-Do not interpret any more arguments as options. 
+[](https://git-scm.com/docs/git-merge-index#Documentation/git-merge-index.txt---)--
 
-[](https://git-scm.com/docs/git-merge-index#Documentation/git-merge-index.txt--a)-a 
-    
-Run merge against all files in the index that need merging. 
+Do not interpret any more arguments as options.
 
-[](https://git-scm.com/docs/git-merge-index#Documentation/git-merge-index.txt--o)-o 
-    
-Instead of stopping at the first failed merge, do all of them in one shot - continue with merging even when previous merges returned errors, and only return the error code after all the merges. 
+[](https://git-scm.com/docs/git-merge-index#Documentation/git-merge-index.txt--a)-a
 
-[](https://git-scm.com/docs/git-merge-index#Documentation/git-merge-index.txt--q)-q 
-    
+Run merge against all files in the index that need merging.
+
+[](https://git-scm.com/docs/git-merge-index#Documentation/git-merge-index.txt--o)-o
+
+Instead of stopping at the first failed merge, do all of them in one shot - continue with merging even when previous merges returned errors, and only return the error code after all the merges.
+
+[](https://git-scm.com/docs/git-merge-index#Documentation/git-merge-index.txt--q)-q
+
 Do not complain about a failed merge program (a merge program failure usually indicates conflicts during the merge). This is for porcelains which might want to emit custom messages.
 If _git merge-index_ is called with multiple <file>s (or -a) then it processes them in turn only stopping if merge returns a non-zero exit code.
 Typically this is run with a script calling Git’s imitation of the _merge_ command from the RCS package.
@@ -238,6 +238,6 @@ where the latter example shows how _git merge-index_ will stop trying to merge o
 ##  [](https://git-scm.com/docs/git-merge-index#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### merge-index
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

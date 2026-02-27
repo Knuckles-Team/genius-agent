@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/gitprotocol-pack#_name)
     * [SYNOPSIS](https://git-scm.com/docs/gitprotocol-pack#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/gitprotocol-pack#_description)
@@ -42,8 +42,8 @@
 Localized versions of **gitprotocol-pack** manual
   1. [English ](https://git-scm.com/docs/gitprotocol-pack)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/gitprotocol-pack)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -520,18 +520,18 @@ A packfile MUST be sent if either create or update command is used, even if the 
 The server will receive the packfile, unpack it, then validate each reference that is being updated that it hasn’t changed while the request was being processed (the obj-id is still the same as the old-id), and it will run any update hooks to make sure that the update is acceptable. If all of that is fine, the server will then update the references.
 ##  [](https://git-scm.com/docs/gitprotocol-pack#_push_certificate)Push Certificate
 A push certificate begins with a set of header lines. After the header and an empty line, the protocol commands follow, one per line. Note that the trailing LF in push-cert PKT-LINEs is _not_ optional; it must be present.
-Currently, the following header fields are defined: 
+Currently, the following header fields are defined:
 
-[](https://git-scm.com/docs/gitprotocol-pack#Documentation/gitprotocol-pack.txt-pusherident)`pusher` ident 
-    
-Identify the GPG key in "Human Readable Name <email@address>" format. 
+[](https://git-scm.com/docs/gitprotocol-pack#Documentation/gitprotocol-pack.txt-pusherident)`pusher` ident
 
-[](https://git-scm.com/docs/gitprotocol-pack#Documentation/gitprotocol-pack.txt-pusheeurl)`pushee` url 
-    
-The repository URL (anonymized, if the URL contains authentication material) the user who ran `git` `push` intended to push into. 
+Identify the GPG key in "Human Readable Name <email@address>" format.
 
-[](https://git-scm.com/docs/gitprotocol-pack#Documentation/gitprotocol-pack.txt-noncenonce)`nonce` nonce 
-    
+[](https://git-scm.com/docs/gitprotocol-pack#Documentation/gitprotocol-pack.txt-pusheeurl)`pushee` url
+
+The repository URL (anonymized, if the URL contains authentication material) the user who ran `git` `push` intended to push into.
+
+[](https://git-scm.com/docs/gitprotocol-pack#Documentation/gitprotocol-pack.txt-noncenonce)`nonce` nonce
+
 The _nonce_ string the receiving repository asked the pushing user to include in the certificate, to prevent replay attacks.
 The GPG signature lines are a detached signature for the contents recorded in the push certificate before the signature block begins. The detached signature is used to certify that the commands were given by the pusher, who must be the signer.
 ##  [](https://git-scm.com/docs/gitprotocol-pack#_report_status)Report Status
@@ -602,6 +602,6 @@ An example client/server communication might look like this:
 ##  [](https://git-scm.com/docs/gitprotocol-pack#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### gitprotocol-pack
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

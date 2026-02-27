@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-describe#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-describe#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-describe#_description)
@@ -35,8 +35,8 @@ Localized versions of **git-describe** manual
   4. [українська мова ](https://git-scm.com/docs/git-describe/uk)
   5. [简体中文 ](https://git-scm.com/docs/git-describe/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-describe)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -216,65 +216,65 @@ _git describe_ <blob>
 The command finds the most recent tag that is reachable from a commit. If the tag points to the commit, then only the tag is shown. Otherwise, it suffixes the tag name with the number of additional commits on top of the tagged object and the abbreviated object name of the most recent commit. The result is a "human-readable" object name which can also be used to identify the commit to other git commands.
 By default (without --all or --tags) `git` `describe` only shows annotated tags. For more information about creating annotated tags see the -a and -s options to [git-tag[1]](https://git-scm.com/docs/git-tag).
 If the given object refers to a blob, it will be described as _< commit-ish>_`:`_< path>_, such that the blob can be found at _< path>_ in the _< commit-ish>_, which itself describes the first commit in which this blob occurs in a reverse revision walk from HEAD.
-##  [](https://git-scm.com/docs/git-describe#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-describe#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-describe#Documentation/git-describe.txt-commit-ish)<commit-ish>…​ 
-    
-Commit-ish object names to describe. Defaults to HEAD if omitted. 
+[](https://git-scm.com/docs/git-describe#Documentation/git-describe.txt-commit-ish)<commit-ish>…​
 
-[](https://git-scm.com/docs/git-describe#Documentation/git-describe.txt---dirtymark)--dirty[=<mark>] 
+Commit-ish object names to describe. Defaults to HEAD if omitted.
+
+[](https://git-scm.com/docs/git-describe#Documentation/git-describe.txt---dirtymark)--dirty[=<mark>]
 
 
-[](https://git-scm.com/docs/git-describe#Documentation/git-describe.txt---brokenmark)--broken[=<mark>] 
-    
-Describe the state of the working tree. When the working tree matches HEAD, the output is the same as "git describe HEAD". If the working tree has local modification "-dirty" is appended to it. If a repository is corrupt and Git cannot determine if there is local modification, Git will error out, unless ‘--broken’ is given, which appends the suffix "-broken" instead. 
+[](https://git-scm.com/docs/git-describe#Documentation/git-describe.txt---brokenmark)--broken[=<mark>]
 
-[](https://git-scm.com/docs/git-describe#Documentation/git-describe.txt---all)--all 
-    
-Instead of using only the annotated tags, use any ref found in `refs/` namespace. This option enables matching any known branch, remote-tracking branch, or lightweight tag. 
+Describe the state of the working tree. When the working tree matches HEAD, the output is the same as "git describe HEAD". If the working tree has local modification "-dirty" is appended to it. If a repository is corrupt and Git cannot determine if there is local modification, Git will error out, unless ‘--broken’ is given, which appends the suffix "-broken" instead.
 
-[](https://git-scm.com/docs/git-describe#Documentation/git-describe.txt---tags)--tags 
-    
-Instead of using only the annotated tags, use any tag found in `refs/tags` namespace. This option enables matching a lightweight (non-annotated) tag. 
+[](https://git-scm.com/docs/git-describe#Documentation/git-describe.txt---all)--all
 
-[](https://git-scm.com/docs/git-describe#Documentation/git-describe.txt---contains)--contains 
-    
-Instead of finding the tag that predates the commit, find the tag that comes after the commit, and thus contains it. Automatically implies --tags. 
+Instead of using only the annotated tags, use any ref found in `refs/` namespace. This option enables matching any known branch, remote-tracking branch, or lightweight tag.
 
-[](https://git-scm.com/docs/git-describe#Documentation/git-describe.txt---abbrevn)--abbrev=<n> 
-    
-Instead of using the default number of hexadecimal digits (which will vary according to the number of objects in the repository with a default of 7) of the abbreviated object name, use <n> digits, or as many digits as needed to form a unique object name. An <n> of 0 will suppress long format, only showing the closest tag. 
+[](https://git-scm.com/docs/git-describe#Documentation/git-describe.txt---tags)--tags
 
-[](https://git-scm.com/docs/git-describe#Documentation/git-describe.txt---candidatesn)--candidates=<n> 
-    
-Instead of considering only the 10 most recent tags as candidates to describe the input commit-ish consider up to <n> candidates. Increasing <n> above 10 will take slightly longer but may produce a more accurate result. An <n> of 0 will cause only exact matches to be output. 
+Instead of using only the annotated tags, use any tag found in `refs/tags` namespace. This option enables matching a lightweight (non-annotated) tag.
 
-[](https://git-scm.com/docs/git-describe#Documentation/git-describe.txt---exact-match)--exact-match 
-    
-Only output exact matches (a tag directly references the supplied commit). This is a synonym for --candidates=0. 
+[](https://git-scm.com/docs/git-describe#Documentation/git-describe.txt---contains)--contains
 
-[](https://git-scm.com/docs/git-describe#Documentation/git-describe.txt---debug)--debug 
-    
-Verbosely display information about the searching strategy being employed to standard error. The tag name will still be printed to standard out. 
+Instead of finding the tag that predates the commit, find the tag that comes after the commit, and thus contains it. Automatically implies --tags.
 
-[](https://git-scm.com/docs/git-describe#Documentation/git-describe.txt---long)--long 
-    
-Always output the long format (the tag, the number of commits and the abbreviated commit name) even when it matches a tag. This is useful when you want to see parts of the commit object name in "describe" output, even when the commit in question happens to be a tagged version. Instead of just emitting the tag name, it will describe such a commit as v1.2-0-gdeadbee (0th commit since tag v1.2 that points at object deadbee…​.). 
+[](https://git-scm.com/docs/git-describe#Documentation/git-describe.txt---abbrevn)--abbrev=<n>
 
-[](https://git-scm.com/docs/git-describe#Documentation/git-describe.txt---matchpattern)--match <pattern> 
-    
-Only consider tags matching the given `glob`(`7`) pattern, excluding the "refs/tags/" prefix. If used with `--all`, it also considers local branches and remote-tracking references matching the pattern, excluding respectively "refs/heads/" and "refs/remotes/" prefix; references of other types are never considered. If given multiple times, a list of patterns will be accumulated, and tags matching any of the patterns will be considered. Use `--no-match` to clear and reset the list of patterns. 
+Instead of using the default number of hexadecimal digits (which will vary according to the number of objects in the repository with a default of 7) of the abbreviated object name, use <n> digits, or as many digits as needed to form a unique object name. An <n> of 0 will suppress long format, only showing the closest tag.
 
-[](https://git-scm.com/docs/git-describe#Documentation/git-describe.txt---excludepattern)--exclude <pattern> 
-    
-Do not consider tags matching the given `glob`(`7`) pattern, excluding the "refs/tags/" prefix. If used with `--all`, it also does not consider local branches and remote-tracking references matching the pattern, excluding respectively "refs/heads/" and "refs/remotes/" prefix; references of other types are never considered. If given multiple times, a list of patterns will be accumulated and tags matching any of the patterns will be excluded. When combined with --match a tag will be considered when it matches at least one --match pattern and does not match any of the --exclude patterns. Use `--no-exclude` to clear and reset the list of patterns. 
+[](https://git-scm.com/docs/git-describe#Documentation/git-describe.txt---candidatesn)--candidates=<n>
 
-[](https://git-scm.com/docs/git-describe#Documentation/git-describe.txt---always)--always 
-    
-Show uniquely abbreviated commit object as fallback. 
+Instead of considering only the 10 most recent tags as candidates to describe the input commit-ish consider up to <n> candidates. Increasing <n> above 10 will take slightly longer but may produce a more accurate result. An <n> of 0 will cause only exact matches to be output.
 
-[](https://git-scm.com/docs/git-describe#Documentation/git-describe.txt---first-parent)--first-parent 
-    
+[](https://git-scm.com/docs/git-describe#Documentation/git-describe.txt---exact-match)--exact-match
+
+Only output exact matches (a tag directly references the supplied commit). This is a synonym for --candidates=0.
+
+[](https://git-scm.com/docs/git-describe#Documentation/git-describe.txt---debug)--debug
+
+Verbosely display information about the searching strategy being employed to standard error. The tag name will still be printed to standard out.
+
+[](https://git-scm.com/docs/git-describe#Documentation/git-describe.txt---long)--long
+
+Always output the long format (the tag, the number of commits and the abbreviated commit name) even when it matches a tag. This is useful when you want to see parts of the commit object name in "describe" output, even when the commit in question happens to be a tagged version. Instead of just emitting the tag name, it will describe such a commit as v1.2-0-gdeadbee (0th commit since tag v1.2 that points at object deadbee…​.).
+
+[](https://git-scm.com/docs/git-describe#Documentation/git-describe.txt---matchpattern)--match <pattern>
+
+Only consider tags matching the given `glob`(`7`) pattern, excluding the "refs/tags/" prefix. If used with `--all`, it also considers local branches and remote-tracking references matching the pattern, excluding respectively "refs/heads/" and "refs/remotes/" prefix; references of other types are never considered. If given multiple times, a list of patterns will be accumulated, and tags matching any of the patterns will be considered. Use `--no-match` to clear and reset the list of patterns.
+
+[](https://git-scm.com/docs/git-describe#Documentation/git-describe.txt---excludepattern)--exclude <pattern>
+
+Do not consider tags matching the given `glob`(`7`) pattern, excluding the "refs/tags/" prefix. If used with `--all`, it also does not consider local branches and remote-tracking references matching the pattern, excluding respectively "refs/heads/" and "refs/remotes/" prefix; references of other types are never considered. If given multiple times, a list of patterns will be accumulated and tags matching any of the patterns will be excluded. When combined with --match a tag will be considered when it matches at least one --match pattern and does not match any of the --exclude patterns. Use `--no-exclude` to clear and reset the list of patterns.
+
+[](https://git-scm.com/docs/git-describe#Documentation/git-describe.txt---always)--always
+
+Show uniquely abbreviated commit object as fallback.
+
+[](https://git-scm.com/docs/git-describe#Documentation/git-describe.txt---first-parent)--first-parent
+
 Follow only the first parent commit upon seeing a merge commit. This is useful when you wish to not match tags on branches merged in the history of the target commit.
 ##  [](https://git-scm.com/docs/git-describe#_examples)EXAMPLES
 With something like git.git current tree, I get:
@@ -318,6 +318,6 @@ Tree objects as well as tag objects not pointing at commits, cannot be described
 ##  [](https://git-scm.com/docs/git-describe#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### describe
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

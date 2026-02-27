@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-multi-pack-index#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-multi-pack-index#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-multi-pack-index#_description)
@@ -30,8 +30,8 @@
 Localized versions of **git-multi-pack-index** manual
   1. [English ](https://git-scm.com/docs/git-multi-pack-index)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-multi-pack-index)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -212,63 +212,63 @@ _git multi-pack-index_ [--object-dir=<dir>] [--[no-]bitmap] <sub-command>
 
 ##  [](https://git-scm.com/docs/git-multi-pack-index#_description)DESCRIPTION
 Write or verify a multi-pack-index (MIDX) file.
-##  [](https://git-scm.com/docs/git-multi-pack-index#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-multi-pack-index#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-multi-pack-index#Documentation/git-multi-pack-index.txt---object-dirdir)--object-dir=<dir> 
-    
+[](https://git-scm.com/docs/git-multi-pack-index#Documentation/git-multi-pack-index.txt---object-dirdir)--object-dir=<dir>
+
 Use given directory for the location of Git objects. We check _< dir>_`/packs/multi-pack-index` for the current MIDX file, and _< dir>_`/packs` for the pack-files to index.
-_< dir>_ must be an alternate of the current repository. 
+_< dir>_ must be an alternate of the current repository.
 
-[](https://git-scm.com/docs/git-multi-pack-index#Documentation/git-multi-pack-index.txt---progress)--progress 
+[](https://git-scm.com/docs/git-multi-pack-index#Documentation/git-multi-pack-index.txt---progress)--progress
 
 
-[](https://git-scm.com/docs/git-multi-pack-index#Documentation/git-multi-pack-index.txt---no-progress)--no-progress 
-    
+[](https://git-scm.com/docs/git-multi-pack-index#Documentation/git-multi-pack-index.txt---no-progress)--no-progress
+
 Turn progress on/off explicitly. If neither is specified, progress is shown if standard error is connected to a terminal. Supported by sub-commands `write`, `verify`, `expire`, and `repack`.
-The following subcommands are available: 
+The following subcommands are available:
 
-[](https://git-scm.com/docs/git-multi-pack-index#Documentation/git-multi-pack-index.txt-write)write 
-    
-Write a new MIDX file. The following options are available for the `write` sub-command: 
+[](https://git-scm.com/docs/git-multi-pack-index#Documentation/git-multi-pack-index.txt-write)write
 
-[](https://git-scm.com/docs/git-multi-pack-index#Documentation/git-multi-pack-index.txt---preferred-packpack)--preferred-pack=<pack> 
-    
-When specified, break ties in favor of this pack when there are additional copies of its objects in other packs. Ties for objects not found in the preferred pack are always resolved in favor of the copy in the pack with the highest mtime. If unspecified, the pack with the lowest mtime is used by default. The preferred pack must have at least one object. 
+Write a new MIDX file. The following options are available for the `write` sub-command:
 
-[](https://git-scm.com/docs/git-multi-pack-index#Documentation/git-multi-pack-index.txt---no-bitmap)--[no-]bitmap 
-    
-Control whether or not a multi-pack bitmap is written. 
+[](https://git-scm.com/docs/git-multi-pack-index#Documentation/git-multi-pack-index.txt---preferred-packpack)--preferred-pack=<pack>
 
-[](https://git-scm.com/docs/git-multi-pack-index#Documentation/git-multi-pack-index.txt---stdin-packs)--stdin-packs 
-    
-Write a multi-pack index containing only the set of line-delimited pack index basenames provided over stdin. 
+When specified, break ties in favor of this pack when there are additional copies of its objects in other packs. Ties for objects not found in the preferred pack are always resolved in favor of the copy in the pack with the highest mtime. If unspecified, the pack with the lowest mtime is used by default. The preferred pack must have at least one object.
 
-[](https://git-scm.com/docs/git-multi-pack-index#Documentation/git-multi-pack-index.txt---refs-snapshotpath)--refs-snapshot=<path> 
-    
+[](https://git-scm.com/docs/git-multi-pack-index#Documentation/git-multi-pack-index.txt---no-bitmap)--[no-]bitmap
+
+Control whether or not a multi-pack bitmap is written.
+
+[](https://git-scm.com/docs/git-multi-pack-index#Documentation/git-multi-pack-index.txt---stdin-packs)--stdin-packs
+
+Write a multi-pack index containing only the set of line-delimited pack index basenames provided over stdin.
+
+[](https://git-scm.com/docs/git-multi-pack-index#Documentation/git-multi-pack-index.txt---refs-snapshotpath)--refs-snapshot=<path>
+
 With `--bitmap`, optionally specify a file which contains a "refs snapshot" taken prior to repacking.
 A reference snapshot is composed of line-delimited OIDs corresponding to the reference tips, usually taken by `git` `repack` prior to generating a new pack. A line may optionally start with a `+` character to indicate that the reference which corresponds to that OID is "preferred" (see [git-config[1]](https://git-scm.com/docs/git-config)'s `pack.preferBitmapTips`.)
-The file given at _< path>_ is expected to be readable, and can contain duplicates. (If a given OID is given more than once, it is marked as preferred if at least one instance of it begins with the special `+` marker). 
+The file given at _< path>_ is expected to be readable, and can contain duplicates. (If a given OID is given more than once, it is marked as preferred if at least one instance of it begins with the special `+` marker).
 
-[](https://git-scm.com/docs/git-multi-pack-index#Documentation/git-multi-pack-index.txt---incremental)--incremental 
-    
-Write an incremental MIDX file containing only objects and packs not present in an existing MIDX layer. Migrates non-incremental MIDXs to incremental ones when necessary. Incompatible with `--bitmap`. 
+[](https://git-scm.com/docs/git-multi-pack-index#Documentation/git-multi-pack-index.txt---incremental)--incremental
 
-[](https://git-scm.com/docs/git-multi-pack-index#Documentation/git-multi-pack-index.txt-verify)verify 
-    
-Verify the contents of the MIDX file. 
+Write an incremental MIDX file containing only objects and packs not present in an existing MIDX layer. Migrates non-incremental MIDXs to incremental ones when necessary. Incompatible with `--bitmap`.
 
-[](https://git-scm.com/docs/git-multi-pack-index#Documentation/git-multi-pack-index.txt-expire)expire 
-    
+[](https://git-scm.com/docs/git-multi-pack-index#Documentation/git-multi-pack-index.txt-verify)verify
+
+Verify the contents of the MIDX file.
+
+[](https://git-scm.com/docs/git-multi-pack-index#Documentation/git-multi-pack-index.txt-expire)expire
+
 Delete the pack-files that are tracked by the MIDX file, but have no objects referenced by the MIDX (with the exception of `.keep` packs and cruft packs). Rewrite the MIDX file afterward to remove all references to these pack-files.
-Note |  this mode is incompatible with incremental MIDX files.   
----|--- 
+Note |  this mode is incompatible with incremental MIDX files.
+---|---
 
-[](https://git-scm.com/docs/git-multi-pack-index#Documentation/git-multi-pack-index.txt-repack)repack 
-      
+[](https://git-scm.com/docs/git-multi-pack-index#Documentation/git-multi-pack-index.txt-repack)repack
+
 Create a new pack-file containing objects in small pack-files referenced by the multi-pack-index. If the size given by the `--batch-size=`_< size>_ argument is zero, then create a pack containing all objects referenced by the multi-pack-index. For a non-zero batch size, Select the pack-files by examining packs from oldest-to-newest, computing the "expected size" by counting the number of objects in the pack referenced by the multi-pack-index, then divide by the total number of objects in the pack and multiply by the pack size. We select packs with expected size below the batch size until the set of packs have total expected size at least the batch size, or all pack-files are considered. If only one pack-file is selected, then do nothing. If a new pack-file is created, rewrite the multi-pack-index to reference the new pack-file. A later run of _git multi-pack-index expire_ will delete the pack-files that were part of this batch.
 If `repack.packKeptObjects` is `false`, then any pack-files with an associated `.keep` file will not be selected for the batch to repack.
-Note |  this mode is incompatible with incremental MIDX files.   
----|---  
+Note |  this mode is incompatible with incremental MIDX files.
+---|---
 ##  [](https://git-scm.com/docs/git-multi-pack-index#_examples)EXAMPLES
   * Write a MIDX file for the packfiles in the current `.git` directory.
 ```
@@ -297,6 +297,6 @@ See [The Multi-Pack-Index Design Document](https://git-scm.com/docs/multi-pack-i
 ##  [](https://git-scm.com/docs/git-multi-pack-index#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### multi-pack-index
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

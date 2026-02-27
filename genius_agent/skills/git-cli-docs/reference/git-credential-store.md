@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-credential-store#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-credential-store#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-credential-store#_description)
@@ -35,8 +35,8 @@ Localized versions of **git-credential-store** manual
   4. [українська мова ](https://git-scm.com/docs/git-credential-store/uk)
   5. [简体中文 ](https://git-scm.com/docs/git-credential-store/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-credential-store)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -203,24 +203,24 @@ git config credential.helper 'store [<options>]'
 ```
 
 ##  [](https://git-scm.com/docs/git-credential-store#_description)DESCRIPTION
-Note |  Using this helper will store your passwords unencrypted on disk, protected only by filesystem permissions. If this is not an acceptable security tradeoff, try [git-credential-cache[1]](https://git-scm.com/docs/git-credential-cache), or find a helper that integrates with secure storage provided by your operating system.   
----|---  
+Note |  Using this helper will store your passwords unencrypted on disk, protected only by filesystem permissions. If this is not an acceptable security tradeoff, try [git-credential-cache[1]](https://git-scm.com/docs/git-credential-cache), or find a helper that integrates with secure storage provided by your operating system.
+---|---
 This command stores credentials indefinitely on disk for use by future Git programs.
 You probably don’t want to invoke this command directly; it is meant to be used as a credential helper by other parts of git. See [gitcredentials[7]](https://git-scm.com/docs/gitcredentials) or `EXAMPLES` below.
-##  [](https://git-scm.com/docs/git-credential-store#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-credential-store#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-credential-store#Documentation/git-credential-store.txt---filepath)--file=<path> 
-    
+[](https://git-scm.com/docs/git-credential-store#Documentation/git-credential-store.txt---filepath)--file=<path>
+
 Use _< path>_ to lookup and store credentials. The file will have its filesystem permissions set to prevent other users on the system from reading it, but it will not be encrypted or otherwise protected. If not specified, credentials will be searched for from `~/.git-credentials` and `$XDG_CONFIG_HOME/git/credentials`, and credentials will be written to `~/.git-credentials` if it exists, or `$XDG_CONFIG_HOME/git/credentials` if it exists and the former does not. See also [FILES](https://git-scm.com/docs/git-credential-store#FILES).
 ##  [](https://git-scm.com/docs/git-credential-store#FILES)FILES
-If not set explicitly with `--file`, there are two files where git-credential-store will search for credentials in order of precedence: 
+If not set explicitly with `--file`, there are two files where git-credential-store will search for credentials in order of precedence:
 
-[](https://git-scm.com/docs/git-credential-store#Documentation/git-credential-store.txt-git-credentials)~/.git-credentials 
-    
-User-specific credentials file. 
+[](https://git-scm.com/docs/git-credential-store#Documentation/git-credential-store.txt-git-credentials)~/.git-credentials
 
-[](https://git-scm.com/docs/git-credential-store#Documentation/git-credential-store.txt-XDGCONFIGHOMEgitcredentials)$XDG_CONFIG_HOME/git/credentials 
-    
+User-specific credentials file.
+
+[](https://git-scm.com/docs/git-credential-store#Documentation/git-credential-store.txt-XDGCONFIGHOMEgitcredentials)$XDG_CONFIG_HOME/git/credentials
+
 Second user-specific credentials file. If _$XDG_CONFIG_HOME_ is not set or empty, `$HOME/.config/git/credentials` will be used. Any credentials stored in this file will not be used if `~/.git-credentials` has a matching credential as well. It is a good idea not to create this file if you sometimes use older versions of Git that do not support it.
 For credential lookups, the files are read in the order given above, with the first matching credential found taking precedence over credentials found in files further down the list.
 Credential storage will by default write to the first existing file in the list. If none of these files exist, `~/.git-credentials` will be created and written to.
@@ -249,6 +249,6 @@ When Git needs authentication for a particular URL context, credential-store wil
 ##  [](https://git-scm.com/docs/git-credential-store#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### credential-store
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

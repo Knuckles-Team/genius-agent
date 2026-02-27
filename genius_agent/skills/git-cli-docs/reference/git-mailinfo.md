@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-mailinfo#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-mailinfo#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-mailinfo#_description)
@@ -33,8 +33,8 @@ Localized versions of **git-mailinfo** manual
   4. [українська мова ](https://git-scm.com/docs/git-mailinfo/uk)
   5. [简体中文 ](https://git-scm.com/docs/git-mailinfo/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-mailinfo)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -207,10 +207,10 @@ _git mailinfo_ [-k|-b] [-u | --encoding=<encoding> | -n]
 
 ##  [](https://git-scm.com/docs/git-mailinfo#_description)DESCRIPTION
 Reads a single e-mail message from the standard input, and writes the commit log message in <msg> file, and the patches in <patch> file. The author name, e-mail and e-mail subject are written out to the standard output to be used by _git am_ to create a commit. It is usually not necessary to use this command directly. See [git-am[1]](https://git-scm.com/docs/git-am) instead.
-##  [](https://git-scm.com/docs/git-mailinfo#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-mailinfo#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-mailinfo#Documentation/git-mailinfo.txt--k)-k 
-    
+[](https://git-scm.com/docs/git-mailinfo#Documentation/git-mailinfo.txt--k)-k
+
 Usually the program removes email cruft from the Subject: header line to extract the title line for the commit log message. This option prevents this munging, and is most useful when used to read back _git format-patch -k_ output.
 Specifically, the following are removed until none of them remain:
   * Leading and trailing whitespace.
@@ -218,44 +218,44 @@ Specifically, the following are removed until none of them remain:
   * Leading bracketed strings (between [ and ], usually [`PATCH`]).
 
 
-Finally, runs of whitespace are normalized to a single ASCII space character. 
+Finally, runs of whitespace are normalized to a single ASCII space character.
 
-[](https://git-scm.com/docs/git-mailinfo#Documentation/git-mailinfo.txt--b)-b 
-    
-When -k is not in effect, all leading strings bracketed with _[_ and _]_ pairs are stripped. This option limits the stripping to only the pairs whose bracketed string contains the word "PATCH". 
+[](https://git-scm.com/docs/git-mailinfo#Documentation/git-mailinfo.txt--b)-b
 
-[](https://git-scm.com/docs/git-mailinfo#Documentation/git-mailinfo.txt--u)-u 
-    
+When -k is not in effect, all leading strings bracketed with _[_ and _]_ pairs are stripped. This option limits the stripping to only the pairs whose bracketed string contains the word "PATCH".
+
+[](https://git-scm.com/docs/git-mailinfo#Documentation/git-mailinfo.txt--u)-u
+
 The commit log message, author name and author email are taken from the e-mail, and after minimally decoding MIME transfer encoding, re-coded in the charset specified by `i18n.commitEncoding` (defaulting to UTF-8) by transliterating them. This used to be optional but now it is the default.
-Note that the patch is always used as-is without charset conversion, even with this flag. 
+Note that the patch is always used as-is without charset conversion, even with this flag.
 
-[](https://git-scm.com/docs/git-mailinfo#Documentation/git-mailinfo.txt---encodingencoding)--encoding=<encoding> 
-    
-Similar to -u. But when re-coding, the charset specified here is used instead of the one specified by `i18n.commitEncoding` or UTF-8. 
+[](https://git-scm.com/docs/git-mailinfo#Documentation/git-mailinfo.txt---encodingencoding)--encoding=<encoding>
 
-[](https://git-scm.com/docs/git-mailinfo#Documentation/git-mailinfo.txt--n)-n 
-    
-Disable all charset re-coding of the metadata. 
+Similar to -u. But when re-coding, the charset specified here is used instead of the one specified by `i18n.commitEncoding` or UTF-8.
 
-[](https://git-scm.com/docs/git-mailinfo#Documentation/git-mailinfo.txt--m)-m 
+[](https://git-scm.com/docs/git-mailinfo#Documentation/git-mailinfo.txt--n)-n
+
+Disable all charset re-coding of the metadata.
+
+[](https://git-scm.com/docs/git-mailinfo#Documentation/git-mailinfo.txt--m)-m
 
 
-[](https://git-scm.com/docs/git-mailinfo#Documentation/git-mailinfo.txt---message-id)--message-id 
-    
-Copy the Message-ID header at the end of the commit message. This is useful in order to associate commits with mailing list discussions. 
+[](https://git-scm.com/docs/git-mailinfo#Documentation/git-mailinfo.txt---message-id)--message-id
 
-[](https://git-scm.com/docs/git-mailinfo#Documentation/git-mailinfo.txt---scissors)--scissors 
-    
+Copy the Message-ID header at the end of the commit message. This is useful in order to associate commits with mailing list discussions.
+
+[](https://git-scm.com/docs/git-mailinfo#Documentation/git-mailinfo.txt---scissors)--scissors
+
 Remove everything in body before a scissors line (e.g. "-- >8 --"). The line represents scissors and perforation marks, and is used to request the reader to cut the message at that line. If that line appears in the body of the message before the patch, everything before it (including the scissors line itself) is ignored when this option is used.
 This is useful if you want to begin your message in a discussion thread with comments and suggestions on the message you are responding to, and to conclude it with a patch submission, separating the discussion and the beginning of the proposed commit log message with a scissors line.
-This can be enabled by default with the configuration option mailinfo.scissors. 
+This can be enabled by default with the configuration option mailinfo.scissors.
 
-[](https://git-scm.com/docs/git-mailinfo#Documentation/git-mailinfo.txt---no-scissors)--no-scissors 
-    
-Ignore scissors lines. Useful for overriding mailinfo.scissors settings. 
+[](https://git-scm.com/docs/git-mailinfo#Documentation/git-mailinfo.txt---no-scissors)--no-scissors
 
-[](https://git-scm.com/docs/git-mailinfo#Documentation/git-mailinfo.txt---quoted-craction)--quoted-cr=<action> 
-    
+Ignore scissors lines. Useful for overriding mailinfo.scissors settings.
+
+[](https://git-scm.com/docs/git-mailinfo#Documentation/git-mailinfo.txt---quoted-craction)--quoted-cr=<action>
+
 Action when processes email messages sent with base64 or quoted-printable encoding, and the decoded lines end with a CRLF instead of a simple LF.
 The valid actions are:
   * `nowarn`: Git will do nothing when such a CRLF is found.
@@ -263,24 +263,24 @@ The valid actions are:
   * `strip`: Git will convert those CRLF to LF.
 
 
-The default action could be set by configuration option `mailinfo.quotedCR`. If no such configuration option has been set, `warn` will be used. 
+The default action could be set by configuration option `mailinfo.quotedCR`. If no such configuration option has been set, `warn` will be used.
 
-[](https://git-scm.com/docs/git-mailinfo#Documentation/git-mailinfo.txt-msg)<msg> 
-    
-The commit log message extracted from e-mail, usually except the title line which comes from e-mail Subject. 
+[](https://git-scm.com/docs/git-mailinfo#Documentation/git-mailinfo.txt-msg)<msg>
 
-[](https://git-scm.com/docs/git-mailinfo#Documentation/git-mailinfo.txt-patch)<patch> 
-    
+The commit log message extracted from e-mail, usually except the title line which comes from e-mail Subject.
+
+[](https://git-scm.com/docs/git-mailinfo#Documentation/git-mailinfo.txt-patch)<patch>
+
 The patch extracted from e-mail.
 ##  [](https://git-scm.com/docs/git-mailinfo#_configuration)CONFIGURATION
-Everything below this line in this section is selectively included from the [git-config[1]](https://git-scm.com/docs/git-config) documentation. The content is the same as what’s found there: 
+Everything below this line in this section is selectively included from the [git-config[1]](https://git-scm.com/docs/git-config) documentation. The content is the same as what’s found there:
 
-[](https://git-scm.com/docs/git-mailinfo#Documentation/git-mailinfo.txt-mailinfoscissors)mailinfo.scissors 
-    
+[](https://git-scm.com/docs/git-mailinfo#Documentation/git-mailinfo.txt-mailinfoscissors)mailinfo.scissors
+
 If true, makes [git-mailinfo[1]](https://git-scm.com/docs/git-mailinfo) (and therefore [git-am[1]](https://git-scm.com/docs/git-am)) act by default as if the --scissors option was provided on the command-line. When active, this feature removes everything from the message body before a scissors line (i.e. consisting mainly of ">8", "8<" and "-").
 ##  [](https://git-scm.com/docs/git-mailinfo#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### mailinfo
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

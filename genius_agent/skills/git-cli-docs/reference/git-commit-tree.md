@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-commit-tree#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-commit-tree#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-commit-tree#_description)
@@ -38,8 +38,8 @@ Localized versions of **git-commit-tree** manual
   5. [українська мова ](https://git-scm.com/docs/git-commit-tree/uk)
   6. [简体中文 ](https://git-scm.com/docs/git-commit-tree/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-commit-tree)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -229,32 +229,32 @@ The `-m` and `-F` options can be given any number of times, in any order. The co
 A commit object may have any number of parents. With exactly one parent, it is an ordinary commit. Having more than one parent makes the commit a merge between several lines of history. Initial (root) commits have no parents.
 While a tree represents a particular directory state of a working directory, a commit represents that state in "time", and explains how to get there.
 Normally a commit would identify a new "HEAD" state, and while Git doesn’t care where you save the note about that state, in practice we tend to just write the result to the file that is pointed at by `.git/HEAD`, so that we can always see what the last committed state was.
-##  [](https://git-scm.com/docs/git-commit-tree#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-commit-tree#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-commit-tree#Documentation/git-commit-tree.txt-tree)<tree> 
-    
-An existing tree object. 
+[](https://git-scm.com/docs/git-commit-tree#Documentation/git-commit-tree.txt-tree)<tree>
 
-[](https://git-scm.com/docs/git-commit-tree#Documentation/git-commit-tree.txt--pparent)-p <parent> 
-    
-Each `-p` indicates the id of a parent commit object. 
+An existing tree object.
 
-[](https://git-scm.com/docs/git-commit-tree#Documentation/git-commit-tree.txt--mmessage)-m <message> 
-    
-A paragraph in the commit log message. This can be given more than once and each <message> becomes its own paragraph. 
+[](https://git-scm.com/docs/git-commit-tree#Documentation/git-commit-tree.txt--pparent)-p <parent>
 
-[](https://git-scm.com/docs/git-commit-tree#Documentation/git-commit-tree.txt--Ffile)-F <file> 
-    
-Read the commit log message from the given file. Use `-` to read from the standard input. This can be given more than once and the content of each file becomes its own paragraph. 
+Each `-p` indicates the id of a parent commit object.
 
-[](https://git-scm.com/docs/git-commit-tree#Documentation/git-commit-tree.txt--Skeyid)-S[<keyid>] 
+[](https://git-scm.com/docs/git-commit-tree#Documentation/git-commit-tree.txt--mmessage)-m <message>
 
+A paragraph in the commit log message. This can be given more than once and each <message> becomes its own paragraph.
 
-[](https://git-scm.com/docs/git-commit-tree#Documentation/git-commit-tree.txt---gpg-signkeyid)--gpg-sign[=<keyid>] 
+[](https://git-scm.com/docs/git-commit-tree#Documentation/git-commit-tree.txt--Ffile)-F <file>
+
+Read the commit log message from the given file. Use `-` to read from the standard input. This can be given more than once and the content of each file becomes its own paragraph.
+
+[](https://git-scm.com/docs/git-commit-tree#Documentation/git-commit-tree.txt--Skeyid)-S[<keyid>]
 
 
-[](https://git-scm.com/docs/git-commit-tree#Documentation/git-commit-tree.txt---no-gpg-sign)--no-gpg-sign 
-    
+[](https://git-scm.com/docs/git-commit-tree#Documentation/git-commit-tree.txt---gpg-signkeyid)--gpg-sign[=<keyid>]
+
+
+[](https://git-scm.com/docs/git-commit-tree#Documentation/git-commit-tree.txt---no-gpg-sign)--no-gpg-sign
+
 GPG-sign commits. The `keyid` argument is optional and defaults to the committer identity; if specified, it must be stuck to the option without a space. `--no-gpg-sign` is useful to countermand a `--gpg-sign` option given earlier on the command line.
 ##  [](https://git-scm.com/docs/git-commit-tree#_commit_information)Commit Information
 A commit encapsulates:
@@ -265,21 +265,21 @@ A commit encapsulates:
 
 A commit comment is read from stdin. If a changelog entry is not provided via "<" redirection, _git commit-tree_ will just wait for one to be entered and terminated with ^D.
 ##  [](https://git-scm.com/docs/git-commit-tree#_date_formats)DATE FORMATS
-The `GIT_AUTHOR_DATE` and `GIT_COMMITTER_DATE` environment variables support the following date formats: 
+The `GIT_AUTHOR_DATE` and `GIT_COMMITTER_DATE` environment variables support the following date formats:
 
-[](https://git-scm.com/docs/git-commit-tree#Documentation/git-commit-tree.txt-Gitinternalformat)Git internal format 
-    
-It is _< unix-timestamp>_ _< time-zone-offset>_, where _< unix-timestamp>_ is the number of seconds since the UNIX epoch. _< time-zone-offset>_ is a positive or negative offset from UTC. For example CET (which is 1 hour ahead of UTC) is `+0100`. 
+[](https://git-scm.com/docs/git-commit-tree#Documentation/git-commit-tree.txt-Gitinternalformat)Git internal format
 
-[](https://git-scm.com/docs/git-commit-tree#Documentation/git-commit-tree.txt-RFC2822)RFC 2822 
-    
-The standard date format as described by RFC 2822, for example `Thu,` `07` `Apr` `2005` `22:13:13` `+0200`. 
+It is _< unix-timestamp>_ _< time-zone-offset>_, where _< unix-timestamp>_ is the number of seconds since the UNIX epoch. _< time-zone-offset>_ is a positive or negative offset from UTC. For example CET (which is 1 hour ahead of UTC) is `+0100`.
 
-[](https://git-scm.com/docs/git-commit-tree#Documentation/git-commit-tree.txt-ISO8601)ISO 8601 
-    
+[](https://git-scm.com/docs/git-commit-tree#Documentation/git-commit-tree.txt-RFC2822)RFC 2822
+
+The standard date format as described by RFC 2822, for example `Thu,` `07` `Apr` `2005` `22:13:13` `+0200`.
+
+[](https://git-scm.com/docs/git-commit-tree#Documentation/git-commit-tree.txt-ISO8601)ISO 8601
+
 Time and date specified by the ISO 8601 standard, for example `2005-04-07T22:13:13`. The parser accepts a space instead of the `T` character as well. Fractional parts of a second will be ignored, for example `2005-04-07T22:13:13.019` will be treated as `2005-04-07T22:13:13`.
-Note |  In addition, the date part is accepted in the following formats: `YYYY.MM.DD`, `MM/DD/YYYY` and `DD.MM.YYYY`.   
----|---  
+Note |  In addition, the date part is accepted in the following formats: `YYYY.MM.DD`, `MM/DD/YYYY` and `DD.MM.YYYY`.
+---|---
 ##  [](https://git-scm.com/docs/git-commit-tree#_discussion)Discussion
 Git is to some extent character encoding agnostic.
   * The contents of the blob objects are uninterpreted sequences of bytes. There is no encoding translation at the core level.
@@ -313,6 +313,6 @@ Note that we deliberately chose not to re-code the commit log message when a com
 ##  [](https://git-scm.com/docs/git-commit-tree#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### commit-tree
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

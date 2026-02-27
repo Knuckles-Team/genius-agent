@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-for-each-repo#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-for-each-repo#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-for-each-repo#_description)
@@ -29,8 +29,8 @@
 Localized versions of **git-for-each-repo** manual
   1. [English ](https://git-scm.com/docs/git-for-each-repo)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-for-each-repo)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -196,15 +196,15 @@ git for-each-repo --config=maintenance.repo maintenance run
 ```
 
 This will run `git` `-C` _< repo>_ `maintenance` `run` for each value _< repo>_ in the multi-valued config variable `maintenance.repo`.
-##  [](https://git-scm.com/docs/git-for-each-repo#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-for-each-repo#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-for-each-repo#Documentation/git-for-each-repo.txt---configconfig)--config=<config> 
-    
+[](https://git-scm.com/docs/git-for-each-repo#Documentation/git-for-each-repo.txt---configconfig)--config=<config>
+
 Use the given config variable as a multi-valued list storing absolute path names. Iterate on that list of paths to run the given arguments.
-These config values are loaded from system, global, and local Git config, as available. If `git` `for-each-repo` is run in a directory that is not a Git repository, then only the system and global config is used. 
+These config values are loaded from system, global, and local Git config, as available. If `git` `for-each-repo` is run in a directory that is not a Git repository, then only the system and global config is used.
 
-[](https://git-scm.com/docs/git-for-each-repo#Documentation/git-for-each-repo.txt---keep-going)--keep-going 
-    
+[](https://git-scm.com/docs/git-for-each-repo#Documentation/git-for-each-repo.txt---keep-going)--keep-going
+
 Continue with the remaining repositories if the command failed on a repository. The exit code will still indicate that the overall operation was not successful.
 Note that the exact exit code of the failing command is not passed through as the exit code of the `for-each-repo` command: If the command failed in any of the specified repositories, the overall exit code will be 1.
 ##  [](https://git-scm.com/docs/git-for-each-repo#_subprocess_behavior)SUBPROCESS BEHAVIOR
@@ -213,6 +213,6 @@ Each `git` `-C` _< repo>_ _< arguments>_ subprocess inherits the standard file d
 ##  [](https://git-scm.com/docs/git-for-each-repo#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### for-each-repo
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

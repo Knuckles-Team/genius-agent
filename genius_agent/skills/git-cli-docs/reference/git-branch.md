@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-branch#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-branch#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-branch#_description)
@@ -38,8 +38,8 @@ Localized versions of **git-branch** manual
   6. [українська мова ](https://git-scm.com/docs/git-branch/uk)
   7. [简体中文 ](https://git-scm.com/docs/git-branch/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-branch)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -281,295 +281,295 @@ With a `-m` or `-M` option, _< old-branch>_ will be renamed to _< new-branch>_. 
 The `-c` and `-C` options have the exact same semantics as `-m` and `-M`, except instead of the branch being renamed, it will be copied to a new name, along with its config and reflog.
 With a `-d` or `-D` option, _< branch-name>_ will be deleted. You may specify more than one branch for deletion. If the branch currently has a reflog then the reflog will also be deleted.
 Use `-r` together with `-d` to delete remote-tracking branches. Note, that it only makes sense to delete remote-tracking branches if they no longer exist in the remote repository or if `git` `fetch` was configured not to fetch them again. See also the `prune` subcommand of [git-remote[1]](https://git-scm.com/docs/git-remote) for a way to clean up all obsolete remote-tracking branches.
-##  [](https://git-scm.com/docs/git-branch#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-branch#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt--d)`-d` 
-
-
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---delete)`--delete` 
-    
-Delete a branch. The branch must be fully merged in its upstream branch, or in `HEAD` if no upstream was set with `--track` or `--set-upstream-to`. 
-
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt--D)`-D` 
-    
-Shortcut for `--delete` `--force`. 
-
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---create-reflog)`--create-reflog` 
-    
-Create the branch’s reflog. This activates recording of all changes made to the branch ref, enabling use of date based sha1 expressions such as _< branch-name>_`@{yesterday}`. Note that in non-bare repositories, reflogs are usually enabled by default by the `core.logAllRefUpdates` config option. The negated form `--no-create-reflog` only overrides an earlier `--create-reflog`, but currently does not negate the setting of `core.logAllRefUpdates`. 
-
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt--f)`-f` 
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt--d)`-d`
 
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---force)`--force` 
-    
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---delete)`--delete`
+
+Delete a branch. The branch must be fully merged in its upstream branch, or in `HEAD` if no upstream was set with `--track` or `--set-upstream-to`.
+
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt--D)`-D`
+
+Shortcut for `--delete` `--force`.
+
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---create-reflog)`--create-reflog`
+
+Create the branch’s reflog. This activates recording of all changes made to the branch ref, enabling use of date based sha1 expressions such as _< branch-name>_`@{yesterday}`. Note that in non-bare repositories, reflogs are usually enabled by default by the `core.logAllRefUpdates` config option. The negated form `--no-create-reflog` only overrides an earlier `--create-reflog`, but currently does not negate the setting of `core.logAllRefUpdates`.
+
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt--f)`-f`
+
+
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---force)`--force`
+
 Reset _< branch-name>_ to _< start-point>_, even if _< branch-name>_ exists already. Without `-f`, `git` `branch` refuses to change an existing branch. In combination with `-d` (or `--delete`), allow deleting the branch irrespective of its merged status, or whether it even points to a valid commit. In combination with `-m` (or `--move`), allow renaming the branch even if the new branch name already exists, the same applies for `-c` (or `--copy`).
-Note that `git` `branch` `-f` _< branch-name>_ [_< start-point>_], even with `-f`, refuses to change an existing branch _< branch-name>_ that is checked out in another worktree linked to the same repository. 
+Note that `git` `branch` `-f` _< branch-name>_ [_< start-point>_], even with `-f`, refuses to change an existing branch _< branch-name>_ that is checked out in another worktree linked to the same repository.
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt--m)`-m` 
-
-
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---move)`--move` 
-    
-Move/rename a branch, together with its config and reflog. 
-
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt--M)`-M` 
-    
-Shortcut for `--move` `--force`. 
-
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt--c)`-c` 
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt--m)`-m`
 
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---copy)`--copy` 
-    
-Copy a branch, together with its config and reflog. 
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---move)`--move`
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt--C)`-C` 
-    
-Shortcut for `--copy` `--force`. 
+Move/rename a branch, together with its config and reflog.
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---colorwhen)`--color`[`=`_< when>_] 
-    
-Color branches to highlight current, local, and remote-tracking branches. The value must be `always` (the default), `never`, or `auto`. 
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt--M)`-M`
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---no-color)`--no-color` 
-    
-Turn off branch colors, even when the configuration file gives the default to color output. Same as `--color=never`. 
+Shortcut for `--move` `--force`.
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt--i)`-i` 
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt--c)`-c`
 
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---ignore-case)`--ignore-case` 
-    
-Sorting and filtering branches are case insensitive. 
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---copy)`--copy`
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---omit-empty)`--omit-empty` 
-    
-Do not print a newline after formatted refs where the format expands to the empty string. 
+Copy a branch, together with its config and reflog.
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---columnoptions)`--column`[`=`_< options>_] 
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt--C)`-C`
+
+Shortcut for `--copy` `--force`.
+
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---colorwhen)`--color`[`=`_< when>_]
+
+Color branches to highlight current, local, and remote-tracking branches. The value must be `always` (the default), `never`, or `auto`.
+
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---no-color)`--no-color`
+
+Turn off branch colors, even when the configuration file gives the default to color output. Same as `--color=never`.
+
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt--i)`-i`
 
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---no-column)`--no-column` 
-    
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---ignore-case)`--ignore-case`
+
+Sorting and filtering branches are case insensitive.
+
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---omit-empty)`--omit-empty`
+
+Do not print a newline after formatted refs where the format expands to the empty string.
+
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---columnoptions)`--column`[`=`_< options>_]
+
+
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---no-column)`--no-column`
+
 Display branch listing in columns. See configuration variable `column.branch` for option syntax. `--column` and `--no-column` without options are equivalent to `always` and `never` respectively.
-This option is only applicable in non-verbose mode. 
+This option is only applicable in non-verbose mode.
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---sortkey)`--sort=`_< key>_ 
-    
-Sort based on _< key>_. Prefix `-` to sort in descending order of the value. You may use the `--sort=`_< key>_ option multiple times, in which case the last key becomes the primary key. The keys supported are the same as those in [git-for-each-ref[1]](https://git-scm.com/docs/git-for-each-ref). Sort order defaults to the value configured for the `branch.sort` variable if it exists, or to sorting based on the full refname (including `refs/...` prefix). This lists detached `HEAD` (if present) first, then local branches and finally remote-tracking branches. See [git-config[1]](https://git-scm.com/docs/git-config). 
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---sortkey)`--sort=`_< key>_
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt--r)`-r` 
+Sort based on _< key>_. Prefix `-` to sort in descending order of the value. You may use the `--sort=`_< key>_ option multiple times, in which case the last key becomes the primary key. The keys supported are the same as those in [git-for-each-ref[1]](https://git-scm.com/docs/git-for-each-ref). Sort order defaults to the value configured for the `branch.sort` variable if it exists, or to sorting based on the full refname (including `refs/...` prefix). This lists detached `HEAD` (if present) first, then local branches and finally remote-tracking branches. See [git-config[1]](https://git-scm.com/docs/git-config).
 
-
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---remotes)`--remotes` 
-    
-List or delete (if used with `-d`) the remote-tracking branches. Combine with `--list` to match the optional pattern(s). 
-
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt--a)`-a` 
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt--r)`-r`
 
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---all)`--all` 
-    
-List both remote-tracking branches and local branches. Combine with `--list` to match optional pattern(s). 
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---remotes)`--remotes`
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt--l)`-l` 
+List or delete (if used with `-d`) the remote-tracking branches. Combine with `--list` to match the optional pattern(s).
 
-
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---list)`--list` 
-    
-List branches. With optional _< pattern>_..., e.g. `git` `branch` `--list` `maint-*'`, list only the branches that match the pattern(s). 
-
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---show-current)`--show-current` 
-    
-Print the name of the current branch. In detached `HEAD` state, nothing is printed. 
-
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt--v)`-v` 
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt--a)`-a`
 
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt--vv)`-vv` 
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---all)`--all`
+
+List both remote-tracking branches and local branches. Combine with `--list` to match optional pattern(s).
+
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt--l)`-l`
 
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---verbose)`--verbose` 
-    
-When in list mode, show sha1 and commit subject line for each head, along with relationship to upstream branch (if any). If given twice, print the path of the linked worktree (if any) and the name of the upstream branch, as well (see also `git` `remote` `show` _< remote>_). Note that the current worktree’s `HEAD` will not have its path printed (it will always be your current directory). 
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---list)`--list`
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt--q)`-q` 
+List branches. With optional _< pattern>_..., e.g. `git` `branch` `--list` `maint-*'`, list only the branches that match the pattern(s).
 
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---show-current)`--show-current`
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---quiet)`--quiet` 
-    
-Be more quiet when creating or deleting a branch, suppressing non-error messages. 
+Print the name of the current branch. In detached `HEAD` state, nothing is printed.
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---abbrevn)`--abbrev=`_< n>_ 
-    
-In the verbose listing that show the commit object name, show the shortest prefix that is at least _< n>_ hexdigits long that uniquely refers the object. The default value is 7 and can be overridden by the `core.abbrev` config option. 
-
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---no-abbrev)`--no-abbrev` 
-    
-Display the full sha1s in the output listing rather than abbreviating them. 
-
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt--t)`-t` 
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt--v)`-v`
 
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---trackdirectinherit)`--track`[`=`(`direct`|`inherit`)] 
-    
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt--vv)`-vv`
+
+
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---verbose)`--verbose`
+
+When in list mode, show sha1 and commit subject line for each head, along with relationship to upstream branch (if any). If given twice, print the path of the linked worktree (if any) and the name of the upstream branch, as well (see also `git` `remote` `show` _< remote>_). Note that the current worktree’s `HEAD` will not have its path printed (it will always be your current directory).
+
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt--q)`-q`
+
+
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---quiet)`--quiet`
+
+Be more quiet when creating or deleting a branch, suppressing non-error messages.
+
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---abbrevn)`--abbrev=`_< n>_
+
+In the verbose listing that show the commit object name, show the shortest prefix that is at least _< n>_ hexdigits long that uniquely refers the object. The default value is 7 and can be overridden by the `core.abbrev` config option.
+
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---no-abbrev)`--no-abbrev`
+
+Display the full sha1s in the output listing rather than abbreviating them.
+
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt--t)`-t`
+
+
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---trackdirectinherit)`--track`[`=`(`direct`|`inherit`)]
+
 When creating a new branch, set up `branch.`_< name>_`.remote` and `branch.`_< name>_`.merge` configuration entries to set "upstream" tracking configuration for the new branch. This configuration will tell git to show the relationship between the two branches in `git` `status` and `git` `branch` `-v`. Furthermore, it directs `git` `pull` without arguments to pull from the upstream when the new branch is checked out.
 The exact upstream branch is chosen depending on the optional argument: `-t`, `--track`, or `--track=direct` means to use the start-point branch itself as the upstream; `--track=inherit` means to copy the upstream configuration of the start-point branch.
 The `branch.autoSetupMerge` configuration variable specifies how `git` `switch`, `git` `checkout` and `git` `branch` should behave when neither `--track` nor `--no-track` are specified:
 The default option, `true`, behaves as though `--track=direct` were given whenever the start-point is a remote-tracking branch. `false` behaves as if `--no-track` were given. `always` behaves as though `--track=direct` were given. `inherit` behaves as though `--track=inherit` were given. `simple` behaves as though `--track=direct` were given only when the _< start-point>_ is a remote-tracking branch and the new branch has the same name as the remote branch.
-See [git-pull[1]](https://git-scm.com/docs/git-pull) and [git-config[1]](https://git-scm.com/docs/git-config) for additional discussion on how the `branch.`_< name>_`.remote` and `branch.`_< name>_`.merge` options are used. 
+See [git-pull[1]](https://git-scm.com/docs/git-pull) and [git-config[1]](https://git-scm.com/docs/git-config) for additional discussion on how the `branch.`_< name>_`.remote` and `branch.`_< name>_`.merge` options are used.
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---no-track)`--no-track` 
-    
-Do not set up "upstream" configuration, even if the `branch.autoSetupMerge` configuration variable is set. 
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---no-track)`--no-track`
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---recurse-submodules)`--recurse-submodules` 
-    
+Do not set up "upstream" configuration, even if the `branch.autoSetupMerge` configuration variable is set.
+
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---recurse-submodules)`--recurse-submodules`
+
 THIS OPTION IS EXPERIMENTAL! Cause the current command to recurse into submodules if `submodule.propagateBranches` is enabled. See `submodule.propagateBranches` in [git-config[1]](https://git-scm.com/docs/git-config). Currently, only branch creation is supported.
-When used in branch creation, a new branch _< branch-name>_ will be created in the superproject and all of the submodules in the superproject’s _< start-point>_. In submodules, the branch will point to the submodule commit in the superproject’s _< start-point>_ but the branch’s tracking information will be set up based on the submodule’s branches and remotes e.g. `git` `branch` `--recurse-submodules` `topic` `origin/main` will create the submodule branch "topic" that points to the submodule commit in the superproject’s "origin/main", but tracks the submodule’s "origin/main". 
+When used in branch creation, a new branch _< branch-name>_ will be created in the superproject and all of the submodules in the superproject’s _< start-point>_. In submodules, the branch will point to the submodule commit in the superproject’s _< start-point>_ but the branch’s tracking information will be set up based on the submodule’s branches and remotes e.g. `git` `branch` `--recurse-submodules` `topic` `origin/main` will create the submodule branch "topic" that points to the submodule commit in the superproject’s "origin/main", but tracks the submodule’s "origin/main".
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---set-upstream)`--set-upstream` 
-    
-As this option had confusing syntax, it is no longer supported. Please use `--track` or `--set-upstream-to` instead. 
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---set-upstream)`--set-upstream`
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt--uupstream)`-u` _< upstream>_ 
+As this option had confusing syntax, it is no longer supported. Please use `--track` or `--set-upstream-to` instead.
+
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt--uupstream)`-u` _< upstream>_
 
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---set-upstream-toupstream)`--set-upstream-to=`_< upstream>_ 
-    
-Set up _< branch-name>_'s tracking information so _< upstream>_ is considered _< branch-name>_'s upstream branch. If no _< branch-name>_ is specified, then it defaults to the current branch. 
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---set-upstream-toupstream)`--set-upstream-to=`_< upstream>_
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---unset-upstream)`--unset-upstream` 
-    
-Remove the upstream information for _< branch-name>_. If no branch is specified it defaults to the current branch. 
+Set up _< branch-name>_'s tracking information so _< upstream>_ is considered _< branch-name>_'s upstream branch. If no _< branch-name>_ is specified, then it defaults to the current branch.
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---edit-description)`--edit-description` 
-    
-Open an editor and edit the text to explain what the branch is for, to be used by various other commands (e.g. `format-patch`, `request-pull`, and `merge` (if enabled)). Multi-line explanations may be used. 
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---unset-upstream)`--unset-upstream`
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---containscommit)`--contains` [_< commit>_] 
-    
-Only list branches which contain _< commit>_ (`HEAD` if not specified). Implies `--list`. 
+Remove the upstream information for _< branch-name>_. If no branch is specified it defaults to the current branch.
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---no-containscommit)`--no-contains` [_< commit>_] 
-    
-Only list branches which don’t contain _< commit>_ (`HEAD` if not specified). Implies `--list`. 
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---edit-description)`--edit-description`
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---mergedcommit)`--merged` [_< commit>_] 
-    
-Only list branches whose tips are reachable from _< commit>_ (`HEAD` if not specified). Implies `--list`. 
+Open an editor and edit the text to explain what the branch is for, to be used by various other commands (e.g. `format-patch`, `request-pull`, and `merge` (if enabled)). Multi-line explanations may be used.
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---no-mergedcommit)`--no-merged` [_< commit>_] 
-    
-Only list branches whose tips are not reachable from _< commit>_ (`HEAD` if not specified). Implies `--list`. 
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---containscommit)`--contains` [_< commit>_]
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---points-atobject)`--points-at` _< object>_ 
-    
-Only list branches of _< object>_. 
+Only list branches which contain _< commit>_ (`HEAD` if not specified). Implies `--list`.
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---formatformat)`--format` _< format>_ 
-    
-A string that interpolates `%`(`fieldname`) from a branch ref being shown and the object it points at. _< format>_ is the same as that of [git-for-each-ref[1]](https://git-scm.com/docs/git-for-each-ref). 
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---no-containscommit)`--no-contains` [_< commit>_]
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt-branch-name)_< branch-name>_ 
-    
-The name of the branch to create or delete. The new branch name must pass all checks defined by [git-check-ref-format[1]](https://git-scm.com/docs/git-check-ref-format). Some of these checks may restrict the characters allowed in a branch name. 
+Only list branches which don’t contain _< commit>_ (`HEAD` if not specified). Implies `--list`.
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt-start-point)_< start-point>_ 
-    
-The new branch head will point to this commit. It may be given as a branch name, a commit-id, or a tag. If this option is omitted, the current `HEAD` will be used instead. 
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---mergedcommit)`--merged` [_< commit>_]
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt-old-branch)_< old-branch>_ 
-    
-The name of an existing branch. If this option is omitted, the name of the current branch will be used instead. 
+Only list branches whose tips are reachable from _< commit>_ (`HEAD` if not specified). Implies `--list`.
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt-new-branch)_< new-branch>_ 
-    
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---no-mergedcommit)`--no-merged` [_< commit>_]
+
+Only list branches whose tips are not reachable from _< commit>_ (`HEAD` if not specified). Implies `--list`.
+
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---points-atobject)`--points-at` _< object>_
+
+Only list branches of _< object>_.
+
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---formatformat)`--format` _< format>_
+
+A string that interpolates `%`(`fieldname`) from a branch ref being shown and the object it points at. _< format>_ is the same as that of [git-for-each-ref[1]](https://git-scm.com/docs/git-for-each-ref).
+
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt-branch-name)_< branch-name>_
+
+The name of the branch to create or delete. The new branch name must pass all checks defined by [git-check-ref-format[1]](https://git-scm.com/docs/git-check-ref-format). Some of these checks may restrict the characters allowed in a branch name.
+
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt-start-point)_< start-point>_
+
+The new branch head will point to this commit. It may be given as a branch name, a commit-id, or a tag. If this option is omitted, the current `HEAD` will be used instead.
+
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt-old-branch)_< old-branch>_
+
+The name of an existing branch. If this option is omitted, the name of the current branch will be used instead.
+
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt-new-branch)_< new-branch>_
+
 The new name for an existing branch. The same restrictions as for _< branch-name>_ apply.
 ##  [](https://git-scm.com/docs/git-branch#_configuration)CONFIGURATION
 `pager.branch` is only respected when listing branches, i.e., when `--list` is used or implied. The default is to use a pager. See [git-config[1]](https://git-scm.com/docs/git-config).
-Everything above this line in this section isn’t included from the [git-config[1]](https://git-scm.com/docs/git-config) documentation. The content that follows is the same as what’s found there: 
+Everything above this line in this section isn’t included from the [git-config[1]](https://git-scm.com/docs/git-config) documentation. The content that follows is the same as what’s found there:
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt-branchautoSetupMerge)`branch.autoSetupMerge` 
-    
-Tells `git` `branch`, `git` `switch` and `git` `checkout` to set up new branches so that [git-pull[1]](https://git-scm.com/docs/git-pull) will appropriately merge from the starting point branch. Note that even if this option is not set, this behavior can be chosen per-branch using the `--track` and `--no-track` options. This option defaults to `true`. The valid settings are: 
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt-branchautoSetupMerge)`branch.autoSetupMerge`
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt-false)`false` 
-    
-no automatic setup is done 
+Tells `git` `branch`, `git` `switch` and `git` `checkout` to set up new branches so that [git-pull[1]](https://git-scm.com/docs/git-pull) will appropriately merge from the starting point branch. Note that even if this option is not set, this behavior can be chosen per-branch using the `--track` and `--no-track` options. This option defaults to `true`. The valid settings are:
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt-true)`true` 
-    
-automatic setup is done when the starting point is a remote-tracking branch 
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt-false)`false`
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt-always)`always` 
-    
-automatic setup is done when the starting point is either a local branch or remote-tracking branch 
+no automatic setup is done
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt-inherit)`inherit` 
-    
-if the starting point has a tracking configuration, it is copied to the new branch 
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt-true)`true`
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt-simple)`simple` 
-    
-automatic setup is done only when the starting point is a remote-tracking branch and the new branch has the same name as the remote branch. 
+automatic setup is done when the starting point is a remote-tracking branch
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt-branchautoSetupRebase)`branch.autoSetupRebase` 
-    
-When a new branch is created with `git` `branch`, `git` `switch` or `git` `checkout` that tracks another branch, this variable tells Git to set up pull to rebase instead of merge (see `branch.`_< name>_`.rebase`). The valid settings are: 
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt-always)`always`
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt-never)`never` 
-    
-rebase is never automatically set to true. 
+automatic setup is done when the starting point is either a local branch or remote-tracking branch
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt-local)`local` 
-    
-rebase is set to true for tracked branches of other local branches. 
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt-inherit)`inherit`
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt-remote)`remote` 
-    
-rebase is set to true for tracked branches of remote-tracking branches. 
+if the starting point has a tracking configuration, it is copied to the new branch
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt-always-1)`always` 
-    
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt-simple)`simple`
+
+automatic setup is done only when the starting point is a remote-tracking branch and the new branch has the same name as the remote branch.
+
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt-branchautoSetupRebase)`branch.autoSetupRebase`
+
+When a new branch is created with `git` `branch`, `git` `switch` or `git` `checkout` that tracks another branch, this variable tells Git to set up pull to rebase instead of merge (see `branch.`_< name>_`.rebase`). The valid settings are:
+
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt-never)`never`
+
+rebase is never automatically set to true.
+
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt-local)`local`
+
+rebase is set to true for tracked branches of other local branches.
+
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt-remote)`remote`
+
+rebase is set to true for tracked branches of remote-tracking branches.
+
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt-always-1)`always`
+
 rebase will be set to true for all tracking branches.
-See `branch.autoSetupMerge` for details on how to set up a branch to track another branch. This option defaults to `never`. 
+See `branch.autoSetupMerge` for details on how to set up a branch to track another branch. This option defaults to `never`.
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt-branchsort)`branch.sort` 
-    
-This variable controls the sort ordering of branches when displayed by [git-branch[1]](https://git-scm.com/docs/git-branch). Without the `--sort=`_< value>_ option provided, the value of this variable will be used as the default. See [git-for-each-ref[1]](https://git-scm.com/docs/git-for-each-ref) field names for valid values. 
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt-branchsort)`branch.sort`
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt-branchnameremote)`branch.`_< name>_`.remote` 
-    
-When on branch _< name>_, it tells `git` `fetch` and `git` `push` which remote to fetch from or push to. The remote to push to may be overridden with `remote.pushDefault` (for all branches). The remote to push to, for the current branch, may be further overridden by `branch.`_< name>_`.pushRemote`. If no remote is configured, or if you are not on any branch and there is more than one remote defined in the repository, it defaults to `origin` for fetching and `remote.pushDefault` for pushing. Additionally, `.` (a period) is the current local repository (a dot-repository), see `branch.`_< name>_`.merge`'s final note below. 
+This variable controls the sort ordering of branches when displayed by [git-branch[1]](https://git-scm.com/docs/git-branch). Without the `--sort=`_< value>_ option provided, the value of this variable will be used as the default. See [git-for-each-ref[1]](https://git-scm.com/docs/git-for-each-ref) field names for valid values.
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt-branchnamepushRemote)`branch.`_< name>_`.pushRemote` 
-    
-When on branch _< name>_, it overrides `branch.`_< name>_`.remote` for pushing. It also overrides `remote.pushDefault` for pushing from branch _< name>_. When you pull from one place (e.g. your upstream) and push to another place (e.g. your own publishing repository), you would want to set `remote.pushDefault` to specify the remote to push to for all branches, and use this option to override it for a specific branch. 
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt-branchnameremote)`branch.`_< name>_`.remote`
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt-branchnamemerge)`branch.`_< name>_`.merge` 
-    
-Defines, together with `branch.`_< name>_`.remote`, the upstream branch for the given branch. It tells `git` `fetch`/`git` `pull`/`git` `rebase` which branch to merge and can also affect `git` `push` (see `push.default`). When in branch _< name>_, it tells `git` `fetch` the default refspec to be marked for merging in `FETCH_HEAD`. The value is handled like the remote part of a refspec, and must match a ref which is fetched from the remote given by `branch.`_< name>_`.remote`. The merge information is used by `git` `pull` (which first calls `git` `fetch`) to lookup the default branch for merging. Without this option, `git` `pull` defaults to merge the first refspec fetched. Specify multiple values to get an octopus merge. If you wish to setup `git` `pull` so that it merges into _< name>_ from another branch in the local repository, you can point `branch.`_< name>_`.merge` to the desired branch, and use the relative path setting `.` (a period) for `branch.`_< name>_`.remote`. 
+When on branch _< name>_, it tells `git` `fetch` and `git` `push` which remote to fetch from or push to. The remote to push to may be overridden with `remote.pushDefault` (for all branches). The remote to push to, for the current branch, may be further overridden by `branch.`_< name>_`.pushRemote`. If no remote is configured, or if you are not on any branch and there is more than one remote defined in the repository, it defaults to `origin` for fetching and `remote.pushDefault` for pushing. Additionally, `.` (a period) is the current local repository (a dot-repository), see `branch.`_< name>_`.merge`'s final note below.
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt-branchnamemergeOptions)`branch.`_< name>_`.mergeOptions` 
-    
-Sets default options for merging into branch _< name>_. The syntax and supported options are the same as those of [git-merge[1]](https://git-scm.com/docs/git-merge), but option values containing whitespace characters are currently not supported. 
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt-branchnamepushRemote)`branch.`_< name>_`.pushRemote`
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt-branchnamerebase)`branch.`_< name>_`.rebase` 
-    
+When on branch _< name>_, it overrides `branch.`_< name>_`.remote` for pushing. It also overrides `remote.pushDefault` for pushing from branch _< name>_. When you pull from one place (e.g. your upstream) and push to another place (e.g. your own publishing repository), you would want to set `remote.pushDefault` to specify the remote to push to for all branches, and use this option to override it for a specific branch.
+
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt-branchnamemerge)`branch.`_< name>_`.merge`
+
+Defines, together with `branch.`_< name>_`.remote`, the upstream branch for the given branch. It tells `git` `fetch`/`git` `pull`/`git` `rebase` which branch to merge and can also affect `git` `push` (see `push.default`). When in branch _< name>_, it tells `git` `fetch` the default refspec to be marked for merging in `FETCH_HEAD`. The value is handled like the remote part of a refspec, and must match a ref which is fetched from the remote given by `branch.`_< name>_`.remote`. The merge information is used by `git` `pull` (which first calls `git` `fetch`) to lookup the default branch for merging. Without this option, `git` `pull` defaults to merge the first refspec fetched. Specify multiple values to get an octopus merge. If you wish to setup `git` `pull` so that it merges into _< name>_ from another branch in the local repository, you can point `branch.`_< name>_`.merge` to the desired branch, and use the relative path setting `.` (a period) for `branch.`_< name>_`.remote`.
+
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt-branchnamemergeOptions)`branch.`_< name>_`.mergeOptions`
+
+Sets default options for merging into branch _< name>_. The syntax and supported options are the same as those of [git-merge[1]](https://git-scm.com/docs/git-merge), but option values containing whitespace characters are currently not supported.
+
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt-branchnamerebase)`branch.`_< name>_`.rebase`
+
 When true, rebase the branch _< name>_ on top of the fetched branch, instead of merging the default branch from the default remote when `git` `pull` is run. See `pull.rebase` for doing this in a non branch-specific manner.
 When `merges` (or just `m`), pass the `--rebase-merges` option to `git` `rebase` so that the local merge commits are included in the rebase (see [git-rebase[1]](https://git-scm.com/docs/git-rebase) for details).
 When the value is `interactive` (or just `i`), the rebase is run in interactive mode.
-**NOTE** : this is a possibly dangerous operation; do **not** use it unless you understand the implications (see [git-rebase[1]](https://git-scm.com/docs/git-rebase) for details). 
+**NOTE** : this is a possibly dangerous operation; do **not** use it unless you understand the implications (see [git-rebase[1]](https://git-scm.com/docs/git-rebase) for details).
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt-branchnamedescription)`branch.`_< name>_`.description` 
-    
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt-branchnamedescription)`branch.`_< name>_`.description`
+
 Branch description, can be edited with `git` `branch` `--edit-description`. Branch description is automatically added to the `format-patch` cover letter or `request-pull` summary.
-##  [](https://git-scm.com/docs/git-branch#_examples)EXAMPLES 
+##  [](https://git-scm.com/docs/git-branch#_examples)EXAMPLES
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt-Startdevelopmentfromaknowntag)Start development from a known tag 
-    
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt-Startdevelopmentfromaknowntag)Start development from a known tag
+
 ```
 $ git clone git://git.kernel.org/pub/scm/.../linux-2.6 my2.6
 $ cd my2.6
@@ -581,8 +581,8 @@ $ git switch my2.6.14
 
 
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt-Deleteanunneededbranch)Delete an unneeded branch 
-    
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt-Deleteanunneededbranch)Delete an unneeded branch
+
 ```
 $ git clone git://git.kernel.org/.../git.git my.git
 $ cd my.git
@@ -595,8 +595,8 @@ $ git branch -D test                                    **(2)**
 
 
 
-[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt-Listingbranchesfromaspecificremote)Listing branches from a specific remote 
-    
+[](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt-Listingbranchesfromaspecificremote)Listing branches from a specific remote
+
 ```
 $ git branch -r -l '<remote>/<pattern>'                 **(1)**
 $ git for-each-ref 'refs/remotes/<remote>/<pattern>'    **(2)**
@@ -623,6 +623,6 @@ When combining multiple `--merged` and `--no-merged` filters, only references th
 ##  [](https://git-scm.com/docs/git-branch#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### branch
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

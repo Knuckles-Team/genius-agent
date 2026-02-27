@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-upload-pack#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-upload-pack#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-upload-pack#_description)
@@ -35,8 +35,8 @@ Localized versions of **git-upload-pack** manual
   4. [українська мова ](https://git-scm.com/docs/git-upload-pack/uk)
   5. [简体中文 ](https://git-scm.com/docs/git-upload-pack/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-upload-pack)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -230,38 +230,38 @@ _git-upload-pack_ [--[no-]strict] [--timeout=<n>] [--stateless-rpc]
 ##  [](https://git-scm.com/docs/git-upload-pack#_description)DESCRIPTION
 Invoked by _git fetch-pack_ , learns what objects the other side is missing, and sends them after packing.
 This command is usually not invoked directly by the end user. The UI for the protocol is on the _git fetch-pack_ side, and the program pair is meant to be used to pull updates from a remote repository. For push operations, see _git send-pack_.
-##  [](https://git-scm.com/docs/git-upload-pack#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-upload-pack#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-upload-pack#Documentation/git-upload-pack.txt---strict)--strict 
+[](https://git-scm.com/docs/git-upload-pack#Documentation/git-upload-pack.txt---strict)--strict
 
 
-[](https://git-scm.com/docs/git-upload-pack#Documentation/git-upload-pack.txt---no-strict)--no-strict 
-    
-Do not try <directory>/.git/ if <directory> is not a Git directory. 
+[](https://git-scm.com/docs/git-upload-pack#Documentation/git-upload-pack.txt---no-strict)--no-strict
 
-[](https://git-scm.com/docs/git-upload-pack#Documentation/git-upload-pack.txt---timeoutn)--timeout=<n> 
-    
-Interrupt transfer after <n> seconds of inactivity. 
+Do not try <directory>/.git/ if <directory> is not a Git directory.
 
-[](https://git-scm.com/docs/git-upload-pack#Documentation/git-upload-pack.txt---stateless-rpc)--stateless-rpc 
-    
-Perform only a single read-write cycle with stdin and stdout. This fits with the HTTP POST request processing model where a program may read the request, write a response, and must exit. 
+[](https://git-scm.com/docs/git-upload-pack#Documentation/git-upload-pack.txt---timeoutn)--timeout=<n>
 
-[](https://git-scm.com/docs/git-upload-pack#Documentation/git-upload-pack.txt---http-backend-info-refs)--http-backend-info-refs 
-    
-Used by [git-http-backend[1]](https://git-scm.com/docs/git-http-backend) to serve up _$GIT_URL/info/refs?service=git-upload-pack_ requests. See "Smart Clients" in [gitprotocol-http[5]](https://git-scm.com/docs/gitprotocol-http) and "HTTP Transport" in the [gitprotocol-v2[5]](https://git-scm.com/docs/gitprotocol-v2) documentation. Also understood by [git-receive-pack[1]](https://git-scm.com/docs/git-receive-pack). 
+Interrupt transfer after <n> seconds of inactivity.
 
-[](https://git-scm.com/docs/git-upload-pack#Documentation/git-upload-pack.txt-directory)<directory> 
-    
+[](https://git-scm.com/docs/git-upload-pack#Documentation/git-upload-pack.txt---stateless-rpc)--stateless-rpc
+
+Perform only a single read-write cycle with stdin and stdout. This fits with the HTTP POST request processing model where a program may read the request, write a response, and must exit.
+
+[](https://git-scm.com/docs/git-upload-pack#Documentation/git-upload-pack.txt---http-backend-info-refs)--http-backend-info-refs
+
+Used by [git-http-backend[1]](https://git-scm.com/docs/git-http-backend) to serve up _$GIT_URL/info/refs?service=git-upload-pack_ requests. See "Smart Clients" in [gitprotocol-http[5]](https://git-scm.com/docs/gitprotocol-http) and "HTTP Transport" in the [gitprotocol-v2[5]](https://git-scm.com/docs/gitprotocol-v2) documentation. Also understood by [git-receive-pack[1]](https://git-scm.com/docs/git-receive-pack).
+
+[](https://git-scm.com/docs/git-upload-pack#Documentation/git-upload-pack.txt-directory)<directory>
+
 The repository to sync from.
-##  [](https://git-scm.com/docs/git-upload-pack#_environment)ENVIRONMENT 
+##  [](https://git-scm.com/docs/git-upload-pack#_environment)ENVIRONMENT
 
-[](https://git-scm.com/docs/git-upload-pack#Documentation/git-upload-pack.txt-GITPROTOCOL)`GIT_PROTOCOL` 
-    
-Internal variable used for handshaking the wire protocol. Server admins may need to configure some transports to allow this variable to be passed. See the discussion in [git[1]](https://git-scm.com/docs/git). 
+[](https://git-scm.com/docs/git-upload-pack#Documentation/git-upload-pack.txt-GITPROTOCOL)`GIT_PROTOCOL`
 
-[](https://git-scm.com/docs/git-upload-pack#Documentation/git-upload-pack.txt-GITNOLAZYFETCH)`GIT_NO_LAZY_FETCH` 
-    
+Internal variable used for handshaking the wire protocol. Server admins may need to configure some transports to allow this variable to be passed. See the discussion in [git[1]](https://git-scm.com/docs/git).
+
+[](https://git-scm.com/docs/git-upload-pack#Documentation/git-upload-pack.txt-GITNOLAZYFETCH)`GIT_NO_LAZY_FETCH`
+
 When cloning or fetching from a partial repository (i.e., one itself cloned with `--filter`), the server-side `upload-pack` may need to fetch extra objects from its upstream in order to complete the request. By default, `upload-pack` will refuse to perform such a lazy fetch, because `git` `fetch` may run arbitrary commands specified in configuration and hooks of the source repository (and `upload-pack` tries to be safe to run even in untrusted `.git` directories).
 This is implemented by having `upload-pack` internally set the `GIT_NO_LAZY_FETCH` variable to `1`. If you want to override it (because you are fetching from a partial clone, and you are sure you trust it), you can explicitly set `GIT_NO_LAZY_FETCH` to `0`.
 ##  [](https://git-scm.com/docs/git-upload-pack#_security)SECURITY
@@ -276,6 +276,6 @@ git clone --no-local --upload-pack='sudo -u nobody git-upload-pack' ...
 ##  [](https://git-scm.com/docs/git-upload-pack#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### upload-pack
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

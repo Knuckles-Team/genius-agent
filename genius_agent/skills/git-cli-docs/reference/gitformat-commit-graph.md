@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/gitformat-commit-graph#_name)
     * [SYNOPSIS](https://git-scm.com/docs/gitformat-commit-graph#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/gitformat-commit-graph#_description)
@@ -29,8 +29,8 @@
 Localized versions of **gitformat-commit-graph** manual
   1. [English ](https://git-scm.com/docs/gitformat-commit-graph)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/gitformat-commit-graph)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -330,6 +330,6 @@ The Generation Data (GDA2) and Generation Data Overflow (GDO2) chunks have the n
 ##  [](https://git-scm.com/docs/gitformat-commit-graph#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### gitformat-commit-graph
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

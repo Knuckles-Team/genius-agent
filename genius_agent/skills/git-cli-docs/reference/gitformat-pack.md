@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/gitformat-pack#_name)
     * [SYNOPSIS](https://git-scm.com/docs/gitformat-pack#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/gitformat-pack#_description)
@@ -36,8 +36,8 @@
 Localized versions of **gitformat-pack** manual
   1. [English ](https://git-scm.com/docs/gitformat-pack)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/gitformat-pack)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -614,21 +614,21 @@ When a chunk of bytes is reused from an existing pack, any objects contained the
   * All objects stored in non-thin packs as offset- or reference-deltas also include their base object in the resulting pack.
 
 
-The `BTMP` chunk encodes the necessary information in order to implement multi-pack reuse over a set of packfiles as described above. Specifically, the `BTMP` chunk encodes three pieces of information (all 32-bit unsigned integers in network byte-order) for each packfile `p` that is stored in the MIDX, as follows: 
+The `BTMP` chunk encodes the necessary information in order to implement multi-pack reuse over a set of packfiles as described above. Specifically, the `BTMP` chunk encodes three pieces of information (all 32-bit unsigned integers in network byte-order) for each packfile `p` that is stored in the MIDX, as follows:
 
-[](https://git-scm.com/docs/gitformat-pack#Documentation/gitformat-pack.txt-bitmappos)`bitmap_pos` 
-    
-The first bit position (in pseudo-pack order) in the multi-pack index’s reachability bitmap occupied by an object from `p`. 
+[](https://git-scm.com/docs/gitformat-pack#Documentation/gitformat-pack.txt-bitmappos)`bitmap_pos`
 
-[](https://git-scm.com/docs/gitformat-pack#Documentation/gitformat-pack.txt-bitmapnr)`bitmap_nr` 
-    
+The first bit position (in pseudo-pack order) in the multi-pack index’s reachability bitmap occupied by an object from `p`.
+
+[](https://git-scm.com/docs/gitformat-pack#Documentation/gitformat-pack.txt-bitmapnr)`bitmap_nr`
+
 The number of bit positions (including the one at `bitmap_pos`) that encode objects from that pack `p`.
 For example, the `BTMP` chunk corresponding to the above example (with packs “a”, “b”, and “c”) would look like:
-| `bitmap_pos` | `bitmap_nr`  
----|---|---  
-packfile “a” | `0` | `10`  
-packfile “b” | `10` | `15`  
-packfile “c” | `25` | `20`  
+| `bitmap_pos` | `bitmap_nr`
+---|---|---
+packfile “a” | `0` | `10`
+packfile “b” | `10` | `15`
+packfile “c” | `25` | `20`
 With this information in place, we can treat each packfile as individually reusable in the same fashion as verbatim pack reuse is performed on individual packs prior to the implementation of the `BTMP` chunk.
 ##  [](https://git-scm.com/docs/gitformat-pack#_cruft_packs)cruft packs
 The cruft packs feature offer an alternative to Git’s traditional mechanism of removing unreachable objects. This document provides an overview of Git’s pruning mechanism, and how a cruft pack can be used instead to accomplish the same.
@@ -663,6 +663,6 @@ On the location of mtime data, a new auxiliary file tied to the pack was chosen 
 ##  [](https://git-scm.com/docs/gitformat-pack#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### gitformat-pack
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

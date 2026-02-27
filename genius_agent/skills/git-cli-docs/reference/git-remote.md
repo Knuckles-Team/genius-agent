@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-remote#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-remote#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-remote#_description)
@@ -38,8 +38,8 @@ Localized versions of **git-remote** manual
   5. [українська мова ](https://git-scm.com/docs/git-remote/uk)
   6. [简体中文 ](https://git-scm.com/docs/git-remote/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-remote)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -234,19 +234,19 @@ git remote [-v | --verbose] update [-p | --prune] [(_<group>_ | _<remote>_)…�
 
 ##  [](https://git-scm.com/docs/git-remote#_description)DESCRIPTION
 Manage the set of repositories ("remotes") whose branches you track.
-##  [](https://git-scm.com/docs/git-remote#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-remote#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-remote#Documentation/git-remote.txt--v)`-v` 
+[](https://git-scm.com/docs/git-remote#Documentation/git-remote.txt--v)`-v`
 
 
-[](https://git-scm.com/docs/git-remote#Documentation/git-remote.txt---verbose)`--verbose` 
-    
+[](https://git-scm.com/docs/git-remote#Documentation/git-remote.txt---verbose)`--verbose`
+
 Be a little more verbose and show remote url after name. For promisor remotes, also show which filters (`blob:none` etc.) are configured. NOTE: This must be placed between `remote` and subcommand.
 ##  [](https://git-scm.com/docs/git-remote#_commands)COMMANDS
-With no arguments, show a list of existing remotes. Several subcommands are available to perform operations on the remotes. 
+With no arguments, show a list of existing remotes. Several subcommands are available to perform operations on the remotes.
 
-[](https://git-scm.com/docs/git-remote#Documentation/git-remote.txt-add)`add` 
-    
+[](https://git-scm.com/docs/git-remote#Documentation/git-remote.txt-add)`add`
+
 Add a remote named _< name>_ for the repository at _< URL>_. The command `git` `fetch` _< name>_ can then be used to create and update remote-tracking branches _< name>_`/`_< branch>_.
 With `-f` option, `git` `fetch` _< name>_ is run immediately after the remote information is set up.
 With `--tags` option, `git` `fetch` _< name>_ imports every tag from the remote repository.
@@ -255,60 +255,60 @@ By default, only tags on fetched branches are imported (see [git-fetch[1]](https
 With `-t` _< branch>_ option, instead of the default glob refspec for the remote to track all branches under the `refs/remotes/`_< name>_`/` namespace, a refspec to track only _< branch>_ is created. You can give more than one `-t` _< branch>_ to track multiple branches without grabbing all branches.
 With `-m` _< master>_ option, a symbolic-ref `refs/remotes/`_< name>_`/HEAD` is set up to point at remote’s _< master>_ branch. See also the set-head command.
 When a fetch mirror is created with `--mirror=fetch`, the refs will not be stored in the `refs/remotes/` namespace, but rather everything in `refs/` on the remote will be directly mirrored into `refs/` in the local repository. This option only makes sense in bare repositories, because a fetch would overwrite any local commits.
-When a push mirror is created with `--mirror=push`, then `git` `push` will always behave as if `--mirror` was passed. 
+When a push mirror is created with `--mirror=push`, then `git` `push` will always behave as if `--mirror` was passed.
 
-[](https://git-scm.com/docs/git-remote#Documentation/git-remote.txt-rename)`rename` 
-    
+[](https://git-scm.com/docs/git-remote#Documentation/git-remote.txt-rename)`rename`
+
 Rename the remote named _< old>_ to _< new>_. All remote-tracking branches and configuration settings for the remote are updated.
-In case _< old>_ and _< new>_ are the same, and _< old>_ is a file under `$GIT_DIR/remotes` or `$GIT_DIR/branches`, the remote is converted to the configuration file format. 
+In case _< old>_ and _< new>_ are the same, and _< old>_ is a file under `$GIT_DIR/remotes` or `$GIT_DIR/branches`, the remote is converted to the configuration file format.
 
-[](https://git-scm.com/docs/git-remote#Documentation/git-remote.txt-remove)`remove` 
+[](https://git-scm.com/docs/git-remote#Documentation/git-remote.txt-remove)`remove`
 
 
-[](https://git-scm.com/docs/git-remote#Documentation/git-remote.txt-rm)`rm` 
-    
-Remove the remote named _< name>_. All remote-tracking branches and configuration settings for the remote are removed. 
+[](https://git-scm.com/docs/git-remote#Documentation/git-remote.txt-rm)`rm`
 
-[](https://git-scm.com/docs/git-remote#Documentation/git-remote.txt-set-head)`set-head` 
-    
+Remove the remote named _< name>_. All remote-tracking branches and configuration settings for the remote are removed.
+
+[](https://git-scm.com/docs/git-remote#Documentation/git-remote.txt-set-head)`set-head`
+
 Set or delete the default branch (i.e. the target of the symbolic-ref `refs/remotes/`_< name>_`/HEAD`) for the named remote. Having a default branch for a remote is not required, but allows the name of the remote to be specified in lieu of a specific branch. For example, if the default branch for `origin` is set to `master`, then `origin` may be specified wherever you would normally specify `origin/master`.
 With `-d` or `--delete`, the symbolic ref `refs/remotes/`_< name>_`/HEAD` is deleted.
 With `-a` or `--auto`, the remote is queried to determine its `HEAD`, then the symbolic-ref `refs/remotes/`_< name>_`/HEAD` is set to the same branch. e.g., if the remote `HEAD` is pointed at `next`, `git` `remote` `set-head` `origin` `-a` will set the symbolic-ref `refs/remotes/origin/HEAD` to `refs/remotes/origin/next`. This will only work if `refs/remotes/origin/next` already exists; if not it must be fetched first.
-Use _< branch>_ to set the symbolic-ref `refs/remotes/`_< name>_`/HEAD` explicitly. e.g., `git` `remote` `set-head` `origin` `master` will set the symbolic-ref `refs/remotes/origin/HEAD` to `refs/remotes/origin/master`. This will only work if `refs/remotes/origin/master` already exists; if not it must be fetched first. 
+Use _< branch>_ to set the symbolic-ref `refs/remotes/`_< name>_`/HEAD` explicitly. e.g., `git` `remote` `set-head` `origin` `master` will set the symbolic-ref `refs/remotes/origin/HEAD` to `refs/remotes/origin/master`. This will only work if `refs/remotes/origin/master` already exists; if not it must be fetched first.
 
-[](https://git-scm.com/docs/git-remote#Documentation/git-remote.txt-set-branches)`set-branches` 
-    
+[](https://git-scm.com/docs/git-remote#Documentation/git-remote.txt-set-branches)`set-branches`
+
 Change the list of branches tracked by the named remote. This can be used to track a subset of the available remote branches after the initial setup for a remote.
 The named branches will be interpreted as if specified with the `-t` option on the `git` `remote` `add` command line.
-With `--add`, instead of replacing the list of currently tracked branches, adds to that list. 
+With `--add`, instead of replacing the list of currently tracked branches, adds to that list.
 
-[](https://git-scm.com/docs/git-remote#Documentation/git-remote.txt-get-url)`get-url` 
-    
+[](https://git-scm.com/docs/git-remote#Documentation/git-remote.txt-get-url)`get-url`
+
 Retrieves the URLs for a remote. Configurations for `insteadOf` and `pushInsteadOf` are expanded here. By default, only the first URL is listed.
 With `--push`, push URLs are queried rather than fetch URLs.
-With `--all`, all URLs for the remote will be listed. 
+With `--all`, all URLs for the remote will be listed.
 
-[](https://git-scm.com/docs/git-remote#Documentation/git-remote.txt-set-url)`set-url` 
-    
+[](https://git-scm.com/docs/git-remote#Documentation/git-remote.txt-set-url)`set-url`
+
 Change URLs for the remote. Sets first URL for remote _< name>_ that matches regex _< oldurl>_ (first URL if no _< oldurl>_ is given) to _< newurl>_. If _< oldurl>_ doesn’t match any URL, an error occurs and nothing is changed.
 With `--push`, push URLs are manipulated instead of fetch URLs.
 With `--add`, instead of changing existing URLs, new URL is added.
 With `--delete`, instead of changing existing URLs, all URLs matching regex _< URL>_ are deleted for remote _< name>_. Trying to delete all non-push URLs is an error.
-Note that the push URL and the fetch URL, even though they can be set differently, must still refer to the same place. What you pushed to the push URL should be what you would see if you immediately fetched from the fetch URL. If you are trying to fetch from one place (e.g. your upstream) and push to another (e.g. your publishing repository), use two separate remotes. 
+Note that the push URL and the fetch URL, even though they can be set differently, must still refer to the same place. What you pushed to the push URL should be what you would see if you immediately fetched from the fetch URL. If you are trying to fetch from one place (e.g. your upstream) and push to another (e.g. your publishing repository), use two separate remotes.
 
-[](https://git-scm.com/docs/git-remote#Documentation/git-remote.txt-show)`show` 
-    
+[](https://git-scm.com/docs/git-remote#Documentation/git-remote.txt-show)`show`
+
 Give some information about the remote _< name>_.
-With `-n` option, the remote heads are not queried first with `git` `ls-remote` _< name>_; cached information is used instead. 
+With `-n` option, the remote heads are not queried first with `git` `ls-remote` _< name>_; cached information is used instead.
 
-[](https://git-scm.com/docs/git-remote#Documentation/git-remote.txt-prune)`prune` 
-    
+[](https://git-scm.com/docs/git-remote#Documentation/git-remote.txt-prune)`prune`
+
 Delete stale references associated with _< name>_. By default, stale remote-tracking branches under _< name>_ are deleted, but depending on global configuration and the configuration of the remote we might even prune local tags that haven’t been pushed there. Equivalent to `git` `fetch` `--prune` _< name>_, except that no new references will be fetched.
 See the PRUNING section of [git-fetch[1]](https://git-scm.com/docs/git-fetch) for what it’ll prune depending on various configuration.
-With `--dry-run` option, report what branches would be pruned, but do not actually prune them. 
+With `--dry-run` option, report what branches would be pruned, but do not actually prune them.
 
-[](https://git-scm.com/docs/git-remote#Documentation/git-remote.txt-update)`update` 
-    
+[](https://git-scm.com/docs/git-remote#Documentation/git-remote.txt-update)`update`
+
 Fetch updates for remotes or remote groups in the repository as defined by `remotes.`_< group>_. If neither group nor remote is specified on the command line, the configuration parameter `remotes.default` will be used; if `remotes.default` is not defined, all remotes which do not have the configuration parameter `remote.`_< name>_`.skipDefaultUpdate` set to `true` will be updated. (See [git-config[1]](https://git-scm.com/docs/git-config)).
 With `--prune` option, run pruning against all the remotes that are updated.
 ##  [](https://git-scm.com/docs/git-remote#_discussion)DISCUSSION
@@ -361,6 +361,6 @@ $ git merge origin
 ##  [](https://git-scm.com/docs/git-remote#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### remote
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [Introduction](https://git-scm.com/docs/user-manual#_introduction)
     * [Repositories and Branches](https://git-scm.com/docs/user-manual#repositories-and-branches)
     * [Exploring Git history](https://git-scm.com/docs/user-manual#exploring-git-history)
@@ -37,8 +37,8 @@
 Localized versions of **user-manual** manual
   1. [English ](https://git-scm.com/docs/user-manual)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/user-manual)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -372,34 +372,34 @@ If we need to talk about a particular commit, the character "o" may be replaced 
 When we need to be precise, we will use the word "branch" to mean a line of development, and "branch head" (or just "head") to mean a reference to the most recent commit on a branch. In the example above, the branch head named "A" is a pointer to one particular commit, but we refer to the line of three commits leading up to that point as all being part of "branch A".
 However, when no confusion will result, we often just use the term "branch" both for branches and for branch heads.
 ###  [](https://git-scm.com/docs/user-manual#manipulating-branches)Manipulating branches
-Creating, deleting, and modifying branches is quick and easy; here’s a summary of the commands: 
+Creating, deleting, and modifying branches is quick and easy; here’s a summary of the commands:
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-gitbranch)`git` `branch` 
-    
-list all branches. 
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-gitbranch)`git` `branch`
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-gitbranchbranch)`git` `branch` _< branch>_ 
-    
-create a new branch named _< branch>_, referencing the same point in history as the current branch. 
+list all branches.
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-gitbranchbranchstart-point)`git` `branch` _< branch>_ _< start-point>_ 
-    
-create a new branch named _< branch>_, referencing _< start-point>_, which may be specified any way you like, including using a branch name or a tag name. 
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-gitbranchbranch)`git` `branch` _< branch>_
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-gitbranch-dbranch)`git` `branch` `-d` _< branch>_ 
-    
-delete the branch _< branch>_; if the branch is not fully merged in its upstream branch or contained in the current branch, this command will fail with a warning. 
+create a new branch named _< branch>_, referencing the same point in history as the current branch.
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-gitbranch-Dbranch)`git` `branch` `-D` _< branch>_ 
-    
-delete the branch _< branch>_ irrespective of its merged status. 
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-gitbranchbranchstart-point)`git` `branch` _< branch>_ _< start-point>_
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-gitswitchbranch)`git` `switch` _< branch>_ 
-    
-make the current branch _< branch>_, updating the working directory to reflect the version referenced by _< branch>_. 
+create a new branch named _< branch>_, referencing _< start-point>_, which may be specified any way you like, including using a branch name or a tag name.
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-gitswitch-cnewstart-point)`git` `switch` `-c` _< new>_ _< start-point>_ 
-    
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-gitbranch-dbranch)`git` `branch` `-d` _< branch>_
+
+delete the branch _< branch>_; if the branch is not fully merged in its upstream branch or contained in the current branch, this command will fail with a warning.
+
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-gitbranch-Dbranch)`git` `branch` `-D` _< branch>_
+
+delete the branch _< branch>_ irrespective of its merged status.
+
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-gitswitchbranch)`git` `switch` _< branch>_
+
+make the current branch _< branch>_, updating the working directory to reflect the version referenced by _< branch>_.
+
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-gitswitch-cnewstart-point)`git` `switch` `-c` _< new>_ _< start-point>_
+
 create a new branch _< new>_ referencing _< start-point>_, and check it out.
 The special symbol "HEAD" can always be used to refer to the current branch. In fact, Git uses a file named `HEAD` in the `.git` directory to remember which branch is current:
 ```
@@ -2148,8 +2148,8 @@ do
 done
 ```
 
-Note |  Do not use local URLs here if you plan to publish your superproject!   
----|---  
+Note |  Do not use local URLs here if you plan to publish your superproject!
+---|---
 See what files `git` `submodule` created:
 ```
 $ ls -a
@@ -2185,8 +2185,8 @@ $ git submodule status
 -d96249ff5d57de5de093e6baff9e0aafa5276a74 d
 ```
 
-Note |  The commit object names shown above would be different for you, but they should match the HEAD commit object names of your repositories. You can check it by running `git` `ls-remote` `../a`.   
----|---  
+Note |  The commit object names shown above would be different for you, but they should match the HEAD commit object names of your repositories. You can check it by running `git` `ls-remote` `../a`.
+---|---
 Pulling down the submodules is a two-step process. First run `git` `submodule` `init` to add the submodule repository URLs to `.git/config`:
 ```
 $ git submodule init
@@ -2283,8 +2283,8 @@ $ cat a.txt
 module a
 ```
 
-Note |  The changes are still visible in the submodule’s reflog.   
----|---  
+Note |  The changes are still visible in the submodule’s reflog.
+---|---
 If you have uncommitted changes in your submodule working tree, `git` `submodule` `update` will not overwrite them. Instead, you get the usual warning about not being able switch from a dirty branch.
 ##  [](https://git-scm.com/docs/user-manual#low-level-operations)Low-level Git operations
 Many of the higher-level commands were originally implemented as shell scripts using a smaller core of low-level Git commands. These can still be useful when doing unusual things with Git, or just as a way to understand its inner workings.
@@ -2569,213 +2569,213 @@ $ git log --no-merges --diff-filter=A builtin/*.c
 
 You see, Git is actually the best tool to find out about the source of Git itself!
 ##  [](https://git-scm.com/docs/user-manual#glossary)Git Glossary
-###  [](https://git-scm.com/docs/user-manual#git-explained)Git explained 
+###  [](https://git-scm.com/docs/user-manual#git-explained)Git explained
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-alternateobjectdatabase)alternate object database 
-    
-Via the alternates mechanism, a [repository](https://git-scm.com/docs/user-manual#def_repository) can inherit part of its [object database](https://git-scm.com/docs/user-manual#def_object_database) from another object database, which is called an "alternate". 
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-alternateobjectdatabase)alternate object database
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-barerepository)bare repository 
-    
-A bare repository is normally an appropriately named [directory](https://git-scm.com/docs/user-manual#def_directory) with a `.git` suffix that does not have a locally checked-out copy of any of the files under revision control. That is, all of the Git administrative and control files that would normally be present in the hidden `.git` sub-directory are directly present in the `repository.git` directory instead, and no other files are present and checked out. Usually publishers of public repositories make bare repositories available. 
+Via the alternates mechanism, a [repository](https://git-scm.com/docs/user-manual#def_repository) can inherit part of its [object database](https://git-scm.com/docs/user-manual#def_object_database) from another object database, which is called an "alternate".
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-blobobject)blob object 
-    
-Untyped [object](https://git-scm.com/docs/user-manual#def_object), e.g. the contents of a file. 
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-barerepository)bare repository
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-branch)branch 
-    
-A "branch" is a line of development. The most recent [commit](https://git-scm.com/docs/user-manual#def_commit) on a branch is referred to as the tip of that branch. The tip of the branch is [referenced](https://git-scm.com/docs/user-manual#def_ref) by a branch [head](https://git-scm.com/docs/user-manual#def_head), which moves forward as additional development is done on the branch. A single Git [repository](https://git-scm.com/docs/user-manual#def_repository) can track an arbitrary number of branches, but your [working tree](https://git-scm.com/docs/user-manual#def_working_tree) is associated with just one of them (the "current" or "checked out" branch), and [HEAD](https://git-scm.com/docs/user-manual#def_HEAD) points to that branch. 
+A bare repository is normally an appropriately named [directory](https://git-scm.com/docs/user-manual#def_directory) with a `.git` suffix that does not have a locally checked-out copy of any of the files under revision control. That is, all of the Git administrative and control files that would normally be present in the hidden `.git` sub-directory are directly present in the `repository.git` directory instead, and no other files are present and checked out. Usually publishers of public repositories make bare repositories available.
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-cache)cache 
-    
-Obsolete for: [index](https://git-scm.com/docs/user-manual#def_index). 
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-blobobject)blob object
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-chain)chain 
-    
-A list of objects, where each [object](https://git-scm.com/docs/user-manual#def_object) in the list contains a reference to its successor (for example, the successor of a [commit](https://git-scm.com/docs/user-manual#def_commit) could be one of its [parents](https://git-scm.com/docs/user-manual#def_parent)). 
+Untyped [object](https://git-scm.com/docs/user-manual#def_object), e.g. the contents of a file.
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-changeset)changeset 
-    
-BitKeeper/cvsps speak for "[commit](https://git-scm.com/docs/user-manual#def_commit)". Since Git does not store changes, but states, it really does not make sense to use the term "changesets" with Git. 
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-branch)branch
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-checkout)checkout 
-    
-The action of updating all or part of the [working tree](https://git-scm.com/docs/user-manual#def_working_tree) with a [tree object](https://git-scm.com/docs/user-manual#def_tree_object) or [blob](https://git-scm.com/docs/user-manual#def_blob_object) from the [object database](https://git-scm.com/docs/user-manual#def_object_database), and updating the [index](https://git-scm.com/docs/user-manual#def_index) and [HEAD](https://git-scm.com/docs/user-manual#def_HEAD) if the whole working tree has been pointed at a new [branch](https://git-scm.com/docs/user-manual#def_branch). 
+A "branch" is a line of development. The most recent [commit](https://git-scm.com/docs/user-manual#def_commit) on a branch is referred to as the tip of that branch. The tip of the branch is [referenced](https://git-scm.com/docs/user-manual#def_ref) by a branch [head](https://git-scm.com/docs/user-manual#def_head), which moves forward as additional development is done on the branch. A single Git [repository](https://git-scm.com/docs/user-manual#def_repository) can track an arbitrary number of branches, but your [working tree](https://git-scm.com/docs/user-manual#def_working_tree) is associated with just one of them (the "current" or "checked out" branch), and [HEAD](https://git-scm.com/docs/user-manual#def_HEAD) points to that branch.
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-cherry-picking)cherry-picking 
-    
-In [SCM](https://git-scm.com/docs/user-manual#def_SCM) jargon, "cherry pick" means to choose a subset of changes out of a series of changes (typically commits) and record them as a new series of changes on top of a different codebase. In Git, this is performed by the "git cherry-pick" command to extract the change introduced by an existing [commit](https://git-scm.com/docs/user-manual#def_commit) and to record it based on the tip of the current [branch](https://git-scm.com/docs/user-manual#def_branch) as a new commit. 
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-cache)cache
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-clean)clean 
-    
-A [working tree](https://git-scm.com/docs/user-manual#def_working_tree) is clean, if it corresponds to the [revision](https://git-scm.com/docs/user-manual#def_revision) referenced by the current [head](https://git-scm.com/docs/user-manual#def_head). Also see "[dirty](https://git-scm.com/docs/user-manual#def_dirty)". 
+Obsolete for: [index](https://git-scm.com/docs/user-manual#def_index).
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-commit)commit 
-    
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-chain)chain
+
+A list of objects, where each [object](https://git-scm.com/docs/user-manual#def_object) in the list contains a reference to its successor (for example, the successor of a [commit](https://git-scm.com/docs/user-manual#def_commit) could be one of its [parents](https://git-scm.com/docs/user-manual#def_parent)).
+
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-changeset)changeset
+
+BitKeeper/cvsps speak for "[commit](https://git-scm.com/docs/user-manual#def_commit)". Since Git does not store changes, but states, it really does not make sense to use the term "changesets" with Git.
+
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-checkout)checkout
+
+The action of updating all or part of the [working tree](https://git-scm.com/docs/user-manual#def_working_tree) with a [tree object](https://git-scm.com/docs/user-manual#def_tree_object) or [blob](https://git-scm.com/docs/user-manual#def_blob_object) from the [object database](https://git-scm.com/docs/user-manual#def_object_database), and updating the [index](https://git-scm.com/docs/user-manual#def_index) and [HEAD](https://git-scm.com/docs/user-manual#def_HEAD) if the whole working tree has been pointed at a new [branch](https://git-scm.com/docs/user-manual#def_branch).
+
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-cherry-picking)cherry-picking
+
+In [SCM](https://git-scm.com/docs/user-manual#def_SCM) jargon, "cherry pick" means to choose a subset of changes out of a series of changes (typically commits) and record them as a new series of changes on top of a different codebase. In Git, this is performed by the "git cherry-pick" command to extract the change introduced by an existing [commit](https://git-scm.com/docs/user-manual#def_commit) and to record it based on the tip of the current [branch](https://git-scm.com/docs/user-manual#def_branch) as a new commit.
+
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-clean)clean
+
+A [working tree](https://git-scm.com/docs/user-manual#def_working_tree) is clean, if it corresponds to the [revision](https://git-scm.com/docs/user-manual#def_revision) referenced by the current [head](https://git-scm.com/docs/user-manual#def_head). Also see "[dirty](https://git-scm.com/docs/user-manual#def_dirty)".
+
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-commit)commit
+
 As a noun: A single point in the Git history; the entire history of a project is represented as a set of interrelated commits. The word "commit" is often used by Git in the same places other revision control systems use the words "revision" or "version". Also used as a short hand for [commit object](https://git-scm.com/docs/user-manual#def_commit_object).
-As a verb: The action of storing a new snapshot of the project’s state in the Git history, by creating a new commit representing the current state of the [index](https://git-scm.com/docs/user-manual#def_index) and advancing [HEAD](https://git-scm.com/docs/user-manual#def_HEAD) to point at the new commit. 
+As a verb: The action of storing a new snapshot of the project’s state in the Git history, by creating a new commit representing the current state of the [index](https://git-scm.com/docs/user-manual#def_index) and advancing [HEAD](https://git-scm.com/docs/user-manual#def_HEAD) to point at the new commit.
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-commitgraphconceptrepresentationsandusage)commit graph concept, representations and usage 
-    
-A synonym for the [DAG](https://git-scm.com/docs/user-manual#def_DAG) structure formed by the commits in the object database, [referenced](https://git-scm.com/docs/user-manual#def_ref) by branch tips, using their [chain](https://git-scm.com/docs/user-manual#def_chain) of linked commits. This structure is the definitive commit graph. The graph can be represented in other ways, e.g. the ["commit-graph" file](https://git-scm.com/docs/user-manual#def_commit_graph_file). 
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-commitgraphconceptrepresentationsandusage)commit graph concept, representations and usage
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-commit-graphfile)commit-graph file 
-    
-The "commit-graph" (normally hyphenated) file is a supplemental representation of the [commit graph](https://git-scm.com/docs/user-manual#def_commit_graph_general) which accelerates commit graph walks. The "commit-graph" file is stored either in the .git/objects/info directory or in the info directory of an alternate object database. 
+A synonym for the [DAG](https://git-scm.com/docs/user-manual#def_DAG) structure formed by the commits in the object database, [referenced](https://git-scm.com/docs/user-manual#def_ref) by branch tips, using their [chain](https://git-scm.com/docs/user-manual#def_chain) of linked commits. This structure is the definitive commit graph. The graph can be represented in other ways, e.g. the ["commit-graph" file](https://git-scm.com/docs/user-manual#def_commit_graph_file).
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-commitobject)commit object 
-    
-An [object](https://git-scm.com/docs/user-manual#def_object) which contains the information about a particular [revision](https://git-scm.com/docs/user-manual#def_revision), such as [parents](https://git-scm.com/docs/user-manual#def_parent), committer, author, date and the [tree object](https://git-scm.com/docs/user-manual#def_tree_object) which corresponds to the top [directory](https://git-scm.com/docs/user-manual#def_directory) of the stored revision. 
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-commit-graphfile)commit-graph file
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-commit-ishalsocommittish)commit-ish (also committish) 
-    
-A [commit object](https://git-scm.com/docs/user-manual#def_commit_object) or an [object](https://git-scm.com/docs/user-manual#def_object) that can be recursively [dereferenced](https://git-scm.com/docs/user-manual#def_dereference) to a commit object. The following are all commit-ishes: a commit object, a [tag object](https://git-scm.com/docs/user-manual#def_tag_object) that points to a commit object, a tag object that points to a tag object that points to a commit object, etc. 
+The "commit-graph" (normally hyphenated) file is a supplemental representation of the [commit graph](https://git-scm.com/docs/user-manual#def_commit_graph_general) which accelerates commit graph walks. The "commit-graph" file is stored either in the .git/objects/info directory or in the info directory of an alternate object database.
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-coreGit)core Git 
-    
-Fundamental data structures and utilities of Git. Exposes only limited source code management tools. 
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-commitobject)commit object
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-DAG)DAG 
-    
-Directed acyclic graph. The [commit objects](https://git-scm.com/docs/user-manual#def_commit_object) form a directed acyclic graph, because they have parents (directed), and the graph of commit objects is acyclic (there is no [chain](https://git-scm.com/docs/user-manual#def_chain) which begins and ends with the same [object](https://git-scm.com/docs/user-manual#def_object)). 
+An [object](https://git-scm.com/docs/user-manual#def_object) which contains the information about a particular [revision](https://git-scm.com/docs/user-manual#def_revision), such as [parents](https://git-scm.com/docs/user-manual#def_parent), committer, author, date and the [tree object](https://git-scm.com/docs/user-manual#def_tree_object) which corresponds to the top [directory](https://git-scm.com/docs/user-manual#def_directory) of the stored revision.
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-danglingobject)dangling object 
-    
-An [unreachable object](https://git-scm.com/docs/user-manual#def_unreachable_object) which is not [reachable](https://git-scm.com/docs/user-manual#def_reachable) even from other unreachable objects; a dangling object has no references to it from any reference or [object](https://git-scm.com/docs/user-manual#def_object) in the [repository](https://git-scm.com/docs/user-manual#def_repository). 
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-commit-ishalsocommittish)commit-ish (also committish)
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-dereference)dereference 
-    
+A [commit object](https://git-scm.com/docs/user-manual#def_commit_object) or an [object](https://git-scm.com/docs/user-manual#def_object) that can be recursively [dereferenced](https://git-scm.com/docs/user-manual#def_dereference) to a commit object. The following are all commit-ishes: a commit object, a [tag object](https://git-scm.com/docs/user-manual#def_tag_object) that points to a commit object, a tag object that points to a tag object that points to a commit object, etc.
+
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-coreGit)core Git
+
+Fundamental data structures and utilities of Git. Exposes only limited source code management tools.
+
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-DAG)DAG
+
+Directed acyclic graph. The [commit objects](https://git-scm.com/docs/user-manual#def_commit_object) form a directed acyclic graph, because they have parents (directed), and the graph of commit objects is acyclic (there is no [chain](https://git-scm.com/docs/user-manual#def_chain) which begins and ends with the same [object](https://git-scm.com/docs/user-manual#def_object)).
+
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-danglingobject)dangling object
+
+An [unreachable object](https://git-scm.com/docs/user-manual#def_unreachable_object) which is not [reachable](https://git-scm.com/docs/user-manual#def_reachable) even from other unreachable objects; a dangling object has no references to it from any reference or [object](https://git-scm.com/docs/user-manual#def_object) in the [repository](https://git-scm.com/docs/user-manual#def_repository).
+
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-dereference)dereference
+
 Referring to a [symbolic ref](https://git-scm.com/docs/user-manual#def_symref): the action of accessing the [reference](https://git-scm.com/docs/user-manual#def_ref) pointed at by a symbolic ref. Recursive dereferencing involves repeating the aforementioned process on the resulting ref until a non-symbolic reference is found.
 Referring to a [tag object](https://git-scm.com/docs/user-manual#def_tag_object): the action of accessing the [object](https://git-scm.com/docs/user-manual#def_object) a tag points at. Tags are recursively dereferenced by repeating the operation on the result object until the result has either a specified [object type](https://git-scm.com/docs/user-manual#def_object_type) (where applicable) or any non-"tag" object type. A synonym for "recursive dereference" in the context of tags is "[peel](https://git-scm.com/docs/user-manual#def_peel)".
 Referring to a [commit object](https://git-scm.com/docs/user-manual#def_commit_object): the action of accessing the commit’s tree object. Commits cannot be dereferenced recursively.
-Unless otherwise specified, "dereferencing" as it used in the context of Git commands or protocols is implicitly recursive. 
+Unless otherwise specified, "dereferencing" as it used in the context of Git commands or protocols is implicitly recursive.
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-detachedHEAD)detached HEAD 
-    
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-detachedHEAD)detached HEAD
+
 Normally the [HEAD](https://git-scm.com/docs/user-manual#def_HEAD) stores the name of a [branch](https://git-scm.com/docs/user-manual#def_branch), and commands that operate on the history HEAD represents operate on the history leading to the tip of the branch the HEAD points at. However, Git also allows you to [check out](https://git-scm.com/docs/user-manual#def_checkout) an arbitrary [commit](https://git-scm.com/docs/user-manual#def_commit) that isn’t necessarily the tip of any particular branch. The HEAD in such a state is called "detached".
-Note that commands that operate on the history of the current branch (e.g. `git` `commit` to build a new history on top of it) still work while the HEAD is detached. They update the HEAD to point at the tip of the updated history without affecting any branch. Commands that update or inquire information _about_ the current branch (e.g. `git` `branch` `--set-upstream-to` that sets what remote-tracking branch the current branch integrates with) obviously do not work, as there is no (real) current branch to ask about in this state. 
+Note that commands that operate on the history of the current branch (e.g. `git` `commit` to build a new history on top of it) still work while the HEAD is detached. They update the HEAD to point at the tip of the updated history without affecting any branch. Commands that update or inquire information _about_ the current branch (e.g. `git` `branch` `--set-upstream-to` that sets what remote-tracking branch the current branch integrates with) obviously do not work, as there is no (real) current branch to ask about in this state.
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-directory)directory 
-    
-The list you get with "ls" :-) 
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-directory)directory
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-dirty)dirty 
-    
-A [working tree](https://git-scm.com/docs/user-manual#def_working_tree) is said to be "dirty" if it contains modifications which have not been [committed](https://git-scm.com/docs/user-manual#def_commit) to the current [branch](https://git-scm.com/docs/user-manual#def_branch). 
+The list you get with "ls" :-)
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-evilmerge)evil merge 
-    
-An evil merge is a [merge](https://git-scm.com/docs/user-manual#def_merge) that introduces changes that do not appear in any [parent](https://git-scm.com/docs/user-manual#def_parent). 
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-dirty)dirty
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-fast-forward)fast-forward 
-    
-A fast-forward is a special type of [merge](https://git-scm.com/docs/user-manual#def_merge) where you have a [revision](https://git-scm.com/docs/user-manual#def_revision) and you are "merging" another [branch](https://git-scm.com/docs/user-manual#def_branch)'s changes that happen to be a descendant of what you have. In such a case, you do not make a new [merge](https://git-scm.com/docs/user-manual#def_merge) [commit](https://git-scm.com/docs/user-manual#def_commit) but instead just update your branch to point at the same revision as the branch you are merging. This will happen frequently on a [remote-tracking branch](https://git-scm.com/docs/user-manual#def_remote_tracking_branch) of a remote [repository](https://git-scm.com/docs/user-manual#def_repository). 
+A [working tree](https://git-scm.com/docs/user-manual#def_working_tree) is said to be "dirty" if it contains modifications which have not been [committed](https://git-scm.com/docs/user-manual#def_commit) to the current [branch](https://git-scm.com/docs/user-manual#def_branch).
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-fetch)fetch 
-    
-Fetching a [branch](https://git-scm.com/docs/user-manual#def_branch) means to get the branch’s [head ref](https://git-scm.com/docs/user-manual#def_head_ref) from a remote [repository](https://git-scm.com/docs/user-manual#def_repository), to find out which objects are missing from the local [object database](https://git-scm.com/docs/user-manual#def_object_database), and to get them, too. See also [git-fetch[1]](https://git-scm.com/docs/git-fetch). 
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-evilmerge)evil merge
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-filesystem)file system 
-    
-Linus Torvalds originally designed Git to be a user space file system, i.e. the infrastructure to hold files and directories. That ensured the efficiency and speed of Git. 
+An evil merge is a [merge](https://git-scm.com/docs/user-manual#def_merge) that introduces changes that do not appear in any [parent](https://git-scm.com/docs/user-manual#def_parent).
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-Gitarchive)Git archive 
-    
-Synonym for [repository](https://git-scm.com/docs/user-manual#def_repository) (for arch people). 
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-fast-forward)fast-forward
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-gitfile)gitfile 
-    
-A plain file `.git` at the root of a working tree that points at the directory that is the real repository. For proper use see [git-worktree[1]](https://git-scm.com/docs/git-worktree) or [git-submodule[1]](https://git-scm.com/docs/git-submodule). For syntax see [gitrepository-layout[5]](https://git-scm.com/docs/gitrepository-layout). 
+A fast-forward is a special type of [merge](https://git-scm.com/docs/user-manual#def_merge) where you have a [revision](https://git-scm.com/docs/user-manual#def_revision) and you are "merging" another [branch](https://git-scm.com/docs/user-manual#def_branch)'s changes that happen to be a descendant of what you have. In such a case, you do not make a new [merge](https://git-scm.com/docs/user-manual#def_merge) [commit](https://git-scm.com/docs/user-manual#def_commit) but instead just update your branch to point at the same revision as the branch you are merging. This will happen frequently on a [remote-tracking branch](https://git-scm.com/docs/user-manual#def_remote_tracking_branch) of a remote [repository](https://git-scm.com/docs/user-manual#def_repository).
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-grafts)grafts 
-    
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-fetch)fetch
+
+Fetching a [branch](https://git-scm.com/docs/user-manual#def_branch) means to get the branch’s [head ref](https://git-scm.com/docs/user-manual#def_head_ref) from a remote [repository](https://git-scm.com/docs/user-manual#def_repository), to find out which objects are missing from the local [object database](https://git-scm.com/docs/user-manual#def_object_database), and to get them, too. See also [git-fetch[1]](https://git-scm.com/docs/git-fetch).
+
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-filesystem)file system
+
+Linus Torvalds originally designed Git to be a user space file system, i.e. the infrastructure to hold files and directories. That ensured the efficiency and speed of Git.
+
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-Gitarchive)Git archive
+
+Synonym for [repository](https://git-scm.com/docs/user-manual#def_repository) (for arch people).
+
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-gitfile)gitfile
+
+A plain file `.git` at the root of a working tree that points at the directory that is the real repository. For proper use see [git-worktree[1]](https://git-scm.com/docs/git-worktree) or [git-submodule[1]](https://git-scm.com/docs/git-submodule). For syntax see [gitrepository-layout[5]](https://git-scm.com/docs/gitrepository-layout).
+
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-grafts)grafts
+
 Grafts enable two otherwise different lines of development to be joined together by recording fake ancestry information for commits. This way you can make Git pretend the set of [parents](https://git-scm.com/docs/user-manual#def_parent) a [commit](https://git-scm.com/docs/user-manual#def_commit) has is different from what was recorded when the commit was created. Configured via the `.git/info/grafts` file.
-Note that the grafts mechanism is outdated and can lead to problems transferring objects between repositories; see [git-replace[1]](https://git-scm.com/docs/git-replace) for a more flexible and robust system to do the same thing. 
+Note that the grafts mechanism is outdated and can lead to problems transferring objects between repositories; see [git-replace[1]](https://git-scm.com/docs/git-replace) for a more flexible and robust system to do the same thing.
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-hash)hash 
-    
-In Git’s context, synonym for [object name](https://git-scm.com/docs/user-manual#def_object_name). 
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-hash)hash
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-head)head 
-    
-A [named reference](https://git-scm.com/docs/user-manual#def_ref) to the [commit](https://git-scm.com/docs/user-manual#def_commit) at the tip of a [branch](https://git-scm.com/docs/user-manual#def_branch). Heads are stored in a file in `$GIT_DIR/refs/heads/` directory, except when using packed refs. (See [git-pack-refs[1]](https://git-scm.com/docs/git-pack-refs).) 
+In Git’s context, synonym for [object name](https://git-scm.com/docs/user-manual#def_object_name).
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-HEAD)HEAD 
-    
-The current [branch](https://git-scm.com/docs/user-manual#def_branch). In more detail: Your [working tree](https://git-scm.com/docs/user-manual#def_working_tree) is normally derived from the state of the tree referred to by HEAD. HEAD is a reference to one of the [heads](https://git-scm.com/docs/user-manual#def_head) in your repository, except when using a [detached HEAD](https://git-scm.com/docs/user-manual#def_detached_HEAD), in which case it directly references an arbitrary commit. 
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-head)head
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-headref)head ref 
-    
-A synonym for [head](https://git-scm.com/docs/user-manual#def_head). 
+A [named reference](https://git-scm.com/docs/user-manual#def_ref) to the [commit](https://git-scm.com/docs/user-manual#def_commit) at the tip of a [branch](https://git-scm.com/docs/user-manual#def_branch). Heads are stored in a file in `$GIT_DIR/refs/heads/` directory, except when using packed refs. (See [git-pack-refs[1]](https://git-scm.com/docs/git-pack-refs).)
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-hook)hook 
-    
-During the normal execution of several Git commands, call-outs are made to optional scripts that allow a developer to add functionality or checking. Typically, the hooks allow for a command to be pre-verified and potentially aborted, and allow for a post-notification after the operation is done. The hook scripts are found in the `$GIT_DIR/hooks/` directory, and are enabled by simply removing the `.sample` suffix from the filename. In earlier versions of Git you had to make them executable. 
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-HEAD)HEAD
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-index)index 
-    
-A collection of files with stat information, whose contents are stored as objects. The index is a stored version of your [working tree](https://git-scm.com/docs/user-manual#def_working_tree). Truth be told, it can also contain a second, and even a third version of a working tree, which are used when [merging](https://git-scm.com/docs/user-manual#def_merge). 
+The current [branch](https://git-scm.com/docs/user-manual#def_branch). In more detail: Your [working tree](https://git-scm.com/docs/user-manual#def_working_tree) is normally derived from the state of the tree referred to by HEAD. HEAD is a reference to one of the [heads](https://git-scm.com/docs/user-manual#def_head) in your repository, except when using a [detached HEAD](https://git-scm.com/docs/user-manual#def_detached_HEAD), in which case it directly references an arbitrary commit.
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-indexentry)index entry 
-    
-The information regarding a particular file, stored in the [index](https://git-scm.com/docs/user-manual#def_index). An index entry can be unmerged, if a [merge](https://git-scm.com/docs/user-manual#def_merge) was started, but not yet finished (i.e. if the index contains multiple versions of that file). 
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-headref)head ref
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-master)master 
-    
-The default development [branch](https://git-scm.com/docs/user-manual#def_branch). Whenever you create a Git [repository](https://git-scm.com/docs/user-manual#def_repository), a branch named "master" is created, and becomes the active branch. In most cases, this contains the local development, though that is purely by convention and is not required. 
+A synonym for [head](https://git-scm.com/docs/user-manual#def_head).
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-merge)merge 
-    
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-hook)hook
+
+During the normal execution of several Git commands, call-outs are made to optional scripts that allow a developer to add functionality or checking. Typically, the hooks allow for a command to be pre-verified and potentially aborted, and allow for a post-notification after the operation is done. The hook scripts are found in the `$GIT_DIR/hooks/` directory, and are enabled by simply removing the `.sample` suffix from the filename. In earlier versions of Git you had to make them executable.
+
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-index)index
+
+A collection of files with stat information, whose contents are stored as objects. The index is a stored version of your [working tree](https://git-scm.com/docs/user-manual#def_working_tree). Truth be told, it can also contain a second, and even a third version of a working tree, which are used when [merging](https://git-scm.com/docs/user-manual#def_merge).
+
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-indexentry)index entry
+
+The information regarding a particular file, stored in the [index](https://git-scm.com/docs/user-manual#def_index). An index entry can be unmerged, if a [merge](https://git-scm.com/docs/user-manual#def_merge) was started, but not yet finished (i.e. if the index contains multiple versions of that file).
+
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-master)master
+
+The default development [branch](https://git-scm.com/docs/user-manual#def_branch). Whenever you create a Git [repository](https://git-scm.com/docs/user-manual#def_repository), a branch named "master" is created, and becomes the active branch. In most cases, this contains the local development, though that is purely by convention and is not required.
+
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-merge)merge
+
 As a verb: To bring the contents of another [branch](https://git-scm.com/docs/user-manual#def_branch) (possibly from an external [repository](https://git-scm.com/docs/user-manual#def_repository)) into the current branch. In the case where the merged-in branch is from a different repository, this is done by first [fetching](https://git-scm.com/docs/user-manual#def_fetch) the remote branch and then merging the result into the current branch. This combination of fetch and merge operations is called a [pull](https://git-scm.com/docs/user-manual#def_pull). Merging is performed by an automatic process that identifies changes made since the branches diverged, and then applies all those changes together. In cases where changes conflict, manual intervention may be required to complete the merge.
-As a noun: unless it is a [fast-forward](https://git-scm.com/docs/user-manual#def_fast_forward), a successful merge results in the creation of a new [commit](https://git-scm.com/docs/user-manual#def_commit) representing the result of the merge, and having as [parents](https://git-scm.com/docs/user-manual#def_parent) the tips of the merged [branches](https://git-scm.com/docs/user-manual#def_branch). This commit is referred to as a "merge commit", or sometimes just a "merge". 
+As a noun: unless it is a [fast-forward](https://git-scm.com/docs/user-manual#def_fast_forward), a successful merge results in the creation of a new [commit](https://git-scm.com/docs/user-manual#def_commit) representing the result of the merge, and having as [parents](https://git-scm.com/docs/user-manual#def_parent) the tips of the merged [branches](https://git-scm.com/docs/user-manual#def_branch). This commit is referred to as a "merge commit", or sometimes just a "merge".
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-object)object 
-    
-The unit of storage in Git. It is uniquely identified by the [SHA-1](https://git-scm.com/docs/user-manual#def_SHA1) of its contents. Consequently, an object cannot be changed. 
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-object)object
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-objectdatabase)object database 
-    
-Stores a set of "objects", and an individual [object](https://git-scm.com/docs/user-manual#def_object) is identified by its [object name](https://git-scm.com/docs/user-manual#def_object_name). The objects usually live in `$GIT_DIR/objects/`. 
+The unit of storage in Git. It is uniquely identified by the [SHA-1](https://git-scm.com/docs/user-manual#def_SHA1) of its contents. Consequently, an object cannot be changed.
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-objectidentifierobjectIDoid)object identifier, object ID, oid 
-    
-Synonyms for [object name](https://git-scm.com/docs/user-manual#def_object_name). 
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-objectdatabase)object database
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-objectname)object name 
-    
-The unique identifier of an [object](https://git-scm.com/docs/user-manual#def_object). The object name is usually represented by a 40 character hexadecimal string. Also colloquially called [SHA-1](https://git-scm.com/docs/user-manual#def_SHA1). 
+Stores a set of "objects", and an individual [object](https://git-scm.com/docs/user-manual#def_object) is identified by its [object name](https://git-scm.com/docs/user-manual#def_object_name). The objects usually live in `$GIT_DIR/objects/`.
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-objecttype)object type 
-    
-One of the identifiers "[commit](https://git-scm.com/docs/user-manual#def_commit_object)", "[tree](https://git-scm.com/docs/user-manual#def_tree_object)", "[tag](https://git-scm.com/docs/user-manual#def_tag_object)" or "[blob](https://git-scm.com/docs/user-manual#def_blob_object)" describing the type of an [object](https://git-scm.com/docs/user-manual#def_object). 
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-objectidentifierobjectIDoid)object identifier, object ID, oid
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-octopus)octopus 
-    
-To [merge](https://git-scm.com/docs/user-manual#def_merge) more than two [branches](https://git-scm.com/docs/user-manual#def_branch). 
+Synonyms for [object name](https://git-scm.com/docs/user-manual#def_object_name).
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-orphan)orphan 
-    
-The act of getting on a [branch](https://git-scm.com/docs/user-manual#def_branch) that does not exist yet (i.e., an [unborn](https://git-scm.com/docs/user-manual#def_unborn) branch). After such an operation, the commit first created becomes a commit without a parent, starting a new history. 
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-objectname)object name
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-origin)origin 
-    
-The default upstream [repository](https://git-scm.com/docs/user-manual#def_repository). Most projects have at least one upstream project which they track. By default _origin_ is used for that purpose. New upstream updates will be fetched into [remote-tracking branches](https://git-scm.com/docs/user-manual#def_remote_tracking_branch) named origin/name-of-upstream-branch, which you can see using `git` `branch` `-r`. 
+The unique identifier of an [object](https://git-scm.com/docs/user-manual#def_object). The object name is usually represented by a 40 character hexadecimal string. Also colloquially called [SHA-1](https://git-scm.com/docs/user-manual#def_SHA1).
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-overlay)overlay 
-    
-Only update and add files to the working directory, but don’t delete them, similar to how _cp -R_ would update the contents in the destination directory. This is the default mode in a [checkout](https://git-scm.com/docs/user-manual#def_checkout) when checking out files from the [index](https://git-scm.com/docs/user-manual#def_index) or a [tree-ish](https://git-scm.com/docs/user-manual#def_tree-ish). In contrast, no-overlay mode also deletes tracked files not present in the source, similar to _rsync --delete_. 
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-objecttype)object type
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-pack)pack 
-    
-A set of objects which have been compressed into one file (to save space or to transmit them efficiently). 
+One of the identifiers "[commit](https://git-scm.com/docs/user-manual#def_commit_object)", "[tree](https://git-scm.com/docs/user-manual#def_tree_object)", "[tag](https://git-scm.com/docs/user-manual#def_tag_object)" or "[blob](https://git-scm.com/docs/user-manual#def_blob_object)" describing the type of an [object](https://git-scm.com/docs/user-manual#def_object).
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-packindex)pack index 
-    
-The list of identifiers, and other information, of the objects in a [pack](https://git-scm.com/docs/user-manual#def_pack), to assist in efficiently accessing the contents of a pack. 
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-octopus)octopus
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-pathspec)pathspec 
-    
+To [merge](https://git-scm.com/docs/user-manual#def_merge) more than two [branches](https://git-scm.com/docs/user-manual#def_branch).
+
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-orphan)orphan
+
+The act of getting on a [branch](https://git-scm.com/docs/user-manual#def_branch) that does not exist yet (i.e., an [unborn](https://git-scm.com/docs/user-manual#def_unborn) branch). After such an operation, the commit first created becomes a commit without a parent, starting a new history.
+
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-origin)origin
+
+The default upstream [repository](https://git-scm.com/docs/user-manual#def_repository). Most projects have at least one upstream project which they track. By default _origin_ is used for that purpose. New upstream updates will be fetched into [remote-tracking branches](https://git-scm.com/docs/user-manual#def_remote_tracking_branch) named origin/name-of-upstream-branch, which you can see using `git` `branch` `-r`.
+
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-overlay)overlay
+
+Only update and add files to the working directory, but don’t delete them, similar to how _cp -R_ would update the contents in the destination directory. This is the default mode in a [checkout](https://git-scm.com/docs/user-manual#def_checkout) when checking out files from the [index](https://git-scm.com/docs/user-manual#def_index) or a [tree-ish](https://git-scm.com/docs/user-manual#def_tree-ish). In contrast, no-overlay mode also deletes tracked files not present in the source, similar to _rsync --delete_.
+
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-pack)pack
+
+A set of objects which have been compressed into one file (to save space or to transmit them efficiently).
+
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-packindex)pack index
+
+The list of identifiers, and other information, of the objects in a [pack](https://git-scm.com/docs/user-manual#def_pack), to assist in efficiently accessing the contents of a pack.
+
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-pathspec)pathspec
+
 Pattern used to limit paths in Git commands.
 Pathspecs are used on the command line of "git ls-files", "git ls-tree", "git add", "git grep", "git diff", "git checkout", and many other commands to limit the scope of operations to some subset of the tree or working tree. See the documentation of each command for whether paths are relative to the current directory or toplevel. The pathspec syntax is as follows:
   * any path matches itself
@@ -2786,22 +2786,22 @@ Pathspecs are used on the command line of "git ls-files", "git ls-tree", "git ad
 For example, Documentation/*.jpg will match all .jpg files in the Documentation subtree, including Documentation/chapter_1/figure_1.jpg.
 A pathspec that begins with a colon `:` has special meaning. In the short form, the leading colon `:` is followed by zero or more "magic signature" letters (which optionally is terminated by another colon `:`), and the remainder is the pattern to match against the path. The "magic signature" consists of ASCII symbols that are neither alphanumeric, glob, regex special characters nor colon. The optional colon that terminates the "magic signature" can be omitted if the pattern begins with a character that does not belong to "magic signature" symbol set and is not a colon.
 In the long form, the leading colon `:` is followed by an open parenthesis (, a comma-separated list of zero or more "magic words", and a close parentheses ), and the remainder is the pattern to match against the path.
-A pathspec with only a colon means "there is no pathspec". This form should not be combined with other pathspec. 
+A pathspec with only a colon means "there is no pathspec". This form should not be combined with other pathspec.
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-top)top 
-    
-The magic word `top` (magic signature: `/`) makes the pattern match from the root of the working tree, even when you are running the command from inside a subdirectory. 
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-top)top
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-literal)literal 
-    
-Wildcards in the pattern such as `*` or _?_ are treated as literal characters. 
+The magic word `top` (magic signature: `/`) makes the pattern match from the root of the working tree, even when you are running the command from inside a subdirectory.
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-icase)icase 
-    
-Case insensitive match. 
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-literal)literal
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-glob)glob 
-    
+Wildcards in the pattern such as `*` or _?_ are treated as literal characters.
+
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-icase)icase
+
+Case insensitive match.
+
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-glob)glob
+
 Git treats the pattern as a shell glob suitable for consumption by fnmatch(3) with the FNM_PATHNAME flag: wildcards in the pattern will not match a / in the pathname. For example, "Documentation/*.html" matches "Documentation/git.html" but not "Documentation/ppc/ppc.html" or "tools/perf/Documentation/perf.html".
 Two consecutive asterisks ("`**`") in patterns matched against full pathname may have special meaning:
   * A leading "`**`" followed by a slash means match in all directories. For example, "`**/foo`" matches file or directory "`foo`" anywhere. "`**/foo/bar`" matches file or directory "`bar`" anywhere that is directly under directory "`foo`".
@@ -2812,8 +2812,8 @@ Glob magic is incompatible with literal magic.
 
 
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-attr)attr 
-    
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-attr)attr
+
 After `attr:` comes a space separated list of "attribute requirements", all of which must be met in order for the path to be considered a match; this is in addition to the usual non-magic pathspec pattern matching. See [gitattributes[5]](https://git-scm.com/docs/gitattributes).
 Each of the attribute requirements for the path takes one of these forms:
   * "`ATTR`" requires that the attribute `ATTR` be set.
@@ -2824,36 +2824,36 @@ Note that when matching against a tree object, attributes are still obtained fro
 
 
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-exclude)exclude 
-    
-After a path matches any non-exclude pathspec, it will be run through all exclude pathspecs (magic signature: `!` or its synonym `^`). If it matches, the path is ignored. When there is no non-exclude pathspec, the exclusion is applied to the result set as if invoked without any pathspec. 
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-exclude)exclude
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-parent)parent 
-    
-A [commit object](https://git-scm.com/docs/user-manual#def_commit_object) contains a (possibly empty) list of the logical predecessor(s) in the line of development, i.e. its parents. 
+After a path matches any non-exclude pathspec, it will be run through all exclude pathspecs (magic signature: `!` or its synonym `^`). If it matches, the path is ignored. When there is no non-exclude pathspec, the exclusion is applied to the result set as if invoked without any pathspec.
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-peel)peel 
-    
-The action of recursively [dereferencing](https://git-scm.com/docs/user-manual#def_dereference) a [tag object](https://git-scm.com/docs/user-manual#def_tag_object). 
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-parent)parent
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-pickaxe)pickaxe 
-    
-The term [pickaxe](https://git-scm.com/docs/user-manual#def_pickaxe) refers to an option to the diffcore routines that help select changes that add or delete a given text string. With the `--pickaxe-all` option, it can be used to view the full [changeset](https://git-scm.com/docs/user-manual#def_changeset) that introduced or removed, say, a particular line of text. See [git-diff[1]](https://git-scm.com/docs/git-diff). 
+A [commit object](https://git-scm.com/docs/user-manual#def_commit_object) contains a (possibly empty) list of the logical predecessor(s) in the line of development, i.e. its parents.
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-plumbing)plumbing 
-    
-Cute name for [core Git](https://git-scm.com/docs/user-manual#def_core_git). 
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-peel)peel
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-porcelain)porcelain 
-    
-Cute name for programs and program suites depending on [core Git](https://git-scm.com/docs/user-manual#def_core_git), presenting a high level access to core Git. Porcelains expose more of a [SCM](https://git-scm.com/docs/user-manual#def_SCM) interface than the [plumbing](https://git-scm.com/docs/user-manual#def_plumbing). 
+The action of recursively [dereferencing](https://git-scm.com/docs/user-manual#def_dereference) a [tag object](https://git-scm.com/docs/user-manual#def_tag_object).
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-per-worktreeref)per-worktree ref 
-    
-Refs that are per-[worktree](https://git-scm.com/docs/user-manual#def_worktree), rather than global. This is presently only [HEAD](https://git-scm.com/docs/user-manual#def_HEAD) and any refs that start with `refs/bisect/`, but might later include other unusual refs. 
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-pickaxe)pickaxe
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-pseudoref)pseudoref 
-    
+The term [pickaxe](https://git-scm.com/docs/user-manual#def_pickaxe) refers to an option to the diffcore routines that help select changes that add or delete a given text string. With the `--pickaxe-all` option, it can be used to view the full [changeset](https://git-scm.com/docs/user-manual#def_changeset) that introduced or removed, say, a particular line of text. See [git-diff[1]](https://git-scm.com/docs/git-diff).
+
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-plumbing)plumbing
+
+Cute name for [core Git](https://git-scm.com/docs/user-manual#def_core_git).
+
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-porcelain)porcelain
+
+Cute name for programs and program suites depending on [core Git](https://git-scm.com/docs/user-manual#def_core_git), presenting a high level access to core Git. Porcelains expose more of a [SCM](https://git-scm.com/docs/user-manual#def_SCM) interface than the [plumbing](https://git-scm.com/docs/user-manual#def_plumbing).
+
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-per-worktreeref)per-worktree ref
+
+Refs that are per-[worktree](https://git-scm.com/docs/user-manual#def_worktree), rather than global. This is presently only [HEAD](https://git-scm.com/docs/user-manual#def_HEAD) and any refs that start with `refs/bisect/`, but might later include other unusual refs.
+
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-pseudoref)pseudoref
+
 A ref that has different semantics than normal refs. These refs can be read via normal Git commands, but cannot be written to by commands like [git-update-ref[1]](https://git-scm.com/docs/git-update-ref).
 The following pseudorefs are known to Git:
   * `FETCH_HEAD` is written by [git-fetch[1]](https://git-scm.com/docs/git-fetch) or [git-pull[1]](https://git-scm.com/docs/git-pull). It may refer to multiple object IDs. Each object ID is annotated with metadata indicating where it was fetched from and its fetch status.
@@ -2861,28 +2861,28 @@ The following pseudorefs are known to Git:
 
 
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-pull)pull 
-    
-Pulling a [branch](https://git-scm.com/docs/user-manual#def_branch) means to [fetch](https://git-scm.com/docs/user-manual#def_fetch) it and [merge](https://git-scm.com/docs/user-manual#def_merge) it. See also [git-pull[1]](https://git-scm.com/docs/git-pull). 
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-pull)pull
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-push)push 
-    
-Pushing a [branch](https://git-scm.com/docs/user-manual#def_branch) means to get the branch’s [head ref](https://git-scm.com/docs/user-manual#def_head_ref) from a remote [repository](https://git-scm.com/docs/user-manual#def_repository), find out if it is an ancestor to the branch’s local head ref, and in that case, putting all objects, which are [reachable](https://git-scm.com/docs/user-manual#def_reachable) from the local head ref, and which are missing from the remote repository, into the remote [object database](https://git-scm.com/docs/user-manual#def_object_database), and updating the remote head ref. If the remote [head](https://git-scm.com/docs/user-manual#def_head) is not an ancestor to the local head, the push fails. 
+Pulling a [branch](https://git-scm.com/docs/user-manual#def_branch) means to [fetch](https://git-scm.com/docs/user-manual#def_fetch) it and [merge](https://git-scm.com/docs/user-manual#def_merge) it. See also [git-pull[1]](https://git-scm.com/docs/git-pull).
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-reachable)reachable 
-    
-All of the ancestors of a given [commit](https://git-scm.com/docs/user-manual#def_commit) are said to be "reachable" from that commit. More generally, one [object](https://git-scm.com/docs/user-manual#def_object) is reachable from another if we can reach the one from the other by a [chain](https://git-scm.com/docs/user-manual#def_chain) that follows [tags](https://git-scm.com/docs/user-manual#def_tag) to whatever they tag, [commits](https://git-scm.com/docs/user-manual#def_commit_object) to their parents or trees, and [trees](https://git-scm.com/docs/user-manual#def_tree_object) to the trees or [blobs](https://git-scm.com/docs/user-manual#def_blob_object) that they contain. 
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-push)push
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-reachabilitybitmaps)reachability bitmaps 
-    
-Reachability bitmaps store information about the [reachability](https://git-scm.com/docs/user-manual#def_reachable) of a selected set of commits in a packfile, or a multi-pack index (MIDX), to speed up object search. The bitmaps are stored in a ".bitmap" file. A repository may have at most one bitmap file in use. The bitmap file may belong to either one pack, or the repository’s multi-pack index (if it exists). 
+Pushing a [branch](https://git-scm.com/docs/user-manual#def_branch) means to get the branch’s [head ref](https://git-scm.com/docs/user-manual#def_head_ref) from a remote [repository](https://git-scm.com/docs/user-manual#def_repository), find out if it is an ancestor to the branch’s local head ref, and in that case, putting all objects, which are [reachable](https://git-scm.com/docs/user-manual#def_reachable) from the local head ref, and which are missing from the remote repository, into the remote [object database](https://git-scm.com/docs/user-manual#def_object_database), and updating the remote head ref. If the remote [head](https://git-scm.com/docs/user-manual#def_head) is not an ancestor to the local head, the push fails.
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-rebase)rebase 
-    
-To reapply a series of changes from a [branch](https://git-scm.com/docs/user-manual#def_branch) to a different base, and reset the [head](https://git-scm.com/docs/user-manual#def_head) of that branch to the result. 
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-reachable)reachable
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-ref)ref 
-    
+All of the ancestors of a given [commit](https://git-scm.com/docs/user-manual#def_commit) are said to be "reachable" from that commit. More generally, one [object](https://git-scm.com/docs/user-manual#def_object) is reachable from another if we can reach the one from the other by a [chain](https://git-scm.com/docs/user-manual#def_chain) that follows [tags](https://git-scm.com/docs/user-manual#def_tag) to whatever they tag, [commits](https://git-scm.com/docs/user-manual#def_commit_object) to their parents or trees, and [trees](https://git-scm.com/docs/user-manual#def_tree_object) to the trees or [blobs](https://git-scm.com/docs/user-manual#def_blob_object) that they contain.
+
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-reachabilitybitmaps)reachability bitmaps
+
+Reachability bitmaps store information about the [reachability](https://git-scm.com/docs/user-manual#def_reachable) of a selected set of commits in a packfile, or a multi-pack index (MIDX), to speed up object search. The bitmaps are stored in a ".bitmap" file. A repository may have at most one bitmap file in use. The bitmap file may belong to either one pack, or the repository’s multi-pack index (if it exists).
+
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-rebase)rebase
+
+To reapply a series of changes from a [branch](https://git-scm.com/docs/user-manual#def_branch) to a different base, and reset the [head](https://git-scm.com/docs/user-manual#def_head) of that branch to the result.
+
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-ref)ref
+
 A name that points to an [object name](https://git-scm.com/docs/user-manual#def_object_name) or another ref (the latter is called a [symbolic ref](https://git-scm.com/docs/user-manual#def_symref)). For convenience, a ref can sometimes be abbreviated when used as an argument to a Git command; see [gitrevisions[7]](https://git-scm.com/docs/gitrevisions) for details. Refs are stored in the [repository](https://git-scm.com/docs/user-manual#def_repository).
 The ref namespace is hierarchical. Ref names must either start with `refs/` or be located in the root of the hierarchy. For the latter, their name must follow these rules:
   * The name consists of only upper-case characters or underscores.
@@ -2897,120 +2897,120 @@ Different subhierarchies are used for different purposes. For example, the `refs
 
 
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-reflog)reflog 
-    
-A reflog shows the local "history" of a ref. In other words, it can tell you what the 3rd last revision in _this_ repository was, and what was the current state in _this_ repository, yesterday 9:14pm. See [git-reflog[1]](https://git-scm.com/docs/git-reflog) for details. 
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-reflog)reflog
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-refspec)refspec 
-    
-A "refspec" is used by [fetch](https://git-scm.com/docs/user-manual#def_fetch) and [push](https://git-scm.com/docs/user-manual#def_push) to describe the mapping between remote [ref](https://git-scm.com/docs/user-manual#def_ref) and local ref. See [git-fetch[1]](https://git-scm.com/docs/git-fetch) or [git-push[1]](https://git-scm.com/docs/git-push) for details. 
+A reflog shows the local "history" of a ref. In other words, it can tell you what the 3rd last revision in _this_ repository was, and what was the current state in _this_ repository, yesterday 9:14pm. See [git-reflog[1]](https://git-scm.com/docs/git-reflog) for details.
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-remoterepository)remote repository 
-    
-A [repository](https://git-scm.com/docs/user-manual#def_repository) which is used to track the same project but resides somewhere else. To communicate with remotes, see [fetch](https://git-scm.com/docs/user-manual#def_fetch) or [push](https://git-scm.com/docs/user-manual#def_push). 
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-refspec)refspec
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-remote-trackingbranch)remote-tracking branch 
-    
-A [ref](https://git-scm.com/docs/user-manual#def_ref) that is used to follow changes from another [repository](https://git-scm.com/docs/user-manual#def_repository). It typically looks like _refs/remotes/foo/bar_ (indicating that it tracks a branch named _bar_ in a remote named _foo_), and matches the right-hand-side of a configured fetch [refspec](https://git-scm.com/docs/user-manual#def_refspec). A remote-tracking branch should not contain direct modifications or have local commits made to it. 
+A "refspec" is used by [fetch](https://git-scm.com/docs/user-manual#def_fetch) and [push](https://git-scm.com/docs/user-manual#def_push) to describe the mapping between remote [ref](https://git-scm.com/docs/user-manual#def_ref) and local ref. See [git-fetch[1]](https://git-scm.com/docs/git-fetch) or [git-push[1]](https://git-scm.com/docs/git-push) for details.
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-repository)repository 
-    
-A collection of [refs](https://git-scm.com/docs/user-manual#def_ref) together with an [object database](https://git-scm.com/docs/user-manual#def_object_database) containing all objects which are [reachable](https://git-scm.com/docs/user-manual#def_reachable) from the refs, possibly accompanied by meta data from one or more [porcelains](https://git-scm.com/docs/user-manual#def_porcelain). A repository can share an object database with other repositories via [alternates mechanism](https://git-scm.com/docs/user-manual#def_alternate_object_database). 
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-remoterepository)remote repository
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-resolve)resolve 
-    
-The action of fixing up manually what a failed automatic [merge](https://git-scm.com/docs/user-manual#def_merge) left behind. 
+A [repository](https://git-scm.com/docs/user-manual#def_repository) which is used to track the same project but resides somewhere else. To communicate with remotes, see [fetch](https://git-scm.com/docs/user-manual#def_fetch) or [push](https://git-scm.com/docs/user-manual#def_push).
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-revision)revision 
-    
-Synonym for [commit](https://git-scm.com/docs/user-manual#def_commit) (the noun). 
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-remote-trackingbranch)remote-tracking branch
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-rewind)rewind 
-    
-To throw away part of the development, i.e. to assign the [head](https://git-scm.com/docs/user-manual#def_head) to an earlier [revision](https://git-scm.com/docs/user-manual#def_revision). 
+A [ref](https://git-scm.com/docs/user-manual#def_ref) that is used to follow changes from another [repository](https://git-scm.com/docs/user-manual#def_repository). It typically looks like _refs/remotes/foo/bar_ (indicating that it tracks a branch named _bar_ in a remote named _foo_), and matches the right-hand-side of a configured fetch [refspec](https://git-scm.com/docs/user-manual#def_refspec). A remote-tracking branch should not contain direct modifications or have local commits made to it.
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-SCM)SCM 
-    
-Source code management (tool). 
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-repository)repository
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-SHA-1)SHA-1 
-    
-"Secure Hash Algorithm 1"; a cryptographic hash function. In the context of Git used as a synonym for [object name](https://git-scm.com/docs/user-manual#def_object_name). 
+A collection of [refs](https://git-scm.com/docs/user-manual#def_ref) together with an [object database](https://git-scm.com/docs/user-manual#def_object_database) containing all objects which are [reachable](https://git-scm.com/docs/user-manual#def_reachable) from the refs, possibly accompanied by meta data from one or more [porcelains](https://git-scm.com/docs/user-manual#def_porcelain). A repository can share an object database with other repositories via [alternates mechanism](https://git-scm.com/docs/user-manual#def_alternate_object_database).
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-shallowclone)shallow clone 
-    
-Mostly a synonym to [shallow repository](https://git-scm.com/docs/user-manual#def_shallow_repository) but the phrase makes it more explicit that it was created by running `git` `clone` `--depth=...` command. 
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-resolve)resolve
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-shallowrepository)shallow repository 
-    
-A shallow [repository](https://git-scm.com/docs/user-manual#def_repository) has an incomplete history some of whose [commits](https://git-scm.com/docs/user-manual#def_commit) have [parents](https://git-scm.com/docs/user-manual#def_parent) cauterized away (in other words, Git is told to pretend that these commits do not have the parents, even though they are recorded in the [commit object](https://git-scm.com/docs/user-manual#def_commit_object)). This is sometimes useful when you are interested only in the recent history of a project even though the real history recorded in the upstream is much larger. A shallow repository is created by giving the `--depth` option to [git-clone[1]](https://git-scm.com/docs/git-clone), and its history can be later deepened with [git-fetch[1]](https://git-scm.com/docs/git-fetch). 
+The action of fixing up manually what a failed automatic [merge](https://git-scm.com/docs/user-manual#def_merge) left behind.
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-stashentry)stash entry 
-    
-An [object](https://git-scm.com/docs/user-manual#def_object) used to temporarily store the contents of a [dirty](https://git-scm.com/docs/user-manual#def_dirty) working directory and the index for future reuse. 
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-revision)revision
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-submodule)submodule 
-    
-A [repository](https://git-scm.com/docs/user-manual#def_repository) that holds the history of a separate project inside another repository (the latter of which is called [superproject](https://git-scm.com/docs/user-manual#def_superproject)). 
+Synonym for [commit](https://git-scm.com/docs/user-manual#def_commit) (the noun).
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-superproject)superproject 
-    
-A [repository](https://git-scm.com/docs/user-manual#def_repository) that references repositories of other projects in its working tree as [submodules](https://git-scm.com/docs/user-manual#def_submodule). The superproject knows about the names of (but does not hold copies of) commit objects of the contained submodules. 
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-rewind)rewind
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-symref)symref 
-    
-Symbolic reference: instead of containing the [SHA-1](https://git-scm.com/docs/user-manual#def_SHA1) id itself, it is of the format _ref: refs/some/thing_ and when referenced, it recursively [dereferences](https://git-scm.com/docs/user-manual#def_dereference) to this reference. _[HEAD](https://git-scm.com/docs/user-manual#def_HEAD)_ is a prime example of a symref. Symbolic references are manipulated with the [git-symbolic-ref[1]](https://git-scm.com/docs/git-symbolic-ref) command. 
+To throw away part of the development, i.e. to assign the [head](https://git-scm.com/docs/user-manual#def_head) to an earlier [revision](https://git-scm.com/docs/user-manual#def_revision).
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-tag)tag 
-    
-A [ref](https://git-scm.com/docs/user-manual#def_ref) under `refs/tags/` namespace that points to an object of an arbitrary type (typically a tag points to either a [tag](https://git-scm.com/docs/user-manual#def_tag_object) or a [commit object](https://git-scm.com/docs/user-manual#def_commit_object)). In contrast to a [head](https://git-scm.com/docs/user-manual#def_head), a tag is not updated by the `commit` command. A Git tag has nothing to do with a Lisp tag (which would be called an [object type](https://git-scm.com/docs/user-manual#def_object_type) in Git’s context). A tag is most typically used to mark a particular point in the commit ancestry [chain](https://git-scm.com/docs/user-manual#def_chain). 
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-SCM)SCM
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-tagobject)tag object 
-    
-An [object](https://git-scm.com/docs/user-manual#def_object) containing a [ref](https://git-scm.com/docs/user-manual#def_ref) pointing to another object, which can contain a message just like a [commit object](https://git-scm.com/docs/user-manual#def_commit_object). It can also contain a (PGP) signature, in which case it is called a "signed tag object". 
+Source code management (tool).
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-topicbranch)topic branch 
-    
-A regular Git [branch](https://git-scm.com/docs/user-manual#def_branch) that is used by a developer to identify a conceptual line of development. Since branches are very easy and inexpensive, it is often desirable to have several small branches that each contain very well defined concepts or small incremental yet related changes. 
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-SHA-1)SHA-1
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-trailer)trailer 
-    
-Key-value metadata. Trailers are optionally found at the end of a commit message. Might be called "footers" or "tags" in other communities. See [git-interpret-trailers[1]](https://git-scm.com/docs/git-interpret-trailers). 
+"Secure Hash Algorithm 1"; a cryptographic hash function. In the context of Git used as a synonym for [object name](https://git-scm.com/docs/user-manual#def_object_name).
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-tree)tree 
-    
-Either a [working tree](https://git-scm.com/docs/user-manual#def_working_tree), or a [tree object](https://git-scm.com/docs/user-manual#def_tree_object) together with the dependent [blob](https://git-scm.com/docs/user-manual#def_blob_object) and tree objects (i.e. a stored representation of a working tree). 
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-shallowclone)shallow clone
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-treeobject)tree object 
-    
-An [object](https://git-scm.com/docs/user-manual#def_object) containing a list of file names and modes along with refs to the associated blob and/or tree objects. A [tree](https://git-scm.com/docs/user-manual#def_tree) is equivalent to a [directory](https://git-scm.com/docs/user-manual#def_directory). 
+Mostly a synonym to [shallow repository](https://git-scm.com/docs/user-manual#def_shallow_repository) but the phrase makes it more explicit that it was created by running `git` `clone` `--depth=...` command.
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-tree-ishalsotreeish)tree-ish (also treeish) 
-    
-A [tree object](https://git-scm.com/docs/user-manual#def_tree_object) or an [object](https://git-scm.com/docs/user-manual#def_object) that can be recursively [dereferenced](https://git-scm.com/docs/user-manual#def_dereference) to a tree object. Dereferencing a [commit object](https://git-scm.com/docs/user-manual#def_commit_object) yields the tree object corresponding to the [revision](https://git-scm.com/docs/user-manual#def_revision)'s top [directory](https://git-scm.com/docs/user-manual#def_directory). The following are all tree-ishes: a [commit-ish](https://git-scm.com/docs/user-manual#def_commit-ish), a tree object, a [tag object](https://git-scm.com/docs/user-manual#def_tag_object) that points to a tree object, a tag object that points to a tag object that points to a tree object, etc. 
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-shallowrepository)shallow repository
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-unborn)unborn 
-    
-The [HEAD](https://git-scm.com/docs/user-manual#def_HEAD) can point at a [branch](https://git-scm.com/docs/user-manual#def_branch) that does not yet exist and that does not have any commit on it yet, and such a branch is called an unborn branch. The most typical way users encounter an unborn branch is by creating a repository anew without cloning from elsewhere. The HEAD would point at the _main_ (or _master_ , depending on your configuration) branch that is yet to be born. Also some operations can get you on an unborn branch with their [orphan](https://git-scm.com/docs/user-manual#def_orphan) option. 
+A shallow [repository](https://git-scm.com/docs/user-manual#def_repository) has an incomplete history some of whose [commits](https://git-scm.com/docs/user-manual#def_commit) have [parents](https://git-scm.com/docs/user-manual#def_parent) cauterized away (in other words, Git is told to pretend that these commits do not have the parents, even though they are recorded in the [commit object](https://git-scm.com/docs/user-manual#def_commit_object)). This is sometimes useful when you are interested only in the recent history of a project even though the real history recorded in the upstream is much larger. A shallow repository is created by giving the `--depth` option to [git-clone[1]](https://git-scm.com/docs/git-clone), and its history can be later deepened with [git-fetch[1]](https://git-scm.com/docs/git-fetch).
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-unmergedindex)unmerged index 
-    
-An [index](https://git-scm.com/docs/user-manual#def_index) which contains unmerged [index entries](https://git-scm.com/docs/user-manual#def_index_entry). 
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-stashentry)stash entry
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-unreachableobject)unreachable object 
-    
-An [object](https://git-scm.com/docs/user-manual#def_object) which is not [reachable](https://git-scm.com/docs/user-manual#def_reachable) from a [branch](https://git-scm.com/docs/user-manual#def_branch), [tag](https://git-scm.com/docs/user-manual#def_tag), or any other reference. 
+An [object](https://git-scm.com/docs/user-manual#def_object) used to temporarily store the contents of a [dirty](https://git-scm.com/docs/user-manual#def_dirty) working directory and the index for future reuse.
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-upstreambranch)upstream branch 
-    
-The default [branch](https://git-scm.com/docs/user-manual#def_branch) that is merged into the branch in question (or the branch in question is rebased onto). It is configured via branch.<name>.remote and branch.<name>.merge. If the upstream branch of _A_ is _origin/B_ sometimes we say "_A_ is tracking _origin/B_ ". 
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-submodule)submodule
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-workingtree)working tree 
-    
-The tree of actual checked out files. The working tree normally contains the contents of the [HEAD](https://git-scm.com/docs/user-manual#def_HEAD) commit’s tree, plus any local changes that you have made but not yet committed. 
+A [repository](https://git-scm.com/docs/user-manual#def_repository) that holds the history of a separate project inside another repository (the latter of which is called [superproject](https://git-scm.com/docs/user-manual#def_superproject)).
 
-[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-worktree)worktree 
-    
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-superproject)superproject
+
+A [repository](https://git-scm.com/docs/user-manual#def_repository) that references repositories of other projects in its working tree as [submodules](https://git-scm.com/docs/user-manual#def_submodule). The superproject knows about the names of (but does not hold copies of) commit objects of the contained submodules.
+
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-symref)symref
+
+Symbolic reference: instead of containing the [SHA-1](https://git-scm.com/docs/user-manual#def_SHA1) id itself, it is of the format _ref: refs/some/thing_ and when referenced, it recursively [dereferences](https://git-scm.com/docs/user-manual#def_dereference) to this reference. _[HEAD](https://git-scm.com/docs/user-manual#def_HEAD)_ is a prime example of a symref. Symbolic references are manipulated with the [git-symbolic-ref[1]](https://git-scm.com/docs/git-symbolic-ref) command.
+
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-tag)tag
+
+A [ref](https://git-scm.com/docs/user-manual#def_ref) under `refs/tags/` namespace that points to an object of an arbitrary type (typically a tag points to either a [tag](https://git-scm.com/docs/user-manual#def_tag_object) or a [commit object](https://git-scm.com/docs/user-manual#def_commit_object)). In contrast to a [head](https://git-scm.com/docs/user-manual#def_head), a tag is not updated by the `commit` command. A Git tag has nothing to do with a Lisp tag (which would be called an [object type](https://git-scm.com/docs/user-manual#def_object_type) in Git’s context). A tag is most typically used to mark a particular point in the commit ancestry [chain](https://git-scm.com/docs/user-manual#def_chain).
+
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-tagobject)tag object
+
+An [object](https://git-scm.com/docs/user-manual#def_object) containing a [ref](https://git-scm.com/docs/user-manual#def_ref) pointing to another object, which can contain a message just like a [commit object](https://git-scm.com/docs/user-manual#def_commit_object). It can also contain a (PGP) signature, in which case it is called a "signed tag object".
+
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-topicbranch)topic branch
+
+A regular Git [branch](https://git-scm.com/docs/user-manual#def_branch) that is used by a developer to identify a conceptual line of development. Since branches are very easy and inexpensive, it is often desirable to have several small branches that each contain very well defined concepts or small incremental yet related changes.
+
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-trailer)trailer
+
+Key-value metadata. Trailers are optionally found at the end of a commit message. Might be called "footers" or "tags" in other communities. See [git-interpret-trailers[1]](https://git-scm.com/docs/git-interpret-trailers).
+
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-tree)tree
+
+Either a [working tree](https://git-scm.com/docs/user-manual#def_working_tree), or a [tree object](https://git-scm.com/docs/user-manual#def_tree_object) together with the dependent [blob](https://git-scm.com/docs/user-manual#def_blob_object) and tree objects (i.e. a stored representation of a working tree).
+
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-treeobject)tree object
+
+An [object](https://git-scm.com/docs/user-manual#def_object) containing a list of file names and modes along with refs to the associated blob and/or tree objects. A [tree](https://git-scm.com/docs/user-manual#def_tree) is equivalent to a [directory](https://git-scm.com/docs/user-manual#def_directory).
+
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-tree-ishalsotreeish)tree-ish (also treeish)
+
+A [tree object](https://git-scm.com/docs/user-manual#def_tree_object) or an [object](https://git-scm.com/docs/user-manual#def_object) that can be recursively [dereferenced](https://git-scm.com/docs/user-manual#def_dereference) to a tree object. Dereferencing a [commit object](https://git-scm.com/docs/user-manual#def_commit_object) yields the tree object corresponding to the [revision](https://git-scm.com/docs/user-manual#def_revision)'s top [directory](https://git-scm.com/docs/user-manual#def_directory). The following are all tree-ishes: a [commit-ish](https://git-scm.com/docs/user-manual#def_commit-ish), a tree object, a [tag object](https://git-scm.com/docs/user-manual#def_tag_object) that points to a tree object, a tag object that points to a tag object that points to a tree object, etc.
+
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-unborn)unborn
+
+The [HEAD](https://git-scm.com/docs/user-manual#def_HEAD) can point at a [branch](https://git-scm.com/docs/user-manual#def_branch) that does not yet exist and that does not have any commit on it yet, and such a branch is called an unborn branch. The most typical way users encounter an unborn branch is by creating a repository anew without cloning from elsewhere. The HEAD would point at the _main_ (or _master_ , depending on your configuration) branch that is yet to be born. Also some operations can get you on an unborn branch with their [orphan](https://git-scm.com/docs/user-manual#def_orphan) option.
+
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-unmergedindex)unmerged index
+
+An [index](https://git-scm.com/docs/user-manual#def_index) which contains unmerged [index entries](https://git-scm.com/docs/user-manual#def_index_entry).
+
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-unreachableobject)unreachable object
+
+An [object](https://git-scm.com/docs/user-manual#def_object) which is not [reachable](https://git-scm.com/docs/user-manual#def_reachable) from a [branch](https://git-scm.com/docs/user-manual#def_branch), [tag](https://git-scm.com/docs/user-manual#def_tag), or any other reference.
+
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-upstreambranch)upstream branch
+
+The default [branch](https://git-scm.com/docs/user-manual#def_branch) that is merged into the branch in question (or the branch in question is rebased onto). It is configured via branch.<name>.remote and branch.<name>.merge. If the upstream branch of _A_ is _origin/B_ sometimes we say "_A_ is tracking _origin/B_ ".
+
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-workingtree)working tree
+
+The tree of actual checked out files. The working tree normally contains the contents of the [HEAD](https://git-scm.com/docs/user-manual#def_HEAD) commit’s tree, plus any local changes that you have made but not yet committed.
+
+[](https://git-scm.com/docs/user-manual#Documentation/user-manual.txt-worktree)worktree
+
 A repository can have zero (i.e. bare repository) or one or more worktrees attached to it. One "worktree" consists of a "working tree" and repository metadata, most of which are shared among other worktrees of a single repository, and some of which are maintained separately per worktree (e.g. the index, HEAD and pseudorefs like MERGE_HEAD, per-worktree refs and per-worktree configuration file).
 ##  [](https://git-scm.com/docs/user-manual#git-quick-start)Appendix A: Git Quick Reference
 This is a quick summary of the major commands; the previous chapters explain how these work in more detail.
@@ -3219,6 +3219,6 @@ Add a section on working with other version control systems, including CVS, Subv
 Write a chapter on using plumbing and writing scripts.
 Alternates, clone -reference, etc.
 More on recovery from repository corruption. See: <https://lore.kernel.org/git/Pine.LNX.4.64.0702272039540.12485@woody.linux-foundation.org/> <https://lore.kernel.org/git/Pine.LNX.4.64.0702141033400.3604@woody.linux-foundation.org/>
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

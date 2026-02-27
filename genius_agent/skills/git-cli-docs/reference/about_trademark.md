@@ -17,7 +17,7 @@
 
 
 * * *
-The entire **[Pro Git book](https://git-scm.com/book)** written by Scott Chacon and Ben Straub is available to [read online for free](https://git-scm.com/book). Dead tree versions are available on [Amazon.com](https://www.amazon.com/Pro-Git-Scott-Chacon/dp/1484200772?ie=UTF8&camp=1789&creative=9325&creativeASIN=1430218339&linkCode=as2&tag=git-sfconservancy-20). 
+The entire **[Pro Git book](https://git-scm.com/book)** written by Scott Chacon and Ben Straub is available to [read online for free](https://git-scm.com/book). Dead tree versions are available on [Amazon.com](https://www.amazon.com/Pro-Git-Scott-Chacon/dp/1484200772?ie=UTF8&camp=1789&creative=9325&creativeASIN=1430218339&linkCode=as2&tag=git-sfconservancy-20).
 ## GIT TRADEMARK POLICY
 ### 1 Purpose
 The Git Project is a member project of Software Freedom Conservancy ("Conservancy"). Conservancy holds rights in the Marks on behalf of the Git Project in accordance with its non- profit charitable mission.
@@ -43,7 +43,7 @@ You may use the Marks without prior written permission (subject to the other sec
 
 In addition, you may use the Marks to refer to products, services, or communities outside of the Git software and Git Project without written permission in the following contexts:
   1. When referring to Git software that is not substantially unmodified, to say that such software is a "derivative of" or "based on" Git.
-  2. When referring to a third-party software product and/or service that is interoperable with the Git software, in the format "[Product Name] for Git" -- provided that such use otherwise complies with the rest of this Policy. 
+  2. When referring to a third-party software product and/or service that is interoperable with the Git software, in the format "[Product Name] for Git" -- provided that such use otherwise complies with the rest of this Policy.
 
 
 We do not charge a fee for a license to use the Marks in these contexts. However, we do of course welcome donations. If you're interested in donating to the Git Project, care of Conservancy, visit <https://git-scm.com/sfc>. Conservancy is a United States 501(c)(3) public charity.
@@ -62,7 +62,7 @@ Please be aware that GitHub and GitLab are exceptions to this Policy because the
 #### 2.4 Limitations to this Policy
 This Policy does not confer any rights to use the trademarks "Software Freedom Conservancy," "Conservancy," or to use any other trademarks other than the Marks listed in Section 1. This Policy does not authorize you to act as an agent for Conservancy, enter into any agreement on behalf of or otherwise create any liability for the Git Project or Conservancy.
 #### 2.5 Use of the Marks in merchandising
-You may not create and/or sell merchandise bearing any of the Marks. If you are interested in using creating and/or selling merchandise bearing any of the Marks, please send proofs of your designs to us at TRADEMARK@SFCONSERVANCY.ORG. 
+You may not create and/or sell merchandise bearing any of the Marks. If you are interested in using creating and/or selling merchandise bearing any of the Marks, please send proofs of your designs to us at TRADEMARK@SFCONSERVANCY.ORG.
 ### 3 Rights reserved by Conservancy
 Conservancy reserves the sole right to:
   * Determine compliance with this Policy.
@@ -71,8 +71,8 @@ Conservancy reserves the sole right to:
 
 
 ### 4 Questions
-This Policy is designed to keep the Marks safe in order to protect this software's reputation, earned by the contributions of the Git Project to the free and open source software community and to the public at large. If you see any use of the Marks anywhere that you think violates this Policy or otherwise goes against the spirit of the Git Project and Conservancy's mission, please bring it to Conservancy's attention by contacting us at TRADEMARK@SFCONSERVANCY.ORG. 
+This Policy is designed to keep the Marks safe in order to protect this software's reputation, earned by the contributions of the Git Project to the free and open source software community and to the public at large. If you see any use of the Marks anywhere that you think violates this Policy or otherwise goes against the spirit of the Git Project and Conservancy's mission, please bring it to Conservancy's attention by contacting us at TRADEMARK@SFCONSERVANCY.ORG.
 If you have questions about using the Marks, or if you think you should be able to use the Marks for any purpose not allowed by this Policy and would like permission for that use, please contact Conservancy by emailing TRADEMARK@SFCONSERVANCY.ORG or by writing to Git Project c/o Software Freedom Conservancy, 137 Montague St. Ste 380, Brooklyn, NY 11201-3548.
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

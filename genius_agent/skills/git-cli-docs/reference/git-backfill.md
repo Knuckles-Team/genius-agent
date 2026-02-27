@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-backfill#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-backfill#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-backfill#_description)
@@ -29,8 +29,8 @@
 Localized versions of **git-backfill** manual
   1. [English ](https://git-scm.com/docs/git-backfill)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-backfill)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -194,23 +194,23 @@ The `git` `backfill` command provides a way for the user to request that Git dow
 In this way, `git` `backfill` provides a mechanism to break a large clone into smaller chunks. Starting with a blobless partial clone with `git` `clone` `--filter=blob:none` and then running `git` `backfill` in the local repository provides a way to download all reachable objects in several smaller network calls than downloading the entire repository at clone time.
 By default, `git` `backfill` downloads all blobs reachable from the `HEAD` commit. This set can be restricted or expanded using various options.
 THIS COMMAND IS EXPERIMENTAL. ITS BEHAVIOR MAY CHANGE IN THE FUTURE.
-##  [](https://git-scm.com/docs/git-backfill#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-backfill#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-backfill#Documentation/git-backfill.txt---min-batch-sizen)`--min-batch-size=`_< n>_ 
-    
-Specify a minimum size for a batch of missing objects to request from the server. This size may be exceeded by the last set of blobs seen at a given path. The default minimum batch size is 50,000. 
+[](https://git-scm.com/docs/git-backfill#Documentation/git-backfill.txt---min-batch-sizen)`--min-batch-size=`_< n>_
 
-[](https://git-scm.com/docs/git-backfill#Documentation/git-backfill.txt---sparse)`--sparse` 
+Specify a minimum size for a batch of missing objects to request from the server. This size may be exceeded by the last set of blobs seen at a given path. The default minimum batch size is 50,000.
+
+[](https://git-scm.com/docs/git-backfill#Documentation/git-backfill.txt---sparse)`--sparse`
 
 
-[](https://git-scm.com/docs/git-backfill#Documentation/git-backfill.txt---no-sparse)`--no-sparse` 
-    
+[](https://git-scm.com/docs/git-backfill#Documentation/git-backfill.txt---no-sparse)`--no-sparse`
+
 Only download objects if they appear at a path that matches the current sparse-checkout. If the sparse-checkout feature is enabled, then `--sparse` is assumed and can be disabled with `--no-sparse`.
 ##  [](https://git-scm.com/docs/git-backfill#_see_also)SEE ALSO
 [git-clone[1]](https://git-scm.com/docs/git-clone).
 ##  [](https://git-scm.com/docs/git-backfill#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### backfill
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

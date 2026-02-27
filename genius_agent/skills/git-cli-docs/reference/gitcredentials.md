@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/gitcredentials#_name)
     * [SYNOPSIS](https://git-scm.com/docs/gitcredentials#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/gitcredentials#_description)
@@ -32,8 +32,8 @@
 Localized versions of **gitcredentials** manual
   1. [English ](https://git-scm.com/docs/gitcredentials)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/gitcredentials)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -268,14 +268,14 @@ $ git config --global credential.helper foo
 
 
 ###  [](https://git-scm.com/docs/gitcredentials#_available_helpers)Available helpers
-Git currently includes the following helpers: 
+Git currently includes the following helpers:
 
-[](https://git-scm.com/docs/gitcredentials#Documentation/gitcredentials.txt-cache)cache 
-    
-Cache credentials in memory for a short period of time. See [git-credential-cache[1]](https://git-scm.com/docs/git-credential-cache) for details. 
+[](https://git-scm.com/docs/gitcredentials#Documentation/gitcredentials.txt-cache)cache
 
-[](https://git-scm.com/docs/gitcredentials#Documentation/gitcredentials.txt-store)store 
-    
+Cache credentials in memory for a short period of time. See [git-credential-cache[1]](https://git-scm.com/docs/git-credential-cache) for details.
+
+[](https://git-scm.com/docs/gitcredentials#Documentation/gitcredentials.txt-store)store
+
 Store credentials indefinitely on disk. See [git-credential-store[1]](https://git-scm.com/docs/git-credential-store) for details.
 Popular helpers with secure persistent storage include:
   * git-credential-libsecret (Linux)
@@ -310,20 +310,20 @@ because the hostnames differ. Nor would it match `foo.example.com`; Git compares
 If the "pattern" URL does include a path component, then this must match as a prefix path: the context `https://example.com/bar` will match a config entry for `https://example.com/bar/baz.git` but will not match a config entry for `https://example.com/other/repo.git` or `https://example.com/barry/repo.git` (even though it is a string prefix).
 ##  [](https://git-scm.com/docs/gitcredentials#_configuration_options)CONFIGURATION OPTIONS
 Options for a credential context can be configured either in `credential.*` (which applies to all credentials), or `credential.`_< URL>_`.*`, where <URL> matches the context as described above.
-The following options are available in either location: 
+The following options are available in either location:
 
-[](https://git-scm.com/docs/gitcredentials#Documentation/gitcredentials.txt-helper)helper 
-    
+[](https://git-scm.com/docs/gitcredentials#Documentation/gitcredentials.txt-helper)helper
+
 The name of an external credential helper, and any associated options. If the helper name is not an absolute path, then the string `git` `credential-` is prepended. The resulting string is executed by the shell (so, for example, setting this to `foo` `--option=bar` will execute `git` `credential-foo` `--option=bar` via the shell. See the manual of specific helpers for examples of their use.
 If there are multiple instances of the `credential.helper` configuration variable, each helper will be tried in turn, and may provide a username, password, or nothing. Once Git has acquired both a username and a non-expired password, no more helpers will be tried.
-If `credential.helper` is configured to the empty string, this resets the helper list to empty (so you may override a helper set by a lower-priority config file by configuring the empty-string helper, followed by whatever set of helpers you would like). 
+If `credential.helper` is configured to the empty string, this resets the helper list to empty (so you may override a helper set by a lower-priority config file by configuring the empty-string helper, followed by whatever set of helpers you would like).
 
-[](https://git-scm.com/docs/gitcredentials#Documentation/gitcredentials.txt-username)username 
-    
-A default username, if one is not provided in the URL. 
+[](https://git-scm.com/docs/gitcredentials#Documentation/gitcredentials.txt-username)username
 
-[](https://git-scm.com/docs/gitcredentials#Documentation/gitcredentials.txt-useHttpPath)useHttpPath 
-    
+A default username, if one is not provided in the URL.
+
+[](https://git-scm.com/docs/gitcredentials#Documentation/gitcredentials.txt-useHttpPath)useHttpPath
+
 By default, Git does not consider the "path" component of an http URL to be worth matching via external helpers. This means that a credential stored for `https://example.com/foo.git` will also be used for `https://example.com/bar.git`. If you do want to distinguish these cases, set this option to `true`.
 ##  [](https://git-scm.com/docs/gitcredentials#_custom_helpers)CUSTOM HELPERS
 You can write your own custom helpers to interface with any system in which you keep credentials.
@@ -367,18 +367,18 @@ Here are some example specifications:
 ```
 
 Generally speaking, rule (3) above is the simplest for users to specify. Authors of credential helpers should make an effort to assist their users by naming their program "git-credential-$NAME", and putting it in the `$PATH` or `$GIT_EXEC_PATH` during installation, which will allow a user to enable it with `git` `config` `credential.helper` `$NAME`.
-When a helper is executed, it will have one "operation" argument appended to its command line, which is one of: 
+When a helper is executed, it will have one "operation" argument appended to its command line, which is one of:
 
-[](https://git-scm.com/docs/gitcredentials#Documentation/gitcredentials.txt-get)`get` 
-    
-Return a matching credential, if any exists. 
+[](https://git-scm.com/docs/gitcredentials#Documentation/gitcredentials.txt-get)`get`
 
-[](https://git-scm.com/docs/gitcredentials#Documentation/gitcredentials.txt-store-1)`store` 
-    
-Store the credential, if applicable to the helper. 
+Return a matching credential, if any exists.
 
-[](https://git-scm.com/docs/gitcredentials#Documentation/gitcredentials.txt-erase)`erase` 
-    
+[](https://git-scm.com/docs/gitcredentials#Documentation/gitcredentials.txt-store-1)`store`
+
+Store the credential, if applicable to the helper.
+
+[](https://git-scm.com/docs/gitcredentials#Documentation/gitcredentials.txt-erase)`erase`
+
 Remove matching credentials, if any, from the helper’s storage.
 The details of the credential will be provided on the helper’s stdin stream. The exact format is the same as the input/output format of the `git` `credential` plumbing command (see the section `INPUT/OUTPUT` `FORMAT` in [git-credential[1]](https://git-scm.com/docs/git-credential) for a detailed specification).
 For a `get` operation, the helper should produce a list of attributes on stdout in the same format (see [git-credential[1]](https://git-scm.com/docs/git-credential) for common attributes). A helper is free to produce a subset, or even no values at all if it has nothing useful to provide. Any provided attributes will overwrite those already known about by Git’s credential subsystem. Unrecognised attributes are silently discarded.
@@ -392,6 +392,6 @@ If a helper receives any other operation, it should silently ignore the request.
 ##  [](https://git-scm.com/docs/gitcredentials#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### gitcredentials
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

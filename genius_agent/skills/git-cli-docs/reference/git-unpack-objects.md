@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-unpack-objects#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-unpack-objects#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-unpack-objects#_description)
@@ -32,8 +32,8 @@ Localized versions of **git-unpack-objects** manual
   4. [українська мова ](https://git-scm.com/docs/git-unpack-objects/uk)
   5. [简体中文 ](https://git-scm.com/docs/git-unpack-objects/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-unpack-objects)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -198,30 +198,30 @@ _git unpack-objects_ [-n] [-q] [-r] [--strict]
 Read a packed archive (.pack) from the standard input, expanding the objects contained within and writing them into the repository in "loose" (one object per file) format.
 Objects that already exist in the repository will **not** be unpacked from the packfile. Therefore, nothing will be unpacked if you use this command on a packfile that exists within the target repository.
 See [git-repack[1]](https://git-scm.com/docs/git-repack) for options to generate new packs and replace existing ones.
-##  [](https://git-scm.com/docs/git-unpack-objects#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-unpack-objects#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-unpack-objects#Documentation/git-unpack-objects.txt--n)-n 
-    
-Dry run. Check the pack file without actually unpacking the objects. 
+[](https://git-scm.com/docs/git-unpack-objects#Documentation/git-unpack-objects.txt--n)-n
 
-[](https://git-scm.com/docs/git-unpack-objects#Documentation/git-unpack-objects.txt--q)-q 
-    
-The command usually shows percentage progress. This flag suppresses it. 
+Dry run. Check the pack file without actually unpacking the objects.
 
-[](https://git-scm.com/docs/git-unpack-objects#Documentation/git-unpack-objects.txt--r)-r 
-    
-When unpacking a corrupt packfile, the command dies at the first corruption. This flag tells it to keep going and make the best effort to recover as many objects as possible. 
+[](https://git-scm.com/docs/git-unpack-objects#Documentation/git-unpack-objects.txt--q)-q
 
-[](https://git-scm.com/docs/git-unpack-objects#Documentation/git-unpack-objects.txt---strict)--strict 
-    
-Don’t write objects with broken content or links. 
+The command usually shows percentage progress. This flag suppresses it.
 
-[](https://git-scm.com/docs/git-unpack-objects#Documentation/git-unpack-objects.txt---max-input-sizesize)--max-input-size=<size> 
-    
+[](https://git-scm.com/docs/git-unpack-objects#Documentation/git-unpack-objects.txt--r)-r
+
+When unpacking a corrupt packfile, the command dies at the first corruption. This flag tells it to keep going and make the best effort to recover as many objects as possible.
+
+[](https://git-scm.com/docs/git-unpack-objects#Documentation/git-unpack-objects.txt---strict)--strict
+
+Don’t write objects with broken content or links.
+
+[](https://git-scm.com/docs/git-unpack-objects#Documentation/git-unpack-objects.txt---max-input-sizesize)--max-input-size=<size>
+
 Die, if the pack is larger than <size>.
 ##  [](https://git-scm.com/docs/git-unpack-objects#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### unpack-objects
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

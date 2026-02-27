@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-interpret-trailers#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-interpret-trailers#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-interpret-trailers#_description)
@@ -35,8 +35,8 @@ Localized versions of **git-interpret-trailers** manual
   4. [українська мова ](https://git-scm.com/docs/git-interpret-trailers/uk)
   5. [简体中文 ](https://git-scm.com/docs/git-interpret-trailers/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-interpret-trailers)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -268,121 +268,121 @@ key: This is a very long value, with spaces and
 ```
 
 Note that trailers do not follow (nor are they intended to follow) many of the rules for RFC 822 headers. For example they do not follow the encoding rule.
-##  [](https://git-scm.com/docs/git-interpret-trailers#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-interpret-trailers#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-interpret-trailers#Documentation/git-interpret-trailers.txt---in-place)--in-place 
-    
-Edit the files in place. 
+[](https://git-scm.com/docs/git-interpret-trailers#Documentation/git-interpret-trailers.txt---in-place)--in-place
 
-[](https://git-scm.com/docs/git-interpret-trailers#Documentation/git-interpret-trailers.txt---trim-empty)--trim-empty 
-    
-If the <value> part of any trailer contains only whitespace, the whole trailer will be removed from the output. This applies to existing trailers as well as new trailers. 
+Edit the files in place.
 
-[](https://git-scm.com/docs/git-interpret-trailers#Documentation/git-interpret-trailers.txt---trailerkeyvalue)--trailer <key>[(=|:)<value>] 
-    
-Specify a (<key>, <value>) pair that should be applied as a trailer to the inputs. See the description of this command. 
+[](https://git-scm.com/docs/git-interpret-trailers#Documentation/git-interpret-trailers.txt---trim-empty)--trim-empty
 
-[](https://git-scm.com/docs/git-interpret-trailers#Documentation/git-interpret-trailers.txt---whereplacement)--where <placement> 
+If the <value> part of any trailer contains only whitespace, the whole trailer will be removed from the output. This applies to existing trailers as well as new trailers.
 
+[](https://git-scm.com/docs/git-interpret-trailers#Documentation/git-interpret-trailers.txt---trailerkeyvalue)--trailer <key>[(=|:)<value>]
 
-[](https://git-scm.com/docs/git-interpret-trailers#Documentation/git-interpret-trailers.txt---no-where)--no-where 
-    
-Specify where all new trailers will be added. A setting provided with _--where_ overrides the `trailer.where` and any applicable `trailer.`_< keyAlias>_`.where` configuration variables and applies to all _--trailer_ options until the next occurrence of _--where_ or _--no-where_. Upon encountering _--no-where_ , clear the effect of any previous use of _--where_ , such that the relevant configuration variables are no longer overridden. Possible placements are `after`, `before`, `end` or `start`. 
+Specify a (<key>, <value>) pair that should be applied as a trailer to the inputs. See the description of this command.
 
-[](https://git-scm.com/docs/git-interpret-trailers#Documentation/git-interpret-trailers.txt---if-existsaction)--if-exists <action> 
+[](https://git-scm.com/docs/git-interpret-trailers#Documentation/git-interpret-trailers.txt---whereplacement)--where <placement>
 
 
-[](https://git-scm.com/docs/git-interpret-trailers#Documentation/git-interpret-trailers.txt---no-if-exists)--no-if-exists 
-    
-Specify what action will be performed when there is already at least one trailer with the same <key> in the input. A setting provided with _--if-exists_ overrides the `trailer.ifExists` and any applicable `trailer.`_< keyAlias>_`.ifExists` configuration variables and applies to all _--trailer_ options until the next occurrence of _--if-exists_ or _--no-if-exists_. Upon encountering _--no-if-exists_ , clear the effect of any previous use of _--if-exists_ , such that the relevant configuration variables are no longer overridden. Possible actions are `addIfDifferent`, `addIfDifferentNeighbor`, `add`, `replace` and `doNothing`. 
+[](https://git-scm.com/docs/git-interpret-trailers#Documentation/git-interpret-trailers.txt---no-where)--no-where
 
-[](https://git-scm.com/docs/git-interpret-trailers#Documentation/git-interpret-trailers.txt---if-missingaction)--if-missing <action> 
+Specify where all new trailers will be added. A setting provided with _--where_ overrides the `trailer.where` and any applicable `trailer.`_< keyAlias>_`.where` configuration variables and applies to all _--trailer_ options until the next occurrence of _--where_ or _--no-where_. Upon encountering _--no-where_ , clear the effect of any previous use of _--where_ , such that the relevant configuration variables are no longer overridden. Possible placements are `after`, `before`, `end` or `start`.
+
+[](https://git-scm.com/docs/git-interpret-trailers#Documentation/git-interpret-trailers.txt---if-existsaction)--if-exists <action>
 
 
-[](https://git-scm.com/docs/git-interpret-trailers#Documentation/git-interpret-trailers.txt---no-if-missing)--no-if-missing 
-    
-Specify what action will be performed when there is no other trailer with the same <key> in the input. A setting provided with _--if-missing_ overrides the `trailer.ifMissing` and any applicable `trailer.`_< keyAlias>_`.ifMissing` configuration variables and applies to all _--trailer_ options until the next occurrence of _--if-missing_ or _--no-if-missing_. Upon encountering _--no-if-missing_ , clear the effect of any previous use of _--if-missing_ , such that the relevant configuration variables are no longer overridden. Possible actions are `doNothing` or `add`. 
+[](https://git-scm.com/docs/git-interpret-trailers#Documentation/git-interpret-trailers.txt---no-if-exists)--no-if-exists
 
-[](https://git-scm.com/docs/git-interpret-trailers#Documentation/git-interpret-trailers.txt---only-trailers)--only-trailers 
-    
-Output only the trailers, not any other parts of the input. 
+Specify what action will be performed when there is already at least one trailer with the same <key> in the input. A setting provided with _--if-exists_ overrides the `trailer.ifExists` and any applicable `trailer.`_< keyAlias>_`.ifExists` configuration variables and applies to all _--trailer_ options until the next occurrence of _--if-exists_ or _--no-if-exists_. Upon encountering _--no-if-exists_ , clear the effect of any previous use of _--if-exists_ , such that the relevant configuration variables are no longer overridden. Possible actions are `addIfDifferent`, `addIfDifferentNeighbor`, `add`, `replace` and `doNothing`.
 
-[](https://git-scm.com/docs/git-interpret-trailers#Documentation/git-interpret-trailers.txt---only-input)--only-input 
-    
-Output only trailers that exist in the input; do not add any from the command-line or by applying `trailer.*` configuration variables. 
+[](https://git-scm.com/docs/git-interpret-trailers#Documentation/git-interpret-trailers.txt---if-missingaction)--if-missing <action>
 
-[](https://git-scm.com/docs/git-interpret-trailers#Documentation/git-interpret-trailers.txt---unfold)--unfold 
-    
-If a trailer has a value that runs over multiple lines (aka "folded"), reformat the value into a single line. 
 
-[](https://git-scm.com/docs/git-interpret-trailers#Documentation/git-interpret-trailers.txt---parse)--parse 
-    
-A convenience alias for `--only-trailers` `--only-input` `--unfold`. This makes it easier to only see the trailers coming from the input without influencing them with any command line options or configuration variables, while also making the output machine-friendly with --unfold. 
+[](https://git-scm.com/docs/git-interpret-trailers#Documentation/git-interpret-trailers.txt---no-if-missing)--no-if-missing
 
-[](https://git-scm.com/docs/git-interpret-trailers#Documentation/git-interpret-trailers.txt---no-divider)--no-divider 
-    
+Specify what action will be performed when there is no other trailer with the same <key> in the input. A setting provided with _--if-missing_ overrides the `trailer.ifMissing` and any applicable `trailer.`_< keyAlias>_`.ifMissing` configuration variables and applies to all _--trailer_ options until the next occurrence of _--if-missing_ or _--no-if-missing_. Upon encountering _--no-if-missing_ , clear the effect of any previous use of _--if-missing_ , such that the relevant configuration variables are no longer overridden. Possible actions are `doNothing` or `add`.
+
+[](https://git-scm.com/docs/git-interpret-trailers#Documentation/git-interpret-trailers.txt---only-trailers)--only-trailers
+
+Output only the trailers, not any other parts of the input.
+
+[](https://git-scm.com/docs/git-interpret-trailers#Documentation/git-interpret-trailers.txt---only-input)--only-input
+
+Output only trailers that exist in the input; do not add any from the command-line or by applying `trailer.*` configuration variables.
+
+[](https://git-scm.com/docs/git-interpret-trailers#Documentation/git-interpret-trailers.txt---unfold)--unfold
+
+If a trailer has a value that runs over multiple lines (aka "folded"), reformat the value into a single line.
+
+[](https://git-scm.com/docs/git-interpret-trailers#Documentation/git-interpret-trailers.txt---parse)--parse
+
+A convenience alias for `--only-trailers` `--only-input` `--unfold`. This makes it easier to only see the trailers coming from the input without influencing them with any command line options or configuration variables, while also making the output machine-friendly with --unfold.
+
+[](https://git-scm.com/docs/git-interpret-trailers#Documentation/git-interpret-trailers.txt---no-divider)--no-divider
+
 Do not treat `---` as the end of the commit message. Use this when you know your input contains just the commit message itself (and not an email or the output of `git` `format-patch`).
 ##  [](https://git-scm.com/docs/git-interpret-trailers#_configuration_variables)CONFIGURATION VARIABLES
-Everything below this line in this section is selectively included from the [git-config[1]](https://git-scm.com/docs/git-config) documentation. The content is the same as what’s found there: 
+Everything below this line in this section is selectively included from the [git-config[1]](https://git-scm.com/docs/git-config) documentation. The content is the same as what’s found there:
 
-[](https://git-scm.com/docs/git-interpret-trailers#Documentation/git-interpret-trailers.txt-trailerseparators)trailer.separators 
-    
+[](https://git-scm.com/docs/git-interpret-trailers#Documentation/git-interpret-trailers.txt-trailerseparators)trailer.separators
+
 This option tells which characters are recognized as trailer separators. By default only _:_ is recognized as a trailer separator, except that _=_ is always accepted on the command line for compatibility with other git commands.
 The first character given by this option will be the default character used when another separator is not specified in the config for this trailer.
-For example, if the value for this option is "%=$", then only lines using the format _< key><sep><value>_ with <sep> containing _%_ , _=_ or _$_ and then spaces will be considered trailers. And _%_ will be the default separator used, so by default trailers will appear like: _< key>% <value>_ (one percent sign and one space will appear between the key and the value). 
+For example, if the value for this option is "%=$", then only lines using the format _< key><sep><value>_ with <sep> containing _%_ , _=_ or _$_ and then spaces will be considered trailers. And _%_ will be the default separator used, so by default trailers will appear like: _< key>% <value>_ (one percent sign and one space will appear between the key and the value).
 
-[](https://git-scm.com/docs/git-interpret-trailers#Documentation/git-interpret-trailers.txt-trailerwhere)trailer.where 
-    
+[](https://git-scm.com/docs/git-interpret-trailers#Documentation/git-interpret-trailers.txt-trailerwhere)trailer.where
+
 This option tells where a new trailer will be added.
 This can be `end`, which is the default, `start`, `after` or `before`.
 If it is `end`, then each new trailer will appear at the end of the existing trailers.
 If it is `start`, then each new trailer will appear at the start, instead of the end, of the existing trailers.
 If it is `after`, then each new trailer will appear just after the last trailer with the same <key>.
-If it is `before`, then each new trailer will appear just before the first trailer with the same <key>. 
+If it is `before`, then each new trailer will appear just before the first trailer with the same <key>.
 
-[](https://git-scm.com/docs/git-interpret-trailers#Documentation/git-interpret-trailers.txt-trailerifexists)trailer.ifexists 
-    
+[](https://git-scm.com/docs/git-interpret-trailers#Documentation/git-interpret-trailers.txt-trailerifexists)trailer.ifexists
+
 This option makes it possible to choose what action will be performed when there is already at least one trailer with the same <key> in the input.
 The valid values for this option are: `addIfDifferentNeighbor` (this is the default), `addIfDifferent`, `add`, `replace` or `doNothing`.
 With `addIfDifferentNeighbor`, a new trailer will be added only if no trailer with the same (<key>, <value>) pair is above or below the line where the new trailer will be added.
 With `addIfDifferent`, a new trailer will be added only if no trailer with the same (<key>, <value>) pair is already in the input.
 With `add`, a new trailer will be added, even if some trailers with the same (<key>, <value>) pair are already in the input.
 With `replace`, an existing trailer with the same <key> will be deleted and the new trailer will be added. The deleted trailer will be the closest one (with the same <key>) to the place where the new one will be added.
-With `doNothing`, nothing will be done; that is no new trailer will be added if there is already one with the same <key> in the input. 
+With `doNothing`, nothing will be done; that is no new trailer will be added if there is already one with the same <key> in the input.
 
-[](https://git-scm.com/docs/git-interpret-trailers#Documentation/git-interpret-trailers.txt-trailerifmissing)trailer.ifmissing 
-    
+[](https://git-scm.com/docs/git-interpret-trailers#Documentation/git-interpret-trailers.txt-trailerifmissing)trailer.ifmissing
+
 This option makes it possible to choose what action will be performed when there is not yet any trailer with the same <key> in the input.
 The valid values for this option are: `add` (this is the default) and `doNothing`.
 With `add`, a new trailer will be added.
-With `doNothing`, nothing will be done. 
+With `doNothing`, nothing will be done.
 
-[](https://git-scm.com/docs/git-interpret-trailers#Documentation/git-interpret-trailers.txt-trailerkeyAliaskey)trailer.<keyAlias>.key 
-    
+[](https://git-scm.com/docs/git-interpret-trailers#Documentation/git-interpret-trailers.txt-trailerkeyAliaskey)trailer.<keyAlias>.key
+
 Defines a <keyAlias> for the <key>. The <keyAlias> must be a prefix (case does not matter) of the <key>. For example, in `git` `config` `trailer.ack.key` `"Acked-by"` the "Acked-by" is the <key> and the "ack" is the <keyAlias>. This configuration allows the shorter `--trailer` `"ack:..."` invocation on the command line using the "ack" <keyAlias> instead of the longer `--trailer` `"Acked-by:..."`.
 At the end of the <key>, a separator can appear and then some space characters. By default the only valid separator is _:_ , but this can be changed using the `trailer.separators` config variable.
-If there is a separator in the key, then it overrides the default separator when adding the trailer. 
+If there is a separator in the key, then it overrides the default separator when adding the trailer.
 
-[](https://git-scm.com/docs/git-interpret-trailers#Documentation/git-interpret-trailers.txt-trailerkeyAliaswhere)trailer.<keyAlias>.where 
-    
-This option takes the same values as the _trailer.where_ configuration variable and it overrides what is specified by that option for trailers with the specified <keyAlias>. 
+[](https://git-scm.com/docs/git-interpret-trailers#Documentation/git-interpret-trailers.txt-trailerkeyAliaswhere)trailer.<keyAlias>.where
 
-[](https://git-scm.com/docs/git-interpret-trailers#Documentation/git-interpret-trailers.txt-trailerkeyAliasifexists)trailer.<keyAlias>.ifexists 
-    
-This option takes the same values as the _trailer.ifexists_ configuration variable and it overrides what is specified by that option for trailers with the specified <keyAlias>. 
+This option takes the same values as the _trailer.where_ configuration variable and it overrides what is specified by that option for trailers with the specified <keyAlias>.
 
-[](https://git-scm.com/docs/git-interpret-trailers#Documentation/git-interpret-trailers.txt-trailerkeyAliasifmissing)trailer.<keyAlias>.ifmissing 
-    
-This option takes the same values as the _trailer.ifmissing_ configuration variable and it overrides what is specified by that option for trailers with the specified <keyAlias>. 
+[](https://git-scm.com/docs/git-interpret-trailers#Documentation/git-interpret-trailers.txt-trailerkeyAliasifexists)trailer.<keyAlias>.ifexists
 
-[](https://git-scm.com/docs/git-interpret-trailers#Documentation/git-interpret-trailers.txt-trailerkeyAliascommand)trailer.<keyAlias>.command 
-    
+This option takes the same values as the _trailer.ifexists_ configuration variable and it overrides what is specified by that option for trailers with the specified <keyAlias>.
+
+[](https://git-scm.com/docs/git-interpret-trailers#Documentation/git-interpret-trailers.txt-trailerkeyAliasifmissing)trailer.<keyAlias>.ifmissing
+
+This option takes the same values as the _trailer.ifmissing_ configuration variable and it overrides what is specified by that option for trailers with the specified <keyAlias>.
+
+[](https://git-scm.com/docs/git-interpret-trailers#Documentation/git-interpret-trailers.txt-trailerkeyAliascommand)trailer.<keyAlias>.command
+
 Deprecated in favor of _trailer. <keyAlias>.cmd_. This option behaves in the same way as _trailer. <keyAlias>.cmd_, except that it doesn’t pass anything as argument to the specified command. Instead the first occurrence of substring $ARG is replaced by the <value> that would be passed as argument.
 Note that $ARG in the user’s command is only replaced once and that the original way of replacing $ARG is not safe.
-When both _trailer. <keyAlias>.cmd_ and _trailer. <keyAlias>.command_ are given for the same <keyAlias>, _trailer. <keyAlias>.cmd_ is used and _trailer. <keyAlias>.command_ is ignored. 
+When both _trailer. <keyAlias>.cmd_ and _trailer. <keyAlias>.command_ are given for the same <keyAlias>, _trailer. <keyAlias>.cmd_ is used and _trailer. <keyAlias>.command_ is ignored.
 
-[](https://git-scm.com/docs/git-interpret-trailers#Documentation/git-interpret-trailers.txt-trailerkeyAliascmd)trailer.<keyAlias>.cmd 
-    
+[](https://git-scm.com/docs/git-interpret-trailers#Documentation/git-interpret-trailers.txt-trailerkeyAliascmd)trailer.<keyAlias>.cmd
+
 This option can be used to specify a shell command that will be called once to automatically add a trailer with the specified <keyAlias>, and then called each time a _--trailer <keyAlias>=<value>_ argument is specified to modify the <value> of the trailer that this option would produce.
 When the specified command is first called to add a trailer with the specified <keyAlias>, the behavior is as if a special _--trailer <keyAlias>=<value>_ argument was added at the beginning of the "git interpret-trailers" command, where <value> is taken to be the standard output of the command with any leading and trailing whitespace trimmed off.
 If some _--trailer <keyAlias>=<value>_ arguments are also passed on the command line, the command is called again once for each of these arguments with the same <keyAlias>. And the <value> part of these arguments, if any, will be passed to the command as its first argument. This way the command can produce a <value> computed from the <value> passed in the _--trailer <keyAlias>=<value>_ argument.
@@ -559,6 +559,6 @@ $ chmod +x .git/hooks/commit-msg
 ##  [](https://git-scm.com/docs/git-interpret-trailers#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### interpret-trailers
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

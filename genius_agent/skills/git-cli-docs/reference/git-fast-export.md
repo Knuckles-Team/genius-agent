@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-fast-export#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-fast-export#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-fast-export#_description)
@@ -36,8 +36,8 @@ Localized versions of **git-fast-export** manual
   4. [українська мова ](https://git-scm.com/docs/git-fast-export/uk)
   5. [简体中文 ](https://git-scm.com/docs/git-fast-export/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-fast-export)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -219,96 +219,96 @@ _git fast-export_ [<options>] | _git fast-import_
 ##  [](https://git-scm.com/docs/git-fast-export#_description)DESCRIPTION
 This program dumps the given revisions in a form suitable to be piped into _git fast-import_.
 You can use it as a human-readable bundle replacement (see [git-bundle[1]](https://git-scm.com/docs/git-bundle)), or as a format that can be edited before being fed to _git fast-import_ in order to do history rewrites (an ability relied on by tools like _git filter-repo_).
-##  [](https://git-scm.com/docs/git-fast-export#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-fast-export#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-fast-export#Documentation/git-fast-export.txt---progressn)--progress=<n> 
-    
-Insert _progress_ statements every <n> objects, to be shown by _git fast-import_ during import. 
+[](https://git-scm.com/docs/git-fast-export#Documentation/git-fast-export.txt---progressn)--progress=<n>
 
-[](https://git-scm.com/docs/git-fast-export#Documentation/git-fast-export.txt---signed-tagsverbatimwarn-verbatimwarn-stripstripabort)--signed-tags=(verbatim|warn-verbatim|warn-strip|strip|abort) 
-    
+Insert _progress_ statements every <n> objects, to be shown by _git fast-import_ during import.
+
+[](https://git-scm.com/docs/git-fast-export#Documentation/git-fast-export.txt---signed-tagsverbatimwarn-verbatimwarn-stripstripabort)--signed-tags=(verbatim|warn-verbatim|warn-strip|strip|abort)
+
 Specify how to handle signed tags. Since any transformation after the export (or during the export, such as excluding revisions) can change the hashes being signed, the signatures may become invalid.
-When asking to _abort_ (which is the default), this program will die when encountering a signed tag. With _strip_ , the tags will silently be made unsigned, with _warn-strip_ they will be made unsigned but a warning will be displayed, with _verbatim_ , they will be silently exported and with _warn-verbatim_ (or _warn_ , a deprecated synonym), they will be exported, but you will see a warning. _verbatim_ and _warn-verbatim_ should only be used if you know that no transformation affecting tags or any commit in their history will be performed by you or by fast-export or fast-import, or if you do not care that the resulting tag will have an invalid signature. 
+When asking to _abort_ (which is the default), this program will die when encountering a signed tag. With _strip_ , the tags will silently be made unsigned, with _warn-strip_ they will be made unsigned but a warning will be displayed, with _verbatim_ , they will be silently exported and with _warn-verbatim_ (or _warn_ , a deprecated synonym), they will be exported, but you will see a warning. _verbatim_ and _warn-verbatim_ should only be used if you know that no transformation affecting tags or any commit in their history will be performed by you or by fast-export or fast-import, or if you do not care that the resulting tag will have an invalid signature.
 
-[](https://git-scm.com/docs/git-fast-export#Documentation/git-fast-export.txt---signed-commitsverbatimwarn-verbatimwarn-stripstripabort)--signed-commits=(verbatim|warn-verbatim|warn-strip|strip|abort) 
-    
+[](https://git-scm.com/docs/git-fast-export#Documentation/git-fast-export.txt---signed-commitsverbatimwarn-verbatimwarn-stripstripabort)--signed-commits=(verbatim|warn-verbatim|warn-strip|strip|abort)
+
 Specify how to handle signed commits. Behaves exactly as _--signed-tags_ , but for commits. Default is _strip_ , which is the same as how earlier versions of this command without this option behaved.
 When exported, a signature starts with:
 gpgsig <git-hash-algo> <signature-format>
 where <git-hash-algo> is the Git object hash so either "sha1" or "sha256", and <signature-format> is the signature type, so "openpgp", "x509", "ssh" or "unknown".
 For example, an OpenPGP signature on a SHA-1 commit starts with `gpgsig` `sha1` `openpgp`, while an SSH signature on a SHA-256 commit starts with `gpgsig` `sha256` `ssh`.
 While all the signatures of a commit are exported, an importer may choose to accept only some of them. For example [git-fast-import[1]](https://git-scm.com/docs/git-fast-import) currently stores at most one signature per Git hash algorithm in each commit.
-Note |  This is highly experimental and the format of the data stream may change in the future without compatibility guarantees.   
----|--- 
+Note |  This is highly experimental and the format of the data stream may change in the future without compatibility guarantees.
+---|---
 
-[](https://git-scm.com/docs/git-fast-export#Documentation/git-fast-export.txt---tag-of-filtered-objectabortdroprewrite)--tag-of-filtered-object=(abort|drop|rewrite) 
-      
+[](https://git-scm.com/docs/git-fast-export#Documentation/git-fast-export.txt---tag-of-filtered-objectabortdroprewrite)--tag-of-filtered-object=(abort|drop|rewrite)
+
 Specify how to handle tags whose tagged object is filtered out. Since revisions and files to export can be limited by path, tagged objects may be filtered completely.
-When asking to _abort_ (which is the default), this program will die when encountering such a tag. With _drop_ it will omit such tags from the output. With _rewrite_ , if the tagged object is a commit, it will rewrite the tag to tag an ancestor commit (via parent rewriting; see [git-rev-list[1]](https://git-scm.com/docs/git-rev-list)). 
+When asking to _abort_ (which is the default), this program will die when encountering such a tag. With _drop_ it will omit such tags from the output. With _rewrite_ , if the tagged object is a commit, it will rewrite the tag to tag an ancestor commit (via parent rewriting; see [git-rev-list[1]](https://git-scm.com/docs/git-rev-list)).
 
-[](https://git-scm.com/docs/git-fast-export#Documentation/git-fast-export.txt--M)-M 
+[](https://git-scm.com/docs/git-fast-export#Documentation/git-fast-export.txt--M)-M
 
 
-[](https://git-scm.com/docs/git-fast-export#Documentation/git-fast-export.txt--C)-C 
-    
+[](https://git-scm.com/docs/git-fast-export#Documentation/git-fast-export.txt--C)-C
+
 Perform move and/or copy detection, as described in the [git-diff[1]](https://git-scm.com/docs/git-diff) manual page, and use it to generate rename and copy commands in the output dump.
-Note that earlier versions of this command did not complain and produced incorrect results if you gave these options. 
+Note that earlier versions of this command did not complain and produced incorrect results if you gave these options.
 
-[](https://git-scm.com/docs/git-fast-export#Documentation/git-fast-export.txt---export-marksfile)--export-marks=<file> 
-    
-Dumps the internal marks table to <file> when complete. Marks are written one per line as `:markid` `SHA-1`. Only marks for revisions are dumped; marks for blobs are ignored. Backends can use this file to validate imports after they have been completed, or to save the marks table across incremental runs. As <file> is only opened and truncated at completion, the same path can also be safely given to --import-marks. The file will not be written if no new object has been marked/exported. 
+[](https://git-scm.com/docs/git-fast-export#Documentation/git-fast-export.txt---export-marksfile)--export-marks=<file>
 
-[](https://git-scm.com/docs/git-fast-export#Documentation/git-fast-export.txt---import-marksfile)--import-marks=<file> 
-    
-Before processing any input, load the marks specified in <file>. The input file must exist, must be readable, and must use the same format as produced by --export-marks. 
+Dumps the internal marks table to <file> when complete. Marks are written one per line as `:markid` `SHA-1`. Only marks for revisions are dumped; marks for blobs are ignored. Backends can use this file to validate imports after they have been completed, or to save the marks table across incremental runs. As <file> is only opened and truncated at completion, the same path can also be safely given to --import-marks. The file will not be written if no new object has been marked/exported.
 
-[](https://git-scm.com/docs/git-fast-export#Documentation/git-fast-export.txt---mark-tags)--mark-tags 
-    
+[](https://git-scm.com/docs/git-fast-export#Documentation/git-fast-export.txt---import-marksfile)--import-marks=<file>
+
+Before processing any input, load the marks specified in <file>. The input file must exist, must be readable, and must use the same format as produced by --export-marks.
+
+[](https://git-scm.com/docs/git-fast-export#Documentation/git-fast-export.txt---mark-tags)--mark-tags
+
 In addition to labelling blobs and commits with mark ids, also label tags. This is useful in conjunction with `--export-marks` and `--import-marks`, and is also useful (and necessary) for exporting of nested tags. It does not hurt other cases and would be the default, but many fast-import frontends are not prepared to accept tags with mark identifiers.
-Any commits (or tags) that have already been marked will not be exported again. If the backend uses a similar --import-marks file, this allows for incremental bidirectional exporting of the repository by keeping the marks the same across runs. 
+Any commits (or tags) that have already been marked will not be exported again. If the backend uses a similar --import-marks file, this allows for incremental bidirectional exporting of the repository by keeping the marks the same across runs.
 
-[](https://git-scm.com/docs/git-fast-export#Documentation/git-fast-export.txt---fake-missing-tagger)--fake-missing-tagger 
-    
-Some old repositories have tags without a tagger. The fast-import protocol was pretty strict about that, and did not allow that. So fake a tagger to be able to fast-import the output. 
+[](https://git-scm.com/docs/git-fast-export#Documentation/git-fast-export.txt---fake-missing-tagger)--fake-missing-tagger
 
-[](https://git-scm.com/docs/git-fast-export#Documentation/git-fast-export.txt---use-done-feature)--use-done-feature 
-    
-Start the stream with a _feature done_ stanza, and terminate it with a _done_ command. 
+Some old repositories have tags without a tagger. The fast-import protocol was pretty strict about that, and did not allow that. So fake a tagger to be able to fast-import the output.
 
-[](https://git-scm.com/docs/git-fast-export#Documentation/git-fast-export.txt---no-data)--no-data 
-    
-Skip output of blob objects and instead refer to blobs via their original SHA-1 hash. This is useful when rewriting the directory structure or history of a repository without touching the contents of individual files. Note that the resulting stream can only be used by a repository which already contains the necessary objects. 
+[](https://git-scm.com/docs/git-fast-export#Documentation/git-fast-export.txt---use-done-feature)--use-done-feature
 
-[](https://git-scm.com/docs/git-fast-export#Documentation/git-fast-export.txt---full-tree)--full-tree 
-    
-This option will cause fast-export to issue a "deleteall" directive for each commit followed by a full list of all files in the commit (as opposed to just listing the files which are different from the commit’s first parent). 
+Start the stream with a _feature done_ stanza, and terminate it with a _done_ command.
 
-[](https://git-scm.com/docs/git-fast-export#Documentation/git-fast-export.txt---anonymize)--anonymize 
-    
-Anonymize the contents of the repository while still retaining the shape of the history and stored tree. See the section on `ANONYMIZING` below. 
+[](https://git-scm.com/docs/git-fast-export#Documentation/git-fast-export.txt---no-data)--no-data
 
-[](https://git-scm.com/docs/git-fast-export#Documentation/git-fast-export.txt---anonymize-mapfromto)--anonymize-map=<from>[:<to>] 
-    
-Convert token _< from>_ to _< to>_ in the anonymized output. If _< to>_ is omitted, map _< from>_ to itself (i.e., do not anonymize it). See the section on `ANONYMIZING` below. 
+Skip output of blob objects and instead refer to blobs via their original SHA-1 hash. This is useful when rewriting the directory structure or history of a repository without touching the contents of individual files. Note that the resulting stream can only be used by a repository which already contains the necessary objects.
 
-[](https://git-scm.com/docs/git-fast-export#Documentation/git-fast-export.txt---reference-excluded-parents)--reference-excluded-parents 
-    
-By default, running a command such as `git` `fast-export` `master~5..master` will not include the commit master~5 and will make master~4 no longer have master~5 as a parent (though both the old master~4 and new master~4 will have all the same files). Use --reference-excluded-parents to instead have the stream refer to commits in the excluded range of history by their sha1sum. Note that the resulting stream can only be used by a repository which already contains the necessary parent commits. 
+[](https://git-scm.com/docs/git-fast-export#Documentation/git-fast-export.txt---full-tree)--full-tree
 
-[](https://git-scm.com/docs/git-fast-export#Documentation/git-fast-export.txt---show-original-ids)--show-original-ids 
-    
-Add an extra directive to the output for commits and blobs, `original-oid` _< SHA1SUM>_. While such directives will likely be ignored by importers such as git-fast-import, it may be useful for intermediary filters (e.g. for rewriting commit messages which refer to older commits, or for stripping blobs by id). 
+This option will cause fast-export to issue a "deleteall" directive for each commit followed by a full list of all files in the commit (as opposed to just listing the files which are different from the commit’s first parent).
 
-[](https://git-scm.com/docs/git-fast-export#Documentation/git-fast-export.txt---reencodeyesnoabort)--reencode=(yes|no|abort) 
-    
-Specify how to handle `encoding` header in commit objects. When asking to _abort_ (which is the default), this program will die when encountering such a commit object. With _yes_ , the commit message will be re-encoded into UTF-8. With _no_ , the original encoding will be preserved. 
+[](https://git-scm.com/docs/git-fast-export#Documentation/git-fast-export.txt---anonymize)--anonymize
 
-[](https://git-scm.com/docs/git-fast-export#Documentation/git-fast-export.txt---refspec)--refspec 
-    
-Apply the specified refspec to each ref exported. Multiple of them can be specified. 
+Anonymize the contents of the repository while still retaining the shape of the history and stored tree. See the section on `ANONYMIZING` below.
 
-[](https://git-scm.com/docs/git-fast-export#Documentation/git-fast-export.txt-git-rev-list-args)[<git-rev-list-args>…​] 
-    
+[](https://git-scm.com/docs/git-fast-export#Documentation/git-fast-export.txt---anonymize-mapfromto)--anonymize-map=<from>[:<to>]
+
+Convert token _< from>_ to _< to>_ in the anonymized output. If _< to>_ is omitted, map _< from>_ to itself (i.e., do not anonymize it). See the section on `ANONYMIZING` below.
+
+[](https://git-scm.com/docs/git-fast-export#Documentation/git-fast-export.txt---reference-excluded-parents)--reference-excluded-parents
+
+By default, running a command such as `git` `fast-export` `master~5..master` will not include the commit master~5 and will make master~4 no longer have master~5 as a parent (though both the old master~4 and new master~4 will have all the same files). Use --reference-excluded-parents to instead have the stream refer to commits in the excluded range of history by their sha1sum. Note that the resulting stream can only be used by a repository which already contains the necessary parent commits.
+
+[](https://git-scm.com/docs/git-fast-export#Documentation/git-fast-export.txt---show-original-ids)--show-original-ids
+
+Add an extra directive to the output for commits and blobs, `original-oid` _< SHA1SUM>_. While such directives will likely be ignored by importers such as git-fast-import, it may be useful for intermediary filters (e.g. for rewriting commit messages which refer to older commits, or for stripping blobs by id).
+
+[](https://git-scm.com/docs/git-fast-export#Documentation/git-fast-export.txt---reencodeyesnoabort)--reencode=(yes|no|abort)
+
+Specify how to handle `encoding` header in commit objects. When asking to _abort_ (which is the default), this program will die when encountering such a commit object. With _yes_ , the commit message will be re-encoded into UTF-8. With _no_ , the original encoding will be preserved.
+
+[](https://git-scm.com/docs/git-fast-export#Documentation/git-fast-export.txt---refspec)--refspec
+
+Apply the specified refspec to each ref exported. Multiple of them can be specified.
+
+[](https://git-scm.com/docs/git-fast-export#Documentation/git-fast-export.txt-git-rev-list-args)[<git-rev-list-args>…​]
+
 A list of arguments, acceptable to _git rev-parse_ and _git rev-list_ , that specifies the specific objects and references to export. For example, `master~10..master` causes the current master reference to be exported along with all objects added since its 10th ancestor commit and (unless the --reference-excluded-parents option is specified) all files common to master~9 and master~10.
 ##  [](https://git-scm.com/docs/git-fast-export#_examples)EXAMPLES
 ```
@@ -364,6 +364,6 @@ Since _git fast-import_ cannot tag trees, you will not be able to export the lin
 ##  [](https://git-scm.com/docs/git-fast-export#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### fast-export
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

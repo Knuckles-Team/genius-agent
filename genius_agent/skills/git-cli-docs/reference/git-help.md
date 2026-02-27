@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-help#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-help#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-help#_description)
@@ -34,8 +34,8 @@ Localized versions of **git-help** manual
   5. [українська мова ](https://git-scm.com/docs/git-help/uk)
   6. [简体中文 ](https://git-scm.com/docs/git-help/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-help)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -229,71 +229,71 @@ If an alias is given, git shows the definition of the alias on standard output. 
 Note that `git` `--help` ... is identical to `git` `help` ... because the former is internally converted into the latter.
 To display the [git[1]](https://git-scm.com/docs/git) man page, use `git` `help` `git`.
 This page can be displayed with _git help help_ or `git` `help` `--help`.
-##  [](https://git-scm.com/docs/git-help#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-help#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-help#Documentation/git-help.txt--a)-a 
-
-
-[](https://git-scm.com/docs/git-help#Documentation/git-help.txt---all)--all 
-    
-Print all the available commands on the standard output. 
-
-[](https://git-scm.com/docs/git-help#Documentation/git-help.txt---no-external-commands)--no-external-commands 
-    
-When used with `--all`, exclude the listing of external "git-*" commands found in the `$PATH`. 
-
-[](https://git-scm.com/docs/git-help#Documentation/git-help.txt---no-aliases)--no-aliases 
-    
-When used with `--all`, exclude the listing of configured aliases. 
-
-[](https://git-scm.com/docs/git-help#Documentation/git-help.txt---verbose)--verbose 
-    
-When used with `--all`, print description for all recognized commands. This is the default. 
-
-[](https://git-scm.com/docs/git-help#Documentation/git-help.txt--c)-c 
+[](https://git-scm.com/docs/git-help#Documentation/git-help.txt--a)-a
 
 
-[](https://git-scm.com/docs/git-help#Documentation/git-help.txt---config)--config 
-    
-List all available configuration variables. This is a short summary of the list in [git-config[1]](https://git-scm.com/docs/git-config). 
+[](https://git-scm.com/docs/git-help#Documentation/git-help.txt---all)--all
 
-[](https://git-scm.com/docs/git-help#Documentation/git-help.txt--g)-g 
+Print all the available commands on the standard output.
+
+[](https://git-scm.com/docs/git-help#Documentation/git-help.txt---no-external-commands)--no-external-commands
+
+When used with `--all`, exclude the listing of external "git-*" commands found in the `$PATH`.
+
+[](https://git-scm.com/docs/git-help#Documentation/git-help.txt---no-aliases)--no-aliases
+
+When used with `--all`, exclude the listing of configured aliases.
+
+[](https://git-scm.com/docs/git-help#Documentation/git-help.txt---verbose)--verbose
+
+When used with `--all`, print description for all recognized commands. This is the default.
+
+[](https://git-scm.com/docs/git-help#Documentation/git-help.txt--c)-c
 
 
-[](https://git-scm.com/docs/git-help#Documentation/git-help.txt---guides)--guides 
-    
-Print a list of the Git concept guides on the standard output. 
+[](https://git-scm.com/docs/git-help#Documentation/git-help.txt---config)--config
 
-[](https://git-scm.com/docs/git-help#Documentation/git-help.txt---user-interfaces)--user-interfaces 
-    
+List all available configuration variables. This is a short summary of the list in [git-config[1]](https://git-scm.com/docs/git-config).
+
+[](https://git-scm.com/docs/git-help#Documentation/git-help.txt--g)-g
+
+
+[](https://git-scm.com/docs/git-help#Documentation/git-help.txt---guides)--guides
+
+Print a list of the Git concept guides on the standard output.
+
+[](https://git-scm.com/docs/git-help#Documentation/git-help.txt---user-interfaces)--user-interfaces
+
 Print a list of the repository, command and file interfaces documentation on the standard output.
 In-repository file interfaces such as `.git/info/exclude` are documented here (see [gitrepository-layout[5]](https://git-scm.com/docs/gitrepository-layout)), as well as in-tree configuration such as `.mailmap` (see [gitmailmap[5]](https://git-scm.com/docs/gitmailmap)).
-This section of the documentation also covers general or widespread user-interface conventions (e.g. [gitcli[7]](https://git-scm.com/docs/gitcli)), and pseudo-configuration such as the file-based `.git/hooks/*` interface described in [githooks[5]](https://git-scm.com/docs/githooks). 
+This section of the documentation also covers general or widespread user-interface conventions (e.g. [gitcli[7]](https://git-scm.com/docs/gitcli)), and pseudo-configuration such as the file-based `.git/hooks/*` interface described in [githooks[5]](https://git-scm.com/docs/githooks).
 
-[](https://git-scm.com/docs/git-help#Documentation/git-help.txt---developer-interfaces)--developer-interfaces 
-    
-Print a list of file formats, protocols and other developer interfaces documentation on the standard output. 
+[](https://git-scm.com/docs/git-help#Documentation/git-help.txt---developer-interfaces)--developer-interfaces
 
-[](https://git-scm.com/docs/git-help#Documentation/git-help.txt--i)-i 
+Print a list of file formats, protocols and other developer interfaces documentation on the standard output.
 
-
-[](https://git-scm.com/docs/git-help#Documentation/git-help.txt---info)--info 
-    
-Display manual page for the command in the _info_ format. The _info_ program will be used for that purpose. 
-
-[](https://git-scm.com/docs/git-help#Documentation/git-help.txt--m)-m 
+[](https://git-scm.com/docs/git-help#Documentation/git-help.txt--i)-i
 
 
-[](https://git-scm.com/docs/git-help#Documentation/git-help.txt---man)--man 
-    
+[](https://git-scm.com/docs/git-help#Documentation/git-help.txt---info)--info
+
+Display manual page for the command in the _info_ format. The _info_ program will be used for that purpose.
+
+[](https://git-scm.com/docs/git-help#Documentation/git-help.txt--m)-m
+
+
+[](https://git-scm.com/docs/git-help#Documentation/git-help.txt---man)--man
+
 Display manual page for the command in the _man_ format. This option may be used to override a value set in the `help.format` configuration variable.
-By default the _man_ program will be used to display the manual page, but the `man.viewer` configuration variable may be used to choose other display programs (see below). 
+By default the _man_ program will be used to display the manual page, but the `man.viewer` configuration variable may be used to choose other display programs (see below).
 
-[](https://git-scm.com/docs/git-help#Documentation/git-help.txt--w)-w 
+[](https://git-scm.com/docs/git-help#Documentation/git-help.txt--w)-w
 
 
-[](https://git-scm.com/docs/git-help#Documentation/git-help.txt---web)--web 
-    
+[](https://git-scm.com/docs/git-help#Documentation/git-help.txt---web)--web
+
 Display manual page for the command in the _web_ (HTML) format. A web browser will be used for that purpose.
 The web browser can be specified using the configuration variable `help.browser`, or `web.browser` if the former is not set. If neither of these config variables is set, the _git web--browse_ helper script (called by _git help_) will pick a suitable default. See [git-web--browse[1]](https://git-scm.com/docs/git-web--browse) for more information about this.
 ##  [](https://git-scm.com/docs/git-help#_configuration_variables)CONFIGURATION VARIABLES
@@ -351,6 +351,6 @@ as they are probably more user specific than repository specific. See [git-confi
 ##  [](https://git-scm.com/docs/git-help#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### help
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

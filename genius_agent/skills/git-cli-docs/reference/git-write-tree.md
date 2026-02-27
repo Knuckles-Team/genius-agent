@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-write-tree#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-write-tree#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-write-tree#_description)
@@ -35,8 +35,8 @@ Localized versions of **git-write-tree** manual
   7. [українська мова ](https://git-scm.com/docs/git-write-tree/uk)
   8. [简体中文 ](https://git-scm.com/docs/git-write-tree/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-write-tree)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -197,18 +197,18 @@ git write-tree [--missing-ok] [--prefix=_<prefix>_/]
 Creates a tree object using the current index. The name of the new tree object is printed to standard output.
 The index must be in a fully merged state.
 Conceptually, `git` `write-tree` sync()s the current index contents into a set of tree files. In order to have that match what is actually in your directory right now, you need to have done a `git` `update-index` phase before you did the `git` `write-tree`.
-##  [](https://git-scm.com/docs/git-write-tree#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-write-tree#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-write-tree#Documentation/git-write-tree.txt---missing-ok)`--missing-ok` 
-    
-Normally `git` `write-tree` ensures that the objects referenced by the directory exist in the object database. This option disables this check. 
+[](https://git-scm.com/docs/git-write-tree#Documentation/git-write-tree.txt---missing-ok)`--missing-ok`
 
-[](https://git-scm.com/docs/git-write-tree#Documentation/git-write-tree.txt---prefixprefix)`--prefix=`_< prefix>_`/` 
-    
+Normally `git` `write-tree` ensures that the objects referenced by the directory exist in the object database. This option disables this check.
+
+[](https://git-scm.com/docs/git-write-tree#Documentation/git-write-tree.txt---prefixprefix)`--prefix=`_< prefix>_`/`
+
 Writes a tree object that represents a subdirectory _< prefix>_. This can be used to write the tree object for a subproject that is in the named subdirectory.
 ##  [](https://git-scm.com/docs/git-write-tree#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### write-tree
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

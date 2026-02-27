@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-merge-one-file#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-merge-one-file#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-merge-one-file#_description)
@@ -34,8 +34,8 @@ Localized versions of **git-merge-one-file** manual
   7. [українська мова ](https://git-scm.com/docs/git-merge-one-file/uk)
   8. [简体中文 ](https://git-scm.com/docs/git-merge-one-file/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-merge-one-file)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -195,6 +195,6 @@ This is the standard helper program to use with _git merge-index_ to resolve a m
 ##  [](https://git-scm.com/docs/git-merge-one-file#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### merge-one-file
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-symbolic-ref#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-symbolic-ref#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-symbolic-ref#_description)
@@ -34,8 +34,8 @@ Localized versions of **git-symbolic-ref** manual
   4. [українська мова ](https://git-scm.com/docs/git-symbolic-ref/uk)
   5. [简体中文 ](https://git-scm.com/docs/git-symbolic-ref/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-symbolic-ref)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -203,35 +203,35 @@ Given one argument, reads which branch head the given symbolic ref refers to and
 Given two arguments, creates or updates a symbolic ref <name> to point at the given branch <ref>.
 Given `--delete` and an additional argument, deletes the given symbolic ref.
 A symbolic ref is a regular file that stores a string that begins with `ref:` `refs/`. For example, your `.git/HEAD` is a regular file whose content is `ref:` `refs/heads/master`.
-##  [](https://git-scm.com/docs/git-symbolic-ref#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-symbolic-ref#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-symbolic-ref#Documentation/git-symbolic-ref.txt--d)-d 
-
-
-[](https://git-scm.com/docs/git-symbolic-ref#Documentation/git-symbolic-ref.txt---delete)--delete 
-    
-Delete the symbolic ref <name>. 
-
-[](https://git-scm.com/docs/git-symbolic-ref#Documentation/git-symbolic-ref.txt--q)-q 
+[](https://git-scm.com/docs/git-symbolic-ref#Documentation/git-symbolic-ref.txt--d)-d
 
 
-[](https://git-scm.com/docs/git-symbolic-ref#Documentation/git-symbolic-ref.txt---quiet)--quiet 
-    
-Do not issue an error message if the <name> is not a symbolic ref but a detached HEAD; instead exit with non-zero status silently. 
+[](https://git-scm.com/docs/git-symbolic-ref#Documentation/git-symbolic-ref.txt---delete)--delete
 
-[](https://git-scm.com/docs/git-symbolic-ref#Documentation/git-symbolic-ref.txt---short)--short 
-    
-When showing the value of <name> as a symbolic ref, try to shorten the value, e.g. from `refs/heads/master` to `master`. 
+Delete the symbolic ref <name>.
 
-[](https://git-scm.com/docs/git-symbolic-ref#Documentation/git-symbolic-ref.txt---recurse)--recurse 
+[](https://git-scm.com/docs/git-symbolic-ref#Documentation/git-symbolic-ref.txt--q)-q
 
 
-[](https://git-scm.com/docs/git-symbolic-ref#Documentation/git-symbolic-ref.txt---no-recurse)--no-recurse 
-    
-When showing the value of <name> as a symbolic ref, if <name> refers to another symbolic ref, follow such a chain of symbolic refs until the result no longer points at a symbolic ref (`--recurse`, which is the default). `--no-recurse` stops after dereferencing only a single level of symbolic ref. 
+[](https://git-scm.com/docs/git-symbolic-ref#Documentation/git-symbolic-ref.txt---quiet)--quiet
 
-[](https://git-scm.com/docs/git-symbolic-ref#Documentation/git-symbolic-ref.txt--m)-m 
-    
+Do not issue an error message if the <name> is not a symbolic ref but a detached HEAD; instead exit with non-zero status silently.
+
+[](https://git-scm.com/docs/git-symbolic-ref#Documentation/git-symbolic-ref.txt---short)--short
+
+When showing the value of <name> as a symbolic ref, try to shorten the value, e.g. from `refs/heads/master` to `master`.
+
+[](https://git-scm.com/docs/git-symbolic-ref#Documentation/git-symbolic-ref.txt---recurse)--recurse
+
+
+[](https://git-scm.com/docs/git-symbolic-ref#Documentation/git-symbolic-ref.txt---no-recurse)--no-recurse
+
+When showing the value of <name> as a symbolic ref, if <name> refers to another symbolic ref, follow such a chain of symbolic refs until the result no longer points at a symbolic ref (`--recurse`, which is the default). `--no-recurse` stops after dereferencing only a single level of symbolic ref.
+
+[](https://git-scm.com/docs/git-symbolic-ref#Documentation/git-symbolic-ref.txt--m)-m
+
 Update the reflog for <name> with <reason>. This is valid only when creating or updating a symbolic ref.
 ##  [](https://git-scm.com/docs/git-symbolic-ref#_notes)NOTES
 In the past, `.git/HEAD` was a symbolic link pointing at `refs/heads/master`. When we wanted to switch to another branch, we did `ln` `-sf` `refs/heads/newbranch` `.git/HEAD`, and when we wanted to find out which branch we are on, we did `readlink` `.git/HEAD`. But symbolic links are not entirely portable, so they are now deprecated and symbolic refs (as described above) are used by default.
@@ -241,6 +241,6 @@ _git symbolic-ref_ will exit with status 0 if the contents of the symbolic ref w
 ##  [](https://git-scm.com/docs/git-symbolic-ref#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### symbolic-ref
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

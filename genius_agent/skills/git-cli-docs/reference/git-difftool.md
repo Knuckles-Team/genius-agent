@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-difftool#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-difftool#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-difftool#_description)
@@ -36,8 +36,8 @@ Localized versions of **git-difftool** manual
   6. [українська мова ](https://git-scm.com/docs/git-difftool/uk)
   7. [简体中文 ](https://git-scm.com/docs/git-difftool/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-difftool)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -218,92 +218,92 @@ _git difftool_ [<options>] [<commit> [<commit>]] [--] [<path>…​]
 
 ##  [](https://git-scm.com/docs/git-difftool#_description)DESCRIPTION
 _git difftool_ is a Git command that allows you to compare and edit files between revisions using common diff tools. _git difftool_ is a frontend to _git diff_ and accepts the same options and arguments. See [git-diff[1]](https://git-scm.com/docs/git-diff).
-##  [](https://git-scm.com/docs/git-difftool#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-difftool#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt--d)-d 
-
-
-[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt---dir-diff)--dir-diff 
-    
-Copy the modified files to a temporary location and perform a directory diff on them. This mode never prompts before launching the diff tool. 
-
-[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt--y)-y 
+[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt--d)-d
 
 
-[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt---no-prompt)--no-prompt 
-    
-Do not prompt before launching a diff tool. 
+[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt---dir-diff)--dir-diff
 
-[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt---prompt)--prompt 
-    
-Prompt before each invocation of the diff tool. This is the default behaviour; the option is provided to override any configuration settings. 
+Copy the modified files to a temporary location and perform a directory diff on them. This mode never prompts before launching the diff tool.
 
-[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt---rotate-tofile)--rotate-to=<file> 
-    
-Start showing the diff for the given path, the paths before it will move to the end and output. 
-
-[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt---skip-tofile)--skip-to=<file> 
-    
-Start showing the diff for the given path, skipping all the paths before it. 
-
-[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt--ttool)-t <tool> 
+[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt--y)-y
 
 
-[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt---tooltool)--tool=<tool> 
-    
+[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt---no-prompt)--no-prompt
+
+Do not prompt before launching a diff tool.
+
+[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt---prompt)--prompt
+
+Prompt before each invocation of the diff tool. This is the default behaviour; the option is provided to override any configuration settings.
+
+[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt---rotate-tofile)--rotate-to=<file>
+
+Start showing the diff for the given path, the paths before it will move to the end and output.
+
+[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt---skip-tofile)--skip-to=<file>
+
+Start showing the diff for the given path, skipping all the paths before it.
+
+[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt--ttool)-t <tool>
+
+
+[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt---tooltool)--tool=<tool>
+
 Use the diff tool specified by <tool>. Valid values include emerge, kompare, meld, and vimdiff. Run `git` `difftool` `--tool-help` for the list of valid <tool> settings.
 If a diff tool is not specified, _git difftool_ will use the configuration variable `diff.tool`. If the configuration variable `diff.tool` is not set, _git difftool_ will pick a suitable default.
 You can explicitly provide a full path to the tool by setting the configuration variable `difftool.`_< tool>_`.path`. For example, you can configure the absolute path to kdiff3 by setting `difftool.kdiff3.path`. Otherwise, _git difftool_ assumes the tool is available in PATH.
 Instead of running one of the known diff tools, _git difftool_ can be customized to run an alternative program by specifying the command line to invoke in a configuration variable `difftool.`_< tool>_`.cmd`.
-When _git difftool_ is invoked with this tool (either through the `-t` or `--tool` option or the `diff.tool` configuration variable) the configured command line will be invoked with the following variables available: `$LOCAL` is set to the name of the temporary file containing the contents of the diff pre-image and `$REMOTE` is set to the name of the temporary file containing the contents of the diff post-image. `$MERGED` is the name of the file which is being compared. `$BASE` is provided for compatibility with custom merge tool commands and has the same value as `$MERGED`. 
+When _git difftool_ is invoked with this tool (either through the `-t` or `--tool` option or the `diff.tool` configuration variable) the configured command line will be invoked with the following variables available: `$LOCAL` is set to the name of the temporary file containing the contents of the diff pre-image and `$REMOTE` is set to the name of the temporary file containing the contents of the diff post-image. `$MERGED` is the name of the file which is being compared. `$BASE` is provided for compatibility with custom merge tool commands and has the same value as `$MERGED`.
 
-[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt---tool-help)--tool-help 
-    
-Print a list of diff tools that may be used with `--tool`. 
+[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt---tool-help)--tool-help
 
-[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt---symlinks)--symlinks 
+Print a list of diff tools that may be used with `--tool`.
+
+[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt---symlinks)--symlinks
 
 
-[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt---no-symlinks)--no-symlinks 
-    
+[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt---no-symlinks)--no-symlinks
+
 _git difftool_ 's default behavior is to create symlinks to the working tree when run in `--dir-diff` mode and the right-hand side of the comparison yields the same content as the file in the working tree.
-Specifying `--no-symlinks` instructs _git difftool_ to create copies instead. `--no-symlinks` is the default on Windows. 
+Specifying `--no-symlinks` instructs _git difftool_ to create copies instead. `--no-symlinks` is the default on Windows.
 
-[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt--xcommand)-x <command> 
-
-
-[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt---extcmdcommand)--extcmd=<command> 
-    
-Specify a custom command for viewing diffs. _git-difftool_ ignores the configured defaults and runs _< command>_ `$LOCAL` `$REMOTE` when this option is specified. Additionally, `$BASE` is set in the environment. 
-
-[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt--g)-g 
+[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt--xcommand)-x <command>
 
 
-[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt---gui)--gui 
+[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt---extcmdcommand)--extcmd=<command>
+
+Specify a custom command for viewing diffs. _git-difftool_ ignores the configured defaults and runs _< command>_ `$LOCAL` `$REMOTE` when this option is specified. Additionally, `$BASE` is set in the environment.
+
+[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt--g)-g
 
 
-[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt---no-gui)--no-gui 
-    
-When _git-difftool_ is invoked with the `-g` or `--gui` option the default diff tool will be read from the configured `diff.guitool` variable instead of `diff.tool`. This may be selected automatically using the configuration variable `difftool.guiDefault`. The `--no-gui` option can be used to override these settings. If `diff.guitool` is not set, we will fallback in the order of `merge.guitool`, `diff.tool`, `merge.tool` until a tool is found. 
-
-[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt---trust-exit-code)--trust-exit-code 
+[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt---gui)--gui
 
 
-[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt---no-trust-exit-code)--no-trust-exit-code 
-    
+[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt---no-gui)--no-gui
+
+When _git-difftool_ is invoked with the `-g` or `--gui` option the default diff tool will be read from the configured `diff.guitool` variable instead of `diff.tool`. This may be selected automatically using the configuration variable `difftool.guiDefault`. The `--no-gui` option can be used to override these settings. If `diff.guitool` is not set, we will fallback in the order of `merge.guitool`, `diff.tool`, `merge.tool` until a tool is found.
+
+[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt---trust-exit-code)--trust-exit-code
+
+
+[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt---no-trust-exit-code)--no-trust-exit-code
+
 Errors reported by the diff tool are ignored by default. Use `--trust-exit-code` to make _git-difftool_ exit when an invoked diff tool returns a non-zero exit code.
 _git-difftool_ will forward the exit code of the invoked tool when `--trust-exit-code` is used.
 See [git-diff[1]](https://git-scm.com/docs/git-diff) for the full list of supported options.
 ##  [](https://git-scm.com/docs/git-difftool#_configuration)CONFIGURATION
 _git difftool_ falls back to _git mergetool_ config variables when the difftool equivalents have not been defined.
-Everything above this line in this section isn’t included from the [git-config[1]](https://git-scm.com/docs/git-config) documentation. The content that follows is the same as what’s found there: 
+Everything above this line in this section isn’t included from the [git-config[1]](https://git-scm.com/docs/git-config) documentation. The content that follows is the same as what’s found there:
 
-[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt-difftool)diff.tool 
-    
-Controls which diff tool is used by [git-difftool[1]](https://git-scm.com/docs/git-difftool). This variable overrides the value configured in `merge.tool`. The list below shows the valid built-in values. Any other value is treated as a custom diff tool and requires that a corresponding difftool.<tool>.cmd variable is defined. 
+[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt-difftool)diff.tool
 
-[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt-diffguitool)diff.guitool 
-    
+Controls which diff tool is used by [git-difftool[1]](https://git-scm.com/docs/git-difftool). This variable overrides the value configured in `merge.tool`. The list below shows the valid built-in values. Any other value is treated as a custom diff tool and requires that a corresponding difftool.<tool>.cmd variable is defined.
+
+[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt-diffguitool)diff.guitool
+
 Controls which diff tool is used by [git-difftool[1]](https://git-scm.com/docs/git-difftool) when the -g/--gui flag is specified. This variable overrides the value configured in `merge.guitool`. The list below shows the valid built-in values. Any other value is treated as a custom diff tool and requires that a corresponding difftool.<guitool>.cmd variable is defined.
   * araxis
   * bc
@@ -331,43 +331,43 @@ Controls which diff tool is used by [git-difftool[1]](https://git-scm.com/docs/g
 
 
 
-[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt-difftooltoolcmd)difftool.<tool>.cmd 
-    
+[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt-difftooltoolcmd)difftool.<tool>.cmd
+
 Specify the command to invoke the specified diff tool. The specified command is evaluated in shell with the following variables available: _LOCAL_ is set to the name of the temporary file containing the contents of the diff pre-image and _REMOTE_ is set to the name of the temporary file containing the contents of the diff post-image.
-See the `--tool=`_< tool>_ option in [git-difftool[1]](https://git-scm.com/docs/git-difftool) for more details. 
+See the `--tool=`_< tool>_ option in [git-difftool[1]](https://git-scm.com/docs/git-difftool) for more details.
 
-[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt-difftooltoolpath)difftool.<tool>.path 
-    
-Override the path for the given tool. This is useful in case your tool is not in the PATH. 
+[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt-difftooltoolpath)difftool.<tool>.path
 
-[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt-difftooltrustExitCode)difftool.trustExitCode 
-    
+Override the path for the given tool. This is useful in case your tool is not in the PATH.
+
+[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt-difftooltrustExitCode)difftool.trustExitCode
+
 Exit difftool if the invoked diff tool returns a non-zero exit status.
-See the `--trust-exit-code` option in [git-difftool[1]](https://git-scm.com/docs/git-difftool) for more details. 
+See the `--trust-exit-code` option in [git-difftool[1]](https://git-scm.com/docs/git-difftool) for more details.
 
-[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt-difftoolprompt)difftool.prompt 
-    
-Prompt before each invocation of the diff tool. 
+[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt-difftoolprompt)difftool.prompt
 
-[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt-difftoolguiDefault)difftool.guiDefault 
-    
+Prompt before each invocation of the diff tool.
+
+[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt-difftoolguiDefault)difftool.guiDefault
+
 Set `true` to use the `diff.guitool` by default (equivalent to specifying the `--gui` argument), or `auto` to select `diff.guitool` or `diff.tool` depending on the presence of a `DISPLAY` environment variable value. The default is `false`, where the `--gui` argument must be provided explicitly for the `diff.guitool` to be used.
-##  [](https://git-scm.com/docs/git-difftool#_see_also)SEE ALSO 
+##  [](https://git-scm.com/docs/git-difftool#_see_also)SEE ALSO
 
-[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt-git-diff1)[git-diff[1]](https://git-scm.com/docs/git-diff) 
-    
-Show changes between commits, commit and working tree, etc 
+[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt-git-diff1)[git-diff[1]](https://git-scm.com/docs/git-diff)
 
-[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt-git-mergetool1)[git-mergetool[1]](https://git-scm.com/docs/git-mergetool) 
-    
-Run merge conflict resolution tools to resolve merge conflicts 
+Show changes between commits, commit and working tree, etc
 
-[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt-git-config1)[git-config[1]](https://git-scm.com/docs/git-config) 
-    
+[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt-git-mergetool1)[git-mergetool[1]](https://git-scm.com/docs/git-mergetool)
+
+Run merge conflict resolution tools to resolve merge conflicts
+
+[](https://git-scm.com/docs/git-difftool#Documentation/git-difftool.txt-git-config1)[git-config[1]](https://git-scm.com/docs/git-config)
+
 Get and set repository or global options
 ##  [](https://git-scm.com/docs/git-difftool#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### difftool
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

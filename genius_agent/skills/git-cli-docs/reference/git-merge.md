@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-merge#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-merge#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-merge#_description)
@@ -43,8 +43,8 @@ Localized versions of **git-merge** manual
   5. [українська мова ](https://git-scm.com/docs/git-merge/uk)
   6. [简体中文 ](https://git-scm.com/docs/git-merge/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-merge)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -285,213 +285,213 @@ Then `git` `merge` `topic` will replay the changes made on the `topic` branch si
 
 A merge stops if there’s a conflict that cannot be resolved automatically or if `--no-commit` was provided when initiating the merge. At that point you can run `git` `merge` `--abort` or `git` `merge` `--continue`.
 `git` `merge` `--abort` will abort the merge process and try to reconstruct the pre-merge state. However, if there were uncommitted changes when the merge started (and especially if those changes were further modified after the merge was started), `git` `merge` `--abort` will in some cases be unable to reconstruct the original (pre-merge) changes. Therefore:
-Warning |  Running `git` `merge` with non-trivial uncommitted changes is discouraged: while possible, it may leave you in a state that is hard to back out of in the case of a conflict.   
----|---  
-##  [](https://git-scm.com/docs/git-merge#_options)OPTIONS 
+Warning |  Running `git` `merge` with non-trivial uncommitted changes is discouraged: while possible, it may leave you in a state that is hard to back out of in the case of a conflict.
+---|---
+##  [](https://git-scm.com/docs/git-merge#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---commit)`--commit` 
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---commit)`--commit`
 
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---no-commit)`--no-commit` 
-    
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---no-commit)`--no-commit`
+
 Perform the merge and commit the result. This option can be used to override `--no-commit`.
 With `--no-commit` perform the merge and stop just before creating a merge commit, to give the user a chance to inspect and further tweak the merge result before committing.
-Note that fast-forward updates do not create a merge commit and therefore there is no way to stop those merges with `--no-commit`. Thus, if you want to ensure your branch is not changed or updated by the merge command, use `--no-ff` with `--no-commit`. 
+Note that fast-forward updates do not create a merge commit and therefore there is no way to stop those merges with `--no-commit`. Thus, if you want to ensure your branch is not changed or updated by the merge command, use `--no-ff` with `--no-commit`.
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---edit)`--edit` 
-
-
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt--e)`-e` 
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---edit)`--edit`
 
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---no-edit)`--no-edit` 
-    
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt--e)`-e`
+
+
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---no-edit)`--no-edit`
+
 Invoke an editor before committing successful mechanical merge to further edit the auto-generated merge message, so that the user can explain and justify the merge. The `--no-edit` option can be used to accept the auto-generated message (this is generally discouraged). The `--edit` (or `-e`) option is still useful if you are giving a draft message with the `-m` option from the command line and want to edit it in the editor.
-Older scripts may depend on the historical behaviour of not allowing the user to edit the merge log message. They will see an editor opened when they run `git` `merge`. To make it easier to adjust such scripts to the updated behaviour, the environment variable `GIT_MERGE_AUTOEDIT` can be set to `no` at the beginning of them. 
+Older scripts may depend on the historical behaviour of not allowing the user to edit the merge log message. They will see an editor opened when they run `git` `merge`. To make it easier to adjust such scripts to the updated behaviour, the environment variable `GIT_MERGE_AUTOEDIT` can be set to `no` at the beginning of them.
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---cleanupmode)`--cleanup=`_< mode>_ 
-    
-This option determines how the merge message will be cleaned up before committing. See [git-commit[1]](https://git-scm.com/docs/git-commit) for more details. In addition, if the _< mode>_ is given a value of `scissors`, scissors will be appended to `MERGE_MSG` before being passed on to the commit machinery in the case of a merge conflict. 
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---cleanupmode)`--cleanup=`_< mode>_
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---ff)`--ff` 
+This option determines how the merge message will be cleaned up before committing. See [git-commit[1]](https://git-scm.com/docs/git-commit) for more details. In addition, if the _< mode>_ is given a value of `scissors`, scissors will be appended to `MERGE_MSG` before being passed on to the commit machinery in the case of a merge conflict.
 
-
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---no-ff)`--no-ff` 
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---ff)`--ff`
 
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---ff-only)`--ff-only` 
-    
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---no-ff)`--no-ff`
+
+
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---ff-only)`--ff-only`
+
 Specifies how a merge is handled when the merged-in history is already a descendant of the current history. `--ff` is the default unless merging an annotated (and possibly signed) tag that is not stored in its natural place in the `refs/tags/` hierarchy, in which case `--no-ff` is assumed.
 With `--ff`, when possible resolve the merge as a fast-forward (only update the branch pointer to match the merged branch; do not create a merge commit). When not possible (when the merged-in history is not a descendant of the current history), create a merge commit.
 With `--no-ff`, create a merge commit in all cases, even when the merge could instead be resolved as a fast-forward.
-With `--ff-only`, resolve the merge as a fast-forward when possible. When not possible, refuse to merge and exit with a non-zero status. 
+With `--ff-only`, resolve the merge as a fast-forward when possible. When not possible, refuse to merge and exit with a non-zero status.
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt--Skey-id)`-S`[_< key-id>_] 
-
-
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---gpg-signkey-id)`--gpg-sign`[`=`_< key-id>_] 
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt--Skey-id)`-S`[_< key-id>_]
 
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---no-gpg-sign)`--no-gpg-sign` 
-    
-GPG-sign the resulting merge commit. The _< key-id>_ argument is optional and defaults to the committer identity; if specified, it must be stuck to the option without a space. `--no-gpg-sign` is useful to countermand both `commit.gpgSign` configuration variable, and earlier `--gpg-sign`. 
-
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---logn)`--log`[`=`_< n>_] 
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---gpg-signkey-id)`--gpg-sign`[`=`_< key-id>_]
 
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---no-log)`--no-log` 
-    
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---no-gpg-sign)`--no-gpg-sign`
+
+GPG-sign the resulting merge commit. The _< key-id>_ argument is optional and defaults to the committer identity; if specified, it must be stuck to the option without a space. `--no-gpg-sign` is useful to countermand both `commit.gpgSign` configuration variable, and earlier `--gpg-sign`.
+
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---logn)`--log`[`=`_< n>_]
+
+
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---no-log)`--no-log`
+
 In addition to branch names, populate the log message with one-line descriptions from at most _< n>_ actual commits that are being merged. See also [git-fmt-merge-msg[1]](https://git-scm.com/docs/git-fmt-merge-msg).
-With `--no-log` do not list one-line descriptions from the actual commits being merged. 
+With `--no-log` do not list one-line descriptions from the actual commits being merged.
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---signoff)`--signoff` 
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---signoff)`--signoff`
 
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---no-signoff)`--no-signoff` 
-    
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---no-signoff)`--no-signoff`
+
 Add a `Signed-off-by` trailer by the committer at the end of the commit log message. The meaning of a signoff depends on the project to which you’re committing. For example, it may certify that the committer has the rights to submit the work under the project’s license or agrees to some contributor representation, such as a Developer Certificate of Origin. (See <https://developercertificate.org> for the one used by the Linux kernel and Git projects.) Consult the documentation or leadership of the project to which you’re contributing to understand how the signoffs are used in that project.
 The `--no-signoff` option can be used to countermand an earlier `--signoff` option on the command line.
-Git does not (and will not) have a configuration variable to enable the `--signoff` command line option by default; see the `commit.signoff` entry in [gitfaq[7]](https://git-scm.com/docs/gitfaq) for more details. 
+Git does not (and will not) have a configuration variable to enable the `--signoff` command line option by default; see the `commit.signoff` entry in [gitfaq[7]](https://git-scm.com/docs/gitfaq) for more details.
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---stat)`--stat` 
-
-
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt--n)`-n` 
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---stat)`--stat`
 
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---no-stat)`--no-stat` 
-    
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt--n)`-n`
+
+
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---no-stat)`--no-stat`
+
 Show a diffstat at the end of the merge. The diffstat is also controlled by the configuration option merge.stat.
-With `-n` or `--no-stat` do not show a diffstat at the end of the merge. 
+With `-n` or `--no-stat` do not show a diffstat at the end of the merge.
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---compact-summary)`--compact-summary` 
-    
-Show a compact-summary at the end of the merge. 
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---compact-summary)`--compact-summary`
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---squash)`--squash` 
+Show a compact-summary at the end of the merge.
+
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---squash)`--squash`
 
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---no-squash)`--no-squash` 
-    
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---no-squash)`--no-squash`
+
 Produce the working tree and index state as if a real merge happened (except for the merge information), but do not actually make a commit, move the `HEAD`, or record `$GIT_DIR/MERGE_HEAD` (to cause the next `git` `commit` command to create a merge commit). This allows you to create a single commit on top of the current branch whose effect is the same as merging another branch (or more in case of an octopus).
 With `--no-squash` perform the merge and commit the result. This option can be used to override `--squash`.
-With `--squash`, `--commit` is not allowed, and will fail. 
+With `--squash`, `--commit` is not allowed, and will fail.
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---verify)`--verify` 
-
-
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---no-verify)`--no-verify` 
-    
-By default, the pre-merge and commit-msg hooks are run. When `--no-verify` is given, these are bypassed. See also [githooks[5]](https://git-scm.com/docs/githooks). 
-
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt--sstrategy)`-s` _< strategy>_ 
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---verify)`--verify`
 
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---strategystrategy)`--strategy=`_< strategy>_ 
-    
-Use the given merge strategy; can be supplied more than once to specify them in the order they should be tried. If there is no `-s` option, a built-in list of strategies is used instead (`ort` when merging a single head, `octopus` otherwise). 
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---no-verify)`--no-verify`
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt--Xoption)`-X` _< option>_ 
+By default, the pre-merge and commit-msg hooks are run. When `--no-verify` is given, these are bypassed. See also [githooks[5]](https://git-scm.com/docs/githooks).
 
-
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---strategy-optionoption)`--strategy-option=`_< option>_ 
-    
-Pass merge strategy specific option through to the merge strategy. 
-
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---verify-signatures)`--verify-signatures` 
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt--sstrategy)`-s` _< strategy>_
 
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---no-verify-signatures)`--no-verify-signatures` 
-    
-Verify that the tip commit of the side branch being merged is signed with a valid key, i.e. a key that has a valid uid: in the default trust model, this means the signing key has been signed by a trusted key. If the tip commit of the side branch is not signed with a valid key, the merge is aborted. 
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---strategystrategy)`--strategy=`_< strategy>_
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---summary)`--summary` 
+Use the given merge strategy; can be supplied more than once to specify them in the order they should be tried. If there is no `-s` option, a built-in list of strategies is used instead (`ort` when merging a single head, `octopus` otherwise).
 
-
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---no-summary)`--no-summary` 
-    
-Synonyms to `--stat` and `--no-stat`; these are deprecated and will be removed in the future. 
-
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt--q)`-q` 
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt--Xoption)`-X` _< option>_
 
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---quiet)`--quiet` 
-    
-Operate quietly. Implies `--no-progress`. 
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---strategy-optionoption)`--strategy-option=`_< option>_
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt--v)`-v` 
+Pass merge strategy specific option through to the merge strategy.
 
-
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---verbose)`--verbose` 
-    
-Be verbose. 
-
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---progress)`--progress` 
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---verify-signatures)`--verify-signatures`
 
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---no-progress)`--no-progress` 
-    
-Turn progress on/off explicitly. If neither is specified, progress is shown if standard error is connected to a terminal. Note that not all merge strategies may support progress reporting. 
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---no-verify-signatures)`--no-verify-signatures`
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---autostash)`--autostash` 
+Verify that the tip commit of the side branch being merged is signed with a valid key, i.e. a key that has a valid uid: in the default trust model, this means the signing key has been signed by a trusted key. If the tip commit of the side branch is not signed with a valid key, the merge is aborted.
+
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---summary)`--summary`
 
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---no-autostash)`--no-autostash` 
-    
-Automatically create a temporary stash entry before the operation begins, record it in the ref `MERGE_AUTOSTASH` and apply it after the operation ends. This means that you can run the operation on a dirty worktree. However, use with care: the final stash application after a successful merge might result in non-trivial conflicts. 
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---no-summary)`--no-summary`
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---allow-unrelated-histories)`--allow-unrelated-histories` 
-    
-By default, `git` `merge` command refuses to merge histories that do not share a common ancestor. This option can be used to override this safety when merging histories of two projects that started their lives independently. As that is a very rare occasion, no configuration variable to enable this by default exists or will be added. 
+Synonyms to `--stat` and `--no-stat`; these are deprecated and will be removed in the future.
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt--mmsg)`-m` _< msg>_ 
-    
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt--q)`-q`
+
+
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---quiet)`--quiet`
+
+Operate quietly. Implies `--no-progress`.
+
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt--v)`-v`
+
+
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---verbose)`--verbose`
+
+Be verbose.
+
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---progress)`--progress`
+
+
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---no-progress)`--no-progress`
+
+Turn progress on/off explicitly. If neither is specified, progress is shown if standard error is connected to a terminal. Note that not all merge strategies may support progress reporting.
+
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---autostash)`--autostash`
+
+
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---no-autostash)`--no-autostash`
+
+Automatically create a temporary stash entry before the operation begins, record it in the ref `MERGE_AUTOSTASH` and apply it after the operation ends. This means that you can run the operation on a dirty worktree. However, use with care: the final stash application after a successful merge might result in non-trivial conflicts.
+
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---allow-unrelated-histories)`--allow-unrelated-histories`
+
+By default, `git` `merge` command refuses to merge histories that do not share a common ancestor. This option can be used to override this safety when merging histories of two projects that started their lives independently. As that is a very rare occasion, no configuration variable to enable this by default exists or will be added.
+
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt--mmsg)`-m` _< msg>_
+
 Set the commit message to be used for the merge commit (in case one is created).
 If `--log` is specified, a shortlog of the commits being merged will be appended to the specified message.
-The `git` `fmt-merge-msg` command can be used to give a good default for automated `git` `merge` invocations. The automated message can include the branch description. 
+The `git` `fmt-merge-msg` command can be used to give a good default for automated `git` `merge` invocations. The automated message can include the branch description.
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---into-namebranch)`--into-name` _< branch>_ 
-    
-Prepare the default merge message as if merging to the branch _< branch>_, instead of the name of the real branch to which the merge is made. 
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---into-namebranch)`--into-name` _< branch>_
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt--Ffile)`-F` _< file>_ 
+Prepare the default merge message as if merging to the branch _< branch>_, instead of the name of the real branch to which the merge is made.
+
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt--Ffile)`-F` _< file>_
 
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---filefile)`--file=`_< file>_ 
-    
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---filefile)`--file=`_< file>_
+
 Read the commit message to be used for the merge commit (in case one is created).
-If `--log` is specified, a shortlog of the commits being merged will be appended to the specified message. 
+If `--log` is specified, a shortlog of the commits being merged will be appended to the specified message.
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---rerere-autoupdate)`--rerere-autoupdate` 
-
-
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---no-rerere-autoupdate)`--no-rerere-autoupdate` 
-    
-After the rerere mechanism reuses a recorded resolution on the current conflict to update the files in the working tree, allow it to also update the index with the result of resolution. `--no-rerere-autoupdate` is a good way to double-check what `rerere` did and catch potential mismerges, before committing the result to the index with a separate `git` `add`. 
-
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---overwrite-ignore)`--overwrite-ignore` 
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---rerere-autoupdate)`--rerere-autoupdate`
 
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---no-overwrite-ignore)`--no-overwrite-ignore` 
-    
-Silently overwrite ignored files from the merge result. This is the default behavior. Use `--no-overwrite-ignore` to abort. 
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---no-rerere-autoupdate)`--no-rerere-autoupdate`
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---abort)`--abort` 
-    
+After the rerere mechanism reuses a recorded resolution on the current conflict to update the files in the working tree, allow it to also update the index with the result of resolution. `--no-rerere-autoupdate` is a good way to double-check what `rerere` did and catch potential mismerges, before committing the result to the index with a separate `git` `add`.
+
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---overwrite-ignore)`--overwrite-ignore`
+
+
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---no-overwrite-ignore)`--no-overwrite-ignore`
+
+Silently overwrite ignored files from the merge result. This is the default behavior. Use `--no-overwrite-ignore` to abort.
+
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---abort)`--abort`
+
 Abort the current conflict resolution process, and try to reconstruct the pre-merge state. If an autostash entry is present, apply it to the worktree.
 If there were uncommitted worktree changes present when the merge started, `git` `merge` `--abort` will in some cases be unable to reconstruct these changes. It is therefore recommended to always commit or stash your changes before running `git` `merge`.
-`git` `merge` `--abort` is equivalent to `git` `reset` `--merge` when `MERGE_HEAD` is present unless `MERGE_AUTOSTASH` is also present in which case `git` `merge` `--abort` applies the stash entry to the worktree whereas `git` `reset` `--merge` will save the stashed changes in the stash list. 
+`git` `merge` `--abort` is equivalent to `git` `reset` `--merge` when `MERGE_HEAD` is present unless `MERGE_AUTOSTASH` is also present in which case `git` `merge` `--abort` applies the stash entry to the worktree whereas `git` `reset` `--merge` will save the stashed changes in the stash list.
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---quit)`--quit` 
-    
-Forget about the current merge in progress. Leave the index and the working tree as-is. If `MERGE_AUTOSTASH` is present, the stash entry will be saved to the stash list. 
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---quit)`--quit`
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---continue)`--continue` 
-    
-After a `git` `merge` stops due to conflicts you can conclude the merge by running `git` `merge` `--continue` (see "HOW TO RESOLVE CONFLICTS" section below). 
+Forget about the current merge in progress. Leave the index and the working tree as-is. If `MERGE_AUTOSTASH` is present, the stash entry will be saved to the stash list.
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-commit)_< commit>_... 
-    
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---continue)`--continue`
+
+After a `git` `merge` stops due to conflicts you can conclude the merge by running `git` `merge` `--continue` (see "HOW TO RESOLVE CONFLICTS" section below).
+
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-commit)_< commit>_...
+
 Commits, usually other branch heads, to merge into our branch. Specifying more than one commit will create a merge with more than two parents (affectionately called an Octopus merge).
 If no commit is given from the command line, merge the remote-tracking branches that the current branch is configured to use as its upstream. See also the configuration section of this manual page.
 When `FETCH_HEAD` (and no other commit) is specified, the branches recorded in the `.git/FETCH_HEAD` file by the previous invocation of `git` `fetch` for merging are merged to the current branch.
@@ -613,34 +613,34 @@ You should refrain from abusing this option to sneak substantial changes into a 
 
 
 ##  [](https://git-scm.com/docs/git-merge#_merge_strategies)MERGE STRATEGIES
-The merge mechanism (`git` `merge` and `git` `pull` commands) allows the backend _merge strategies_ to be chosen with `-s` option. Some strategies can also take their own options, which can be passed by giving `-X`_< option>_ arguments to `git` `merge` and/or `git` `pull`. 
+The merge mechanism (`git` `merge` and `git` `pull` commands) allows the backend _merge strategies_ to be chosen with `-s` option. Some strategies can also take their own options, which can be passed by giving `-X`_< option>_ arguments to `git` `merge` and/or `git` `pull`.
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-ort)`ort` 
-    
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-ort)`ort`
+
 This is the default merge strategy when pulling or merging one branch. This strategy can only resolve two heads using a 3-way merge algorithm. When there is more than one common ancestor that can be used for 3-way merge, it creates a merged tree of the common ancestors and uses that as the reference tree for the 3-way merge. This has been reported to result in fewer merge conflicts without causing mismerges by tests done on actual merge commits taken from Linux 2.6 kernel development history. Additionally this strategy can detect and handle merges involving renames. It does not make use of detected copies. The name for this algorithm is an acronym ("Ostensibly Recursive’s Twin") and came from the fact that it was written as a replacement for the previous default algorithm, `recursive`.
 In the case where the path is a submodule, if the submodule commit used on one side of the merge is a descendant of the submodule commit used on the other side of the merge, Git attempts to fast-forward to the descendant. Otherwise, Git will treat this case as a conflict, suggesting as a resolution a submodule commit that is descendant of the conflicting ones, if one exists.
-The `ort` strategy can take the following options: 
+The `ort` strategy can take the following options:
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-ours)`ours` 
-    
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-ours)`ours`
+
 This option forces conflicting hunks to be auto-resolved cleanly by favoring _our_ version. Changes from the other tree that do not conflict with our side are reflected in the merge result. For a binary file, the entire contents are taken from our side.
-This should not be confused with the `ours` merge strategy, which does not even look at what the other tree contains at all. It discards everything the other tree did, declaring _our_ history contains all that happened in it. 
+This should not be confused with the `ours` merge strategy, which does not even look at what the other tree contains at all. It discards everything the other tree did, declaring _our_ history contains all that happened in it.
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-theirs)`theirs` 
-    
-This is the opposite of `ours`; note that, unlike `ours`, there is no `theirs` merge strategy to confuse this merge option with. 
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-theirs)`theirs`
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-ignore-space-change)`ignore-space-change` 
+This is the opposite of `ours`; note that, unlike `ours`, there is no `theirs` merge strategy to confuse this merge option with.
 
-
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-ignore-all-space)`ignore-all-space` 
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-ignore-space-change)`ignore-space-change`
 
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-ignore-space-at-eol)`ignore-space-at-eol` 
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-ignore-all-space)`ignore-all-space`
 
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-ignore-cr-at-eol)`ignore-cr-at-eol` 
-    
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-ignore-space-at-eol)`ignore-space-at-eol`
+
+
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-ignore-cr-at-eol)`ignore-cr-at-eol`
+
 Treats lines with the indicated type of whitespace change as unchanged for the sake of a three-way merge. Whitespace changes mixed with other changes to a line are not ignored. See also [git-diff[1]](https://git-scm.com/docs/git-diff) `-b`, `-w`, `--ignore-space-at-eol`, and `--ignore-cr-at-eol`.
   * If _their_ version only introduces whitespace changes to a line, _our_ version is used;
   * If _our_ version introduces whitespace changes but _their_ version includes a substantial change, _their_ version is used;
@@ -648,154 +648,154 @@ Treats lines with the indicated type of whitespace change as unchanged for the s
 
 
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-renormalize)`renormalize` 
-    
-This runs a virtual check-out and check-in of all three stages of any file which needs a three-way merge. This option is meant to be used when merging branches with different clean filters or end-of-line normalization rules. See "Merging branches with differing checkin/checkout attributes" in [gitattributes[5]](https://git-scm.com/docs/gitattributes) for details. 
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-renormalize)`renormalize`
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-no-renormalize)`no-renormalize` 
-    
-Disables the `renormalize` option. This overrides the `merge.renormalize` configuration variable. 
+This runs a virtual check-out and check-in of all three stages of any file which needs a three-way merge. This option is meant to be used when merging branches with different clean filters or end-of-line normalization rules. See "Merging branches with differing checkin/checkout attributes" in [gitattributes[5]](https://git-scm.com/docs/gitattributes) for details.
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-find-renamesn)`find-renames`[`=`_< n>_] 
-    
-Turn on rename detection, optionally setting the similarity threshold. This is the default. This overrides the `merge.renames` configuration variable. See also [git-diff[1]](https://git-scm.com/docs/git-diff) `--find-renames`. 
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-no-renormalize)`no-renormalize`
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-rename-thresholdn)`rename-threshold=`_< n>_ 
-    
-Deprecated synonym for `find-renames=`_< n>_. 
+Disables the `renormalize` option. This overrides the `merge.renormalize` configuration variable.
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-no-renames)`no-renames` 
-    
-Turn off rename detection. This overrides the `merge.renames` configuration variable. See also [git-diff[1]](https://git-scm.com/docs/git-diff) `--no-renames`. 
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-find-renamesn)`find-renames`[`=`_< n>_]
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-histogram)`histogram` 
-    
-Deprecated synonym for `diff-algorithm=histogram`. 
+Turn on rename detection, optionally setting the similarity threshold. This is the default. This overrides the `merge.renames` configuration variable. See also [git-diff[1]](https://git-scm.com/docs/git-diff) `--find-renames`.
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-patience)`patience` 
-    
-Deprecated synonym for `diff-algorithm=patience`. 
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-rename-thresholdn)`rename-threshold=`_< n>_
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-diff-algorithmhistogramminimalmyerspatience)`diff-algorithm=`(`histogram`|`minimal`|`myers`|`patience`) 
-    
-Use a different diff algorithm while merging, which can help avoid mismerges that occur due to unimportant matching lines (such as braces from distinct functions). See also [git-diff[1]](https://git-scm.com/docs/git-diff) `--diff-algorithm`. Note that `ort` defaults to `diff-algorithm=histogram`, while regular diffs currently default to the `diff.algorithm` config setting. 
+Deprecated synonym for `find-renames=`_< n>_.
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-subtreepath)`subtree`[`=`_< path>_] 
-    
-This option is a more advanced form of _subtree_ strategy, where the strategy makes a guess on how two trees must be shifted to match with each other when merging. Instead, the specified path is prefixed (or stripped from the beginning) to make the shape of two trees to match. 
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-no-renames)`no-renames`
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-recursive)`recursive` 
-    
-This is now a synonym for `ort`. It was an alternative implementation until v2.49.0, but was redirected to mean `ort` in v2.50.0. The previous recursive strategy was the default strategy for resolving two heads from Git v0.99.9k until v2.33.0. 
+Turn off rename detection. This overrides the `merge.renames` configuration variable. See also [git-diff[1]](https://git-scm.com/docs/git-diff) `--no-renames`.
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-resolve)`resolve` 
-    
-This can only resolve two heads (i.e. the current branch and another branch you pulled from) using a 3-way merge algorithm. It tries to carefully detect criss-cross merge ambiguities. It does not handle renames. 
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-histogram)`histogram`
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-octopus)`octopus` 
-    
-This resolves cases with more than two heads, but refuses to do a complex merge that needs manual resolution. It is primarily meant to be used for bundling topic branch heads together. This is the default merge strategy when pulling or merging more than one branch. 
+Deprecated synonym for `diff-algorithm=histogram`.
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-ours-1)`ours` 
-    
-This resolves any number of heads, but the resulting tree of the merge is always that of the current branch head, effectively ignoring all changes from all other branches. It is meant to be used to supersede old development history of side branches. Note that this is different from the `-Xours` option to the `ort` merge strategy. 
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-patience)`patience`
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-subtree)`subtree` 
-    
+Deprecated synonym for `diff-algorithm=patience`.
+
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-diff-algorithmhistogramminimalmyerspatience)`diff-algorithm=`(`histogram`|`minimal`|`myers`|`patience`)
+
+Use a different diff algorithm while merging, which can help avoid mismerges that occur due to unimportant matching lines (such as braces from distinct functions). See also [git-diff[1]](https://git-scm.com/docs/git-diff) `--diff-algorithm`. Note that `ort` defaults to `diff-algorithm=histogram`, while regular diffs currently default to the `diff.algorithm` config setting.
+
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-subtreepath)`subtree`[`=`_< path>_]
+
+This option is a more advanced form of _subtree_ strategy, where the strategy makes a guess on how two trees must be shifted to match with each other when merging. Instead, the specified path is prefixed (or stripped from the beginning) to make the shape of two trees to match.
+
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-recursive)`recursive`
+
+This is now a synonym for `ort`. It was an alternative implementation until v2.49.0, but was redirected to mean `ort` in v2.50.0. The previous recursive strategy was the default strategy for resolving two heads from Git v0.99.9k until v2.33.0.
+
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-resolve)`resolve`
+
+This can only resolve two heads (i.e. the current branch and another branch you pulled from) using a 3-way merge algorithm. It tries to carefully detect criss-cross merge ambiguities. It does not handle renames.
+
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-octopus)`octopus`
+
+This resolves cases with more than two heads, but refuses to do a complex merge that needs manual resolution. It is primarily meant to be used for bundling topic branch heads together. This is the default merge strategy when pulling or merging more than one branch.
+
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-ours-1)`ours`
+
+This resolves any number of heads, but the resulting tree of the merge is always that of the current branch head, effectively ignoring all changes from all other branches. It is meant to be used to supersede old development history of side branches. Note that this is different from the `-Xours` option to the `ort` merge strategy.
+
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-subtree)`subtree`
+
 This is a modified `ort` strategy. When merging trees A and B, if B corresponds to a subtree of A, B is first adjusted to match the tree structure of A, instead of reading the trees at the same level. This adjustment is also done to the common ancestor tree.
 With the strategies that use 3-way merge (including the default, `ort`), if a change is made on both branches, but later reverted on one of the branches, that change will be present in the merged result; some people find this behavior confusing. It occurs because only the heads and the merge base are considered when performing a merge, not the individual commits. The merge algorithm therefore considers the reverted change as no change at all, and substitutes the changed version instead.
-##  [](https://git-scm.com/docs/git-merge#_configuration)CONFIGURATION 
+##  [](https://git-scm.com/docs/git-merge#_configuration)CONFIGURATION
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-branchnamemergeOptions)`branch.`_< name>_`.mergeOptions` 
-    
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-branchnamemergeOptions)`branch.`_< name>_`.mergeOptions`
+
 Sets default options for merging into branch _< name>_. The syntax and supported options are the same as those of `git` `merge`, but option values containing whitespace characters are currently not supported.
-Everything above this line in this section isn’t included from the [git-config[1]](https://git-scm.com/docs/git-config) documentation. The content that follows is the same as what’s found there: 
+Everything above this line in this section isn’t included from the [git-config[1]](https://git-scm.com/docs/git-config) documentation. The content that follows is the same as what’s found there:
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-mergeconflictStyle)`merge.conflictStyle` 
-    
-Specify the style in which conflicted hunks are written out to working tree files upon merge. The default is "merge", which shows a _< <<<<<<_ conflict marker, changes made by one side, a `=======` marker, changes made by the other side, and then a _> >>>>>>_ marker. An alternate style, "diff3", adds a ||||||| marker and the original text before the `=======` marker. The "merge" style tends to produce smaller conflict regions than diff3, both because of the exclusion of the original text, and because when a subset of lines match on the two sides, they are just pulled out of the conflict region. Another alternate style, "zdiff3", is similar to diff3 but removes matching lines on the two sides from the conflict region when those matching lines appear near either the beginning or end of a conflict region. 
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-mergeconflictStyle)`merge.conflictStyle`
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-mergedefaultToUpstream)`merge.defaultToUpstream` 
-    
-If merge is called without any commit argument, merge the upstream branches configured for the current branch by using their last observed values stored in their remote-tracking branches. The values of the _branch. <current branch>.merge_ that name the branches at the remote named by `branch.`_< current-branch>_`.remote` are consulted, and then they are mapped via `remote.`_< remote>_`.fetch` to their corresponding remote-tracking branches, and the tips of these tracking branches are merged. Defaults to true. 
+Specify the style in which conflicted hunks are written out to working tree files upon merge. The default is "merge", which shows a _< <<<<<<_ conflict marker, changes made by one side, a `=======` marker, changes made by the other side, and then a _> >>>>>>_ marker. An alternate style, "diff3", adds a ||||||| marker and the original text before the `=======` marker. The "merge" style tends to produce smaller conflict regions than diff3, both because of the exclusion of the original text, and because when a subset of lines match on the two sides, they are just pulled out of the conflict region. Another alternate style, "zdiff3", is similar to diff3 but removes matching lines on the two sides from the conflict region when those matching lines appear near either the beginning or end of a conflict region.
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-mergeff)`merge.ff` 
-    
-By default, Git does not create an extra merge commit when merging a commit that is a descendant of the current commit. Instead, the tip of the current branch is fast-forwarded. When set to `false`, this variable tells Git to create an extra merge commit in such a case (equivalent to giving the `--no-ff` option from the command line). When set to `only`, only such fast-forward merges are allowed (equivalent to giving the `--ff-only` option from the command line). 
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-mergedefaultToUpstream)`merge.defaultToUpstream`
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-mergeverifySignatures)`merge.verifySignatures` 
-    
-If true, this is equivalent to the `--verify-signatures` command line option. See [git-merge[1]](https://git-scm.com/docs/git-merge) for details. 
+If merge is called without any commit argument, merge the upstream branches configured for the current branch by using their last observed values stored in their remote-tracking branches. The values of the _branch. <current branch>.merge_ that name the branches at the remote named by `branch.`_< current-branch>_`.remote` are consulted, and then they are mapped via `remote.`_< remote>_`.fetch` to their corresponding remote-tracking branches, and the tips of these tracking branches are merged. Defaults to true.
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-mergebranchdesc)`merge.branchdesc` 
-    
-In addition to branch names, populate the log message with the branch description text associated with them. Defaults to false. 
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-mergeff)`merge.ff`
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-mergelog)`merge.log` 
-    
-In addition to branch names, populate the log message with at most the specified number of one-line descriptions from the actual commits that are being merged. Defaults to false, and true is a synonym for 20. 
+By default, Git does not create an extra merge commit when merging a commit that is a descendant of the current commit. Instead, the tip of the current branch is fast-forwarded. When set to `false`, this variable tells Git to create an extra merge commit in such a case (equivalent to giving the `--no-ff` option from the command line). When set to `only`, only such fast-forward merges are allowed (equivalent to giving the `--ff-only` option from the command line).
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-mergesuppressDest)`merge.suppressDest` 
-    
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-mergeverifySignatures)`merge.verifySignatures`
+
+If true, this is equivalent to the `--verify-signatures` command line option. See [git-merge[1]](https://git-scm.com/docs/git-merge) for details.
+
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-mergebranchdesc)`merge.branchdesc`
+
+In addition to branch names, populate the log message with the branch description text associated with them. Defaults to false.
+
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-mergelog)`merge.log`
+
+In addition to branch names, populate the log message with at most the specified number of one-line descriptions from the actual commits that are being merged. Defaults to false, and true is a synonym for 20.
+
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-mergesuppressDest)`merge.suppressDest`
+
 By adding a glob that matches the names of integration branches to this multi-valued configuration variable, the default merge message computed for merges into these integration branches will omit "into _< branch-name>_" from its title.
-An element with an empty value can be used to clear the list of globs accumulated from previous configuration entries. When there is no `merge.suppressDest` variable defined, the default value of `master` is used for backward compatibility. 
+An element with an empty value can be used to clear the list of globs accumulated from previous configuration entries. When there is no `merge.suppressDest` variable defined, the default value of `master` is used for backward compatibility.
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-mergerenameLimit)`merge.renameLimit` 
-    
-The number of files to consider in the exhaustive portion of rename detection during a merge. If not specified, defaults to the value of `diff.renameLimit`. If neither `merge.renameLimit` nor `diff.renameLimit` are specified, currently defaults to 7000. This setting has no effect if rename detection is turned off. 
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-mergerenameLimit)`merge.renameLimit`
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-mergerenames)`merge.renames` 
-    
-Whether Git detects renames. If set to `false`, rename detection is disabled. If set to `true`, basic rename detection is enabled. Defaults to the value of diff.renames. 
+The number of files to consider in the exhaustive portion of rename detection during a merge. If not specified, defaults to the value of `diff.renameLimit`. If neither `merge.renameLimit` nor `diff.renameLimit` are specified, currently defaults to 7000. This setting has no effect if rename detection is turned off.
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-mergedirectoryRenames)`merge.directoryRenames` 
-    
-Whether Git detects directory renames, affecting what happens at merge time to new files added to a directory on one side of history when that directory was renamed on the other side of history. Possible values are: 
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-mergerenames)`merge.renames`
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-false)`false` 
-    
-Directory rename detection is disabled, meaning that such new files will be left behind in the old directory. 
+Whether Git detects renames. If set to `false`, rename detection is disabled. If set to `true`, basic rename detection is enabled. Defaults to the value of diff.renames.
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-true)`true` 
-    
-Directory rename detection is enabled, meaning that such new files will be moved into the new directory. 
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-mergedirectoryRenames)`merge.directoryRenames`
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-conflict)`conflict` 
-    
+Whether Git detects directory renames, affecting what happens at merge time to new files added to a directory on one side of history when that directory was renamed on the other side of history. Possible values are:
+
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-false)`false`
+
+Directory rename detection is disabled, meaning that such new files will be left behind in the old directory.
+
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-true)`true`
+
+Directory rename detection is enabled, meaning that such new files will be moved into the new directory.
+
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-conflict)`conflict`
+
 A conflict will be reported for such paths.
-If `merge.renames` is `false`, `merge.directoryRenames` is ignored and treated as `false`. Defaults to `conflict`. 
+If `merge.renames` is `false`, `merge.directoryRenames` is ignored and treated as `false`. Defaults to `conflict`.
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-mergerenormalize)`merge.renormalize` 
-    
-Tell Git that canonical representation of files in the repository has changed over time (e.g. earlier commits record text files with _CRLF_ line endings, but recent ones use _LF_ line endings). In such a repository, for each file where a three-way content merge is needed, Git can convert the data recorded in commits to a canonical form before performing a merge to reduce unnecessary conflicts. For more information, see section "Merging branches with differing checkin/checkout attributes" in [gitattributes[5]](https://git-scm.com/docs/gitattributes). 
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-mergerenormalize)`merge.renormalize`
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-mergestat)`merge.stat` 
-    
-What, if anything, to print between `ORIG_HEAD` and the merge result at the end of the merge. Possible values are: 
+Tell Git that canonical representation of files in the repository has changed over time (e.g. earlier commits record text files with _CRLF_ line endings, but recent ones use _LF_ line endings). In such a repository, for each file where a three-way content merge is needed, Git can convert the data recorded in commits to a canonical form before performing a merge to reduce unnecessary conflicts. For more information, see section "Merging branches with differing checkin/checkout attributes" in [gitattributes[5]](https://git-scm.com/docs/gitattributes).
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-false-1)`false` 
-    
-Show nothing. 
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-mergestat)`merge.stat`
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-true-1)`true` 
-    
-Show `git` `diff` `--diffstat` `--summary` `ORIG_HEAD`. 
+What, if anything, to print between `ORIG_HEAD` and the merge result at the end of the merge. Possible values are:
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-compact)`compact` 
-    
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-false-1)`false`
+
+Show nothing.
+
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-true-1)`true`
+
+Show `git` `diff` `--diffstat` `--summary` `ORIG_HEAD`.
+
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-compact)`compact`
+
 Show `git` `diff` `--compact-summary` `ORIG_HEAD`.
-but any unrecognised value (e.g., a value added by a future version of Git) is taken as `true` instead of triggering an error. Defaults to `true`. 
+but any unrecognised value (e.g., a value added by a future version of Git) is taken as `true` instead of triggering an error. Defaults to `true`.
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-mergeautoStash)`merge.autoStash` 
-    
-When set to `true`, automatically create a temporary stash entry before the operation begins, and apply it after the operation ends. This means that you can run merge on a dirty worktree. However, use with care: the final stash application after a successful merge might result in non-trivial conflicts. This option can be overridden by the `--no-autostash` and `--autostash` options of [git-merge[1]](https://git-scm.com/docs/git-merge). Defaults to `false`. 
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-mergeautoStash)`merge.autoStash`
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-mergetool)`merge.tool` 
-    
-Controls which merge tool is used by [git-mergetool[1]](https://git-scm.com/docs/git-mergetool). The list below shows the valid built-in values. Any other value is treated as a custom merge tool and requires that a corresponding `mergetool.`_< tool>_`.cmd` variable is defined. 
+When set to `true`, automatically create a temporary stash entry before the operation begins, and apply it after the operation ends. This means that you can run merge on a dirty worktree. However, use with care: the final stash application after a successful merge might result in non-trivial conflicts. This option can be overridden by the `--no-autostash` and `--autostash` options of [git-merge[1]](https://git-scm.com/docs/git-merge). Defaults to `false`.
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-mergeguitool)`merge.guitool` 
-    
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-mergetool)`merge.tool`
+
+Controls which merge tool is used by [git-mergetool[1]](https://git-scm.com/docs/git-mergetool). The list below shows the valid built-in values. Any other value is treated as a custom merge tool and requires that a corresponding `mergetool.`_< tool>_`.cmd` variable is defined.
+
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-mergeguitool)`merge.guitool`
+
 Controls which merge tool is used by [git-mergetool[1]](https://git-scm.com/docs/git-mergetool) when the `-g`/`--gui` flag is specified. The list below shows the valid built-in values. Any other value is treated as a custom merge tool and requires that a corresponding `mergetool.`_< guitool>_`.cmd` variable is defined.
   * araxis
   * bc
@@ -823,26 +823,26 @@ Controls which merge tool is used by [git-mergetool[1]](https://git-scm.com/docs
 
 
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-mergeverbosity)`merge.verbosity` 
-    
-Controls the amount of output shown by the recursive merge strategy. Level 0 outputs nothing except a final error message if conflicts were detected. Level 1 outputs only conflicts, 2 outputs conflicts and file changes. Level 5 and above outputs debugging information. The default is level 2. Can be overridden by the `GIT_MERGE_VERBOSITY` environment variable. 
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-mergeverbosity)`merge.verbosity`
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-mergedrivername)`merge.`_< driver>_`.name` 
-    
-Defines a human-readable name for a custom low-level merge driver. See [gitattributes[5]](https://git-scm.com/docs/gitattributes) for details. 
+Controls the amount of output shown by the recursive merge strategy. Level 0 outputs nothing except a final error message if conflicts were detected. Level 1 outputs only conflicts, 2 outputs conflicts and file changes. Level 5 and above outputs debugging information. The default is level 2. Can be overridden by the `GIT_MERGE_VERBOSITY` environment variable.
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-mergedriverdriver)`merge.`_< driver>_`.driver` 
-    
-Defines the command that implements a custom low-level merge driver. See [gitattributes[5]](https://git-scm.com/docs/gitattributes) for details. 
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-mergedrivername)`merge.`_< driver>_`.name`
 
-[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-mergedriverrecursive)`merge.`_< driver>_`.recursive` 
-    
+Defines a human-readable name for a custom low-level merge driver. See [gitattributes[5]](https://git-scm.com/docs/gitattributes) for details.
+
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-mergedriverdriver)`merge.`_< driver>_`.driver`
+
+Defines the command that implements a custom low-level merge driver. See [gitattributes[5]](https://git-scm.com/docs/gitattributes) for details.
+
+[](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-mergedriverrecursive)`merge.`_< driver>_`.recursive`
+
 Names a low-level merge driver to be used when performing an internal merge between common ancestors. See [gitattributes[5]](https://git-scm.com/docs/gitattributes) for details.
 ##  [](https://git-scm.com/docs/git-merge#_see_also)SEE ALSO
 [git-fmt-merge-msg[1]](https://git-scm.com/docs/git-fmt-merge-msg), [git-pull[1]](https://git-scm.com/docs/git-pull), [gitattributes[5]](https://git-scm.com/docs/gitattributes), [git-reset[1]](https://git-scm.com/docs/git-reset), [git-diff[1]](https://git-scm.com/docs/git-diff), [git-ls-files[1]](https://git-scm.com/docs/git-ls-files), [git-add[1]](https://git-scm.com/docs/git-add), [git-rm[1]](https://git-scm.com/docs/git-rm), [git-mergetool[1]](https://git-scm.com/docs/git-mergetool)
 ##  [](https://git-scm.com/docs/git-merge#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### merge
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

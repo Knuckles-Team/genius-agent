@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-quiltimport#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-quiltimport#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-quiltimport#_description)
@@ -33,8 +33,8 @@ Localized versions of **git-quiltimport** manual
   5. [українська мова ](https://git-scm.com/docs/git-quiltimport/uk)
   6. [简体中文 ](https://git-scm.com/docs/git-quiltimport/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-quiltimport)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -204,35 +204,35 @@ _git quiltimport_ [--dry-run | -n] [--author <author>] [--patches <dir>]
 Applies a quilt patchset onto the current Git branch, preserving the patch boundaries, patch order, and patch descriptions present in the quilt patchset.
 For each patch the code attempts to extract the author from the patch description. If that fails it falls back to the author specified with --author. If the --author flag was not given the patch description is displayed and the user is asked to interactively enter the author of the patch.
 If a subject is not found in the patch description the patch name is preserved as the 1 line subject in the Git description.
-##  [](https://git-scm.com/docs/git-quiltimport#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-quiltimport#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-quiltimport#Documentation/git-quiltimport.txt--n)-n 
+[](https://git-scm.com/docs/git-quiltimport#Documentation/git-quiltimport.txt--n)-n
 
 
-[](https://git-scm.com/docs/git-quiltimport#Documentation/git-quiltimport.txt---dry-run)--dry-run 
-    
-Walk through the patches in the series and warn if we cannot find all of the necessary information to commit a patch. At the time of this writing only missing author information is warned about. 
+[](https://git-scm.com/docs/git-quiltimport#Documentation/git-quiltimport.txt---dry-run)--dry-run
 
-[](https://git-scm.com/docs/git-quiltimport#Documentation/git-quiltimport.txt---authorAuthorNameAuthorEmail)--author _Author Name <Author Email>_ 
-    
-The author name and email address to use when no author information can be found in the patch description. 
+Walk through the patches in the series and warn if we cannot find all of the necessary information to commit a patch. At the time of this writing only missing author information is warned about.
 
-[](https://git-scm.com/docs/git-quiltimport#Documentation/git-quiltimport.txt---patchesdir)--patches <dir> 
-    
+[](https://git-scm.com/docs/git-quiltimport#Documentation/git-quiltimport.txt---authorAuthorNameAuthorEmail)--author _Author Name <Author Email>_
+
+The author name and email address to use when no author information can be found in the patch description.
+
+[](https://git-scm.com/docs/git-quiltimport#Documentation/git-quiltimport.txt---patchesdir)--patches <dir>
+
 The directory to find the quilt patches.
-The default for the patch directory is _patches_ or the value of the `$QUILT_PATCHES` environment variable. 
+The default for the patch directory is _patches_ or the value of the `$QUILT_PATCHES` environment variable.
 
-[](https://git-scm.com/docs/git-quiltimport#Documentation/git-quiltimport.txt---seriesfile)--series <file> 
-    
+[](https://git-scm.com/docs/git-quiltimport#Documentation/git-quiltimport.txt---seriesfile)--series <file>
+
 The quilt series file.
-The default for the series file is <patches>/series or the value of the `$QUILT_SERIES` environment variable. 
+The default for the series file is <patches>/series or the value of the `$QUILT_SERIES` environment variable.
 
-[](https://git-scm.com/docs/git-quiltimport#Documentation/git-quiltimport.txt---keep-non-patch)--keep-non-patch 
-    
+[](https://git-scm.com/docs/git-quiltimport#Documentation/git-quiltimport.txt---keep-non-patch)--keep-non-patch
+
 Pass `-b` flag to _git mailinfo_ (see [git-mailinfo[1]](https://git-scm.com/docs/git-mailinfo)).
 ##  [](https://git-scm.com/docs/git-quiltimport#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### quiltimport
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/gitmodules#_name)
     * [SYNOPSIS](https://git-scm.com/docs/gitmodules#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/gitmodules#_description)
@@ -30,8 +30,8 @@
 Localized versions of **gitmodules** manual
   1. [English ](https://git-scm.com/docs/gitmodules)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/gitmodules)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -234,53 +234,53 @@ gitmodules - Defining submodule properties
 $GIT_WORK_TREE/.gitmodules
 ##  [](https://git-scm.com/docs/gitmodules#_description)DESCRIPTION
 The `.gitmodules` file, located in the top-level directory of a Git working tree, is a text file with a syntax matching the requirements of [git-config[1]](https://git-scm.com/docs/git-config).
-The file contains one subsection per submodule, and the subsection value is the name of the submodule. The name is set to the path where the submodule has been added unless it was customized with the `--name` option of _git submodule add_. Each submodule section also contains the following required keys: 
+The file contains one subsection per submodule, and the subsection value is the name of the submodule. The name is set to the path where the submodule has been added unless it was customized with the `--name` option of _git submodule add_. Each submodule section also contains the following required keys:
 
-[](https://git-scm.com/docs/gitmodules#Documentation/gitmodules.txt-submodulenamepath)submodule.<name>.path 
-    
-Defines the path, relative to the top-level directory of the Git working tree, where the submodule is expected to be checked out. The path name must not end with a `/`. All submodule paths must be unique within the `.gitmodules` file. 
+[](https://git-scm.com/docs/gitmodules#Documentation/gitmodules.txt-submodulenamepath)submodule.<name>.path
 
-[](https://git-scm.com/docs/gitmodules#Documentation/gitmodules.txt-submodulenameurl)submodule.<name>.url 
-    
+Defines the path, relative to the top-level directory of the Git working tree, where the submodule is expected to be checked out. The path name must not end with a `/`. All submodule paths must be unique within the `.gitmodules` file.
+
+[](https://git-scm.com/docs/gitmodules#Documentation/gitmodules.txt-submodulenameurl)submodule.<name>.url
+
 Defines a URL from which the submodule repository can be cloned. This may be either an absolute URL ready to be passed to [git-clone[1]](https://git-scm.com/docs/git-clone) or (if it begins with `./` or `../`) a location relative to the superproject’s origin repository.
-In addition, there are a number of optional keys: 
+In addition, there are a number of optional keys:
 
-[](https://git-scm.com/docs/gitmodules#Documentation/gitmodules.txt-submodulenameupdate)submodule.<name>.update 
-    
-Defines the default update procedure for the named submodule, i.e. how the submodule is updated by the `git` `submodule` `update` command in the superproject. This is only used by `git` `submodule` `init` to initialize the configuration variable of the same name. Allowed values here are _checkout_ , _rebase_ , _merge_ or _none_ , but not _!command_ (for security reasons). See the description of the _update_ command in [git-submodule[1]](https://git-scm.com/docs/git-submodule) for more details. 
+[](https://git-scm.com/docs/gitmodules#Documentation/gitmodules.txt-submodulenameupdate)submodule.<name>.update
 
-[](https://git-scm.com/docs/gitmodules#Documentation/gitmodules.txt-submodulenamebranch)submodule.<name>.branch 
-    
-A remote branch name for tracking updates in the upstream submodule. If the option is not specified, it defaults to the remote `HEAD`. A special value of `.` is used to indicate that the name of the branch in the submodule should be the same name as the current branch in the current repository. See the `--remote` documentation in [git-submodule[1]](https://git-scm.com/docs/git-submodule) for details. 
+Defines the default update procedure for the named submodule, i.e. how the submodule is updated by the `git` `submodule` `update` command in the superproject. This is only used by `git` `submodule` `init` to initialize the configuration variable of the same name. Allowed values here are _checkout_ , _rebase_ , _merge_ or _none_ , but not _!command_ (for security reasons). See the description of the _update_ command in [git-submodule[1]](https://git-scm.com/docs/git-submodule) for more details.
 
-[](https://git-scm.com/docs/gitmodules#Documentation/gitmodules.txt-submodulenamefetchRecurseSubmodules)submodule.<name>.fetchRecurseSubmodules 
-    
-This option can be used to control recursive fetching of this submodule. If this option is also present in the submodule’s entry in `.git/config` of the superproject, the setting there will override the one found in `.gitmodules`. Both settings can be overridden on the command line by using the `--`[`no-`]`recurse-submodules` option to `git` `fetch` and `git` `pull`. 
+[](https://git-scm.com/docs/gitmodules#Documentation/gitmodules.txt-submodulenamebranch)submodule.<name>.branch
 
-[](https://git-scm.com/docs/gitmodules#Documentation/gitmodules.txt-submodulenameignore)submodule.<name>.ignore 
-    
-Defines under what circumstances `git` `status` and the diff family show a submodule as modified. The following values are supported: 
+A remote branch name for tracking updates in the upstream submodule. If the option is not specified, it defaults to the remote `HEAD`. A special value of `.` is used to indicate that the name of the branch in the submodule should be the same name as the current branch in the current repository. See the `--remote` documentation in [git-submodule[1]](https://git-scm.com/docs/git-submodule) for details.
 
-[](https://git-scm.com/docs/gitmodules#Documentation/gitmodules.txt-all)all 
-    
-The submodule will never be considered modified (but will nonetheless show up in the output of status and commit when it has been staged). 
+[](https://git-scm.com/docs/gitmodules#Documentation/gitmodules.txt-submodulenamefetchRecurseSubmodules)submodule.<name>.fetchRecurseSubmodules
 
-[](https://git-scm.com/docs/gitmodules#Documentation/gitmodules.txt-dirty)dirty 
-    
-All changes to the submodule’s work tree will be ignored, only committed differences between the `HEAD` of the submodule and its recorded state in the superproject are taken into account. 
+This option can be used to control recursive fetching of this submodule. If this option is also present in the submodule’s entry in `.git/config` of the superproject, the setting there will override the one found in `.gitmodules`. Both settings can be overridden on the command line by using the `--`[`no-`]`recurse-submodules` option to `git` `fetch` and `git` `pull`.
 
-[](https://git-scm.com/docs/gitmodules#Documentation/gitmodules.txt-untracked)untracked 
-    
-Only untracked files in submodules will be ignored. Committed differences and modifications to tracked files will show up. 
+[](https://git-scm.com/docs/gitmodules#Documentation/gitmodules.txt-submodulenameignore)submodule.<name>.ignore
 
-[](https://git-scm.com/docs/gitmodules#Documentation/gitmodules.txt-none)none 
-    
+Defines under what circumstances `git` `status` and the diff family show a submodule as modified. The following values are supported:
+
+[](https://git-scm.com/docs/gitmodules#Documentation/gitmodules.txt-all)all
+
+The submodule will never be considered modified (but will nonetheless show up in the output of status and commit when it has been staged).
+
+[](https://git-scm.com/docs/gitmodules#Documentation/gitmodules.txt-dirty)dirty
+
+All changes to the submodule’s work tree will be ignored, only committed differences between the `HEAD` of the submodule and its recorded state in the superproject are taken into account.
+
+[](https://git-scm.com/docs/gitmodules#Documentation/gitmodules.txt-untracked)untracked
+
+Only untracked files in submodules will be ignored. Committed differences and modifications to tracked files will show up.
+
+[](https://git-scm.com/docs/gitmodules#Documentation/gitmodules.txt-none)none
+
 No modifications to submodules are ignored, all of committed differences, and modifications to tracked and untracked files are shown. This is the default option.
 If this option is also present in the submodule’s entry in `.git/config` of the superproject, the setting there will override the one found in `.gitmodules`.
-Both settings can be overridden on the command line by using the `--ignore-submodules` option. The `git` `submodule` commands are not affected by this setting. 
+Both settings can be overridden on the command line by using the `--ignore-submodules` option. The `git` `submodule` commands are not affected by this setting.
 
-[](https://git-scm.com/docs/gitmodules#Documentation/gitmodules.txt-submodulenameshallow)submodule.<name>.shallow 
-    
+[](https://git-scm.com/docs/gitmodules#Documentation/gitmodules.txt-submodulenameshallow)submodule.<name>.shallow
+
 When set to true, a clone of this submodule will be performed as a shallow clone (with a history depth of 1) unless the user explicitly asks for a non-shallow clone.
 ##  [](https://git-scm.com/docs/gitmodules#_notes)NOTES
 Git does not allow the `.gitmodules` file within a working tree to be a symbolic link, and will refuse to check out such a tree entry. This keeps behavior consistent when the file is accessed from the index or a tree versus from the filesystem, and helps Git reliably enforce security checks of the file contents.
@@ -302,6 +302,6 @@ This defines two submodules, `libfoo` and `libbar`. These are expected to be che
 ##  [](https://git-scm.com/docs/gitmodules#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### gitmodules
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

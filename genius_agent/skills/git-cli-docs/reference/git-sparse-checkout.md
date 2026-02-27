@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-sparse-checkout#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-sparse-checkout#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-sparse-checkout#_description)
@@ -36,8 +36,8 @@
 Localized versions of **git-sparse-checkout** manual
   1. [English ](https://git-scm.com/docs/git-sparse-checkout)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-sparse-checkout)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -222,73 +222,73 @@ This command is used to create sparse checkouts, which change the working tree f
 The subset of files is chosen by providing a list of directories in cone mode (the default), or by providing a list of patterns in non-cone mode.
 When in a sparse-checkout, other Git commands behave a bit differently. For example, switching branches will not update paths outside the sparse-checkout directories/patterns, and `git` `commit` `-a` will not record paths outside the sparse-checkout directories/patterns as deleted.
 THIS COMMAND IS EXPERIMENTAL. ITS BEHAVIOR, AND THE BEHAVIOR OF OTHER COMMANDS IN THE PRESENCE OF SPARSE-CHECKOUTS, WILL LIKELY CHANGE IN THE FUTURE.
-##  [](https://git-scm.com/docs/git-sparse-checkout#_commands)COMMANDS 
+##  [](https://git-scm.com/docs/git-sparse-checkout#_commands)COMMANDS
 
-[](https://git-scm.com/docs/git-sparse-checkout#Documentation/git-sparse-checkout.txt-list)_list_ 
-    
-Describe the directories or patterns in the sparse-checkout file. 
+[](https://git-scm.com/docs/git-sparse-checkout#Documentation/git-sparse-checkout.txt-list)_list_
 
-[](https://git-scm.com/docs/git-sparse-checkout#Documentation/git-sparse-checkout.txt-set)_set_ 
-    
+Describe the directories or patterns in the sparse-checkout file.
+
+[](https://git-scm.com/docs/git-sparse-checkout#Documentation/git-sparse-checkout.txt-set)_set_
+
 Enable the necessary sparse-checkout config settings (`core.sparseCheckout`, `core.sparseCheckoutCone`, and `index.sparse`) if they are not already set to the desired values, populate the sparse-checkout file from the list of arguments following the _set_ subcommand, and update the working directory to match.
 To ensure that adjusting the sparse-checkout settings within a worktree does not alter the sparse-checkout settings in other worktrees, the _set_ subcommand will upgrade your repository config to use worktree-specific config if not already present. The sparsity defined by the arguments to the _set_ subcommand are stored in the worktree-specific sparse-checkout file. See [git-worktree[1]](https://git-scm.com/docs/git-worktree) and the documentation of `extensions.worktreeConfig` in [git-config[1]](https://git-scm.com/docs/git-config) for more details.
 When the `--stdin` option is provided, the directories or patterns are read from standard in as a newline-delimited list instead of from the arguments.
 By default, the input list is considered a list of directories, matching the output of `git` `ls-tree` `-d` `--name-only`. This includes interpreting pathnames that begin with a double quote (") as C-style quoted strings. Note that all files under the specified directories (at any depth) will be included in the sparse checkout, as well as files that are siblings of either the given directory or any of its ancestors (see _CONE PATTERN SET_ below for more details). In the past, this was not the default, and `--cone` needed to be specified or `core.sparseCheckoutCone` needed to be enabled.
 When `--no-cone` is passed, the input list is considered a list of patterns. This mode has a number of drawbacks, including not working with some options like `--sparse-index`. As explained in the "Non-cone Problems" section below, we do not recommend using it.
 Use the `--`[`no-`]`sparse-index` option to use a sparse index (the default is to not use it). A sparse index reduces the size of the index to be more closely aligned with your sparse-checkout definition. This can have significant performance advantages for commands such as `git` `status` or `git` `add`. This feature is still experimental. Some commands might be slower with a sparse index until they are properly integrated with the feature.
-**WARNING:** Using a sparse index requires modifying the index in a way that is not completely understood by external tools. If you have trouble with this compatibility, then run `git` `sparse-checkout` `init` `--no-sparse-index` to rewrite your index to not be sparse. Older versions of Git will not understand the sparse directory entries index extension and may fail to interact with your repository until it is disabled. 
+**WARNING:** Using a sparse index requires modifying the index in a way that is not completely understood by external tools. If you have trouble with this compatibility, then run `git` `sparse-checkout` `init` `--no-sparse-index` to rewrite your index to not be sparse. Older versions of Git will not understand the sparse directory entries index extension and may fail to interact with your repository until it is disabled.
 
-[](https://git-scm.com/docs/git-sparse-checkout#Documentation/git-sparse-checkout.txt-add)_add_ 
-    
-Update the sparse-checkout file to include additional directories (in cone mode) or patterns (in non-cone mode). By default, these directories or patterns are read from the command-line arguments, but they can be read from stdin using the `--stdin` option. 
+[](https://git-scm.com/docs/git-sparse-checkout#Documentation/git-sparse-checkout.txt-add)_add_
 
-[](https://git-scm.com/docs/git-sparse-checkout#Documentation/git-sparse-checkout.txt-reapply)_reapply_ 
-    
+Update the sparse-checkout file to include additional directories (in cone mode) or patterns (in non-cone mode). By default, these directories or patterns are read from the command-line arguments, but they can be read from stdin using the `--stdin` option.
+
+[](https://git-scm.com/docs/git-sparse-checkout#Documentation/git-sparse-checkout.txt-reapply)_reapply_
+
 Reapply the sparsity pattern rules to paths in the working tree. Commands like merge or rebase can materialize paths to do their work (e.g. in order to show you a conflict), and other sparse-checkout commands might fail to sparsify an individual file (e.g. because it has unstaged changes or conflicts). In such cases, it can make sense to run `git` `sparse-checkout` `reapply` later after cleaning up affected paths (e.g. resolving conflicts, undoing or committing changes, etc.).
-The `reapply` command can also take `--`[`no-`]`cone` and `--`[`no-`]`sparse-index` flags, with the same meaning as the flags from the `set` command, in order to change which sparsity mode you are using without needing to also respecify all sparsity paths. 
+The `reapply` command can also take `--`[`no-`]`cone` and `--`[`no-`]`sparse-index` flags, with the same meaning as the flags from the `set` command, in order to change which sparsity mode you are using without needing to also respecify all sparsity paths.
 
-[](https://git-scm.com/docs/git-sparse-checkout#Documentation/git-sparse-checkout.txt-clean)_clean_ 
-    
+[](https://git-scm.com/docs/git-sparse-checkout#Documentation/git-sparse-checkout.txt-clean)_clean_
+
 Opportunistically remove files outside of the sparse-checkout definition. This command requires cone mode to use recursive directory matches to determine which files should be removed. A file is considered for removal if it is contained within a tracked directory that is outside of the sparse-checkout definition.
 Some special cases, such as merge conflicts or modified files outside of the sparse-checkout definition could lead to keeping files that would otherwise be removed. Resolve conflicts, stage modifications, and use `git` `sparse-checkout` `reapply` in conjunction with `git` `sparse-checkout` `clean` to resolve these cases.
 This command can be used to be sure the sparse index works efficiently, though it does not require enabling the sparse index feature via the `index.sparse=true` configuration.
 To prevent accidental deletion of worktree files, the `clean` subcommand will not delete any files without the `-f` or `--force` option, unless the `clean.requireForce` config option is set to `false`.
 The `--dry-run` option will list the directories that would be removed without deleting them. Running in this mode can be helpful to predict the behavior of the clean comand or to determine which kinds of files are left in the sparse directories.
-The `--verbose` option will list every file within the directories that are considered for removal. This option is helpful to determine if those files are actually important or perhaps to explain why the directory is still present despite the current sparse-checkout. 
+The `--verbose` option will list every file within the directories that are considered for removal. This option is helpful to determine if those files are actually important or perhaps to explain why the directory is still present despite the current sparse-checkout.
 
-[](https://git-scm.com/docs/git-sparse-checkout#Documentation/git-sparse-checkout.txt-disable)_disable_ 
-    
-Disable the `core.sparseCheckout` config setting, and restore the working directory to include all files. 
+[](https://git-scm.com/docs/git-sparse-checkout#Documentation/git-sparse-checkout.txt-disable)_disable_
 
-[](https://git-scm.com/docs/git-sparse-checkout#Documentation/git-sparse-checkout.txt-init)_init_ 
-    
+Disable the `core.sparseCheckout` config setting, and restore the working directory to include all files.
+
+[](https://git-scm.com/docs/git-sparse-checkout#Documentation/git-sparse-checkout.txt-init)_init_
+
 Deprecated command that behaves like `set` with no specified paths. May be removed in the future.
 Historically, `set` did not handle all the necessary config settings, which meant that both `init` and `set` had to be called. Invoking both meant the `init` step would first remove nearly all tracked files (and in cone mode, ignored files too), then the `set` step would add many of the tracked files (but not ignored files) back. In addition to the lost files, the performance and UI of this combination was poor.
-Also, historically, `init` would not actually initialize the sparse-checkout file if it already existed. This meant it was possible to return to a sparse-checkout without remembering which paths to pass to a subsequent _set_ or _add_ command. However, `--cone` and `--sparse-index` options would not be remembered across the disable command, so the easy restore of calling a plain `init` decreased in utility. 
+Also, historically, `init` would not actually initialize the sparse-checkout file if it already existed. This meant it was possible to return to a sparse-checkout without remembering which paths to pass to a subsequent _set_ or _add_ command. However, `--cone` and `--sparse-index` options would not be remembered across the disable command, so the easy restore of calling a plain `init` decreased in utility.
 
-[](https://git-scm.com/docs/git-sparse-checkout#Documentation/git-sparse-checkout.txt-check-rules)_check-rules_ 
-    
+[](https://git-scm.com/docs/git-sparse-checkout#Documentation/git-sparse-checkout.txt-check-rules)_check-rules_
+
 Check whether sparsity rules match one or more paths.
 By default `check-rules` reads a list of paths from stdin and outputs only the ones that match the current sparsity rules. The input is expected to consist of one path per line, matching the output of `git` `ls-tree` `--name-only` including that pathnames that begin with a double quote (") are interpreted as C-style quoted strings.
 When called with the `--rules-file` _< file>_ flag the input files are matched against the sparse checkout rules found in _< file>_ instead of the current ones. The rules in the files are expected to be in the same form as accepted by `git` `sparse-checkout` `set` `--stdin` (in particular, they must be newline-delimited).
 By default, the rules passed to the `--rules-file` option are interpreted as cone mode directories. To pass non-cone mode patterns with `--rules-file`, combine the option with the `--no-cone` option.
 When called with the `-z` flag, the format of the paths input on stdin as well as the output paths are \0 terminated and not quoted. Note that this does not apply to the format of the rules passed with the `--rules-file` option.
-##  [](https://git-scm.com/docs/git-sparse-checkout#_examples)EXAMPLES 
+##  [](https://git-scm.com/docs/git-sparse-checkout#_examples)EXAMPLES
 
-[](https://git-scm.com/docs/git-sparse-checkout#Documentation/git-sparse-checkout.txt-gitsparse-checkoutsetMYDIR1SUBDIR2)`git` `sparse-checkout` `set` `MY/DIR1` `SUB/DIR2` 
-    
-Change to a sparse checkout with all files (at any depth) under MY/DIR1/ and SUB/DIR2/ present in the working copy (plus all files immediately under MY/ and SUB/ and the toplevel directory). If already in a sparse checkout, change which files are present in the working copy to this new selection. Note that this command will also delete all ignored files in any directory that no longer has either tracked or non-ignored-untracked files present. 
+[](https://git-scm.com/docs/git-sparse-checkout#Documentation/git-sparse-checkout.txt-gitsparse-checkoutsetMYDIR1SUBDIR2)`git` `sparse-checkout` `set` `MY/DIR1` `SUB/DIR2`
 
-[](https://git-scm.com/docs/git-sparse-checkout#Documentation/git-sparse-checkout.txt-gitsparse-checkoutdisable)`git` `sparse-checkout` `disable` 
-    
-Repopulate the working directory with all files, disabling sparse checkouts. 
+Change to a sparse checkout with all files (at any depth) under MY/DIR1/ and SUB/DIR2/ present in the working copy (plus all files immediately under MY/ and SUB/ and the toplevel directory). If already in a sparse checkout, change which files are present in the working copy to this new selection. Note that this command will also delete all ignored files in any directory that no longer has either tracked or non-ignored-untracked files present.
 
-[](https://git-scm.com/docs/git-sparse-checkout#Documentation/git-sparse-checkout.txt-gitsparse-checkoutaddSOMEDIRECTORY)`git` `sparse-checkout` `add` `SOME/DIR/ECTORY` 
-    
-Add all files under SOME/DIR/ECTORY/ (at any depth) to the sparse checkout, as well as all files immediately under SOME/DIR/ and immediately under SOME/. Must already be in a sparse checkout before using this command. 
+[](https://git-scm.com/docs/git-sparse-checkout#Documentation/git-sparse-checkout.txt-gitsparse-checkoutdisable)`git` `sparse-checkout` `disable`
 
-[](https://git-scm.com/docs/git-sparse-checkout#Documentation/git-sparse-checkout.txt-gitsparse-checkoutreapply)`git` `sparse-checkout` `reapply` 
-    
+Repopulate the working directory with all files, disabling sparse checkouts.
+
+[](https://git-scm.com/docs/git-sparse-checkout#Documentation/git-sparse-checkout.txt-gitsparse-checkoutaddSOMEDIRECTORY)`git` `sparse-checkout` `add` `SOME/DIR/ECTORY`
+
+Add all files under SOME/DIR/ECTORY/ (at any depth) to the sparse checkout, as well as all files immediately under SOME/DIR/ and immediately under SOME/. Must already be in a sparse checkout before using this command.
+
+[](https://git-scm.com/docs/git-sparse-checkout#Documentation/git-sparse-checkout.txt-gitsparse-checkoutreapply)`git` `sparse-checkout` `reapply`
+
 It is possible for commands to update the working tree in a way that does not respect the selected sparsity directories. This can come from tools external to Git writing files, or even affect Git commands because of either special cases (such as hitting conflicts when merging/rebasing), or because some commands didn’t fully support sparse checkouts (e.g. the old `recursive` merge backend had only limited support). This command reapplies the existing sparse directory specifications to make the working directory match.
 ##  [](https://git-scm.com/docs/git-sparse-checkout#_internalssparse_checkout)INTERNALS — SPARSE CHECKOUT
 "Sparse checkout" allows populating the working directory sparsely. It uses the skip-worktree bit (see [git-update-index[1]](https://git-scm.com/docs/git-update-index)) to tell Git whether a file in the working directory is worth looking at. If the skip-worktree bit is set, and the file is not present in the working tree, then its absence is ignored. Git will avoid populating the contents of those files, which makes a sparse checkout helpful when working in a repository with many files, but only a few are important to the current user.
@@ -395,6 +395,6 @@ Further, the above facts mean that there are multiple reasons that "tracked" fil
 ##  [](https://git-scm.com/docs/git-sparse-checkout#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### sparse-checkout
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-format-patch#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-format-patch#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-format-patch#_description)
@@ -39,8 +39,8 @@ Localized versions of **git-format-patch** manual
   4. [українська мова ](https://git-scm.com/docs/git-format-patch/uk)
   5. [简体中文 ](https://git-scm.com/docs/git-format-patch/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-format-patch)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -317,207 +317,207 @@ If `-o` is specified, output files are created in <dir>. Otherwise they are crea
 By default, the subject of a single patch is "[PATCH] " followed by the concatenation of lines from the commit message up to the first blank line (see the DISCUSSION section of [git-commit[1]](https://git-scm.com/docs/git-commit)).
 When multiple patches are output, the subject prefix will instead be "[PATCH n/m] ". To force 1/1 to be added for a single patch, use `-n`. To omit patch numbers from the subject, use `-N`.
 If given `--thread`, `git-format-patch` will generate `In-Reply-To` and `References` headers to make the second and subsequent patch mails appear as replies to the first mail; this also generates a `Message-ID` header to reference.
-##  [](https://git-scm.com/docs/git-format-patch#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-format-patch#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt--p)-p 
-
-
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---no-stat)--no-stat 
-    
-Generate plain patches without any diffstats. 
-
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt--Un)`-U`_< n>_ 
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt--p)-p
 
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---unifiedn)`--unified=`_< n>_ 
-    
-Generate diffs with _< n>_ lines of context instead of the usual three. 
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---no-stat)--no-stat
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---outputfile)`--output=`_< file>_ 
-    
-Output to a specific file instead of stdout. 
+Generate plain patches without any diffstats.
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---output-indicator-newchar)`--output-indicator-new=`_< char>_ 
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt--Un)`-U`_< n>_
 
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---output-indicator-oldchar)`--output-indicator-old=`_< char>_ 
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---unifiedn)`--unified=`_< n>_
+
+Generate diffs with _< n>_ lines of context instead of the usual three.
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---outputfile)`--output=`_< file>_
+
+Output to a specific file instead of stdout.
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---output-indicator-newchar)`--output-indicator-new=`_< char>_
 
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---output-indicator-contextchar)`--output-indicator-context=`_< char>_ 
-    
-Specify the character used to indicate new, old or context lines in the generated patch. Normally they are `+`, `-` and ' ' respectively. 
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---output-indicator-oldchar)`--output-indicator-old=`_< char>_
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---indent-heuristic)`--indent-heuristic` 
-    
-Enable the heuristic that shifts diff hunk boundaries to make patches easier to read. This is the default. 
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---no-indent-heuristic)`--no-indent-heuristic` 
-    
-Disable the indent heuristic. 
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---output-indicator-contextchar)`--output-indicator-context=`_< char>_
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---minimal)`--minimal` 
-    
-Spend extra time to make sure the smallest possible diff is produced. 
+Specify the character used to indicate new, old or context lines in the generated patch. Normally they are `+`, `-` and ' ' respectively.
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---patience)`--patience` 
-    
-Generate a diff using the "patience diff" algorithm. 
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---indent-heuristic)`--indent-heuristic`
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---histogram)`--histogram` 
-    
-Generate a diff using the "histogram diff" algorithm. 
+Enable the heuristic that shifts diff hunk boundaries to make patches easier to read. This is the default.
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---anchoredtext)`--anchored=`_< text>_ 
-    
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---no-indent-heuristic)`--no-indent-heuristic`
+
+Disable the indent heuristic.
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---minimal)`--minimal`
+
+Spend extra time to make sure the smallest possible diff is produced.
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---patience)`--patience`
+
+Generate a diff using the "patience diff" algorithm.
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---histogram)`--histogram`
+
+Generate a diff using the "histogram diff" algorithm.
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---anchoredtext)`--anchored=`_< text>_
+
 Generate a diff using the "anchored diff" algorithm.
 This option may be specified more than once.
-If a line exists in both the source and destination, exists only once, and starts with _< text>_, this algorithm attempts to prevent it from appearing as a deletion or addition in the output. It uses the "patience diff" algorithm internally. 
+If a line exists in both the source and destination, exists only once, and starts with _< text>_, this algorithm attempts to prevent it from appearing as a deletion or addition in the output. It uses the "patience diff" algorithm internally.
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---diff-algorithmpatienceminimalhistogrammyers)`--diff-algorithm=`(`patience`|`minimal`|`histogram`|`myers`) 
-    
-Choose a diff algorithm. The variants are as follows: 
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---diff-algorithmpatienceminimalhistogrammyers)`--diff-algorithm=`(`patience`|`minimal`|`histogram`|`myers`)
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt-default)`default` 
+Choose a diff algorithm. The variants are as follows:
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt-default)`default`
 
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt-myers)`myers` 
-    
-The basic greedy diff algorithm. Currently, this is the default. 
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt-myers)`myers`
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt-minimal)`minimal` 
-    
-Spend extra time to make sure the smallest possible diff is produced. 
+The basic greedy diff algorithm. Currently, this is the default.
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt-patience)`patience` 
-    
-Use "patience diff" algorithm when generating patches. 
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt-minimal)`minimal`
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt-histogram)`histogram` 
-    
+Spend extra time to make sure the smallest possible diff is produced.
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt-patience)`patience`
+
+Use "patience diff" algorithm when generating patches.
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt-histogram)`histogram`
+
 This algorithm extends the patience algorithm to "support low-occurrence common elements".
-For instance, if you configured the `diff.algorithm` variable to a non-default value and want to use the default one, then you have to use `--diff-algorithm=default` option. 
+For instance, if you configured the `diff.algorithm` variable to a non-default value and want to use the default one, then you have to use `--diff-algorithm=default` option.
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---statwidthname-widthcount)`--stat`[`=`_< width>_[`,`_< name-width>_[`,`_< count>_]]] 
-    
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---statwidthname-widthcount)`--stat`[`=`_< width>_[`,`_< name-width>_[`,`_< count>_]]]
+
 Generate a diffstat. By default, as much space as necessary will be used for the filename part, and the rest for the graph part. Maximum width defaults to terminal width, or 80 columns if not connected to a terminal, and can be overridden by _< width>_. The width of the filename part can be limited by giving another width _< name-width>_ after a comma or by setting `diff.statNameWidth=`_< name-width>_. The width of the graph part can be limited by using `--stat-graph-width=`_< graph-width>_ or by setting `diff.statGraphWidth=`_< graph-width>_. Using `--stat` or `--stat-graph-width` affects all commands generating a stat graph, while setting `diff.statNameWidth` or `diff.statGraphWidth` does not affect `git` `format-patch`. By giving a third parameter _< count>_, you can limit the output to the first _< count>_ lines, followed by ... if there are more.
-These parameters can also be set individually with `--stat-width=`_< width>_, `--stat-name-width=`_< name-width>_ and `--stat-count=`_< count>_. 
+These parameters can also be set individually with `--stat-width=`_< width>_, `--stat-name-width=`_< name-width>_ and `--stat-count=`_< count>_.
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---compact-summary)`--compact-summary` 
-    
-Output a condensed summary of extended header information such as file creations or deletions ("new" or "gone", optionally `+l` if it’s a symlink) and mode changes (`+x` or `-x` for adding or removing executable bit respectively) in diffstat. The information is put between the filename part and the graph part. Implies `--stat`. 
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---compact-summary)`--compact-summary`
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---numstat)`--numstat` 
-    
-Similar to `--stat`, but shows number of added and deleted lines in decimal notation and pathname without abbreviation, to make it more machine friendly. For binary files, outputs two `-` instead of saying `0` `0`. 
+Output a condensed summary of extended header information such as file creations or deletions ("new" or "gone", optionally `+l` if it’s a symlink) and mode changes (`+x` or `-x` for adding or removing executable bit respectively) in diffstat. The information is put between the filename part and the graph part. Implies `--stat`.
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---shortstat)`--shortstat` 
-    
-Output only the last line of the `--stat` format containing total number of modified files, as well as number of added and deleted lines. 
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---numstat)`--numstat`
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt--Xparam)`-X` [_< param>_`,...`] 
+Similar to `--stat`, but shows number of added and deleted lines in decimal notation and pathname without abbreviation, to make it more machine friendly. For binary files, outputs two `-` instead of saying `0` `0`.
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---shortstat)`--shortstat`
+
+Output only the last line of the `--stat` format containing total number of modified files, as well as number of added and deleted lines.
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt--Xparam)`-X` [_< param>_`,...`]
 
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---dirstatparam)`--dirstat`[`=`_< param>_`,...`] 
-    
-Output the distribution of relative amount of changes for each sub-directory. The behavior of `--dirstat` can be customized by passing it a comma separated list of parameters. The defaults are controlled by the `diff.dirstat` configuration variable (see [git-config[1]](https://git-scm.com/docs/git-config)). The following parameters are available: 
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---dirstatparam)`--dirstat`[`=`_< param>_`,...`]
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt-changes)`changes` 
-    
-Compute the dirstat numbers by counting the lines that have been removed from the source, or added to the destination. This ignores the amount of pure code movements within a file. In other words, rearranging lines in a file is not counted as much as other changes. This is the default behavior when no parameter is given. 
+Output the distribution of relative amount of changes for each sub-directory. The behavior of `--dirstat` can be customized by passing it a comma separated list of parameters. The defaults are controlled by the `diff.dirstat` configuration variable (see [git-config[1]](https://git-scm.com/docs/git-config)). The following parameters are available:
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt-lines)`lines` 
-    
-Compute the dirstat numbers by doing the regular line-based diff analysis, and summing the removed/added line counts. (For binary files, count 64-byte chunks instead, since binary files have no natural concept of lines). This is a more expensive `--dirstat` behavior than the `changes` behavior, but it does count rearranged lines within a file as much as other changes. The resulting output is consistent with what you get from the other `--*stat` options. 
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt-changes)`changes`
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt-files)`files` 
-    
-Compute the dirstat numbers by counting the number of files changed. Each changed file counts equally in the dirstat analysis. This is the computationally cheapest `--dirstat` behavior, since it does not have to look at the file contents at all. 
+Compute the dirstat numbers by counting the lines that have been removed from the source, or added to the destination. This ignores the amount of pure code movements within a file. In other words, rearranging lines in a file is not counted as much as other changes. This is the default behavior when no parameter is given.
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt-cumulative)`cumulative` 
-    
-Count changes in a child directory for the parent directory as well. Note that when using `cumulative`, the sum of the percentages reported may exceed 100%. The default (non-cumulative) behavior can be specified with the `noncumulative` parameter. 
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt-lines)`lines`
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt-limit)_< limit>_ 
-    
+Compute the dirstat numbers by doing the regular line-based diff analysis, and summing the removed/added line counts. (For binary files, count 64-byte chunks instead, since binary files have no natural concept of lines). This is a more expensive `--dirstat` behavior than the `changes` behavior, but it does count rearranged lines within a file as much as other changes. The resulting output is consistent with what you get from the other `--*stat` options.
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt-files)`files`
+
+Compute the dirstat numbers by counting the number of files changed. Each changed file counts equally in the dirstat analysis. This is the computationally cheapest `--dirstat` behavior, since it does not have to look at the file contents at all.
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt-cumulative)`cumulative`
+
+Count changes in a child directory for the parent directory as well. Note that when using `cumulative`, the sum of the percentages reported may exceed 100%. The default (non-cumulative) behavior can be specified with the `noncumulative` parameter.
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt-limit)_< limit>_
+
 An integer parameter specifies a cut-off percent (3% by default). Directories contributing less than this percentage of the changes are not shown in the output.
-Example: The following will count changed files, while ignoring directories with less than 10% of the total amount of changed files, and accumulating child directory counts in the parent directories: `--dirstat=files,10,cumulative`. 
+Example: The following will count changed files, while ignoring directories with less than 10% of the total amount of changed files, and accumulating child directory counts in the parent directories: `--dirstat=files,10,cumulative`.
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---cumulative)`--cumulative` 
-    
-Synonym for `--dirstat=cumulative`. 
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---cumulative)`--cumulative`
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---dirstat-by-fileparam)`--dirstat-by-file`[`=`_< param>_`,...`] 
-    
-Synonym for `--dirstat=files,`_< param>_`,...`. 
+Synonym for `--dirstat=cumulative`.
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---summary)`--summary` 
-    
-Output a condensed summary of extended header information such as creations, renames and mode changes. 
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---dirstat-by-fileparam)`--dirstat-by-file`[`=`_< param>_`,...`]
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---no-renames)`--no-renames` 
-    
-Turn off rename detection, even when the configuration file gives the default to do so. 
+Synonym for `--dirstat=files,`_< param>_`,...`.
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---rename-empty)`--rename-empty` 
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---summary)`--summary`
 
+Output a condensed summary of extended header information such as creations, renames and mode changes.
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---no-rename-empty)`--no-rename-empty` 
-    
-Whether to use empty blobs as rename source. 
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---no-renames)`--no-renames`
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---full-index)`--full-index` 
-    
-Instead of the first handful of characters, show the full pre- and post-image blob object names on the "index" line when generating patch format output. 
+Turn off rename detection, even when the configuration file gives the default to do so.
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---binary)`--binary` 
-    
-In addition to `--full-index`, output a binary diff that can be applied with `git-apply`. 
-
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---abbrevn)`--abbrev`[`=`_< n>_] 
-    
-Instead of showing the full 40-byte hexadecimal object name in diff-raw format output and diff-tree header lines, show the shortest prefix that is at least _< n>_ hexdigits long that uniquely refers the object. In diff-patch output format, `--full-index` takes higher precedence, i.e. if `--full-index` is specified, full blob names will be shown regardless of `--abbrev`. Non default number of digits can be specified with `--abbrev=`_< n>_. 
-
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt--Bnm)`-B`[_< n>_][`/`_< m>_] 
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---rename-empty)`--rename-empty`
 
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---break-rewritesnm)`--break-rewrites`[`=`[_< n>_][`/`_< m>_]] 
-    
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---no-rename-empty)`--no-rename-empty`
+
+Whether to use empty blobs as rename source.
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---full-index)`--full-index`
+
+Instead of the first handful of characters, show the full pre- and post-image blob object names on the "index" line when generating patch format output.
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---binary)`--binary`
+
+In addition to `--full-index`, output a binary diff that can be applied with `git-apply`.
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---abbrevn)`--abbrev`[`=`_< n>_]
+
+Instead of showing the full 40-byte hexadecimal object name in diff-raw format output and diff-tree header lines, show the shortest prefix that is at least _< n>_ hexdigits long that uniquely refers the object. In diff-patch output format, `--full-index` takes higher precedence, i.e. if `--full-index` is specified, full blob names will be shown regardless of `--abbrev`. Non default number of digits can be specified with `--abbrev=`_< n>_.
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt--Bnm)`-B`[_< n>_][`/`_< m>_]
+
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---break-rewritesnm)`--break-rewrites`[`=`[_< n>_][`/`_< m>_]]
+
 Break complete rewrite changes into pairs of delete and create. This serves two purposes:
 It affects the way a change that amounts to a total rewrite of a file not as a series of deletion and insertion mixed together with a very few lines that happen to match textually as the context, but as a single deletion of everything old followed by a single insertion of everything new, and the number _< m>_ controls this aspect of the `-B` option (defaults to 60%). `-B/70%` specifies that less than 30% of the original should remain in the result for Git to consider it a total rewrite (i.e. otherwise the resulting patch will be a series of deletion and insertion mixed together with context lines).
-When used with `-M`, a totally-rewritten file is also considered as the source of a rename (usually `-M` only considers a file that disappeared as the source of a rename), and the number _< n>_ controls this aspect of the `-B` option (defaults to 50%). `-B20%` specifies that a change with addition and deletion compared to 20% or more of the file’s size are eligible for being picked up as a possible source of a rename to another file. 
+When used with `-M`, a totally-rewritten file is also considered as the source of a rename (usually `-M` only considers a file that disappeared as the source of a rename), and the number _< n>_ controls this aspect of the `-B` option (defaults to 50%). `-B20%` specifies that a change with addition and deletion compared to 20% or more of the file’s size are eligible for being picked up as a possible source of a rename to another file.
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt--Mn)`-M`[_< n>_] 
-
-
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---find-renamesn)`--find-renames`[`=`_< n>_] 
-    
-Detect renames. If _< n>_ is specified, it is a threshold on the similarity index (i.e. amount of addition/deletions compared to the file’s size). For example, `-M90%` means Git should consider a delete/add pair to be a rename if more than 90% of the file hasn’t changed. Without a `%` sign, the number is to be read as a fraction, with a decimal point before it. I.e., `-M5` becomes 0.5, and is thus the same as `-M50%`. Similarly, `-M05` is the same as `-M5%`. To limit detection to exact renames, use `-M100%`. The default similarity index is 50%. 
-
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt--Cn)`-C`[_< n>_] 
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt--Mn)`-M`[_< n>_]
 
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---find-copiesn)`--find-copies`[`=`_< n>_] 
-    
-Detect copies as well as renames. See also `--find-copies-harder`. If _< n>_ is specified, it has the same meaning as for `-M`_< n>_. 
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---find-renamesn)`--find-renames`[`=`_< n>_]
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---find-copies-harder)`--find-copies-harder` 
-    
-For performance reasons, by default, `-C` option finds copies only if the original file of the copy was modified in the same changeset. This flag makes the command inspect unmodified files as candidates for the source of copy. This is a very expensive operation for large projects, so use it with caution. Giving more than one `-C` option has the same effect. 
+Detect renames. If _< n>_ is specified, it is a threshold on the similarity index (i.e. amount of addition/deletions compared to the file’s size). For example, `-M90%` means Git should consider a delete/add pair to be a rename if more than 90% of the file hasn’t changed. Without a `%` sign, the number is to be read as a fraction, with a decimal point before it. I.e., `-M5` becomes 0.5, and is thus the same as `-M50%`. Similarly, `-M05` is the same as `-M5%`. To limit detection to exact renames, use `-M100%`. The default similarity index is 50%.
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt--D)`-D` 
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt--Cn)`-C`[_< n>_]
 
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---irreversible-delete)`--irreversible-delete` 
-    
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---find-copiesn)`--find-copies`[`=`_< n>_]
+
+Detect copies as well as renames. See also `--find-copies-harder`. If _< n>_ is specified, it has the same meaning as for `-M`_< n>_.
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---find-copies-harder)`--find-copies-harder`
+
+For performance reasons, by default, `-C` option finds copies only if the original file of the copy was modified in the same changeset. This flag makes the command inspect unmodified files as candidates for the source of copy. This is a very expensive operation for large projects, so use it with caution. Giving more than one `-C` option has the same effect.
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt--D)`-D`
+
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---irreversible-delete)`--irreversible-delete`
+
 Omit the preimage for deletes, i.e. print only the header but not the diff between the preimage and `/dev/null`. The resulting patch is not meant to be applied with `patch` or `git` `apply`; this is solely for people who want to just concentrate on reviewing the text after the change. In addition, the output obviously lacks enough information to apply such a patch in reverse, even manually, hence the name of the option.
-When used together with `-B`, omit also the preimage in the deletion part of a delete/create pair. 
+When used together with `-B`, omit also the preimage in the deletion part of a delete/create pair.
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt--lnum)`-l`_< num>_ 
-    
-The `-M` and `-C` options involve some preliminary steps that can detect subsets of renames/copies cheaply, followed by an exhaustive fallback portion that compares all remaining unpaired destinations to all relevant sources. (For renames, only remaining unpaired sources are relevant; for copies, all original sources are relevant.) For N sources and destinations, this exhaustive check is O(N^2). This option prevents the exhaustive portion of rename/copy detection from running if the number of source/destination files involved exceeds the specified number. Defaults to `diff.renameLimit`. Note that a value of 0 is treated as unlimited. 
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt--lnum)`-l`_< num>_
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt--Oorderfile)`-O`_< orderfile>_ 
-    
+The `-M` and `-C` options involve some preliminary steps that can detect subsets of renames/copies cheaply, followed by an exhaustive fallback portion that compares all remaining unpaired destinations to all relevant sources. (For renames, only remaining unpaired sources are relevant; for copies, all original sources are relevant.) For N sources and destinations, this exhaustive check is O(N^2). This option prevents the exhaustive portion of rename/copy detection from running if the number of source/destination files involved exceeds the specified number. Defaults to `diff.renameLimit`. Note that a value of 0 is treated as unlimited.
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt--Oorderfile)`-O`_< orderfile>_
+
 Control the order in which files appear in the output. This overrides the `diff.orderFile` configuration variable (see [git-config[1]](https://git-scm.com/docs/git-config)). To cancel `diff.orderFile`, use `-O/dev/null`.
 The output order is determined by the order of glob patterns in _< orderfile>_. All files with pathnames that match the first pattern are output first, all files with pathnames that match the second pattern (but not the first) are output next, and so on. All files with pathnames that do not match any pattern are output last, as if there was an implicit match-all pattern at the end of the file. If multiple pathnames have the same rank (they match the same pattern but no earlier patterns), their output order relative to each other is the normal order.
 _< orderfile>_ is parsed as follows:
@@ -526,118 +526,118 @@ _< orderfile>_ is parsed as follows:
   * Each other line contains a single pattern.
 
 
-Patterns have the same syntax and semantics as patterns used for `fnmatch`(3) without the `FNM_PATHNAME` flag, except a pathname also matches a pattern if removing any number of the final pathname components matches the pattern. For example, the pattern "`foo*bar`" matches "`fooasdfbar`" and "`foo/bar/baz/asdf`" but not "`foobarx`". 
+Patterns have the same syntax and semantics as patterns used for `fnmatch`(3) without the `FNM_PATHNAME` flag, except a pathname also matches a pattern if removing any number of the final pathname components matches the pattern. For example, the pattern "`foo*bar`" matches "`fooasdfbar`" and "`foo/bar/baz/asdf`" but not "`foobarx`".
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---skip-tofile)`--skip-to=`_< file>_ 
-
-
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---rotate-tofile)`--rotate-to=`_< file>_ 
-    
-Discard the files before the named _< file>_ from the output (i.e. _skip to_), or move them to the end of the output (i.e. _rotate to_). These options were invented primarily for the use of the `git` `difftool` command, and may not be very useful otherwise. 
-
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---relativepath)`--relative`[`=`_< path>_] 
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---skip-tofile)`--skip-to=`_< file>_
 
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---no-relative)`--no-relative` 
-    
-When run from a subdirectory of the project, it can be told to exclude changes outside the directory and show pathnames relative to it with this option. When you are not in a subdirectory (e.g. in a bare repository), you can name which subdirectory to make the output relative to by giving a _< path>_ as an argument. `--no-relative` can be used to countermand both `diff.relative` config option and previous `--relative`. 
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---rotate-tofile)`--rotate-to=`_< file>_
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt--a)`-a` 
+Discard the files before the named _< file>_ from the output (i.e. _skip to_), or move them to the end of the output (i.e. _rotate to_). These options were invented primarily for the use of the `git` `difftool` command, and may not be very useful otherwise.
 
-
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---text)`--text` 
-    
-Treat all files as text. 
-
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---ignore-cr-at-eol)`--ignore-cr-at-eol` 
-    
-Ignore carriage-return at the end of line when doing a comparison. 
-
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---ignore-space-at-eol)`--ignore-space-at-eol` 
-    
-Ignore changes in whitespace at EOL. 
-
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt--b)`-b` 
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---relativepath)`--relative`[`=`_< path>_]
 
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---ignore-space-change)`--ignore-space-change` 
-    
-Ignore changes in amount of whitespace. This ignores whitespace at line end, and considers all other sequences of one or more whitespace characters to be equivalent. 
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---no-relative)`--no-relative`
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt--w)`-w` 
+When run from a subdirectory of the project, it can be told to exclude changes outside the directory and show pathnames relative to it with this option. When you are not in a subdirectory (e.g. in a bare repository), you can name which subdirectory to make the output relative to by giving a _< path>_ as an argument. `--no-relative` can be used to countermand both `diff.relative` config option and previous `--relative`.
 
-
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---ignore-all-space)`--ignore-all-space` 
-    
-Ignore whitespace when comparing lines. This ignores differences even if one line has whitespace where the other line has none. 
-
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---ignore-blank-lines)`--ignore-blank-lines` 
-    
-Ignore changes whose lines are all blank. 
-
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt--Iregex)`-I`_< regex>_ 
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt--a)`-a`
 
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---ignore-matching-linesregex)`--ignore-matching-lines=`_< regex>_ 
-    
-Ignore changes whose all lines match _< regex>_. This option may be specified more than once. 
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---text)`--text`
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---inter-hunk-contextnumber)`--inter-hunk-context=`_< number>_ 
-    
-Show the context between diff hunks, up to the specified _< number>_ of lines, thereby fusing hunks that are close to each other. Defaults to `diff.interHunkContext` or 0 if the config option is unset. 
+Treat all files as text.
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt--W)`-W` 
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---ignore-cr-at-eol)`--ignore-cr-at-eol`
 
+Ignore carriage-return at the end of line when doing a comparison.
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---function-context)`--function-context` 
-    
-Show whole function as context lines for each change. The function names are determined in the same way as `git` `diff` works out patch hunk headers (see "Defining a custom hunk-header" in [gitattributes[5]](https://git-scm.com/docs/gitattributes)). 
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---ignore-space-at-eol)`--ignore-space-at-eol`
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---ext-diff)`--ext-diff` 
-    
-Allow an external diff helper to be executed. If you set an external diff driver with [gitattributes[5]](https://git-scm.com/docs/gitattributes), you need to use this option with [git-log[1]](https://git-scm.com/docs/git-log) and friends. 
+Ignore changes in whitespace at EOL.
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---no-ext-diff)`--no-ext-diff` 
-    
-Disallow external diff drivers. 
-
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---textconv)`--textconv` 
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt--b)`-b`
 
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---no-textconv)`--no-textconv` 
-    
-Allow (or disallow) external text conversion filters to be run when comparing binary files. See [gitattributes[5]](https://git-scm.com/docs/gitattributes) for details. Because textconv filters are typically a one-way conversion, the resulting diff is suitable for human consumption, but cannot be applied. For this reason, textconv filters are enabled by default only for [git-diff[1]](https://git-scm.com/docs/git-diff) and [git-log[1]](https://git-scm.com/docs/git-log), but not for [git-format-patch[1]](https://git-scm.com/docs/git-format-patch) or diff plumbing commands. 
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---ignore-space-change)`--ignore-space-change`
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---ignore-submodulesnoneuntrackeddirtyall)`--ignore-submodules`[`=`(`none`|`untracked`|`dirty`|`all`)] 
-    
-Ignore changes to submodules in the diff generation. `all` is the default. Using `none` will consider the submodule modified when it either contains untracked or modified files or its `HEAD` differs from the commit recorded in the superproject and can be used to override any settings of the `ignore` option in [git-config[1]](https://git-scm.com/docs/git-config) or [gitmodules[5]](https://git-scm.com/docs/gitmodules). When `untracked` is used submodules are not considered dirty when they only contain untracked content (but they are still scanned for modified content). Using `dirty` ignores all changes to the work tree of submodules, only changes to the commits stored in the superproject are shown (this was the behavior until 1.7.0). Using `all` hides all changes to submodules. 
+Ignore changes in amount of whitespace. This ignores whitespace at line end, and considers all other sequences of one or more whitespace characters to be equivalent.
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---src-prefixprefix)`--src-prefix=`_< prefix>_ 
-    
-Show the given source _< prefix>_ instead of "a/". 
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt--w)`-w`
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---dst-prefixprefix)`--dst-prefix=`_< prefix>_ 
-    
-Show the given destination _< prefix>_ instead of "b/". 
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---no-prefix)`--no-prefix` 
-    
-Do not show any source or destination prefix. 
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---ignore-all-space)`--ignore-all-space`
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---default-prefix)`--default-prefix` 
-    
-Use the default source and destination prefixes ("a/" and "b/"). This overrides configuration variables such as `diff.noprefix`, `diff.srcPrefix`, `diff.dstPrefix`, and `diff.mnemonicPrefix` (see [git-config[1]](https://git-scm.com/docs/git-config)). 
+Ignore whitespace when comparing lines. This ignores differences even if one line has whitespace where the other line has none.
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---line-prefixprefix)`--line-prefix=`_< prefix>_ 
-    
-Prepend an additional _< prefix>_ to every line of output. 
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---ignore-blank-lines)`--ignore-blank-lines`
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---ita-invisible-in-index)`--ita-invisible-in-index` 
-    
-By default entries added by `git` `add` `-N` appear as an existing empty file in `git` `diff` and a new file in `git` `diff` `--cached`. This option makes the entry appear as a new file in `git` `diff` and non-existent in `git` `diff` `--cached`. This option could be reverted with `--ita-visible-in-index`. Both options are experimental and could be removed in future. 
+Ignore changes whose lines are all blank.
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---max-depthdepth)--max-depth=<depth> 
-    
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt--Iregex)`-I`_< regex>_
+
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---ignore-matching-linesregex)`--ignore-matching-lines=`_< regex>_
+
+Ignore changes whose all lines match _< regex>_. This option may be specified more than once.
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---inter-hunk-contextnumber)`--inter-hunk-context=`_< number>_
+
+Show the context between diff hunks, up to the specified _< number>_ of lines, thereby fusing hunks that are close to each other. Defaults to `diff.interHunkContext` or 0 if the config option is unset.
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt--W)`-W`
+
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---function-context)`--function-context`
+
+Show whole function as context lines for each change. The function names are determined in the same way as `git` `diff` works out patch hunk headers (see "Defining a custom hunk-header" in [gitattributes[5]](https://git-scm.com/docs/gitattributes)).
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---ext-diff)`--ext-diff`
+
+Allow an external diff helper to be executed. If you set an external diff driver with [gitattributes[5]](https://git-scm.com/docs/gitattributes), you need to use this option with [git-log[1]](https://git-scm.com/docs/git-log) and friends.
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---no-ext-diff)`--no-ext-diff`
+
+Disallow external diff drivers.
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---textconv)`--textconv`
+
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---no-textconv)`--no-textconv`
+
+Allow (or disallow) external text conversion filters to be run when comparing binary files. See [gitattributes[5]](https://git-scm.com/docs/gitattributes) for details. Because textconv filters are typically a one-way conversion, the resulting diff is suitable for human consumption, but cannot be applied. For this reason, textconv filters are enabled by default only for [git-diff[1]](https://git-scm.com/docs/git-diff) and [git-log[1]](https://git-scm.com/docs/git-log), but not for [git-format-patch[1]](https://git-scm.com/docs/git-format-patch) or diff plumbing commands.
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---ignore-submodulesnoneuntrackeddirtyall)`--ignore-submodules`[`=`(`none`|`untracked`|`dirty`|`all`)]
+
+Ignore changes to submodules in the diff generation. `all` is the default. Using `none` will consider the submodule modified when it either contains untracked or modified files or its `HEAD` differs from the commit recorded in the superproject and can be used to override any settings of the `ignore` option in [git-config[1]](https://git-scm.com/docs/git-config) or [gitmodules[5]](https://git-scm.com/docs/gitmodules). When `untracked` is used submodules are not considered dirty when they only contain untracked content (but they are still scanned for modified content). Using `dirty` ignores all changes to the work tree of submodules, only changes to the commits stored in the superproject are shown (this was the behavior until 1.7.0). Using `all` hides all changes to submodules.
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---src-prefixprefix)`--src-prefix=`_< prefix>_
+
+Show the given source _< prefix>_ instead of "a/".
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---dst-prefixprefix)`--dst-prefix=`_< prefix>_
+
+Show the given destination _< prefix>_ instead of "b/".
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---no-prefix)`--no-prefix`
+
+Do not show any source or destination prefix.
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---default-prefix)`--default-prefix`
+
+Use the default source and destination prefixes ("a/" and "b/"). This overrides configuration variables such as `diff.noprefix`, `diff.srcPrefix`, `diff.dstPrefix`, and `diff.mnemonicPrefix` (see [git-config[1]](https://git-scm.com/docs/git-config)).
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---line-prefixprefix)`--line-prefix=`_< prefix>_
+
+Prepend an additional _< prefix>_ to every line of output.
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---ita-invisible-in-index)`--ita-invisible-in-index`
+
+By default entries added by `git` `add` `-N` appear as an existing empty file in `git` `diff` and a new file in `git` `diff` `--cached`. This option makes the entry appear as a new file in `git` `diff` and non-existent in `git` `diff` `--cached`. This option could be reverted with `--ita-visible-in-index`. Both options are experimental and could be removed in future.
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---max-depthdepth)--max-depth=<depth>
+
 For each pathspec given on command line, descend at most _< depth>_ levels of directories. A value of `-1` means no limit. Cannot be combined with wildcards in the pathspec. Given a tree containing `foo/bar/baz`, the following list shows the matches generated by each set of options:
   * `--max-depth=0` `--` `foo`: `foo`
   * `--max-depth=1` `--` `foo`: `foo/bar`
@@ -648,235 +648,235 @@ For each pathspec given on command line, descend at most _< depth>_ levels of di
 
 If no pathspec is given, the depth is measured as if all top-level entries were specified. Note that this is different than measuring from the root, in that `--max-depth=0` would still return `foo`. This allows you to still limit depth while asking for a subset of the top-level entries.
 Note that this option is only supported for diffs between tree objects, not against the index or working tree.
-For more detailed explanation on these common options, see also [gitdiffcore[7]](https://git-scm.com/docs/gitdiffcore). 
+For more detailed explanation on these common options, see also [gitdiffcore[7]](https://git-scm.com/docs/gitdiffcore).
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt--n)-<n> 
-    
-Prepare patches from the topmost <n> commits. 
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt--n)-<n>
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt--odir)-o <dir> 
+Prepare patches from the topmost <n> commits.
 
-
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---output-directorydir)--output-directory <dir> 
-    
-Use <dir> to store the resulting files, instead of the current working directory. 
-
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt--n-1)-n 
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt--odir)-o <dir>
 
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---numbered)--numbered 
-    
-Name output in _[PATCH n/m]_ format, even with a single patch. 
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---output-directorydir)--output-directory <dir>
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt--N)-N 
+Use <dir> to store the resulting files, instead of the current working directory.
 
-
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---no-numbered)--no-numbered 
-    
-Name output in _[PATCH]_ format. 
-
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---start-numbern)--start-number <n> 
-    
-Start numbering the patches at <n> instead of 1. 
-
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---numbered-files)--numbered-files 
-    
-Output file names will be a simple number sequence without the default first line of the commit appended. 
-
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt--k)-k 
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt--n-1)-n
 
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---keep-subject)--keep-subject 
-    
-Do not strip/add _[PATCH]_ from the first line of the commit log message. 
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---numbered)--numbered
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt--s)-s 
+Name output in _[PATCH n/m]_ format, even with a single patch.
 
-
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---signoff)--signoff 
-    
-Add a `Signed-off-by` trailer to the commit message, using the committer identity of yourself. See the signoff option in [git-commit[1]](https://git-scm.com/docs/git-commit) for more information. 
-
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---stdout)--stdout 
-    
-Print all commits to the standard output in mbox format, instead of creating a file for each one. 
-
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---attachboundary)--attach[=<boundary>] 
-    
-Create multipart/mixed attachment, the first part of which is the commit message and the patch itself in the second part, with `Content-Disposition:` `attachment`. 
-
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---no-attach)--no-attach 
-    
-Disable the creation of an attachment, overriding the configuration setting. 
-
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---inlineboundary)--inline[=<boundary>] 
-    
-Create multipart/mixed attachment, the first part of which is the commit message and the patch itself in the second part, with `Content-Disposition:` `inline`. 
-
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---threadstyle)--thread[=<style>] 
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt--N)-N
 
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---no-thread)--no-thread 
-    
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---no-numbered)--no-numbered
+
+Name output in _[PATCH]_ format.
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---start-numbern)--start-number <n>
+
+Start numbering the patches at <n> instead of 1.
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---numbered-files)--numbered-files
+
+Output file names will be a simple number sequence without the default first line of the commit appended.
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt--k)-k
+
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---keep-subject)--keep-subject
+
+Do not strip/add _[PATCH]_ from the first line of the commit log message.
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt--s)-s
+
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---signoff)--signoff
+
+Add a `Signed-off-by` trailer to the commit message, using the committer identity of yourself. See the signoff option in [git-commit[1]](https://git-scm.com/docs/git-commit) for more information.
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---stdout)--stdout
+
+Print all commits to the standard output in mbox format, instead of creating a file for each one.
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---attachboundary)--attach[=<boundary>]
+
+Create multipart/mixed attachment, the first part of which is the commit message and the patch itself in the second part, with `Content-Disposition:` `attachment`.
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---no-attach)--no-attach
+
+Disable the creation of an attachment, overriding the configuration setting.
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---inlineboundary)--inline[=<boundary>]
+
+Create multipart/mixed attachment, the first part of which is the commit message and the patch itself in the second part, with `Content-Disposition:` `inline`.
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---threadstyle)--thread[=<style>]
+
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---no-thread)--no-thread
+
 Controls addition of `In-Reply-To` and `References` headers to make the second and subsequent mails appear as replies to the first. Also controls generation of the `Message-ID` header to reference.
 The optional <style> argument can be either `shallow` or `deep`. _shallow_ threading makes every mail a reply to the head of the series, where the head is chosen from the cover letter, the `--in-reply-to`, and the first patch mail, in this order. _deep_ threading makes every mail a reply to the previous one.
 The default is `--no-thread`, unless the `format.thread` configuration is set. `--thread` without an argument is equivalent to `--thread=shallow`.
-Beware that the default for _git send-email_ is to thread emails itself. If you want `git` `format-patch` to take care of threading, you will want to ensure that threading is disabled for `git` `send-email`. 
+Beware that the default for _git send-email_ is to thread emails itself. If you want `git` `format-patch` to take care of threading, you will want to ensure that threading is disabled for `git` `send-email`.
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---in-reply-tomessage-id)--in-reply-to=<message-id> 
-    
-Make the first mail (or all the mails with `--no-thread`) appear as a reply to the given <message-id>, which avoids breaking threads to provide a new patch series. 
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---in-reply-tomessage-id)--in-reply-to=<message-id>
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---ignore-if-in-upstream)--ignore-if-in-upstream 
-    
-Do not include a patch that matches a commit in <until>..<since>. This will examine all patches reachable from <since> but not from <until> and compare them with the patches being generated, and any patch that matches is ignored. 
+Make the first mail (or all the mails with `--no-thread`) appear as a reply to the given <message-id>, which avoids breaking threads to provide a new patch series.
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---always)--always 
-    
-Include patches for commits that do not introduce any change, which are omitted by default. 
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---ignore-if-in-upstream)--ignore-if-in-upstream
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---cover-from-descriptionmode)--cover-from-description=<mode> 
-    
+Do not include a patch that matches a commit in <until>..<since>. This will examine all patches reachable from <since> but not from <until> and compare them with the patches being generated, and any patch that matches is ignored.
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---always)--always
+
+Include patches for commits that do not introduce any change, which are omitted by default.
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---cover-from-descriptionmode)--cover-from-description=<mode>
+
 Controls which parts of the cover letter will be automatically populated using the branch’s description.
 If _< mode>_ is `message` or `default`, the cover letter subject will be populated with placeholder text. The body of the cover letter will be populated with the branch’s description. This is the default mode when no configuration nor command line option is specified.
 If _< mode>_ is `subject`, the first paragraph of the branch description will populate the cover letter subject. The remainder of the description will populate the body of the cover letter.
 If _< mode>_ is `auto`, if the first paragraph of the branch description is greater than 100 bytes, then the mode will be `message`, otherwise `subject` will be used.
-If _< mode>_ is `none`, both the cover letter subject and body will be populated with placeholder text. 
+If _< mode>_ is `none`, both the cover letter subject and body will be populated with placeholder text.
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---description-filefile)--description-file=<file> 
-    
-Use the contents of <file> instead of the branch’s description for generating the cover letter. 
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---description-filefile)--description-file=<file>
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---subject-prefixsubject-prefix)--subject-prefix=<subject-prefix> 
-    
+Use the contents of <file> instead of the branch’s description for generating the cover letter.
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---subject-prefixsubject-prefix)--subject-prefix=<subject-prefix>
+
 Instead of the standard _[PATCH]_ prefix in the subject line, instead use _[ <subject-prefix>]_. This can be used to name a patch series, and can be combined with the `--numbered` option.
-The configuration variable `format.subjectPrefix` may also be used to configure a subject prefix to apply to a given repository for all patches. This is often useful on mailing lists which receive patches for several repositories and can be used to disambiguate the patches (with a value of e.g. "PATCH my-project"). 
+The configuration variable `format.subjectPrefix` may also be used to configure a subject prefix to apply to a given repository for all patches. This is often useful on mailing lists which receive patches for several repositories and can be used to disambiguate the patches (with a value of e.g. "PATCH my-project").
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---filename-max-lengthn)--filename-max-length=<n> 
-    
-Instead of the standard 64 bytes, chomp the generated output filenames at around _< n>_ bytes (too short a value will be silently raised to a reasonable length). Defaults to the value of the `format.filenameMaxLength` configuration variable, or 64 if unconfigured. 
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---filename-max-lengthn)--filename-max-length=<n>
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---rfcrfc)--rfc[=<rfc>] 
-    
+Instead of the standard 64 bytes, chomp the generated output filenames at around _< n>_ bytes (too short a value will be silently raised to a reasonable length). Defaults to the value of the `format.filenameMaxLength` configuration variable, or 64 if unconfigured.
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---rfcrfc)--rfc[=<rfc>]
+
 Prepends the string _< rfc>_ (defaults to "RFC") to the subject prefix. As the subject prefix defaults to "PATCH", you’ll get "RFC PATCH" by default.
 RFC means "Request For Comments"; use this when sending an experimental patch for discussion rather than application. "--rfc=WIP" may also be a useful way to indicate that a patch is not complete yet ("WIP" stands for "Work In Progress").
-If the convention of the receiving community for a particular extra string is to have it _after_ the subject prefix, the string _< rfc>_ can be prefixed with a dash ("`-`") to signal that the rest of the _< rfc>_ string should be appended to the subject prefix instead, e.g., `--rfc='-`(`WIP`) results in "PATCH (WIP)". 
+If the convention of the receiving community for a particular extra string is to have it _after_ the subject prefix, the string _< rfc>_ can be prefixed with a dash ("`-`") to signal that the rest of the _< rfc>_ string should be appended to the subject prefix instead, e.g., `--rfc='-`(`WIP`) results in "PATCH (WIP)".
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt--vn)-v <n> 
-
-
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---reroll-countn)--reroll-count=<n> 
-    
-Mark the series as the <n>-th iteration of the topic. The output filenames have `v`_< n>_ prepended to them, and the subject prefix ("PATCH" by default, but configurable via the `--subject-prefix` option) has ` v<n>` appended to it. E.g. `--reroll-count=4` may produce `v4-0001-add-makefile.patch` file that has "Subject: [PATCH v4 1/20] Add makefile" in it. _< n>_ does not have to be an integer (e.g. "--reroll-count=4.4", or "--reroll-count=4rev2" are allowed), but the downside of using such a reroll-count is that the range-diff/interdiff with the previous version does not state exactly which version the new iteration is compared against. 
-
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---toemail)--to=<email> 
-    
-Add a `To:` header to the email headers. This is in addition to any configured headers, and may be used multiple times. The negated form `--no-to` discards all `To:` headers added so far (from config or command line). 
-
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---ccemail)--cc=<email> 
-    
-Add a `Cc:` header to the email headers. This is in addition to any configured headers, and may be used multiple times. The negated form `--no-cc` discards all `Cc:` headers added so far (from config or command line). 
-
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---from)--from 
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt--vn)-v <n>
 
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---fromident)--from=<ident> 
-    
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---reroll-countn)--reroll-count=<n>
+
+Mark the series as the <n>-th iteration of the topic. The output filenames have `v`_< n>_ prepended to them, and the subject prefix ("PATCH" by default, but configurable via the `--subject-prefix` option) has ` v<n>` appended to it. E.g. `--reroll-count=4` may produce `v4-0001-add-makefile.patch` file that has "Subject: [PATCH v4 1/20] Add makefile" in it. _< n>_ does not have to be an integer (e.g. "--reroll-count=4.4", or "--reroll-count=4rev2" are allowed), but the downside of using such a reroll-count is that the range-diff/interdiff with the previous version does not state exactly which version the new iteration is compared against.
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---toemail)--to=<email>
+
+Add a `To:` header to the email headers. This is in addition to any configured headers, and may be used multiple times. The negated form `--no-to` discards all `To:` headers added so far (from config or command line).
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---ccemail)--cc=<email>
+
+Add a `Cc:` header to the email headers. This is in addition to any configured headers, and may be used multiple times. The negated form `--no-cc` discards all `Cc:` headers added so far (from config or command line).
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---from)--from
+
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---fromident)--from=<ident>
+
 Use `ident` in the `From:` header of each commit email. If the author ident of the commit is not textually identical to the provided `ident`, place a `From:` header in the body of the message with the original author. If no `ident` is given, use the committer ident.
-Note that this option is only useful if you are actually sending the emails and want to identify yourself as the sender, but retain the original author (and `git` `am` will correctly pick up the in-body header). Note also that `git` `send-email` already handles this transformation for you, and this option should not be used if you are feeding the result to `git` `send-email`. 
+Note that this option is only useful if you are actually sending the emails and want to identify yourself as the sender, but retain the original author (and `git` `am` will correctly pick up the in-body header). Note also that `git` `send-email` already handles this transformation for you, and this option should not be used if you are feeding the result to `git` `send-email`.
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---force-in-body-from)--force-in-body-from 
-
-
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---no-force-in-body-from)--no-force-in-body-from 
-    
-With the e-mail sender specified via the `--from` option, by default, an in-body "From:" to identify the real author of the commit is added at the top of the commit log message if the sender is different from the author. With this option, the in-body "From:" is added even when the sender and the author have the same name and address, which may help if the mailing list software mangles the sender’s identity. Defaults to the value of the `format.forceInBodyFrom` configuration variable. 
-
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---add-headerheader)--add-header=<header> 
-    
-Add an arbitrary header to the email headers. This is in addition to any configured headers, and may be used multiple times. For example, `--add-header="Organization:` `git-foo"`. The negated form `--no-add-header` discards **all** (`To:`, `Cc:`, and custom) headers added so far from config or command line. 
-
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---cover-letter)--cover-letter 
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---force-in-body-from)--force-in-body-from
 
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---no-cover-letter)--no-cover-letter 
-    
-In addition to the patches, generate a cover letter file containing the branch description, shortlog and the overall diffstat. You can fill in a description in the file before sending it out. 
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---no-force-in-body-from)--no-force-in-body-from
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---encode-email-headers)--encode-email-headers 
+With the e-mail sender specified via the `--from` option, by default, an in-body "From:" to identify the real author of the commit is added at the top of the commit log message if the sender is different from the author. With this option, the in-body "From:" is added even when the sender and the author have the same name and address, which may help if the mailing list software mangles the sender’s identity. Defaults to the value of the `format.forceInBodyFrom` configuration variable.
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---add-headerheader)--add-header=<header>
+
+Add an arbitrary header to the email headers. This is in addition to any configured headers, and may be used multiple times. For example, `--add-header="Organization:` `git-foo"`. The negated form `--no-add-header` discards **all** (`To:`, `Cc:`, and custom) headers added so far from config or command line.
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---cover-letter)--cover-letter
 
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---no-encode-email-headers)--no-encode-email-headers 
-    
-Encode email headers that have non-ASCII characters with "Q-encoding" (described in RFC 2047), instead of outputting the headers verbatim. Defaults to the value of the `format.encodeEmailHeaders` configuration variable. 
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---no-cover-letter)--no-cover-letter
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---interdiffprevious)--interdiff=<previous> 
-    
-As a reviewer aid, insert an interdiff into the cover letter, or as commentary of the lone patch of a 1-patch series, showing the differences between the previous version of the patch series and the series currently being formatted. `previous` is a single revision naming the tip of the previous series which shares a common base with the series being formatted (for example `git` `format-patch` `--cover-letter` `--interdiff=feature/v1` `-3` `feature/v2`). 
+In addition to the patches, generate a cover letter file containing the branch description, shortlog and the overall diffstat. You can fill in a description in the file before sending it out.
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---range-diffprevious)--range-diff=<previous> 
-    
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---encode-email-headers)--encode-email-headers
+
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---no-encode-email-headers)--no-encode-email-headers
+
+Encode email headers that have non-ASCII characters with "Q-encoding" (described in RFC 2047), instead of outputting the headers verbatim. Defaults to the value of the `format.encodeEmailHeaders` configuration variable.
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---interdiffprevious)--interdiff=<previous>
+
+As a reviewer aid, insert an interdiff into the cover letter, or as commentary of the lone patch of a 1-patch series, showing the differences between the previous version of the patch series and the series currently being formatted. `previous` is a single revision naming the tip of the previous series which shares a common base with the series being formatted (for example `git` `format-patch` `--cover-letter` `--interdiff=feature/v1` `-3` `feature/v2`).
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---range-diffprevious)--range-diff=<previous>
+
 As a reviewer aid, insert a range-diff (see [git-range-diff[1]](https://git-scm.com/docs/git-range-diff)) into the cover letter, or as commentary of the lone patch of a 1-patch series, showing the differences between the previous version of the patch series and the series currently being formatted. `previous` can be a single revision naming the tip of the previous series if it shares a common base with the series being formatted (for example `git` `format-patch` `--cover-letter` `--range-diff=feature/v1` `-3` `feature/v2`), or a revision range if the two versions of the series are disjoint (for example `git` `format-patch` `--cover-letter` `--range-diff=feature/v1~3..feature/v1` `-3` `feature/v2`).
-Note that diff options passed to the command affect how the primary product of `format-patch` is generated, and they are not passed to the underlying `range-diff` machinery used to generate the cover-letter material (this may change in the future). 
+Note that diff options passed to the command affect how the primary product of `format-patch` is generated, and they are not passed to the underlying `range-diff` machinery used to generate the cover-letter material (this may change in the future).
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---creation-factorpercent)--creation-factor=<percent> 
-    
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---creation-factorpercent)--creation-factor=<percent>
+
 Used with `--range-diff`, tweak the heuristic which matches up commits between the previous and current series of patches by adjusting the creation/deletion cost fudge factor. See [git-range-diff[1]](https://git-scm.com/docs/git-range-diff)) for details.
-Defaults to 999 (the [git-range-diff[1]](https://git-scm.com/docs/git-range-diff) uses 60), as the use case is to show comparison with an older iteration of the same topic and the tool should find more correspondence between the two sets of patches. 
+Defaults to 999 (the [git-range-diff[1]](https://git-scm.com/docs/git-range-diff) uses 60), as the use case is to show comparison with an older iteration of the same topic and the tool should find more correspondence between the two sets of patches.
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---notesref)--notes[=<ref>] 
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---notesref)--notes[=<ref>]
 
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---no-notes)--no-notes 
-    
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---no-notes)--no-notes
+
 Append the notes (see [git-notes[1]](https://git-scm.com/docs/git-notes)) for the commit after the three-dash line.
 The expected use case of this is to write supporting explanation for the commit that does not belong to the commit log message proper, and include it with the patch submission. While one can simply write these explanations after `format-patch` has run but before sending, keeping them as Git notes allows them to be maintained between versions of the patch series (but see the discussion of the `notes.rewrite` configuration options in [git-notes[1]](https://git-scm.com/docs/git-notes) to use this workflow).
-The default is `--no-notes`, unless the `format.notes` configuration is set. 
+The default is `--no-notes`, unless the `format.notes` configuration is set.
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---signaturesignature)--signature=<signature> 
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---signaturesignature)--signature=<signature>
 
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---no-signature)--no-signature 
-    
-Add a signature to each message produced. Per RFC 3676 the signature is separated from the body by a line with '-- ' on it. If the signature option is omitted the signature defaults to the Git version number. 
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---no-signature)--no-signature
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---signature-filefile)--signature-file=<file> 
-    
-Works just like --signature except the signature is read from a file. 
+Add a signature to each message produced. Per RFC 3676 the signature is separated from the body by a line with '-- ' on it. If the signature option is omitted the signature defaults to the Git version number.
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---suffixsfx)--suffix=.<sfx> 
-    
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---signature-filefile)--signature-file=<file>
+
+Works just like --signature except the signature is read from a file.
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---suffixsfx)--suffix=.<sfx>
+
 Instead of using `.patch` as the suffix for generated filenames, use specified suffix. A common alternative is `--suffix=.txt`. Leaving this empty will remove the `.patch` suffix.
-Note that the leading character does not have to be a dot; for example, you can use `--suffix=-patch` to get `0001-description-of-my-change-patch`. 
+Note that the leading character does not have to be a dot; for example, you can use `--suffix=-patch` to get `0001-description-of-my-change-patch`.
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt--q)-q 
-
-
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---quiet)--quiet 
-    
-Do not print the names of the generated files to standard output. 
-
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---no-binary)--no-binary 
-    
-Do not output contents of changes in binary files, instead display a notice that those files changed. Patches generated using this option cannot be applied properly, but they are still useful for code review. 
-
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---zero-commit)--zero-commit 
-    
-Output an all-zero hash in each patch’s From header instead of the hash of the commit. 
-
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---no-base)--no-base 
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt--q)-q
 
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---basecommit)--base[=<commit>] 
-    
-Record the base tree information to identify the state the patch series applies to. See the BASE TREE INFORMATION section below for details. If <commit> is "auto", a base commit is automatically chosen. The `--no-base` option overrides a `format.useAutoBase` configuration. 
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---quiet)--quiet
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---root)--root 
-    
-Treat the revision argument as a <revision-range>, even if it is just a single commit (that would normally be treated as a <since>). Note that root commits included in the specified range are always formatted as creation patches, independently of this flag. 
+Do not print the names of the generated files to standard output.
 
-[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---progress)--progress 
-    
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---no-binary)--no-binary
+
+Do not output contents of changes in binary files, instead display a notice that those files changed. Patches generated using this option cannot be applied properly, but they are still useful for code review.
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---zero-commit)--zero-commit
+
+Output an all-zero hash in each patch’s From header instead of the hash of the commit.
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---no-base)--no-base
+
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---basecommit)--base[=<commit>]
+
+Record the base tree information to identify the state the patch series applies to. See the BASE TREE INFORMATION section below for details. If <commit> is "auto", a base commit is automatically chosen. The `--no-base` option overrides a `format.useAutoBase` configuration.
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---root)--root
+
+Treat the revision argument as a <revision-range>, even if it is just a single commit (that would normally be treated as a <since>). Note that root commits included in the specified range are always formatted as creation patches, independently of this flag.
+
+[](https://git-scm.com/docs/git-format-patch#Documentation/git-format-patch.txt---progress)--progress
+
 Show progress reports on stderr as patches are generated.
 ##  [](https://git-scm.com/docs/git-format-patch#_configuration)CONFIGURATION
 You can specify extra mail header lines to be added to each message, defaults for the subject prefix and file suffix, number patches when outputting more than one patch, add "To:" or "Cc:" headers, configure attachments, change the patch output directory, and sign off patches with configuration variables.
@@ -1071,6 +1071,6 @@ Note that `format-patch` will omit merge commits from the output, even if they a
 ##  [](https://git-scm.com/docs/git-format-patch#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### format-patch
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

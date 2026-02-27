@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-reset#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-reset#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-reset#_description)
@@ -36,8 +36,8 @@ Localized versions of **git-reset** manual
   6. [українська мова ](https://git-scm.com/docs/git-reset/uk)
   7. [简体中文 ](https://git-scm.com/docs/git-reset/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-reset)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -226,104 +226,104 @@ git reset (--patch | -p) [_<tree-ish>_] [--] [_<pathspec>_…​]
 ##  [](https://git-scm.com/docs/git-reset#_description)DESCRIPTION
 `git` `reset` does either of the following:
   1. `git` `reset` [_< mode>_] _< commit>_ changes which commit `HEAD` points to. This makes it possible to undo various Git operations, for example commit, merge, rebase, and pull.
-  2. When you specify files or directories or pass `--patch`, `git` `reset` updates the staged version of the specified files. 
+  2. When you specify files or directories or pass `--patch`, `git` `reset` updates the staged version of the specified files.
 
-[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt-gitresetmodecommit)`git` `reset` [_< mode>_] [_< commit>_] 
-    
+[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt-gitresetmodecommit)`git` `reset` [_< mode>_] [_< commit>_]
+
 Set the current branch head (`HEAD`) to point at _< commit>_. Depending on _< mode>_, also update the working directory and/or index to match the contents of _< commit>_. _< commit>_ defaults to `HEAD`. Before the operation, `ORIG_HEAD` is set to the tip of the current branch.
-The _< mode>_ must be one of the following (default `--mixed`): 
+The _< mode>_ must be one of the following (default `--mixed`):
 
-[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt---mixed)`--mixed` 
-    
+[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt---mixed)`--mixed`
+
 Leave your working directory unchanged. Update the index to match the new `HEAD`, so nothing will be staged.
-If `-N` is specified, mark removed paths as intent-to-add (see [git-add[1]](https://git-scm.com/docs/git-add)). 
+If `-N` is specified, mark removed paths as intent-to-add (see [git-add[1]](https://git-scm.com/docs/git-add)).
 
-[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt---soft)`--soft` 
-    
-Leave your working tree files and the index unchanged. For example, if you have no staged changes, you can use _git reset --soft HEAD~5; git commit_ to combine the last 5 commits into 1 commit. This works even with changes in the working tree, which are left untouched, but such usage can lead to confusion. 
+[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt---soft)`--soft`
 
-[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt---hard)`--hard` 
-    
-Overwrite all files and directories with the version from _< commit>_, and may overwrite untracked files. Tracked files not in _< commit>_ are removed so that the working tree matches _< commit>_. Update the index to match the new `HEAD`, so nothing will be staged. 
+Leave your working tree files and the index unchanged. For example, if you have no staged changes, you can use _git reset --soft HEAD~5; git commit_ to combine the last 5 commits into 1 commit. This works even with changes in the working tree, which are left untouched, but such usage can lead to confusion.
 
-[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt---merge)`--merge` 
-    
-Reset the index and update the files in the working tree that are different between _< commit>_ and `HEAD`, but keep those which are different between the index and working tree (i.e. which have changes which have not been added). Mainly exists to reset unmerged index entries, like those left behind by `git` `am` `-3` or `git` `switch` `-m` in certain situations. If a file that is different between _< commit>_ and the index has unstaged changes, reset is aborted. 
+[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt---hard)`--hard`
 
-[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt---keep)`--keep` 
-    
-Resets index entries and updates files in the working tree that are different between _< commit>_ and `HEAD`. If a file that is different between _< commit>_ and `HEAD` has local changes, reset is aborted. 
+Overwrite all files and directories with the version from _< commit>_, and may overwrite untracked files. Tracked files not in _< commit>_ are removed so that the working tree matches _< commit>_. Update the index to match the new `HEAD`, so nothing will be staged.
 
-[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt---recurse-submodules)`--recurse-submodules` 
+[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt---merge)`--merge`
 
+Reset the index and update the files in the working tree that are different between _< commit>_ and `HEAD`, but keep those which are different between the index and working tree (i.e. which have changes which have not been added). Mainly exists to reset unmerged index entries, like those left behind by `git` `am` `-3` or `git` `switch` `-m` in certain situations. If a file that is different between _< commit>_ and the index has unstaged changes, reset is aborted.
 
-[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt---no-recurse-submodules)`--no-recurse-submodules` 
-    
-When the working tree is updated, using `--recurse-submodules` will also recursively reset the working tree of all active submodules according to the commit recorded in the superproject, also setting the submodules' `HEAD` to be detached at that commit. 
+[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt---keep)`--keep`
 
-[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt-gitreset-qtree-ish--pathspec)`git` `reset` [`-q`] [_< tree-ish>_] [`--`] _< pathspec>_... 
+Resets index entries and updates files in the working tree that are different between _< commit>_ and `HEAD`. If a file that is different between _< commit>_ and `HEAD` has local changes, reset is aborted.
+
+[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt---recurse-submodules)`--recurse-submodules`
 
 
-[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt-gitreset-q--pathspec-from-filefile--pathspec-file-nultree-ish)`git` `reset` [`-q`] [`--pathspec-from-file=`_< file>_ [`--pathspec-file-nul`]] [_< tree-ish>_] 
-    
+[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt---no-recurse-submodules)`--no-recurse-submodules`
+
+When the working tree is updated, using `--recurse-submodules` will also recursively reset the working tree of all active submodules according to the commit recorded in the superproject, also setting the submodules' `HEAD` to be detached at that commit.
+
+[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt-gitreset-qtree-ish--pathspec)`git` `reset` [`-q`] [_< tree-ish>_] [`--`] _< pathspec>_...
+
+
+[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt-gitreset-q--pathspec-from-filefile--pathspec-file-nultree-ish)`git` `reset` [`-q`] [`--pathspec-from-file=`_< file>_ [`--pathspec-file-nul`]] [_< tree-ish>_]
+
 For all specified files or directories, set the staged version to the version from the given commit or tree (which defaults to `HEAD`).
 This means that `git` `reset` _< pathspec>_ is the opposite of `git` `add` _< pathspec>_: it unstages all changes to the specified file(s) or directories. This is equivalent to `git` `restore` `--staged` _< pathspec>_....
-In this mode, `git` `reset` updates only the index (without updating the `HEAD` or working tree files). If you want to update the files as well as the index entries, use [git-restore[1]](https://git-scm.com/docs/git-restore). 
+In this mode, `git` `reset` updates only the index (without updating the `HEAD` or working tree files). If you want to update the files as well as the index entries, use [git-restore[1]](https://git-scm.com/docs/git-restore).
 
-[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt-gitreset--patch-ptree-ish--pathspec)`git` `reset` (`--patch` | `-p`) [_< tree-ish>_] [`--`] [_< pathspec>_...] 
-    
+[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt-gitreset--patch-ptree-ish--pathspec)`git` `reset` (`--patch` | `-p`) [_< tree-ish>_] [`--`] [_< pathspec>_...]
+
 Interactively select changes from the difference between the index and the specified commit or tree (which defaults to `HEAD`). The index is modified using the chosen changes.
 This means that `git` `reset` `-p` is the opposite of `git` `add` `-p`, i.e. you can use it to selectively unstage changes. See the "Interactive Mode" section of [git-add[1]](https://git-scm.com/docs/git-add) to learn how to use the `--patch` option.
 
 
 See "Reset, restore and revert" in [git[1]](https://git-scm.com/docs/git) for the differences between the three commands.
-##  [](https://git-scm.com/docs/git-reset#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-reset#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt--q)`-q` 
-
-
-[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt---quiet)`--quiet` 
-    
-Be quiet, only report errors. 
-
-[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt---refresh)`--refresh` 
+[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt--q)`-q`
 
 
-[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt---no-refresh)`--no-refresh` 
-    
-Refresh the index after a mixed reset. Enabled by default. 
+[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt---quiet)`--quiet`
 
-[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt---pathspec-from-filefile)`--pathspec-from-file=`_< file>_ 
-    
-Pathspec is passed in _< file>_ instead of commandline args. If _< file>_ is exactly `-` then standard input is used. Pathspec elements are separated by _LF_ or _CR_ /_LF_. Pathspec elements can be quoted as explained for the configuration variable `core.quotePath` (see [git-config[1]](https://git-scm.com/docs/git-config)). See also `--pathspec-file-nul` and global `--literal-pathspecs`. 
+Be quiet, only report errors.
 
-[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt---pathspec-file-nul)`--pathspec-file-nul` 
-    
-Only meaningful with `--pathspec-from-file`. Pathspec elements are separated with _NUL_ character and all other characters are taken literally (including newlines and quotes). 
-
-[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt--Un)`-U`_< n>_ 
+[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt---refresh)`--refresh`
 
 
-[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt---unifiedn)`--unified=`_< n>_ 
-    
-Generate diffs with _< n>_ lines of context. Defaults to `diff.context` or 3 if the config option is unset. 
+[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt---no-refresh)`--no-refresh`
 
-[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt---inter-hunk-contextn)`--inter-hunk-context=`_< n>_ 
-    
-Show the context between diff hunks, up to the specified _< number>_ of lines, thereby fusing hunks that are close to each other. Defaults to `diff.interHunkContext` or 0 if the config option is unset. 
+Refresh the index after a mixed reset. Enabled by default.
 
-[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt---)`--` 
-    
-Do not interpret any more arguments as options. 
+[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt---pathspec-from-filefile)`--pathspec-from-file=`_< file>_
 
-[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt-pathspec)_< pathspec>_... 
-    
+Pathspec is passed in _< file>_ instead of commandline args. If _< file>_ is exactly `-` then standard input is used. Pathspec elements are separated by _LF_ or _CR_ /_LF_. Pathspec elements can be quoted as explained for the configuration variable `core.quotePath` (see [git-config[1]](https://git-scm.com/docs/git-config)). See also `--pathspec-file-nul` and global `--literal-pathspecs`.
+
+[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt---pathspec-file-nul)`--pathspec-file-nul`
+
+Only meaningful with `--pathspec-from-file`. Pathspec elements are separated with _NUL_ character and all other characters are taken literally (including newlines and quotes).
+
+[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt--Un)`-U`_< n>_
+
+
+[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt---unifiedn)`--unified=`_< n>_
+
+Generate diffs with _< n>_ lines of context. Defaults to `diff.context` or 3 if the config option is unset.
+
+[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt---inter-hunk-contextn)`--inter-hunk-context=`_< n>_
+
+Show the context between diff hunks, up to the specified _< number>_ of lines, thereby fusing hunks that are close to each other. Defaults to `diff.interHunkContext` or 0 if the config option is unset.
+
+[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt---)`--`
+
+Do not interpret any more arguments as options.
+
+[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt-pathspec)_< pathspec>_...
+
 Limits the paths affected by the operation.
 For more details, see the _pathspec_ entry in [gitglossary[7]](https://git-scm.com/docs/gitglossary).
-##  [](https://git-scm.com/docs/git-reset#_examples)EXAMPLES 
+##  [](https://git-scm.com/docs/git-reset#_examples)EXAMPLES
 
-[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt-Undoadd)Undo add 
-    
+[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt-Undoadd)Undo add
+
 ```
 $ edit                                     **(1)**
 $ git add frotz.c filfre.c
@@ -339,8 +339,8 @@ $ git pull git://info.example.com/ nitfol  **(4)**
 
 
 
-[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt-Undoacommitandredo)Undo a commit and redo 
-    
+[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt-Undoacommitandredo)Undo a commit and redo
+
 ```
 $ git commit ...
 $ git reset --soft HEAD^      **(1)**
@@ -355,8 +355,8 @@ See also the `--amend` option to [git-commit[1]](https://git-scm.com/docs/git-co
 
 
 
-[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt-Undoacommitmakingitatopicbranch)Undo a commit, making it a topic branch 
-    
+[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt-Undoacommitmakingitatopicbranch)Undo a commit, making it a topic branch
+
 ```
 $ git branch topic/wip          **(1)**
 $ git reset --hard HEAD~3       **(2)**
@@ -369,8 +369,8 @@ $ git switch topic/wip          **(3)**
 
 
 
-[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt-Undocommitspermanently)Undo commits permanently 
-    
+[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt-Undocommitspermanently)Undo commits permanently
+
 ```
 $ git commit ...
 $ git reset --hard HEAD~3   **(1)**
@@ -380,8 +380,8 @@ $ git reset --hard HEAD~3   **(1)**
 
 
 
-[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt-Undoamergeorpull)Undo a merge or pull 
-    
+[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt-Undoamergeorpull)Undo a merge or pull
+
 ```
 $ git pull                         **(1)**
 Auto-merging nitfol
@@ -401,8 +401,8 @@ $ git reset --hard ORIG_HEAD       **(4)**
 
 
 
-[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt-Undoamergeorpullinsideadirtyworkingtree)Undo a merge or pull inside a dirty working tree 
-    
+[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt-Undoamergeorpullinsideadirtyworkingtree)Undo a merge or pull inside a dirty working tree
+
 ```
 $ git pull                         **(1)**
 Auto-merging nitfol
@@ -417,8 +417,8 @@ $ git reset --merge ORIG_HEAD      **(2)**
 
 
 
-[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt-Interruptedworkflow)Interrupted workflow 
-    
+[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt-Interruptedworkflow)Interrupted workflow
+
 Suppose you are interrupted by an urgent fix request while you are in the middle of a large change. The files in your working tree are not in any shape to be committed yet, but you need to get to the other branch for a quick bugfix.
 ```
 $ git switch feature  ;# you were working in "feature" branch and
@@ -439,8 +439,8 @@ See also [git-stash[1]](https://git-scm.com/docs/git-stash).
 
 
 
-[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt-Resetasinglefileintheindex)Reset a single file in the index 
-    
+[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt-Resetasinglefileintheindex)Reset a single file in the index
+
 Suppose you have added a file to your index, but later decide you do not want to add it to your commit. You can remove the file from the index while keeping your changes with git reset.
 ```
 $ git reset -- frotz.c                      **(1)**
@@ -454,8 +454,8 @@ $ git add frotz.c                           **(3)**
 
 
 
-[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt-Keepchangesinworkingtreewhilediscardingsomepreviouscommits)Keep changes in working tree while discarding some previous commits 
-    
+[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt-Keepchangesinworkingtreewhilediscardingsomepreviouscommits)Keep changes in working tree while discarding some previous commits
+
 Suppose you are working on something and you commit it, and then you continue working a bit more, but now you think that what you have in your working tree should be in another branch that has nothing to do with what you committed previously. You can start a new branch and reset it while keeping the changes in your working tree.
 ```
 $ git tag start
@@ -473,8 +473,8 @@ $ git reset --keep start                    **(3)**
 
 
 
-[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt-Splitacommitapartintoasequenceofcommits)Split a commit apart into a sequence of commits 
-    
+[](https://git-scm.com/docs/git-reset#Documentation/git-reset.txt-Splitacommitapartintoasequenceofcommits)Split a commit apart into a sequence of commits
+
 Suppose that you have created lots of logically separate changes and committed them together. Then, later you decide that it might be better to have each logical chunk associated with its own commit. You can use git reset to rewind history without changing the contents of your local files, and then successively use `git` `add` `-p` to interactively select which hunks to include into each commit, using `git` `commit` `-c` to pre-populate the commit message.
 ```
 $ git reset -N HEAD^                        **(1)**
@@ -592,6 +592,6 @@ working index HEAD target         working index HEAD
 ##  [](https://git-scm.com/docs/git-reset#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### reset
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-update-server-info#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-update-server-info#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-update-server-info#_description)
@@ -33,8 +33,8 @@ Localized versions of **git-update-server-info** manual
   4. [українська мова ](https://git-scm.com/docs/git-update-server-info/uk)
   5. [简体中文 ](https://git-scm.com/docs/git-update-server-info/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-update-server-info)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -197,13 +197,13 @@ _git update-server-info_ [-f | --force]
 
 ##  [](https://git-scm.com/docs/git-update-server-info#_description)DESCRIPTION
 A dumb server that does not do on-the-fly pack generations must have some auxiliary information files in $GIT_DIR/info and $GIT_OBJECT_DIRECTORY/info directories to help clients discover what references and packs the server has. This command generates such auxiliary files.
-##  [](https://git-scm.com/docs/git-update-server-info#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-update-server-info#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-update-server-info#Documentation/git-update-server-info.txt--f)-f 
+[](https://git-scm.com/docs/git-update-server-info#Documentation/git-update-server-info.txt--f)-f
 
 
-[](https://git-scm.com/docs/git-update-server-info#Documentation/git-update-server-info.txt---force)--force 
-    
+[](https://git-scm.com/docs/git-update-server-info#Documentation/git-update-server-info.txt---force)--force
+
 Update the info files from scratch.
 ##  [](https://git-scm.com/docs/git-update-server-info#_output)OUTPUT
 Currently the command updates the following files. Please see [gitrepository-layout[5]](https://git-scm.com/docs/gitrepository-layout) for a description of what they are for:
@@ -214,6 +214,6 @@ Currently the command updates the following files. Please see [gitrepository-lay
 ##  [](https://git-scm.com/docs/git-update-server-info#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### update-server-info
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

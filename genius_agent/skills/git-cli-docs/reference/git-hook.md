@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-hook#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-hook#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-hook#_description)
@@ -30,8 +30,8 @@
 Localized versions of **git-hook** manual
   1. [English ](https://git-scm.com/docs/git-hook)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-hook)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -192,26 +192,26 @@ _git hook_ run [--ignore-missing] [--to-stdin=<path>] <hook-name> [-- <hook-args
 
 ##  [](https://git-scm.com/docs/git-hook#_description)DESCRIPTION
 A command interface for running git hooks (see [githooks[5]](https://git-scm.com/docs/githooks)), for use by other scripted git commands.
-##  [](https://git-scm.com/docs/git-hook#_subcommands)SUBCOMMANDS 
+##  [](https://git-scm.com/docs/git-hook#_subcommands)SUBCOMMANDS
 
-[](https://git-scm.com/docs/git-hook#Documentation/git-hook.txt-run)run 
-    
+[](https://git-scm.com/docs/git-hook#Documentation/git-hook.txt-run)run
+
 Run the _< hook-name>_ hook. See [githooks[5]](https://git-scm.com/docs/githooks) for supported hook names.
 Any positional arguments to the hook should be passed after a mandatory `--` (or `--end-of-options`, see [gitcli[7]](https://git-scm.com/docs/gitcli)). See [githooks[5]](https://git-scm.com/docs/githooks) for arguments hooks might expect (if any).
-##  [](https://git-scm.com/docs/git-hook#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-hook#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-hook#Documentation/git-hook.txt---to-stdin)--to-stdin 
-    
-For "run"; specify a file which will be streamed into the hook’s stdin. The hook will receive the entire file from beginning to EOF. 
+[](https://git-scm.com/docs/git-hook#Documentation/git-hook.txt---to-stdin)--to-stdin
 
-[](https://git-scm.com/docs/git-hook#Documentation/git-hook.txt---ignore-missing)--ignore-missing 
-    
+For "run"; specify a file which will be streamed into the hook’s stdin. The hook will receive the entire file from beginning to EOF.
+
+[](https://git-scm.com/docs/git-hook#Documentation/git-hook.txt---ignore-missing)--ignore-missing
+
 Ignore any missing hook by quietly returning zero. Used for tools that want to do a blind one-shot run of a hook that may or may not be present.
 ##  [](https://git-scm.com/docs/git-hook#_see_also)SEE ALSO
 [githooks[5]](https://git-scm.com/docs/githooks)
 ##  [](https://git-scm.com/docs/git-hook#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### hook
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

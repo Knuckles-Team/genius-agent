@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-http-fetch#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-http-fetch#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-http-fetch#_description)
@@ -32,8 +32,8 @@ Localized versions of **git-http-fetch** manual
   4. [українська мова ](https://git-scm.com/docs/git-http-fetch/uk)
   5. [简体中文 ](https://git-scm.com/docs/git-http-fetch/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-http-fetch)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -203,52 +203,52 @@ _git http-fetch_ [-c] [-t] [-a] [-d] [-v] [-w <filename>] [--recover] [--stdin |
 ##  [](https://git-scm.com/docs/git-http-fetch#_description)DESCRIPTION
 Downloads a remote Git repository via HTTP.
 This command always gets all objects. Historically, there were three options `-a`, `-c` and `-t` for choosing which objects to download. They are now silently ignored.
-##  [](https://git-scm.com/docs/git-http-fetch#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-http-fetch#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-http-fetch#Documentation/git-http-fetch.txt-commit-id)commit-id 
-    
-Either the hash or the filename under [URL]/refs/ to pull. 
+[](https://git-scm.com/docs/git-http-fetch#Documentation/git-http-fetch.txt-commit-id)commit-id
 
-[](https://git-scm.com/docs/git-http-fetch#Documentation/git-http-fetch.txt--a)-a 
+Either the hash or the filename under [URL]/refs/ to pull.
 
-
-[](https://git-scm.com/docs/git-http-fetch#Documentation/git-http-fetch.txt--c)-c 
+[](https://git-scm.com/docs/git-http-fetch#Documentation/git-http-fetch.txt--a)-a
 
 
-[](https://git-scm.com/docs/git-http-fetch#Documentation/git-http-fetch.txt--t)-t 
-    
-These options are ignored for historical reasons. 
+[](https://git-scm.com/docs/git-http-fetch#Documentation/git-http-fetch.txt--c)-c
 
-[](https://git-scm.com/docs/git-http-fetch#Documentation/git-http-fetch.txt--v)-v 
-    
-Report what is downloaded. 
 
-[](https://git-scm.com/docs/git-http-fetch#Documentation/git-http-fetch.txt--wfilename)-w <filename> 
-    
-Writes the commit-id into the specified filename under $GIT_DIR/refs/<filename> on the local end after the transfer is complete. 
+[](https://git-scm.com/docs/git-http-fetch#Documentation/git-http-fetch.txt--t)-t
 
-[](https://git-scm.com/docs/git-http-fetch#Documentation/git-http-fetch.txt---stdin)--stdin 
-    
+These options are ignored for historical reasons.
+
+[](https://git-scm.com/docs/git-http-fetch#Documentation/git-http-fetch.txt--v)-v
+
+Report what is downloaded.
+
+[](https://git-scm.com/docs/git-http-fetch#Documentation/git-http-fetch.txt--wfilename)-w <filename>
+
+Writes the commit-id into the specified filename under $GIT_DIR/refs/<filename> on the local end after the transfer is complete.
+
+[](https://git-scm.com/docs/git-http-fetch#Documentation/git-http-fetch.txt---stdin)--stdin
+
 Instead of a commit id on the command line (which is not expected in this case), _git http-fetch_ expects lines on stdin in the format
 ```
 <commit-id>['\t'<filename-as-in--w>]
 ```
 
 
-[](https://git-scm.com/docs/git-http-fetch#Documentation/git-http-fetch.txt---packfilehash)--packfile=<hash> 
-    
-For internal use only. Instead of a commit id on the command line (which is not expected in this case), _git http-fetch_ fetches the packfile directly at the given URL and uses index-pack to generate corresponding .idx and .keep files. The hash is used to determine the name of the temporary file and is arbitrary. The output of index-pack is printed to stdout. Requires --index-pack-args. 
+[](https://git-scm.com/docs/git-http-fetch#Documentation/git-http-fetch.txt---packfilehash)--packfile=<hash>
 
-[](https://git-scm.com/docs/git-http-fetch#Documentation/git-http-fetch.txt---index-pack-argsargs)--index-pack-args=<args> 
-    
-For internal use only. The command to run on the contents of the downloaded pack. Arguments are URL-encoded separated by spaces. 
+For internal use only. Instead of a commit id on the command line (which is not expected in this case), _git http-fetch_ fetches the packfile directly at the given URL and uses index-pack to generate corresponding .idx and .keep files. The hash is used to determine the name of the temporary file and is arbitrary. The output of index-pack is printed to stdout. Requires --index-pack-args.
 
-[](https://git-scm.com/docs/git-http-fetch#Documentation/git-http-fetch.txt---recover)--recover 
-    
+[](https://git-scm.com/docs/git-http-fetch#Documentation/git-http-fetch.txt---index-pack-argsargs)--index-pack-args=<args>
+
+For internal use only. The command to run on the contents of the downloaded pack. Arguments are URL-encoded separated by spaces.
+
+[](https://git-scm.com/docs/git-http-fetch#Documentation/git-http-fetch.txt---recover)--recover
+
 Verify that everything reachable from target is fetched. Used after an earlier fetch is interrupted.
 ##  [](https://git-scm.com/docs/git-http-fetch#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### http-fetch
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)

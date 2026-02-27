@@ -16,7 +16,7 @@
   * [Community](https://git-scm.com/community)
 
 
-  * Table of Contents 
+  * Table of Contents
     * [NAME](https://git-scm.com/docs/git-index-pack#_name)
     * [SYNOPSIS](https://git-scm.com/docs/git-index-pack#_synopsis)
     * [DESCRIPTION](https://git-scm.com/docs/git-index-pack#_description)
@@ -33,8 +33,8 @@ Localized versions of **git-index-pack** manual
   4. [українська мова ](https://git-scm.com/docs/git-index-pack/uk)
   5. [简体中文 ](https://git-scm.com/docs/git-index-pack/zh_HANS-CN)
 
-Want to read in your language or fix typos?  
-[You can help translate this page](https://github.com/jnavila/git-manpages-l10n). 
+Want to read in your language or fix typos?
+[You can help translate this page](https://github.com/jnavila/git-manpages-l10n).
 [Topics ▾](https://git-scm.com/docs/git-index-pack)
 ### Setup and Config
   * [ git ](https://git-scm.com/docs/git)
@@ -219,78 +219,78 @@ _git index-pack_ --stdin [--fix-thin] [--keep] [-v] [-o <index-file>]
 
 ##  [](https://git-scm.com/docs/git-index-pack#_description)DESCRIPTION
 Reads a packed archive (.pack) from the specified file, builds a pack index file (.idx) for it, and optionally writes a reverse-index (.rev) for the specified pack. The packed archive, together with the pack index, can then be placed in the objects/pack/ directory of a Git repository.
-##  [](https://git-scm.com/docs/git-index-pack#_options)OPTIONS 
+##  [](https://git-scm.com/docs/git-index-pack#_options)OPTIONS
 
-[](https://git-scm.com/docs/git-index-pack#Documentation/git-index-pack.txt--v)-v 
-    
-Be verbose about what is going on, including progress status. 
+[](https://git-scm.com/docs/git-index-pack#Documentation/git-index-pack.txt--v)-v
 
-[](https://git-scm.com/docs/git-index-pack#Documentation/git-index-pack.txt--oindex-file)-o <index-file> 
-    
-Write the generated pack index into the specified file. Without this option the name of pack index file is constructed from the name of packed archive file by replacing .pack with .idx (and the program fails if the name of packed archive does not end with .pack). 
+Be verbose about what is going on, including progress status.
 
-[](https://git-scm.com/docs/git-index-pack#Documentation/git-index-pack.txt---rev-index)--rev-index 
+[](https://git-scm.com/docs/git-index-pack#Documentation/git-index-pack.txt--oindex-file)-o <index-file>
+
+Write the generated pack index into the specified file. Without this option the name of pack index file is constructed from the name of packed archive file by replacing .pack with .idx (and the program fails if the name of packed archive does not end with .pack).
+
+[](https://git-scm.com/docs/git-index-pack#Documentation/git-index-pack.txt---rev-index)--rev-index
 
 
-[](https://git-scm.com/docs/git-index-pack#Documentation/git-index-pack.txt---no-rev-index)--no-rev-index 
-    
-When this flag is provided, generate a reverse index (a `.rev` file) corresponding to the given pack. If `--verify` is given, ensure that the existing reverse index is correct. Takes precedence over `pack.writeReverseIndex`. 
+[](https://git-scm.com/docs/git-index-pack#Documentation/git-index-pack.txt---no-rev-index)--no-rev-index
 
-[](https://git-scm.com/docs/git-index-pack#Documentation/git-index-pack.txt---stdin)--stdin 
-    
-When this flag is provided, the pack is read from stdin instead and a copy is then written to <pack-file>. If <pack-file> is not specified, the pack is written to objects/pack/ directory of the current Git repository with a default name determined from the pack content. If <pack-file> is not specified consider using --keep to prevent a race condition between this process and _git repack_. 
+When this flag is provided, generate a reverse index (a `.rev` file) corresponding to the given pack. If `--verify` is given, ensure that the existing reverse index is correct. Takes precedence over `pack.writeReverseIndex`.
 
-[](https://git-scm.com/docs/git-index-pack#Documentation/git-index-pack.txt---fix-thin)--fix-thin 
-    
-Fix a "thin" pack produced by `git` `pack-objects` `--thin` (see [git-pack-objects[1]](https://git-scm.com/docs/git-pack-objects) for details) by adding the excluded objects the deltified objects are based on to the pack. This option only makes sense in conjunction with --stdin. 
+[](https://git-scm.com/docs/git-index-pack#Documentation/git-index-pack.txt---stdin)--stdin
 
-[](https://git-scm.com/docs/git-index-pack#Documentation/git-index-pack.txt---keep)--keep 
-    
-Before moving the index into its final destination create an empty .keep file for the associated pack file. This option is usually necessary with --stdin to prevent a simultaneous _git repack_ process from deleting the newly constructed pack and index before refs can be updated to use objects contained in the pack. 
+When this flag is provided, the pack is read from stdin instead and a copy is then written to <pack-file>. If <pack-file> is not specified, the pack is written to objects/pack/ directory of the current Git repository with a default name determined from the pack content. If <pack-file> is not specified consider using --keep to prevent a race condition between this process and _git repack_.
 
-[](https://git-scm.com/docs/git-index-pack#Documentation/git-index-pack.txt---keepmsg)--keep=<msg> 
-    
-Like --keep, create a .keep file before moving the index into its final destination. However, instead of creating an empty file place _< msg>_ followed by an LF into the .keep file. The _< msg>_ message can later be searched for within all .keep files to locate any which have outlived their usefulness. 
+[](https://git-scm.com/docs/git-index-pack#Documentation/git-index-pack.txt---fix-thin)--fix-thin
 
-[](https://git-scm.com/docs/git-index-pack#Documentation/git-index-pack.txt---index-versionversionoffset)--index-version=<version>[,<offset>] 
-    
-This is intended to be used by the test suite only. It allows to force the version for the generated pack index, and to force 64-bit index entries on objects located above the given offset. 
+Fix a "thin" pack produced by `git` `pack-objects` `--thin` (see [git-pack-objects[1]](https://git-scm.com/docs/git-pack-objects) for details) by adding the excluded objects the deltified objects are based on to the pack. This option only makes sense in conjunction with --stdin.
 
-[](https://git-scm.com/docs/git-index-pack#Documentation/git-index-pack.txt---strictmsg-idseverity)--strict[=<msg-id>=<severity>…​] 
-    
-Die, if the pack contains broken objects or links. An optional comma-separated list of _< msg-id>_`=`_< severity>_ can be passed to change the severity of some possible issues, e.g., `--strict="missingEmail=ignore,badTagName=error"`. See the entry for the `fsck.`_< msg-id>_ configuration options in [git-fsck[1]](https://git-scm.com/docs/git-fsck) for more information on the possible values of _< msg-id>_ and _< severity>_. 
+[](https://git-scm.com/docs/git-index-pack#Documentation/git-index-pack.txt---keep)--keep
 
-[](https://git-scm.com/docs/git-index-pack#Documentation/git-index-pack.txt---progress-title)--progress-title 
-    
+Before moving the index into its final destination create an empty .keep file for the associated pack file. This option is usually necessary with --stdin to prevent a simultaneous _git repack_ process from deleting the newly constructed pack and index before refs can be updated to use objects contained in the pack.
+
+[](https://git-scm.com/docs/git-index-pack#Documentation/git-index-pack.txt---keepmsg)--keep=<msg>
+
+Like --keep, create a .keep file before moving the index into its final destination. However, instead of creating an empty file place _< msg>_ followed by an LF into the .keep file. The _< msg>_ message can later be searched for within all .keep files to locate any which have outlived their usefulness.
+
+[](https://git-scm.com/docs/git-index-pack#Documentation/git-index-pack.txt---index-versionversionoffset)--index-version=<version>[,<offset>]
+
+This is intended to be used by the test suite only. It allows to force the version for the generated pack index, and to force 64-bit index entries on objects located above the given offset.
+
+[](https://git-scm.com/docs/git-index-pack#Documentation/git-index-pack.txt---strictmsg-idseverity)--strict[=<msg-id>=<severity>…​]
+
+Die, if the pack contains broken objects or links. An optional comma-separated list of _< msg-id>_`=`_< severity>_ can be passed to change the severity of some possible issues, e.g., `--strict="missingEmail=ignore,badTagName=error"`. See the entry for the `fsck.`_< msg-id>_ configuration options in [git-fsck[1]](https://git-scm.com/docs/git-fsck) for more information on the possible values of _< msg-id>_ and _< severity>_.
+
+[](https://git-scm.com/docs/git-index-pack#Documentation/git-index-pack.txt---progress-title)--progress-title
+
 For internal use only.
-Set the title of the progress bar. The title is "Receiving objects" by default and "Indexing objects" when `--stdin` is specified. 
+Set the title of the progress bar. The title is "Receiving objects" by default and "Indexing objects" when `--stdin` is specified.
 
-[](https://git-scm.com/docs/git-index-pack#Documentation/git-index-pack.txt---check-self-contained-and-connected)--check-self-contained-and-connected 
-    
-Die if the pack contains broken links. For internal use only. 
+[](https://git-scm.com/docs/git-index-pack#Documentation/git-index-pack.txt---check-self-contained-and-connected)--check-self-contained-and-connected
 
-[](https://git-scm.com/docs/git-index-pack#Documentation/git-index-pack.txt---fsck-objectsmsg-idseverity)--fsck-objects[=<msg-id>=<severity>…​] 
-    
+Die if the pack contains broken links. For internal use only.
+
+[](https://git-scm.com/docs/git-index-pack#Documentation/git-index-pack.txt---fsck-objectsmsg-idseverity)--fsck-objects[=<msg-id>=<severity>…​]
+
 Die if the pack contains broken objects, but unlike `--strict`, don’t choke on broken links. If the pack contains a tree pointing to a .gitmodules blob that does not exist, prints the hash of that blob (for the caller to check) after the hash that goes into the name of the pack/idx file (see "Notes").
-An optional comma-separated list of _< msg-id>_`=`_< severity>_ can be passed to change the severity of some possible issues, e.g., `--fsck-objects="missingEmail=ignore,badTagName=ignore"`. See the entry for the `fsck.`_< msg-id>_ configuration options in [git-fsck[1]](https://git-scm.com/docs/git-fsck) for more information on the possible values of _< msg-id>_ and _< severity>_. 
+An optional comma-separated list of _< msg-id>_`=`_< severity>_ can be passed to change the severity of some possible issues, e.g., `--fsck-objects="missingEmail=ignore,badTagName=ignore"`. See the entry for the `fsck.`_< msg-id>_ configuration options in [git-fsck[1]](https://git-scm.com/docs/git-fsck) for more information on the possible values of _< msg-id>_ and _< severity>_.
 
-[](https://git-scm.com/docs/git-index-pack#Documentation/git-index-pack.txt---threadsn)--threads=<n> 
-    
-Specifies the number of threads to spawn when resolving deltas. This requires that index-pack be compiled with pthreads otherwise this option is ignored with a warning. This is meant to reduce packing time on multiprocessor machines. The required amount of memory for the delta search window is however multiplied by the number of threads. Specifying 0 will cause Git to auto-detect the number of CPU’s and use maximum 3 threads. 
+[](https://git-scm.com/docs/git-index-pack#Documentation/git-index-pack.txt---threadsn)--threads=<n>
 
-[](https://git-scm.com/docs/git-index-pack#Documentation/git-index-pack.txt---max-input-sizesize)--max-input-size=<size> 
-    
-Die, if the pack is larger than <size>. 
+Specifies the number of threads to spawn when resolving deltas. This requires that index-pack be compiled with pthreads otherwise this option is ignored with a warning. This is meant to reduce packing time on multiprocessor machines. The required amount of memory for the delta search window is however multiplied by the number of threads. Specifying 0 will cause Git to auto-detect the number of CPU’s and use maximum 3 threads.
 
-[](https://git-scm.com/docs/git-index-pack#Documentation/git-index-pack.txt---object-formathash-algorithm)--object-format=<hash-algorithm> 
-    
+[](https://git-scm.com/docs/git-index-pack#Documentation/git-index-pack.txt---max-input-sizesize)--max-input-size=<size>
+
+Die, if the pack is larger than <size>.
+
+[](https://git-scm.com/docs/git-index-pack#Documentation/git-index-pack.txt---object-formathash-algorithm)--object-format=<hash-algorithm>
+
 Specify the given object format (hash algorithm) for the pack. The valid values are _sha1_ and (if enabled) _sha256_. The default is the algorithm for the current repository (set by `extensions.objectFormat`), or _sha1_ if no value is set or outside a repository.
 This option cannot be used with --stdin.
 Note: At present, there is no interoperability between SHA-256 repositories and SHA-1 repositories.
-Historically, we warned that SHA-256 repositories may later need backward incompatible changes when we introduce such interoperability features. Today, we only expect compatible changes. Furthermore, if such changes prove to be necessary, it can be expected that SHA-256 repositories created with today’s Git will be usable by future versions of Git without data loss. 
+Historically, we warned that SHA-256 repositories may later need backward incompatible changes when we introduce such interoperability features. Today, we only expect compatible changes. Furthermore, if such changes prove to be necessary, it can be expected that SHA-256 repositories created with today’s Git will be usable by future versions of Git without data loss.
 
-[](https://git-scm.com/docs/git-index-pack#Documentation/git-index-pack.txt---promisormessage)--promisor[=<message>] 
-    
+[](https://git-scm.com/docs/git-index-pack#Documentation/git-index-pack.txt---promisormessage)--promisor[=<message>]
+
 Before committing the pack-index, create a .promisor file for this pack. Particularly helpful when writing a promisor pack with --fix-thin since the name of the pack is not final until the pack has been fully written. If a _< message>_ is provided, then that content will be written to the .promisor file for future reference. See [partial clone](https://git-scm.com/docs/partial-clone) for more information.
 Also, if there are objects in the given pack that references non-promisor objects (in the repo), repacks those non-promisor objects into a promisor pack. This avoids a situation in which a repo has non-promisor objects that are accessible through promisor objects.
 Requires <pack-file> to not be specified.
@@ -299,6 +299,6 @@ Once the index has been created, the hash that goes into the name of the pack/id
 ##  [](https://git-scm.com/docs/git-index-pack#_git)GIT
 Part of the [git[1]](https://git-scm.com/docs/git) suite
 ### index-pack
-[About this site](https://git-scm.com/site)  
-Patches, suggestions, and comments are welcome. 
+[About this site](https://git-scm.com/site)
+Patches, suggestions, and comments are welcome.
 Git is a member of [Software Freedom Conservancy](https://git-scm.com/sfc)
