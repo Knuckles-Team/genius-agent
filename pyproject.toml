@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "genius-agent"
-version = "2.13.38"
+version = "2.13.40"
 description = "GeniusAgent Search Engine MCP Server for Agentic AI!"
 readme = "README.md"
 authors = [{ name = "Audel Rouhi", email = "knucklessg1@gmail.com" }]
@@ -18,16 +18,16 @@ classifiers = [
 requires-python = ">=3.10"
 dependencies = [
     "universal-skills[web-crawler,web-search]",
-    "agent-utilities[agent,logfire]>=0.2.23"]
+    "agent-utilities[agent,logfire]>=0.2.25"]
 
 [project.scripts]
-genius-agent = "genius_agent.agent:agent_server"
+genius-agent = "genius_agent.agent_server:agent_server"
 
 [tool.setuptools.packages.find]
 where = ["."]
 
 [tool.setuptools.package-data]
-genius_agent = [ "mcp_config.json", "agent/**"]
+genius_agent = [ "mcp_config.json", "agent_data/**"]
 
 [tool.setuptools]
 include-package-data = true
