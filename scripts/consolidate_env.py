@@ -1,0 +1,137 @@
+import os
+import re
+import yaml
+from pathlib import Path
+
+
+def parse_env_file(file_path):
+    variables = {}
+    if not os.path.exists(file_path):
+        return variables
+
+    with open(file_path, "r") as f:
+        for line in f:
+            line = line.strip()
+            if not line or line.startswith("#"):
+                continue
+            if "=" in line:
+                key, value = line.split("=", 1)
+                variables[key.strip()] = value.strip()
+    return variables
+
+
+def parse_compose_file(file_path):
+    variables = set()
+    if not os.path.exists(file_path):
+        return variables
+
+    try:
+        with open(file_path, "r") as f:
+            data = yaml.safe_load(f)
+            if not data or "services" not in data:
+                return variables
+
+            for service_name, service_config in data["services"].items():
+                env_config = service_config.get("environment")
+                if not env_config:
+                    continue
+
+                if isinstance(env_config, list):
+                    for entry in env_config:
+                        if "=" in entry:
+                            key = entry.split("=", 1)[0].strip()
+                            variables.add(key)
+                        elif ":" in entry:
+                            # Some use key: value in list? Less common in env sections but possible
+                            key = entry.split(":", 1)[0].strip()
+                            variables.add(key)
+                        else:
+                            # Just a key, likely ${KEY}
+                            variables.add(entry.strip())
+                elif isinstance(env_config, dict):
+                    for key in env_config.keys():
+                        variables.add(key)
+    except Exception as e:
+        print(f"Error parsing {file_path}: {e}")
+
+    return variables
+
+
+def main():
+    root_dir = Path("/home/genius/Workspace/agent-packages")
+    genius_agent_dir = root_dir / "genius-agent"
+
+    master_env = {}
+    master_compose_vars = set()
+
+    # Order matters for "first occurrence wins" or we could do "last occurrence wins"
+    # Let's collect all and prioritize genius-agent's own values first, then others.
+
+    # 1. Start with genius-agent's own .env
+    genius_env_path = genius_agent_dir / ".env"
+    master_env.update(parse_env_file(genius_env_path))
+
+    # 2. Add others
+    for env_file in root_dir.glob("*/.env"):
+        if env_file.parent.name == "genius-agent":
+            continue
+        new_vars = parse_env_file(env_file)
+        for k, v in new_vars.items():
+            if k not in master_env:
+                master_env[k] = v
+
+    # 3. Handle root .env if it exists
+    root_env = root_dir / ".env"
+    if root_env.exists():
+        new_vars = parse_env_file(root_env)
+        for k, v in new_vars.items():
+            if k not in master_env:
+                master_env[k] = v
+
+    # 4. Collect variables from all compose files
+    for compose_file in root_dir.glob("**/compose.y*ml"):
+        master_compose_vars.update(parse_compose_file(compose_file))
+
+    # 5. Ensure all compose variables are in master_env (even if empty)
+    for var in master_compose_vars:
+        if var not in master_env:
+            # We don't have a value, so we just set it to empty or a placeholder
+            # If it's a standard one like PROVIDER, it might already be there.
+            # Only add if it looks like a meaningful config var (all caps usually)
+            if var.isupper():
+                master_env[var] = ""
+
+    # 6. Write master .env
+    with open(genius_env_path, "w") as f:
+        f.write("# Master .env consolidated from agent-packages\n")
+        # Sort to keep it clean
+        for k in sorted(master_env.keys()):
+            f.write(f"{k}={master_env[k]}\n")
+
+    print(f"Updated {genius_env_path} with {len(master_env)} variables.")
+
+    # 7. Update genius-agent/compose.yaml
+    genius_compose_path = genius_agent_dir / "compose.yaml"
+    if genius_compose_path.exists():
+        with open(genius_compose_path, "r") as f:
+            compose_data = yaml.safe_load(f)
+
+        if "services" in compose_data and "genius-agent" in compose_data["services"]:
+            # We want to put ALL unique variables into the genius-agent environment section
+            # Format: - "KEY=${KEY}"
+            env_list = []
+            for k in sorted(master_env.keys()):
+                # Avoid duplicates that might already be there with hardcoded values
+                # Actually, the user wants the master agent to access ALL these values.
+                # So they should be passed in.
+                env_list.append(f"{k}=${{{k}}}")
+
+            compose_data["services"]["genius-agent"]["environment"] = env_list
+
+            with open(genius_compose_path, "w") as f:
+                yaml.dump(compose_data, f, sort_keys=False, default_flow_style=False)
+            print(f"Updated {genius_compose_path} environment section.")
+
+
+if __name__ == "__main__":
+    main()

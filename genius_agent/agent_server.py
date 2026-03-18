@@ -1,7 +1,10 @@
-#!/usr/bin/python
-# coding: utf-8
 import os
 import logging
+import warnings
+
+# Suppress RequestsDependencyWarning due to chardet 6.x / requests 2.32.x mismatch
+# We use a message-based filter to avoid importing from requests, which triggers the warning
+warnings.filterwarnings("ignore", message=".*urllib3.*or chardet.*")
 
 from agent_utilities import (
     build_system_prompt_from_workspace,
@@ -11,7 +14,7 @@ from agent_utilities import (
     load_identity,
 )
 
-__version__ = "2.13.42"
+__version__ = "2.13.43"
 
 logging.basicConfig(
     level=logging.INFO,
