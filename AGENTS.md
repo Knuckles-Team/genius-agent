@@ -5,8 +5,8 @@
 - Core Libraries: `agent-utilities`, `fastmcp`, `pydantic-ai`
 - Key principles: Functional patterns, Pydantic for data validation, asynchronous tool execution.
 - Architecture:
-    - `mcp.py`: Main MCP server entry point and tool registration.
-    - `agent.py`: Pydantic AI agent definition and logic.
+    - `mcp_server.py`: Main MCP server entry point and tool registration.
+    - `agent_server.py`: Pydantic AI agent definition and logic.
     - `skills/`: Directory containing modular agent skills (if applicable).
     - `agent/`: Internal agent logic and prompt templates.
 
@@ -51,14 +51,14 @@ pre-commit run --all-files
 # genius-agent\ngenius_agent.agent:agent_server
 
 ## Project Structure Quick Reference
-- MCP Entry Point → `mcp.py`
-- Agent Entry Point → `agent.py`
+- MCP Entry Point → `mcp_server.py`
+- Agent Entry Point → `agent_server.py`
 - Source Code → `genius_agent/`
 - Skills → `skills/` (if exists)
 
 ### File Tree
 ```text
-├── .bumpversion.cfg\n├── .dockerignore\n├── .env\n├── .gitattributes\n├── .github\n│   └── workflows\n│       └── pipeline.yml\n├── .gitignore\n├── .pre-commit-config.yaml\n├── .pytest_cache\n│   ├── .gitignore\n│   ├── CACHEDIR.TAG\n│   ├── README.md\n│   └── v\n│       └── cache\n├── AGENTS.md\n├── Dockerfile\n├── LICENSE\n├── MANIFEST.in\n├── README.md\n├── compose.yaml\n├── debug.Dockerfile\n├── genius_agent\n│   ├── __init__.py\n│   ├── __main__.py\n│   ├── agent\n│   │   ├── AGENTS.md\n│   │   ├── CRON.md\n│   │   ├── CRON_LOG.md\n│   │   ├── HEARTBEAT.md\n│   │   ├── IDENTITY.md\n│   │   ├── MEMORY.md\n│   │   ├── USER.md\n│   │   ├── mcp_config.json\n│   │   └── templates.py\n│   └── agent.py\n├── pyproject.toml\n├── pytest.ini\n├── requirements.txt\n├── scripts\n│   ├── check_otel_integration.py\n│   ├── inspect_falkor.py\n│   ├── validate_a2a_agent.py\n│   ├── validate_agent.py\n│   ├── validate_base_services.sh\n│   └── validate_falkordb.py\n└── tests\n    ├── verify_patch.py\n    └── verify_skills_loading.py
+├── .bumpversion.cfg\n├── .dockerignore\n├── .env\n├── .gitattributes\n├── .github\n│   └── workflows\n│       └── pipeline.yml\n├── .gitignore\n├── .pre-commit-config.yaml\n├── .pytest_cache\n│   ├── .gitignore\n│   ├── CACHEDIR.TAG\n│   ├── README.md\n│   └── v\n│       └── cache\n├── AGENTS.md\n├── Dockerfile\n├── LICENSE\n├── MANIFEST.in\n├── README.md\n├── compose.yaml\n├── debug.Dockerfile\n├── genius_agent\n│   ├── __init__.py\n│   ├── __main__.py\n│   ├── agent\n│   │   ├── AGENTS.md\n│   │   ├── CRON.md\n│   │   ├── CRON_LOG.md\n│   │   ├── HEARTBEAT.md\n│   │   ├── IDENTITY.md\n│   │   ├── MEMORY.md\n│   │   ├── USER.md\n│   │   ├── mcp_config.json\n│   │   └── templates.py\n│   └── agent_server.py\n├── pyproject.toml\n├── pytest.ini\n├── requirements.txt\n├── scripts\n│   ├── check_otel_integration.py\n│   ├── inspect_falkor.py\n│   ├── validate_a2a_agent_server.py\n│   ├── validate_agent_server.py\n│   ├── validate_base_services.sh\n│   └── validate_falkordb.py\n└── tests\n    ├── verify_patch.py\n    └── verify_skills_loading.py
 ```
 
 ## Code Style & Conventions
@@ -98,7 +98,7 @@ async def my_tool(param: str) -> str:
 - Use `agent-utilities` base classes.
 
 **Ask first:**
-- Major refactors of `mcp.py` or `agent.py`.
+- Major refactors of `mcp_server.py` or `agent_server.py`.
 - Deleting or renaming public tool functions.
 
 **Never do:**

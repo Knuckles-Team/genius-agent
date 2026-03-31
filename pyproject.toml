@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "genius-agent"
-version = "2.13.49"
-description = "GeniusAgent Search Engine MCP Server for Agentic AI!"
+version = "2.13.50"
+description = "GeniusAgent Search Engine for Agentic AI!"
 readme = "README.md"
 authors = [{ name = "Audel Rouhi", email = "knucklessg1@gmail.com" }]
 license = { text = "MIT" }
@@ -22,6 +22,7 @@ dependencies = [
     "agent-utilities[agent,logfire]>=0.2.31"]
 
 [project.scripts]
+genius-mcp = "genius_agent.mcp_server:mcp_server"
 genius-agent = "genius_agent.agent_server:agent_server"
 
 [tool.setuptools.packages.find]

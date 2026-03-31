@@ -3,7 +3,6 @@ import os
 import logging
 import warnings
 
-# Suppress RequestsDependencyWarning and FastMCP DeprecationWarnings
 warnings.filterwarnings("ignore", message=".*urllib3.*or chardet.*")
 warnings.filterwarnings("ignore", category=DeprecationWarning, module="fastmcp")
 
@@ -16,7 +15,7 @@ from agent_utilities import (
     load_identity,
 )
 
-__version__ = "2.13.49"
+__version__ = "2.13.50"
 
 logging.basicConfig(
     level=logging.INFO,
@@ -25,46 +24,80 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# Load identity and system prompt from workspace
+
 initialize_workspace()
 meta = load_identity()
-DEFAULT_AGENT_NAME = os.getenv("DEFAULT_AGENT_NAME", meta["name"])
-DEFAULT_AGENT_DESCRIPTION = os.getenv("AGENT_DESCRIPTION", meta["description"])
-DEFAULT_AGENT_SYSTEM_PROMPT = os.getenv(
-    "AGENT_SYSTEM_PROMPT", meta.get("content") or build_system_prompt_from_workspace()
+
+from agent_utilities.config import (
+    DEFAULT_AGENT_NAME as CFG_NAME,
+    DEFAULT_AGENT_DESCRIPTION as CFG_DESC,
+    DEFAULT_AGENT_SYSTEM_PROMPT as CFG_PROMPT,
+)
+
+DEFAULT_AGENT_NAME = CFG_NAME or meta["name"]
+DEFAULT_AGENT_DESCRIPTION = CFG_DESC or meta["description"]
+DEFAULT_AGENT_SYSTEM_PROMPT = (
+    CFG_PROMPT or meta.get("content") or build_system_prompt_from_workspace()
 )
 
 
 def agent_template(mcp_url: str = None, mcp_config: str = None, **kwargs):
-    """Factory function returning the fully initialized graph for execution."""
-    from agent_utilities import create_graph_agent
-    from genius_agent.graph_config import get_dynamic_config
+    from agent_utilities import create_master_graph
 
-    tag_prompts, tag_env_vars, sub_agents = get_dynamic_config()
-
-    # Pass through standard MCP configuration
+    effective_mcp_config = mcp_config or os.getenv("MCP_CONFIG") or "mcp_config.json"
     effective_mcp_url = mcp_url or os.getenv("MCP_URL")
-    effective_mcp_config = mcp_config or os.getenv("MCP_CONFIG")
-    mcp_toolsets = kwargs.get("mcp_toolsets", [])
 
-    return create_graph_agent(
-        mcp_url=effective_mcp_url,
-        mcp_config=effective_mcp_config or "",
-        mcp_toolsets=mcp_toolsets,
+    mcp_toolsets = []
+    if effective_mcp_config:
+        from agent_utilities.mcp_utilities import load_mcp_config
+
+        try:
+
+            config_path = effective_mcp_config
+            if not os.path.isabs(config_path) and "/" not in config_path:
+                from importlib.resources import files, as_file
+
+                try:
+
+                    pkg_res = files("genius_agent") / config_path
+                    if pkg_res.is_file():
+                        with as_file(pkg_res) as path:
+                            config_path = str(path)
+                except Exception:
+                    pass
+
+                if not os.path.isabs(config_path):
+                    from agent_utilities import get_workspace_path
+
+                    ws_config = get_workspace_path(config_path)
+                    if ws_config.exists():
+                        config_path = str(ws_config)
+
+            if os.path.exists(config_path):
+                mcp_toolsets = load_mcp_config(config_path)
+                logger.info(
+                    f"genius-agent: Loaded {len(mcp_toolsets)} MCP servers from {config_path}"
+                )
+        except Exception as e:
+            logger.error(
+                f"genius-agent: Failed to load MCP config {effective_mcp_config}: {e}"
+            )
+
+    return create_master_graph(
         name=f"{DEFAULT_AGENT_NAME} Master Graph",
-        tag_prompts=tag_prompts,
-        tag_env_vars=tag_env_vars,
-        sub_agents=sub_agents,
+        skill_agents=None,
+        mcp_url=effective_mcp_url if effective_mcp_url else None,
+        mcp_config=effective_mcp_config if effective_mcp_config else None,
+        mcp_toolsets=mcp_toolsets,
         **kwargs,
     )
 
 
 def agent_server():
-    # Suppress RequestsDependencyWarning and FastMCP DeprecationWarnings
+
     warnings.filterwarnings("ignore", message=".*urllib3.*or chardet.*")
     warnings.filterwarnings("ignore", category=DeprecationWarning, module="fastmcp")
 
-    print(f"{DEFAULT_AGENT_NAME} v{__version__}", file=sys.stderr)
     print(f"{DEFAULT_AGENT_NAME} v{__version__}", file=sys.stderr)
     parser = create_agent_parser()
 
@@ -74,7 +107,6 @@ def agent_server():
         logging.getLogger().setLevel(logging.DEBUG)
         logger.debug("Debug mode enabled")
 
-    # Create graph and config using standardized template
     graph_bundle = agent_template(
         provider=args.provider,
         agent_model=args.model_id,
@@ -83,9 +115,10 @@ def agent_server():
         custom_skills_directory=args.custom_skills_directory,
         debug=args.debug,
         ssl_verify=not args.insecure,
+        current_host=args.host,
+        current_port=args.port,
     )
 
-    # Start server using the pre-built graph bundle
     create_graph_agent_server(
         graph_bundle=graph_bundle,
         host=args.host,

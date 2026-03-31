@@ -6,13 +6,13 @@ import logfire
 from dotenv import load_dotenv
 from pydantic_ai import Agent
 
-# Setup logging
+               
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
 def check_otel():
-    # Load .env
+               
     load_dotenv()
 
     print("--- OpenTelemetry Integration Check ---")
@@ -35,7 +35,7 @@ def check_otel():
         print("ERROR: OTEL_EXPORTER_OTLP_ENDPOINT is missing.")
         return
 
-    # Mime the logic in agent_utilities.py
+                                          
     if not os.getenv("OTEL_EXPORTER_OTLP_HEADERS") and pk and sk:
         auth_string = f"{pk}:{sk}"
         auth_encoded = base64.b64encode(auth_string.encode("utf-8")).decode("utf-8")
@@ -59,8 +59,8 @@ def check_otel():
 
     print("\nSending test trace via pydantic-ai...")
     try:
-        # We don't need a real model for a simple trace, or we can use a mock
-        # But logfire instruments the Agent.run call.
+                                                                             
+                                                     
         agent = Agent("openai:gpt-4o", system_prompt="You are a validator.")
 
         with logfire.span("Verification Span"):

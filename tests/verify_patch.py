@@ -1,6 +1,6 @@
 import sys
 
-# Add the package root to path so we can import genius_agent
+                                                            
 sys.path.append("/home/genius/Workspace/agent-packages/genius-agent")
 
 print("Attempting to import genius_mcp...")

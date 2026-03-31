@@ -5,6 +5,15 @@ __pycache__/
 
 /.ruff_cache/
 /mcp/
+/genius_agent/A2A_AGENTS.md
+/genius_agent/CRON.md
+/genius_agent/CRON_LOG.md
+/genius_agent/IDENTITY.md
+/genius_agent/MEMORY.md
+/genius_agent/USER.md
+/genius_agent/icon.png
+/genius_agent/mcp_config.json
+/genius_agent/chats
 
 # C extensions
 *.so

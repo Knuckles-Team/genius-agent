@@ -21,7 +21,7 @@ def get_falkordb_params(uri):
 
 
 async def test_driver_init():
-    # Test with the standard URI format found in compose.yaml
+                                                             
     uri = "redis://falkordb:6379"
     password = os.environ.get("GRAPHDB_PASSWORD", "letmein")
     host, port = get_falkordb_params(uri)
