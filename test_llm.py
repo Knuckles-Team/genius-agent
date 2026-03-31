@@ -1,6 +1,6 @@
 import httpx
 import asyncio
-import os
+
 
 async def test_llm():
     url = "http://10.0.0.18:1234/v1/chat/completions"
@@ -8,9 +8,9 @@ async def test_llm():
     payload = {
         "model": "nvidia/nemotron-3-super",
         "messages": [{"role": "user", "content": "hi"}],
-        "max_tokens": 10
+        "max_tokens": 10,
     }
-    
+
     print(f"Connecting to {url}...")
     try:
         async with httpx.AsyncClient(timeout=30) as client:
@@ -19,6 +19,7 @@ async def test_llm():
             print(f"Response: {response.text}")
     except Exception as e:
         print(f"Error: {e}")
+
 
 if __name__ == "__main__":
     asyncio.run(test_llm())

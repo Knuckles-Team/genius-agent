@@ -1,6 +1,5 @@
 import sys
 
-                                                            
 sys.path.append("/home/genius/Workspace/agent-packages/genius-agent")
 
 print("Attempting to import genius_mcp...")
