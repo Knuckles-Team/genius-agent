@@ -20,7 +20,7 @@
 ![PyPI - Wheel](https://img.shields.io/pypi/wheel/genius-agent)
 ![PyPI - Implementation](https://img.shields.io/pypi/implementation/genius-agent)
 
-*Version: 2.13.52*
+*Version: 2.13.53*
 
 Deploy agents to solve problems using Autogen
 
