@@ -1,5 +1,4 @@
 import sys
-import os
 import logging
 import warnings
 
@@ -44,51 +43,8 @@ DEFAULT_AGENT_SYSTEM_PROMPT = (
 def agent_template(mcp_url: str = None, mcp_config: str = None, **kwargs):
     from agent_utilities import create_master_graph
 
-    effective_mcp_config = mcp_config or os.getenv("MCP_CONFIG") or "mcp_config.json"
-    effective_mcp_url = mcp_url or os.getenv("MCP_URL")
-
-    mcp_toolsets = []
-    if effective_mcp_config:
-        from agent_utilities.mcp_utilities import load_mcp_config
-
-        try:
-
-            config_path = effective_mcp_config
-            if not os.path.isabs(config_path) and "/" not in config_path:
-                from importlib.resources import files, as_file
-
-                try:
-
-                    pkg_res = files("genius_agent") / config_path
-                    if pkg_res.is_file():
-                        with as_file(pkg_res) as path:
-                            config_path = str(path)
-                except Exception:
-                    pass
-
-                if not os.path.isabs(config_path):
-                    from agent_utilities import get_workspace_path
-
-                    ws_config = get_workspace_path(config_path)
-                    if ws_config.exists():
-                        config_path = str(ws_config)
-
-            if os.path.exists(config_path):
-                mcp_toolsets = load_mcp_config(config_path)
-                logger.info(
-                    f"genius-agent: Loaded {len(mcp_toolsets)} MCP servers from {config_path}"
-                )
-        except Exception as e:
-            logger.error(
-                f"genius-agent: Failed to load MCP config {effective_mcp_config}: {e}"
-            )
-
     return create_master_graph(
         name=f"{DEFAULT_AGENT_NAME} Master Graph",
-        skill_agents=None,
-        mcp_url=effective_mcp_url if effective_mcp_url else None,
-        mcp_config=effective_mcp_config if effective_mcp_config else None,
-        mcp_toolsets=mcp_toolsets,
         **kwargs,
     )
 
