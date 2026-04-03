@@ -56,9 +56,14 @@ ENV HOST=${HOST} \
 WORKDIR /app
 COPY . /app
 RUN apt update \
-    && apt upgrade -y \
-    && apt install -y ripgrep tree fd-find curl build-essential libxml2-dev libxslt1-dev python3-dev \
-    && curl -LsSf https://astral.sh/uv/install.sh | sh \
-    && uv pip install --system --upgrade --verbose --no-cache --break-system-packages --prerelease=allow .
+     && apt upgrade -y \
+     && apt install -y ripgrep tree fd-find curl build-essential libxml2-dev libxslt1-dev python3-dev \
+     && curl -LsSf https://astral.sh/uv/install.sh | sh \
+     && curl -sS https://starship.rs/install.sh | sh -s -- --yes \
+    && mkdir -p /root/.config \
+    && echo 'eval "$(starship init bash)"' >> /root/.bashrc \ \
+    uv pip install --system --upgrade --verbose --no-cache --break-system-packages --prerelease=allow .
+
+COPY starship.toml /root/.config/starship.toml
 
 CMD ["genius-agent"]
