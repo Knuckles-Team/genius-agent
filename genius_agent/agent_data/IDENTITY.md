@@ -29,39 +29,6 @@ You have 1 primary capability:
     - Use `create_skill` to scaffold new capabilities and `edit_skill` / `get_skill_content` to refine them.
     - Use `delete_skill` to remove workspace-level skills that are no longer needed.
 
-
-### Workflow for Workspace Orchestration:
-- **Missing Sub-Agent Installation**:
-    - If you need a specialized agent that is not yet installed, use the **systems-manager** agent to perform a `pip install <package_name>`.
-    - **Mapping of Agent Templates to Pip Packages**:
-        - `adguard-home`: `adguard-home-agent[mcp,agent]`
-        - `ansible-tower`: `ansible-tower-mcp[mcp,agent]`
-        - `archivebox`: `archivebox-api[mcp,agent]`
-        - `arr`: `arr-mcp[mcp,agent]`
-        - `audio-transcriber`: `audio-transcriber[mcp,agent]`
-        - `container-manager`: `container-manager-mcp[mcp,agent]`
-        - `documentdb`: `documentdb-mcp[mcp,agent]`
-        - `github`: `github-agent`
-        - `gitlab`: `gitlab-api[mcp,agent]`
-        - `jellyfin`: `jellyfin-mcp[mcp,agent]`
-        - `leanix`: `leanix-agent[mcp,agent]`
-        - `mealie`: `mealie-mcp[mcp,agent]`
-        - `media-downloader`: `media-downloader[mcp,agent]`
-        - `microsoft`: `microsoft-agent[mcp,agent]`
-        - `nextcloud`: `nextcloud-agent[mcp,agent]`
-        - `plane`: `plane-agent`
-        - `portainer`: `portainer-agent[mcp,agent]`
-        - `repository-manager`: `repository-manager[mcp,agent]`
-        - `searxng`: `searxng-mcp[mcp,agent]`
-        - `servicenow`: `servicenow-api[mcp,agent]`
-        - `stirlingpdf`: `stirlingpdf-agent[mcp,agent]`
-        - `systems-manager`: `systems-manager[mcp,agent]`
-        - `tunnel-manager`: `tunnel-manager[mcp,agent]`
-        - `vector`: `vector-mcp[mcp,agent]`
-        - `wger`: `wger-agent[mcp,agent]`
-    - Once installed, you can proceed to `delegate_to_specialized_agent`.
-
-
 ---
 
 ### Key Capabilities

@@ -1,18 +1,12 @@
-# AGENTS.md - Multi-Agent Registry
+# AGENTS.md - Known A2A Peer Agents
+Last updated: 2026-02-21 01:19
 
-This registry tracks the peer agents and specialized workers that the **Genius Agent** can orchestrate.
+This file is the local registry of other A2A agents this agent can discover and call.
 
-## Orchestration Strategy
-The Genius Agent acts as the **Coordinator**. It delegates domain-specific tasks to peers and sub-agents, then synthesizes the results.
+## Registered A2A Peers
 
-## Registered Peers
-
-| Name | Role | Capability | URL |
-|------|------|------------|-----|
-| SearchMaster | Web Search & Research | `web-search`, `web-crawler` | http://search-master.arpa/a2a/ |
-| CodeArchitect | Code Review & Refactoring | `agent-builder`, `mcp-builder` | http://code-architect.arpa/a2a/ |
-
-## Sub-Agents (Dynamic)
-The Genius Agent can spawn dynamic sub-agents using the `agent-spawner` skill when isolated execution environments are required for high-risk or high-compute tasks.
+| Name | Endpoint URL | Description | Capabilities | Auth | Notes / Last Connected |
+|------|--------------|-------------|--------------|------|------------------------|
+|      |              |             |              |      |                        |
 
 *Add new rows manually or let the agent call `register_a2a_peer(...)`.*
