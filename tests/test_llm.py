@@ -6,7 +6,7 @@ async def test_llm():
     url = "http://10.0.0.18:1234/v1/chat/completions"
     headers = {"Authorization": "Bearer llama"}
     payload = {
-        "model": "google/gemma-4-31b",
+        "model": "nvidia/nemotron-3-super",
         "messages": [{"role": "user", "content": "hi"}],
         "max_tokens": 10,
     }
