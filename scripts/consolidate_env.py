@@ -58,42 +58,39 @@ def parse_compose_file(file_path):
 
 
 def main():
-    root_dir = Path("/home/genius/Workspace/agent-packages")
-    genius_agent_dir = root_dir / "genius-agent"
-
+    root_dir = Path(__file__).parent.parent.parent.parent
+    genius_agent_dir = Path(__file__).parent.parent
     master_env = {}
     master_compose_vars = set()
 
     genius_env_path = genius_agent_dir / ".env"
-    master_env.update(parse_env_file(genius_env_path))
+    master_env.update(parse_env_file(str(genius_env_path)))
 
     for env_file in root_dir.glob("*/.env"):
         if env_file.parent.name == "genius-agent":
             continue
-        new_vars = parse_env_file(env_file)
+        new_vars = parse_env_file(str(env_file))
         for k, v in new_vars.items():
             if k not in master_env:
                 master_env[k] = v
 
     root_env = root_dir / ".env"
     if root_env.exists():
-        new_vars = parse_env_file(root_env)
+        new_vars = parse_env_file(str(root_env))
         for k, v in new_vars.items():
             if k not in master_env:
                 master_env[k] = v
 
     for compose_file in root_dir.glob("**/compose.y*ml"):
-        master_compose_vars.update(parse_compose_file(compose_file))
+        master_compose_vars.update(parse_compose_file(str(compose_file)))
 
     for var in master_compose_vars:
         if var not in master_env:
-
             if var.isupper():
                 master_env[var] = ""
 
     with open(genius_env_path, "w") as f:
         f.write("# Master .env consolidated from agent-packages\n")
-
         for k in sorted(master_env.keys()):
             f.write(f"{k}={master_env[k]}\n")
 
@@ -105,10 +102,8 @@ def main():
             compose_data = yaml.safe_load(f)
 
         if "services" in compose_data and "genius-agent" in compose_data["services"]:
-
             env_list = []
             for k in sorted(master_env.keys()):
-
                 env_list.append(f"{k}=${{{k}}}")
 
             compose_data["services"]["genius-agent"]["environment"] = env_list

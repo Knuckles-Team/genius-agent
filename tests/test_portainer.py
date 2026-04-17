@@ -1,10 +1,6 @@
 import asyncio
 import sys
 
-# Add project roots to sys.path
-sys.path.append("/home/genius/Workspace/agent-packages/agent-utilities")
-sys.path.append("/home/genius/Workspace/agent-packages/agents/genius-agent")
-sys.path.append("/home/genius/Workspace/agent-packages/agents/portainer-agent")
 
 from agent_utilities import initialize_graph_from_workspace, run_graph
 

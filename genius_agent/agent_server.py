@@ -28,7 +28,7 @@ from agent_utilities import (
     load_identity,
 )
 
-__version__ = "2.13.55"
+__version__ = "2.13.56"
 
 logging.basicConfig(
     level=logging.INFO,
@@ -58,6 +58,8 @@ DEFAULT_AGENT_SYSTEM_PROMPT = os.getenv(
 def agent_server():
 
     print(f"{DEFAULT_AGENT_NAME} v{__version__}", file=sys.stderr)
+    logger.info("Application startup complete")
+
     parser = create_agent_parser()
     args = parser.parse_args()
 
