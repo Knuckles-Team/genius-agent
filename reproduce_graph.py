@@ -1,6 +1,6 @@
 import asyncio
-import os
 import logging
+import os
 import sys
 
 sys.path.append(os.getcwd())
@@ -8,8 +8,8 @@ sys.path.append(os.getcwd())
 
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
-from agent_utilities.base_utilities import load_env_vars
 from agent_utilities import create_master_graph, run_graph
+from agent_utilities.base_utilities import load_env_vars
 
 logging.basicConfig(
     level=logging.DEBUG,
@@ -31,7 +31,6 @@ async def main():
     print("-" * 50)
 
     try:
-
         print("Initializing Master Graph (Discovering Agents)...")
         graph_bundle = create_master_graph(
             name="Manual Test Master Graph",
@@ -41,7 +40,7 @@ async def main():
 
         print("\nExecuting graph.run()...")
 
-        eq = asyncio.Queue()
+        eq: asyncio.Queue = asyncio.Queue()
 
         async def event_consumer():
             while True:

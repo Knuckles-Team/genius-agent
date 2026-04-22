@@ -1,8 +1,7 @@
 #!/usr/bin/python
-# coding: utf-8
+import logging
 import os
 import sys
-import logging
 import warnings
 
 # Filter RequestsDependencyWarning early to prevent log spam

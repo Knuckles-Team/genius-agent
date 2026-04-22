@@ -5,7 +5,7 @@ from pathlib import Path
 
 
 def parse_env_file(file_path):
-    variables = {}
+    variables: dict[str, str] = {}
     if not os.path.exists(file_path):
         return variables
 
@@ -21,7 +21,7 @@ def parse_env_file(file_path):
 
 
 def parse_compose_file(file_path):
-    variables = set()
+    variables: set[str] = set()
     if not os.path.exists(file_path):
         return variables
 

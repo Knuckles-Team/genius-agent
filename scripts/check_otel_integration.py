@@ -23,8 +23,8 @@ def check_otel():
 
     print(f"ENABLE_OTEL: {enable_otel}")
     print(f"OTLP Endpoint: {endpoint}")
-    print(f"Public Key: {pk[:10]}...{pk[-4:] if pk else ''}")
-    print(f"Secret Key: {sk[:10]}...{sk[-4:] if sk else ''}")
+    print(f"Public Key: {pk[:10] if pk else ''}...{pk[-4:] if pk else ''}")
+    print(f"Secret Key: {sk[:10] if sk else ''}...{sk[-4:] if sk else ''}")
 
     if not enable_otel:
         print("ERROR: ENABLE_OTEL is not set to True. OTel export will be disabled.")
