@@ -54,12 +54,12 @@ ENV HOST=${HOST} \
 
 RUN apt update \
      && apt upgrade -y \
-     && apt install -y ripgrep tree fd-find curl build-essential libxml2-dev libxslt1-dev python3-dev \
+     && apt install -y default-jre ripgrep tree fd-find curl build-essential libxml2-dev libxslt1-dev python3-dev \
      && curl -LsSf https://astral.sh/uv/install.sh | sh \
      && uv pip install --system --upgrade --verbose --no-cache --break-system-packages --prerelease=allow genius-agent>=2.13.56 \
      && curl -sS https://starship.rs/install.sh | sh -s -- --yes \
     && mkdir -p /root/.config \
-    && echo 'eval "$(starship init bash)"' >> /root/.bashrc \ \
+    && echo 'eval "$(starship init bash)"' >> /root/.bashrc \
     crawl4ai-setup
 
 COPY starship.toml /root/.config/starship.toml

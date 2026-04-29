@@ -18,6 +18,8 @@ import json
 import asyncio
 import anyio
 import pytest
+
+pytestmark = pytest.mark.integration
 from pathlib import Path
 from dotenv import load_dotenv
 
@@ -33,7 +35,7 @@ if _ENV_FILE.exists():
 # MCP config path (relative to genius-agent root, or override via env)
 _MCP_CONFIG_PATH = os.environ.get(
     "MCP_CONFIG",
-    str(Path(__file__).parents[1] / "genius_agent" / "agent_data" / "mcp_config.json"),
+    str(Path(__file__).parents[1] / "genius_agent" / "mcp_config.json"),
 )
 
 # Workspace dir is the genius-agent package root
@@ -83,10 +85,14 @@ def graph_bundle():
 def _load_registry():
     """Helper: ensure workspace is initialized before loading the MCP registry."""
     from agent_utilities import initialize_workspace
-    from agent_utilities.graph.config_helpers import load_mcp_agents_registry
+    from agent_utilities.graph.config_helpers import load_node_agents_registry
+    from agent_utilities.mcp_agent_manager import sync_mcp_agents
 
     initialize_workspace()
-    return load_mcp_agents_registry()
+    # Explicitly trigger sync for integration tests
+    import asyncio
+    asyncio.run(sync_mcp_agents())
+    return load_node_agents_registry()
 
 
 # ==================================================================
@@ -180,10 +186,14 @@ def test_mcp_registry_tool_count():
 
 
 def test_mcp_registry_agents_have_mcp_server():
-    """Every registered MCP agent must have a mcp_server field."""
+    """All agents in the registry must specify which MCP server they belong to."""
     registry = _load_registry()
-    bad = [a.name for a in registry.agents if not a.mcp_server]
-    assert not bad, f"MCP agents missing mcp_server field: {bad}"
+    bad = [
+        a.name
+        for a in registry.agents
+        if a.agent_type == "mcp" and not getattr(a, "mcp_server", None)
+    ]
+    assert not bad, f"MCP Agents missing mcp_server field: {bad}"
 
 
 # ==================================================================

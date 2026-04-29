@@ -1,0 +1,1235 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.3, pytest-9.0.3, pluggy-1.6.0 -- /usr/bin/python3
+cachedir: .pytest_cache
+hypothesis profile 'default'
+rootdir: /home/genius/Workspace/agent-packages/agents/genius-agent
+configfile: pytest.ini
+plugins: logfire-4.32.1, asyncio-1.3.0, cov-7.1.0, hypothesis-6.152.1, langsmith-0.7.32, anyio-4.13.0, typeguard-4.4.2
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 1 item
+
+tests/test_graph_flow_integration.py::test_mcp_registry_contains_repository [04/24/26 20:45:53] ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             bazarr.get_system_health: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             bazarr.get_system_status: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.get_notification:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.get_notification_schema:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.get_remotepathmapping:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.get_rootfolder: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.post_notification_testal
+                             l: invalid syntax (<string>, line
+                             3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.get_config_downloadclien
+                             t: invalid syntax (<string>, line
+                             3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.get_downloadclient:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.get_downloadclient_schem
+                             a: invalid syntax (<string>, line
+                             3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.get_importlist: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.get_importlist_schema:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.get_importlistexclusion:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.post_downloadclient_test
+                             all: invalid syntax (<string>,
+                             line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.post_importlist_testall:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.get_config_indexer:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.get_indexer: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.get_indexer_schema:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.get_indexerflag: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.post_indexer_testall:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.get_command: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.get_config_mediamanageme
+                             nt: invalid syntax (<string>,
+                             line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.get_config_metadataprovi
+                             der: invalid syntax (<string>,
+                             line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.get_config_naming:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.get_customfilter:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.get_customformat:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.get_customformat_schema:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.get_delayprofile:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.get_language: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.get_metadataprofile:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.get_metadataprofile_sche
+                             ma: invalid syntax (<string>,
+                             line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.get_qualitydefinition:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.get_qualityprofile:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.get_qualityprofile_schem
+                             a: invalid syntax (<string>, line
+                             3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.get_releaseprofile:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.get_queue_status:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.get_api: invalid syntax
+                             (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.get_config_development:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.get_config_host: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.get_config_ui: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.get_diskspace: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.get_health: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.get_localization:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.get_log_file: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.get_log_file_update:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.get_login: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.get_logout: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.get_ping: invalid syntax
+                             (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.get_system_backup:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.get_system_routes:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.get_system_routes_duplic
+                             ate: invalid syntax (<string>,
+                             line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.get_system_status:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.get_system_task: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.get_tag: invalid syntax
+                             (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.get_tag_detail: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.get_update: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.post_system_backup_resto
+                             re_upload: invalid syntax
+                             (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.post_system_restart:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             chaptarr.post_system_shutdown:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.get_metadata: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.get_metadata_schema:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.post_metadata_testall:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.get_notification: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.get_notification_schema:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.get_remotepathmapping:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.get_rootfolder: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.post_notification_testall:
+                             invalid syntax (<string>, line 3)
+[04/24/26 20:45:54] ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.get_config_downloadclient:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.get_downloadclient:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.get_downloadclient_schema:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.get_importlist: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.get_importlist_schema:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.get_importlistexclusion:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.post_downloadclient_testal
+                             l: invalid syntax (<string>, line
+                             3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.post_importlist_testall:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.get_config_indexer:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.get_indexer: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.get_indexer_schema:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.get_indexerflag: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.post_indexer_testall:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.get_autotagging: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.get_autotagging_schema:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.get_command: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.get_config_mediamanagement
+                             : invalid syntax (<string>, line
+                             3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.get_config_metadataprovide
+                             r: invalid syntax (<string>, line
+                             3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.get_config_naming: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.get_customfilter: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.get_customformat: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.get_customformat_schema:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.get_delayprofile: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.get_language: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.get_metadataprofile:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.get_metadataprofile_schema
+                             : invalid syntax (<string>, line
+                             3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.get_qualitydefinition:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.get_qualityprofile:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.get_qualityprofile_schema:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.get_releaseprofile:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.get_queue_status: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.get_api: invalid syntax
+                             (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.get_config_host: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.get_config_ui: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.get_diskspace: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.get_health: invalid syntax
+                             (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.get_localization: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.get_log_file: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.get_log_file_update:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.get_login: invalid syntax
+                             (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.get_logout: invalid syntax
+                             (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.get_ping: invalid syntax
+                             (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.get_system_backup: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.get_system_routes: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.get_system_routes_duplicat
+                             e: invalid syntax (<string>, line
+                             3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.get_system_status: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.get_system_task: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.get_tag: invalid syntax
+                             (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.get_tag_detail: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.get_update: invalid syntax
+                             (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.post_system_backup_restore
+                             _upload: invalid syntax
+                             (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.post_system_restart:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             lidarr.post_system_shutdown:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             prowlarr.get_notification:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             prowlarr.get_notification_schema:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             prowlarr.post_notification_testal
+                             l: invalid syntax (<string>, line
+                             3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             prowlarr.get_config_downloadclien
+                             t: invalid syntax (<string>, line
+                             3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             prowlarr.get_downloadclient:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             prowlarr.get_downloadclient_schem
+                             a: invalid syntax (<string>, line
+                             3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             prowlarr.post_downloadclient_test
+                             all: invalid syntax (<string>,
+                             line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             prowlarr.get_indexer: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             prowlarr.get_indexer_categories:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             prowlarr.get_indexer_schema:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             prowlarr.get_indexerproxy:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             prowlarr.get_indexerproxy_schema:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             prowlarr.get_indexerstatus:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             prowlarr.post_indexer_testall:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             prowlarr.post_indexerproxy_testal
+                             l: invalid syntax (<string>, line
+                             3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             prowlarr.get_command: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             prowlarr.get_customfilter:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             prowlarr.get_api: invalid syntax
+                             (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             prowlarr.get_applications:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             prowlarr.get_applications_schema:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             prowlarr.get_appprofile: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             prowlarr.get_appprofile_schema:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             prowlarr.get_config_development:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             prowlarr.get_config_host: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             prowlarr.get_config_ui: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             prowlarr.get_health: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             prowlarr.get_localization:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             prowlarr.get_localization_options
+                             : invalid syntax (<string>, line
+                             3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             prowlarr.get_log_file: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             prowlarr.get_log_file_update:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             prowlarr.get_login: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             prowlarr.get_logout: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             prowlarr.get_ping: invalid syntax
+                             (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             prowlarr.get_system_backup:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             prowlarr.get_system_routes:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             prowlarr.get_system_routes_duplic
+                             ate: invalid syntax (<string>,
+                             line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             prowlarr.get_system_status:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             prowlarr.get_system_task: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             prowlarr.get_tag: invalid syntax
+                             (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             prowlarr.get_tag_detail: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             prowlarr.get_update: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             prowlarr.post_applications_testal
+                             l: invalid syntax (<string>, line
+                             3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             prowlarr.post_system_backup_resto
+                             re_upload: invalid syntax
+                             (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             prowlarr.post_system_restart:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             prowlarr.post_system_shutdown:
+                             invalid syntax (<string>, line 3)
+[04/24/26 20:45:55] ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.get_metadata: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.get_metadata_schema:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.post_metadata_testall:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.get_notification: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.get_notification_schema:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.get_remotepathmapping:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.get_rootfolder: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.post_notification_testall:
+                             invalid syntax (<string>, line 3)
+Adguard Home MCP v0.2.55
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.get_config_downloadclient:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.get_config_importlist:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.get_downloadclient:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.get_downloadclient_schema:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.get_exclusions: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.get_importlist: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.get_importlist_schema:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.post_downloadclient_testal
+                             l: invalid syntax (<string>, line
+                             3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.post_importlist_testall:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.get_config_indexer:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.get_indexer: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.get_indexer_schema:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.get_indexerflag: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.post_indexer_testall:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.get_autotagging: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.get_autotagging_schema:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.get_command: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.get_config_mediamanagement
+                             : invalid syntax (<string>, line
+                             3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.get_config_metadata:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.get_config_naming: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.get_customfilter: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.get_customformat: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.get_customformat_schema:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.get_delayprofile: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.get_language: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.get_qualitydefinition:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.get_qualitydefinition_limi
+                             ts: invalid syntax (<string>,
+                             line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.get_qualityprofile:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.get_qualityprofile_schema:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.get_releaseprofile:
+                             invalid syntax (<string>, line 3)
+/home/genius/.local/lib/python3.13/site-packages/fastmcp/tools/base.py:240: FastMCPDeprecationWarning: The `exclude_args` parameter is deprecated as of FastMCP 2.14. Use dependency injection with `Depends()` instead for better lifecycle management. See https://gofastmcp.com/servers/dependency-injection#using-depends for examples.
+  return FunctionTool.from_function(
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.get_queue_status: invalid
+                             syntax (<string>, line 3)
+archivebox-api MCP v0.1.54
+
+Starting MCP Server
+  Transport: STDIO
+  Auth: none
+  Dynamic Tags Loaded: 0
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.get_api: invalid syntax
+                             (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.get_config_host: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.get_config_ui: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.get_diskspace: invalid
+                             syntax (<string>, line 3)
+
+
+╭──────────────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│                                                                              │
+│                         ▄▀▀ ▄▀█ █▀▀ ▀█▀ █▀▄▀█ █▀▀ █▀█                        │
+│                         █▀  █▀█ ▄▄█  █  █ ▀ █ █▄▄ █▀▀                        │
+│                                                                              │
+│                                                                              │
+│                                                                              │
+│                                FastMCP 3.2.4                                 │
+│                            https://gofastmcp.com                             │
+│                                                                              │
+│                  🖥  Server:      ArchiveBox, 3.2.4                           │
+│                  🚀 Deploy free: https://horizon.prefect.io                  │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+
+[04/24/26 20:45:55] INFO     Starting MCP server 'ArchiveBox'   transport.py:209
+                             with transport 'stdio'
+                    INFO     event=request_start                  logging.py:122
+                             method=initialize source=client
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.get_health: invalid syntax
+                             (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.get_localization: invalid
+                             syntax (<string>, line 3)
+                    INFO     event=request_success                logging.py:122
+                             method=initialize source=client
+                             duration_ms=0.95
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.get_localization_language:
+                             invalid syntax (<string>, line 3)
+                    INFO     Request initialize completed in 5.20ms timing.py:47
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.get_log_file: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.get_log_file_update:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.get_login: invalid syntax
+                             (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.get_logout: invalid syntax
+                             (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.get_ping: invalid syntax
+                             (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.get_system_backup: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.get_system_routes: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.get_system_routes_duplicat
+                             e: invalid syntax (<string>, line
+                             3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.get_system_status: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.get_system_task: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.get_tag: invalid syntax
+                             (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.get_tag_detail: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.get_update: invalid syntax
+                             (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.post_system_backup_restore
+                             _upload: invalid syntax
+                             (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.post_system_restart:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             radarr.post_system_shutdown:
+                             invalid syntax (<string>, line 3)
+adguard-home-agent MCP v0.2.55
+
+Starting MCP Server
+  Transport: STDIO
+  Auth: none
+  Dynamic Tags Loaded: 0
+
+
+╭──────────────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│                                                                              │
+│                         ▄▀▀ ▄▀█ █▀▀ ▀█▀ █▀▄▀█ █▀▀ █▀█                        │
+│                         █▀  █▀█ ▄▄█  █  █ ▀ █ █▄▄ █▀▀                        │
+│                                                                              │
+│                                                                              │
+│                                                                              │
+│                                FastMCP 3.2.4                                 │
+│                            https://gofastmcp.com                             │
+│                                                                              │
+│                  🖥  Server:      Adguard Home, 3.2.4                         │
+│                  🚀 Deploy free: https://horizon.prefect.io                  │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+
+[04/24/26 20:45:55] INFO     Starting MCP server 'Adguard Home' transport.py:209
+                             with transport 'stdio'
+                    INFO     event=request_start                  logging.py:122
+                             method=initialize source=client
+                    INFO     event=request_success                logging.py:122
+                             method=initialize source=client
+                             duration_ms=0.59
+                    INFO     Request initialize completed in 3.81ms timing.py:47
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             seerr.get_auth_me: invalid syntax
+                             (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             seerr.get_status: invalid syntax
+                             (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             seerr.get_status_appdata: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.get_metadata: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.get_metadata_schema:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.post_metadata_testall:
+                             invalid syntax (<string>, line 3)
+/home/genius/.local/lib/python3.13/site-packages/fastmcp/tools/base.py:240: FastMCPDeprecationWarning: The `exclude_args` parameter is deprecated as of FastMCP 2.14. Use dependency injection with `Depends()` instead for better lifecycle management. See https://gofastmcp.com/servers/dependency-injection#using-depends for examples.
+  return FunctionTool.from_function(
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.get_notification: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.get_notification_schema:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.get_remotepathmapping:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.get_rootfolder: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.post_notification_testall:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.get_config_downloadclient:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.get_config_importlist:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.get_downloadclient:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.get_downloadclient_schema:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.get_importlist: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.get_importlist_schema:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.get_importlistexclusion:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.post_downloadclient_testal
+                             l: invalid syntax (<string>, line
+                             3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.post_importlist_testall:
+                             invalid syntax (<string>, line 3)
+ansible-tower-mcp MCP v1.3.54
+
+Starting MCP Server
+  Transport: STDIO
+  Auth: none
+  Dynamic Tags Loaded: 0
+
+
+╭──────────────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│                                                                              │
+│                         ▄▀▀ ▄▀█ █▀▀ ▀█▀ █▀▄▀█ █▀▀ █▀█                        │
+│                         █▀  █▀█ ▄▄█  █  █ ▀ █ █▄▄ █▀▀                        │
+│                                                                              │
+│                                                                              │
+│                                                                              │
+│                                FastMCP 3.2.4                                 │
+│                            https://gofastmcp.com                             │
+│                                                                              │
+│                  🖥  Server:      Ansible Tower, 3.2.4                        │
+│                  🚀 Deploy free: https://horizon.prefect.io                  │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+
+[04/24/26 20:45:56] INFO     Starting MCP server 'Ansible       transport.py:209
+                             Tower' with transport 'stdio'
+                    INFO     event=request_start                  logging.py:122
+                             method=initialize source=client
+                    INFO     event=request_success                logging.py:122
+                             method=initialize source=client
+                             duration_ms=0.76
+                    INFO     Request initialize completed in 4.90ms timing.py:47
+[04/24/26 20:45:56] ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.get_config_indexer:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.get_indexer: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.get_indexer_schema:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.get_indexerflag: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.post_indexer_testall:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.get_autotagging: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.get_autotagging_schema:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.get_command: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.get_config_mediamanagement
+                             : invalid syntax (<string>, line
+                             3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.get_config_naming: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.get_customfilter: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.get_customformat: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.get_customformat_schema:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.get_delayprofile: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.get_language: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.get_languageprofile:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.get_languageprofile_schema
+                             : invalid syntax (<string>, line
+                             3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.get_qualitydefinition:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.get_qualitydefinition_limi
+                             ts: invalid syntax (<string>,
+                             line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.get_qualityprofile:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.get_qualityprofile_schema:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.get_releaseprofile:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.get_queue_status: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.get_api: invalid syntax
+                             (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.get_config_host: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.get_config_ui: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.get_diskspace: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.get_health: invalid syntax
+                             (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.get_localization: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.get_localization_language:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.get_log_file: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.get_log_file_update:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.get_login: invalid syntax
+                             (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.get_logout: invalid syntax
+                             (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.get_ping: invalid syntax
+                             (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.get_system_backup: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.get_system_routes: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.get_system_routes_duplicat
+                             e: invalid syntax (<string>, line
+                             3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.get_system_status: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.get_system_task: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.get_tag: invalid syntax
+                             (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.get_tag_detail: invalid
+                             syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.get_update: invalid syntax
+                             (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.post_system_backup_restore
+                             _upload: invalid syntax
+                             (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.post_system_restart:
+                             invalid syntax (<string>, line 3)
+                    ERROR    Failed to compile dynamic tool    mcp_server.py:157
+                             sonarr.post_system_shutdown:
+                             invalid syntax (<string>, line 3)
+arr-mcp MCP v0.2.55
+
+Starting MCP Server
+  Transport: STDIO
+  Auth: none
+  Dynamic Tags Loaded: 50
+
+
+╭──────────────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│                                                                              │
+│                         ▄▀▀ ▄▀█ █▀▀ ▀█▀ █▀▄▀█ █▀▀ █▀█                        │
+│                         █▀  █▀█ ▄▄█  █  █ ▀ █ █▄▄ █▀▀                        │
+│                                                                              │
+│                                                                              │
+│                                                                              │
+│                                FastMCP 3.2.4                                 │
+│                            https://gofastmcp.com                             │
+│                                                                              │
+│                  🖥  Server:      Arr, 3.2.4                                  │
+│                  🚀 Deploy free: https://horizon.prefect.io                  │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+
+                    INFO     Starting MCP server 'Arr' with     transport.py:209
+                             transport 'stdio'
+                    INFO     event=request_start                  logging.py:122
+                             method=initialize source=client
+                    INFO     event=request_success                logging.py:122
+                             method=initialize source=client
+                             duration_ms=0.63
+                    INFO     Request initialize completed in 3.89ms timing.py:47
+Starting GitHub Agent MCP v1.0.0
+
+
+╭──────────────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│                                                                              │
+│                         ▄▀▀ ▄▀█ █▀▀ ▀█▀ █▀▄▀█ █▀▀ █▀█                        │
+│                         █▀  █▀█ ▄▄█  █  █ ▀ █ █▄▄ █▀▀                        │
+│                                                                              │
+│                                                                              │
+│                                                                              │
+│                                FastMCP 3.2.4                                 │
+│                            https://gofastmcp.com                             │
+│                                                                              │
+│                  🖥  Server:      Github MCP, 3.2.4                           │
+│                  🚀 Deploy free: https://horizon.prefect.io                  │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+
+[04/24/26 20:46:00] INFO     Starting MCP server 'Github MCP'   transport.py:209
+                             with transport 'stdio'
+                    INFO     event=request_start                  logging.py:122
+                             method=initialize source=client
+                    INFO     event=request_success                logging.py:122
+                             method=initialize source=client
+                             duration_ms=0.57
+                    INFO     Request initialize completed in 3.90ms timing.py:47
+                    INFO     event=request_start                  logging.py:122
+                             method=tools/list source=client
+                    INFO     event=request_success                logging.py:122
+                             method=tools/list source=client
+                             duration_ms=8.91
+                    INFO     Request tools/list completed in        timing.py:47
+                             12.01ms
+DEBUG: Registry Discovery: Found knowledge_graph, blueprint type=<class 'str'>, value_prefix={task: knowledge-graph, input: # Knowledge Graph S...
+DEBUG: Registry Discovery: Found researcher, blueprint type=<class 'str'>, value_prefix={task: perform deep discovery and context gatherin...
+DEBUG: Registry Discovery: Found safety_policy, blueprint type=<class 'str'>, value_prefix={task: safety_policy, input: # Cyber Risk Instruct...
+DEBUG: Registry Discovery: Found brand_strategy, blueprint type=<class 'str'>, value_prefix={task: act as brand consultant, client: early-stag...
+DEBUG: Registry Discovery: Found javascript_programmer, blueprint type=<class 'str'>, value_prefix={task: javascript_programmer, input: # 🟨 JavaScrip...
+DEBUG: Registry Discovery: Found code_generation, blueprint type=<class 'str'>, value_prefix={task: write code, language: python, goal: rename ...
+DEBUG: Registry Discovery: Found main_agent, blueprint type=<class 'str'>, value_prefix={task: main-agent, input: # main-agent
+
+You are a ...
+DEBUG: Registry Discovery: Found agent_summary, blueprint type=<class 'str'>, value_prefix={task: agent_summary, input: # Agent Summary (Back...
+DEBUG: Registry Discovery: Found content_generation, blueprint type=<class 'str'>, value_prefix={task: write content, platform: twitter, structure...
+DEBUG: Registry Discovery: Found tool_guidance, blueprint type=<class 'str'>, value_prefix={task: tool_guidance, input: # Tool-Specific Promp...
+DEBUG: Registry Discovery: Found mobile_programmer, blueprint type=<class 'str'>, value_prefix={task: mobile_programmer, input: # 📱 Mobile Applic...
+DEBUG: Registry Discovery: Found security_auditor, blueprint type=<class 'str'>, value_prefix={task: security_auditor, input: # 🛡️ Security Audi...
+DEBUG: Registry Discovery: Found debugger_expert, blueprint type=<class 'str'>, value_prefix={task: debugger_expert, input: # 🐛 Debugging Exper...
+DEBUG: Registry Discovery: Found systems_manager, blueprint type=<class 'str'>, value_prefix={task: systems_manager, input: # ⚙️ Systems Manage...
+DEBUG: Registry Discovery: Found safety_guard, blueprint type=<class 'str'>, value_prefix={task: safety_guard, input: # YOLO/Auto-Mode Class...
+DEBUG: Registry Discovery: Found data_scientist, blueprint type=<class 'str'>, value_prefix={task: data_scientist, input: # 📊 Data Scientist &...
+DEBUG: Registry Discovery: Found database_expert, blueprint type=<class 'str'>, value_prefix={task: database_expert, input: # Database Architec...
+DEBUG: Registry Discovery: Found project_manager, blueprint type=<class 'str'>, value_prefix={task: project_manager, input: # 📋 Technical Proje...
+DEBUG: Registry Discovery: Found typescript_programmer, blueprint type=<class 'str'>, value_prefix={task: typescript_programmer, input: # TypeScript ...
+DEBUG: Registry Discovery: Found critique, blueprint type=<class 'str'>, value_prefix={task: critique, input: # Auto Mode Critique Promp...
+DEBUG: Registry Discovery: Found memory_instruction, blueprint type=<class 'str'>, value_prefix={task: memory_instruction, input: # Memory Instruc...
+DEBUG: Registry Discovery: Found ui_ux_designer, blueprint type=<class 'str'>, value_prefix={task: ui_ux_designer, input: # 🎨 UI/UX Designer &...
+DEBUG: Registry Discovery: Found planner, blueprint type=<class 'str'>, value_prefix={task: decompose user requests into high-fidelity ...
+DEBUG: Registry Discovery: Found architect, blueprint type=<class 'str'>, value_prefix={task: design scalable and resilient system archit...
+DEBUG: Registry Discovery: Found rust_programmer, blueprint type=<class 'str'>, value_prefix={task: rust_programmer, input: # Rust Systems & Pe...
+DEBUG: Registry Discovery: Found coordinator, blueprint type=<class 'str'>, value_prefix={task: manage multi-agent team communication and t...
+DEBUG: Registry Discovery: Found c_programmer, blueprint type=<class 'str'>, value_prefix={task: c_programmer, input: # 💻 C Systems Programm...
+DEBUG: Registry Discovery: Found qa_expert, blueprint type=<class 'str'>, value_prefix={task: qa_expert, input: # QA Expert
+
+You are the ...
+DEBUG: Registry Discovery: Found python_programmer, blueprint type=<class 'str'>, value_prefix={task: python_programmer, input: # Python Systems ...
+DEBUG: Registry Discovery: Found golang_programmer, blueprint type=<class 'str'>, value_prefix={task: golang_programmer, input: # Go Concurrency ...
+DEBUG: Registry Discovery: Found cloud_architect, blueprint type=<class 'str'>, value_prefix={task: cloud_architect, input: # ☁️ Cloud Architec...
+DEBUG: Registry Discovery: Found devops_engineer, blueprint type=<class 'str'>, value_prefix={task: devops_engineer, input: # DevOps & Operatio...
+DEBUG: Registry Discovery: Found base_agent, blueprint type=<class 'str'>, value_prefix={task: base_agent, input: # Main System Prompt
+
+
+-...
+DEBUG: Registry Discovery: Found cpp_programmer, blueprint type=<class 'str'>, value_prefix={task: cpp_programmer, input: # ⚡ C++ Software Eng...
+DEBUG: Registry Discovery: Found java_programmer, blueprint type=<class 'str'>, value_prefix={task: java_programmer, input: # ☕ Java & Enterpri...
+DEBUG: Registry Discovery: Found browser_automation, blueprint type=<class 'str'>, value_prefix={task: browser_automation, input: # Chrome Browser...
+DEBUG: Registry Discovery: Found document_specialist, blueprint type=<class 'str'>, value_prefix={task: document_specialist, input: # 📑 Document & ...
+DEBUG: Registry Discovery: Found verifier, blueprint type=<class 'str'>, value_prefix={task: audit implementation against specification,...
+DEBUG: Registry Discovery: Found agent_engineer, blueprint type=<class 'str'>, value_prefix={task: agent_engineer, input: # 🤖 Agent Engineer &...
+FAILED
+
+=================================== FAILURES ===================================
+____________________ test_mcp_registry_contains_repository _____________________
+
+    def test_mcp_registry_contains_repository():
+        """
+        After registry sync, MCP_AGENTS.md must contain a repository specialist.
+        Uses the agent-utilities registry loader.
+        """
+        registry = _load_registry()
+        assert registry is not None, "_load_registry() returned None"
+        assert (
+            len(registry.agents) > 0
+        ), "MCP registry is empty — has mcp_config.json been synced to MCP_AGENTS.md?"
+
+>       tags = [a.tag for a in registry.agents]
+                ^^^^^
+
+tests/test_graph_flow_integration.py:169:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = MCPAgent(name='knowledge_graph', agent_type='prompt', prompt_file=None, json_blueprint=None, endpoint_url=None, descri...s=None, extra_config={}, is_custom=False, tool_count=0, avg_relevance_score=0, default_tier='medium', required_tags=[])
+item = 'tag'
+
+    def __getattr__(self, item: str) -> Any:
+        private_attributes = object.__getattribute__(self, '__private_attributes__')
+        if item in private_attributes:
+            attribute = private_attributes[item]
+            if hasattr(attribute, '__get__'):
+                return attribute.__get__(self, type(self))  # type: ignore
+
+            try:
+                # Note: self.__pydantic_private__ cannot be None if self.__private_attributes__ has items
+                return self.__pydantic_private__[item]  # type: ignore
+            except KeyError as exc:
+                raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}') from exc
+        else:
+            # `__pydantic_extra__` can fail to be set if the model is not yet fully initialized.
+            # See `BaseModel.__repr_args__` for more details
+            try:
+                pydantic_extra = object.__getattribute__(self, '__pydantic_extra__')
+            except AttributeError:
+                pydantic_extra = None
+
+            if pydantic_extra and item in pydantic_extra:
+                return pydantic_extra[item]
+            else:
+                if hasattr(self.__class__, item):
+                    return super().__getattribute__(item)  # Raises AttributeError if appropriate
+                else:
+                    # this is the current error
+>                   raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}')
+E                   AttributeError: 'MCPAgent' object has no attribute 'tag'
+
+../../../../.local/lib/python3.13/site-packages/pydantic/main.py:1042: AttributeError
+------------------------------ Captured log call -------------------------------
+WARNING  agent_utilities.mcp_utilities:mcp_utilities.py:600 MCP Config: Command 'home-mcp' for server 'home' NOT FOUND in PATH (/home/genius/.local/bin:/home/genius/.opencode/bin:/home/genius/.local/share/pnpm:/home/genius/.nvm/versions/node/v24.15.0/bin:/home/genius/.local/bin:/home/genius/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/home/genius/.local/share/JetBrains/Toolbox/scripts:/home/genius/.local/share/JetBrains/Toolbox/scripts). Startup will likely fail.
+WARNING  agent_utilities.mcp_agent_manager:mcp_agent_manager.py:205 Dynamic extraction failed for archivebox-mcp, falling back to static hints: ExceptionGroup()
+WARNING  agent_utilities.mcp_agent_manager:mcp_agent_manager.py:205 Dynamic extraction failed for adguard-home-agent, falling back to static hints: ExceptionGroup()
+WARNING  agent_utilities.mcp_agent_manager:mcp_agent_manager.py:205 Dynamic extraction failed for ansible-tower-mcp, falling back to static hints: ExceptionGroup()
+WARNING  agent_utilities.mcp_agent_manager:mcp_agent_manager.py:205 Dynamic extraction failed for arr-mcp, falling back to static hints: ExceptionGroup()
+WARNING  agent_utilities.mcp_agent_manager:mcp_agent_manager.py:205 Dynamic extraction failed for atlassian, falling back to static hints: ExceptionGroup(unhandled errors in a TaskGroup (1 sub-exception))
+WARNING  agent_utilities.mcp_agent_manager:mcp_agent_manager.py:205 Dynamic extraction failed for audio-transcriber-mcp, falling back to static hints: ExceptionGroup(unhandled errors in a TaskGroup (1 sub-exception))
+WARNING  agent_utilities.mcp_agent_manager:mcp_agent_manager.py:205 Dynamic extraction failed for home, falling back to static hints: [Errno 2] No such file or directory: 'home-mcp'
+WARNING  agent_utilities.mcp_agent_manager:mcp_agent_manager.py:205 Dynamic extraction failed for container-manager-mcp, falling back to static hints: ExceptionGroup(unhandled errors in a TaskGroup (1 sub-exception))
+WARNING  agent_utilities.mcp_agent_manager:mcp_agent_manager.py:205 Dynamic extraction failed for documentdb-mcp, falling back to static hints: ExceptionGroup(unhandled errors in a TaskGroup (1 sub-exception))
+WARNING  agent_utilities.mcp_agent_manager:mcp_agent_manager.py:205 Dynamic extraction failed for gitlab-api, falling back to static hints: ExceptionGroup(unhandled errors in a TaskGroup (1 sub-exception))
+WARNING  agent_utilities.mcp_agent_manager:mcp_agent_manager.py:205 Dynamic extraction failed for jellyfin-mcp, falling back to static hints: ExceptionGroup(unhandled errors in a TaskGroup (1 sub-exception))
+WARNING  agent_utilities.mcp_agent_manager:mcp_agent_manager.py:205 Dynamic extraction failed for langfuse, falling back to static hints: ExceptionGroup(unhandled errors in a TaskGroup (1 sub-exception))
+WARNING  agent_utilities.mcp_agent_manager:mcp_agent_manager.py:205 Dynamic extraction failed for leanix-agent, falling back to static hints: ExceptionGroup(unhandled errors in a TaskGroup (1 sub-exception))
+WARNING  agent_utilities.mcp_agent_manager:mcp_agent_manager.py:205 Dynamic extraction failed for mealie-mcp, falling back to static hints: ExceptionGroup(unhandled errors in a TaskGroup (1 sub-exception))
+WARNING  agent_utilities.mcp_agent_manager:mcp_agent_manager.py:205 Dynamic extraction failed for media-downloader-mcp, falling back to static hints: ExceptionGroup(unhandled errors in a TaskGroup (1 sub-exception))
+WARNING  agent_utilities.mcp_agent_manager:mcp_agent_manager.py:205 Dynamic extraction failed for microsoft-agent, falling back to static hints: ExceptionGroup(unhandled errors in a TaskGroup (1 sub-exception))
+WARNING  agent_utilities.mcp_agent_manager:mcp_agent_manager.py:205 Dynamic extraction failed for nextcloud-agent, falling back to static hints: ExceptionGroup(unhandled errors in a TaskGroup (1 sub-exception))
+WARNING  agent_utilities.mcp_agent_manager:mcp_agent_manager.py:205 Dynamic extraction failed for owncast, falling back to static hints: ExceptionGroup(unhandled errors in a TaskGroup (1 sub-exception))
+WARNING  agent_utilities.mcp_agent_manager:mcp_agent_manager.py:205 Dynamic extraction failed for plane, falling back to static hints: ExceptionGroup(unhandled errors in a TaskGroup (1 sub-exception))
+WARNING  agent_utilities.mcp_agent_manager:mcp_agent_manager.py:205 Dynamic extraction failed for portainer-agent, falling back to static hints: ExceptionGroup(unhandled errors in a TaskGroup (1 sub-exception))
+WARNING  agent_utilities.mcp_agent_manager:mcp_agent_manager.py:205 Dynamic extraction failed for postiz, falling back to static hints: ExceptionGroup(unhandled errors in a TaskGroup (1 sub-exception))
+WARNING  agent_utilities.mcp_agent_manager:mcp_agent_manager.py:205 Dynamic extraction failed for qbittorrent, falling back to static hints: ExceptionGroup(unhandled errors in a TaskGroup (1 sub-exception))
+WARNING  agent_utilities.mcp_agent_manager:mcp_agent_manager.py:205 Dynamic extraction failed for repository-manager, falling back to static hints: ExceptionGroup(unhandled errors in a TaskGroup (1 sub-exception))
+WARNING  agent_utilities.mcp_agent_manager:mcp_agent_manager.py:205 Dynamic extraction failed for searxng-mcp, falling back to static hints: ExceptionGroup(unhandled errors in a TaskGroup (1 sub-exception))
+WARNING  agent_utilities.mcp_agent_manager:mcp_agent_manager.py:205 Dynamic extraction failed for servicenow-api, falling back to static hints: ExceptionGroup(unhandled errors in a TaskGroup (1 sub-exception))
+WARNING  agent_utilities.mcp_agent_manager:mcp_agent_manager.py:205 Dynamic extraction failed for stirlingpdf-agent, falling back to static hints: ExceptionGroup(unhandled errors in a TaskGroup (1 sub-exception))
+WARNING  agent_utilities.mcp_agent_manager:mcp_agent_manager.py:205 Dynamic extraction failed for systems-manager, falling back to static hints: ExceptionGroup(unhandled errors in a TaskGroup (1 sub-exception))
+WARNING  agent_utilities.mcp_agent_manager:mcp_agent_manager.py:205 Dynamic extraction failed for tunnel-manager-mcp, falling back to static hints: ExceptionGroup(unhandled errors in a TaskGroup (1 sub-exception))
+WARNING  agent_utilities.mcp_agent_manager:mcp_agent_manager.py:205 Dynamic extraction failed for uptime, falling back to static hints: ExceptionGroup(unhandled errors in a TaskGroup (1 sub-exception))
+WARNING  agent_utilities.mcp_agent_manager:mcp_agent_manager.py:205 Dynamic extraction failed for vector-mcp, falling back to static hints: ExceptionGroup(unhandled errors in a TaskGroup (1 sub-exception))
+WARNING  agent_utilities.mcp_agent_manager:mcp_agent_manager.py:205 Dynamic extraction failed for wger-agent, falling back to static hints: ExceptionGroup(unhandled errors in a TaskGroup (1 sub-exception))
+=========================== short test summary info ============================
+FAILED tests/test_graph_flow_integration.py::test_mcp_registry_contains_repository
+========================= 1 failed in 90.61s (0:01:30) =========================

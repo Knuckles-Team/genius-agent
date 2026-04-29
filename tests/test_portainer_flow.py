@@ -1,5 +1,7 @@
 import os
 import pytest
+
+pytestmark = pytest.mark.integration
 import os
 import asyncio
 from dotenv import load_dotenv
