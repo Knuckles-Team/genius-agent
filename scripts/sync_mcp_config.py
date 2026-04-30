@@ -29,10 +29,10 @@ def parse_pyproject(agent_dir: Path) -> str:
     toml_path = agent_dir / "pyproject.toml"
     if not toml_path.exists():
         return None
-    
+
     with open(toml_path, "rb") as f:
         data = tomllib.load(f)
-    
+
     scripts = data.get("project", {}).get("scripts", {})
     for cmd, entry in scripts.items():
         if "mcp_server" in entry:
@@ -43,10 +43,10 @@ def extract_env_and_tags(mcp_file: Path) -> tuple[Dict[str, str], set[str]]:
     """Extract os.environ.get variables and tags from mcp.tool"""
     env_vars = {}
     tags = set()
-    
+
     with open(mcp_file, "r", encoding="utf-8") as f:
         source = f.read()
-        
+
     try:
         tree = ast.parse(source)
     except Exception as e:
@@ -79,47 +79,47 @@ def extract_env_and_tags(mcp_file: Path) -> tuple[Dict[str, str], set[str]]:
                                 for elt in keyword.value.elts:
                                     if isinstance(elt, ast.Constant):
                                         tags.add(elt.value)
-                                        
+
     return env_vars, tags
 
 def generate_global_mcp_config():
     base_dir = Path("/home/apps/workspace/agent-packages/agents")
     output_file = base_dir / "genius-agent" / "genius_agent" / "mcp_config.json"
-    
+
     agents = get_agent_directories(base_dir)
     mcp_servers = {}
-    
+
     for agent_dir in sorted(agents):
         cmd = parse_pyproject(agent_dir)
         if not cmd:
             print(f"Warning: No mcp_server script found in {agent_dir.name}", file=sys.stderr)
             continue
-            
+
         mcp_files = list(agent_dir.rglob("mcp_server.py"))
         mcp_files = [f for f in mcp_files if ".venv" not in f.parts]
         if not mcp_files:
             continue
-            
+
         env_vars, tags = extract_env_and_tags(mcp_files[0])
-        
+
         # Build tool toggles
         for tag in sorted(tags):
             tag_formatted = tag.upper().replace("-", "_") + "TOOL"
             env_vars[tag_formatted] = f"${{ {tag_formatted}:-True }}"
-            
+
         mcp_servers[agent_dir.name] = {
             "command": cmd,
             "args": ["--transport", "stdio"],
             "env": env_vars
         }
-        
+
     config = {"mcpServers": mcp_servers}
-    
+
     # Save the file
     output_file.parent.mkdir(parents=True, exist_ok=True)
     with open(output_file, "w") as f:
         json.dump(config, f, indent=2)
-        
+
     print(f"Successfully generated global configuration with {len(mcp_servers)} servers at {output_file}")
 
 if __name__ == "__main__":

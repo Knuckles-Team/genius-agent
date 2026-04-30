@@ -8,18 +8,18 @@ pytestmark = pytest.mark.integration
 def graph_app(tmp_path_factory):
     """Provides a TestClient to the agent_utilities graph backend."""
     from agent_utilities.server import build_agent_app
-    
+
     ws = tmp_path_factory.mktemp("graph_ws")
     db = tmp_path_factory.mktemp("graph_db") / "kg.db"
-    
+
     os.environ["WORKSPACE_DIR"] = str(ws)
     os.environ["GRAPH_DB_PATH"] = str(db)
     os.environ.setdefault("DEFAULT_PROVIDER", "openai")
     os.environ.setdefault("DEFAULT_MODEL_ID", "dummy-model")
-    
+
     # We initialize the harness with the global config
     mcp_config = "/home/apps/workspace/agent-packages/agents/genius-agent/genius_agent/mcp_config.json"
-    
+
     app = build_agent_app(
         provider="openai",
         model_id="dummy-model",
