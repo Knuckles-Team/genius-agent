@@ -86,7 +86,7 @@ def _load_registry():
     """Helper: ensure workspace is initialized before loading the MCP registry."""
     from agent_utilities import initialize_workspace
     from agent_utilities.graph.config_helpers import load_node_agents_registry
-    from agent_utilities.mcp_agent_manager import sync_mcp_agents
+    from agent_utilities.mcp.agent_manager import sync_mcp_agents
 
     initialize_workspace()
     # Explicitly trigger sync for integration tests

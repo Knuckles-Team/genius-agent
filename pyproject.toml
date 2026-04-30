@@ -4,12 +4,12 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "genius-agent"
-version = "2.13.56"
+version = "2.13.57"
 description = "GeniusAgent Search Engine for Agentic AI!"
 readme = "README.md"
 classifiers = [ "Development Status :: 5 - Production/Stable", "License :: Public Domain", "Environment :: Console", "Operating System :: POSIX :: Linux", "Programming Language :: Python :: 3",]
 requires-python = ">=3.10"
-dependencies = [ "universal-skills[web-crawler,web-search]", "systems-manager[mcp,agent]", "agent-utilities[agent,logfire]>=0.2.31",]
+dependencies = [ "universal-skills[web-crawler,web-search]", "systems-manager[mcp,agent]", "agent-utilities[agent,logfire]>=0.2.41",]
 [[project.authors]]
 name = "Audel Rouhi"
 email = "knucklessg1@gmail.com"
