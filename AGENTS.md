@@ -108,3 +108,12 @@ async def my_tool(param: str) -> str:
 ## When Stuck
 - Propose a plan first before making large changes.
 - Check `agent-utilities` documentation for existing helpers.
+
+
+## Testing with Timeout
+
+To run tests with a timeout to prevent hanging, use the `pytest-timeout` plugin. You can combine it with the `-k` flag to run specific tests:
+
+```bash
+uv run pytest --timeout=60 -k "test_name_pattern"
+```

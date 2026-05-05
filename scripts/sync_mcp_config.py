@@ -28,7 +28,7 @@ def parse_pyproject(agent_dir: Path) -> str:
     """Extract the mcp command name from pyproject.toml"""
     toml_path = agent_dir / "pyproject.toml"
     if not toml_path.exists():
-        return None
+        return ""
 
     with open(toml_path, "rb") as f:
         data = tomllib.load(f)
@@ -37,12 +37,12 @@ def parse_pyproject(agent_dir: Path) -> str:
     for cmd, entry in scripts.items():
         if "mcp_server" in entry:
             return cmd
-    return None
+    return ""
 
 def extract_env_and_tags(mcp_file: Path) -> tuple[Dict[str, str], set[str]]:
     """Extract os.environ.get variables and tags from mcp.tool"""
-    env_vars = {}
-    tags = set()
+    env_vars: dict[str, str] = {}
+    tags: set[str] = set()
 
     with open(mcp_file, "r", encoding="utf-8") as f:
         source = f.read()
@@ -60,12 +60,13 @@ def extract_env_and_tags(mcp_file: Path) -> tuple[Dict[str, str], set[str]]:
                 if isinstance(node.func.value, ast.Attribute) and node.func.value.attr == "environ":
                     if node.args and isinstance(node.args[0], ast.Constant):
                         key = node.args[0].value
-                        env_vars[key] = f"${{{key}}}"
-                        # Try to capture default value if present to format like ${KEY:-default}
-                        if len(node.args) > 1 and isinstance(node.args[1], ast.Constant):
-                            default_val = node.args[1].value
-                            if default_val is not None and str(default_val) != "":
-                                env_vars[key] = f"${{{key}:-{default_val}}}"
+                        if isinstance(key, str):
+                            env_vars[key] = f"${{{key}}}"
+                            # Try to capture default value if present to format like ${KEY:-default}
+                            if len(node.args) > 1 and isinstance(node.args[1], ast.Constant):
+                                default_val = node.args[1].value
+                                if default_val is not None and isinstance(default_val, (str, int, float, bool)) and str(default_val) != "":
+                                    env_vars[key] = f"${{{key}:-{default_val}}}"
 
         # Find @mcp.tool(tags={"tag"})
         if isinstance(node, ast.FunctionDef):
@@ -77,7 +78,7 @@ def extract_env_and_tags(mcp_file: Path) -> tuple[Dict[str, str], set[str]]:
                         for keyword in decorator.keywords:
                             if keyword.arg == "tags" and isinstance(keyword.value, ast.Set):
                                 for elt in keyword.value.elts:
-                                    if isinstance(elt, ast.Constant):
+                                    if isinstance(elt, ast.Constant) and isinstance(elt.value, str):
                                         tags.add(elt.value)
 
     return env_vars, tags
