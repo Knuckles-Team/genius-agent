@@ -20,7 +20,7 @@
 ![PyPI - Wheel](https://img.shields.io/pypi/wheel/genius-agent)
 ![PyPI - Implementation](https://img.shields.io/pypi/implementation/genius-agent)
 
-*Version: 2.16.0*
+*Version: 2.17.0*
 
 Deploy agents to solve problems using Autogen
 
@@ -1488,3 +1488,76 @@ python -m pip install genius-agent[rag,openai,chromadb,pgvector,api,memgpt]
 
 
 Credits to OpenAI and Microsoft for usage in project!
+
+
+## MCP Configuration Examples
+
+### 1. Standard IO (stdio) Deployment
+
+```json
+{
+  "mcpServers": {
+    "genius-agent": {
+      "command": "uv",
+      "args": [
+        "run",
+        "genius-agent-mcp"
+      ],
+      "env": {
+        "AGENT_DESCRIPTION": "<YOUR_AGENT_DESCRIPTION>",
+        "AGENT_SYSTEM_PROMPT": "<YOUR_AGENT_SYSTEM_PROMPT>",
+        "DEFAULT_AGENT_NAME": "<YOUR_DEFAULT_AGENT_NAME>",
+        "ENABLE_OTEL": "<YOUR_ENABLE_OTEL>",
+        "GRAPHDB_PASSWORD": "<YOUR_GRAPHDB_PASSWORD>",
+        "LLM_API_KEY": "<YOUR_LLM_API_KEY>",
+        "LLM_BASE_URL": "<YOUR_LLM_BASE_URL>",
+        "MCP_CONFIG": "<YOUR_MCP_CONFIG>",
+        "MCP_URL": "<YOUR_MCP_URL>",
+        "MODEL_ID": "<YOUR_MODEL_ID>",
+        "OTEL_EXPORTER_OTLP_ENDPOINT": "<YOUR_OTEL_EXPORTER_OTLP_ENDPOINT>",
+        "OTEL_EXPORTER_OTLP_HEADERS": "<YOUR_OTEL_EXPORTER_OTLP_HEADERS>",
+        "OTEL_EXPORTER_OTLP_PUBLIC_KEY": "<YOUR_OTEL_EXPORTER_OTLP_PUBLIC_KEY>",
+        "OTEL_EXPORTER_OTLP_SECRET_KEY": "<YOUR_OTEL_EXPORTER_OTLP_SECRET_KEY>"
+      }
+    }
+  }
+}
+```
+
+### 2. Streamable HTTP (SSE) Deployment
+
+```json
+{
+  "mcpServers": {
+    "genius-agent": {
+      "command": "uv",
+      "args": [
+        "run",
+        "genius-agent-mcp",
+        "--transport",
+        "http",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8000"
+      ],
+      "env": {
+        "AGENT_DESCRIPTION": "<YOUR_AGENT_DESCRIPTION>",
+        "AGENT_SYSTEM_PROMPT": "<YOUR_AGENT_SYSTEM_PROMPT>",
+        "DEFAULT_AGENT_NAME": "<YOUR_DEFAULT_AGENT_NAME>",
+        "ENABLE_OTEL": "<YOUR_ENABLE_OTEL>",
+        "GRAPHDB_PASSWORD": "<YOUR_GRAPHDB_PASSWORD>",
+        "LLM_API_KEY": "<YOUR_LLM_API_KEY>",
+        "LLM_BASE_URL": "<YOUR_LLM_BASE_URL>",
+        "MCP_CONFIG": "<YOUR_MCP_CONFIG>",
+        "MCP_URL": "<YOUR_MCP_URL>",
+        "MODEL_ID": "<YOUR_MODEL_ID>",
+        "OTEL_EXPORTER_OTLP_ENDPOINT": "<YOUR_OTEL_EXPORTER_OTLP_ENDPOINT>",
+        "OTEL_EXPORTER_OTLP_HEADERS": "<YOUR_OTEL_EXPORTER_OTLP_HEADERS>",
+        "OTEL_EXPORTER_OTLP_PUBLIC_KEY": "<YOUR_OTEL_EXPORTER_OTLP_PUBLIC_KEY>",
+        "OTEL_EXPORTER_OTLP_SECRET_KEY": "<YOUR_OTEL_EXPORTER_OTLP_SECRET_KEY>"
+      }
+    }
+  }
+}
+```
