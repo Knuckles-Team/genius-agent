@@ -1,1 +1,3 @@
-agent-utilities[agent,mcp,logfire]>=0.2.31
+universal-skills[web-crawler,web-search]
+systems-manager[mcp,agent]
+agent-utilities[agent,logfire]>=0.6.2
