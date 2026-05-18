@@ -1,8 +1,8 @@
 services:
   genius-agent:
     build:
-      context: .
-      dockerfile: debug.Dockerfile
+      context: ..
+      dockerfile: docker/debug.Dockerfile
     container_name: genius-agent
     hostname: genius-agent
     logging:

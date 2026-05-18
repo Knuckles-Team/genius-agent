@@ -1,0 +1,79 @@
+# Tasks: Code Enhancement: genius-agent
+
+Generated: 2026-05-12T14:14:40.987942+00:00
+Skipped informational: 5
+
+- [ ] [P] **T001** [Test Coverage] Test suite lacks intent diversity (only one type)
+  - Priority: P2-Medium | Effort: Medium
+- [ ] [P] **T002** [Test Coverage] 6 potential doc-test drift items
+  - Priority: P2-Medium | Effort: Medium
+- [ ] [P] **T003** [Documentation & Governance] README.md missing sections: overview, installation, usage|quick start
+  - Priority: P3-Low | Effort: Small
+- [ ] [P] **T004** [Documentation & Governance] README missing: MCP tools mapping table with descriptions
+  - Priority: P3-Low | Effort: Small
+- [ ] [P] **T005** [Documentation & Governance] README missing: Has a Table of Contents
+  - Priority: P3-Low | Effort: Small
+- [ ] [P] **T006** [Documentation & Governance] README missing: Has usage examples with code blocks
+  - Priority: P3-Low | Effort: Small
+- [ ] [P] **T007** [Documentation & Governance] README missing: Has architecture overview or diagram
+  - Priority: P3-Low | Effort: Small
+- [ ] [P] **T008** [Documentation & Governance] README missing: References /docs directory material
+  - Priority: P3-Low | Effort: Small
+- [ ] [P] **T009** [Documentation & Governance] README missing: Has MCP tools mapping table with descriptions
+  - Priority: P3-Low | Effort: Small
+- [ ] [P] **T010** [Architecture & Design Patterns] No discernible layer architecture (no domain/service/adapter separation)
+  - Priority: P2-Medium | Effort: Medium
+- [ ] [P] **T011** [Concept Traceability] Low traceability ratio: 0% concepts fully traced
+  - Priority: P4-Enhancement | Effort: Medium
+- [ ] [P] **T012** [Concept Traceability] 23 test functions missing concept markers
+  - Priority: P4-Enhancement | Effort: Small
+- [ ] [P] **T013** [Linting & Formatting] Total lint findings: 6 (high/error: 2, medium/warning: 3, low: 1)
+  - Priority: P3-Low | Effort: Medium
+- [ ] [P] **T014** [Pre-Commit Compliance] 2 hook(s) may be outdated: ruff-pre-commit, uv-pre-commit
+  - Priority: P2-Medium | Effort: Small
+- [ ] [P] **T015** [Test Execution] Low pass rate: 55% (11/20)
+  - Priority: P2-Medium | Effort: Medium
+- [ ] [P] **T016** [Test Execution] 3 test execution error(s)
+  - Priority: P2-Medium | Effort: Medium
+- [ ] [P] **T017** [Test Execution] FAILED: tests/test_graph_flow_integration.py::test_mcp_config_exists
+  - Priority: P2-Medium | Effort: Medium
+- [ ] [P] **T018** [Test Execution] FAILED: tests/test_graph_flow_integration.py::test_mcp_registry_contains_reposit
+  - Priority: P2-Medium | Effort: Medium
+- [ ] [P] **T019** [Test Execution] FAILED: tests/test_graph_flow_integration.py::test_mcp_registry_tool_count
+  - Priority: P2-Medium | Effort: Medium
+- [ ] [P] **T020** [Test Execution] FAILED: tests/test_graph_flow_integration.py::test_graph_topology_validation
+  - Priority: P2-Medium | Effort: Medium
+- [ ] [P] **T021** [Test Execution] FAILED: tests/test_graph_flow_integration.py::test_graph_has_repository_domain
+  - Priority: P2-Medium | Effort: Medium
+- [ ] [P] **T022** [Test Execution] FAILED: tests/test_graph_flow_integration.py::test_run_graph_returns_graphrespon
+  - Priority: P2-Medium | Effort: Medium
+- [ ] [P] **T023** [Test Execution] FAILED: tests/test_graph_flow_integration.py::test_run_graph_flow_tool_returns_s
+  - Priority: P2-Medium | Effort: Medium
+- [ ] [P] **T024** [Test Execution] FAILED: tests/test_graph_flow_integration.py::test_git_status_via_graph
+  - Priority: P2-Medium | Effort: Medium
+- [ ] [P] **T025** [Test Execution] FAILED: tests/test_portainer_flow.py::test_portainer_stack_listing
+  - Priority: P2-Medium | Effort: Medium
+- [ ] [P] **T026** [Directory Organization] 8 rogue/throwaway scripts detected (fix_*, validate_*, patch_*, etc.): scripts/d
+  - Priority: P3-Low | Effort: Medium
+- [ ] [P] **T027** [Changelog Audit] CHANGELOG.md exists but could not be parsed — check format compliance
+  - Priority: P3-Low | Effort: Medium
+- [ ] [P] **T028** [Changelog Audit] No changelog entries within the last 30 days
+  - Priority: P3-Low | Effort: Medium
+- [ ] [P] **T029** [Changelog Audit] keepachangelog not installed — pip install 'universal-skills[code-enhancer]'
+  - Priority: P3-Low | Effort: Small
+- [ ] [P] **T030** [Pytest Quality] Missing conftest.py for shared fixtures
+  - Priority: P3-Low | Effort: Small
+- [ ] [P] **T031** [Pytest Quality] No @pytest.mark.parametrize usage — consider data-driven tests
+  - Priority: P3-Low | Effort: Medium
+- [ ] [P] **T032** [Pytest Quality] No shared fixtures in conftest.py
+  - Priority: P3-Low | Effort: Medium
+- [ ] [P] **T033** [Pytest Quality] 2 tests have no assertions
+  - Priority: P3-Low | Effort: Medium
+- [ ] [P] **T034** [Pytest Quality] 4 tests use weak assertions (assert result is not None, assert True, etc.)
+  - Priority: P3-Low | Effort: Medium
+- [ ] [P] **T035** [Environment Variables] Partial env var documentation: 32% coverage
+  - Priority: P2-Medium | Effort: Medium
+- [ ] [P] **T036** [Environment Variables] Undocumented env vars: ALLOWED_CLIENT_REDIRECT_URIS, AUTH_TYPE, DEBUG, DEFAULT_M
+  - Priority: P2-Medium | Effort: Medium
+- [ ] [P] **T037** [Environment Variables] 11 Python env vars not in .env.example: DEBUG, DEFAULT_AGENT_NAME, DEFAULT_MODEL
+  - Priority: P2-Medium | Effort: Medium

@@ -52,15 +52,18 @@ ENV HOST=${HOST} \
     UV_SYSTEM_PYTHON=1 \
     UV_COMPILE_BYTECODE=1
 
-RUN apt update \
-     && apt upgrade -y \
-     && apt install -y default-jre ripgrep tree fd-find curl build-essential libxml2-dev libxslt1-dev python3-dev \
-     && curl -LsSf https://astral.sh/uv/install.sh | sh \
-     && curl -sS https://starship.rs/install.sh | sh -s -- --yes \
-     && mkdir -p /root/.config \
-     && echo 'eval "$(starship init bash)"' >> /root/.bashrc \
-     && uv pip install --system --upgrade --verbose --no-cache --break-system-packages --prerelease=allow genius-agent>=2.21.0
+# For local debugging
+WORKDIR /app
+COPY . /app
+RUN apt-get update \
+    && apt-get upgrade -y \
+    && apt-get install -y default-jre ripgrep tree fd-find curl build-essential libxml2-dev libxslt1-dev python3-dev \
+    && curl -LsSf https://astral.sh/uv/install.sh | sh \
+    && curl -sS https://starship.rs/install.sh | sh -s -- --yes \
+    && mkdir -p /root/.config \
+    && echo "eval \"\$(starship init bash)\"" >> /root/.bashrc \
+    && uv pip install --system --upgrade --verbose --no-cache --break-system-packages --prerelease=allow .
 
-COPY starship.toml /root/.config/starship.toml
+COPY docker/starship.toml /root/.config/starship.toml
 
 CMD ["genius-agent"]

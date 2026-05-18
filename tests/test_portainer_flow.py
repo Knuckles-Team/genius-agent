@@ -24,8 +24,12 @@ async def test_portainer_stack_listing():
     """
     # 1. Initialize the graph from the current workspace
     # This will load the MCP registry and define the domain experts
-    mcp_path = os.environ.get("MCP_CONFIG") or "genius_agent/agent_data/mcp_config.json"
+    mcp_path = os.environ.get("MCP_CONFIG") or "genius_agent/mcp_config.json"
+    from agent_utilities.mcp.agent_manager import sync_mcp_agents
+    from pathlib import Path
+    await sync_mcp_agents(config_path=Path(mcp_path))
     graph, config = initialize_graph_from_workspace(mcp_config=mcp_path)
+    print("VALID_DOMAINS:", config["valid_domains"])
 
     # Check if we have the portainer domain registered
     assert (
@@ -42,7 +46,7 @@ async def test_portainer_stack_listing():
 
         # 4. Assertions
         # The result should contain the output from the specialized domain agent
-        output = str(result.results.get("output", result.results))
+        output = str(result.get("output", result))
         # Hallucination Guard: Ensure generic mockups are not present
         assert (
             "webapp" not in output.lower()
