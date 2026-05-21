@@ -13,14 +13,16 @@ Run with:
     pytest tests/test_graph_flow_integration.py -v --timeout=300
 """
 
-import os
-import json
 import asyncio
+import json
+import os
+
 import anyio
 import pytest
 
 pytestmark = pytest.mark.integration
 from pathlib import Path
+
 from dotenv import load_dotenv
 
 # ------------------------------------------------------------------
@@ -91,6 +93,7 @@ def _load_registry():
     initialize_workspace()
     # Explicitly trigger sync for integration tests
     import asyncio
+
     asyncio.run(sync_mcp_agents(config_path=Path(_MCP_CONFIG_PATH)))
     return load_node_agents_registry()
 
@@ -114,9 +117,9 @@ def test_mcp_config_entries_have_valid_structure(mcp_config):
     servers = mcp_config["mcpServers"]
     for name, cfg in servers.items():
         assert cfg.get("command"), f"MCP server '{name}' missing 'command' field"
-        assert isinstance(
-            cfg.get("args", []), list
-        ), f"MCP server '{name}' 'args' must be a list"
+        assert isinstance(cfg.get("args", []), list), (
+            f"MCP server '{name}' 'args' must be a list"
+        )
 
 
 def test_mcp_config_all_entries_have_commands(mcp_config):
@@ -152,17 +155,17 @@ def test_mcp_registry_has_agents(graph_bundle):
     """
     registry = _load_registry()
     assert registry is not None, "_load_registry() returned None"
-    assert (
-        len(registry.agents) > 0
-    ), "MCP registry is empty — has mcp_config.json been synced to MCP_AGENTS.md?"
+    assert len(registry.agents) > 0, (
+        "MCP registry is empty — has mcp_config.json been synced to MCP_AGENTS.md?"
+    )
 
 
 def test_mcp_registry_tool_count(graph_bundle):
     """Registry must have at least one tool registered."""
     registry = _load_registry()
-    assert (
-        len(registry.tools) > 0
-    ), f"Registry has {len(registry.tools)} tools — expected at least 1 for a healthy workspace"
+    assert len(registry.tools) > 0, (
+        f"Registry has {len(registry.tools)} tools — expected at least 1 for a healthy workspace"
+    )
 
 
 def test_mcp_registry_agents_have_mcp_server(graph_bundle):
@@ -265,7 +268,6 @@ async def test_run_graph_flow_tool_returns_string_not_graphresponse(graph_bundle
     Ensures the tool_registry wrapper correctly extracts the string content.
     """
     from agent_utilities.graph.dynamic_graph_orchestrator import run_graph
-    from agent_utilities.models import GraphResponse
 
     graph, config = graph_bundle
 
@@ -286,9 +288,9 @@ async def test_run_graph_flow_tool_returns_string_not_graphresponse(graph_bundle
     assert isinstance(tool_output, str), "Tool output must be a string"
     # Must NOT be just a node label
     node_labels = {"dispatcher", "verifier", "router", "planner", "error_recovery"}
-    assert (
-        tool_output.lower().strip() not in node_labels
-    ), f"Tool output is a bare node label '{tool_output}' — the dispatcher bug is still active"
+    assert tool_output.lower().strip() not in node_labels, (
+        f"Tool output is a bare node label '{tool_output}' — the dispatcher bug is still active"
+    )
 
 
 # ==================================================================
@@ -371,9 +373,9 @@ async def test_git_status_via_graph(graph_bundle):
     )
 
     # --- Assert 4: No hallucinated content ---
-    assert (
-        "placeholder" not in output.lower() and "example" not in output.lower()
-    ), f"Output contains hallucinated placeholder content. Output: {output[:400]}"
+    assert "placeholder" not in output.lower() and "example" not in output.lower(), (
+        f"Output contains hallucinated placeholder content. Output: {output[:400]}"
+    )
 
     print(f"[Git Status Test] ✅ PASSED — Git keywords found: {found_keywords}")
 

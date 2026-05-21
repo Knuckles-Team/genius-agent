@@ -1,7 +1,10 @@
-import httpx
 import asyncio
+
+import httpx
 import pytest
 
+
+@pytest.mark.integration
 @pytest.mark.asyncio
 async def test_llm():
     url = "http://10.0.0.18:1234/v1/chat/completions"

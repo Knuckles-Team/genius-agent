@@ -1,7 +1,7 @@
 import asyncio
-from urllib.parse import urlparse
-import sys
 import os
+import sys
+from urllib.parse import urlparse
 
 try:
     from graphiti_core.driver.falkordb_driver import FalkorDriver

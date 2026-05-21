@@ -1,7 +1,8 @@
 import asyncio
-from pydantic_ai.mcp import MCPServerStdio
 import logging
 import traceback
+
+from pydantic_ai.mcp import MCPServerStdio
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)

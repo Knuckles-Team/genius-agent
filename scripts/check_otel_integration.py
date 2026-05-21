@@ -1,7 +1,8 @@
 #!/usr/bin/env python
-import os
 import base64
 import logging
+import os
+
 import logfire
 from dotenv import load_dotenv
 from pydantic_ai import Agent
@@ -57,7 +58,6 @@ def check_otel():
 
     print("\nSending test trace via pydantic-ai...")
     try:
-
         agent = Agent("openai:gpt-4o", system_prompt="You are a validator.")
 
         with logfire.span("Verification Span"):

@@ -1,15 +1,14 @@
 #!/usr/bin/env python3
 import ast
 import json
-import os
 import sys
 from pathlib import Path
-from typing import Dict, Any
 
 try:
     import tomllib
 except ImportError:
     import tomli as tomllib
+
 
 def get_agent_directories(base_dir: Path) -> list[Path]:
     """Find all agent packages containing mcp_server.py"""
@@ -23,6 +22,7 @@ def get_agent_directories(base_dir: Path) -> list[Path]:
             if mcp_files:
                 dirs.append(child)
     return dirs
+
 
 def parse_pyproject(agent_dir: Path) -> str:
     """Extract the mcp command name from pyproject.toml"""
@@ -39,12 +39,13 @@ def parse_pyproject(agent_dir: Path) -> str:
             return cmd
     return ""
 
-def extract_env_and_tags(mcp_file: Path) -> tuple[Dict[str, str], set[str]]:
+
+def extract_env_and_tags(mcp_file: Path) -> tuple[dict[str, str], set[str]]:
     """Extract os.environ.get variables and tags from mcp.tool"""
     env_vars: dict[str, str] = {}
     tags: set[str] = set()
 
-    with open(mcp_file, "r", encoding="utf-8") as f:
+    with open(mcp_file, encoding="utf-8") as f:
         source = f.read()
 
     try:
@@ -57,15 +58,24 @@ def extract_env_and_tags(mcp_file: Path) -> tuple[Dict[str, str], set[str]]:
         # Find os.environ.get calls
         if isinstance(node, ast.Call):
             if isinstance(node.func, ast.Attribute) and node.func.attr == "get":
-                if isinstance(node.func.value, ast.Attribute) and node.func.value.attr == "environ":
+                if (
+                    isinstance(node.func.value, ast.Attribute)
+                    and node.func.value.attr == "environ"
+                ):
                     if node.args and isinstance(node.args[0], ast.Constant):
                         key = node.args[0].value
                         if isinstance(key, str):
                             env_vars[key] = f"${{{key}}}"
                             # Try to capture default value if present to format like ${KEY:-default}
-                            if len(node.args) > 1 and isinstance(node.args[1], ast.Constant):
+                            if len(node.args) > 1 and isinstance(
+                                node.args[1], ast.Constant
+                            ):
                                 default_val = node.args[1].value
-                                if default_val is not None and isinstance(default_val, (str, int, float, bool)) and str(default_val) != "":
+                                if (
+                                    default_val is not None
+                                    and isinstance(default_val, (str, int, float, bool))
+                                    and str(default_val) != ""
+                                ):
                                     env_vars[key] = f"${{{key}:-{default_val}}}"
 
         # Find @mcp.tool(tags={"tag"})
@@ -76,12 +86,17 @@ def extract_env_and_tags(mcp_file: Path) -> tuple[Dict[str, str], set[str]]:
                     func = decorator.func
                     if isinstance(func, ast.Attribute) and func.attr == "tool":
                         for keyword in decorator.keywords:
-                            if keyword.arg == "tags" and isinstance(keyword.value, ast.Set):
+                            if keyword.arg == "tags" and isinstance(
+                                keyword.value, ast.Set
+                            ):
                                 for elt in keyword.value.elts:
-                                    if isinstance(elt, ast.Constant) and isinstance(elt.value, str):
+                                    if isinstance(elt, ast.Constant) and isinstance(
+                                        elt.value, str
+                                    ):
                                         tags.add(elt.value)
 
     return env_vars, tags
+
 
 def generate_global_mcp_config():
     base_dir = Path("/home/apps/workspace/agent-packages/agents")
@@ -93,7 +108,10 @@ def generate_global_mcp_config():
     for agent_dir in sorted(agents):
         cmd = parse_pyproject(agent_dir)
         if not cmd:
-            print(f"Warning: No mcp_server script found in {agent_dir.name}", file=sys.stderr)
+            print(
+                f"Warning: No mcp_server script found in {agent_dir.name}",
+                file=sys.stderr,
+            )
             continue
 
         mcp_files = list(agent_dir.rglob("mcp_server.py"))
@@ -111,7 +129,7 @@ def generate_global_mcp_config():
         mcp_servers[agent_dir.name] = {
             "command": cmd,
             "args": ["--transport", "stdio"],
-            "env": env_vars
+            "env": env_vars,
         }
 
     config = {"mcpServers": mcp_servers}
@@ -121,7 +139,10 @@ def generate_global_mcp_config():
     with open(output_file, "w") as f:
         json.dump(config, f, indent=2)
 
-    print(f"Successfully generated global configuration with {len(mcp_servers)} servers at {output_file}")
+    print(
+        f"Successfully generated global configuration with {len(mcp_servers)} servers at {output_file}"
+    )
+
 
 if __name__ == "__main__":
     generate_global_mcp_config()

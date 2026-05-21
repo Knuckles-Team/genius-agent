@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 import asyncio
-import httpx
 import json
 import uuid
+
+import httpx
 
 A2A_URL = "http://localhost:9033/a2a/"
 
@@ -13,7 +14,6 @@ async def main():
     questions = ["What collections do you have available?"]
 
     async with httpx.AsyncClient(timeout=10000.0) as client:
-
         for q in questions:
             print(f"\n\n\nUser: {q}")
             print("--- Sending Request ---")

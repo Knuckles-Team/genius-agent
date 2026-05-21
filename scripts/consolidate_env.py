@@ -1,7 +1,7 @@
 import os
-import re
-import yaml
 from pathlib import Path
+
+import yaml
 
 
 def parse_env_file(file_path):
@@ -9,7 +9,7 @@ def parse_env_file(file_path):
     if not os.path.exists(file_path):
         return variables
 
-    with open(file_path, "r") as f:
+    with open(file_path) as f:
         for line in f:
             line = line.strip()
             if not line or line.startswith("#"):
@@ -26,7 +26,7 @@ def parse_compose_file(file_path):
         return variables
 
     try:
-        with open(file_path, "r") as f:
+        with open(file_path) as f:
             data = yaml.safe_load(f)
             if not data or "services" not in data:
                 return variables
@@ -42,11 +42,9 @@ def parse_compose_file(file_path):
                             key = entry.split("=", 1)[0].strip()
                             variables.add(key)
                         elif ":" in entry:
-
                             key = entry.split(":", 1)[0].strip()
                             variables.add(key)
                         else:
-
                             variables.add(entry.strip())
                 elif isinstance(env_config, dict):
                     for key in env_config.keys():
@@ -98,7 +96,7 @@ def main():
 
     genius_compose_path = genius_agent_dir / "compose.yaml"
     if genius_compose_path.exists():
-        with open(genius_compose_path, "r") as f:
+        with open(genius_compose_path) as f:
             compose_data = yaml.safe_load(f)
 
         if "services" in compose_data and "genius-agent" in compose_data["services"]:

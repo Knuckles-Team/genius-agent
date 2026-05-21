@@ -1,6 +1,7 @@
 import asyncio
-from pydantic_ai_mcp import MCPServer
 from contextlib import AsyncExitStack
+
+from pydantic_ai_mcp import MCPServer
 
 
 async def debug_mcp():

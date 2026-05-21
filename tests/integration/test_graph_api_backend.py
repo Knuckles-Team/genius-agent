@@ -1,8 +1,10 @@
 import os
+
 import pytest
 from fastapi.testclient import TestClient
 
 pytestmark = pytest.mark.integration
+
 
 @pytest.fixture(scope="module")
 def graph_app(tmp_path_factory):
@@ -35,10 +37,12 @@ def graph_app(tmp_path_factory):
     )
     return app
 
+
 @pytest.fixture(scope="module")
 def client(graph_app):
     with TestClient(graph_app, raise_server_exceptions=False) as client:
         yield client
+
 
 def test_api_repository_manager(client: TestClient):
     """Test graph API backend routing to repository-manager agent."""
@@ -47,15 +51,18 @@ def test_api_repository_manager(client: TestClient):
         "messages": [
             {
                 "role": "user",
-                "content": "Use the repository-manager to validate all projects."
+                "content": "Use the repository-manager to validate all projects.",
             }
         ],
-        "model": "dummy-model"
+        "model": "dummy-model",
     }
     # In a real environment, the graph would route this to the repository_manager specialist.
     # We verify the endpoint accepts the request.
     resp = client.post("/api/chat", json=payload)
-    assert resp.status_code in (200, 500), f"Expected 200 (or 500 if dummy model fails generation), got {resp.status_code}"
+    assert resp.status_code in (200, 500), (
+        f"Expected 200 (or 500 if dummy model fails generation), got {resp.status_code}"
+    )
+
 
 def test_api_python_programmer(client: TestClient):
     """Test graph API backend routing to python_programmer native agent."""
@@ -63,13 +70,14 @@ def test_api_python_programmer(client: TestClient):
         "messages": [
             {
                 "role": "user",
-                "content": "Write a python script to calculate fibonacci using python_programmer."
+                "content": "Write a python script to calculate fibonacci using python_programmer.",
             }
         ],
-        "model": "dummy-model"
+        "model": "dummy-model",
     }
     resp = client.post("/api/chat", json=payload)
     assert resp.status_code in (200, 500)
+
 
 def test_api_systems_manager(client: TestClient):
     """Test graph API backend routing to systems-manager agent."""
@@ -77,10 +85,10 @@ def test_api_systems_manager(client: TestClient):
         "messages": [
             {
                 "role": "user",
-                "content": "Check the system status using systems-manager."
+                "content": "Check the system status using systems-manager.",
             }
         ],
-        "model": "dummy-model"
+        "model": "dummy-model",
     }
     resp = client.post("/api/chat", json=payload)
     assert resp.status_code in (200, 500)
