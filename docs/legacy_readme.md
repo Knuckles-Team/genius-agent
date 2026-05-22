@@ -58,9 +58,9 @@ To start the interactive command-line agent:
 export API_KEY="your_value"
 export MODEL_NAME="your_value"
 export DEFAULT_SYSTEM_PROMPT="your_value"
+export OPENROUTER_API_KEY="your_value"
 export SERVICENOW_INSTANCE="your_value"
 export SERVICENOW_USERNAME="your_value"
-export OPENROUTER_API_KEY="your_value"
 export SERVICENOW_PASSWORD="your_value"
 
 # Run the agent server

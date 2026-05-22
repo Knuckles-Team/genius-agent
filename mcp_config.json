@@ -20,10 +20,7 @@
         "DEFAULT_AGENT_NAME": "<YOUR_DEFAULT_AGENT_NAME>",
         "ENABLE_OTEL": "<YOUR_ENABLE_OTEL>",
         "GRAPHDB_PASSWORD": "<YOUR_GRAPHDB_PASSWORD>",
-        "LLM_API_KEY": "<YOUR_LLM_API_KEY>",
-        "LLM_BASE_URL": "<YOUR_LLM_BASE_URL>",
-        "MCP_URL": "<YOUR_MCP_URL>",
-        "MODEL_ID": "<YOUR_MODEL_ID>"
+        "MCP_URL": "<YOUR_MCP_URL>"
       }
     }
   }
