@@ -1,0 +1,65 @@
+# Tasks: Code Enhancement: genius-agent
+
+Generated: 2026-05-24T04:17:16.183191+00:00
+Skipped informational: 6
+
+- [ ] [P] **T001** [Dependency Audit] Minor update: pytest-xdist 3.6.0 (constraint — not installed) -> 3.8.0
+  - Priority: P3-Low | Effort: Small
+- [ ] [P] **T002** [Dependency Audit] Minor update: agent-utilities 0.2.40 (installed) -> 0.16.0
+  - Priority: P3-Low | Effort: Small
+- [ ] [P] **T003** [Test Coverage] Test suite lacks intent diversity (only one type)
+  - Priority: P2-Medium | Effort: Medium
+- [ ] [P] **T004** [Test Coverage] 9 potential doc-test drift items
+  - Priority: P2-Medium | Effort: Medium
+- [ ] [P] **T005** [Documentation & Governance] README.md missing sections: usage|quick start
+  - Priority: P4-Enhancement | Effort: Small
+- [ ] [P] **T006** [Documentation & Governance] 1 broken internal links in README.md
+  - Priority: P4-Enhancement | Effort: Medium
+- [ ] [P] **T007** [Documentation & Governance] README.md is short (160 lines) — consider expanding
+  - Priority: P4-Enhancement | Effort: Medium
+- [ ] [P] **T008** [Documentation & Governance] README missing: Environment variables documentation table
+  - Priority: P4-Enhancement | Effort: Small
+- [ ] [P] **T009** [Documentation & Governance] README missing: MCP tools mapping table with descriptions
+  - Priority: P4-Enhancement | Effort: Small
+- [ ] [P] **T010** [Documentation & Governance] README missing: Has a Table of Contents
+  - Priority: P4-Enhancement | Effort: Small
+- [ ] [P] **T011** [Documentation & Governance] README missing: Has usage examples with code blocks
+  - Priority: P4-Enhancement | Effort: Small
+- [ ] [P] **T012** [Documentation & Governance] README missing: Documents all environment variables in a table or section
+  - Priority: P4-Enhancement | Effort: Small
+- [ ] [P] **T013** [Documentation & Governance] README missing: Has MCP tools mapping table with descriptions
+  - Priority: P4-Enhancement | Effort: Small
+- [ ] [P] **T014** [Architecture & Design Patterns] No discernible layer architecture (no domain/service/adapter separation)
+  - Priority: P2-Medium | Effort: Medium
+- [ ] [P] **T015** [Concept Traceability] Low traceability ratio: 0% concepts fully traced
+  - Priority: P4-Enhancement | Effort: Medium
+- [ ] [P] **T016** [Concept Traceability] 11 orphaned concepts (only in one source)
+  - Priority: P4-Enhancement | Effort: Medium
+- [ ] [P] **T017** [Concept Traceability] 27 test functions missing concept markers
+  - Priority: P4-Enhancement | Effort: Small
+- [ ] [P] **T018** [Linting & Formatting] Total lint findings: 0 (high/error: 0, medium/warning: 0, low: 0)
+  - Priority: P4-Enhancement | Effort: Medium
+- [ ] [P] **T019** [Pre-Commit Compliance] 2 hook(s) may be outdated: ruff-pre-commit, uv-pre-commit
+  - Priority: P2-Medium | Effort: Small
+- [ ] [P] **T020** [Directory Organization] 8 rogue/throwaway scripts detected (fix_*, validate_*, patch_*, etc.): scripts/d
+  - Priority: P3-Low | Effort: Medium
+- [ ] [P] **T021** [Changelog Audit] CHANGELOG.md exists but could not be parsed — check format compliance
+  - Priority: P3-Low | Effort: Medium
+- [ ] [P] **T022** [Changelog Audit] No changelog entries within the last 30 days
+  - Priority: P3-Low | Effort: Medium
+- [ ] [P] **T023** [Changelog Audit] keepachangelog not installed — pip install 'universal-skills[code-enhancer]'
+  - Priority: P3-Low | Effort: Small
+- [ ] [P] **T024** [Pytest Quality] No @pytest.mark.parametrize usage — consider data-driven tests
+  - Priority: P3-Low | Effort: Medium
+- [ ] [P] **T025** [Pytest Quality] 3 tests have no assertions
+  - Priority: P3-Low | Effort: Medium
+- [ ] [P] **T026** [Pytest Quality] 4 tests use weak assertions (assert result is not None, assert True, etc.)
+  - Priority: P3-Low | Effort: Medium
+- [ ] [P] **T027** [Environment Variables] Only 24% of env vars documented in README.md
+  - Priority: P2-Medium | Effort: Medium
+- [ ] [P] **T028** [Environment Variables] Undocumented env vars: AUTH_TYPE, CRONTOOL, DEFAULT_MODEL_ID, DEFAULT_PROVIDER,
+  - Priority: P2-Medium | Effort: Medium
+- [ ] [P] **T029** [Environment Variables] 11 Python env vars not in .env.example: DEFAULT_MODEL_ID, DEFAULT_PROVIDER, GRAPH
+  - Priority: P2-Medium | Effort: Medium
+- [ ] [P] **T030** [analyze_xdg_kg] Analysis error: No module named 'agent_utilities.knowledge_graph'
+  - Priority: P1-High | Effort: Medium

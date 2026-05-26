@@ -35,10 +35,18 @@ if _ENV_FILE.exists():
     load_dotenv(dotenv_path=str(_ENV_FILE), override=True)
 
 # MCP config path (relative to genius-agent root, or override via env)
-_MCP_CONFIG_PATH = os.environ.get(
-    "MCP_CONFIG",
-    str(Path(__file__).parents[1] / "genius_agent" / "mcp_config.json"),
-)
+_mcp_config_env = os.environ.get("MCP_CONFIG")
+if _mcp_config_env and Path(_mcp_config_env).is_file():
+    _MCP_CONFIG_PATH = _mcp_config_env
+else:
+    _root_path = Path(__file__).parents[1] / "mcp_config.json"
+    if _root_path.is_file():
+        _MCP_CONFIG_PATH = str(_root_path)
+    else:
+        _MCP_CONFIG_PATH = str(
+            Path(__file__).parents[1] / "genius_agent" / "mcp_config.json"
+        )
+
 
 # Workspace dir is the genius-agent package root
 _WORKSPACE = str(Path(__file__).parents[1])

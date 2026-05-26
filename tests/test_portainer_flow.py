@@ -25,8 +25,16 @@ async def test_portainer_stack_listing():
     """
     # 1. Initialize the graph from the current workspace
     # This will load the MCP registry and define the domain experts
-    mcp_path = os.environ.get("MCP_CONFIG") or "genius_agent/mcp_config.json"
     from pathlib import Path
+
+    _mcp_env = os.environ.get("MCP_CONFIG")
+    if _mcp_env and Path(_mcp_env).is_file():
+        mcp_path = _mcp_env
+    else:
+        if Path("mcp_config.json").is_file():
+            mcp_path = "mcp_config.json"
+        else:
+            mcp_path = "genius_agent/mcp_config.json"
 
     from agent_utilities.mcp.agent_manager import sync_mcp_agents
 

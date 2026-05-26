@@ -154,3 +154,4 @@ dmypy.json
 knowledge_graph.db*
 .repo_graph/
 .ladybug/
+mcp_config.sync.lock
