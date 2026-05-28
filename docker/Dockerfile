@@ -29,7 +29,7 @@ WORKDIR /app
 COPY . /app
 
 # Compile and install package in-place
-RUN uv pip install --system --upgrade --verbose --no-cache --break-system-packages --prerelease=allow genius-agent[all]>=2.26.0
+RUN uv pip install --system --upgrade --verbose --no-cache --break-system-packages --prerelease=allow genius-agent[all]>=2.27.0
 
 COPY docker/starship.toml /root/.config/starship.toml
 
