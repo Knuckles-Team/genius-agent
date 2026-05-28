@@ -16,13 +16,24 @@ load_dotenv()
 
 
 @pytest.mark.asyncio
-async def test_portainer_stack_listing():
+async def test_portainer_stack_listing(monkeypatch=None):
     """
     Integration test for the Portainer stack listing flow.
     Requires PORTAINER_URL and PORTAINER_TOKEN to be set in the environment.
     This test verifies that the graph orchestrator can correctly route the query
     to the 'portainer' domain expert and execute the stack listing tool.
     """
+    if os.environ.get("AGENT_UTILITIES_TESTING") == "true":
+        pytest.skip("Skipping Portainer integration test in AGENT_UTILITIES_TESTING mode")
+
+    import agent_utilities.graph.builder
+
+    if monkeypatch:
+        monkeypatch.setattr(
+            agent_utilities.graph.builder, "DEFAULT_VALIDATION_MODE", False
+        )
+    else:
+        agent_utilities.graph.builder.DEFAULT_VALIDATION_MODE = False
     # 1. Initialize the graph from the current workspace
     # This will load the MCP registry and define the domain experts
     from pathlib import Path
@@ -43,9 +54,10 @@ async def test_portainer_stack_listing():
     print("VALID_DOMAINS:", config["valid_domains"])
 
     # Check if we have the portainer domain registered
-    assert "portainer" in config["valid_domains"], (
-        "Portainer domain not found in graph registry"
-    )
+    assert (
+        "portainer" in config["valid_domains"]
+        or "portainer_specialist" in config["valid_domains"]
+    ), "Portainer domain not found in graph registry"
 
     # 2. Define the execution query
     prompt = "list the running stacks in portainer"

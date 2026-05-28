@@ -7,7 +7,7 @@
         "genius-agent"
       ],
       "env": {
-        "DEBUG": "<YOUR_DEBUG>",
+        "DEBUG": "false",
         "GRAPH_DB_PATH": "<YOUR_GRAPH_DB_PATH>",
         "MCP_CONFIG": "<YOUR_MCP_CONFIG>",
         "OTEL_EXPORTER_OTLP_ENDPOINT": "<YOUR_OTEL_EXPORTER_OTLP_ENDPOINT>",
@@ -18,7 +18,7 @@
         "AGENT_DESCRIPTION": "<YOUR_AGENT_DESCRIPTION>",
         "AGENT_SYSTEM_PROMPT": "<YOUR_AGENT_SYSTEM_PROMPT>",
         "DEFAULT_AGENT_NAME": "<YOUR_DEFAULT_AGENT_NAME>",
-        "ENABLE_OTEL": "<YOUR_ENABLE_OTEL>",
+        "ENABLE_OTEL": "false",
         "GRAPHDB_PASSWORD": "<YOUR_GRAPHDB_PASSWORD>",
         "MCP_URL": "<YOUR_MCP_URL>"
       }

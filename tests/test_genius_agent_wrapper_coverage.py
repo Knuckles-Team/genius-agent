@@ -1,3 +1,4 @@
+import genius_agent.agent_server
 from unittest.mock import MagicMock, patch
 
 
