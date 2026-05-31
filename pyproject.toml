@@ -9,7 +9,7 @@ description = "GeniusAgent Search Engine for Agentic AI!"
 readme = "README.md"
 classifiers = [ "Development Status :: 5 - Production/Stable", "License :: Public Domain", "Environment :: Console", "Operating System :: POSIX :: Linux", "Programming Language :: Python :: 3",]
 requires-python = ">=3.11, <3.14"
-dependencies = [ "agent-utilities[agent,logfire]>=0.34.4",]
+dependencies = [ "agent-utilities[agent,logfire]>=0.36.0",]
 [[project.authors]]
 name = "Audel Rouhi"
 email = "knucklessg1@gmail.com"
