@@ -17,7 +17,6 @@ os.environ.setdefault("OPENAI_API_KEY", "sk-test-not-real")
 os.environ.setdefault("OPENAI_ADMIN_KEY", "sk-test-not-real")
 
 
-
 @pytest.fixture(autouse=True)
 def mock_env(monkeypatch):
     """Set standard test environment variables."""

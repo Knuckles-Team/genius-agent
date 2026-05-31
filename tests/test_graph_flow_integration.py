@@ -333,7 +333,9 @@ async def test_git_status_via_graph(graph_bundle):
       - Status is 'completed'
     """
     if os.environ.get("AGENT_UTILITIES_TESTING") == "true":
-        pytest.skip("Skipping end-to-end integration test in AGENT_UTILITIES_TESTING mode")
+        pytest.skip(
+            "Skipping end-to-end integration test in AGENT_UTILITIES_TESTING mode"
+        )
 
     from agent_utilities.graph.dynamic_graph_orchestrator import run_graph
     from agent_utilities.models import GraphResponse

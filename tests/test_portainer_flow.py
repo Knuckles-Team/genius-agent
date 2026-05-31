@@ -24,7 +24,9 @@ async def test_portainer_stack_listing(monkeypatch=None):
     to the 'portainer' domain expert and execute the stack listing tool.
     """
     if os.environ.get("AGENT_UTILITIES_TESTING") == "true":
-        pytest.skip("Skipping Portainer integration test in AGENT_UTILITIES_TESTING mode")
+        pytest.skip(
+            "Skipping Portainer integration test in AGENT_UTILITIES_TESTING mode"
+        )
 
     import agent_utilities.graph.builder
 
