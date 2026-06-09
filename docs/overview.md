@@ -35,7 +35,7 @@ This project implements or inherits the following ecosystem concepts:
 | ORCH-1.0 | Unified Intelligence Graph | `agent-utilities` (inherited) |
 | OS-5.0 | Agent OS Kernel | `agent-utilities` (inherited) |
 
-> 📖 **Full Registry**: See [`agent-utilities/docs/overview.md`](https://github.com/Knuckles-Team/agent-utilities/blob/main/docs/overview.md) for the complete 5-Pillar concept index.
+> **Full Registry**: See [`agent-utilities/docs/overview.md`](https://github.com/Knuckles-Team/agent-utilities/blob/main/docs/overview.md) for the complete 5-Pillar concept index.
 
 ## Architecture
 

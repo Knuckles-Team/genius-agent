@@ -22,6 +22,10 @@
 
 *Version: 2.39.0*
 
+> **Documentation** — Installation, deployment, usage across the agent, MCP, and CLI
+> interfaces are maintained in the
+> [official documentation](https://knuckles-team.github.io/genius-agent/).
+
 ---
 
 ## Overview
@@ -139,6 +143,22 @@ uv pip install genius-agent[all]
 # Using standard pip
 python -m pip install genius-agent[all]
 ```
+
+---
+
+## Documentation
+
+The complete documentation is published as the
+[official documentation site](https://knuckles-team.github.io/genius-agent/) and is the
+recommended reference for installation, deployment, and day-to-day operation.
+
+| Page | Contents |
+|---|---|
+| [Installation](https://knuckles-team.github.io/genius-agent/installation/) | pip, source, extras, prebuilt Docker image |
+| [Deployment](https://knuckles-team.github.io/genius-agent/deployment/) | run the agent server, Compose, Caddy + Technitium, env config |
+| [Usage](https://knuckles-team.github.io/genius-agent/usage/) | the agent, the MCP tool surface, the CLI |
+| [Overview](https://knuckles-team.github.io/genius-agent/overview/) | capabilities, enterprise readiness, configuration |
+| [Concepts](https://knuckles-team.github.io/genius-agent/concepts/) | concept registry (`CONCEPT:GENIUS-*`) |
 
 ---
 
