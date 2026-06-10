@@ -1,3 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://knuckles-team.github.io/genius-agent/</loc>
+         <lastmod>2026-06-10</lastmod>
+    </url>
+    <url>
+         <loc>https://knuckles-team.github.io/genius-agent/concepts/</loc>
+         <lastmod>2026-06-10</lastmod>
+    </url>
+    <url>
+         <loc>https://knuckles-team.github.io/genius-agent/deployment/</loc>
+         <lastmod>2026-06-10</lastmod>
+    </url>
+    <url>
+         <loc>https://knuckles-team.github.io/genius-agent/installation/</loc>
+         <lastmod>2026-06-10</lastmod>
+    </url>
+    <url>
+         <loc>https://knuckles-team.github.io/genius-agent/overview/</loc>
+         <lastmod>2026-06-10</lastmod>
+    </url>
+    <url>
+         <loc>https://knuckles-team.github.io/genius-agent/usage/</loc>
+         <lastmod>2026-06-10</lastmod>
+    </url>
 </urlset>
