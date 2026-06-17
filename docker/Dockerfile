@@ -15,7 +15,7 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends build-essential \
     && rm -rf /var/lib/apt/lists/*
 RUN --mount=type=cache,target=/root/.cache/uv \
-    uv pip install --system --upgrade --break-system-packages --prerelease=allow genius-agent[all]>=2.43.0
+    uv pip install --system --upgrade --break-system-packages --prerelease=allow genius-agent[all]>=2.44.0
 
 FROM python:3.11-slim
 
