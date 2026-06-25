@@ -11,7 +11,6 @@
     - `mcp_server.py`: Main MCP server entry point and tool registration.
     - `agent_server.py`: Pydantic AI agent definition and logic.
     - `skills/`: Directory containing modular agent skills (if applicable).
-    - `agent/`: Internal agent logic and prompt templates.
 
 ### Architecture Diagram
 ```mermaid
@@ -61,7 +60,7 @@ pre-commit run --all-files
 
 ### File Tree
 ```text
-├── .bumpversion.cfg\n├── .dockerignore\n├── .env\n├── .gitattributes\n├── .github\n│   └── workflows\n│       └── pipeline.yml\n├── .gitignore\n├── .pre-commit-config.yaml\n├── .pytest_cache\n│   ├── .gitignore\n│   ├── CACHEDIR.TAG\n│   ├── README.md\n│   └── v\n│       └── cache\n├── AGENTS.md\n├── Dockerfile\n├── LICENSE\n├── MANIFEST.in\n├── README.md\n├── compose.yaml\n├── debug.Dockerfile\n├── genius_agent\n│   ├── __init__.py\n│   ├── __main__.py\n│   ├── agent\n│   │   ├── AGENTS.md\n│   │   ├── CRON.md\n│   │   ├── CRON_LOG.md\n│   │   ├── HEARTBEAT.md\n│   │   ├── IDENTITY.md\n│   │   ├── MEMORY.md\n│   │   ├── USER.md\n│   │   ├── mcp_config.json\n│   │   └── templates.py\n│   └── agent_server.py\n├── pyproject.toml\n├── pytest.ini\n├── requirements.txt\n├── scripts\n│   ├── check_otel_integration.py\n│   ├── inspect_falkor.py\n│   ├── validate_a2a_agent_server.py\n│   ├── validate_agent_server.py\n│   ├── validate_base_services.sh\n│   └── validate_falkordb.py\n└── tests\n    ├── verify_patch.py\n    └── verify_skills_loading.py
+├── .bumpversion.cfg\n├── .dockerignore\n├── .env\n├── .gitattributes\n├── .github\n│   └── workflows\n│       └── pipeline.yml\n├── .gitignore\n├── .pre-commit-config.yaml\n├── .pytest_cache\n│   ├── .gitignore\n│   ├── CACHEDIR.TAG\n│   ├── README.md\n│   └── v\n│       └── cache\n├── AGENTS.md\n├── Dockerfile\n├── LICENSE\n├── MANIFEST.in\n├── README.md\n├── compose.yaml\n├── debug.Dockerfile\n├── genius_agent\n│   ├── __init__.py\n│   ├── __main__.py\n│   └── agent_server.py\n├── pyproject.toml\n├── pytest.ini\n├── requirements.txt\n├── scripts\n│   ├── check_otel_integration.py\n│   ├── inspect_falkor.py\n│   ├── validate_a2a_agent_server.py\n│   ├── validate_agent_server.py\n│   ├── validate_base_services.sh\n│   └── validate_falkordb.py\n└── tests\n    ├── verify_patch.py\n    └── verify_skills_loading.py
 ```
 
 ## Code Style & Conventions

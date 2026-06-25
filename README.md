@@ -134,15 +134,90 @@ Built directly upon the enterprise-ready [`agent-utilities`](https://github.com/
 
 ## Installation
 
-Install the Python package locally:
+Pick the extra that matches what you want to run:
+
+| Extra | Installs | Use when |
+|-------|----------|----------|
+| `genius-agent[mcp]` | Slim MCP/runtime base only (`agent-utilities[mcp]` — FastMCP/FastAPI) | You only need the lightweight tool-hosting base (smallest install) |
+| `genius-agent[agent]` | Full agent runtime (`agent-utilities[agent,logfire]` — Pydantic AI + the epistemic-graph engine) | You run the **integrated agent** (the primary surface) |
+| `genius-agent[all]` | Everything (`mcp` + `agent` + `logfire`) | Development / both surfaces |
 
 ```bash
-# Using uv (highly recommended)
-uv pip install genius-agent[all]
+# Slim base (smallest install)
+uv pip install "genius-agent[mcp]"
 
-# Using standard pip
-python -m pip install genius-agent[all]
+# Full agent runtime (Pydantic AI + epistemic-graph engine) — recommended
+uv pip install "genius-agent[agent]"
+
+# Everything (development)
+uv pip install "genius-agent[all]"      # or: python -m pip install "genius-agent[all]"
 ```
+
+### Knowledge-graph database (`epistemic-graph`)
+
+The **full agent** (`[agent]`) embeds the **epistemic-graph** engine (pulled in
+transitively via `agent-utilities[agent]`). For production — or to share one knowledge graph
+across multiple agents — run **epistemic-graph as its own database container** and point the
+agent at it instead of embedding it. Deployment recipes (single-node + Raft HA), connection
+config, and the full database architecture (with diagrams) are documented in the
+[epistemic-graph deployment guide](https://knuckles-team.github.io/epistemic-graph/deployment/).
+The slim `[mcp]` base does **not** require the database.
+
+---
+
+## Environment Variables
+
+Every variable the agent reads, grouped by purpose.
+
+### Agent runtime
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `DEFAULT_AGENT_NAME` | Override the agent's identity name | `Genius Agent` |
+| `AGENT_DESCRIPTION` | Override the agent description | identity / built-in |
+| `AGENT_SYSTEM_PROMPT` | Override the agent system prompt | identity / workspace-derived |
+| `WORKSPACE_DIR` | Agent workspace directory | — |
+| `MCP_URL` | URL of the MCP server the agent connects to | `http://localhost:8000/mcp` |
+| `MCP_CONFIG` | Path to an `mcp_config.json` for downstream tool servers | `mcp_config.json` |
+| `PROVIDER` | LLM provider (e.g. `openai`) | `openai` |
+| `MODEL_ID` / `MODEL_NAME` | Model id (e.g. `gpt-4o`) | `gpt-4o` |
+| `API_KEY` | LLM provider API key | — |
+| `OPENROUTER_API_KEY` | OpenRouter API key (when using OpenRouter) | — |
+| `DEFAULT_SYSTEM_PROMPT` | Default system prompt seed | — |
+| `ENABLE_WEB_UI` | Serve the AG-UI web interface | `True` |
+| `GRAPH_DB_PATH` | Path to the local epistemic-graph database file | — |
+| `GRAPHDB_PASSWORD` | Password for an external graph database | — |
+| `HOST` | Bind host | `0.0.0.0` |
+| `PORT` | Bind port | `9000` |
+| `DEBUG` | Verbose logging | `False` |
+| `PYTHONUNBUFFERED` | Unbuffered stdout (recommended in containers) | `1` |
+
+### Downstream service credentials (ServiceNow)
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `SERVICENOW_INSTANCE` | ServiceNow instance URL | — |
+| `SERVICENOW_USERNAME` | ServiceNow username | — |
+| `SERVICENOW_PASSWORD` | ServiceNow password | — |
+
+### Telemetry & governance
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `ENABLE_OTEL` | Enable OpenTelemetry export | `True` |
+| `OTEL_EXPORTER_OTLP_ENDPOINT` | OTLP collector endpoint | — |
+| `OTEL_EXPORTER_OTLP_HEADERS` | OTLP exporter headers | — |
+| `OTEL_EXPORTER_OTLP_PUBLIC_KEY` / `OTEL_EXPORTER_OTLP_SECRET_KEY` | OTLP auth keys | — |
+| `OTEL_EXPORTER_OTLP_PROTOCOL` | OTLP protocol (e.g. `http/protobuf`) | — |
+| `EUNOMIA_TYPE` | Authorization mode: `none`, `embedded`, `remote` | `none` |
+| `EUNOMIA_POLICY_FILE` | Embedded policy file | `mcp_policies.json` |
+| `EUNOMIA_REMOTE_URL` | Remote Eunomia server URL | — |
+
+### Tool toggles
+Each action-routed tool can be disabled individually via its toggle env var (set to `false`):
+`MISCTOOL`, `SYSTEMTOOL`, `SYSTEM_MANAGEMENTTOOL`, `TEXT_EDITORTOOL`, `SERVICETOOL`,
+`PROCESSTOOL`, `NETWORKTOOL`, `DISKTOOL`, `USERTOOL`, `LOGTOOL`, `CRONTOOL`,
+`FIREWALL_MANAGEMENTTOOL`, `SSH_MANAGEMENTTOOL`, `FILESYSTEMTOOL`, `SHELLTOOL`,
+`PYTHONTOOL`, `NODEJSTOOL`.
+
+See [`.env.example`](.env.example) for a copy-paste starting point.
 
 ---
 
