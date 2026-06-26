@@ -7,6 +7,7 @@
         "genius-agent"
       ],
       "env": {
+        "MCP_TOOL_MODE": "condensed",
         "DEBUG": "false",
         "GRAPH_DB_PATH": "<YOUR_GRAPH_DB_PATH>",
         "MCP_CONFIG": "<YOUR_MCP_CONFIG>",
