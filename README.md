@@ -58,16 +58,11 @@ This repository features a fully integrated Pydantic AI Graph Agent. It communic
 To start the interactive command-line agent:
 
 ```bash
-# Set credentials
-export API_KEY="your_value"
-export MODEL_NAME="your_value"
-export DEFAULT_SYSTEM_PROMPT="your_value"
-export SERVICENOW_INSTANCE="your_value"
-export SERVICENOW_USERNAME="your_value"
-export OPENROUTER_API_KEY="your_value"
-export SERVICENOW_PASSWORD="your_value"
+# Optional: override the agent's identity / workspace
+export DEFAULT_AGENT_NAME="Genius Agent"
+export WORKSPACE_DIR="/path/to/workspace"
 
-# Run the agent server
+# Run the agent server (provider / model / key are CLI args)
 genius-agent --provider openai --model-id gpt-4o
 ```
 
@@ -178,33 +173,15 @@ The slim `[mcp]` base does **not** require the database.
 | `OTEL_EXPORTER_OTLP_PUBLIC_KEY` | `pk-...` |  |
 | `OTEL_EXPORTER_OTLP_SECRET_KEY` | `sk-...` |  |
 | `OTEL_EXPORTER_OTLP_PROTOCOL` | `http/protobuf` |  |
+| `OTEL_EXPORTER_OTLP_HEADERS` | — | OTLP auth header, e.g. "Authorization=Basic <token>" |
 | `EUNOMIA_TYPE` | `none` | options: none, embedded, remote |
 | `EUNOMIA_POLICY_FILE` | `mcp_policies.json` |  |
 | `EUNOMIA_REMOTE_URL` | `http://eunomia-server:8000` |  |
-| `API_KEY` | `your_api_key_here` |  |
-| `MODEL_NAME` | `google/vertexai` |  |
-| `DEFAULT_SYSTEM_PROMPT` | `""` |  |
-| `SERVICENOW_INSTANCE` | `https://dev350360.service-now.com` |  |
-| `SERVICENOW_USERNAME` | `admin` |  |
-| `OPENROUTER_API_KEY` | `your_openrouter_api_key_here` |  |
-| `SERVICENOW_PASSWORD` | `your_servicenow_password_here` |  |
-| `MISCTOOL` | `True` |  |
-| `SYSTEMTOOL` | `True` |  |
-| `SYSTEM_MANAGEMENTTOOL` | `True` |  |
-| `TEXT_EDITORTOOL` | `True` |  |
-| `SERVICETOOL` | `True` |  |
-| `PROCESSTOOL` | `True` |  |
-| `NETWORKTOOL` | `True` |  |
-| `DISKTOOL` | `True` |  |
-| `USERTOOL` | `True` |  |
-| `LOGTOOL` | `True` |  |
-| `CRONTOOL` | `True` |  |
-| `FIREWALL_MANAGEMENTTOOL` | `True` |  |
-| `SSH_MANAGEMENTTOOL` | `True` |  |
-| `FILESYSTEMTOOL` | `True` |  |
-| `SHELLTOOL` | `True` |  |
-| `PYTHONTOOL` | `True` |  |
-| `NODEJSTOOL` | `True` |  |
+| `WORKSPACE_DIR` | `/home/apps/workspace/agent-packages` | workspace root the agent initializes from |
+| `MCP_CONFIG` | `mcp_config.json` | path to the MCP config the agent loads |
+| `GRAPH_DB_PATH` | — | path to the local graph DB backing store |
+| `GRAPHDB_PASSWORD` | `letmein` | password for the FalkorDB / graph DB backend |
+| `AGENT_UTILITIES_TESTING` | `true` | set "true" to skip live integration tests |
 
 #### Inherited agent-utilities variables (apply to every connector)
 
@@ -228,7 +205,7 @@ The slim `[mcp]` base does **not** require the database.
 | `MODEL_ID` | `gpt-4o` | Model id for the agent |
 | `ENABLE_WEB_UI` | `True` | Serve the AG-UI web interface |
 
-_32 package + 17 inherited variable(s). Auto-generated from `.env.example` + the shared agent-utilities set — do not edit._
+_14 package + 17 inherited variable(s). Auto-generated from `.env.example` + the shared agent-utilities set — do not edit._
 <!-- ENV-VARS-TABLE:END -->
 
 
@@ -244,10 +221,8 @@ Every variable the agent reads, grouped by purpose.
 | `MCP_URL` | URL of the MCP server the agent connects to | `http://localhost:8000/mcp` |
 | `MCP_CONFIG` | Path to an `mcp_config.json` for downstream tool servers | `mcp_config.json` |
 | `PROVIDER` | LLM provider (e.g. `openai`) | `openai` |
-| `MODEL_ID` / `MODEL_NAME` | Model id (e.g. `gpt-4o`) | `gpt-4o` |
-| `API_KEY` | LLM provider API key | — |
-| `OPENROUTER_API_KEY` | OpenRouter API key (when using OpenRouter) | — |
-| `DEFAULT_SYSTEM_PROMPT` | Default system prompt seed | — |
+| `MODEL_ID` | Model id (e.g. `gpt-4o`) | `gpt-4o` |
+| `LLM_API_KEY` | LLM provider API key | — |
 | `ENABLE_WEB_UI` | Serve the AG-UI web interface | `True` |
 | `GRAPH_DB_PATH` | Path to the local epistemic-graph database file | — |
 | `GRAPHDB_PASSWORD` | Password for an external graph database | — |
@@ -255,13 +230,6 @@ Every variable the agent reads, grouped by purpose.
 | `PORT` | Bind port | `9000` |
 | `DEBUG` | Verbose logging | `False` |
 | `PYTHONUNBUFFERED` | Unbuffered stdout (recommended in containers) | `1` |
-
-### Downstream service credentials (ServiceNow)
-| Variable | Description | Default |
-|----------|-------------|---------|
-| `SERVICENOW_INSTANCE` | ServiceNow instance URL | — |
-| `SERVICENOW_USERNAME` | ServiceNow username | — |
-| `SERVICENOW_PASSWORD` | ServiceNow password | — |
 
 ### Telemetry & governance
 | Variable | Description | Default |
@@ -274,13 +242,6 @@ Every variable the agent reads, grouped by purpose.
 | `EUNOMIA_TYPE` | Authorization mode: `none`, `embedded`, `remote` | `none` |
 | `EUNOMIA_POLICY_FILE` | Embedded policy file | `mcp_policies.json` |
 | `EUNOMIA_REMOTE_URL` | Remote Eunomia server URL | — |
-
-### Tool toggles
-Each action-routed tool can be disabled individually via its toggle env var (set to `false`):
-`MISCTOOL`, `SYSTEMTOOL`, `SYSTEM_MANAGEMENTTOOL`, `TEXT_EDITORTOOL`, `SERVICETOOL`,
-`PROCESSTOOL`, `NETWORKTOOL`, `DISKTOOL`, `USERTOOL`, `LOGTOOL`, `CRONTOOL`,
-`FIREWALL_MANAGEMENTTOOL`, `SSH_MANAGEMENTTOOL`, `FILESYSTEMTOOL`, `SHELLTOOL`,
-`PYTHONTOOL`, `NODEJSTOOL`.
 
 See [`.env.example`](.env.example) for a copy-paste starting point.
 
