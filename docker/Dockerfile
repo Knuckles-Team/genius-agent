@@ -17,7 +17,9 @@ RUN apt-get update \
 RUN --mount=type=cache,target=/root/.cache/uv \
     uv pip install --system --upgrade --break-system-packages --prerelease=allow genius-agent[all]>=3.0.1
 
-FROM python:3.11-slim
+# genius-agent is an agent-only package (no MCP server); the pipeline's mcp leg is
+# auto-skipped since this Dockerfile has no `AS mcp` stage.
+FROM python:3.11-slim AS agent
 
 ARG HOST=0.0.0.0
 ARG PORT=8000
