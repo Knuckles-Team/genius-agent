@@ -30,6 +30,12 @@ test = [
 [project.entry-points."agent_utilities.skill_providers"]
 genius-agent = "genius_agent.skills"
 
+[project.entry-points."agent_utilities.ontology_providers"]
+genius-agent = "genius_agent.ontology"
+
+[project.entry-points."agent_utilities.source_connector_providers"]
+genius-agent = "genius_agent.connectors"
+
 [project.entry-points."agent_utilities.prompt_providers"]
 genius-agent = "genius_agent.prompts"
 
@@ -51,7 +57,7 @@ dev = [
 ]
 
 [tool.setuptools.package-data]
-genius_agent = [ "mcp_config.json", "agent_data/**", "prompts/**", "skills/**",]
+genius_agent = [ "mcp_config.json", "agent_data/**", "prompts/**", "skills/**", "ontology/**", "connectors/**",]
 
 [tool.ruff.lint]
 select = [ "E", "F", "I", "UP", "B",]
