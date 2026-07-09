@@ -1,5 +1,6 @@
 ---
 name: genius-web-crawl
+skill_type: skill
 description: >-
   Crawl web pages, whole sites, or sitemaps to clean markdown via Genius Agent —
   single page, chunked-by-heading, recursive link-following, or sitemap

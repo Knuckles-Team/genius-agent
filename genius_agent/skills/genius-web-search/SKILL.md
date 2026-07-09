@@ -1,5 +1,6 @@
 ---
 name: genius-web-search
+skill_type: skill
 description: >-
   Multi-provider web search via Genius Agent — get ranked titles, snippets, and
   URLs for a query from DuckDuckGo, Google, Bing, or Searxng. Use when the agent

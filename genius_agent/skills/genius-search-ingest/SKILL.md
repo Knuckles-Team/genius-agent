@@ -1,5 +1,6 @@
 ---
 name: genius-search-ingest
+skill_type: skill
 description: >-
   Natively ingest Genius Agent web-search hits and crawled pages into the
   epistemic-graph knowledge graph — search results become :SearchQuery /
