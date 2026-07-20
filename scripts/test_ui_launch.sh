@@ -34,7 +34,7 @@ echo "3. Web UI Instructions"
 echo "====================================================="
 echo "Terminal UI has exited. To test the Web UI against this backend, run:"
 echo ""
-echo "    cd /home/apps/workspace/agent-packages/agent-webui"
+echo '    cd ${AGENT_PACKAGES_ROOT}/agent-webui'
 echo "    pnpm run dev:server"
 echo "    pnpm run dev"
 echo ""

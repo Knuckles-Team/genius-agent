@@ -19,7 +19,11 @@ def harness_app(tmp_path_factory):
     os.environ.setdefault("DEFAULT_PROVIDER", "openai")
     os.environ.setdefault("DEFAULT_MODEL_ID", "dummy-model")
 
-    mcp_config = "/home/apps/workspace/agent-packages/agents/genius-agent/genius_agent/mcp_config.json"
+    mcp_config = os.path.abspath(
+        os.path.join(
+            os.path.dirname(__file__), "..", "..", "genius_agent", "mcp_config.json"
+        )
+    )
 
     app = build_agent_app(
         provider="openai",

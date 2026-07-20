@@ -1,0 +1,109 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix : <http://knuckles.team/kg#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Genius search ontology — web search + crawl over the universal web-search / web-crawler
+# tools. Genius Agent issues queries against a search provider (DuckDuckGo / Google / Bing /
+# Searxng), records the ranked hits, and crawls their pages to markdown. All classes and
+# properties live in the shared `:` (kg#) namespace; only the owl:Ontology node gets the
+# per-package IRI. The retrieved text rides the SHARED :Document class (never redefined here)
+# so hub-side enrichment chunks/embeds it for semantic search.
+
+# --- classes (owl:Class) ---
+
+:SearchQuery a owl:Class ;
+    rdfs:label "Search Query" ;
+    rdfs:comment "A web-search query issued by Genius Agent against a search provider, with its result set." .
+
+:SearchResult a owl:Class ;
+    rdfs:label "Search Result" ;
+    rdfs:comment "A single ranked hit returned for a SearchQuery — a title, snippet, and target URL." .
+
+:WebPage a owl:Class ;
+    rdfs:label "Web Page" ;
+    rdfs:comment "A page fetched/crawled to markdown by the web-crawler, addressable by its URL." .
+
+:SearchProvider a owl:Class ;
+    rdfs:label "Search Provider" ;
+    rdfs:comment "The search engine that answered a query (DuckDuckGo, Google, Bing, or Searxng)." .
+
+# --- links (owl:ObjectProperty) ---
+
+:hasResult a owl:ObjectProperty ;
+    rdfs:label "has result" ;
+    rdfs:comment "Links a SearchQuery to a SearchResult it returned." ;
+    rdfs:domain :SearchQuery ;
+    rdfs:range :SearchResult .
+
+:answeredBy a owl:ObjectProperty ;
+    rdfs:label "answered by" ;
+    rdfs:comment "Links a SearchQuery to the SearchProvider that served it." ;
+    rdfs:domain :SearchQuery ;
+    rdfs:range :SearchProvider .
+
+:pointsToPage a owl:ObjectProperty ;
+    rdfs:label "points to page" ;
+    rdfs:comment "Links a SearchResult to the WebPage at its target URL." ;
+    rdfs:domain :SearchResult ;
+    rdfs:range :WebPage .
+
+:hasContent a owl:ObjectProperty ;
+    rdfs:label "has content" ;
+    rdfs:comment "Links a SearchResult or WebPage to the shared :Document carrying its retrieved text." ;
+    rdfs:range :Document .
+
+# --- fields (owl:DatatypeProperty) ---
+
+:queryText a owl:DatatypeProperty ;
+    rdfs:label "query text" ;
+    rdfs:comment "The raw query string issued for a SearchQuery." ;
+    rdfs:domain :SearchQuery ;
+    rdfs:range xsd:string .
+
+:rank a owl:DatatypeProperty ;
+    rdfs:label "rank" ;
+    rdfs:comment "1-based position of a SearchResult within its query's result set." ;
+    rdfs:domain :SearchResult ;
+    rdfs:range xsd:integer .
+
+:snippet a owl:DatatypeProperty ;
+    rdfs:label "snippet" ;
+    rdfs:comment "The summary snippet text of a SearchResult." ;
+    rdfs:domain :SearchResult ;
+    rdfs:range xsd:string .
+
+:sourceUrl a owl:DatatypeProperty ;
+    rdfs:label "source url" ;
+    rdfs:comment "The target URL of a SearchResult or the canonical URL of a WebPage." ;
+    rdfs:range xsd:string .
+
+:providerName a owl:DatatypeProperty ;
+    rdfs:label "provider name" ;
+    rdfs:comment "Name of the SearchProvider (duckduckgo, google, bing, searxng)." ;
+    rdfs:domain :SearchProvider ;
+    rdfs:range xsd:string .
+
+:OrchestratorAgent a owl:Class ;
+    rdfs:label "Orchestrator agent" ;
+    rdfs:subClassOf :Agent .
+
+:OrchestrationPlan a owl:Class ;
+    rdfs:label "Orchestration plan" ;
+    rdfs:subClassOf :Document .
+
+:planStatus a owl:DatatypeProperty ;
+    rdfs:label "plan status" ;
+    rdfs:range xsd:string .
+
+<http://knuckles.team/kg/genius> a owl:Ontology ;
+    rdfs:label "Genius Search Ontology" ;
+    rdfs:comment """Genius Agent web-search and crawl model — search queries, their ranked
+    results, the providers that answered them, and the web pages crawled from the hits, with
+    the retrieved text carried on the shared :Document class, plus evidence-bearing
+    orchestration plans and their policy-scoped agent authority — federated into the
+    agent-utilities knowledge-graph hub.""" ;
+    owl:imports <http://knuckles.team/kg> .

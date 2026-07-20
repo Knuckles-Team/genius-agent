@@ -4,23 +4,39 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "genius-agent"
-version = "2.39.0"
+version = "3.0.2"
 description = "GeniusAgent Search Engine for Agentic AI!"
 readme = "README.md"
 classifiers = [ "Development Status :: 5 - Production/Stable", "License :: Public Domain", "Environment :: Console", "Operating System :: POSIX :: Linux", "Programming Language :: Python :: 3",]
-requires-python = ">=3.11, <3.15"
-dependencies = [ "agent-utilities[agent,logfire]>=0.45.0",]
+requires-python = ">=3.11,<3.15"
+dependencies = [ "universal-skills[web-crawler,web-search]", "systems-manager[mcp,agent]", "agent-utilities[agent-runtime,logfire]>=1.27.1,<2.0.0",]
 [[project.authors]]
-name = "Audel Rouhi"
-email = "knucklessg1@gmail.com"
+name = "Project Maintainers"
+email = "maintainers@users.noreply.github.com"
 
 [project.license]
 text = "MIT"
 
 [project.scripts]
 genius-agent = "genius_agent.agent_server:agent_server"
+genius-mcp = "genius_agent.mcp_server:mcp_server"
+
+[project.entry-points."agent_utilities.skill_providers"]
+genius-agent = "genius_agent.skills"
+
+[project.entry-points."agent_utilities.ontology_providers"]
+genius-agent = "genius_agent.ontology"
+
+[project.entry-points."agent_utilities.source_connector_providers"]
+genius-agent = "genius_agent.connectors"
+
+[project.entry-points."agent_utilities.prompt_providers"]
+genius-agent = "genius_agent.prompts"
 
 [project.optional-dependencies]
+mcp = [ "agent-utilities[mcp]>=1.27.1,<2.0.0",]
+agent = [ "agent-utilities[agent-runtime,logfire]>=1.27.1,<2.0.0",]
+all = [ "agent-utilities[agent-runtime,logfire]>=1.27.1,<2.0.0",]
 test = [
     "pytest-xdist>=3.6.0", "pytest", "pytest-asyncio", "pytest-cov",]
 
@@ -29,10 +45,10 @@ include-package-data = true
 
 [tool.ruff]
 line-length = 88
-target-version = "py310"
+target-version = "py311"
 
 [tool.mypy]
-python_version = "3.10"
+python_version = "3.11"
 ignore_missing_imports = true
 check_untyped_defs = true
 
@@ -42,7 +58,7 @@ dev = [
 ]
 
 [tool.setuptools.package-data]
-genius_agent = [ "mcp_config.json", "agent_data/**",]
+genius_agent = [ "mcp_config.json", "agent_data/**", "prompts/**", "skills/**", "ontology/**", "connectors/**",]
 
 [tool.ruff.lint]
 select = [ "E", "F", "I", "UP", "B",]

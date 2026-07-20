@@ -8,11 +8,30 @@ PKG_NAME = __name__.rsplit(".", 1)[0] if "." in __name__ else None
 
 
 def _get_pkg_name():
-    """Derive package name from test location."""
+    """Derive the importable package name from ``pyproject.toml``.
+
+    Use the canonical ``[project].name`` rather than the checkout directory name,
+    so the test holds even when the repo is checked out into a worktree whose
+    folder name differs from the package (the mandated worktree workflow).
+    """
     import pathlib
 
-    test_dir = pathlib.Path(__file__).resolve().parent
-    project_dir = test_dir.parent
+    try:
+        import tomllib
+    except ModuleNotFoundError:  # Python < 3.11
+        import tomli as tomllib
+
+    project_dir = pathlib.Path(__file__).resolve().parent.parent
+    pyproject = project_dir / "pyproject.toml"
+    if pyproject.is_file():
+        data = tomllib.loads(pyproject.read_text(encoding="utf-8"))
+        name = (data.get("project") or {}).get("name")
+        if name:
+            return name.replace("-", "_")
+    # Fallback: the one importable package dir holding an ``__init__.py``.
+    for child in sorted(project_dir.iterdir()):
+        if child.is_dir() and (child / "__init__.py").is_file():
+            return child.name
     return project_dir.name.replace("-", "_")
 
 

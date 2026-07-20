@@ -5,7 +5,7 @@ import pytest
 pytestmark = pytest.mark.integration
 import asyncio
 
-from agent_utilities.graph_orchestration import (
+from agent_utilities.graph import (
     initialize_graph_from_workspace,
     run_graph,
 )

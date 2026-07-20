@@ -13,6 +13,8 @@ __pycache__/
 /genius_agent/USER.md
 /genius_agent/icon.png
 /genius_agent/mcp_config.json
+/data/mcp_config.json
+/data/NODE_AGENTS.md
 /genius_agent/chats
 
 # C extensions
@@ -148,7 +150,6 @@ dmypy.json
 # Pyre type checker
 .pyre/
 /mcp/
-**/agent_data/chats/
 
 # Graph Database
 knowledge_graph.db*

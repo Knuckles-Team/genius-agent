@@ -23,6 +23,9 @@ Protocol (MCP) surface for the agent-utilities ecosystem. It provides:
 - **A consumed MCP tool surface** — the agent connects to any MCP server declared in
   `mcp_config.json` (or a remote endpoint via `MCP_URL`), composing their tools into
   a single orchestration plane.
+- **A native governed source tool** — the separate `genius-mcp` entry point exposes
+  the signed `genius_ingest_search` contract for bounded web search and idempotent
+  epistemic-graph ingestion.
 - **Enterprise security and telemetry inherited from `agent-utilities`** — Eunomia
   policy enforcement, OIDC token delegation, OpenTelemetry export, and native
   Langfuse tracing, with guardrails enabled by default.
@@ -60,3 +63,17 @@ genius-agent --provider openai --model-id gpt-4o --host 0.0.0.0 --port 9000
 
 See **[Installation](installation.md)** and **[Deployment](deployment.md)** for the
 full matrix (PyPI extras, Docker image, transports, reverse proxy, DNS).
+
+## Packaged governance
+
+Runtime endpoints, credentials, and machine locations are injected by the
+launcher and are never part of the packaged configuration.
+
+- One comprehensive canonical skill, with specialist procedures retained as
+  referenced workflows.
+- A signed connector capability manifest plus ontology, SHACL shapes, mappings,
+  fixtures, migrations, and certification metadata.
+- Privacy-safe delegation through GraphOS using non-personal agent aliases.
+
+See [Configuration, trust, and privacy](configuration.md) for the operator
+contract.

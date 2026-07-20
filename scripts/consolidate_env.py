@@ -1,11 +1,17 @@
 import os
+import re
+import tempfile
 from pathlib import Path
 
 import yaml
 
+_ENV_KEY = re.compile(r"^[A-Za-z_][A-Za-z0-9_]*$")
+
 
 def parse_env_file(file_path):
-    variables: dict[str, str] = {}
+    """Return variable names only; never retain or aggregate secret values."""
+
+    variables: set[str] = set()
     if not os.path.exists(file_path):
         return variables
 
@@ -15,8 +21,9 @@ def parse_env_file(file_path):
             if not line or line.startswith("#"):
                 continue
             if "=" in line:
-                key, value = line.split("=", 1)
-                variables[key.strip()] = value.strip()
+                key = line.split("=", 1)[0].strip()
+                if _ENV_KEY.fullmatch(key):
+                    variables.add(key)
     return variables
 
 
@@ -40,75 +47,72 @@ def parse_compose_file(file_path):
                     for entry in env_config:
                         if "=" in entry:
                             key = entry.split("=", 1)[0].strip()
-                            variables.add(key)
+                            if _ENV_KEY.fullmatch(key):
+                                variables.add(key)
                         elif ":" in entry:
                             key = entry.split(":", 1)[0].strip()
-                            variables.add(key)
+                            if _ENV_KEY.fullmatch(key):
+                                variables.add(key)
                         else:
-                            variables.add(entry.strip())
+                            key = entry.strip()
+                            if _ENV_KEY.fullmatch(key):
+                                variables.add(key)
                 elif isinstance(env_config, dict):
                     for key in env_config.keys():
-                        variables.add(key)
+                        if isinstance(key, str) and _ENV_KEY.fullmatch(key):
+                            variables.add(key)
     except Exception as e:
-        print(f"Error parsing {file_path}: {e}")
+        print(f"Operation failed: {type(e).__name__}")
 
     return variables
 
 
+def _atomic_write(path: Path, payload: str, *, mode: int = 0o600) -> None:
+    path.parent.mkdir(parents=True, mode=0o700, exist_ok=True)
+    descriptor, temporary = tempfile.mkstemp(prefix=f".{path.name}.", dir=path.parent)
+    try:
+        os.fchmod(descriptor, mode)
+        with os.fdopen(descriptor, "w", encoding="utf-8") as handle:
+            descriptor = -1
+            handle.write(payload)
+            handle.flush()
+            os.fsync(handle.fileno())
+        os.replace(temporary, path)
+        os.chmod(path, mode)
+    finally:
+        if descriptor >= 0:
+            os.close(descriptor)
+        if os.path.exists(temporary):
+            os.unlink(temporary)
+
+
 def main():
     root_dir = Path(__file__).parent.parent.parent.parent
-    genius_agent_dir = Path(__file__).parent.parent
-    master_env = {}
+    variable_names: set[str] = set()
     master_compose_vars = set()
 
-    genius_env_path = genius_agent_dir / ".env"
-    master_env.update(parse_env_file(str(genius_env_path)))
-
     for env_file in root_dir.glob("*/.env"):
-        if env_file.parent.name == "genius-agent":
-            continue
-        new_vars = parse_env_file(str(env_file))
-        for k, v in new_vars.items():
-            if k not in master_env:
-                master_env[k] = v
+        variable_names.update(parse_env_file(str(env_file)))
 
     root_env = root_dir / ".env"
     if root_env.exists():
-        new_vars = parse_env_file(str(root_env))
-        for k, v in new_vars.items():
-            if k not in master_env:
-                master_env[k] = v
+        variable_names.update(parse_env_file(str(root_env)))
 
     for compose_file in root_dir.glob("**/compose.y*ml"):
         master_compose_vars.update(parse_compose_file(str(compose_file)))
 
-    for var in master_compose_vars:
-        if var not in master_env:
-            if var.isupper():
-                master_env[var] = ""
+    variable_names.update(var for var in master_compose_vars if _ENV_KEY.fullmatch(var))
 
-    with open(genius_env_path, "w") as f:
-        f.write("# Master .env consolidated from agent-packages\n")
-        for k in sorted(master_env.keys()):
-            f.write(f"{k}={master_env[k]}\n")
+    xdg_config = Path(
+        os.environ.get("XDG_CONFIG_HOME", str(Path.home() / ".config"))
+    )
+    template_path = xdg_config / "agent-utilities" / "genius-agent" / "env.template"
+    template = "# Variable-name template generated without source values\n" + "".join(
+        f"{key}=\n" for key in sorted(variable_names)
+    )
+    _atomic_write(template_path, template, mode=0o644)
 
-    print(f"Updated {genius_env_path} with {len(master_env)} variables.")
-
-    genius_compose_path = genius_agent_dir / "compose.yaml"
-    if genius_compose_path.exists():
-        with open(genius_compose_path) as f:
-            compose_data = yaml.safe_load(f)
-
-        if "services" in compose_data and "genius-agent" in compose_data["services"]:
-            env_list = []
-            for k in sorted(master_env.keys()):
-                env_list.append(f"{k}=${{{k}}}")
-
-            compose_data["services"]["genius-agent"]["environment"] = env_list
-
-            with open(genius_compose_path, "w") as f:
-                yaml.dump(compose_data, f, sort_keys=False, default_flow_style=False)
-            print(f"Updated {genius_compose_path} environment section.")
+    print(f"Updated value-free environment template ({len(variable_names)} variables).")
 
 
 if __name__ == "__main__":

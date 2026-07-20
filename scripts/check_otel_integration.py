@@ -23,9 +23,8 @@ def check_otel():
     enable_otel = os.getenv("ENABLE_OTEL", "False").lower() == "true"
 
     print(f"ENABLE_OTEL: {enable_otel}")
-    print(f"OTLP Endpoint: {endpoint}")
-    print(f"Public Key: {pk[:10] if pk else ''}...{pk[-4:] if pk else ''}")
-    print(f"Secret Key: {sk[:10] if sk else ''}...{sk[-4:] if sk else ''}")
+    print(f"OTLP endpoint configured: {bool(endpoint)}")
+    print(f"OTLP credentials configured: {bool(pk and sk)}")
 
     if not enable_otel:
         print("ERROR: ENABLE_OTEL is not set to True. OTel export will be disabled.")
@@ -53,7 +52,7 @@ def check_otel():
         logfire.instrument_pydantic_ai()
         print("Logfire configured and pydantic-ai instrumented.")
     except Exception as e:
-        print(f"FAILED to configure Logfire: {e}")
+        print(f"Operation failed: {type(e).__name__}")
         return
 
     print("\nSending test trace via pydantic-ai...")
@@ -72,7 +71,7 @@ def check_otel():
         print("Wait a few seconds for the exporter to flush the spans.")
 
     except Exception as e:
-        print(f"FAILED to send trace: {e}")
+        print(f"Operation failed: {type(e).__name__}")
 
 
 if __name__ == "__main__":

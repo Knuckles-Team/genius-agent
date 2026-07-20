@@ -1,12 +1,11 @@
 import os
 import re
+from pathlib import Path
 
 # Paths
-ROOT_DIR = "/home/apps/workspace/agent-packages/agents/genius-agent"
-WORKSPACE_DIR = "/home/apps/workspace/agent-packages"
-MASTER_OVERVIEW_PATH = os.path.join(
-    WORKSPACE_DIR, "agent-utilities", "docs", "overview.md"
-)
+ROOT_DIR = Path(__file__).resolve().parents[1]
+WORKSPACE_DIR = ROOT_DIR.parents[1]
+MASTER_OVERVIEW_PATH = WORKSPACE_DIR / "agent-utilities" / "docs" / "overview.md"
 
 
 def extract_concepts_from_overview(filepath):

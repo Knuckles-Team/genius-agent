@@ -1,0 +1,8 @@
+{
+  "algorithm": "agent-utilities:mcp-tool-schema-compat:v1",
+  "connector": "genius-agent",
+  "schema_version": "1",
+  "tools": {
+    "genius_ingest_search": "19bd9308bd27c1b0d790ce82d571e0b3bdf257c4fd4b55e1f726ead06e52a982"
+  }
+}

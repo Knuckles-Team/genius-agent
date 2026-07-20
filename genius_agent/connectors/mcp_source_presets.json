@@ -1,0 +1,16 @@
+{
+  "_comment": "Tier-1 mcp_tool source preset(s) for genius-agent (AU-KG.ingest.mcp-tool-connector). Genius Agent is a web-search connector: the 'genius_ingest_search' tool runs a live search and returns ranked hits, which mirror into the KG as :SearchResult documents. Contributed presets win over the central MCP_TOOL_PRESETS.",
+  "genius-search-results": {
+    "server": "genius-agent",
+    "tool": "genius_ingest_search",
+    "action": "search",
+    "records_path": "ingested",
+    "id_field": "sourceUrl",
+    "title_field": "title",
+    "text_field": "snippet",
+    "url_field": "sourceUrl",
+    "updated_field": "created_at",
+    "doc_type": "SearchResult",
+    "domain": "genius"
+  }
+}

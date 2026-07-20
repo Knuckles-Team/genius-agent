@@ -7,20 +7,25 @@ are in [Overview](overview.md).
 
 ## As an MCP server
 
-`genius-agent` composes the tools of the MCP servers declared in its
-`mcp_config.json` (or reached via `MCP_URL`) into a single orchestration plane, and
-exposes its graph-flow capability over MCP. Reads work with no configuration beyond a
-model provider key; authorization is enforced through Eunomia when
-`EUNOMIA_TYPE=embedded` or `remote`.
+`genius-mcp` is the package's native MCP entry point. It exposes the signed source
+tool below; runtime search credentials, graph connectivity, TLS trust, tenant, and
+policy are supplied through AgentConfig and the environment. Listing the tool surface
+does not contact a search provider or graph backend.
 
 | Capability | Description |
 |---|---|
-| `run_graph_flow` | Execute a multi-step workflow through the agent's Pydantic-Graph orchestration engine (declared in [`a2a.json`](https://github.com/Knuckles-Team/genius-agent/blob/main/a2a.json)). |
-| Composed MCP tools | Every tool registered by the MCP servers in `mcp_config.json` becomes callable through the agent. |
+| `genius_ingest_search` | Run one bounded web search and idempotently materialize its ranked evidence into epistemic-graph. |
 
-Example prompts that drive the agent:
+Start the stdio server:
 
-- *"Run the deployment workflow against the staging environment."* → `run_graph_flow`
+```bash
+uvx --from genius-agent genius-mcp
+```
+
+The separate `genius-agent` entry point consumes tools declared in its
+`mcp_config.json` (or reached via `MCP_URL`) as part of its orchestration plane.
+Example prompts that drive that agent:
+
 - *"Search the catalog and summarize the top results."* → a composed MCP tool call
 - *"Plan a multi-step task and execute each step."* → graph orchestration
 
@@ -70,8 +75,16 @@ Inspect every available flag:
 
 ```bash
 genius-agent --help
+genius-mcp --help
 ```
 
 Each optional capability reads its own credentials and remains inactive when those
 credentials are absent. The full environment set is documented in
 [`.env.example`](https://github.com/Knuckles-Team/genius-agent/blob/main/.env.example).
+
+## Governed delegation
+
+Do not commit tenant definitions, credentials, identities, or host paths. For
+delegated use, discover and execute the packaged `genius-agent-operations`
+skill through GraphOS. The skill requires a verified tenant/session, current
+tool discovery, fenced mutations, and sanitized evidence.

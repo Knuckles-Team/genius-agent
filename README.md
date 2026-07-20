@@ -20,7 +20,7 @@
 ![PyPI - Wheel](https://img.shields.io/pypi/wheel/genius-agent)
 ![PyPI - Implementation](https://img.shields.io/pypi/implementation/genius-agent)
 
-*Version: 2.39.0*
+*Version: 3.0.2*
 
 > **Documentation** — Installation, deployment, usage across the agent, MCP, and CLI
 > interfaces are maintained in the
@@ -50,6 +50,20 @@ Detailed instructions on how to use the underlying API wrappers, extended schema
 
 ---
 
+## MCP source connector
+
+Run the native MCP surface with `genius-mcp`. Its signed source tool,
+`genius_ingest_search`, searches through the configured provider and idempotently
+materializes ranked evidence into epistemic-graph. Tool discovery requires no upstream
+connection; search credentials, graph connectivity, TLS trust, tenant, and policy are
+all supplied at runtime through AgentConfig and the environment.
+
+```bash
+uvx --from genius-agent genius-mcp
+```
+
+---
+
 ## Agent
 
 This repository features a fully integrated Pydantic AI Graph Agent. It communicates over the **Agent Control Protocol (ACP)** and interacts seamlessly with the **Agent Web UI (AG-UI)** and Terminal interface.
@@ -58,16 +72,11 @@ This repository features a fully integrated Pydantic AI Graph Agent. It communic
 To start the interactive command-line agent:
 
 ```bash
-# Set credentials
-export API_KEY="your_value"
-export MODEL_NAME="your_value"
-export DEFAULT_SYSTEM_PROMPT="your_value"
-export SERVICENOW_INSTANCE="your_value"
-export SERVICENOW_USERNAME="your_value"
-export OPENROUTER_API_KEY="your_value"
-export SERVICENOW_PASSWORD="your_value"
+# Optional: override the agent's identity / workspace
+export DEFAULT_AGENT_NAME="Genius Agent"
+export WORKSPACE_DIR="/path/to/workspace"
 
-# Run the agent server
+# Run the agent server (provider / model / key are CLI args)
 genius-agent --provider openai --model-id gpt-4o
 ```
 
@@ -79,7 +88,7 @@ version: '3.8'
 
 services:
   genius-agent-agent:
-    image: knucklessg1/genius-agent:latest
+    image: <registry>/genius-agent@sha256:<digest>
     container_name: genius-agent-agent
     hostname: genius-agent-agent
     restart: always
@@ -110,7 +119,9 @@ services:
 
 ```
 
-Detailed graph node architecture explanations, custom skill configurations, and agentic trace guides are available in [docs/agent.md](docs/agent.md).
+Graph architecture, governed skill integration, and agent execution guidance are
+documented in [docs/overview.md](docs/overview.md) and
+[docs/usage.md](docs/usage.md).
 
 ---
 
@@ -134,15 +145,121 @@ Built directly upon the enterprise-ready [`agent-utilities`](https://github.com/
 
 ## Installation
 
-Install the Python package locally:
+Pick the extra that matches what you want to run:
+
+| Extra | Installs | Use when |
+|-------|----------|----------|
+| `genius-agent[mcp]` | MCP server (`agent-utilities[mcp]`) plus the mandatory full epistemic-graph base runtime | You run the MCP tool surface without the integrated agent runtime |
+| `genius-agent[agent]` | Current agent runtime (`agent-utilities[agent-runtime,logfire]`) plus the mandatory full epistemic-graph base runtime | You run the **integrated agent** (the primary surface) |
+| `genius-agent[all]` | Everything (`mcp` + `agent` + `logfire`) | Development / both surfaces |
 
 ```bash
-# Using uv (highly recommended)
-uv pip install genius-agent[all]
+# MCP serving runtime
+uv pip install "genius-agent[mcp]"
 
-# Using standard pip
-python -m pip install genius-agent[all]
+# Full agent runtime (Pydantic AI + epistemic-graph engine) — recommended
+uv pip install "genius-agent[agent]"
+
+# Everything (development)
+uv pip install "genius-agent[all]"      # or: python -m pip install "genius-agent[all]"
 ```
+
+### Knowledge-graph database (`epistemic-graph`)
+
+Every install receives `epistemic-graph[full]` through the current Agent Utilities
+base dependency. The `[mcp]` and `[agent]` extras add their respective tool and agent
+runtime layers without changing that database contract. For production — or to share
+one knowledge graph across multiple agents — run **epistemic-graph as its own database
+service** and point the agent at it. Deployment recipes (single-node + Raft HA),
+connection config, and the full database architecture are documented in the
+[epistemic-graph deployment guide](https://knuckles-team.github.io/epistemic-graph/deployment/).
+
+---
+
+## Environment Variables
+
+<!-- ENV-VARS-TABLE:START -->
+
+#### Package environment variables
+
+| Variable | Example | Description |
+|----------|---------|-------------|
+| `ENABLE_OTEL` | `True` |  |
+| `OTEL_EXPORTER_OTLP_ENDPOINT` | `http://localhost:8080/api/public/otel` |  |
+| `OTEL_EXPORTER_OTLP_PUBLIC_KEY` | `pk-...` |  |
+| `OTEL_EXPORTER_OTLP_SECRET_KEY` | `sk-...` |  |
+| `OTEL_EXPORTER_OTLP_PROTOCOL` | `http/protobuf` |  |
+| `OTEL_EXPORTER_OTLP_HEADERS` | — | OTLP auth header, e.g. "Authorization=Basic <token>" |
+| `EUNOMIA_TYPE` | `none` | options: none, embedded, remote |
+| `EUNOMIA_POLICY_FILE` | `mcp_policies.json` |  |
+| `EUNOMIA_REMOTE_URL` | `http://eunomia-server:8000` |  |
+| `WORKSPACE_DIR` | launcher-configured | workspace root the agent initializes from |
+| `MCP_CONFIG` | `mcp_config.json` | path to the MCP config the agent loads |
+| `GRAPH_DB_PATH` | — | path to the local graph DB backing store |
+| `GRAPHDB_PASSWORD` | launcher-configured | password for the graph backend |
+| `AGENT_UTILITIES_TESTING` | `true` | set "true" to skip live integration tests |
+
+#### Inherited agent-utilities variables (apply to every connector)
+
+| Variable | Example | Description |
+|----------|---------|-------------|
+| `TRANSPORT` | `stdio` | MCP transport: `stdio` | `streamable-http` | `sse` |
+| `HOST` | `0.0.0.0` | Bind host (HTTP transports) |
+| `PORT` | `8000` | Bind port (HTTP transports) |
+| `MCP_TOOL_MODE` | `condensed` | Tool surface: `condensed` | `verbose` | `both` |
+| `MCP_ENABLED_TOOLS` | — | Comma-separated tool allow-list |
+| `MCP_DISABLED_TOOLS` | — | Comma-separated tool deny-list |
+| `MCP_ENABLED_TAGS` | — | Comma-separated tag allow-list |
+| `MCP_DISABLED_TAGS` | — | Comma-separated tag deny-list |
+| `MCP_CLIENT_AUTH` | — | Outbound MCP auth (`oidc-client-credentials` for fleet calls) |
+| `OIDC_CLIENT_ID` | — | OIDC client id (service-account auth) |
+| `OIDC_CLIENT_SECRET` | — | OIDC client secret (service-account auth) |
+| `DEBUG` | `False` | Verbose logging |
+| `PYTHONUNBUFFERED` | `1` | Unbuffered stdout (recommended in containers) |
+| `MCP_URL` | `http://localhost:8000/mcp` | URL of the MCP server the agent connects to |
+| `PROVIDER` | `openai` | LLM provider for the agent |
+| `MODEL_ID` | `gpt-4o` | Model id for the agent |
+| `ENABLE_WEB_UI` | `True` | Serve the AG-UI web interface |
+
+_14 package + 17 inherited variable(s). Auto-generated from `.env.example` + the shared agent-utilities set — do not edit._
+<!-- ENV-VARS-TABLE:END -->
+
+
+Every variable the agent reads, grouped by purpose.
+
+### Agent runtime
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `DEFAULT_AGENT_NAME` | Override the agent's identity name | `Genius Agent` |
+| `AGENT_DESCRIPTION` | Override the agent description | identity / built-in |
+| `AGENT_SYSTEM_PROMPT` | Override the agent system prompt | identity / workspace-derived |
+| `WORKSPACE_DIR` | Agent workspace directory | — |
+| `MCP_URL` | URL of the MCP server the agent connects to | `http://localhost:8000/mcp` |
+| `MCP_CONFIG` | Path to an `mcp_config.json` for downstream tool servers | `mcp_config.json` |
+| `PROVIDER` | LLM provider (e.g. `openai`) | `openai` |
+| `MODEL_ID` | Model id (e.g. `gpt-4o`) | `gpt-4o` |
+| `LLM_API_KEY` | LLM provider API key | — |
+| `ENABLE_WEB_UI` | Serve the AG-UI web interface | `True` |
+| `GRAPH_DB_PATH` | Path to the local epistemic-graph database file | — |
+| `GRAPHDB_PASSWORD` | Password for an external graph database | — |
+| `HOST` | Bind host | `0.0.0.0` |
+| `PORT` | Bind port | `9000` |
+| `DEBUG` | Verbose logging | `False` |
+| `PYTHONUNBUFFERED` | Unbuffered stdout (recommended in containers) | `1` |
+
+### Telemetry & governance
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `ENABLE_OTEL` | Enable OpenTelemetry export | `True` |
+| `OTEL_EXPORTER_OTLP_ENDPOINT` | OTLP collector endpoint | — |
+| `OTEL_EXPORTER_OTLP_HEADERS` | OTLP exporter headers | — |
+| `OTEL_EXPORTER_OTLP_PUBLIC_KEY` / `OTEL_EXPORTER_OTLP_SECRET_KEY` | OTLP auth keys | — |
+| `OTEL_EXPORTER_OTLP_PROTOCOL` | OTLP protocol (e.g. `http/protobuf`) | — |
+| `EUNOMIA_TYPE` | Authorization mode: `none`, `embedded`, `remote` | `none` |
+| `EUNOMIA_POLICY_FILE` | Embedded policy file | `mcp_policies.json` |
+| `EUNOMIA_REMOTE_URL` | Remote Eunomia server URL | — |
+
+See [`.env.example`](.env.example) for a copy-paste starting point.
 
 ---
 
@@ -164,10 +281,10 @@ recommended reference for installation, deployment, and day-to-day operation.
 
 ## Repository Owners
 
-<img width="100%" height="180em" src="https://github-readme-stats.vercel.app/api?username=Knucklessg1&show_icons=true&hide_border=true&&count_private=true&include_all_commits=true" />
+<img width="100%" height="180em" src="https://github-readme-stats.vercel.app/api?username=example&show_icons=true&hide_border=true&&count_private=true&include_all_commits=true" />
 
-![GitHub followers](https://img.shields.io/github/followers/Knucklessg1)
-![GitHub User's stars](https://img.shields.io/github/stars/Knucklessg1)
+![GitHub followers](https://img.shields.io/github/followers/example)
+![GitHub User's stars](https://img.shields.io/github/stars/example)
 
 ---
 
@@ -178,3 +295,42 @@ Contributions are welcome! Please ensure code quality by executing local checks 
 - Lint code using `ruff check .`
 - Validate type-safety with `mypy .`
 - Execute test suites using `pytest`
+
+
+<!-- BEGIN agent-utilities-deployment (generated; do not edit between markers) -->
+
+## Deploy with `agent-utilities-deployment`
+
+Provision this package with the consolidated **`agent-utilities-deployment`**
+workflow. It selects an installed-package, editable-source, or immutable-container
+path; records only runtime secret and TLS-profile references in `AgentConfig`; and
+runs doctor, registration, policy, observability, and rollback gates. Ask your agent
+to **"deploy `genius-agent` with agent-utilities-deployment"**.
+
+| Install mode | Command |
+|------|---------|
+| Installed package | `uv tool install "genius-agent[mcp]"`, then run `genius-mcp` |
+| Editable source | `uv pip install -e ".[agent]"`, then run `genius-mcp` |
+| Immutable container | deploy `registry.example.invalid/genius-agent@sha256:<digest>` through the operator-selected orchestrator |
+
+The repository embeds no deployment profile, credential value, certificate path, or
+environment-specific endpoint. Supply those at runtime through `AgentConfig` and the
+configured secret provider.
+
+<!-- END agent-utilities-deployment -->
+
+<!-- GOVERNED-CAPABILITY:START -->
+## Governed capability contract
+
+This package ships a compact canonical skill surface with specialist procedures
+kept as referenced workflows. The current MCP tools, skill metadata,
+`connector_manifest.yml`, ontology, mappings, shapes, fixtures, migrations,
+tool-schema fingerprints, and certification metadata form one versioned
+capability contract. Validate them together; do not rely on stale tool names or
+historical per-task skill wrappers.
+
+Runtime endpoints, credentials, certificate trust, tenant identity, retention,
+and observability policy are deployment inputs and are never packaged values.
+See [Configuration, trust, and privacy](docs/configuration.md) before enabling a
+network transport, connector ingestion, GraphOS delegation, or trace export.
+<!-- GOVERNED-CAPABILITY:END -->
