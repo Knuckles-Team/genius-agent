@@ -1,5 +1,6 @@
 ---
 name: genius-agent-operations
+skill_type: skill
 description: >-
   Search the open web, crawl selected sources, and ingest verified results through
   Genius Agent's governed MCP and GraphOS surfaces. Use for current web discovery,
