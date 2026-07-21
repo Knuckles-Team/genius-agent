@@ -1,0 +1,20 @@
+schema_version: '1'
+connector: genius-agent
+ontology_source: genius
+sync:
+- preset: genius-search-results
+  server: genius-agent
+  tool: genius_ingest_search
+  action: search
+  records_path: ingested
+  id_field: sourceUrl
+  title_field: title
+  text_field: snippet
+  updated_field: created_at
+  doc_type: SearchResult
+  tool_schema_sha256: 19bd9308bd27c1b0d790ce82d571e0b3bdf257c4fd4b55e1f726ead06e52a982
+governance:
+  default_acl: quarantine
+  identity: opaque-reference
+  tenant: required-at-materialization
+  provenance: required-at-materialization

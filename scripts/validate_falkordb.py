@@ -22,21 +22,25 @@ def get_falkordb_params(uri):
 
 async def test_driver_init():
 
-    uri = "redis://falkordb:6379"
-    password = os.environ.get("GRAPHDB_PASSWORD", "letmein")
+    uri = os.environ.get("FALKORDB_URI", "redis://127.0.0.1:6379")
+    password = os.environ.get("GRAPHDB_PASSWORD")
     host, port = get_falkordb_params(uri)
-    print(f"Extracted -> Host: {host}, Port: {port}, Password: {password}")
+    print(
+        "Extracted connection settings: "
+        f"host_configured={bool(host)}, port_configured={bool(port)}, "
+        f"password_configured={bool(password)}"
+    )
 
     try:
         print("Attempting to initialize FalkorDriver...")
         driver = FalkorDriver(
             host=host, port=port, password=password, database="default_db"
         )
-        print("✅ FalkorDriver initialized successfully with password!")
+        print("✅ FalkorDriver initialized successfully with configured authentication")
     except TypeError as e:
-        print(f"❌ Initialization failed with TypeError: {e}")
+        print(f"Operation failed: {type(e).__name__}")
     except Exception as e:
-        print(f"❌ Initialization failed with Error: {e}")
+        print(f"Operation failed: {type(e).__name__}")
 
 
 if __name__ == "__main__":

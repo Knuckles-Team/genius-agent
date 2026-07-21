@@ -19,7 +19,7 @@ pip install genius-agent
 
 ### Optional extras
 
-The base install pulls in the `agent-utilities[agent,logfire]` core. Install an extra
+The base install pulls in the `agent-utilities[agent-runtime,logfire]` core. Install an extra
 for additional capability:
 
 | Extra | Install | Pulls in |
@@ -49,16 +49,16 @@ uv run genius-agent
 
 ## Prebuilt Docker image
 
-A multi-stage, slim image is published on every release (installs
+A multi-stage runtime image is published on every release (installs
 `genius-agent[all]`, entrypoint `genius-agent`):
 
 ```bash
-docker pull knucklessg1/genius-agent:latest
+docker pull <registry>/genius-agent@sha256:<digest>
 
 docker run --rm -i \
   -e API_KEY=your_model_provider_key \
   -e MODEL_NAME=openai/gpt-4o \
-  knucklessg1/genius-agent:latest
+  <registry>/genius-agent@sha256:<digest>
 ```
 
 For an HTTP agent server with a published port and the Agent Web UI, see
@@ -68,6 +68,7 @@ For an HTTP agent server with a published port and the Agent Web UI, see
 
 ```bash
 genius-agent --help
+genius-mcp --help
 python -c "import genius_agent; print(genius_agent.__doc__)"
 ```
 
@@ -76,3 +77,11 @@ python -c "import genius_agent; print(genius_agent.__doc__)"
 - **[Deployment](deployment.md)** — run it as a long-lived agent server behind Caddy + DNS.
 - **[Usage](usage.md)** — drive the agent, the MCP tool surface, and the CLI.
 - **[Configuration](deployment.md#configuration-environment)** — every environment variable.
+
+## Governed installation
+
+Keep package indexes and TLS trust configured by the environment; do not add
+credentials or certificate paths to the repository. After installation, verify
+that `genius-agent --help` succeeds and that the packaged
+`genius-agent-operations` skill and connector certification metadata are
+present.

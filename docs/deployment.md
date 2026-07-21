@@ -80,7 +80,7 @@ It reads a sibling `.env` and publishes the agent server (Web UI + ACP) on `:900
 ```yaml
 services:
   genius-agent-agent:
-    image: knucklessg1/genius-agent:latest
+    image: <registry>/genius-agent@sha256:<digest>
     container_name: genius-agent-agent
     hostname: genius-agent-agent
     restart: always
@@ -130,8 +130,8 @@ servers the agent should compose.
 Expose the agent server on a hostname with automatic TLS. Add to your `Caddyfile`:
 
 ```caddy
-# Internal (self-signed) — homelab .arpa zone
-genius-agent.arpa {
+# Internal PKI
+<agent-hostname> {
     tls internal
     reverse_proxy genius-agent-agent:9000
 }
@@ -155,39 +155,50 @@ docker compose -f services/caddy/compose.yml exec caddy caddy reload --config /e
 Point the hostname at the host running Caddy. Via the Technitium API:
 
 ```bash
-curl -s "http://technitium.arpa:5380/api/zones/records/add" \
+curl -s "${DNS_API_URL}/api/zones/records/add" \
   --data-urlencode "token=$TECHNITIUM_DNS_TOKEN" \
-  --data-urlencode "domain=genius-agent.arpa" \
+  --data-urlencode "domain=${AGENT_HOSTNAME}" \
   --data-urlencode "zone=arpa" \
   --data-urlencode "type=A" \
   --data-urlencode "ipAddress=10.0.0.10" \
   --data-urlencode "ttl=3600"
 ```
 
-…or add an **A record** `genius-agent.arpa → <caddy-host-ip>` in the Technitium web
-console (`http://technitium.arpa:5380`). The ecosystem
+…or add an **A record** for the configured agent hostname in the DNS web
+console. The ecosystem
 [`technitium-dns-mcp`](https://knuckles-team.github.io/technitium-dns-mcp/) automates
 this as a tool.
 
 ## Register with an MCP client
 
-`genius-agent` is itself an agent that consumes MCP tools, and it can also be
-registered with an MCP client. Add to your client's `mcp_config.json`:
+`genius-agent` consumes downstream MCP tools. Its native source connector is the
+separate `genius-mcp` entry point; register that command with an MCP client:
 
 ```json
 {
   "mcpServers": {
     "genius-agent": {
-      "command": "uv",
-      "args": ["run", "genius-agent"],
-      "env": {
-        "API_KEY": "your_model_provider_key",
-        "MODEL_NAME": "openai/gpt-4o",
-        "ENABLE_OTEL": "false"
-      }
+      "command": "uvx",
+      "args": ["--from", "genius-agent", "genius-mcp"],
+      "env": {}
     }
   }
 }
 ```
 
-For a remote HTTP server, point the client at `http://genius-agent.arpa/mcp` instead.
+For a remote HTTP server, point the client at the launcher-configured MCP URL instead.
+
+## Governed promotion
+
+Supply the agent definition and prompt at runtime. The command accepts a
+configuration file, an inline JSON payload, or launcher-provided data; use
+`genius-agent --help` as the version-specific flag reference.
+
+Place authentication in front of every non-loopback endpoint, inject
+model/provider credentials from a secret store, and mount only approved working
+data. Enable optional observability with metadata-only capture and verify TLS
+using the environment-configured CA bundle.
+
+A promotion is complete only after readiness, one least-privilege orchestration,
+skill discovery, and privacy-safe trace delivery all succeed. See
+[Configuration, trust, and privacy](configuration.md).

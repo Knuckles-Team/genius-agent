@@ -180,7 +180,9 @@ def ingest_documents(
 # domain mappers — search results / crawled pages -> typed nodes + documents
 # --------------------------------------------------------------------------- #
 def _hash(value: str) -> str:
-    return hashlib.sha1(value.encode("utf-8", "replace")).hexdigest()[:16]
+    return hashlib.sha1(
+        value.encode("utf-8", "replace"), usedforsecurity=False
+    ).hexdigest()[:16]
 
 
 def _norm_result(raw: dict[str, Any]) -> dict[str, Any]:

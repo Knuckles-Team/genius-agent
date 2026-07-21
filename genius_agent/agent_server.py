@@ -4,6 +4,14 @@ import os
 import sys
 import warnings
 
+# Load environment variables from .env file
+try:
+    from dotenv import load_dotenv
+
+    load_dotenv()
+except ImportError:
+    pass
+
 # Filter RequestsDependencyWarning early to prevent log spam
 with warnings.catch_warnings():
     warnings.simplefilter("ignore")
@@ -18,7 +26,6 @@ with warnings.catch_warnings():
 warnings.filterwarnings("ignore", message=".*urllib3.*or chardet.*")
 warnings.filterwarnings("ignore", message=".*urllib3.*or charset_normalizer.*")
 warnings.filterwarnings("ignore", category=DeprecationWarning, module="fastmcp")
-
 
 __version__ = "3.0.2"
 
@@ -94,7 +101,7 @@ def agent_server():
 
     create_agent_server(
         mcp_url=args.mcp_url,
-        # mcp_config=args.mcp_config or "mcp_config.json",
+        mcp_config=args.mcp_config,
         host=args.host,
         port=args.port,
         provider=args.provider,
@@ -103,7 +110,7 @@ def agent_server():
         agent_model=args.model_id,
         base_url=args.base_url,
         api_key=args.api_key,
-        # custom_skills_directory=args.custom_skills_directory,
+        custom_skills_directory=args.custom_skills_directory,
         enable_web_ui=args.web,
         enable_otel=args.otel,
         otel_endpoint=args.otel_endpoint,

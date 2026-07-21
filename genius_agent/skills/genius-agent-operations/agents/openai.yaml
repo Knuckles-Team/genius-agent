@@ -1,0 +1,4 @@
+interface:
+  display_name: "Genius Agent Operations"
+  short_description: "Help with Genius Agent Operations tasks"
+  default_prompt: "Use $genius-agent-operations to complete a governed provider workflow."

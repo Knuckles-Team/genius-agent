@@ -1,0 +1,6 @@
+{
+  "connector": "genius-agent",
+  "current_ontology_source": "genius",
+  "migrations": [],
+  "schema_version": "1"
+}

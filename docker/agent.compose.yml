@@ -1,13 +1,21 @@
-version: '3.8'
-
 services:
   genius-agent-agent:
-    image: knucklessg1/genius-agent:latest
+    image: ${GENIUS_AGENT_IMAGE:?set-GENIUS_AGENT_IMAGE-to-image@sha256-digest}
     container_name: genius-agent-agent
     hostname: genius-agent-agent
-    restart: always
-    env_file:
-      - ../.env
+    init: true
+    user: "10001:10001"
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    pids_limit: 256
+    mem_limit: ${AGENT_CONTAINER_MEMORY_LIMIT:-4g}
+    cpus: ${AGENT_CONTAINER_CPU_LIMIT:-2.0}
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,nodev,size=64m
+    restart: unless-stopped
     command: [ "genius-agent" ]
     environment:
       - PYTHONUNBUFFERED=1
@@ -15,10 +23,10 @@ services:
       - PORT=9000
       - PROVIDER=${PROVIDER:-openai}
       - MODEL_ID=${MODEL_ID:-gpt-4o}
-      - ENABLE_WEB_UI=True
-      - ENABLE_OTEL=True
+      - ENABLE_WEB_UI=${ENABLE_WEB_UI:-true}
+      - ENABLE_OTEL=${ENABLE_OTEL:-false}
     ports:
-      - "9000:9000"
+      - "127.0.0.1:${GENIUS_AGENT_PORT:-9000}:9000"
     healthcheck:
       test: ["CMD", "python3", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:9000/health')"]
       interval: 30s

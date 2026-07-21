@@ -75,3 +75,15 @@ genius-agent/
 ```bash
 genius-mcp --transport streamable-http --port 8001
 ```
+
+## Governed capability contract
+
+Genius Agent accepts agent definitions at runtime and exposes the packaged
+`genius-agent-operations` skill for governed GraphOS delegation. The release
+also carries a connector manifest, ontology, mappings, shapes, fixtures,
+migrations, tool-schema fingerprints, and certification metadata. Those
+artifacts describe the current capability contract; historical example agent
+lists are not a substitute for runtime discovery.
+
+Use [Configuration, trust, and privacy](configuration.md) for the shared
+operator contract.

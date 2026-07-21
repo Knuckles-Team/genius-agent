@@ -20,7 +20,7 @@
 ![PyPI - Wheel](https://img.shields.io/pypi/wheel/genius-agent)
 ![PyPI - Implementation](https://img.shields.io/pypi/implementation/genius-agent)
 
-*Version: 3.0.1*
+*Version: 3.0.2*
 
 > **Documentation** — Installation, deployment, usage across the agent, MCP, and CLI
 > interfaces are maintained in the
@@ -50,6 +50,20 @@ Detailed instructions on how to use the underlying API wrappers, extended schema
 
 ---
 
+## MCP source connector
+
+Run the native MCP surface with `genius-mcp`. Its signed source tool,
+`genius_ingest_search`, searches through the configured provider and idempotently
+materializes ranked evidence into epistemic-graph. Tool discovery requires no upstream
+connection; search credentials, graph connectivity, TLS trust, tenant, and policy are
+all supplied at runtime through AgentConfig and the environment.
+
+```bash
+uvx --from genius-agent genius-mcp
+```
+
+---
+
 ## Agent
 
 This repository features a fully integrated Pydantic AI Graph Agent. It communicates over the **Agent Control Protocol (ACP)** and interacts seamlessly with the **Agent Web UI (AG-UI)** and Terminal interface.
@@ -74,7 +88,7 @@ version: '3.8'
 
 services:
   genius-agent-agent:
-    image: knucklessg1/genius-agent:latest
+    image: <registry>/genius-agent@sha256:<digest>
     container_name: genius-agent-agent
     hostname: genius-agent-agent
     restart: always
@@ -105,7 +119,9 @@ services:
 
 ```
 
-Detailed graph node architecture explanations, custom skill configurations, and agentic trace guides are available in [docs/agent.md](docs/agent.md).
+Graph architecture, governed skill integration, and agent execution guidance are
+documented in [docs/overview.md](docs/overview.md) and
+[docs/usage.md](docs/usage.md).
 
 ---
 
@@ -133,12 +149,12 @@ Pick the extra that matches what you want to run:
 
 | Extra | Installs | Use when |
 |-------|----------|----------|
-| `genius-agent[mcp]` | Slim MCP/runtime base only (`agent-utilities[mcp]` — FastMCP/FastAPI) | You only need the lightweight tool-hosting base (smallest install) |
-| `genius-agent[agent]` | Full agent runtime (`agent-utilities[agent,logfire]` — Pydantic AI + the epistemic-graph engine) | You run the **integrated agent** (the primary surface) |
+| `genius-agent[mcp]` | MCP server (`agent-utilities[mcp]`) plus the mandatory full epistemic-graph base runtime | You run the MCP tool surface without the integrated agent runtime |
+| `genius-agent[agent]` | Current agent runtime (`agent-utilities[agent,logfire]`) plus the mandatory full epistemic-graph base runtime | You run the **integrated agent** (the primary surface) |
 | `genius-agent[all]` | Everything (`mcp` + `agent` + `logfire`) | Development / both surfaces |
 
 ```bash
-# Slim base (smallest install)
+# MCP serving runtime
 uv pip install "genius-agent[mcp]"
 
 # Full agent runtime (Pydantic AI + epistemic-graph engine) — recommended
@@ -150,13 +166,13 @@ uv pip install "genius-agent[all]"      # or: python -m pip install "genius-agen
 
 ### Knowledge-graph database (`epistemic-graph`)
 
-The **full agent** (`[agent]`) embeds the **epistemic-graph** engine (pulled in
-transitively via `agent-utilities[agent]`). For production — or to share one knowledge graph
-across multiple agents — run **epistemic-graph as its own database container** and point the
-agent at it instead of embedding it. Deployment recipes (single-node + Raft HA), connection
-config, and the full database architecture (with diagrams) are documented in the
+Every install receives `epistemic-graph[full]` through the current Agent Utilities
+base dependency. The `[mcp]` and `[agent]` extras add their respective tool and agent
+runtime layers without changing that database contract. For production — or to share
+one knowledge graph across multiple agents — run **epistemic-graph as its own database
+service** and point the agent at it. Deployment recipes (single-node + Raft HA),
+connection config, and the full database architecture are documented in the
 [epistemic-graph deployment guide](https://knuckles-team.github.io/epistemic-graph/deployment/).
-The slim `[mcp]` base does **not** require the database.
 
 ---
 
@@ -177,11 +193,17 @@ The slim `[mcp]` base does **not** require the database.
 | `EUNOMIA_TYPE` | `none` | options: none, embedded, remote |
 | `EUNOMIA_POLICY_FILE` | `mcp_policies.json` |  |
 | `EUNOMIA_REMOTE_URL` | `http://eunomia-server:8000` |  |
-| `WORKSPACE_DIR` | `/home/apps/workspace/agent-packages` | workspace root the agent initializes from |
+| `WORKSPACE_DIR` | — | workspace root supplied by the launcher |
 | `MCP_CONFIG` | `mcp_config.json` | path to the MCP config the agent loads |
 | `GRAPH_DB_PATH` | — | path to the local graph DB backing store |
-| `GRAPHDB_PASSWORD` | `letmein` | password for the FalkorDB / graph DB backend |
+| `GRAPHDB_PASSWORD` | — | password for the FalkorDB / graph DB backend |
+| `FALKORDB_URI` | — | FalkorDB/Redis connection URI (scripts/validate_falkordb.py) |
+| `SEARXNG_URL` | — | SearXNG instance URL; when set, web search uses SearXNG |
+| `GOOGLE_API_KEY` | — | Google Custom Search API key (used together with GOOGLE_CX) |
+| `GOOGLE_CX` | — | Google Custom Search Engine ID (used together with GOOGLE_API_KEY) |
+| `BING_API_KEY` | — | Bing Search API key |
 | `AGENT_UTILITIES_TESTING` | `true` | set "true" to skip live integration tests |
+| `A2A_URL` | — | base URL of the running A2A agent endpoint (scripts/validate_a2a_agent.py) |
 
 #### Inherited agent-utilities variables (apply to every connector)
 
@@ -195,9 +217,11 @@ The slim `[mcp]` base does **not** require the database.
 | `MCP_DISABLED_TOOLS` | — | Comma-separated tool deny-list |
 | `MCP_ENABLED_TAGS` | — | Comma-separated tag allow-list |
 | `MCP_DISABLED_TAGS` | — | Comma-separated tag deny-list |
-| `MCP_CLIENT_AUTH` | — | Outbound MCP auth (`oidc-client-credentials` for fleet calls) |
+| `MCP_CLIENT_AUTH` | — | Outbound MCP child auth: `oidc-client-credentials` | `basic` | `none` |
 | `OIDC_CLIENT_ID` | — | OIDC client id (service-account auth) |
 | `OIDC_CLIENT_SECRET` | — | OIDC client secret (service-account auth) |
+| `MCP_BASIC_AUTH_USERNAME` | — | HTTP Basic username (`MCP_CLIENT_AUTH=basic`) |
+| `MCP_BASIC_AUTH_PASSWORD` | — | HTTP Basic password (`MCP_CLIENT_AUTH=basic`) |
 | `DEBUG` | `False` | Verbose logging |
 | `PYTHONUNBUFFERED` | `1` | Unbuffered stdout (recommended in containers) |
 | `MCP_URL` | `http://localhost:8000/mcp` | URL of the MCP server the agent connects to |
@@ -205,7 +229,7 @@ The slim `[mcp]` base does **not** require the database.
 | `MODEL_ID` | `gpt-4o` | Model id for the agent |
 | `ENABLE_WEB_UI` | `True` | Serve the AG-UI web interface |
 
-_14 package + 17 inherited variable(s). Auto-generated from `.env.example` + the shared agent-utilities set — do not edit._
+_20 package + 19 inherited variable(s). Auto-generated from `.env.example` + the shared agent-utilities set — do not edit._
 <!-- ENV-VARS-TABLE:END -->
 
 
@@ -230,6 +254,16 @@ Every variable the agent reads, grouped by purpose.
 | `PORT` | Bind port | `9000` |
 | `DEBUG` | Verbose logging | `False` |
 | `PYTHONUNBUFFERED` | Unbuffered stdout (recommended in containers) | `1` |
+
+### Web search providers
+Provider is selected in priority order: Searxng > Google > Bing > DuckDuckGo (default, no key required).
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `SEARXNG_URL` | SearXNG instance URL | — |
+| `GOOGLE_API_KEY` | Google Custom Search API key (with `GOOGLE_CX`) | — |
+| `GOOGLE_CX` | Google Custom Search Engine ID (with `GOOGLE_API_KEY`) | — |
+| `BING_API_KEY` | Bing Search API key | — |
 
 ### Telemetry & governance
 | Variable | Description | Default |
@@ -265,10 +299,10 @@ recommended reference for installation, deployment, and day-to-day operation.
 
 ## Repository Owners
 
-<img width="100%" height="180em" src="https://github-readme-stats.vercel.app/api?username=Knucklessg1&show_icons=true&hide_border=true&&count_private=true&include_all_commits=true" />
+<img width="100%" height="180em" src="https://github-readme-stats.vercel.app/api?username=example&show_icons=true&hide_border=true&&count_private=true&include_all_commits=true" />
 
-![GitHub followers](https://img.shields.io/github/followers/Knucklessg1)
-![GitHub User's stars](https://img.shields.io/github/stars/Knucklessg1)
+![GitHub followers](https://img.shields.io/github/followers/example)
+![GitHub User's stars](https://img.shields.io/github/stars/example)
 
 ---
 
@@ -301,3 +335,41 @@ to just this package. Ask your agent to **"deploy `genius-agent` with agent-os-g
 Secrets are read-existing + seeded via `vault_sync` — you are only prompted for what's missing.
 
 <!-- END agent-os-genesis-deploy -->
+
+<!-- BEGIN agent-utilities-deployment (generated; do not edit between markers) -->
+
+## Deploy with `agent-utilities-deployment`
+
+Provision this package with the consolidated **`agent-utilities-deployment`**
+workflow. It selects an installed-package, editable-source, or immutable-container
+path; records only runtime secret and TLS-profile references in `AgentConfig`; and
+runs doctor, registration, policy, observability, and rollback gates. Ask your agent
+to **"deploy `genius-agent` with agent-utilities-deployment"**.
+
+| Install mode | Command |
+|------|---------|
+| Installed package | `uv tool install "genius-agent[mcp]"`, then run `genius-mcp` |
+| Editable source | `uv pip install -e ".[agent]"`, then run `genius-mcp` |
+| Immutable container | deploy `registry.example.invalid/genius-agent@sha256:<digest>` through the operator-selected orchestrator |
+
+The repository embeds no deployment profile, credential value, certificate path, or
+environment-specific endpoint. Supply those at runtime through `AgentConfig` and the
+configured secret provider.
+
+<!-- END agent-utilities-deployment -->
+
+<!-- GOVERNED-CAPABILITY:START -->
+## Governed capability contract
+
+This package ships a compact canonical skill surface with specialist procedures
+kept as referenced workflows. The current MCP tools, skill metadata,
+`connector_manifest.yml`, ontology, mappings, shapes, fixtures, migrations,
+tool-schema fingerprints, and certification metadata form one versioned
+capability contract. Validate them together; do not rely on stale tool names or
+historical per-task skill wrappers.
+
+Runtime endpoints, credentials, certificate trust, tenant identity, retention,
+and observability policy are deployment inputs and are never packaged values.
+See [Configuration, trust, and privacy](docs/configuration.md) before enabling a
+network transport, connector ingestion, GraphOS delegation, or trace export.
+<!-- GOVERNED-CAPABILITY:END -->

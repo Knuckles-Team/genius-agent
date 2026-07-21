@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
 import ast
 import json
+import os
 import sys
+import tempfile
 from pathlib import Path
 
-try:
+if sys.version_info >= (3, 11):
     import tomllib
-except ImportError:
+else:
     import tomli as tomllib
 
 
@@ -50,8 +52,8 @@ def extract_env_and_tags(mcp_file: Path) -> tuple[dict[str, str], set[str]]:
 
     try:
         tree = ast.parse(source)
-    except Exception as e:
-        print(f"Failed to parse {mcp_file}: {e}", file=sys.stderr)
+    except Exception as exc:
+        print(f"Failed to parse MCP module: {type(exc).__name__}", file=sys.stderr)
         return env_vars, tags
 
     for node in ast.walk(tree):
@@ -66,17 +68,8 @@ def extract_env_and_tags(mcp_file: Path) -> tuple[dict[str, str], set[str]]:
                         key = node.args[0].value
                         if isinstance(key, str):
                             env_vars[key] = f"${{{key}}}"
-                            # Try to capture default value if present to format like ${KEY:-default}
-                            if len(node.args) > 1 and isinstance(
-                                node.args[1], ast.Constant
-                            ):
-                                default_val = node.args[1].value
-                                if (
-                                    default_val is not None
-                                    and isinstance(default_val, (str, int, float, bool))
-                                    and str(default_val) != ""
-                                ):
-                                    env_vars[key] = f"${{{key}:-{default_val}}}"
+                            # Runtime defaults remain in source/AgentConfig; generated
+                            # configuration contains references, never copied values.
 
         # Find @mcp.tool(tags={"tag"})
         if isinstance(node, ast.FunctionDef):
@@ -99,8 +92,11 @@ def extract_env_and_tags(mcp_file: Path) -> tuple[dict[str, str], set[str]]:
 
 
 def generate_global_mcp_config():
-    base_dir = Path("/home/apps/workspace/agent-packages/agents")
-    output_file = base_dir / "genius-agent" / "genius_agent" / "mcp_config.json"
+    base_dir = Path(__file__).resolve().parents[2]
+    xdg_config = Path(
+        os.environ.get("XDG_CONFIG_HOME", str(Path.home() / ".config"))
+    )
+    output_file = xdg_config / "agent-utilities" / "mcp_config.json"
 
     agents = get_agent_directories(base_dir)
     mcp_servers = {}
@@ -108,10 +104,7 @@ def generate_global_mcp_config():
     for agent_dir in sorted(agents):
         cmd = parse_pyproject(agent_dir)
         if not cmd:
-            print(
-                f"Warning: No mcp_server script found in {agent_dir.name}",
-                file=sys.stderr,
-            )
+            print("Warning: no MCP server script found in configured agent", file=sys.stderr)
             continue
 
         mcp_files = list(agent_dir.rglob("mcp_server.py"))
@@ -124,7 +117,7 @@ def generate_global_mcp_config():
         # Build tool toggles
         for tag in sorted(tags):
             tag_formatted = tag.upper().replace("-", "_") + "TOOL"
-            env_vars[tag_formatted] = f"${{ {tag_formatted}:-True }}"
+            env_vars[tag_formatted] = f"${{{tag_formatted}:-true}}"
 
         mcp_servers[agent_dir.name] = {
             "command": cmd,
@@ -135,14 +128,27 @@ def generate_global_mcp_config():
     config = {"mcpServers": mcp_servers}
 
     # Save the file
-    output_file.parent.mkdir(parents=True, exist_ok=True)
-    with open(output_file, "w") as f:
-        json.dump(config, f, indent=2)
-
-    print(
-        f"Successfully generated global configuration with {len(mcp_servers)} servers at {output_file}"
+    output_file.parent.mkdir(parents=True, mode=0o700, exist_ok=True)
+    descriptor, temporary = tempfile.mkstemp(
+        prefix=".mcp-config.", dir=output_file.parent
     )
+    try:
+        os.fchmod(descriptor, 0o600)
+        with os.fdopen(descriptor, "w", encoding="utf-8") as handle:
+            descriptor = -1
+            json.dump(config, handle, indent=2)
+            handle.write("\n")
+            handle.flush()
+            os.fsync(handle.fileno())
+        os.replace(temporary, output_file)
+        os.chmod(output_file, 0o600)
+    finally:
+        if descriptor >= 0:
+            os.close(descriptor)
+        if os.path.exists(temporary):
+            os.unlink(temporary)
 
+    print(f"Successfully generated global configuration with {len(mcp_servers)} servers")
 
 if __name__ == "__main__":
     generate_global_mcp_config()

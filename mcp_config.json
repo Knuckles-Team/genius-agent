@@ -8,10 +8,16 @@
       ],
       "env": {
         "MCP_TOOL_MODE": "condensed",
+        "A2A_URL": "",
         "AGENT_UTILITIES_TESTING": "true",
-        "GRAPHDB_PASSWORD": "letmein",
+        "BING_API_KEY": "",
+        "FALKORDB_URI": "",
+        "GOOGLE_API_KEY": "",
+        "GOOGLE_CX": "",
+        "GRAPHDB_PASSWORD": "",
         "MCP_CONFIG": "mcp_config.json",
-        "OTEL_EXPORTER_OTLP_HEADERS": ""
+        "OTEL_EXPORTER_OTLP_HEADERS": "",
+        "SEARXNG_URL": ""
       }
     }
   }

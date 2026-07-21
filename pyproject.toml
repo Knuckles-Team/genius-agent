@@ -8,24 +8,18 @@ version = "3.0.2"
 description = "GeniusAgent Search Engine for Agentic AI!"
 readme = "README.md"
 classifiers = [ "Development Status :: 5 - Production/Stable", "License :: Public Domain", "Environment :: Console", "Operating System :: POSIX :: Linux", "Programming Language :: Python :: 3",]
-requires-python = ">=3.11, <3.15"
-dependencies = [ "agent-utilities[mcp]>=1.0.0",]
+requires-python = ">=3.11,<3.15"
+dependencies = [ "universal-skills[web-crawler,web-search]", "systems-manager[mcp,agent]", "agent-utilities[agent,logfire]>=1.0.0,<2.0.0",]
 [[project.authors]]
-name = "Audel Rouhi"
-email = "knucklessg1@gmail.com"
+name = "Project Maintainers"
+email = "maintainers@users.noreply.github.com"
 
 [project.license]
 text = "MIT"
 
 [project.scripts]
 genius-agent = "genius_agent.agent_server:agent_server"
-
-[project.optional-dependencies]
-mcp = [ "agent-utilities[mcp]>=1.0.0",]
-agent = [ "agent-utilities[agent,logfire]>=1.0.0",]
-all = [ "agent-utilities[mcp,agent,logfire]>=1.0.0",]
-test = [
-    "pytest-xdist>=3.6.0", "pytest", "pytest-asyncio", "pytest-cov",]
+genius-mcp = "genius_agent.mcp_server:mcp_server"
 
 [project.entry-points."agent_utilities.skill_providers"]
 genius-agent = "genius_agent.skills"
@@ -39,15 +33,22 @@ genius-agent = "genius_agent.connectors"
 [project.entry-points."agent_utilities.prompt_providers"]
 genius-agent = "genius_agent.prompts"
 
+[project.optional-dependencies]
+mcp = [ "agent-utilities[mcp]>=1.0.0,<2.0.0",]
+agent = [ "agent-utilities[agent,logfire]>=1.0.0,<2.0.0",]
+all = [ "agent-utilities[mcp,agent,logfire]>=1.0.0,<2.0.0",]
+test = [
+    "pytest-xdist>=3.6.0", "pytest", "pytest-asyncio", "pytest-cov",]
+
 [tool.setuptools]
 include-package-data = true
 
 [tool.ruff]
 line-length = 88
-target-version = "py310"
+target-version = "py311"
 
 [tool.mypy]
-python_version = "3.10"
+python_version = "3.11"
 ignore_missing_imports = true
 check_untyped_defs = true
 

@@ -15,10 +15,11 @@ def _get_pkg_name():
     folder name differs from the package (the mandated worktree workflow).
     """
     import pathlib
+    import sys
 
-    try:
+    if sys.version_info >= (3, 11):
         import tomllib
-    except ModuleNotFoundError:  # Python < 3.11
+    else:
         import tomli as tomllib
 
     project_dir = pathlib.Path(__file__).resolve().parent.parent

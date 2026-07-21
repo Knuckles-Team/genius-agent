@@ -95,7 +95,7 @@ def graph_bundle():
 def _load_registry():
     """Helper: ensure workspace is initialized before loading the MCP registry."""
     from agent_utilities import initialize_workspace
-    from agent_utilities.graph.config_helpers import load_node_agents_registry
+    from agent_utilities.graph import get_discovery_registry
     from agent_utilities.mcp.agent_manager import sync_mcp_agents
 
     initialize_workspace()
@@ -103,7 +103,7 @@ def _load_registry():
     import asyncio
 
     asyncio.run(sync_mcp_agents(config_path=Path(_MCP_CONFIG_PATH)))
-    return load_node_agents_registry()
+    return get_discovery_registry()
 
 
 # ==================================================================
@@ -243,7 +243,7 @@ async def test_run_graph_returns_graphresponse_not_string(graph_bundle):
     This regression test covers the core bug where results_registry was empty and
     the graph terminated at the dispatcher node, returning just the node label string.
     """
-    from agent_utilities.graph.dynamic_graph_orchestrator import run_graph
+    from agent_utilities.graph import run_graph
     from agent_utilities.models import GraphResponse
 
     graph, config = graph_bundle
@@ -279,7 +279,8 @@ async def test_run_graph_flow_tool_returns_string_not_graphresponse(graph_bundle
     a plain string — the output extracted from GraphResponse.results['output'].
     Ensures the tool_registry wrapper correctly extracts the string content.
     """
-    from agent_utilities.graph.dynamic_graph_orchestrator import run_graph
+    from agent_utilities.graph import run_graph
+    from agent_utilities.models import GraphResponse
 
     graph, config = graph_bundle
 
@@ -337,7 +338,7 @@ async def test_git_status_via_graph(graph_bundle):
             "Skipping end-to-end integration test in AGENT_UTILITIES_TESTING mode"
         )
 
-    from agent_utilities.graph.dynamic_graph_orchestrator import run_graph
+    from agent_utilities.graph import run_graph
     from agent_utilities.models import GraphResponse
 
     graph, config = graph_bundle
