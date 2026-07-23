@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/material/templates/assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -31,7 +31,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -293,6 +293,25 @@
   
   
     <li class="md-tabs__item">
+      <a href="../configuration/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Configuration, trust, and privacy
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
       <a href="../deployment/" class="md-tabs__link">
         
   
@@ -485,6 +504,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration, trust, and privacy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../deployment/" class="md-nav__link">
         
   
@@ -604,6 +650,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#governed-delegation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Governed delegation
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -698,6 +755,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#governed-delegation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Governed delegation
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -724,11 +792,10 @@ over ACP / the Web UI, as an <strong>MCP tool surface</strong> an orchestrator c
 <strong>CLI</strong> you launch directly. The full capability set and enterprise-readiness matrix
 are in <a href="../overview/">Overview</a>.</p>
 <h2 id="as-an-mcp-server">As an MCP server<a class="headerlink" href="#as-an-mcp-server" title="Permanent link">&para;</a></h2>
-<p><code>genius-agent</code> composes the tools of the MCP servers declared in its
-<code>mcp_config.json</code> (or reached via <code>MCP_URL</code>) into a single orchestration plane, and
-exposes its graph-flow capability over MCP. Reads work with no configuration beyond a
-model provider key; authorization is enforced through Eunomia when
-<code>EUNOMIA_TYPE=embedded</code> or <code>remote</code>.</p>
+<p><code>genius-mcp</code> is the package's native MCP entry point. It exposes the signed source
+tool below; runtime search credentials, graph connectivity, TLS trust, tenant, and
+policy are supplied through AgentConfig and the environment. Listing the tool surface
+does not contact a search provider or graph backend.</p>
 <table>
 <thead>
 <tr>
@@ -738,29 +805,29 @@ model provider key; authorization is enforced through Eunomia when
 </thead>
 <tbody>
 <tr>
-<td><code>run_graph_flow</code></td>
-<td>Execute a multi-step workflow through the agent's Pydantic-Graph orchestration engine (declared in <a href="https://github.com/Knuckles-Team/genius-agent/blob/main/a2a.json"><code>a2a.json</code></a>).</td>
-</tr>
-<tr>
-<td>Composed MCP tools</td>
-<td>Every tool registered by the MCP servers in <code>mcp_config.json</code> becomes callable through the agent.</td>
+<td><code>genius_ingest_search</code></td>
+<td>Run one bounded web search and idempotently materialize its ranked evidence into epistemic-graph.</td>
 </tr>
 </tbody>
 </table>
-<p>Example prompts that drive the agent:</p>
+<p>Start the stdio server:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>uvx<span class="w"> </span>--from<span class="w"> </span>genius-agent<span class="w"> </span>genius-mcp
+</span></code></pre></div>
+<p>The separate <code>genius-agent</code> entry point consumes tools declared in its
+<code>mcp_config.json</code> (or reached via <code>MCP_URL</code>) as part of its orchestration plane.
+Example prompts that drive that agent:</p>
 <ul>
-<li><em>"Run the deployment workflow against the staging environment."</em> → <code>run_graph_flow</code></li>
 <li><em>"Search the catalog and summarize the top results."</em> → a composed MCP tool call</li>
 <li><em>"Plan a multi-step task and execute each step."</em> → graph orchestration</li>
 </ul>
 <h2 id="as-a-python-api">As a Python API<a class="headerlink" href="#as-a-python-api" title="Permanent link">&para;</a></h2>
 <p>The agent server is launched programmatically through the package entry point. The
 <code>agent_server()</code> function builds and runs the integrated agent from the environment:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">genius_agent.agent_server</span><span class="w"> </span><span class="kn">import</span> <span class="n">agent_server</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1"># Builds the Pydantic-AI graph agent from API_KEY / MODEL_NAME / DEFAULT_SYSTEM_PROMPT</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># and the MCP tool surface, then serves ACP + the Agent Web UI.</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">agent_server</span><span class="p">()</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">genius_agent.agent_server</span><span class="w"> </span><span class="kn">import</span> <span class="n">agent_server</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c1"># Builds the Pydantic-AI graph agent from API_KEY / MODEL_NAME / DEFAULT_SYSTEM_PROMPT</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># and the MCP tool surface, then serves ACP + the Agent Web UI.</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">agent_server</span><span class="p">()</span>
 </span></code></pre></div>
 <p>Under the hood it composes the <code>agent-utilities</code> building blocks
 (<code>create_agent_server</code>, <code>build_system_prompt_from_workspace</code>, <code>load_identity</code>,
@@ -769,26 +836,32 @@ resolved from the environment and the bundled <code>agent_data/</code> workspace
 <h2 id="as-a-cli">As a CLI<a class="headerlink" href="#as-a-cli" title="Permanent link">&para;</a></h2>
 <p>The <code>genius-agent</code> console script is the primary entry point. Provide a model
 provider and identity, then run:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">API_KEY</span><span class="o">=</span>your_model_provider_key
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">MODEL_NAME</span><span class="o">=</span>openai/gpt-4o
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nb">export</span><span class="w"> </span><span class="nv">DEFAULT_SYSTEM_PROMPT</span><span class="o">=</span><span class="s2">&quot;You are Genius Agent, an orchestration specialist.&quot;</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1"># Interactive terminal agent</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>genius-agent<span class="w"> </span>--provider<span class="w"> </span>openai<span class="w"> </span>--model-id<span class="w"> </span>gpt-4o
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="c1"># Networked agent server with the Web UI + ACP</span>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>genius-agent<span class="w"> </span>--provider<span class="w"> </span>openai<span class="w"> </span>--model-id<span class="w"> </span>gpt-4o<span class="w"> </span>--host<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span>--port<span class="w"> </span><span class="m">9000</span><span class="w"> </span>--web
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">API_KEY</span><span class="o">=</span>your_model_provider_key
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">MODEL_NAME</span><span class="o">=</span>openai/gpt-4o
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nb">export</span><span class="w"> </span><span class="nv">DEFAULT_SYSTEM_PROMPT</span><span class="o">=</span><span class="s2">&quot;You are Genius Agent, an orchestration specialist.&quot;</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1"># Interactive terminal agent</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>genius-agent<span class="w"> </span>--provider<span class="w"> </span>openai<span class="w"> </span>--model-id<span class="w"> </span>gpt-4o
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="c1"># Networked agent server with the Web UI + ACP</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>genius-agent<span class="w"> </span>--provider<span class="w"> </span>openai<span class="w"> </span>--model-id<span class="w"> </span>gpt-4o<span class="w"> </span>--host<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span>--port<span class="w"> </span><span class="m">9000</span><span class="w"> </span>--web
 </span></code></pre></div>
 <p>Connect the agent to a remote MCP tool surface:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nv">MCP_URL</span><span class="o">=</span>http://your-mcp-host:8000/mcp<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span>genius-agent<span class="w"> </span>--provider<span class="w"> </span>openai<span class="w"> </span>--model-id<span class="w"> </span>gpt-4o
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nv">MCP_URL</span><span class="o">=</span>http://your-mcp-host:8000/mcp<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span>genius-agent<span class="w"> </span>--provider<span class="w"> </span>openai<span class="w"> </span>--model-id<span class="w"> </span>gpt-4o
 </span></code></pre></div>
 <p>Inspect every available flag:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>genius-agent<span class="w"> </span>--help
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>genius-agent<span class="w"> </span>--help
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>genius-mcp<span class="w"> </span>--help
 </span></code></pre></div>
 <p>Each optional capability reads its own credentials and remains inactive when those
 credentials are absent. The full environment set is documented in
 <a href="https://github.com/Knuckles-Team/genius-agent/blob/main/.env.example"><code>.env.example</code></a>.</p>
+<h2 id="governed-delegation">Governed delegation<a class="headerlink" href="#governed-delegation" title="Permanent link">&para;</a></h2>
+<p>Do not commit tenant definitions, credentials, identities, or host paths. For
+delegated use, discover and execute the packaged <code>genius-agent-operations</code>
+skill through GraphOS. The skill requires a verified tenant/session, current
+tool discovery, fenced mutations, and sanitized evidence.</p>
 
 
 
@@ -922,7 +995,7 @@ credentials are absent. The full environment set is documented in
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.top", "navigation.tracking", "navigation.instant", "navigation.instant.progress", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.tooltips"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

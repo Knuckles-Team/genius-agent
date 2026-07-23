@@ -13,7 +13,7 @@
         <link rel="canonical" href="https://knuckles-team.github.io/genius-agent/deployment/">
       
       
-        <link rel="prev" href="../installation/">
+        <link rel="prev" href="../configuration/">
       
       
         <link rel="next" href="../usage/">
@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/material/templates/assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -31,7 +31,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -291,6 +291,25 @@
   
   
   
+  
+    <li class="md-tabs__item">
+      <a href="../configuration/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Configuration, trust, and privacy
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
     
   
   
@@ -482,6 +501,33 @@
       
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration, trust, and privacy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
     
   
   
@@ -615,6 +661,17 @@
     <span class="md-ellipsis">
       
         Register with an MCP client
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#governed-promotion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Governed promotion
       
     </span>
   </a>
@@ -786,6 +843,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#governed-promotion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Governed promotion
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -911,7 +979,7 @@ servers; only connection configuration is required.</p>
 It reads a sibling <code>.env</code> and publishes the agent server (Web UI + ACP) on <code>:9000</code>:</p>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nt">services</span><span class="p">:</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="nt">genius-agent-agent</span><span class="p">:</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">knucklessg1/genius-agent:latest</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;registry&gt;/genius-agent@sha256:&lt;digest&gt;</span>
 </span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">genius-agent-agent</span>
 </span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">genius-agent-agent</span>
 </span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always</span>
@@ -975,8 +1043,8 @@ It reads a sibling <code>.env</code> and publishes the agent server (Web UI + AC
 servers the agent should compose.</p>
 <h2 id="behind-a-caddy-reverse-proxy">Behind a Caddy reverse proxy<a class="headerlink" href="#behind-a-caddy-reverse-proxy" title="Permanent link">&para;</a></h2>
 <p>Expose the agent server on a hostname with automatic TLS. Add to your <code>Caddyfile</code>:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a># Internal (self-signed) — homelab .arpa zone
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>genius-agent.arpa {
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a># Internal PKI
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>&lt;agent-hostname&gt; {
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    tls internal
 </span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    reverse_proxy genius-agent-agent:9000
 </span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>}
@@ -991,36 +1059,43 @@ servers the agent should compose.</p>
 </span></code></pre></div>
 <h2 id="dns-with-technitium">DNS with Technitium<a class="headerlink" href="#dns-with-technitium" title="Permanent link">&para;</a></h2>
 <p>Point the hostname at the host running Caddy. Via the Technitium API:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>curl<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;http://technitium.arpa:5380/api/zones/records/add&quot;</span><span class="w"> </span><span class="se">\</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>curl<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">DNS_API_URL</span><span class="si">}</span><span class="s2">/api/zones/records/add&quot;</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">  </span>--data-urlencode<span class="w"> </span><span class="s2">&quot;token=</span><span class="nv">$TECHNITIUM_DNS_TOKEN</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">  </span>--data-urlencode<span class="w"> </span><span class="s2">&quot;domain=genius-agent.arpa&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">  </span>--data-urlencode<span class="w"> </span><span class="s2">&quot;domain=</span><span class="si">${</span><span class="nv">AGENT_HOSTNAME</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">  </span>--data-urlencode<span class="w"> </span><span class="s2">&quot;zone=arpa&quot;</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">  </span>--data-urlencode<span class="w"> </span><span class="s2">&quot;type=A&quot;</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">  </span>--data-urlencode<span class="w"> </span><span class="s2">&quot;ipAddress=10.0.0.10&quot;</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">  </span>--data-urlencode<span class="w"> </span><span class="s2">&quot;ttl=3600&quot;</span>
 </span></code></pre></div>
-<p>…or add an <strong>A record</strong> <code>genius-agent.arpa → &lt;caddy-host-ip&gt;</code> in the Technitium web
-console (<code>http://technitium.arpa:5380</code>). The ecosystem
+<p>…or add an <strong>A record</strong> for the configured agent hostname in the DNS web
+console. The ecosystem
 <a href="https://knuckles-team.github.io/technitium-dns-mcp/"><code>technitium-dns-mcp</code></a> automates
 this as a tool.</p>
 <h2 id="register-with-an-mcp-client">Register with an MCP client<a class="headerlink" href="#register-with-an-mcp-client" title="Permanent link">&para;</a></h2>
-<p><code>genius-agent</code> is itself an agent that consumes MCP tools, and it can also be
-registered with an MCP client. Add to your client's <code>mcp_config.json</code>:</p>
+<p><code>genius-agent</code> consumes downstream MCP tools. Its native source connector is the
+separate <code>genius-mcp</code> entry point; register that command with an MCP client:</p>
 <div class="language-json highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="p">{</span>
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">  </span><span class="nt">&quot;mcpServers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">    </span><span class="nt">&quot;genius-agent&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">      </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uv&quot;</span><span class="p">,</span>
-</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">      </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;run&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;genius-agent&quot;</span><span class="p">],</span>
-</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">      </span><span class="nt">&quot;env&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="w">        </span><span class="nt">&quot;API_KEY&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your_model_provider_key&quot;</span><span class="p">,</span>
-</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w">        </span><span class="nt">&quot;MODEL_NAME&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;openai/gpt-4o&quot;</span><span class="p">,</span>
-</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="w">        </span><span class="nt">&quot;ENABLE_OTEL&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span>
-</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="w">      </span><span class="p">}</span>
-</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="w">  </span><span class="p">}</span>
-</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="p">}</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">      </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uvx&quot;</span><span class="p">,</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">      </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;--from&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;genius-agent&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;genius-mcp&quot;</span><span class="p">],</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">      </span><span class="nt">&quot;env&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="p">}</span>
 </span></code></pre></div>
-<p>For a remote HTTP server, point the client at <code>http://genius-agent.arpa/mcp</code> instead.</p>
+<p>For a remote HTTP server, point the client at the launcher-configured MCP URL instead.</p>
+<h2 id="governed-promotion">Governed promotion<a class="headerlink" href="#governed-promotion" title="Permanent link">&para;</a></h2>
+<p>Supply the agent definition and prompt at runtime. The command accepts a
+configuration file, an inline JSON payload, or launcher-provided data; use
+<code>genius-agent --help</code> as the version-specific flag reference.</p>
+<p>Place authentication in front of every non-loopback endpoint, inject
+model/provider credentials from a secret store, and mount only approved working
+data. Enable optional observability with metadata-only capture and verify TLS
+using the environment-configured CA bundle.</p>
+<p>A promotion is complete only after readiness, one least-privilege orchestration,
+skill discovery, and privacy-safe trace delivery all succeed. See
+<a href="../configuration/">Configuration, trust, and privacy</a>.</p>
 
 
 
@@ -1058,7 +1133,7 @@ registered with an MCP client. Add to your client's <code>mcp_config.json</code>
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../installation/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Installation">
+          <a href="../configuration/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Configuration, trust, and privacy">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1068,7 +1143,7 @@ registered with an MCP client. Add to your client's <code>mcp_config.json</code>
                 Previous
               </span>
               <div class="md-ellipsis">
-                Installation
+                Configuration, trust, and privacy
               </div>
             </div>
           </a>
@@ -1154,7 +1229,7 @@ registered with an MCP client. Add to your client's <code>mcp_config.json</code>
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.top", "navigation.tracking", "navigation.instant", "navigation.instant.progress", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.tooltips"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

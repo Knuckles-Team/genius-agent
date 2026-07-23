@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/material/templates/assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -29,7 +29,7 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
@@ -293,6 +293,25 @@
   
   
     <li class="md-tabs__item">
+      <a href="configuration/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Configuration, trust, and privacy
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
       <a href="deployment/" class="md-tabs__link">
         
   
@@ -494,6 +513,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#packaged-governance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Packaged governance
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -544,6 +574,33 @@
     
   
     Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration, trust, and privacy
   
 
     
@@ -696,6 +753,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#packaged-governance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Packaged governance
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -738,6 +806,9 @@ Protocol (MCP) surface for the agent-utilities ecosystem. It provides:</p>
 <li><strong>A consumed MCP tool surface</strong> — the agent connects to any MCP server declared in
   <code>mcp_config.json</code> (or a remote endpoint via <code>MCP_URL</code>), composing their tools into
   a single orchestration plane.</li>
+<li><strong>A native governed source tool</strong> — the separate <code>genius-mcp</code> entry point exposes
+  the signed <code>genius_ingest_search</code> contract for bounded web search and idempotent
+  epistemic-graph ingestion.</li>
 <li><strong>Enterprise security and telemetry inherited from <code>agent-utilities</code></strong> — Eunomia
   policy enforcement, OIDC token delegation, OpenTelemetry export, and native
   Langfuse tracing, with guardrails enabled by default.</li>
@@ -766,6 +837,18 @@ remote MCP tool surface:</p>
 </span></code></pre></div>
 <p>See <strong><a href="installation/">Installation</a></strong> and <strong><a href="deployment/">Deployment</a></strong> for the
 full matrix (PyPI extras, Docker image, transports, reverse proxy, DNS).</p>
+<h2 id="packaged-governance">Packaged governance<a class="headerlink" href="#packaged-governance" title="Permanent link">&para;</a></h2>
+<p>Runtime endpoints, credentials, and machine locations are injected by the
+launcher and are never part of the packaged configuration.</p>
+<ul>
+<li>One comprehensive canonical skill, with specialist procedures retained as
+  referenced workflows.</li>
+<li>A signed connector capability manifest plus ontology, SHACL shapes, mappings,
+  fixtures, migrations, and certification metadata.</li>
+<li>Privacy-safe delegation through GraphOS using non-personal agent aliases.</li>
+</ul>
+<p>See <a href="configuration/">Configuration, trust, and privacy</a> for the operator
+contract.</p>
 
 
 
@@ -883,7 +966,7 @@ full matrix (PyPI extras, Docker image, transports, reverse proxy, DNS).</p>
       <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.top", "navigation.tracking", "navigation.instant", "navigation.instant.progress", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.tooltips"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>
