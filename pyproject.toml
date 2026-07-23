@@ -8,7 +8,7 @@ version = "3.0.2"
 description = "GeniusAgent Search Engine for Agentic AI!"
 readme = "README.md"
 classifiers = [ "Development Status :: 5 - Production/Stable", "License :: Public Domain", "Environment :: Console", "Operating System :: POSIX :: Linux", "Programming Language :: Python :: 3",]
-requires-python = ">=3.11,<3.15"
+requires-python = ">=3.12,<3.15"
 dependencies = [ "universal-skills[web-crawler,web-search]", "systems-manager[mcp,agent]", "agent-utilities[agent,logfire]>=1.0.0,<2.0.0",]
 [[project.authors]]
 name = "Project Maintainers"
