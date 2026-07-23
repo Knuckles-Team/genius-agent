@@ -15,7 +15,7 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends build-essential \
     && rm -rf /var/lib/apt/lists/*
 RUN --mount=type=cache,target=/root/.cache/uv \
-    uv pip install --system --upgrade --break-system-packages --prerelease=allow genius-agent[all]>=3.0.2
+    uv pip install --system --upgrade --break-system-packages --prerelease=allow genius-agent[all]>=4.0.0
 
 # genius-agent is an agent-only package (no MCP server); the pipeline's mcp leg is
 # auto-skipped since this Dockerfile has no `AS mcp` stage.
