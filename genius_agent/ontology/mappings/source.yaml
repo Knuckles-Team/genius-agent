@@ -3,7 +3,7 @@ connector: genius-agent
 ontology_source: genius
 sync:
 - preset: genius-search-results
-  server: genius-agent
+  server: genius-mcp
   tool: genius_ingest_search
   action: search
   records_path: ingested
