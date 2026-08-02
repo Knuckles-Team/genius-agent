@@ -1,0 +1,61 @@
+# Merge-queue gate declaration for `genius-agent` (a Python agent package:
+# GeniusAgent search engine, FastMCP server + A2A agent, no .venv/no editable
+# install visible to the queue runner).
+#
+# Bootstrapped 2026-08-02 (lane queue-declarations-0802) -- this repo already
+# had a live queue store (candidates enqueued, sat undrained forever) with no
+# `.mergequeue.yaml`; the queue refuses a repo that declares no gates rather
+# than inventing them or defaulting to none.
+#
+# No packaging-local interpreter here (no .venv): confirmed the SYSTEM
+# `python3` collects and runs this repo's suite when cwd is the repo root, so
+# the interpreter is pinned explicitly rather than inventing a venv/toolchain
+# that isn't there.
+#
+# main is legitimately NOT green here right now: `python3 -m pytest -q tests`
+# reports 4 failed / 13 errors (mostly tests/integration/* and
+# test_graph_flow_integration.py, which need a live agent-utilities graph/MCP
+# registry this queue's gate environment does not provide) alongside 20
+# passed. compare: pytest-ids is what makes that survivable without demanding
+# absolute green -- see the note below.
+
+base: main
+batch_size: 8
+
+environment_signature: ["python3", "-c", "import sys, sysconfig; print(sys.version, sysconfig.get_paths()['purelib'])"]
+
+gates:
+  # ── the whole unit + integration suite (~39 tests, ~20s) ─────────────────
+  # compare: pytest-ids -- an ID-level differential: a failing/erroring id is
+  # permitted ONLY when that EXACT id already fails on the base ref. Judging
+  # by exit code alone would permanently refuse every candidate here, since
+  # main itself currently carries 4 failures + 13 errors (integration tests
+  # that need a live graph/MCP registry the queue's gate sandbox does not
+  # have) -- that is exactly the "main is legitimately red" deadlock this
+  # fleet's queues are built to survive, never to paper over with an absolute
+  # green requirement.
+  - name: pytest
+    command: ["python3", "-m", "pytest", "-q", "tests"]
+    tier: fast
+    timeout: 120
+    baseline_timeout: 120
+    compare: pytest-ids
+
+  - name: ruff-check
+    command: ["python3", "-m", "ruff", "check", "--output-format", "concise", "."]
+    tier: fast
+    timeout: 60
+    compare: lines
+    when_changed: ["*.py", "**/*.py"]
+
+  - name: ruff-format
+    command: ["python3", "-m", "ruff", "format", "--check", "."]
+    tier: fast
+    timeout: 60
+    compare: lines
+    when_changed: ["*.py", "**/*.py"]
+
+# No purely-derived files tracked in this repo, so no generated_files/regenerate
+# section.
+generated_files: []
+regenerate: []
