@@ -7,17 +7,7 @@
         "genius-agent"
       ],
       "env": {
-        "MCP_TOOL_MODE": "condensed",
-        "A2A_URL": "",
-        "AGENT_UTILITIES_TESTING": "true",
-        "BING_API_KEY": "",
-        "FALKORDB_URI": "",
-        "GOOGLE_API_KEY": "",
-        "GOOGLE_CX": "",
-        "GRAPHDB_PASSWORD": "",
-        "MCP_CONFIG": "mcp_config.json",
-        "OTEL_EXPORTER_OTLP_HEADERS": "",
-        "SEARXNG_URL": ""
+        "MCP_TOOL_MODE": "intent"
       }
     }
   }
