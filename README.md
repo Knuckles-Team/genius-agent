@@ -20,7 +20,7 @@
 ![PyPI - Wheel](https://img.shields.io/pypi/wheel/genius-agent)
 ![PyPI - Implementation](https://img.shields.io/pypi/implementation/genius-agent)
 
-*Version: 4.0.0*
+*Version: 4.1.0*
 
 > **Documentation** — Installation, deployment, usage across the agent, MCP, and CLI
 > interfaces are maintained in the
@@ -186,8 +186,8 @@ connection config, and the full database architecture are documented in the
 |----------|---------|-------------|
 | `ENABLE_OTEL` | `True` |  |
 | `OTEL_EXPORTER_OTLP_ENDPOINT` | `http://localhost:8080/api/public/otel` |  |
-| `OTEL_EXPORTER_OTLP_PUBLIC_KEY` | `pk-...` |  |
-| `OTEL_EXPORTER_OTLP_SECRET_KEY` | `sk-...` |  |
+| `OTEL_EXPORTER_OTLP_PUBLIC_KEY` | secret-injected |  |
+| `OTEL_EXPORTER_OTLP_SECRET_KEY` | secret-injected |  |
 | `OTEL_EXPORTER_OTLP_PROTOCOL` | `http/protobuf` |  |
 | `OTEL_EXPORTER_OTLP_HEADERS` | — | OTLP auth header, e.g. "Authorization=Basic <token>" |
 | `EUNOMIA_TYPE` | `none` | options: none, embedded, remote |
@@ -196,12 +196,12 @@ connection config, and the full database architecture are documented in the
 | `WORKSPACE_DIR` | — | workspace root supplied by the launcher |
 | `MCP_CONFIG` | `mcp_config.json` | path to the MCP config the agent loads |
 | `GRAPH_DB_PATH` | — | path to the local graph DB backing store |
-| `GRAPHDB_PASSWORD` | — | password for the FalkorDB / graph DB backend |
+| `GRAPHDB_PASSWORD` | secret-injected | password for the FalkorDB / graph DB backend |
 | `FALKORDB_URI` | — | FalkorDB/Redis connection URI (scripts/validate_falkordb.py) |
 | `SEARXNG_URL` | — | SearXNG instance URL; when set, web search uses SearXNG |
-| `GOOGLE_API_KEY` | — | Google Custom Search API key (used together with GOOGLE_CX) |
+| `GOOGLE_API_KEY` | secret-injected | Google Custom Search API key (used together with GOOGLE_CX) |
 | `GOOGLE_CX` | — | Google Custom Search Engine ID (used together with GOOGLE_API_KEY) |
-| `BING_API_KEY` | — | Bing Search API key |
+| `BING_API_KEY` | secret-injected | Bing Search API key |
 | `AGENT_UTILITIES_TESTING` | `true` | set "true" to skip live integration tests |
 | `A2A_URL` | — | base URL of the running A2A agent endpoint (scripts/validate_a2a_agent.py) |
 
@@ -209,19 +209,19 @@ connection config, and the full database architecture are documented in the
 
 | Variable | Example | Description |
 |----------|---------|-------------|
-| `TRANSPORT` | `stdio` | MCP transport: `stdio` | `streamable-http` | `sse` |
-| `HOST` | `0.0.0.0` | Bind host (HTTP transports) |
+| `TRANSPORT` | `stdio` | MCP transport: `stdio` \| `streamable-http` \| `sse` |
+| `HOST` | `127.0.0.1` | Loopback bind host (set an authenticated ingress explicitly) |
 | `PORT` | `8000` | Bind port (HTTP transports) |
-| `MCP_TOOL_MODE` | `condensed` | Tool surface: `condensed` | `verbose` | `both` |
+| `MCP_TOOL_MODE` | `intent` | Tool surface: `intent` \| `condensed` \| `verbose` \| `both` |
 | `MCP_ENABLED_TOOLS` | — | Comma-separated tool allow-list |
 | `MCP_DISABLED_TOOLS` | — | Comma-separated tool deny-list |
 | `MCP_ENABLED_TAGS` | — | Comma-separated tag allow-list |
 | `MCP_DISABLED_TAGS` | — | Comma-separated tag deny-list |
-| `MCP_CLIENT_AUTH` | — | Outbound MCP child auth: `oidc-client-credentials` | `basic` | `none` |
+| `MCP_CLIENT_AUTH` | — | Outbound MCP child auth: `oidc-client-credentials` \| `basic` \| `none` |
 | `OIDC_CLIENT_ID` | — | OIDC client id (service-account auth) |
-| `OIDC_CLIENT_SECRET` | — | OIDC client secret (service-account auth) |
+| `OIDC_CLIENT_SECRET_REF` | `secret://identity/oidc-client-secret` | Runtime secret reference for the OIDC service account |
 | `MCP_BASIC_AUTH_USERNAME` | — | HTTP Basic username (`MCP_CLIENT_AUTH=basic`) |
-| `MCP_BASIC_AUTH_PASSWORD` | — | HTTP Basic password (`MCP_CLIENT_AUTH=basic`) |
+| `MCP_BASIC_AUTH_PASSWORD_REF` | `secret://identity/mcp-basic-password` | Runtime secret reference for HTTP Basic auth (`MCP_CLIENT_AUTH=basic`) |
 | `DEBUG` | `False` | Verbose logging |
 | `PYTHONUNBUFFERED` | `1` | Unbuffered stdout (recommended in containers) |
 | `MCP_URL` | `http://localhost:8000/mcp` | URL of the MCP server the agent connects to |
