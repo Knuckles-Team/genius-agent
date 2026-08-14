@@ -4,17 +4,15 @@ CONCEPT:AU-KG.ingest.enterprise-source-extractor. Genius Agent is a search engin
 web-search queries (DuckDuckGo / Google / Bing / Searxng) and crawls the hits to markdown. This
 module natively pushes that harvest into the ONE epistemic-graph knowledge graph in the modality
 that fits — **documents** (the retrieved text worth semantic search) plus the **typed OWL nodes**
-that give it structure (`:SearchQuery`, `:SearchResult`, `:SearchProvider`, `:WebPage`) and links.
+that give it structure (`:SearchQuery`, `:SearchResult`, `:SearchProvider`, `:WebPage`) and links,
+through the required ``agent_utilities.knowledge_graph.memory.native_ingest`` authority — the one
+connector write path; there is no self-contained fallback transaction here.
 
-It is a thin mapper over the shared write primitive
-``agent_utilities.knowledge_graph.memory.native_ingest`` — imported GUARDED (try/except). When the
-primitive is not present in the installed ``agent_utilities`` (it is newer than the pinned wheel),
-a self-contained txn fallback over the lightweight ``GraphComputeEngine()._client`` is used — the
-same fast client the blob ``MediaStore`` uses, NOT the heavy in-process ingestion engine.
-
-Everything is best-effort and dependency-/engine-guarded: with no KG stack or no reachable engine
-every entry point **no-ops** (returns ``None``), so Genius keeps working with zero KG
-infrastructure. Node ids follow ``genius:<class>:<externalId>``; every ``type`` matches a class the
+The MCP tool surface exposes these as best-effort tools that must never raise on an
+unreachable/misconfigured KG stack, so ``ingest_entities`` / ``ingest_documents`` stay
+**best-effort**: they return ``None`` (never raise) for empty input or when the shared
+primitive reports :class:`NativeIngestError` (no reachable engine, or a malformed record).
+Node ids follow ``genius:<class>:<externalId>``; every ``node_type`` matches a class the
 package's ``ontology_providers`` ``genius.ttl`` federates.
 """
 
@@ -22,97 +20,18 @@ from __future__ import annotations
 
 import hashlib
 import logging
-import time
 from typing import Any
+
+from agent_utilities.knowledge_graph.memory.native_ingest import (
+    NativeIngestError,
+    ingest_documents as _native_ingest_documents,
+    ingest_entities as _native_ingest_entities,
+)
 
 logger = logging.getLogger("genius_agent.kg")
 
 _SOURCE = "genius-agent"
 _DOMAIN = "genius"
-_DEFAULT_GRAPH = "__commons__"
-
-
-# --------------------------------------------------------------------------- #
-# write path — prefer the shared primitive, fall back to a self-contained txn
-# --------------------------------------------------------------------------- #
-def _primitive() -> Any | None:
-    """Return the shared ``native_ingest`` module, or ``None`` if unavailable."""
-    try:
-        from agent_utilities.knowledge_graph.memory import (  # type: ignore
-            native_ingest,
-        )
-
-        return native_ingest
-    except Exception as e:  # noqa: BLE001 — primitive newer than installed wheel
-        logger.debug("native_ingest primitive unavailable: %s", e)
-        return None
-
-
-def _client() -> tuple[Any | None, str]:
-    """Return ``(engine_client, graph_name)`` or ``(None, "")`` when unavailable."""
-    try:
-        from agent_utilities.knowledge_graph.core.graph_compute import (
-            GraphComputeEngine,
-        )
-    except Exception as e:  # noqa: BLE001 — KG stack absent
-        logger.debug("KG ingest unavailable (import): %s", e)
-        return None, ""
-    try:
-        engine = GraphComputeEngine()
-        client = getattr(engine, "_client", None)
-        if client is None:
-            return None, ""
-        graph = getattr(engine, "graph_name", None) or _DEFAULT_GRAPH
-        return client, graph
-    except Exception as e:  # noqa: BLE001 — engine unreachable
-        logger.debug("KG ingest: engine unreachable: %s", e)
-        return None, ""
-
-
-def _fallback_write(
-    entities: list[dict[str, Any]],
-    relationships: list[dict[str, Any]] | None,
-    *,
-    client: Any | None,
-    graph: str | None,
-) -> dict[str, int] | None:
-    """Self-contained txn write, mirroring the shared primitive's node/edge dance."""
-    entities = [e for e in (entities or []) if e.get("id")]
-    if not entities:
-        return None
-    if client is None:
-        client, graph = _client()
-    if client is None:
-        return None
-    graph = graph or _DEFAULT_GRAPH
-
-    try:
-        txn = client.txn.begin(graph=graph)
-        for ent in entities:
-            props = {k: v for k, v in ent.items() if k != "id" and v is not None}
-            props.setdefault("source", _SOURCE)
-            props.setdefault("domain", _DOMAIN)
-            client.txn.add_node(txn, ent["id"], props)
-        committed = client.txn.commit(txn)
-    except Exception as e:  # noqa: BLE001 — engine/txn failure is non-fatal
-        logger.warning("KG ingest: txn failed: %s", e)
-        return None
-    if not committed:
-        logger.warning("KG ingest: txn not committed (conflict)")
-        return None
-
-    edges = 0
-    for rel in relationships or []:
-        try:
-            client.edges.add(
-                rel["source"], rel["target"], {"type": rel.get("type", "RELATED")}
-            )
-            edges += 1
-        except Exception as e:  # noqa: BLE001 — pure edge link, best-effort
-            logger.debug("KG ingest: edge skipped: %s", e)
-
-    logger.info("KG ingest: wrote %d nodes, %d edges", len(entities), edges)
-    return {"nodes": len(entities), "edges": edges}
 
 
 def ingest_entities(
@@ -124,22 +43,28 @@ def ingest_entities(
     client: Any | None = None,
     graph: str | None = None,
 ) -> dict[str, int] | None:
-    """Write typed OWL nodes (+ edges) into epistemic-graph.
+    """Write typed OWL nodes (+ edges) into epistemic-graph. Best-effort, never raises.
 
-    ``entities``: ``[{"id":..., "type":<owl:Class>, ...props}]``.
-    ``relationships``: ``[{"source":id, "target":id, "type":rel}]``.
-    Returns ``{"nodes":n, "edges":m}`` or ``None``. Prefers the shared primitive; falls
-    back to a self-contained txn. ``client``/``graph`` may be injected (tests).
+    ``entities``: ``[{"id":..., "node_type":<owl:Class>, ...props}]``.
+    ``relationships``: ``[{"source":id, "target":id, "relationship":<link>}]``.
+    Returns ``{"nodes":n, "edges":m}`` or ``None`` (empty input / no reachable engine /
+    malformed record). ``client``/``graph`` may be injected (tests); otherwise the
+    process-owned governed authority is resolved on demand.
     """
-    entities = [e for e in (entities or []) if e.get("id")]
     if not entities:
         return None
-    prim = _primitive()
-    if prim is not None and client is None:
-        return prim.ingest_entities(
-            entities, relationships, source=source, domain=domain
+    try:
+        return _native_ingest_entities(
+            entities,
+            relationships,
+            source=source,
+            domain=domain,
+            client=client,
+            graph=graph,
         )
-    return _fallback_write(entities, relationships, client=client, graph=graph)
+    except NativeIngestError as exc:
+        logger.debug("KG ingest unavailable/failed: %s", exc)
+        return None
 
 
 def ingest_documents(
@@ -150,30 +75,19 @@ def ingest_documents(
     client: Any | None = None,
     graph: str | None = None,
 ) -> dict[str, int] | None:
-    """Write text records as shared ``:Document`` nodes (semantic-search fodder).
+    """Write text records as shared ``:Document`` nodes. Best-effort.
 
     Each doc: ``{"id":..., "text":..., "title"?:..., "source_uri"?:..., ...props}``.
-    Prefers the shared primitive; falls back to a self-contained txn that stamps
-    ``type=Document`` + ``created_at``.
     """
-    prim = _primitive()
-    if prim is not None and client is None:
-        return prim.ingest_documents(documents, source=source, domain=domain)
-
-    now = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
-    nodes: list[dict[str, Any]] = []
-    for doc in documents or []:
-        did = doc.get("id")
-        text = doc.get("text") or doc.get("content")
-        if not did or not text:
-            continue
-        node = {k: v for k, v in doc.items() if k != "content" and v is not None}
-        node["id"] = did
-        node["type"] = "Document"
-        node["text"] = text
-        node.setdefault("created_at", now)
-        nodes.append(node)
-    return _fallback_write(nodes, None, client=client, graph=graph)
+    if not documents:
+        return None
+    try:
+        return _native_ingest_documents(
+            documents, source=source, domain=domain, client=client, graph=graph
+        )
+    except NativeIngestError as exc:
+        logger.debug("KG ingest unavailable/failed: %s", exc)
+        return None
 
 
 # --------------------------------------------------------------------------- #
@@ -223,7 +137,7 @@ def map_search_results(
     entities.append(
         {
             "id": prov_id,
-            "type": "SearchProvider",
+            "node_type": "SearchProvider",
             "name": prov,
             "providerName": prov,
             "externalToolId": prov,
@@ -232,14 +146,16 @@ def map_search_results(
     entities.append(
         {
             "id": query_id,
-            "type": "SearchQuery",
+            "node_type": "SearchQuery",
             "name": query,
             "queryText": query,
             "resultCount": len([r for r in (results or []) if r]),
             "externalToolId": _hash(prov + "|" + query),
         }
     )
-    relationships.append({"source": query_id, "target": prov_id, "type": "answeredBy"})
+    relationships.append(
+        {"source": query_id, "target": prov_id, "relationship": "answeredBy"}
+    )
 
     for i, raw in enumerate(results or [], start=1):
         norm = _norm_result(raw)
@@ -254,7 +170,7 @@ def map_search_results(
         entities.append(
             {
                 "id": result_id,
-                "type": "SearchResult",
+                "node_type": "SearchResult",
                 "name": norm["title"] or url,
                 "rank": i,
                 "snippet": norm["snippet"],
@@ -265,17 +181,17 @@ def map_search_results(
         entities.append(
             {
                 "id": page_id,
-                "type": "WebPage",
+                "node_type": "WebPage",
                 "name": norm["title"] or url,
                 "sourceUrl": url,
                 "externalToolId": uh,
             }
         )
         relationships.append(
-            {"source": query_id, "target": result_id, "type": "hasResult"}
+            {"source": query_id, "target": result_id, "relationship": "hasResult"}
         )
         relationships.append(
-            {"source": result_id, "target": page_id, "type": "pointsToPage"}
+            {"source": result_id, "target": page_id, "relationship": "pointsToPage"}
         )
 
         text = "\n".join(t for t in (norm["title"], norm["snippet"]) if t).strip()
@@ -291,7 +207,7 @@ def map_search_results(
                 }
             )
             relationships.append(
-                {"source": result_id, "target": doc_id, "type": "hasContent"}
+                {"source": result_id, "target": doc_id, "relationship": "hasContent"}
             )
 
     return entities, relationships, documents
@@ -351,7 +267,7 @@ def ingest_crawled_pages(
         entities.append(
             {
                 "id": page_id,
-                "type": "WebPage",
+                "node_type": "WebPage",
                 "name": title,
                 "sourceUrl": url,
                 "externalToolId": uh,
@@ -368,7 +284,7 @@ def ingest_crawled_pages(
                 }
             )
             relationships.append(
-                {"source": page_id, "target": doc_id, "type": "hasContent"}
+                {"source": page_id, "target": doc_id, "relationship": "hasContent"}
             )
     if not entities:
         return None
