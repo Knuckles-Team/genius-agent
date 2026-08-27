@@ -1,7 +1,7 @@
 {
   "api_version": "graphos.io/v1",
   "artifacts": {
-    "connector_manifest.yml": "59e51b6d772bc2d21b832ccdbbf74a1827187534bf95598254fd8a24681d291e",
+    "connector_manifest.yml": "b16cda699d77b44fe3a4dc7e0b7215ec8bc64a884d3c70924100cf50ed989735",
     "genius_agent/connectors/mcp_source_presets.json": "421b1222d838d1c53eff433d55c4432a6f7b001abf18931c70fc68dbe8868100",
     "genius_agent/connectors/tool_schema_fingerprints.json": "3c0483930d2e8bd5f50115ac5dc7610b50658cd160cb4bdb866e9452212bc431",
     "genius_agent/ontology/fixtures/records.json": "afe904e82715680ad203983b052190b0d2abe963460fde54ab4757d8374f91e2",
@@ -18,9 +18,9 @@
     "synthetic_fixture_contract": "passed"
   },
   "compatibility": {
-    "agent_utilities": ">=2.4.0,<3",
+    "agent_utilities": ">=2.5.0,<3",
     "bundle_schema": "2",
-    "epistemic_graph": ">=2.26.0,<3"
+    "epistemic_graph": ">=2.27.0,<3"
   },
   "connector": "genius-agent",
   "kind": "ConnectorSourceAttestation",
@@ -32,5 +32,5 @@
   "signer": "UNSIGNED-PREVIEW",
   "signing_public_key": "",
   "status": "source-validated",
-  "validated_at": "2026-08-21T04:30:39Z"
+  "validated_at": "2026-08-26T13:42:55Z"
 }
