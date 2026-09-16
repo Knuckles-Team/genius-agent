@@ -193,15 +193,14 @@ connection config, and the full database architecture are documented in the
 | `EUNOMIA_TYPE` | `none` | options: none, embedded, remote |
 | `EUNOMIA_POLICY_FILE` | `mcp_policies.json` |  |
 | `EUNOMIA_REMOTE_URL` | `http://eunomia-server:8000` |  |
-| `WORKSPACE_DIR` | — | workspace root supplied by the launcher |
 | `MCP_CONFIG` | `mcp_config.json` | path to the MCP config the agent loads |
-| `GRAPH_DB_PATH` | — | path to the local graph DB backing store |
 | `GRAPHDB_PASSWORD` | secret-injected | password for the FalkorDB / graph DB backend |
 | `FALKORDB_URI` | — | FalkorDB/Redis connection URI (scripts/validate_falkordb.py) |
 | `SEARXNG_URL` | — | SearXNG instance URL; when set, web search uses SearXNG |
 | `GOOGLE_API_KEY` | secret-injected | Google Custom Search API key (used together with GOOGLE_CX) |
 | `GOOGLE_CX` | — | Google Custom Search Engine ID (used together with GOOGLE_API_KEY) |
 | `BING_API_KEY` | secret-injected | Bing Search API key |
+| `GENIUS_AGENT_IMAGE` | — | e.g. registry.example.invalid/genius-agent@sha256:<digest> |
 | `AGENT_UTILITIES_TESTING` | `true` | set "true" to skip live integration tests |
 | `A2A_URL` | — | base URL of the running A2A agent endpoint (scripts/validate_a2a_agent.py) |
 
@@ -225,11 +224,11 @@ connection config, and the full database architecture are documented in the
 | `DEBUG` | `False` | Verbose logging |
 | `PYTHONUNBUFFERED` | `1` | Unbuffered stdout (recommended in containers) |
 | `MCP_URL` | `http://localhost:8000/mcp` | URL of the MCP server the agent connects to |
-| `PROVIDER` | `openai` | LLM provider for the agent |
-| `MODEL_ID` | `gpt-4o` | Model id for the agent |
+| `PROVIDER` | — | Operator-configured LLM provider for the agent |
+| `MODEL_ID` | — | Operator-configured model id for the agent |
 | `ENABLE_WEB_UI` | `True` | Serve the AG-UI web interface |
 
-_20 package + 19 inherited variable(s). Auto-generated from `.env.example` + the shared agent-utilities set — do not edit._
+_19 package + 19 inherited variable(s). Auto-generated from `.env.example` + the shared agent-utilities set — do not edit._
 <!-- ENV-VARS-TABLE:END -->
 
 
@@ -314,27 +313,6 @@ Contributions are welcome! Please ensure code quality by executing local checks 
 - Validate type-safety with `mypy .`
 - Execute test suites using `pytest`
 
-
-<!-- BEGIN agent-os-genesis-deploy (generated; do not edit between markers) -->
-
-## Deploy with `agent-os-genesis`
-
-This package can be provisioned for you — skill-guided — by the **`agent-os-genesis`**
-universal skill (its *single-package deploy mode*): it picks your install method, seeds
-secrets to OpenBao/Vault (or `.env`), trusts your enterprise CA, registers the MCP
-server, and verifies it — the same machinery that stands up the whole Agent OS, narrowed
-to just this package. Ask your agent to **"deploy `genius-agent` with agent-os-genesis"**.
-
-| Install mode | Command |
-|------|---------|
-| Bare-metal, prod (PyPI) | `uvx genius-agent-mcp` · or `uv tool install genius-agent` |
-| Bare-metal, dev (editable) | `uv pip install -e ".[all]"` · or `pip install -e ".[all]"` |
-| Container, prod | deploy `knucklessg1/genius-agent:latest` via docker-compose / swarm / podman / podman-compose / kubernetes |
-| Container, dev (editable) | deploy `docker/compose.dev.yml` (source-mounted at `/src`; edits live on restart) |
-
-Secrets are read-existing + seeded via `vault_sync` — you are only prompted for what's missing.
-
-<!-- END agent-os-genesis-deploy -->
 
 <!-- BEGIN agent-utilities-deployment (generated; do not edit between markers) -->
 
