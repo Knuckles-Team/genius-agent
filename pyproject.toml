@@ -56,10 +56,10 @@ agent-utilities = { path = ".uv-workspace-siblings/agent-utilities", editable = 
 
 [tool.ruff]
 line-length = 88
-target-version = "py311"
+target-version = "py312"
 
 [tool.mypy]
-python_version = "3.11"
+python_version = "3.12"
 ignore_missing_imports = true
 check_untyped_defs = true
 
