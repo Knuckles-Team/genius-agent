@@ -123,7 +123,6 @@ sync:
 - preset: genius-search-results
   server: genius-mcp
   tool: genius_ingest_search
-  action: search
   records_path: ingested
   id_field: sourceUrl
   title_field: title
@@ -131,11 +130,10 @@ sync:
   updated_field: created_at
   pagination: null
   doc_type: SearchResult
-  tool_schema_sha256: 19bd9308bd27c1b0d790ce82d571e0b3bdf257c4fd4b55e1f726ead06e52a982
+  tool_schema_sha256: a1147d0e9737ac313fa524f43a4da02700ffcdacba132c515265fb8d4439195d
   raw:
     server: genius-mcp
     tool: genius_ingest_search
-    action: search
     records_path: ingested
     id_field: sourceUrl
     title_field: title
@@ -143,6 +141,7 @@ sync:
     url_field: sourceUrl
     updated_field: created_at
     doc_type: SearchResult
+    params_style: args
     domain: genius
 provenance:
   generated_by: scripts/generate_connector_manifests.py

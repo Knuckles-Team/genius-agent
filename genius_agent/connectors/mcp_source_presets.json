@@ -3,7 +3,6 @@
   "genius-search-results": {
     "server": "genius-mcp",
     "tool": "genius_ingest_search",
-    "action": "search",
     "records_path": "ingested",
     "id_field": "sourceUrl",
     "title_field": "title",
@@ -11,6 +10,7 @@
     "url_field": "sourceUrl",
     "updated_field": "created_at",
     "doc_type": "SearchResult",
-    "domain": "genius"
+    "domain": "genius",
+    "params_style": "args"
   }
 }
