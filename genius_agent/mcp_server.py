@@ -60,6 +60,13 @@ def register_tools(mcp: FastMCP) -> None:
         },
         tags={"search", "ingest", "knowledge-graph"},
         run_in_thread=True,
+        meta={
+            "eg.annotations": {
+                "modalities_in": ["text"],
+                "modalities_out": ["text"],
+                "provides": ["eg:capability/retrieval/web-search"],
+            }
+        },
     )(genius_ingest_search)
 
 
