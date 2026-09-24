@@ -12,8 +12,9 @@ from agent_connector_sdk.mcp.server import create_mcp_server
 from fastmcp import FastMCP
 from pydantic import Field
 
-from genius_agent.agent_server import __version__
 from genius_agent.kg_ingest import genius_ingest_search as _genius_ingest_search
+
+__version__ = "4.1.0"
 
 logger = logging.getLogger(__name__)
 

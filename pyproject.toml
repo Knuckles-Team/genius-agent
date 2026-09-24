@@ -18,7 +18,6 @@ email = "maintainers@users.noreply.github.com"
 text = "MIT"
 
 [project.scripts]
-genius-agent = "genius_agent.agent_server:agent_server"
 genius-mcp = "genius_agent.mcp_server:mcp_server"
 
 [project.entry-points."agent_utilities.skill_providers"]

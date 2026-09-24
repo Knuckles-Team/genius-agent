@@ -17,9 +17,10 @@ RUN apt-get update \
 RUN --mount=type=cache,target=/root/.cache/uv \
     uv pip install --system --upgrade --break-system-packages --prerelease=allow genius-agent[all]>=4.1.0
 
-# genius-agent is an agent-only package (no MCP server); the pipeline's mcp leg is
-# auto-skipped since this Dockerfile has no `AS mcp` stage.
-FROM python:3.14-slim@sha256:cea0e6040540fb2b965b6e7fb5ffa00871e632eef63719f0ea54bca189ce14a6 AS agent
+# genius-agent ships only its MCP server (genius-mcp); the agent-runtime entrypoint
+# (genius_agent/agent_server.py, the `genius-agent` console script) was retired
+# fleet-wide (EH-481 policy).
+FROM python:3.14-slim@sha256:cea0e6040540fb2b965b6e7fb5ffa00871e632eef63719f0ea54bca189ce14a6 AS mcp
 
 ARG HOST=127.0.0.1
 ARG PORT=8000
@@ -49,4 +50,4 @@ ENV HOME=/tmp \
     XDG_CACHE_HOME=/tmp/.cache
 
 USER 10001:10001
-CMD ["genius-agent"]
+CMD ["genius-mcp"]
