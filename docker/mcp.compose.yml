@@ -1,8 +1,8 @@
 services:
-  genius-agent-agent:
+  genius-agent-mcp:
     image: ${GENIUS_AGENT_IMAGE:?set-GENIUS_AGENT_IMAGE-to-image@sha256-digest}
-    container_name: genius-agent-agent
-    hostname: genius-agent-agent
+    container_name: genius-agent-mcp
+    hostname: genius-agent-mcp
     init: true
     user: "10001:10001"
     read_only: true
@@ -11,24 +11,21 @@ services:
     security_opt:
       - no-new-privileges:true
     pids_limit: 256
-    mem_limit: ${AGENT_CONTAINER_MEMORY_LIMIT:-4g}
-    cpus: ${AGENT_CONTAINER_CPU_LIMIT:-2.0}
+    mem_limit: ${MCP_CONTAINER_MEMORY_LIMIT:-4g}
+    cpus: ${MCP_CONTAINER_CPU_LIMIT:-2.0}
     tmpfs:
       - /tmp:rw,noexec,nosuid,nodev,size=64m
     restart: unless-stopped
-    command: [ "genius-agent" ]
+    command: [ "genius-mcp" ]
     environment:
       - PYTHONUNBUFFERED=1
       - HOST=0.0.0.0
-      - PORT=9000
-      - PROVIDER=${PROVIDER:-openai}
-      - MODEL_ID=${MODEL_ID:-gpt-4o}
-      - ENABLE_WEB_UI=${ENABLE_WEB_UI:-true}
-      - ENABLE_OTEL=${ENABLE_OTEL:-false}
+      - PORT=8000
+      - TRANSPORT=streamable-http
     ports:
-      - "127.0.0.1:${GENIUS_AGENT_PORT:-9000}:9000"
+      - "127.0.0.1:${GENIUS_AGENT_PORT:-8000}:8000"
     healthcheck:
-      test: ["CMD", "python3", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:9000/health')"]
+      test: ["CMD", "python3", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
       interval: 30s
       timeout: 10s
       retries: 3
