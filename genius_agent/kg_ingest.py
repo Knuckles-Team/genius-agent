@@ -4,16 +4,23 @@ CONCEPT:AU-KG.ingest.enterprise-source-extractor. Genius Agent is a search engin
 web-search queries (DuckDuckGo / Google / Bing / Searxng) and crawls the hits to markdown. This
 module natively pushes that harvest into the ONE epistemic-graph knowledge graph in the modality
 that fits — **documents** (the retrieved text worth semantic search) plus the **typed OWL nodes**
-that give it structure (`:SearchQuery`, `:SearchResult`, `:SearchProvider`, `:WebPage`) and links,
-through the required ``agent_utilities.knowledge_graph.memory.native_ingest`` authority — the one
-connector write path; there is no self-contained fallback transaction here.
+that give it structure (`:SearchQuery`, `:SearchResult`, `:SearchProvider`, `:WebPage`) and links.
 
 The MCP tool surface exposes these as best-effort tools that must never raise on an
 unreachable/misconfigured KG stack, so ``ingest_entities`` / ``ingest_documents`` stay
 **best-effort**: they return ``None`` (never raise) for empty input or when the shared
-primitive reports :class:`NativeIngestError` (no reachable engine, or a malformed record).
-Node ids follow ``genius:<class>:<externalId>``; every ``node_type`` matches a class the
-package's ``ontology_providers`` ``genius.ttl`` federates.
+primitive is unavailable. Node ids follow ``genius:<class>:<externalId>``; every ``node_type``
+matches a class the package's ``ontology_providers`` ``genius.ttl`` federates.
+
+SDK GAP (EH-481/SDK-GAPS.md): this used to translate entities/relationships into
+ChangeEnvelope operations through the required
+``agent_utilities.knowledge_graph.memory.native_ingest`` authority (dependency-injected via a
+``client`` exposing ``.changes``/``.nodes``/``.rdf``/``.supports()``) — the one connector write
+path. The SDK's only epistemic-graph write path, ``agent_connector_sdk.sinks.epistemic_graph.
+EpistemicGraphSink``, requires a verified client plus a ``PackImportAuthorityResolver`` wired at
+the composition root, not a same-shaped drop-in for this structural mapper. Until the gap is
+filled, ``_native_ingest_entities``/``_native_ingest_documents`` are stubs that always return
+``None``; every ``ingest_*`` call site above keeps working as a documented no-op.
 """
 
 from __future__ import annotations
@@ -22,16 +29,35 @@ import hashlib
 import logging
 from typing import Any
 
-from agent_utilities.knowledge_graph.memory.native_ingest import (
-    NativeIngestError,
-    ingest_documents as _native_ingest_documents,
-    ingest_entities as _native_ingest_entities,
-)
-
 logger = logging.getLogger("genius_agent.kg")
 
 _SOURCE = "genius-agent"
 _DOMAIN = "genius"
+
+
+def _native_ingest_entities(
+    entities: list[dict[str, Any]],
+    relationships: list[dict[str, Any]] | None = None,
+    *,
+    source: str,
+    domain: str,
+    client: Any | None = None,
+    graph: str | None = None,
+) -> dict[str, int] | None:
+    """No native ingest primitive is wired yet; see the SDK-GAPS note above."""
+    return None
+
+
+def _native_ingest_documents(
+    documents: list[dict[str, Any]],
+    *,
+    source: str,
+    domain: str,
+    client: Any | None = None,
+    graph: str | None = None,
+) -> dict[str, int] | None:
+    """No native ingest primitive is wired yet; see the SDK-GAPS note above."""
+    return None
 
 
 def ingest_entities(
@@ -62,7 +88,7 @@ def ingest_entities(
             client=client,
             graph=graph,
         )
-    except NativeIngestError as exc:
+    except Exception as exc:  # noqa: BLE001 -- ingest primitive is a stub (SDK gap)
         logger.debug("KG ingest unavailable/failed: %s", exc)
         return None
 
@@ -85,7 +111,7 @@ def ingest_documents(
         return _native_ingest_documents(
             documents, source=source, domain=domain, client=client, graph=graph
         )
-    except NativeIngestError as exc:
+    except Exception as exc:  # noqa: BLE001 -- ingest primitive is a stub (SDK gap)
         logger.debug("KG ingest unavailable/failed: %s", exc)
         return None
 

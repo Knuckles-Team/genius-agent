@@ -7,8 +7,8 @@ import logging
 import sys
 from typing import Annotated, Any
 
-from agent_utilities.core.config import load_config
-from agent_utilities.mcp.server_factory import create_mcp_server
+from agent_connector_sdk.config import load_config
+from agent_connector_sdk.mcp.server import create_mcp_server
 from fastmcp import FastMCP
 from pydantic import Field
 
