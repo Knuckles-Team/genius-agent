@@ -893,7 +893,7 @@ provider with <code>--provider</code> / <code>--model-id</code>:</p>
 <div class="tabbed-block">
 <p><div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>genius-agent<span class="w"> </span>--provider<span class="w"> </span>openai<span class="w"> </span>--model-id<span class="w"> </span>gpt-4o
 </span></code></pre></div>
-Launches the agent with the terminal interface for local interaction.</p>
+Starts the agent with the terminal interface for local interaction.</p>
 </div>
 <div class="tabbed-block">
 <p><div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>genius-agent<span class="w"> </span>--provider<span class="w"> </span>openai<span class="w"> </span>--model-id<span class="w"> </span>gpt-4o<span class="w"> </span><span class="se">\</span>
@@ -966,7 +966,7 @@ exporter settings (<code>OTEL_EXPORTER_OTLP_ENDPOINT</code>, <code>OTEL_EXPORTER
 <code>OTEL_EXPORTER_OTLP_SECRET_KEY</code>, <code>OTEL_EXPORTER_OTLP_PROTOCOL</code>). The complete set,
 including the optional tool toggles, is documented in
 <a href="https://github.com/Knuckles-Team/genius-agent/blob/main/.env.example"><code>.env.example</code></a>.
-Copy it to <code>.env</code> and populate only what you use; the agent remains inactive when the
+Copy it to <code>.env</code> and populate only what the operator use; the agent remains inactive when the
 provider credentials are absent.</p>
 <div class="admonition note">
 <p class="admonition-title">Backing service</p>
@@ -1038,11 +1038,11 @@ It reads a sibling <code>.env</code> and publishes the agent server (Web UI + AC
 </tr>
 </tbody>
 </table>
-<p>The agent consumes MCP tools rather than terminating at a single backing API. Point
+<p>The agent consumes MCP tools rather than stop at a single backing API. Point
 <code>MCP_URL</code> at a running MCP server, or mount an <code>mcp_config.json</code> that declares the
 servers the agent should compose.</p>
 <h2 id="behind-a-caddy-reverse-proxy">Behind a Caddy reverse proxy<a class="headerlink" href="#behind-a-caddy-reverse-proxy" title="Permanent link">&para;</a></h2>
-<p>Expose the agent server on a hostname with automatic TLS. Add to your <code>Caddyfile</code>:</p>
+<p>Expose the agent server on a hostname with automatic TLS. Add to the operator's <code>Caddyfile</code>:</p>
 <div class="language-caddy highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Internal PKI</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>&lt;agent-hostname&gt;<span class="w"> </span><span class="p">{</span>
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="k">tls</span><span class="w"> </span>internal
@@ -1086,12 +1086,12 @@ separate <code>genius-mcp</code> entry point; register that command with an MCP 
 </span></code></pre></div>
 <p>For a remote HTTP server, point the client at the launcher-configured MCP URL instead.</p>
 <h2 id="governed-promotion">Governed promotion<a class="headerlink" href="#governed-promotion" title="Permanent link">&para;</a></h2>
-<p>Supply the agent definition and prompt at runtime. The command accepts a
+<p>Provide the agent definition and prompt at runtime. The command accepts a
 configuration file, an inline JSON payload, or launcher-provided data; use
 <code>genius-agent --help</code> as the version-specific flag reference.</p>
 <p>Place authentication in front of every non-loopback endpoint, inject
 model/provider credentials from a secret store, and mount only approved working
-data. Enable optional observability with metadata-only capture and verify TLS
+data. Enable optional observability with metadata-only capture and check TLS
 using the environment-configured CA bundle.</p>
 <p>A promotion is complete only after readiness, one least-privilege orchestration,
 skill discovery, and privacy-safe trace delivery all succeed. See

@@ -787,14 +787,14 @@
 
 
 <h1 id="usage-agent-mcp-cli">Usage — Agent / MCP / CLI<a class="headerlink" href="#usage-agent-mcp-cli" title="Permanent link">&para;</a></h1>
-<p><code>genius-agent</code> exposes its capability three ways: as an <strong>integrated agent</strong> you drive
+<p><code>genius-agent</code> exposes its capability three ways: as an <strong>integrated agent</strong> the operator drive
 over ACP / the Web UI, as an <strong>MCP tool surface</strong> an orchestrator composes, and as a
-<strong>CLI</strong> you launch directly. The full capability set and enterprise-readiness matrix
+<strong>CLI</strong> the operator start directly. The full capability set and enterprise-readiness matrix
 are in <a href="../overview/">Overview</a>.</p>
 <h2 id="as-an-mcp-server">As an MCP server<a class="headerlink" href="#as-an-mcp-server" title="Permanent link">&para;</a></h2>
 <p><code>genius-mcp</code> is the package's native MCP entry point. It exposes the signed source
 tool below; runtime search credentials, graph connectivity, TLS trust, tenant, and
-policy are supplied through AgentConfig and the environment. Listing the tool surface
+policy are provided through AgentConfig and the environment. Listing the tool surface
 does not contact a search provider or graph backend.</p>
 <table>
 <thead>
@@ -818,10 +818,10 @@ does not contact a search provider or graph backend.</p>
 Example prompts that drive that agent:</p>
 <ul>
 <li><em>"Search the catalog and summarize the top results."</em> → a composed MCP tool call</li>
-<li><em>"Plan a multi-step task and execute each step."</em> → graph orchestration</li>
+<li><em>"Plan a multi-step task and ran each step."</em> → graph orchestration</li>
 </ul>
 <h2 id="as-a-python-api">As a Python API<a class="headerlink" href="#as-a-python-api" title="Permanent link">&para;</a></h2>
-<p>The agent server is launched programmatically through the package entry point. The
+<p>The agent server is started programmatically through the package entry point. The
 <code>agent_server()</code> function builds and runs the integrated agent from the environment:</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">genius_agent.agent_server</span><span class="w"> </span><span class="kn">import</span> <span class="n">agent_server</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
@@ -829,7 +829,7 @@ Example prompts that drive that agent:</p>
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># and the MCP tool surface, then serves ACP + the Agent Web UI.</span>
 </span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">agent_server</span><span class="p">()</span>
 </span></code></pre></div>
-<p>Under the hood it composes the <code>agent-utilities</code> building blocks
+<p>Internally it composes the <code>agent-utilities</code> building blocks
 (<code>create_agent_server</code>, <code>build_system_prompt_from_workspace</code>, <code>load_identity</code>,
 <code>initialize_workspace</code>), so the agent identity, system prompt, and workspace are
 resolved from the environment and the bundled <code>agent_data/</code> workspace.</p>
@@ -859,7 +859,7 @@ credentials are absent. The full environment set is documented in
 <a href="https://github.com/Knuckles-Team/genius-agent/blob/main/.env.example"><code>.env.example</code></a>.</p>
 <h2 id="governed-delegation">Governed delegation<a class="headerlink" href="#governed-delegation" title="Permanent link">&para;</a></h2>
 <p>Do not commit tenant definitions, credentials, identities, or host paths. For
-delegated use, discover and execute the packaged <code>genius-agent-operations</code>
+delegated use, discover and ran the packaged <code>genius-agent-operations</code>
 skill through GraphOS. The skill requires a verified tenant/session, current
 tool discovery, fenced mutations, and sanitized evidence.</p>
 
