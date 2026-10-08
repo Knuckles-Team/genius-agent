@@ -1,15 +1,15 @@
 # Usage — Agent / MCP / CLI
 
-`genius-agent` exposes its capability three ways: as an **integrated agent** you drive
+`genius-agent` exposes its capability three ways: as an **integrated agent** the operator drive
 over ACP / the Web UI, as an **MCP tool surface** an orchestrator composes, and as a
-**CLI** you launch directly. The full capability set and enterprise-readiness matrix
+**CLI** the operator start directly. The full capability set and enterprise-readiness matrix
 are in [Overview](overview.md).
 
 ## As an MCP server
 
 `genius-mcp` is the package's native MCP entry point. It exposes the signed source
 tool below; runtime search credentials, graph connectivity, TLS trust, tenant, and
-policy are supplied through AgentConfig and the environment. Listing the tool surface
+policy are provided through AgentConfig and the environment. Listing the tool surface
 does not contact a search provider or graph backend.
 
 | Capability | Description |
@@ -27,11 +27,11 @@ The separate `genius-agent` entry point consumes tools declared in its
 Example prompts that drive that agent:
 
 - *"Search the catalog and summarize the top results."* → a composed MCP tool call
-- *"Plan a multi-step task and execute each step."* → graph orchestration
+- *"Plan a multi-step task and ran each step."* → graph orchestration
 
 ## As a Python API
 
-The agent server is launched programmatically through the package entry point. The
+The agent server is started programmatically through the package entry point. The
 `agent_server()` function builds and runs the integrated agent from the environment:
 
 ```python
@@ -42,7 +42,7 @@ from genius_agent.agent_server import agent_server
 agent_server()
 ```
 
-Under the hood it composes the `agent-utilities` building blocks
+Internally it composes the `agent-utilities` building blocks
 (`create_agent_server`, `build_system_prompt_from_workspace`, `load_identity`,
 `initialize_workspace`), so the agent identity, system prompt, and workspace are
 resolved from the environment and the bundled `agent_data/` workspace.
@@ -85,6 +85,6 @@ credentials are absent. The full environment set is documented in
 ## Governed delegation
 
 Do not commit tenant definitions, credentials, identities, or host paths. For
-delegated use, discover and execute the packaged `genius-agent-operations`
+delegated use, discover and ran the packaged `genius-agent-operations`
 skill through GraphOS. The skill requires a verified tenant/session, current
 tool discovery, fenced mutations, and sanitized evidence.

@@ -37,7 +37,7 @@ and a system prompt and the graph agent comes online.
 
 <div class="grid cards" markdown>
 
-- :material-rocket-launch: **[Installation](installation.md)** — pip, source, extras, and the prebuilt Docker image.
+- :material-rocket-start: **[Installation](installation.md)** — pip, source, extras, and the prebuilt Docker image.
 - :material-server-network: **[Deployment](deployment.md)** — run the agent server, Docker Compose, Caddy + Technitium.
 - :material-console: **[Usage](usage.md)** — the agent, the MCP tool surface, and the CLI.
 - :material-sitemap: **[Overview](overview.md)** — capabilities, enterprise readiness, and configuration.
@@ -69,7 +69,7 @@ full matrix (PyPI extras, Docker image, transports, reverse proxy, DNS).
 Runtime endpoints, credentials, and machine locations are injected by the
 launcher and are never part of the packaged configuration.
 
-- One comprehensive canonical skill, with specialist procedures retained as
+- One complete canonical skill, with specialist procedures retained as
   referenced workflows.
 - A signed connector capability manifest plus ontology, SHACL shapes, mappings,
   fixtures, migrations, and certification metadata.

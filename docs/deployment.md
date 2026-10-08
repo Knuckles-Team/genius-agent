@@ -20,7 +20,7 @@ provider with `--provider` / `--model-id`:
     ```bash
     genius-agent --provider openai --model-id gpt-4o
     ```
-    Launches the agent with the terminal interface for local interaction.
+    Starts the agent with the terminal interface for local interaction.
 
 === "Networked (Web UI + ACP)"
 
@@ -64,7 +64,7 @@ exporter settings (`OTEL_EXPORTER_OTLP_ENDPOINT`, `OTEL_EXPORTER_OTLP_PUBLIC_KEY
 `OTEL_EXPORTER_OTLP_SECRET_KEY`, `OTEL_EXPORTER_OTLP_PROTOCOL`). The complete set,
 including the optional tool toggles, is documented in
 [`.env.example`](https://github.com/Knuckles-Team/genius-agent/blob/main/.env.example).
-Copy it to `.env` and populate only what you use; the agent remains inactive when the
+Copy it to `.env` and populate only what the operator use; the agent remains inactive when the
 provider credentials are absent.
 
 !!! note "Backing service"
@@ -121,13 +121,13 @@ docker compose -f docker/agent.compose.yml logs -f
 | MCP wiring | `MCP_URL` (remote endpoint) or `mcp_config.json` (local declarations) |
 | Agent manifest | [`a2a.json`](https://github.com/Knuckles-Team/genius-agent/blob/main/a2a.json) — declares the `run_graph_flow` capability |
 
-The agent consumes MCP tools rather than terminating at a single backing API. Point
+The agent consumes MCP tools rather than stop at a single backing API. Point
 `MCP_URL` at a running MCP server, or mount an `mcp_config.json` that declares the
 servers the agent should compose.
 
 ## Behind a Caddy reverse proxy
 
-Expose the agent server on a hostname with automatic TLS. Add to your `Caddyfile`:
+Expose the agent server on a hostname with automatic TLS. Add to the operator's `Caddyfile`:
 
 ```caddy
 # Internal PKI
@@ -190,13 +190,13 @@ For a remote HTTP server, point the client at the launcher-configured MCP URL in
 
 ## Governed promotion
 
-Supply the agent definition and prompt at runtime. The command accepts a
+Provide the agent definition and prompt at runtime. The command accepts a
 configuration file, an inline JSON payload, or launcher-provided data; use
 `genius-agent --help` as the version-specific flag reference.
 
 Place authentication in front of every non-loopback endpoint, inject
 model/provider credentials from a secret store, and mount only approved working
-data. Enable optional observability with metadata-only capture and verify TLS
+data. Enable optional observability with metadata-only capture and check TLS
 using the environment-configured CA bundle.
 
 A promotion is complete only after readiness, one least-privilege orchestration,
