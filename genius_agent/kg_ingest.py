@@ -5,15 +5,19 @@ web-search queries (DuckDuckGo / Google / Bing / Searxng) and crawls the hits to
 module natively pushes that harvest into the ONE epistemic-graph knowledge graph in the modality
 that fits — **documents** (the retrieved text worth semantic search) plus the **typed OWL nodes**
 that give it structure (`:SearchQuery`, `:SearchResult`, `:SearchProvider`, `:WebPage`) and links,
-through the required ``agent_utilities.knowledge_graph.memory.native_ingest`` authority — the one
-connector write path; there is no self-contained fallback transaction here.
+through ``agent_connector_sdk.ingest`` — the one connector write path; there is no self-contained
+fallback transaction here.
 
 The MCP tool surface exposes these as best-effort tools that must never raise on an
 unreachable/misconfigured KG stack, so ``ingest_entities`` / ``ingest_documents`` stay
-**best-effort**: they return ``None`` (never raise) for empty input or when the shared
-primitive reports :class:`NativeIngestError` (no reachable engine, or a malformed record).
+**best-effort**: they return ``None`` (never raise) for empty input or when the SDK's
+``KnowledgeIngest`` reports :class:`IngestError` (no reachable engine, or a malformed record).
 Node ids follow ``genius:<class>:<externalId>``; every ``node_type`` matches a class the
 package's ``ontology_providers`` ``genius.ttl`` federates.
+
+Every public ingest function here is now ``async`` — ``agent_connector_sdk.ingest``'s facade is
+async-only for callers already on the engine's event loop (every ``@mcp.tool()`` handler is), so
+synchronous wrapping would silently create-and-discard the coroutine. Callers must ``await``.
 """
 
 from __future__ import annotations
@@ -22,58 +26,94 @@ import hashlib
 import logging
 from typing import Any
 
-from agent_utilities.knowledge_graph.memory.native_ingest import (
-    NativeIngestError,
-    ingest_documents as _native_ingest_documents,
-    ingest_entities as _native_ingest_entities,
+from agent_connector_sdk.ingest import (
+    ChangeSet,
+    Document,
+    Entity,
+    IngestBinding,
+    IngestError,
+    KnowledgeIngest,
+    Relationship,
+    current_ingest,
 )
 
 logger = logging.getLogger("genius_agent.kg")
 
 _SOURCE = "genius-agent"
 _DOMAIN = "genius"
+_BINDING = IngestBinding(connector=_SOURCE, stream=_DOMAIN)
 
 
-def ingest_entities(
+def _to_entity(record: dict[str, Any]) -> Entity:
+    return Entity(
+        id=record.get("id"),
+        node_type=record.get("node_type"),
+        properties={k: v for k, v in record.items() if k not in ("id", "node_type")},
+    )
+
+
+def _to_document(record: dict[str, Any]) -> Document:
+    reserved = ("id", "text", "title", "source_uri")
+    return Document(
+        id=record.get("id"),
+        text=record.get("text", ""),
+        title=record.get("title"),
+        source_uri=record.get("source_uri"),
+        properties={k: v for k, v in record.items() if k not in reserved},
+    )
+
+
+def _to_relationship(record: dict[str, Any]) -> Relationship:
+    props = {
+        k: v for k, v in record.items() if k not in ("source", "target", "relationship")
+    }
+    return Relationship(
+        source=record["source"],
+        target=record["target"],
+        relationship=record["relationship"],
+        properties=props or None,
+    )
+
+
+async def ingest_entities(
     entities: list[dict[str, Any]],
     relationships: list[dict[str, Any]] | None = None,
     *,
     source: str = _SOURCE,
     domain: str = _DOMAIN,
-    client: Any | None = None,
-    graph: str | None = None,
+    ingest: KnowledgeIngest | None = None,
 ) -> dict[str, int] | None:
     """Write typed OWL nodes (+ edges) into epistemic-graph. Best-effort, never raises.
 
     ``entities``: ``[{"id":..., "node_type":<owl:Class>, ...props}]``.
     ``relationships``: ``[{"source":id, "target":id, "relationship":<link>}]``.
     Returns ``{"nodes":n, "edges":m}`` or ``None`` (empty input / no reachable engine /
-    malformed record). ``client``/``graph`` may be injected (tests); otherwise the
-    process-owned governed authority is resolved on demand.
+    malformed record). ``ingest`` may be injected (tests); otherwise the process-owned
+    ``current_ingest()`` facade is resolved on demand. ``source``/``domain`` are accepted for
+    call-site compatibility; provenance now travels in the generated request, not as a
+    stamped node property.
     """
     if not entities:
         return None
     try:
-        return _native_ingest_entities(
-            entities,
-            relationships,
-            source=source,
-            domain=domain,
-            client=client,
-            graph=graph,
+        change_set = ChangeSet(
+            entities=tuple(_to_entity(e) for e in entities),
+            relationships=tuple(_to_relationship(r) for r in relationships or ()),
         )
-    except NativeIngestError as exc:
+        service = ingest or current_ingest()
+        receipt = await service.submit(_BINDING, change_set)
+    except IngestError as exc:
         logger.debug("KG ingest unavailable/failed: %s", exc)
         return None
+    return {"nodes": receipt.affected_count, "edges": receipt.relationship_count}
 
 
-def ingest_documents(
+async def ingest_documents(
     documents: list[dict[str, Any]],
     *,
     source: str = _SOURCE,
     domain: str = _DOMAIN,
-    client: Any | None = None,
-    graph: str | None = None,
+    ingest: KnowledgeIngest | None = None,
 ) -> dict[str, int] | None:
     """Write text records as shared ``:Document`` nodes. Best-effort.
 
@@ -82,12 +122,13 @@ def ingest_documents(
     if not documents:
         return None
     try:
-        return _native_ingest_documents(
-            documents, source=source, domain=domain, client=client, graph=graph
-        )
-    except NativeIngestError as exc:
+        change_set = ChangeSet(documents=tuple(_to_document(d) for d in documents))
+        service = ingest or current_ingest()
+        receipt = await service.submit(_BINDING, change_set)
+    except IngestError as exc:
         logger.debug("KG ingest unavailable/failed: %s", exc)
         return None
+    return {"nodes": receipt.affected_count, "edges": receipt.relationship_count}
 
 
 # --------------------------------------------------------------------------- #
@@ -213,13 +254,12 @@ def map_search_results(
     return entities, relationships, documents
 
 
-def ingest_search_results(
+async def ingest_search_results(
     query: str,
     results: list[dict[str, Any]],
     *,
     provider: str = "duckduckgo",
-    client: Any | None = None,
-    graph: str | None = None,
+    ingest: KnowledgeIngest | None = None,
 ) -> dict[str, int] | None:
     """Map + ingest one query's search results (typed nodes + ranked links + documents).
 
@@ -232,8 +272,8 @@ def ingest_search_results(
     )
     if not entities:
         return None
-    ent_res = ingest_entities(entities, relationships, client=client, graph=graph)
-    doc_res = ingest_documents(documents, client=client, graph=graph)
+    ent_res = await ingest_entities(entities, relationships, ingest=ingest)
+    doc_res = await ingest_documents(documents, ingest=ingest)
     if ent_res is None and doc_res is None:
         return None
     return {
@@ -243,11 +283,10 @@ def ingest_search_results(
     }
 
 
-def ingest_crawled_pages(
+async def ingest_crawled_pages(
     pages: list[dict[str, Any]],
     *,
-    client: Any | None = None,
-    graph: str | None = None,
+    ingest: KnowledgeIngest | None = None,
 ) -> dict[str, int] | None:
     """Map crawled markdown pages -> ``:WebPage`` nodes + shared ``:Document`` text.
 
@@ -288,8 +327,8 @@ def ingest_crawled_pages(
             )
     if not entities:
         return None
-    ent_res = ingest_entities(entities, relationships, client=client, graph=graph)
-    doc_res = ingest_documents(documents, client=client, graph=graph)
+    ent_res = await ingest_entities(entities, relationships, ingest=ingest)
+    doc_res = await ingest_documents(documents, ingest=ingest)
     if ent_res is None and doc_res is None:
         return None
     return {
@@ -358,29 +397,27 @@ def _run_web_search(query: str, max_results: int) -> tuple[str, list[dict[str, A
         return "", []
 
 
-def genius_ingest_search(
+async def genius_ingest_search(
     query: str,
     *,
     max_results: int = 10,
-    client: Any | None = None,
-    graph: str | None = None,
+    ingest: KnowledgeIngest | None = None,
 ) -> dict[str, Any] | None:
     """Wire-First: run a real web search for ``query`` and ingest its results into the KG.
 
     Lists via the real search provider (the same dispatcher the ``web-search`` skill uses),
     maps the hits to ``:SearchQuery``/``:SearchResult``/``:WebPage`` + ``:Document`` nodes,
-    and pushes them through the fast engine client. Best-effort: returns
+    and pushes them through ``agent_connector_sdk.ingest``. Best-effort: returns
     ``{"query":..., "provider":..., "results":n, "ingested":None|{...}}``; ``ingested`` is
-    ``None`` when no engine is reachable (search still runs).
+    ``None`` when no engine is reachable (search still runs). Async — ``await`` it.
     """
     provider, results = _run_web_search(query, max_results)
     ingested = (
-        ingest_search_results(
+        await ingest_search_results(
             query,
             results,
             provider=provider or "duckduckgo",
-            client=client,
-            graph=graph,
+            ingest=ingest,
         )
         if results
         else None

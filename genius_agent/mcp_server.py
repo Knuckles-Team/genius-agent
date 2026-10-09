@@ -7,8 +7,8 @@ import logging
 import sys
 from typing import Annotated, Any
 
-from agent_utilities.core.config import load_config
-from agent_utilities.mcp.server_factory import create_mcp_server
+from agent_connector_sdk.config import load_config
+from agent_connector_sdk.mcp.server import create_mcp_server
 from fastmcp import FastMCP
 from pydantic import Field
 
@@ -18,7 +18,7 @@ from genius_agent.kg_ingest import genius_ingest_search as _genius_ingest_search
 logger = logging.getLogger(__name__)
 
 
-def genius_ingest_search(
+async def genius_ingest_search(
     query: Annotated[
         str,
         Field(
@@ -43,7 +43,7 @@ def genius_ingest_search(
         raise ValueError("query must contain non-whitespace text")
     if not 1 <= max_results <= 50:
         raise ValueError("max_results must be between 1 and 50")
-    return _genius_ingest_search(normalized_query, max_results=max_results)
+    return await _genius_ingest_search(normalized_query, max_results=max_results)
 
 
 def register_tools(mcp: FastMCP) -> None:
