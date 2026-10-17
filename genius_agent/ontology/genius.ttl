@@ -105,5 +105,5 @@
     results, the providers that answered them, and the web pages crawled from the hits, with
     the retrieved text carried on the shared :Document class, plus evidence-bearing
     orchestration plans and their policy-scoped agent authority — federated into the
-    agent-utilities knowledge-graph hub.""" ;
+    agent-connector-sdk knowledge-graph hub.""" ;
     owl:imports <http://knuckles.team/kg> .

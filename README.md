@@ -127,7 +127,7 @@ documented in [docs/overview.md](docs/overview.md) and
 
 ## Security & Governance
 
-Built directly upon the enterprise-ready [`agent-utilities`](https://github.com/Knuckles-Team/agent-utilities) core, standard security parameters are fully supported:
+Built directly upon the enterprise-ready [`agent-connector-sdk`](https://github.com/Knuckles-Team/agent-connector-sdk) core, standard security parameters are fully supported:
 
 ### Access Control & Policy Enforcement
 - **Eunomia Policies:** Fine-grained, policy-driven tool authorization. Supports `none`, local `embedded` (`mcp_policies.json`), or centralized `remote` modes.
@@ -149,8 +149,8 @@ Pick the extra that matches what the operator want to run:
 
 | Extra | Installs | Use when |
 |-------|----------|----------|
-| `genius-agent[mcp]` | MCP server (`agent-utilities[mcp]`) plus the mandatory full epistemic-graph base runtime | The operator run the MCP tool surface without the integrated agent runtime |
-| `genius-agent[agent]` | Current agent runtime (`agent-utilities[agent,logfire]`) plus the mandatory full epistemic-graph base runtime | The operator run the **integrated agent** (the primary surface) |
+| `genius-agent[mcp]` | MCP server (`agent-connector-sdk[mcp]`) plus the mandatory full epistemic-graph base runtime | The operator run the MCP tool surface without the integrated agent runtime |
+| `genius-agent[agent]` | Current agent runtime (`agent-connector-sdk[agent,logfire]`) plus the mandatory full epistemic-graph base runtime | The operator run the **integrated agent** (the primary surface) |
 | `genius-agent[all]` | Everything (`mcp` + `agent` + `logfire`) | Development / both surfaces |
 
 ```bash
@@ -201,10 +201,10 @@ connection config, and the full database architecture are documented in the
 | `GOOGLE_CX` | — | Google Custom Search Engine ID (used together with GOOGLE_API_KEY) |
 | `BING_API_KEY` | secret-injected | Bing Search API key |
 | `GENIUS_AGENT_IMAGE` | — | e.g. registry.example.invalid/genius-agent@sha256:<digest> |
-| `AGENT_UTILITIES_TESTING` | `true` | set "true" to skip live integration tests |
+| `AGENT_CONNECTOR_SDK_TESTING` | `true` | set "true" to skip live integration tests |
 | `A2A_URL` | — | base URL of the running A2A agent endpoint (scripts/validate_a2a_agent.py) |
 
-#### Inherited agent-utilities variables (apply to every connector)
+#### Inherited agent-connector-sdk variables (apply to every connector)
 
 | Variable | Example | Description |
 |----------|---------|-------------|
@@ -228,7 +228,7 @@ connection config, and the full database architecture are documented in the
 | `MODEL_ID` | — | Operator-configured model id for the agent |
 | `ENABLE_WEB_UI` | `True` | Serve the AG-UI web interface |
 
-_19 package + 19 inherited variable(s). Auto-generated from `.env.example` + the shared agent-utilities set — do not edit._
+_19 package + 19 inherited variable(s). Auto-generated from `.env.example` + the shared agent-connector-sdk set — do not edit._
 <!-- ENV-VARS-TABLE:END -->
 
 
@@ -314,15 +314,15 @@ Contributions are welcome! Please ensure code quality by running local checks be
 - Ran test suites using `pytest`
 
 
-<!-- BEGIN agent-utilities-deployment (generated; do not edit between markers) -->
+<!-- BEGIN agent-connector-sdk-deployment (generated; do not edit between markers) -->
 
-## Deploy with `agent-utilities-deployment`
+## Deploy with `agent-connector-sdk-deployment`
 
-Provision this package with the consolidated **`agent-utilities-deployment`**
+Provision this package with the consolidated **`agent-connector-sdk-deployment`**
 workflow. It selects an installed-package, editable-source, or immutable-container
 path; records only runtime secret and TLS-profile references in `AgentConfig`; and
 runs doctor, registration, policy, observability, and rollback gates. Ask your agent
-to **"deploy `genius-agent` with agent-utilities-deployment"**.
+to **"deploy `genius-agent` with agent-connector-sdk-deployment"**.
 
 | Install mode | Command |
 |------|---------|
@@ -334,7 +334,7 @@ The repository embeds no deployment profile, credential value, certificate path,
 environment-specific endpoint. Supply those at runtime through `AgentConfig` and the
 configured secret provider.
 
-<!-- END agent-utilities-deployment -->
+<!-- END agent-connector-sdk-deployment -->
 
 <!-- GOVERNED-CAPABILITY:START -->
 ## Governed capability contract

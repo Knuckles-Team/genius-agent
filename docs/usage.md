@@ -42,7 +42,7 @@ from genius_agent.agent_server import agent_server
 agent_server()
 ```
 
-Internally it composes the `agent-utilities` building blocks
+Internally it composes the `agent-connector-sdk` building blocks
 (`create_agent_server`, `build_system_prompt_from_workspace`, `load_identity`,
 `initialize_workspace`), so the agent identity, system prompt, and workspace are
 resolved from the environment and the bundled `agent_data/` workspace.

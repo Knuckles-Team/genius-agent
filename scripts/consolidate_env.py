@@ -106,7 +106,7 @@ def main():
     xdg_config = Path(
         os.environ.get("XDG_CONFIG_HOME", str(Path.home() / ".config"))
     )
-    template_path = xdg_config / "agent-utilities" / "genius-agent" / "env.template"
+    template_path = xdg_config / "agent-connectors" / "genius-agent" / "env.template"
     template = "# Variable-name template generated without source values\n" + "".join(
         f"{key}=\n" for key in sorted(variable_names)
     )

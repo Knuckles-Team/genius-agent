@@ -96,7 +96,7 @@ def generate_global_mcp_config():
     xdg_config = Path(
         os.environ.get("XDG_CONFIG_HOME", str(Path.home() / ".config"))
     )
-    output_file = xdg_config / "agent-utilities" / "mcp_config.json"
+    output_file = xdg_config / "agent-connectors" / "mcp_config.json"
 
     agents = get_agent_directories(base_dir)
     mcp_servers = {}

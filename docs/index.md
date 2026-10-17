@@ -1,7 +1,7 @@
 # genius-agent
 
 A production-grade **Agent (A2A) + MCP** orchestration server for agentic AI,
-built on the `agent-utilities` core.
+built on the `agent-connector-sdk` core.
 
 !!! info "Official documentation"
     This site is the canonical reference for `genius-agent`, maintained alongside every
@@ -15,7 +15,7 @@ built on the `agent-utilities` core.
 ## Overview
 
 `genius-agent` is a fully integrated Pydantic-AI graph agent and Model Context
-Protocol (MCP) surface for the agent-utilities ecosystem. It provides:
+Protocol (MCP) surface for the Graph OS ecosystem. It provides:
 
 - **An integrated graph agent** — a Pydantic-AI agent that communicates over the
   Agent Control Protocol (ACP), drives the Agent Web UI (AG-UI), and runs an
@@ -26,7 +26,7 @@ Protocol (MCP) surface for the agent-utilities ecosystem. It provides:
 - **A native governed source tool** — the separate `genius-mcp` entry point exposes
   the signed `genius_ingest_search` contract for bounded web search and idempotent
   epistemic-graph ingestion.
-- **Enterprise security and telemetry inherited from `agent-utilities`** — Eunomia
+- **Enterprise security and telemetry inherited from `agent-connector-sdk`** — Eunomia
   policy enforcement, OIDC token delegation, OpenTelemetry export, and native
   Langfuse tracing, with guardrails enabled by default.
 
