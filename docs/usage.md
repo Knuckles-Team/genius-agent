@@ -86,5 +86,5 @@ credentials are absent. The full environment set is documented in
 
 Do not commit tenant definitions, credentials, identities, or host paths. For
 delegated use, discover and ran the packaged `genius-agent-operations`
-skill through GraphOS. The skill requires a verified tenant/session, current
+skill through Arbora. The skill requires a verified tenant/session, current
 tool discovery, fenced mutations, and sanitized evidence.

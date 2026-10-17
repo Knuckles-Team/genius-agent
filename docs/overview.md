@@ -79,7 +79,7 @@ genius-mcp --transport streamable-http --port 8001
 ## Governed capability contract
 
 Genius Agent accepts agent definitions at runtime and exposes the packaged
-`genius-agent-operations` skill for governed GraphOS delegation. The release
+`genius-agent-operations` skill for governed Arbora delegation. The release
 also carries a connector manifest, ontology, mappings, shapes, fixtures,
 migrations, tool-schema fingerprints, and certification metadata. Those
 artifacts describe the current capability contract; historical example agent

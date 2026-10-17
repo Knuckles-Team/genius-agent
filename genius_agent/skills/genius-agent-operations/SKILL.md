@@ -3,14 +3,14 @@ name: genius-agent-operations
 skill_type: skill
 description: >-
   Search the open web, crawl selected sources, and ingest verified results through
-  Genius Agent's governed MCP and GraphOS surfaces. Use for current web discovery,
+  Genius Agent's governed MCP and Arbora surfaces. Use for current web discovery,
   full-page or bounded-site extraction, durable knowledge-graph ingestion,
   troubleshooting, and trace-backed verification.
 ---
 
 # Genius Agent Operations
 
-Use the provider's governed MCP tools through GraphOS delegation.
+Use the provider's governed MCP tools through Arbora delegation.
 
 ## Workflow
 

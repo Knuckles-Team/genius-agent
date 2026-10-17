@@ -15,7 +15,7 @@ built on the `agent-connector-sdk` core.
 ## Overview
 
 `genius-agent` is a fully integrated Pydantic-AI graph agent and Model Context
-Protocol (MCP) surface for the Graph OS ecosystem. It provides:
+Protocol (MCP) surface for the Arbora ecosystem. It provides:
 
 - **An integrated graph agent** — a Pydantic-AI agent that communicates over the
   Agent Control Protocol (ACP), drives the Agent Web UI (AG-UI), and runs an
@@ -73,7 +73,7 @@ launcher and are never part of the packaged configuration.
   referenced workflows.
 - A signed connector capability manifest plus ontology, SHACL shapes, mappings,
   fixtures, migrations, and certification metadata.
-- Privacy-safe delegation through GraphOS using non-personal agent aliases.
+- Privacy-safe delegation through Arbora using non-personal agent aliases.
 
 See [Configuration, trust, and privacy](configuration.md) for the operator
 contract.
