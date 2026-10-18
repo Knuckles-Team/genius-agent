@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="A production-grade Agent (A2A) + MCP orchestration server for agentic AI, built on the agent-utilities core.">
+        <meta name="description" content="A production-grade Agent (A2A) + MCP orchestration server for agentic AI, built on the agent-connector-sdk core.">
       
       
       
@@ -893,7 +893,7 @@ path that matches how the operator want to run it.</p>
 <ul>
 <li><strong>Python 3.11 – 3.14</strong>.</li>
 <li>A model provider API key (OpenAI, OpenRouter, Vertex AI, or any provider supported
-  by <code>agent-utilities</code>).</li>
+  by <code>agent-connector-sdk</code>).</li>
 <li>Optionally, a reachable MCP server (or <code>mcp_config.json</code>) to provide the agent's
   tool surface — see <a href="../deployment/">Deployment</a>.</li>
 </ul>
@@ -901,7 +901,7 @@ path that matches how the operator want to run it.</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>pip<span class="w"> </span>install<span class="w"> </span>genius-agent
 </span></code></pre></div>
 <h3 id="optional-extras">Optional extras<a class="headerlink" href="#optional-extras" title="Permanent link">&para;</a></h3>
-<p>The base install pulls in the <code>agent-utilities[agent-runtime,logfire]</code> core. Install an extra
+<p>The base install pulls in the <code>agent-connector-sdk[agent-runtime,logfire]</code> core. Install an extra
 for additional capability:</p>
 <table>
 <thead>

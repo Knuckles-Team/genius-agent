@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="A production-grade Agent (A2A) + MCP orchestration server for agentic AI, built on the agent-utilities core.">
+        <meta name="description" content="A production-grade Agent (A2A) + MCP orchestration server for agentic AI, built on the agent-connector-sdk core.">
       
       
       
@@ -786,7 +786,7 @@
 
 <h1 id="genius-agent">genius-agent<a class="headerlink" href="#genius-agent" title="Permanent link">&para;</a></h1>
 <p>A production-grade <strong>Agent (A2A) + MCP</strong> orchestration server for agentic AI,
-built on the <code>agent-utilities</code> core.</p>
+built on the <code>agent-connector-sdk</code> core.</p>
 <div class="admonition info">
 <p class="admonition-title">Official documentation</p>
 <p>This site is the canonical reference for <code>genius-agent</code>, maintained alongside every
@@ -798,7 +798,7 @@ release.</p>
 <a href="https://github.com/Knuckles-Team/genius-agent"><img alt="GitHub" src="https://img.shields.io/badge/source-GitHub-181717?logo=github" /></a></p>
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
 <p><code>genius-agent</code> is a fully integrated Pydantic-AI graph agent and Model Context
-Protocol (MCP) surface for the agent-utilities ecosystem. It provides:</p>
+Protocol (MCP) surface for the Arbora ecosystem. It provides:</p>
 <ul>
 <li><strong>An integrated graph agent</strong> — a Pydantic-AI agent that communicates over the
   Agent Control Protocol (ACP), drives the Agent Web UI (AG-UI), and runs an
@@ -809,7 +809,7 @@ Protocol (MCP) surface for the agent-utilities ecosystem. It provides:</p>
 <li><strong>A native governed source tool</strong> — the separate <code>genius-mcp</code> entry point exposes
   the signed <code>genius_ingest_search</code> contract for bounded web search and idempotent
   epistemic-graph ingestion.</li>
-<li><strong>Enterprise security and telemetry inherited from <code>agent-utilities</code></strong> — Eunomia
+<li><strong>Enterprise security and telemetry inherited from <code>agent-connector-sdk</code></strong> — Eunomia
   policy enforcement, OIDC token delegation, OpenTelemetry export, and native
   Langfuse tracing, with guardrails enabled by default.</li>
 </ul>
@@ -845,7 +845,7 @@ launcher and are never part of the packaged configuration.</p>
   referenced workflows.</li>
 <li>A signed connector capability manifest plus ontology, SHACL shapes, mappings,
   fixtures, migrations, and certification metadata.</li>
-<li>Privacy-safe delegation through GraphOS using non-personal agent aliases.</li>
+<li>Privacy-safe delegation through Arbora using non-personal agent aliases.</li>
 </ul>
 <p>See <a href="configuration/">Configuration, trust, and privacy</a> for the operator
 contract.</p>

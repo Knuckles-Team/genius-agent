@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="A production-grade Agent (A2A) + MCP orchestration server for agentic AI, built on the agent-utilities core.">
+        <meta name="description" content="A production-grade Agent (A2A) + MCP orchestration server for agentic AI, built on the agent-connector-sdk core.">
       
       
       
@@ -829,7 +829,7 @@ Example prompts that drive that agent:</p>
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># and the MCP tool surface, then serves ACP + the Agent Web UI.</span>
 </span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">agent_server</span><span class="p">()</span>
 </span></code></pre></div>
-<p>Internally it composes the <code>agent-utilities</code> building blocks
+<p>Internally it composes the <code>agent-connector-sdk</code> building blocks
 (<code>create_agent_server</code>, <code>build_system_prompt_from_workspace</code>, <code>load_identity</code>,
 <code>initialize_workspace</code>), so the agent identity, system prompt, and workspace are
 resolved from the environment and the bundled <code>agent_data/</code> workspace.</p>
@@ -860,7 +860,7 @@ credentials are absent. The full environment set is documented in
 <h2 id="governed-delegation">Governed delegation<a class="headerlink" href="#governed-delegation" title="Permanent link">&para;</a></h2>
 <p>Do not commit tenant definitions, credentials, identities, or host paths. For
 delegated use, discover and ran the packaged <code>genius-agent-operations</code>
-skill through GraphOS. The skill requires a verified tenant/session, current
+skill through Arbora. The skill requires a verified tenant/session, current
 tool discovery, fenced mutations, and sanitized evidence.</p>
 
 
