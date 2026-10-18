@@ -35,22 +35,6 @@ mcp = [
 ]
 
 [[package]]
-name = "agent-utilities"
-version = "3.0.1"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "platformdirs" },
-    { name = "pydantic" },
-    { name = "pydantic-ai-harness" },
-    { name = "pydantic-ai-slim" },
-    { name = "pydantic-graph" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/7e/d2/b40f0b5c9551f6af5920c787c61d99db05eaab2eaff6d78fd83bd3f0a1e1/agent_utilities-3.0.1.tar.gz", hash = "sha256:f8d733c8a1feb6d24b21e277f5016baf802e52a01a0d76b2529d8530f5082d17", size = 63596, upload-time = "2026-10-17T16:04:12.077Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/99/9e/197d56abf9b50339b197cb1b5e33412d6c1e264e5945388fe440be30ee3d/agent_utilities-3.0.1-py3-none-any.whl", hash = "sha256:4c3ea71a9b3279b3a03a269076f898153e20b5f5402650ec9451f5141855003f", size = 61632, upload-time = "2026-10-17T16:04:10.773Z" },
-]
-
-[[package]]
 name = "aiofile"
 version = "3.11.1"
 source = { registry = "https://pypi.org/simple" }
@@ -1097,25 +1081,12 @@ wheels = [
 ]
 
 [[package]]
-name = "genai-prices"
-version = "0.1.13"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "httpx2" },
-    { name = "pydantic" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/ad/de/119c7ba00b9ddbf629de34cf390ab472da6d7bc5df0c51cdbec900280a74/genai_prices-0.1.13.tar.gz", hash = "sha256:76c9e2dd3917fdacdf3bc562297c4591384142ea2283c477e1512fafa4e3a384", size = 134622, upload-time = "2026-10-15T09:47:04.739Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/41/5a/b6b7d55148d367d07bcd3efdf24e3086ad199ea5109d0c335a872dfaac95/genai_prices-0.1.13-py3-none-any.whl", hash = "sha256:6d2b40760a2f7f5e207bac9b98de0af80e60c58ead497872a5331a7cee610477", size = 142541, upload-time = "2026-10-15T09:47:03.424Z" },
-]
-
-[[package]]
 name = "genius-agent"
 version = "4.3.0"
 source = { editable = "." }
 dependencies = [
     { name = "agent-connector-sdk", extra = ["mcp"] },
-    { name = "systems-manager", extra = ["agent", "mcp"] },
+    { name = "systems-manager", extra = ["mcp"] },
     { name = "universal-skills", extra = ["web-crawler", "web-search"] },
 ]
 
@@ -1147,7 +1118,7 @@ requires-dist = [
     { name = "pytest-asyncio", marker = "extra == 'test'", specifier = ">=1.4.0" },
     { name = "pytest-cov", marker = "extra == 'test'", specifier = ">=7.1.0" },
     { name = "pytest-xdist", marker = "extra == 'test'", specifier = ">=3.8.0" },
-    { name = "systems-manager", extras = ["mcp", "agent"] },
+    { name = "systems-manager", extras = ["mcp"] },
     { name = "universal-skills", extras = ["web-crawler", "web-search"] },
 ]
 provides-extras = ["mcp", "all", "test"]
@@ -1557,15 +1528,6 @@ wheels = [
 ]
 
 [[package]]
-name = "json-repair"
-version = "0.64.0"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/dc/85/bf69dc15a066728bf477b3a3cc16a49f8712acf5a6f9271bf6494f51bb91/json_repair-0.64.0.tar.gz", hash = "sha256:2890be942a7ef20626e4eda4bd91b37485bc5271ac122efe7bb924232fef60ea", size = 53703, upload-time = "2026-10-09T09:10:33.109Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/7f/10/98f7c8a5039b791e4801f1307f5571688b4fffa2e589eea9e16be6dcf37f/json_repair-0.64.0-py3-none-any.whl", hash = "sha256:3bf14cf14d8ae96f7bc467e6964d8accd52aaad084f973e38ebe4e43f9d051e4", size = 51984, upload-time = "2026-10-09T09:10:31.708Z" },
-]
-
-[[package]]
 name = "jsonref"
 version = "1.1.0"
 source = { registry = "https://pypi.org/simple" }
@@ -1640,15 +1602,6 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/da/34/28fff3ab31ccff1fd4f6c7c7b0ceb2b6968d8ea4950663eadcb5720591a0/lark-1.3.1.tar.gz", hash = "sha256:b426a7a6d6d53189d318f2b6236ab5d6429eaf09259f1ca33eb716eed10d2905", size = 382732, upload-time = "2025-10-27T18:25:56.653Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/82/3d/14ce75ef66813643812f3093ab17e46d3a206942ce7376d31ec2d36229e7/lark-1.3.1-py3-none-any.whl", hash = "sha256:c629b661023a014c37da873b4ff58a817398d12635d3bbb2c5a03be7fe5d1e12", size = 113151, upload-time = "2025-10-27T18:25:54.882Z" },
-]
-
-[[package]]
-name = "logfire-api"
-version = "4.38.0"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/10/1a/17af258260cf8378fabd10bacef0c585e19697eab1deea25f8e4f4fb6462/logfire_api-4.38.0.tar.gz", hash = "sha256:e773cd4a26edb48ef4ec6f88661d1c670bb68c303a71c7043a236d64a9699cd2", size = 90364, upload-time = "2026-07-20T12:15:34.913Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/26/22/598f988f293ce391e88baddeeaa1acaea625822653193935301e7149b5c6/logfire_api-4.38.0-py3-none-any.whl", hash = "sha256:6c0612d9200727b64b42eba6068d0d6afd45308f4b844ffd6290c2d33aa6a6f6", size = 140109, upload-time = "2026-07-20T12:15:31.973Z" },
 ]
 
 [[package]]
@@ -2481,40 +2434,6 @@ email = [
 ]
 
 [[package]]
-name = "pydantic-ai-harness"
-version = "0.57.0"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "genai-prices" },
-    { name = "httpx" },
-    { name = "json-repair" },
-    { name = "pydantic-ai-slim" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/4b/5a/a62d50d750b29e678d8e9ad1445e3b4157b8e67648a8894154351c05583b/pydantic_ai_harness-0.57.0.tar.gz", hash = "sha256:c2f62ea4b531c418021deb534ec3ed1cbde796c6a93a716823828554f16ddc5f", size = 1085536, upload-time = "2026-10-16T03:51:11.538Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/c4/54/7b28a10b6cfa28b13c3f98205aaf800d8f3bf5606530e840a706f0213219/pydantic_ai_harness-0.57.0-py3-none-any.whl", hash = "sha256:88f32fdedf2377b9187f364c10f7cdb9f00f9e076c3fb0492d6b7bcf2d6dcc38", size = 1348115, upload-time = "2026-10-16T03:50:57.818Z" },
-]
-
-[[package]]
-name = "pydantic-ai-slim"
-version = "2.57.0"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "anyio" },
-    { name = "genai-prices" },
-    { name = "griffelib" },
-    { name = "httpx2" },
-    { name = "opentelemetry-api" },
-    { name = "pydantic" },
-    { name = "pydantic-graph" },
-    { name = "typing-inspection" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/a1/dd/f92904e5719bb7de25eaa9eb9f0fb9746a8b43b02775249d2516b9583f5b/pydantic_ai_slim-2.57.0.tar.gz", hash = "sha256:2c5c150bcd097e6a1e267ea13e7f279a0b504d46b346a4e00b61e1996ad05372", size = 1907558, upload-time = "2026-10-16T03:51:13.084Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/cc/4f/ee187f80f9f9232fc6915da47d84305dfa62d4f879efbb1e6ff262172437/pydantic_ai_slim-2.57.0-py3-none-any.whl", hash = "sha256:a07d732e09df8d51f22bd3be2ad45ab644721a904809a2481146bf5d7bb47c67", size = 2229864, upload-time = "2026-10-16T03:50:59.882Z" },
-]
-
-[[package]]
 name = "pydantic-core"
 version = "2.50.1"
 source = { registry = "https://pypi.org/simple" }
@@ -2588,21 +2507,6 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/3d/81/f02de95eec7794dfc7a5bc69a834f0e834b31b3009014ce6de903855f775/pydantic_core-2.50.1-graalpy312-graalpy250_312_native-macosx_11_0_arm64.whl", hash = "sha256:a51eee75939cf811ac09b278745a6cee7dc873ccfbc8b9af3cc88fe4b7ce25b5", size = 2039027, upload-time = "2026-10-11T18:35:18.07Z" },
     { url = "https://files.pythonhosted.org/packages/4d/16/227746ed3771d9bf2304568b55134849ece34e13b38b1d76de763015c77f/pydantic_core-2.50.1-graalpy312-graalpy250_312_native-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:ae28183297fb0d2b8dc46a1f01d51f5e45825fc5afe76a835a6cb7fb34821295", size = 2109009, upload-time = "2026-10-11T18:35:20.218Z" },
     { url = "https://files.pythonhosted.org/packages/e5/b9/7664d1592a0e5a74903f357cd5b28ceb7336f3473256c5a4e8c8432f1881/pydantic_core-2.50.1-graalpy312-graalpy250_312_native-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:88e492e8b9d0312e7dc13667c30222abf284dc3b79b5302b3607b41a5784ce61", size = 2269883, upload-time = "2026-10-11T18:35:22.48Z" },
-]
-
-[[package]]
-name = "pydantic-graph"
-version = "2.57.0"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "anyio" },
-    { name = "logfire-api" },
-    { name = "pydantic" },
-    { name = "typing-inspection" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/b5/09/f02d836a27cf943b30c0bd3a3d2a3818e98ca5d554acc35be414e694984d/pydantic_graph-2.57.0.tar.gz", hash = "sha256:f848857baab4030c44b30de0c3ba650749d60f2295a0723645fb325f92191cf1", size = 45831, upload-time = "2026-10-16T03:51:16.98Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/00/d9/55a8f09b6180e10a19d1d41b2f1b157b23d8a998d442cf28465c5a86bea2/pydantic_graph-2.57.0-py3-none-any.whl", hash = "sha256:4c65193a1d8b58e3c6f29a15cbe7b96e1e255a1670a5bcb9a323b8600fc1686a", size = 53274, upload-time = "2026-10-16T03:51:06.285Z" },
 ]
 
 [[package]]
@@ -3281,24 +3185,22 @@ wheels = [
 
 [[package]]
 name = "systems-manager"
-version = "1.36.0"
+version = "2.2.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "agent-utilities" },
+    { name = "agent-connector-sdk", extra = ["mcp"] },
     { name = "distro" },
     { name = "psutil" },
+    { name = "pydantic" },
+    { name = "requests" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/85/a8/f4abfb2fd6f6409e659b7e5ed8e568723c1ca46932fc67d5157333e348da/systems_manager-1.36.0.tar.gz", hash = "sha256:36caa1d1400a58e7d4057eb798c250e186a70060fc5c59ee8fe176f27da7cc90", size = 136589, upload-time = "2026-07-12T06:18:24.641Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/81/1c/d3cfafceb3572346a6e71b857d497824e714af3c65a28291d0791c2c2b38/systems_manager-1.36.0-py3-none-any.whl", hash = "sha256:2999f634a9aee20699e6585c4d8ef7ad05c74ac37a899ae99f9f74fcfc30eaf1", size = 132000, upload-time = "2026-07-12T06:18:23.21Z" },
+    { url = "https://files.pythonhosted.org/packages/db/79/58fc0cc38e210f0a7bf822fda05aad9505e7346645f5cdeecdb386c78dca/systems_manager-2.2.1-py3-none-any.whl", hash = "sha256:c9c66cfcd2f4e3e28df43f0e22ed746242db61471b38af0f1cc9a9a04c692a84", size = 145440, upload-time = "2026-10-18T05:11:23.984Z" },
 ]
 
 [package.optional-dependencies]
-agent = [
-    { name = "agent-utilities" },
-]
 mcp = [
-    { name = "agent-utilities" },
+    { name = "agent-connector-sdk", extra = ["mcp"] },
 ]
 
 [[package]]
