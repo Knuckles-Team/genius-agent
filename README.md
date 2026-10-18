@@ -20,7 +20,7 @@
 ![PyPI - Wheel](https://img.shields.io/pypi/wheel/genius-agent)
 ![PyPI - Implementation](https://img.shields.io/pypi/implementation/genius-agent)
 
-*Version: 4.2.0*
+*Version: 4.2.1*
 
 > **Documentation** — Installation, deployment, usage across the agent, MCP, and CLI
 > interfaces are maintained in the
