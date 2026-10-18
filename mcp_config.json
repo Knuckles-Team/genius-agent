@@ -7,7 +7,6 @@
         "genius-agent"
       ],
       "env": {
-        "MCP_TOOL_MODE": "intent"
       }
     }
   }

@@ -15,38 +15,4 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends build-essential \
     && rm -rf /var/lib/apt/lists/*
 RUN --mount=type=cache,target=/root/.cache/uv \
-    uv pip install --system --upgrade --break-system-packages --prerelease=allow genius-agent[all]>=4.1.0
-
-# genius-agent is an agent-only package (no MCP server); the pipeline's mcp leg is
-# auto-skipped since this Dockerfile has no `AS mcp` stage.
-FROM python:3.14-slim@sha256:cea0e6040540fb2b965b6e7fb5ffa00871e632eef63719f0ea54bca189ce14a6 AS agent
-
-ARG HOST=127.0.0.1
-ARG PORT=8000
-ARG TRANSPORT="stdio"
-ARG AUTH_TYPE="none"
-
-ENV HOST=${HOST} \
-    PORT=${PORT} \
-    TRANSPORT=${TRANSPORT} \
-    AUTH_TYPE=${AUTH_TYPE} \
-    PYTHONUNBUFFERED=1 \
-    PATH="/tmp/.local/bin:/usr/local/bin:${PATH}" \
-    UV_HTTP_TIMEOUT=3600 \
-    UV_SYSTEM_PYTHON=1 \
-    UV_COMPILE_BYTECODE=1 \
-    UV_LINK_MODE=copy
-
-# Install base dependencies, uv, and starship shell prompt
-COPY --from=builder /usr/local /usr/local
-
-RUN groupadd --system --gid 10001 app \
-    && useradd --system --uid 10001 --gid 10001 --no-create-home \
-        --home-dir /tmp --shell /usr/sbin/nologin app
-
-ENV HOME=/tmp \
-    XDG_CONFIG_HOME=/tmp/.config \
-    XDG_CACHE_HOME=/tmp/.cache
-
-USER 10001:10001
-CMD ["genius-agent"]
+    uv pip install --system --upgrade --break-system-packages genius-agent[mcp]==4.2.0
