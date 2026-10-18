@@ -42,7 +42,7 @@ from genius_agent.agent_server import agent_server
 agent_server()
 ```
 
-Internally it composes the `agent-utilities` building blocks
+Internally it composes the `agent-connector-sdk` building blocks
 (`create_agent_server`, `build_system_prompt_from_workspace`, `load_identity`,
 `initialize_workspace`), so the agent identity, system prompt, and workspace are
 resolved from the environment and the bundled `agent_data/` workspace.
@@ -86,5 +86,5 @@ credentials are absent. The full environment set is documented in
 
 Do not commit tenant definitions, credentials, identities, or host paths. For
 delegated use, discover and ran the packaged `genius-agent-operations`
-skill through GraphOS. The skill requires a verified tenant/session, current
+skill through Arbora. The skill requires a verified tenant/session, current
 tool discovery, fenced mutations, and sanitized evidence.

@@ -30,14 +30,14 @@ durable, queryable agent memory instead of a throwaway result list.
 ## When NOT to use
 - Only display results to the user → `genius-web-search`.
 - Only read a page body, no persistence → `genius-web-crawl`.
-- Ingest arbitrary local files / a crawl `--output-dir` into graph-os generically
-  → the platform `mcp_graph-os_graph_ingest` tool.
+- Ingest arbitrary local files / a crawl `--output-dir` into arbora generically
+  → the platform `mcp_arbora_graph_ingest` tool.
 
 ## Prerequisites & environment
-- A reachable epistemic-graph engine (graph-os). With **no** engine every entry
+- A reachable epistemic-graph engine (arbora). With **no** engine every entry
   point cleanly **no-ops** (returns `None`) — search/crawl still work.
 - Ingestion rides the shared primitive
-  `agent_utilities.knowledge_graph.memory.native_ingest` when present, else a
+  `agent_connector_sdk.knowledge_graph.memory.native_ingest` when present, else a
   self-contained txn over the lightweight `GraphComputeEngine()._client`.
 - Provenance is stamped automatically: `source=genius-agent`, `domain=genius`.
 
@@ -88,4 +88,4 @@ ingest_crawled_pages([{"url": "https://docs.example.com/g", "markdown": "# Guide
 
 ## Related
 - `genius-web-search` / `genius-web-crawl` — produce what this ingests.
-- `agent-utilities-source-integration` — the fleet-wide native ingestion pattern.
+- `agent-connector-sdk-source-integration` — the fleet-wide native ingestion pattern.

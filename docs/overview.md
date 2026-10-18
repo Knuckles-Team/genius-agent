@@ -1,7 +1,7 @@
 # genius-agent — Concept Overview
 
 > **Category**: Orchestration | **Ecosystem Role**: MCP Server + A2A Agent
-> Built on [`agent-utilities`](https://github.com/Knuckles-Team/agent-utilities) — the unified AGI Harness.
+> Built on [`agent-connector-sdk`](https://github.com/Knuckles-Team/agent-connector-sdk) — the unified AGI Harness.
 
 ## Description
 
@@ -9,13 +9,13 @@ GeniusAgent Search Engine for Agentic AI!
 
 ## Enterprise Readiness
 
-All agents in the ecosystem inherit enterprise-grade infrastructure from `agent-utilities`:
+All agents in the ecosystem inherit enterprise-grade infrastructure from `agent-connector-sdk`:
 
 | Feature | Status | Source |
 |:--------|:-------|:-------|
-| **JWT/OIDC Authentication** | ✅ Built-in | `agent-utilities[auth]` — Authlib JWKS + API key middleware |
-| **OpenTelemetry Instrumentation** | ✅ Built-in | `agent-utilities[logfire]` — OTLP export, FastAPI auto-instrumentation |
-| **HashiCorp Vault Integration** | ✅ Built-in | `agent-utilities[vault]` — `secret://`, `env://`, `vault://` URI schemes |
+| **JWT/OIDC Authentication** | ✅ Built-in | `agent-connector-sdk[auth]` — Authlib JWKS + API key middleware |
+| **OpenTelemetry Instrumentation** | ✅ Built-in | `agent-connector-sdk[logfire]` — OTLP export, FastAPI auto-instrumentation |
+| **HashiCorp Vault Integration** | ✅ Built-in | `agent-connector-sdk[vault]` — `secret://`, `env://`, `vault://` URI schemes |
 | **Audit Logging** | ✅ Built-in | Append-only compliance trail with 30+ action types (CONCEPT:AU-OS.governance.wasm-micro-agent-sandbox) |
 | **Token Usage Analytics** | ✅ Built-in | 4-bucket tracking with budget alerting (CONCEPT:AU-OS.governance.wasm-micro-agent-sandbox) |
 | **Prompt Injection Defense** | ✅ Built-in | 25+ pattern scanner + jailbreak taxonomy (CONCEPT:AU-OS.config.secrets-authentication) |
@@ -30,12 +30,12 @@ This project implements or inherits the following ecosystem concepts:
 
 | Concept ID | Description | Source |
 |:-----------|:------------|:-------|
-| ECO-4.1 | MCP & Universal Skills | `agent-utilities` (inherited) |
-| AU-ECO.toolkit.journey-map-narrative | A2A Network & Consensus | `agent-utilities` (inherited) |
-| ORCH-1.0 | Unified Intelligence Graph | `agent-utilities` (inherited) |
-| OS-5.0 | Agent OS Kernel | `agent-utilities` (inherited) |
+| ECO-4.1 | MCP & Universal Skills | `agent-connector-sdk` (inherited) |
+| AU-ECO.toolkit.journey-map-narrative | A2A Network & Consensus | `agent-connector-sdk` (inherited) |
+| ORCH-1.0 | Unified Intelligence Graph | `agent-connector-sdk` (inherited) |
+| OS-5.0 | Agent OS Kernel | `agent-connector-sdk` (inherited) |
 
-> **Full Registry**: See [`agent-utilities/docs/overview.md`](https://github.com/Knuckles-Team/agent-utilities/blob/main/docs/overview.md) for the complete 5-Pillar concept index.
+> **Full Registry**: See [`agent-connector-sdk/docs/overview.md`](https://github.com/Knuckles-Team/agent-connector-sdk/blob/main/docs/overview.md) for the complete 5-Pillar concept index.
 
 ## Architecture
 
@@ -79,7 +79,7 @@ genius-mcp --transport streamable-http --port 8001
 ## Governed capability contract
 
 Genius Agent accepts agent definitions at runtime and exposes the packaged
-`genius-agent-operations` skill for governed GraphOS delegation. The release
+`genius-agent-operations` skill for governed Arbora delegation. The release
 also carries a connector manifest, ontology, mappings, shapes, fixtures,
 migrations, tool-schema fingerprints, and certification metadata. Those
 artifacts describe the current capability contract; historical example agent

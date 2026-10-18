@@ -15,7 +15,7 @@
 ## Functional Requirements
 
 - **FR-001**: Minor update: pytest-xdist 3.6.0 (constraint — not installed) -> 3.8.0
-- **FR-002**: Minor update: agent-utilities 0.2.40 (installed) -> 0.16.0
+- **FR-002**: Minor update: agent-connector-sdk 0.2.40 (installed) -> 0.16.0
 - **FR-003**: Test suite lacks intent diversity (only one type)
 - **FR-004**: 9 potential doc-test drift items
 - **FR-005**: README.md missing sections: usage|quick start
@@ -43,7 +43,7 @@
 - **FR-027**: Only 24% of env vars documented in README.md
 - **FR-028**: Undocumented env vars: AUTH_TYPE, CRONTOOL, DEFAULT_MODEL_ID, DEFAULT_PROVIDER, DISKTOOL, EUNOMIA_POLICY_FILE, EUNOMIA_TYPE, FILESYSTEMTOOL, FIREWALL_MANAGEMENTTOOL, GRAPHDB_PASSWORD
 - **FR-029**: 11 Python env vars not in .env.example: DEFAULT_MODEL_ID, DEFAULT_PROVIDER, GRAPHDB_PASSWORD, GRAPH_DB_PATH, LLM_API_KEY
-- **FR-030**: Analysis error: No module named 'agent_utilities.knowledge_graph'
+- **FR-030**: Analysis error: No module named 'agent_connector_sdk.knowledge_graph'
 
 ## Success Criteria
 

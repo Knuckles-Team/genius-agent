@@ -1,5 +1,5 @@
 site_name: "genius-agent"
-site_description: "A production-grade Agent (A2A) + MCP orchestration server for agentic AI, built on the agent-utilities core."
+site_description: "A production-grade Agent (A2A) + MCP orchestration server for agentic AI, built on the agent-connector-sdk core."
 site_url: "https://knuckles-team.github.io/genius-agent/"
 repo_name: "Knuckles-Team/genius-agent"
 repo_url: "https://github.com/Knuckles-Team/genius-agent"
