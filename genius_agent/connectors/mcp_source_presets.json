@@ -3,7 +3,10 @@
   "genius-search-results": {
     "server": "genius-mcp",
     "tool": "genius_ingest_search",
-    "action": "search",
+    "params_style": "args",
+    "arguments": {
+      "max_results": 10
+    },
     "records_path": "ingested",
     "id_field": "sourceUrl",
     "title_field": "title",

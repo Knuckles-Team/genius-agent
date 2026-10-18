@@ -14,7 +14,7 @@ from pydantic import Field
 
 from genius_agent.kg_ingest import genius_ingest_search as _genius_ingest_search
 
-__version__ = "4.2.0"
+__version__ = "4.3.0"
 
 logger = logging.getLogger(__name__)
 
