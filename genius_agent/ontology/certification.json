@@ -1,9 +1,6 @@
 {
   "api_version": "arbora.io/v1",
   "artifacts": {
-    "connector_manifest.yml": "70955866c9ab5f9e31c8479d245624fed6dc2120fd109d1a5dd6b8f22d790079",
-    "genius_agent/connectors/mcp_source_presets.json": "9a7ebb05156e0b88a318ce08b1b46aa8e60bb9639ed0c5e8eb24430986f0e7b8",
-    "genius_agent/connectors/tool_schema_fingerprints.json": "8a0c264ff2bf6d95c62287b21ddc51c510767ed181176b0c2f9bac52e2868b4c",
     "genius_agent/ontology/fixtures/records.json": "afe904e82715680ad203983b052190b0d2abe963460fde54ab4757d8374f91e2",
     "genius_agent/ontology/genius.ttl": "730b6b059e9787ee3bb127eb6e2623c4b1b4358faf097854e54b005b1cec993f",
     "genius_agent/ontology/mappings/source.yaml": "281550b864d9d9c1f0b27f87ab25d6e449beb87521a2a077af4434d5dacefe7e",
