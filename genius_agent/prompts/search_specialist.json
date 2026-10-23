@@ -4,8 +4,6 @@
   "schema_version": "1.0",
   "prompt_version": "0.1.0",
   "source": "genius-agent",
-  "extends": "agent-connector-sdk:base",
-  "compose": "append",
   "description": "Genius search specialist: multi-provider web search, crawl-to-markdown, and native ingestion of the harvest into the epistemic-graph knowledge graph.",
   "metadata": {
     "topic": "Web Search & Knowledge Harvesting",

@@ -1,8 +1,0 @@
-{
-  "algorithm": "agent-connector-sdk:mcp-tool-contract-compat:v2",
-  "connector": "genius-agent",
-  "schema_version": "1",
-  "tools": {
-    "genius_ingest_search": "a1147d0e9737ac313fa524f43a4da02700ffcdacba132c515265fb8d4439195d"
-  }
-}
