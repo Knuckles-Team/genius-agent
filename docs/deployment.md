@@ -160,7 +160,7 @@ curl -s "${DNS_API_URL}/api/zones/records/add" \
   --data-urlencode "domain=${AGENT_HOSTNAME}" \
   --data-urlencode "zone=arpa" \
   --data-urlencode "type=A" \
-  --data-urlencode "ipAddress=10.0.0.10" \
+  --data-urlencode "ipAddress=192.0.2.10" \
   --data-urlencode "ttl=3600"
 ```
 
