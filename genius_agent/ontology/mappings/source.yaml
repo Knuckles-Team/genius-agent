@@ -1,5 +1,5 @@
 schema_version: '1'
-connector: genius-agent
+connector: genius-mcp
 ontology_source: genius
 sync:
 - preset: genius-search-results

@@ -29,7 +29,7 @@ test = [
 
 # The one declared connector identity: the fleet name (SDK-CONNECTOR-CONTROL-R071).
 [project.entry-points."agent_connector_sdk.connector"]
-genius-agent = "genius_agent:connector"
+genius-mcp = "genius_agent:connector"
 
 [tool.uv.workspace]
 members = ["."]
