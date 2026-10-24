@@ -26,6 +26,7 @@ import hashlib
 import logging
 from typing import Any
 
+from agent_connector_sdk.connector_identity import connector_name
 from agent_connector_sdk.ingest import (
     ChangeSet,
     Document,
@@ -39,7 +40,7 @@ from agent_connector_sdk.ingest import (
 
 logger = logging.getLogger("genius_agent.kg")
 
-_SOURCE = "genius-agent"
+_SOURCE = connector_name("genius_agent")
 _DOMAIN = "genius"
 _BINDING = IngestBinding(connector=_SOURCE, stream=_DOMAIN)
 
