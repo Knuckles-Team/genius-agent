@@ -4,17 +4,12 @@
 from __future__ import annotations
 
 import logging
-import sys
 from typing import Annotated, Any
 
-from agent_connector_sdk.config import load_config
-from agent_connector_sdk.mcp.server import create_mcp_server
-from fastmcp import FastMCP
+from agent_connector_sdk.connector_hooks import RegistrationContext
 from pydantic import Field
 
 from genius_agent.kg_ingest import genius_ingest_search as _genius_ingest_search
-
-__version__ = "4.3.0"
 
 logger = logging.getLogger(__name__)
 
@@ -47,8 +42,9 @@ async def genius_ingest_search(
     return await _genius_ingest_search(normalized_query, max_results=max_results)
 
 
-def register_tools(mcp: FastMCP) -> None:
+def register_tools(context: RegistrationContext) -> None:
     """Register the canonical, signed Genius source tool."""
+    mcp = context.server
 
     mcp.tool(
         name="genius_ingest_search",
@@ -62,44 +58,3 @@ def register_tools(mcp: FastMCP) -> None:
         tags={"search", "ingest", "knowledge-graph"},
         run_in_thread=True,
     )(genius_ingest_search)
-
-
-def get_mcp_instance() -> tuple[Any, Any, Any]:
-    """Build the Genius MCP instance without starting a transport."""
-
-    load_config()
-    args, mcp, middlewares = create_mcp_server(
-        name="Genius Agent",
-        version=__version__,
-        instructions=(
-            "Search the web and materialize ranked evidence into epistemic-graph. "
-            "Runtime endpoints, credentials, TLS trust, and graph policy come from "
-            "AgentConfig; no deployment values are packaged."
-        ),
-    )
-    register_tools(mcp)
-    for middleware in middlewares:
-        mcp.add_middleware(middleware)
-    return mcp, args, middlewares
-
-
-def mcp_server() -> None:
-    """Run the configured Genius MCP transport."""
-
-    mcp, args, _ = get_mcp_instance()
-    print(f"Genius Agent MCP v{__version__}", file=sys.stderr)
-    print(f"Transport: {args.transport.upper()}", file=sys.stderr)
-
-    if args.transport == "stdio":
-        mcp.run(transport="stdio")
-    elif args.transport == "streamable-http":
-        mcp.run(transport="streamable-http", host=args.host, port=args.port)
-    elif args.transport == "sse":
-        mcp.run(transport="sse", host=args.host, port=args.port)
-    else:
-        logger.error("Invalid transport configuration")
-        raise SystemExit(1)
-
-
-if __name__ == "__main__":
-    mcp_server()
