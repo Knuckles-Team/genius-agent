@@ -1083,7 +1083,7 @@ wheels = [
 
 [[package]]
 name = "genius-agent"
-version = "4.3.3"
+version = "4.3.4"
 source = { editable = "." }
 dependencies = [
     { name = "agent-connector-sdk", extra = ["mcp"] },
