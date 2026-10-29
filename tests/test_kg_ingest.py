@@ -36,7 +36,9 @@ class _FakeTransport:
         self._fail = fail
 
     async def source_status(self, connector: str, stream: str) -> Any:
-        return SimpleNamespace(accepted_checkpoint=None)
+        return SimpleNamespace(
+            connector=connector, stream=stream, accepted_checkpoint=None
+        )
 
     async def submit(self, request: Any) -> Any:
         if self._fail:
@@ -153,9 +155,7 @@ async def test_ingest_crawled_pages_maps_webpage_and_document(ingest):
 async def test_ingest_noops_without_engine_failure(failing_ingest):
     service, _transport = failing_ingest
     assert (
-        await ingest_entities(
-            [{"id": "a", "node_type": "SearchQuery"}], ingest=service
-        )
+        await ingest_entities([{"id": "a", "node_type": "SearchQuery"}], ingest=service)
         is None
     )
 
