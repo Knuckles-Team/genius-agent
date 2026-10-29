@@ -36,7 +36,7 @@ class _FakeTransport:
         self._fail = fail
 
     async def source_status(self, connector: str, stream: str) -> Any:
-        return SimpleNamespace(accepted_checkpoint=None)
+        return SimpleNamespace(connector=connector, stream=stream, accepted_checkpoint=None)
 
     async def submit(self, request: Any) -> Any:
         if self._fail:
