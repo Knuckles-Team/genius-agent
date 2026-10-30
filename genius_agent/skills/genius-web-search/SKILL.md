@@ -11,7 +11,7 @@ description: >-
 license: MIT
 tags: [genius, web, search, duckduckgo, google, bing, searxng, mcp]
 metadata:
-  author: Genius
+  author: Knuckles-Team
   version: '0.1.0'
 ---
 # Genius Web Search

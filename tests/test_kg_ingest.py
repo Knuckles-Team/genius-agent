@@ -1,7 +1,7 @@
 """Native epistemic-graph ingestion for Genius search — Wire-First coverage.
 
 Exercises the real ``ingest_entities`` / ``ingest_documents`` / ``map_search_results`` /
-``ingest_search_results`` / ``ingest_crawled_pages`` seams against a fake ``agent_connector_sdk``
+``ingest_search_results`` / ``ingest_crawled_pages`` seams against a fake ``scion_sdk``
 ingest transport (no engine required), asserting the records/relationships the SDK's own request
 builder assembled and the search-result -> :SearchQuery/:SearchResult/:WebPage/:Document mapping.
 CONCEPT:AU-KG.ingest.enterprise-source-extractor.
@@ -19,7 +19,7 @@ from types import SimpleNamespace
 from typing import Any
 
 import pytest
-from agent_connector_sdk.ingest import IngestError, KnowledgeIngest
+from scion_sdk.ingest import IngestError, KnowledgeIngest
 
 from genius_agent.kg_ingest import (
     ingest_crawled_pages,

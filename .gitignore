@@ -181,3 +181,6 @@ docker/debug.Dockerfile
 docker/*.compose.yml
 genius_agent/ontology/shapes/connector.shacl.ttl
 genius_agent/ontology/certification.json
+
+# Spec status is computed at read time (pipelines-hook spec-status --write), never committed.
+specs/*/status.json

@@ -5,7 +5,7 @@ web-search queries (DuckDuckGo / Google / Bing / Searxng) and crawls the hits to
 module natively pushes that harvest into the ONE epistemic-graph knowledge graph in the modality
 that fits — **documents** (the retrieved text worth semantic search) plus the **typed OWL nodes**
 that give it structure (`:SearchQuery`, `:SearchResult`, `:SearchProvider`, `:WebPage`) and links,
-through ``agent_connector_sdk.ingest`` — the one connector write path; there is no self-contained
+through ``scion_sdk.ingest`` — the one connector write path; there is no self-contained
 fallback transaction here.
 
 The MCP tool surface exposes these as best-effort tools that must never raise on an
@@ -15,7 +15,7 @@ unreachable/misconfigured KG stack, so ``ingest_entities`` / ``ingest_documents`
 Node ids follow ``genius:<class>:<externalId>``; every ``node_type`` matches a class the
 package's ``ontology_providers`` ``genius.ttl`` federates.
 
-Every public ingest function here is now ``async`` — ``agent_connector_sdk.ingest``'s facade is
+Every public ingest function here is now ``async`` — ``scion_sdk.ingest``'s facade is
 async-only for callers already on the engine's event loop (every ``@mcp.tool()`` handler is), so
 synchronous wrapping would silently create-and-discard the coroutine. Callers must ``await``.
 """
@@ -26,8 +26,8 @@ import hashlib
 import logging
 from typing import Any
 
-from agent_connector_sdk.connector_identity import connector_name
-from agent_connector_sdk.ingest import (
+from scion_sdk.connector_identity import connector_name
+from scion_sdk.ingest import (
     ChangeSet,
     Document,
     Entity,
@@ -408,7 +408,7 @@ async def genius_ingest_search(
 
     Lists via the real search provider (the same dispatcher the ``web-search`` skill uses),
     maps the hits to ``:SearchQuery``/``:SearchResult``/``:WebPage`` + ``:Document`` nodes,
-    and pushes them through ``agent_connector_sdk.ingest``. Best-effort: returns
+    and pushes them through ``scion_sdk.ingest``. Best-effort: returns
     ``{"query":..., "provider":..., "results":n, "ingested":None|{...}}``; ``ingested`` is
     ``None`` when no engine is reachable (search still runs). Async — ``await`` it.
     """

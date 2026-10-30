@@ -1,7 +1,7 @@
 # genius-agent
 
 A production-grade **Agent (A2A) + MCP** orchestration server for agentic AI,
-built on the `agent-connector-sdk` core.
+built on the `scion-sdk` core.
 
 !!! info "Official documentation"
     This site is the canonical reference for `genius-agent`, maintained alongside every
@@ -26,7 +26,7 @@ Protocol (MCP) surface for the Arbora ecosystem. It provides:
 - **A native governed source tool** — the separate `genius-mcp` entry point exposes
   the signed `genius_ingest_search` contract for bounded web search and idempotent
   epistemic-graph ingestion.
-- **Enterprise security and telemetry inherited from `agent-connector-sdk`** — Eunomia
+- **Enterprise security and telemetry inherited from `scion-sdk`** — Eunomia
   policy enforcement, OIDC token delegation, OpenTelemetry export, and native
   Langfuse tracing, with guardrails enabled by default.
 

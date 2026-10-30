@@ -7,7 +7,7 @@ path that matches how the operator want to run it.
 
 - **Python 3.11 – 3.14**.
 - A model provider API key (OpenAI, OpenRouter, Vertex AI, or any provider supported
-  by `agent-connector-sdk`).
+  by `scion-sdk`).
 - Optionally, a reachable MCP server (or `mcp_config.json`) to provide the agent's
   tool surface — see [Deployment](deployment.md).
 
@@ -19,7 +19,7 @@ pip install genius-agent
 
 ### Optional extras
 
-The base install pulls in the `agent-connector-sdk[agent-runtime,logfire]` core. Install an extra
+The base install pulls in the `scion-sdk[agent-runtime,logfire]` core. Install an extra
 for additional capability:
 
 | Extra | Install | Pulls in |

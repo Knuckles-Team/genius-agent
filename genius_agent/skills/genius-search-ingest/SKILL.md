@@ -12,7 +12,7 @@ description: >-
 license: MIT
 tags: [genius, knowledge-graph, ingestion, search, documents, epistemic-graph, mcp]
 metadata:
-  author: Genius
+  author: Knuckles-Team
   version: '0.1.0'
 ---
 # Genius Search Ingest
@@ -37,7 +37,7 @@ durable, queryable agent memory instead of a throwaway result list.
 - A reachable epistemic-graph engine (arbora). With **no** engine every entry
   point cleanly **no-ops** (returns `None`) — search/crawl still work.
 - Ingestion rides the shared primitive
-  `agent_connector_sdk.knowledge_graph.memory.native_ingest` when present, else a
+  `scion_sdk.knowledge_graph.memory.native_ingest` when present, else a
   self-contained txn over the lightweight `GraphComputeEngine()._client`.
 - Provenance is stamped automatically: `source=genius-agent`, `domain=genius`.
 
@@ -88,4 +88,4 @@ ingest_crawled_pages([{"url": "https://docs.example.com/g", "markdown": "# Guide
 
 ## Related
 - `genius-web-search` / `genius-web-crawl` — produce what this ingests.
-- `agent-connector-sdk-source-integration` — the fleet-wide native ingestion pattern.
+- `scion-sdk-source-integration` — the fleet-wide native ingestion pattern.

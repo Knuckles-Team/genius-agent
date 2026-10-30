@@ -6,7 +6,7 @@ genius-agent
 GeniusAgent Agent Server
 """
 
-from agent_connector_sdk.connector import Connector
+from scion_sdk.connector import Connector
 
 from genius_agent.mcp_server import register_tools
 
