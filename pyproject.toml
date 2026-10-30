@@ -9,7 +9,7 @@ description = "GeniusAgent Search Engine for Agentic AI!"
 readme = "README.md"
 classifiers = [ "Development Status :: 5 - Production/Stable", "License :: Public Domain", "Environment :: Console", "Operating System :: POSIX :: Linux", "Programming Language :: Python :: 3",]
 requires-python = ">=3.12,<3.15"
-dependencies = [ "universal-skills[web-crawler,web-search]", "systems-manager[mcp]", "scion-sdk[mcp]>=0.6.2,<0.7.0", ]
+dependencies = [ "universal-skills[web-crawler,web-search]", "systems-manager[mcp]", "scion-sdk[mcp]>=0.6.3,<0.7.0", ]
 [[project.authors]]
 name = "Repository Maintainers"
 email = "maintainers@knuckles.team"
