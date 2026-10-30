@@ -3,7 +3,7 @@
 #
 # Helper script to spin up the Genius Agent harness alongside the UIs for testing.
 # This validates that the newly synchronized global mcp_config.json works properly
-# when attached to the `agent-connector-sdk` harness via `genius-agent`.
+# when attached to the `scion-sdk` harness via `genius-agent`.
 
 # Exit on error
 set -e

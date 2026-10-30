@@ -4,12 +4,12 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "genius-agent"
-version = "4.3.4"
+version = "4.3.5"
 description = "GeniusAgent Search Engine for Agentic AI!"
 readme = "README.md"
 classifiers = [ "Development Status :: 5 - Production/Stable", "License :: Public Domain", "Environment :: Console", "Operating System :: POSIX :: Linux", "Programming Language :: Python :: 3",]
 requires-python = ">=3.12,<3.15"
-dependencies = [ "universal-skills[web-crawler,web-search]", "systems-manager[mcp]", "scion-sdk[mcp]>=0.5.9,<0.6.0", ]
+dependencies = [ "universal-skills[web-crawler,web-search]", "systems-manager[mcp]", "scion-sdk[mcp]>=0.6.2,<0.7.0", ]
 [[project.authors]]
 name = "Repository Maintainers"
 email = "maintainers@knuckles.team"
@@ -18,9 +18,9 @@ email = "maintainers@knuckles.team"
 text = "MIT"
 
 [project.scripts]
-genius-mcp = "agent_connector_sdk.cli:serve"
+genius-mcp = "scion_sdk.cli:serve"
 
-[project.entry-points."agent_connector_sdk.prompt_providers"]
+[project.entry-points."scion_sdk.prompt_providers"]
 genius-agent = "genius_agent.prompts"
 
 [project.optional-dependencies]
@@ -28,7 +28,7 @@ test = [
     "pytest-xdist>=3.8.0", "pytest>=9.1.1", "pytest-asyncio>=1.4.0", "pytest-cov>=7.1.0",]
 
 # The one declared connector identity: the fleet name (SCION-CONNECTOR-CONTROL-R071).
-[project.entry-points."agent_connector_sdk.connector"]
+[project.entry-points."scion_sdk.connector"]
 genius-mcp = "genius_agent:connector"
 
 [tool.uv.workspace]

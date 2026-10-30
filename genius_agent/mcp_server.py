@@ -6,8 +6,8 @@ from __future__ import annotations
 import logging
 from typing import Annotated, Any
 
-from agent_connector_sdk.connector_hooks import RegistrationContext
 from pydantic import Field
+from scion_sdk.connector_hooks import RegistrationContext
 
 from genius_agent.kg_ingest import genius_ingest_search as _genius_ingest_search
 

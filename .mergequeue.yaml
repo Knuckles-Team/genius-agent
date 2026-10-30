@@ -14,7 +14,7 @@
 #
 # main is legitimately NOT green here right now: `python3 -m pytest -q tests`
 # reports 4 failed / 13 errors (mostly tests/integration/* and
-# test_graph_flow_integration.py, which need a live agent-connector-sdk graph/MCP
+# test_graph_flow_integration.py, which need a live scion-sdk graph/MCP
 # registry this queue's gate environment does not provide) alongside 20
 # passed. compare: pytest-ids is what makes that survivable without demanding
 # absolute green -- see the note below.
